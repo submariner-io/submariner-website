@@ -1,0 +1,12 @@
+FROM fedora:31
+
+ENV HUGO_VERSION=0.64.1
+ENV DAPPER_OUTPUT=output
+ENV DAPPER_SOURCE=/website
+ENV HOME=/website
+
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz >/tmp/hugo.tar.gz && \
+    cd /usr/bin && \
+    tar xvfz /tmp/hugo.tar.gz
+
+WORKDIR ${DAPPER_SOURCE}
