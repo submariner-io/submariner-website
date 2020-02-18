@@ -1,0 +1,32 @@
+name: publish-push
+
+on: pull_request 
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Create deploy key to push	
+      run: |	
+        echo '=================== Create deploy key to push ==================='	
+        set -x	
+        mkdir $HOME/.ssh	
+        ssh-keyscan -t rsa github.com > $HOME/.ssh/known_hosts
+        echo "${GIT_DEPLOY_KEY}" > $HOME/.ssh/id_rsa
+        chmod 400 $HOME/.ssh/id_rsa
+        git config --global user.email "submariner@website-ci"
+        git config --global user.name "Submariner Website CI"
+      env:	
+        GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}	
+
+    - name: Make the static files
+      run: make static
+  
+    - uses: actions/upload-artifact@v1
+      with:
+        name: static-website 
+        path: output
