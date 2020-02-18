@@ -10,3 +10,7 @@ RUN curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/
     tar xvfz /tmp/hugo.tar.gz
 
 WORKDIR ${DAPPER_SOURCE}
+
+EXPOSE 1313:1313/tcp
+
+ENTRYPOINT ["./scripts/entry"]

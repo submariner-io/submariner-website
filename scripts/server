@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd src
+hugo server --bind 0.0.0.0

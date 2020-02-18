@@ -1,4 +1,4 @@
-TARGETS := $(shell ls scripts)
+TARGETS := $(shell ls scripts | grep -v server)
 
 .dapper:
 	@echo Downloading dapper
@@ -14,7 +14,12 @@ shell: .dapper
 $(TARGETS): .dapper
 	./.dapper -m bind $@
 
+server:
+	docker image build . -f Dockerfile.dapper -t website
+	docker run -it --mount type=bind,source="$(shell pwd)",target=/website --entrypoint="/bin/bash" -p 1313:1313 website /website/scripts/server
+
+
 .DEFAULT_GOAL := ci
 
-.PHONY: $(TARGETS)
+.PHONY: $(TARGETS) server
 
