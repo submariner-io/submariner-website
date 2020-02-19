@@ -2,7 +2,7 @@
 title = "Contributing"
 date = 2020-02-19T20:24:34+01:00
 weight = 100
-pre = "<b>X. </b>"
+pre = "<b>5. </b>"
 +++
 
 ### Getting in touch with the community
@@ -15,6 +15,7 @@ pre = "<b>X. </b>"
 ### Or propose an enhancement via github issues
 
 ### Setting up a development environment
+
 
 ### Testing your code
 
