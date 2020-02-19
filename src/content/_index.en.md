@@ -22,9 +22,9 @@ Joining a cluster to an existing submariner broker is as simple as running:
 `
 
 Creating a broker is as simple as running:
-	
+
 `subctl deploy-broker --kubeconfig /path/to/your/config`
-`
+
 
 {{% notice tip %}}
 See the deployment section for more detailed deployment instructions.

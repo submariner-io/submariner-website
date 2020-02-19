@@ -32,15 +32,25 @@ url = "https://github.com/submariner-io/"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> Youtube demos"
+name = "<i class='fas fa-fw fa-envelope'></i> User mailing list"
+url = "https://bit.ly/submariner-users"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-envelope'></i> Devel mailing list"
+url = "https://bit.ly/submariner-dev"
+weight = 30
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-video'></i> Youtube demos"
 url = "https://www.youtube.com/channel/UCZ3brSgl2v4boglZoeChClQ/videos"
-weight = 11
+weight = 40
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-fw fa-bookmark'></i> Twitter"
 identifier = "twitter"
 url = "https://twitter.com/submarinerio"
-weight = 20
+weight = 50
 
 [Languages.es]
 title = "Proyecto Submariner, documentación"
@@ -53,14 +63,25 @@ identifier = "ds"
 url = "https://github.com/submariner-io/"
 weight = 10
 
+
 [[Languages.es.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-camera'></i> Demos youtube"
+name = "<i class='fas fa-fw fa-envelope'></i>Lista de correo (usuarios)"
+url = "https://bit.ly/submariner-users"
+weight = 20
+
+[[Languages.es.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-envelope'></i>Lista de correo (desarrolladores)"
+url = "https://bit.ly/submariner-dev"
+weight = 30
+
+[[Languages.es.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-video'></i> Demos youtube"
 url = "https://www.youtube.com/channel/UCZ3brSgl2v4boglZoeChClQ/videos"
-weight = 11
+weight = 40
 
 [[Languages.es.menu.shortcuts]]
 name = "<i class='fas fa-fw fa-bookmark'></i> Twitter"
 identifier = "twitter"
 url = "https://twitter.com/submarinerio"
-weight = 20
+weight = 50
 
