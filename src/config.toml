@@ -8,7 +8,7 @@ metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
 [params]
-  editURL = "https://github.com/submariner-io/website/edit/master/src/"
+  editURL = "https://github.com/submariner-io/website/edit/master/src/content/"
   description = "Documentation website for the submariner project"
   author = "The submariner community"
   showVisitedLinks = true
