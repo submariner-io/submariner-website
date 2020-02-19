@@ -1,8 +1,9 @@
 ---
-title: "Cross-Cluster Network Connectivity for Kubernetes"
+title: "Submariner"
 ---
 
 # Cross-Cluster Network for Kubernetes
+## Submariner
 
 Submariner enables direct networking between pods and services in different Kubernetes clusters, on premises or in the cloud.
 
