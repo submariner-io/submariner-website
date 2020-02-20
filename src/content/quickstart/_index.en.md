@@ -1,17 +1,68 @@
 +++
-title = "Quickstart"
+title = "Quickstart guide"
 date = 2020-02-19T20:03:44+01:00
 weight = 5
 pre = "<b>1. </b>"
 +++
 
+## Basic overview
 
-# Quickstart guide
+Submariner has two main core pieces (the broker and submariner), more information about 
+this topic can be found in the [Architecture](../architecture) section.
 
-## Installing
+#### The broker
+It's an API, to which all participating clusters are given access, and where two objects are exchanged via CRDs:
+* Cluster(.submariner.io): defines a participating cluster and it's IP CIDRs.
+* Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from such endpoint.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This part should be deployed on one K8s cluster, a participating cluster could be the broker as
+long as all other clusters can reach this cluster API.
 
-## Requirements
+#### The submariner deployment on a cluster
+Once submariner is deployed on a cluster with the proper credentials to the broker it will exchange Cluster and Endpoint objects with other clusters (via push/pull/watching), and start forming connections and routes to other clusters.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Prerequisites
+
+Submariner has a few requirements to get started:
+
+- At least **2 Kubernetes** clusters, one of which is designated to serve as the central broker that is accessible by all of your connected clusters; this can be one of your connected clusters, but comes with the limitation that the cluster is required to be up to facilitate interconnectivity/negotiation.
+
+- Different service/pod CIDR's between clusters. This is to prevent routing conflicts.
+<!-- This is not true yet, but eventually will be: (as well as different Kubernetes DNS suffixes).
+-->
+- Direct **IP connectivity between the gateway nodes** through the internet (or on the same network if not running Submariner over the internet). Submariner supports 1:1 NAT setups but has a few caveats/provider-specific configuration instructions in this configuration.<!--TODO: add section explaining nat -->
+
+- Knowledge of each cluster's network configuration.
+
+- Worker node IPs on all the clusters must be outside of the cluster/service CIDR ranges.
+
+An example of three clusters configured to use with Submariner would look like the following:
+
+| Cluster Name | Provider | Pods CIDR    | Service CIDR | Cluster Nodes CIDR |
+|:-------------|:---------|:-------------|:-------------|--------------------|
+| broker       | AWS      | 10.42.0.0/16 | 10.43.0.0/16 | 192.168.1.0/24     |
+| west         | vSphere  | 10.0.0.0/16  | 10.1.0.0/16  | 192.168.1.0/24     |
+| east         | OnPrem   | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
+
+
+## Deployment
+
+The available methods for deployment are:
+  * [subctl](../deployment) (+ submariner-operator).
+  * helm charts.
+  
+  
+The community recommends the use of **_subctl_**, because it simplifies most of the
+manual steps required for deployment, as well as verification of connectivity between the clusters. In the _future_ it may provide additional capabilities like:
+
+* Detection of possible conflicts
+* Upgrade management
+* Status inspection of the deployment
+* Configuration updates
+* Maintenance and debugs tasks
+* Wrapping of logs for support tasks.
+
+
+To deploy submariner with **subctl** please follow the [deployment](../deployment) guide.
+If **helm** fits better your deployment methodologies, please find the details [here](../deployment/helm)
