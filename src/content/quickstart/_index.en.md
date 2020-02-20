@@ -11,7 +11,7 @@ Submariner has two main core pieces (the broker and submariner), more informatio
 this topic can be found in the [Architecture](../architecture) section.
 
 #### The broker
-It's an API, to which all participating clusters are given access, and where two objects are exchanged via CRDs:
+The broker is an API to which all participating clusters are given access and where two objects are exchanged via CRDs:
 * Cluster(.submariner.io): defines a participating cluster and it's IP CIDRs.
 * Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from such endpoint.
 

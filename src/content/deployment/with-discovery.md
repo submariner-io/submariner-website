@@ -23,11 +23,11 @@ The [Lighthouse](https://github.com/submariner-io/lighthouse) project helps in c
 subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER> --service-discovery --broker-cluster-context <BROKER-CONTEXT-NAME>
 ```
 
-kubefed will be installed in the broker cluster, as lighthouse currently depends on it for resource distribution. Such dependency will be eliminated in the future.
+kubefed will be installed in the broker cluster, as lighthouse currently depends on it for resource distribution. This dependency will be eliminated in the future.
 
 #### Join Clusters
 
-To join all the other clusters with the broker cluster run using the broker-info.subm generated in the folder from which the previous step was run.
+To join all the other clusters with the broker cluster, run subctl using the broker-info.subm generated in the folder from which the previous step was run.
 
 {{% notice info %}}
 You will need a kubeconfig file with multiple contexts, a default admin context pointing to
@@ -41,4 +41,3 @@ subctl join --kubeconfig <PATH-TO-KUBECONFIG-DATA-CLUSTER> broker-info.subm  --b
 
 As for a normal deployment, subctl will try to figure out all necessary information and will
 ask for anything it can't figure out.
-
