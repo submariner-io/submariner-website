@@ -1,25 +1,18 @@
 TARGETS := $(shell ls scripts | grep -v server)
 
-.dapper:
-	@echo Downloading dapper
-	@curl -sL https://releases.rancher.com/dapper/latest/dapper-`uname -s`-`uname -m` > .dapper.tmp
-	@@chmod +x .dapper.tmp
-	@./.dapper.tmp -v
-	@mv .dapper.tmp .dapper
+hugo:
+	@echo Downloading hugo wrapper 
+	@curl -L -o hugo https://github.com/khos2ow/hugo-wrapper/releases/download/v1.4.0/hugow
+	@@chmod +x hugo
 
-shell: .dapper
-	rm -rf .bash_history
-	./.dapper -m bind -s
+server: hugo
+	./hugo server -w -s src
 
-$(TARGETS): .dapper
-	./.dapper -m bind $@
-
-server:
-	docker image build . -f Dockerfile.dapper -t website
-	docker run -it --mount type=bind,source="$(shell pwd)",target=/website --entrypoint="/bin/bash" -p 1313:1313 website /website/scripts/server
+static: hugo
+	./hugo -D -s src -d ../output
 
 
-.DEFAULT_GOAL := ci
+.DEFAULT_GOAL := static 
 
-.PHONY: $(TARGETS) server
+.PHONY: static server
 
