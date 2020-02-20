@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-source $(dirname $0)/lib/debug_functions
-
-cd src
-hugo -D -d ../output
-
-echo "The static content has been generated into the ./output directory"
