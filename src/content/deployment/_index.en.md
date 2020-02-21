@@ -33,7 +33,7 @@ this will create:
 * The submariner-k8s-broker namespace
 * The Cluster and Endpoint (.submariner.io) CRDs in the cluster
 * A service account in the namespace for subsequent subctl access.
-* A random IPSEC PSK which will be stored only on the broker-info.subm file.
+* A random IPSEC PSK which will be stored only in the `broker-info.subm` file.
 
 And generate a broker-info.subm file which contains the following elements:
 
@@ -43,7 +43,7 @@ And generate a broker-info.subm file which contains the following elements:
 
 
 {{% notice info %}}
-This cluster can also participate on the dataplane connectivity with the other clusters, but it will need to be joined (see following step)
+This cluster can also participate in the dataplane connectivity with the other clusters, but it will need to be joined (see following step)
 {{% /notice %}}
 
 ## Joining clusters
@@ -59,4 +59,4 @@ subctl will discover as much as it can, and ask you for any necessary detail it 
 
 ## Discovery
 
-Service discovery (via DNS and lighthouse project) is an experimental (developer preview), and the instructions to deploy with discovery can be found [here](with-discovery/)
+Service discovery (via DNS and lighthouse project) is an experimental feature (developer preview), and the instructions to deploy with discovery can be found [here](with-discovery/)

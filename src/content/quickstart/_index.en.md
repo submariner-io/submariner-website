@@ -12,8 +12,8 @@ this topic can be found in the [Architecture](../architecture) section.
 
 #### The broker
 The broker is an API to which all participating clusters are given access and where two objects are exchanged via CRDs:
-* Cluster(.submariner.io): defines a participating cluster and it's IP CIDRs.
-* Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from such endpoint.
+* Cluster(.submariner.io): defines a participating cluster and its IP CIDRs.
+* Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from the endpoint.
 
 The broker must be deployed on a single Kubernetes cluster. This cluster’s API server must be reachable by all Kubernetes clusters connected by Submariner. It can be a dedicated cluster, or one of the connected clusters.
 
@@ -27,7 +27,7 @@ Submariner has a few requirements to get started:
 
 - At least **2 Kubernetes** clusters, one of which is designated to serve as the central broker that is accessible by all of your connected clusters; this can be one of your connected clusters, but comes with the limitation that the cluster is required to be up to facilitate interconnectivity/negotiation.
 
-- Different service/pod CIDR's between clusters. This is to prevent routing conflicts.
+- Different service/pod CIDRs between clusters. This is to prevent routing conflicts.
 <!-- This is not true yet, but eventually will be: (as well as different Kubernetes DNS suffixes).
 -->
 - Direct **IP connectivity between the gateway nodes** through the internet (or on the same network if not running Submariner over the internet). Submariner supports 1:1 NAT setups but has a few caveats/provider-specific configuration instructions in this configuration.<!--TODO: add section explaining nat -->

@@ -15,7 +15,7 @@ The [Lighthouse](https://github.com/submariner-io/lighthouse) project helps in c
 - kubefedctl installed ([0.1.0-rc3](https://github.com/kubernetes-sigs/kubefed/releases/tag/v0.1.0-rc3)).
 - kubectl installed.
 
-### To deploy Submariner with Lighthouse follow the below steps
+### Deploying Submariner with Lighthouse
 
 #### Deploy Broker
 
