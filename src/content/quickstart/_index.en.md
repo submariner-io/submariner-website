@@ -15,8 +15,7 @@ The broker is an API to which all participating clusters are given access and wh
 * Cluster(.submariner.io): defines a participating cluster and it's IP CIDRs.
 * Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from such endpoint.
 
-This part should be deployed on one K8s cluster, a participating cluster could be the broker as
-long as all other clusters can reach this cluster API.
+The broker must be deployed on a single Kubernetes cluster. This cluster’s API server must be reachable by all Kubernetes clusters connected by Submariner. It can be a dedicated cluster, or one of the connected clusters.
 
 #### The submariner deployment on a cluster
 Once submariner is deployed on a cluster with the proper credentials to the broker it will exchange Cluster and Endpoint objects with other clusters (via push/pull/watching), and start forming connections and routes to other clusters.
