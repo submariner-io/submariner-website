@@ -5,7 +5,7 @@ weight = 100
 pre = "<b>5. </b>"
 +++
 
-This a preliminary community roadmap, it's not written in stone, but it can serve
+This is a preliminary community roadmap, it's not written in stone, but it can serve
 as a guideline about what's ahead.
 
 Please see details of previous releases [here](../releases)
@@ -14,11 +14,13 @@ Please see details of previous releases [here](../releases)
 
 * Stabilization of new lighthouse related features and deployment
 * Bugfixes
+* Working with the OpenShift CoreDNS distribution to make lighthouse compiled in their container
 
 ### v0.2.0
 
 * Support for Overlapping CIDRs
-
+* Improve documentation and website
+* (internal) start using armada to deploy multiple clusters in CI
 
 ### v0.3.0
 
@@ -33,5 +35,5 @@ Please see details of previous releases [here](../releases)
 
 ### v0.5.0
 
-* Support for non-kubeproxy / iptables based implementations, starting with ovn.
+* Support for non-kubeproxy / iptables based implementations, starting with ovn
 
