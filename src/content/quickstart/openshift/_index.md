@@ -79,7 +79,7 @@ openshift-install create cluster --dir cluster-b
 
 ### Make your clusters ready for submariner
 
-Submariner gateways need to be able to accept traffic over ports 4500/UDP and 500/UDP
+Submariner gateway nodes need to be able to accept traffic over ports 4500/UDP and 500/UDP
 when using IPSEC. In addition we use port 4800/UDP to encapsulate traffic from the worker nodes
 to the gateway nodes and ensuring that Pod IP addresses are preserved.
 
