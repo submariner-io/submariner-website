@@ -37,6 +37,4 @@ Please see details of previous releases [here](../releases)
 
 ### v0.5.0
 * HA Active/Active gateway support (ECMP?) (keep in mind non-iptables-kubeproxy based implementations)
-
-
-
+* Testing with Istio
