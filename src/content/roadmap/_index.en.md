@@ -20,20 +20,23 @@ Please see details of previous releases [here](../releases)
 
 * Support for Overlapping CIDRs
 * Improve documentation and website
-* (internal) start using armada to deploy multiple clusters in CI
+* (internal) start using Armada to deploy multiple clusters in CI
+* Support for multiple cable engines, including wireguard
 
 ### v0.3.0
 
 * Removing the kubefed dependency from Lighthouse service discovery
-* Support for multiple cable engines, including wireguard
+* Measuring and improving A/P HA (different scenarios)
+* Libreswan support
 
 ### v0.4.0 
 
 * Support for network policies via coastguard
 * Monitoring and reporting of tunnel endpoints
-* Active/Active gateway support (ECMP?)
+* Support for non-kubeproxy / iptables based implementations, starting with OVN
 
 ### v0.5.0
+* HA Active/Active gateway support (ECMP?) (keep in mind non-iptables-kubeproxy based implementations)
 
-* Support for non-kubeproxy / iptables based implementations, starting with ovn
+
 
