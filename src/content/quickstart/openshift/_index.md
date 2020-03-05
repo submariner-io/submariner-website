@@ -11,17 +11,28 @@ Download the **openshift-install** and _oc_ tools, and copy your _pull secret_ f
 
 > https://cloud.redhat.com/openshift/install/aws/installer-provisioned
 
+Find more detailed instructions here:
 
-### Make sure you're logged in aws cli
+> https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-default.html
+
+
+### Make sure the aws cli is properly installed and configured
+
+Installation instructions
+
+> https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 
 ```bash
 $ aws configure
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-Default region name [None]: us-east-2
+AWS Access Key ID [None]: ....
+AWS Secret Access Key [None]: ....
+Default region name [None]: ....
 Default output format [None]: text
 ```
 
+See also for more details:
+
+> https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html
 
 ### Create and deploy cluster A
 
