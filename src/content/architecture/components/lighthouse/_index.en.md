@@ -27,7 +27,7 @@ The typical workflow is as follows.
 ![Lighthouse Controller WorkFlow](https://raw.githubusercontent.com/submariner-io/lighthouse/master/docs/img/controllerWorkFlow.png)
 
 ### Lighthouse Plugin
-Lighthouse plugin can be installed as an external plugin for CoreDNS, and will work along with the default Kubernetes plugin. It uses the Lighthouse CRD that is distributed by the controller for DNS resolution. The below diagram indicates a high-level architecture.
+Lighthouse plugin can be installed as an external plugin for CoreDNS, and will work along with the default Kubernetes plugin. It uses the MultiClusterService CRD that is distributed by the controller for DNS resolution. The below diagram indicates a high-level architecture.
 
 ![Lighthouse Plugin Architecture](https://raw.githubusercontent.com/submariner-io/lighthouse/master/docs/img/lighthousePluginArchitecture.png)
 
