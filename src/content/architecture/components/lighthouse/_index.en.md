@@ -19,7 +19,7 @@ The Lighthouse controller uses the kubefed directory of clusters through the [Ad
 #### WorkFlow
 The typical workflow is as follows.
 
-- Lighthouse controller registers with Admiral for cluster join and unjoin events.
+- Lighthouse controller registers with Admiral into the kubefed list of clusters for cluster join and unjoin events.
 - Once it is notified about a join event, it retrieves the credentials from Admiral and registers for a call back on Service creation with a shared informer.
 - When a new Service is created in a cluster, the Lighthouse controller will be notified about it and it will create the Lighthouse CRD with the Service info.
 - The controller with the help of Admiral distributes the CRD to all the clusters that have joined.
