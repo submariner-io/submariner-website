@@ -14,7 +14,7 @@ The below digram shows the basic Lighthouse architecture.
 ### Lighthouse Controller
 This is the central discovery controller that gathers the information from the clusters, decides what information is to be shared and distributes the information as newly defined CRDs (Kubernetes custom resources).
 
-The Lighthouse controller will be running along with the [Admiral](https://github.com/submariner-io/admiral) control plane. It uses the API’s exposed by the Admiral to connect to each cluster and listen for Service CRUD. Once it is notified that a new Service is created and needs to be distributed, it creates the Lighthouse CRD and the same is distributed to all the clusters that are part of the control plane. The flow for update and delete will be similar.
+The Lighthouse controller uses the kubefed directory of clusters through the [Admiral](https://github.com/submariner-io/admiral) library. It connects to each cluster and listens for Service CRUD. Once it is notified that a new Service is created and needs to be distributed, it creates a MultiClusterService CR which is distributed to all the clusters that are part of the control plane. The flow for update and delete will be similar.
 
 #### WorkFlow
 The typical workflow is as follows.
