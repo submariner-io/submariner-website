@@ -120,14 +120,18 @@ Please note that the prep_for_subm.sh script has a few pre-requirements, you wil
 
 {{< subctl-install >}}
 
-### Use cluster-a as broker
+### Install Submariner
+
+To install Submariner in the clusters follow the below steps,
+
+#### Use cluster-a as broker
 
 ```bash
 subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig 
 ```
 
 
-### Join cluster-a and cluster-b to the broker
+#### Join cluster-a and cluster-b to the broker
 
 ```bash
 subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --cluster-id cluster-a
@@ -137,10 +141,44 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --cluster-id
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --cluster-id cluster-b
 ```
 
-### Verify connectivity
+#### Verify connectivity
 
 This will run a series of E2E tests to verify proper connectivity between the cluster pods and services
 
 ```bash
 subctl verify-connectivity cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --verbose
+```
+
+### Install Submariner with Service Discovery
+
+{{% notice info %}}
+
+The Lighthouse project is meant only to be used as a development preview. Installing the operator on an Openshift cluster may disable some of the operator features.
+
+{{% /notice %}}
+
+To install Submariner with multi-cluster service discovery follow the below steps,
+
+#### Create a merged kubeconfig
+
+```bash
+export KUBECONFIG=$PWD/cluster-a/auth/kubeconfig:$PWD/cluster-b/auth/kubeconfig
+sed -i 's/admin/east/' cluster-a/auth/kubeconfig
+sed -i 's/admin/west/' cluster-b/auth/kubeconfig
+kubectl config view --flatten > ./merged_kubeconfig
+```
+#### Use cluster-a as broker with service discovery enabled
+
+```bash
+subctl deploy-broker  --kubecontext west --kubeconfig ./merged_kubeconfig --service-discovery
+```
+
+#### Join cluster-a and cluster-b to the broker
+
+```bash
+subctl join --kubecontext west --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid west --broker-cluster-context west
+```
+
+```bash
+subctl join --kubecontext east --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid east --broker-cluster-context west
 ```
