@@ -25,6 +25,8 @@ Please see details of previous releases [here](../releases)
 
 ### v0.3.0
 
+* Auto detecting NAT vs non-NAT scenarios.
+* Supporting different ports for IPSEC for each cluster
 * Removing the kubefed dependency from Lighthouse service discovery
 * Measuring and improving A/P HA (different scenarios)
 * Libreswan support
@@ -32,7 +34,8 @@ Please see details of previous releases [here](../releases)
 ### v0.4.0 
 
 * Support for network policies via coastguard
-* Monitoring and reporting of tunnel endpoints
+* Monitoring and reporting of tunnel endpoints (status of connection, bandwidth, pps, etc..)
+* Monitoring connectivity over port 4800 between routeagent nodes.
 * Support for non-kubeproxy / iptables based implementations, starting with OVN
 
 ### v0.5.0
