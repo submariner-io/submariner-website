@@ -24,12 +24,13 @@ The typical workflow is as follows.
 - When a new Service is created in a cluster, the Lighthouse controller will be notified about it and it will create the Lighthouse CRD with the Service info.
 - The controller with the help of Admiral distributes the CRD to all the clusters that have joined.
 
-![Lighthouse Controller WorkFlow](https://raw.githubusercontent.com/submariner-io/lighthouse/master/docs/img/controllerWorkFlow.png)
+![Lighthouse Controller WorkFlow](/images/lighthouse/controllerWorkFlow.png)
+<!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
 
 ### Lighthouse Plugin
 Lighthouse plugin can be installed as an external plugin for CoreDNS, and will work along with the default Kubernetes plugin. It uses the MultiClusterService CRD that is distributed by the controller for DNS resolution. The below diagram indicates a high-level architecture.
 
-![Lighthouse Plugin Architecture](https://raw.githubusercontent.com/submariner-io/lighthouse/master/docs/img/lighthousePluginArchitecture.png)
+![Lighthouse Plugin Architecture](/images/lighthouse/lighthousePluginArchitecture.png)
 
 #### WorkFlow
 The typical workflow is as follows.
@@ -39,24 +40,6 @@ The typical workflow is as follows.
 - MultiClusterService CRD has built a cache, which was distributed by Lighthouse controller. The Lighthouse plugin will try to resolve the request according to its cache.
 - If a record exists it will be returned, otherwise the plugin will pass the request to the next plugin registered in CoreDNS.
 
-![Lighthouse CoreDNS WorkFlow](https://raw.githubusercontent.com/submariner-io/lighthouse/master/docs/img/coreDNSWorkFlow.png)
+![Lighthouse CoreDNS WorkFlow](/images/lighthouse/coreDNSWorkFlow.png)
+<!-- Image Source: /images/lighthouse/source/coreDNSWorkFlow.vsdx -->
 
-
-## Setup development environment
-You will need docker installed in your system, and at least 8GB of RAM.
-Run:
-```bash
-   make e2e status=keep
-```
-
-## Testing
-
-### To run end-to-end tests:
-```bash
-   make e2e
-```
-
-### To run unit tests:
-```bash
-   make test
-```
