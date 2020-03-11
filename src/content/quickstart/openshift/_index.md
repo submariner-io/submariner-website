@@ -130,11 +130,11 @@ subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 ### Join cluster-a and cluster-b to the broker
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --cluster-id cluster-a
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a
 ```
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --cluster-id cluster-b
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b
 ```
 
 ### Verify connectivity
