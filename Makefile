@@ -1,4 +1,6 @@
 TARGETS := $(shell ls scripts | grep -v server)
+URL := http://localhost:1313
+OPEN_CMD := $(shell command -v open || command -v xdg-open || echo : 2>/dev/null)
 
 hugo:
 	@echo Downloading hugo wrapper 
@@ -6,6 +8,7 @@ hugo:
 	@@chmod +x hugo
 
 server: hugo
+	(sleep 2; $(OPEN_CMD) $(URL)) &
 	./hugo server -w -s src
 
 static: hugo
