@@ -125,7 +125,7 @@ Please note that the prep_for_subm.sh script has a few pre-requirements, you wil
 
 {{% notice info %}}
 
-The Lighthouse project is meant only to be used as a development preview. Installing the operator on an Openshift cluster may disable some of the operator features.
+The Lighthouse project is meant only to be used as a development preview. Installing the operator on an Openshift cluster will disable Openshift CVO.
 
 {{% /notice %}}
 
@@ -153,4 +153,14 @@ subctl join --kubecontext west --kubeconfig ./merged_kubeconfig broker-info.subm
 
 ```bash
 subctl join --kubecontext east --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid east --broker-cluster-context west
+```
+
+####  Verify Deployment
+To verify the deployment follow the steps below.
+
+```bash
+kubectl --context east create nginx --image=nginx --replicas=2
+kubectl --context east expose deployment nginx --port=80
+kubectl --context west run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+curl nginx
 ```
