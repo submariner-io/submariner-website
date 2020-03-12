@@ -23,7 +23,6 @@ The workflow is as follows.
 - When notified about a join event, it retrieves the credentials from kubefed and registers a watch for Service creation and removal on that cluster.
 - When notified of a new Service created, it creates a MultiClusterService resource with the Service info and distributes it to all the clusters that are connected to the kubefed  control plane.
 - When notified of a Service deleted, its info is removed from the MultiClusterService resource and re-distributed.
-- The controller distributes the CRD to all the clusters that have joined.
 
 ![Lighthouse Controller WorkFlow](/images/lighthouse/controllerWorkFlow.png)
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
