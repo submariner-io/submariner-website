@@ -1,4 +1,3 @@
-TARGETS := $(shell ls scripts | grep -v server)
 URL := http://localhost:1313
 OPEN_CMD := $(shell command -v open || command -v xdg-open || echo : 2>/dev/null)
 
