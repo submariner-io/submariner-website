@@ -2,7 +2,7 @@
 title = "Contributing"
 date = 2020-02-19T20:24:34+01:00
 weight = 150
-pre = "<b>6. </b>"
+pre = "<b>7. </b>"
 +++
 
 ### Getting in touch with the community

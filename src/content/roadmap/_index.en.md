@@ -2,7 +2,7 @@
 title = "Roadmap"
 date = 2020-02-19T20:24:34+01:00
 weight = 100
-pre = "<b>5. </b>"
+pre = "<b>6. </b>"
 +++
 
 This is a preliminary community roadmap, it's not written in stone, but it can serve
