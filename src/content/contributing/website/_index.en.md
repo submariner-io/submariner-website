@@ -1,7 +1,7 @@
 ---
 title: "Contributing to the website"
 date: 2020-02-19T22:03:26+01:00
-weight: 10
+weight: 5
 ---
 
 The Submariner documentation website is based on hugo, grav, and the
