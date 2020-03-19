@@ -5,14 +5,14 @@ weight: 10
 ---
 
 
-In this section of the documentation we explain the necessary steps to make a submariner release,
-it's assumed that you are familiar with the submariner project and the different repositories.
+This section explains the necessary steps to make a submariner release.
+It is assumed that you are familiar with the submariner project and the various repositories.
 
 
-# Step 1: release submariner (core)
+# Step 1: create a submariner release
 
 
-Assuming that you have an existing submariner git directory, and that you are making a release based in master.
+Assuming that you have an existing submariner git directory, the following steps create a release named "Globalnet Overlapping IP support RC0" with version v0.2.0-rc0 based on the master branch.
 
 ```bash
 cd submariner
@@ -23,26 +23,26 @@ git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
 ```
 
-At this point the release should appear here, a github release can be created.
+A tagged release should appear [here](https://github.com/submariner-io/submariner/tags).
 
 > https://github.com/submariner-io/submariner/tags
 
-A build should start:
+A build for v0.2.0-rc0 should start and appear under the under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/submariner/branches).
 
 > https://travis-ci.com/github/submariner-io/submariner/branches
 
 Look under the "Active branches" section for v0.2.0-rc0 , and monitor that the build
-completes successfully, specially the Deploy section, where the images are pushed to quay.io, those should eventually appear here after the job has finished:
+Verify that the build successfully completes as indicated by a green checkmark at the right . At this point the images are pushed to quay.io.
 
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/submariner/builds/153943761) from all the sub-builds, the one tagged with DEPLOY=true will push the resulting image to quay, as can be seen here: [deployment script](https://travis-ci.com/github/submariner-io/submariner/jobs/299505392#L3417)
 
-Finally once that has finished, a 0.2.0-rc0 tag will be available here:
+Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https://quay.io/repository/submariner/submariner?tab=tags).
 
 > https://quay.io/repository/submariner/submariner?tab=tags
 
 
 
-# Step 2: release lighthouse
+# Step 2: create a lighthouse release
 
 Assuming that you have an existing lighthouse git directory, and that you are making a release based in master.
 
@@ -71,22 +71,22 @@ completes successfully, specially the Deploy section, where the images are pushe
 > https://quay.io/repository/submariner/lighthouse-controller?tab=tags
 > https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
 
-# Step 3: update operator version references, and release
+# Step 3: update the operator version references and create a release
 
-Once the other builds have finished and you have image tags 0.2.0-rc0 on submariner and ligthouse repos, you can proceed with changes to the operator
+Once the other builds have finished and you have 0.2.0-rc0 release tags for the submariner and lighthouse projects, you can proceed with changes to the operator.
 
-## Reference versions
+## Change referenced versions
 
-Edit the reference versions from the right operator/subctl branch:
+Edit the operator [versions](https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go) file and change the project version constants to reference the new release, "0.2.0-rc0".
 
 > https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go
 
-and send a PR, wait for CI to pass, and get approval/merge. See an example PR here: [0.2.0-rc0-release-pr](https://github.com/submariner-io/submariner-operator/pull/276)
+Create a pull request, wait for the CI job to pass, and get approval/merge. See an example PR [here](https://github.com/submariner-io/submariner-operator/pull/276)
 
 
-## Tag the operator repository (once the previous PR is merged)
+## Create a submariner-operator release
 
-Assuming that you have an existing lighthouse git directory, and that you are making a release based in master.
+Assuming you have an existing submariner-operator git directory, run the following steps:
 
 ```bash
 cd submariner-operator
