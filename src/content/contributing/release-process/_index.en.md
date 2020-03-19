@@ -4,7 +4,6 @@ date: 2020-03-18T16:03:26+01:00
 weight: 10
 ---
 
-
 This section explains the necessary steps to make a submariner release.
 It is assumed that you are familiar with the submariner project and the various repositories.
 
@@ -31,7 +30,7 @@ A build for v0.2.0-rc0 should start and appear under the under the "Active branc
 
 > https://travis-ci.com/github/submariner-io/submariner/branches
 
-Look under the "Active branches" section for v0.2.0-rc0 , and monitor that the build
+Look under the "Active branches" section for v0.2.0-rc0, and monitor the build.
 Verify that the build successfully completes as indicated by a green checkmark at the right . At this point the images are pushed to quay.io.
 
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/submariner/builds/153943761) from all the sub-builds, the one tagged with DEPLOY=true will push the resulting image to quay, as can be seen here: [deployment script](https://travis-ci.com/github/submariner-io/submariner/jobs/299505392#L3417)
@@ -44,7 +43,7 @@ Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https:/
 
 # Step 2: create a lighthouse release
 
-Assuming that you have an existing lighthouse git directory, and that you are making a release based in master.
+Assuming that you have an existing lighthouse git directory, the following steps create a release named "Globalnet Overlapping IP support RC0" with version v0.2.0-rc0 based on the master branch.
 
 ```bash
 cd lighthouse
@@ -55,21 +54,23 @@ git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
 ```
 
-At this point the release should appear here, a github release can be created.
+A tagged release should appear [here](https://github.com/submariner-io/lighthouse/tags)
 
 > https://github.com/submariner-io/lighthouse/tags
 
-A build should start:
+A build for v0.2.0-rc0 should start and appear under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/lighthouse/branches)
 
 > https://travis-ci.com/github/submariner-io/lighthouse/branches
 
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/lighthouse/builds/153946391).
 
-Look under the "Active branches" section for v0.2.0-rc0 , and monitor that the build
-completes successfully, specially the Deploy section, where the images are pushed to quay.io, those should eventually appear here after the job has finished:
+Look under the "Active branches" section for v0.2.0-rc0, and monitor the build.
+Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images are pushed to quay.io
 
 > https://quay.io/repository/submariner/lighthouse-controller?tab=tags
 > https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
+
+<!-- TODO: Aswin: the openshift-coredns part -->
 
 # Step 3: update the operator version references and create a release
 
@@ -96,3 +97,50 @@ git checkout remotes/upstream/master -B master
 git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
 ```
+
+
+A tagged release should appear [here](https://github.com/submariner-io/submariner-operator/tags).
+
+> https://github.com/submariner-io/submariner-operator/tags
+
+A build for v0.2.0-rc0 should start and appear under the under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/submariner-operator/branches).
+
+> https://travis-ci.com/github/submariner-io/submariner-operator/branches
+
+Look under the "Active branches" section for v0.2.0-rc0 , and monitor the build.
+Verify that the build successfully completes as indicated by a green checkmark at the right.
+At this point the images are pushed to quay.io.
+
+Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
+
+> https://quay.io/repository/submariner/submariner-operator?tab=tags
+
+
+## Create the subctl binaries release
+
+
+```bash
+cd submariner-operator
+git fetch -a -v -t
+git checkout v0.2.0-rc0
+rm bin/subctl*
+make build-cross
+ls -la bin/subctl*
+```
+
+Go to https://github.com/submariner-io/submariner-operator/tags , and create a release for the v0.2.0-rc0 tag, upload the generated binaries.
+
+If it's a pre-release (-rc) mark the checkbox "This is a pre-release"
+
+# Announce
+
+## email
+
+to:
+* bit.ly/submariner-dev
+* bit.ly/submariner-users
+
+## twitter
+
+under:
+* twitter.com/submarinerio
