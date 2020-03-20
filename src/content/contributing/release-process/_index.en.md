@@ -34,9 +34,7 @@ Verify that the build successfully completes as indicated by a green checkmark a
 
 > https://quay.io/repository/submariner/submariner?tab=tags
 
-For this example the build can be found [here](https://travis-ci.com/github/submariner-io/submariner/builds/153943761) from all the sub-builds, the one tagged with DEPLOY=true will push the resulting image to quay, as can be seen here: [deployment script](https://travis-ci.com/github/submariner-io/submariner/jobs/299505392#L3417)
-
-
+<!-- TODO(mangelajo) https://github.com/submariner-io/submariner-website/issues/46 -->
 
 
 # Step 2: create a lighthouse release
@@ -95,7 +93,6 @@ git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
 ```
 
-
 A tagged release should appear [here](https://github.com/submariner-io/submariner-operator/tags).
 
 > https://github.com/submariner-io/submariner-operator/tags
@@ -107,13 +104,10 @@ A build for v0.2.0-rc0 should start and appear under the under the "Active branc
 Verify that the build successfully completes as indicated by a green checkmark at the right.
 At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
 
-Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
-
 > https://quay.io/repository/submariner/submariner-operator?tab=tags
 
 
 ## Create the subctl binaries release
-
 
 ```bash
 cd submariner-operator
