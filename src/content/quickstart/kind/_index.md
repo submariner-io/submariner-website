@@ -10,6 +10,7 @@ weight: 100
 
 Submariner provides scripts that deploy 3 Kubernetes clusters locally, 1 broker and 2 data clusters with the Submariner dataplane components deployed on all the clusters.
 
+Please note that docker must be installed and running on your computer.
 To deploy the setup, clone [submariner repo](https://github.com/submariner-io/submariner) and run
 
 `make ci e2e status=keep`
