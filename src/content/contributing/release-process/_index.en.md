@@ -32,11 +32,10 @@ A build for v0.2.0-rc0 should start and appear under the "Active branches" secti
 
 Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner?tab=tags)..
 
+> https://quay.io/repository/submariner/submariner?tab=tags
+
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/submariner/builds/153943761) from all the sub-builds, the one tagged with DEPLOY=true will push the resulting image to quay, as can be seen here: [deployment script](https://travis-ci.com/github/submariner-io/submariner/jobs/299505392#L3417)
 
-Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https://quay.io/repository/submariner/submariner?tab=tags).
-
-> https://quay.io/repository/submariner/submariner?tab=tags
 
 
 
@@ -63,7 +62,6 @@ A build for v0.2.0-rc0 should start and appear under the "Active branches" secti
 
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/lighthouse/builds/153946391).
 
-Look under the "Active branches" section for v0.2.0-rc0, and monitor the build.
 Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available on quay.io at:
 
 > https://quay.io/repository/submariner/lighthouse-controller?tab=tags
@@ -106,9 +104,8 @@ A build for v0.2.0-rc0 should start and appear under the under the "Active branc
 
 > https://travis-ci.com/github/submariner-io/submariner-operator/branches
 
-Look under the "Active branches" section for v0.2.0-rc0 , and monitor the build.
 Verify that the build successfully completes as indicated by a green checkmark at the right.
-At this point the images are pushed to quay.io.
+At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
 
 Finally once that has finished, a 0.2.0-rc0 tag will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
 
