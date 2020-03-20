@@ -30,7 +30,7 @@ A build for v0.2.0-rc0 should start and appear under the "Active branches" secti
 
 > https://travis-ci.com/github/submariner-io/submariner/branches
 
-Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner?tab=tags)..
+Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner?tab=tags).
 
 > https://quay.io/repository/submariner/submariner?tab=tags
 
