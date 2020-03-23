@@ -18,7 +18,7 @@ Please see details of previous releases [here](../releases)
 * Removing the kubefed dependency from Lighthouse service discovery
 * De-duplicate E2E scripts and go code, into shipyard.
 * Libreswan support
-* Support for multiple cable engines, including wireguard
+* Support for multiple cable engines, including WireGuard
 * Auto detecting NAT vs non-NAT scenarios.
 * Supporting different ports for IPSEC for each cluster
 * Measuring and improving A/P HA (different scenarios)
