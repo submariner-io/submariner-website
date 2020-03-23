@@ -5,19 +5,19 @@ pre = "<b>4. </b>"
 weight = 15
 +++
 
-## v0.2.0 Overlapping CIDRs support
+## v0.2.0 Overlapping CIDR support
 
-> This release is focused on overlapping CIDRS support between clusters
+> This release is focused on overlapping CIDR support between clusters
 
 * Support for Overlapping CIDRs between clusters (globalnet)
 * Enhanced e2e scripts, which will be shared between repositories in the shipyard project (ongoing work)
 * Local registry in make e2e, improves e2e deployment.
-* Refactoring for support pluggable drivers (in preparation for wireguard support)
+* Refactoring for support pluggable drivers (in preparation for [WireGuard](https://www.wireguard.com/) support)
 
 
 ## v0.1.1 Submariner with more light
 
-> This release has focused on stability for the Ligthouse support
+> This release has focused on stability for the Lighthouse support
 
 * cleaner logging for submariner-engine
 * cleaner logging for submariner-route-agent
