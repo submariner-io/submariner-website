@@ -35,9 +35,9 @@ See also for more details:
 
 > https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html
 
-### Create and deploy cluster A
+### Create cluster A
 
-In this step you will deploy cluster A, with the default IP CIDRs
+This step will create a cluster named "cluster-a" with the default IP CIDRs.
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -52,11 +52,11 @@ openshift-install create install-config --dir cluster-a
 openshift-install create cluster --dir cluster-a
 ```
 
-The create cluster step will take some time, you can create Cluster B in parallel if you wish.
+This may take some time to complete so you can move on to the next section in parallel if you wish.
 
-### Create and deploy cluster B
+### Create cluster B
 
-In this step you will deploy cluster B, with the default IP CIDRs
+This step will create a cluster named "cluster-b" with the default IP CIDRs.
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -77,12 +77,12 @@ openshift-install create cluster --dir cluster-b
 
 Submariner gateway nodes need to be able to accept traffic over ports 4500/UDP and 500/UDP
 when using IPSEC. In addition we use port 4800/UDP to encapsulate traffic from the worker nodes
-to the gateway nodes and ensuring that Pod IP addresses are preserved.
+to the gateway nodes and ensure that Pod IP addresses are preserved.
 
 Additionally, the default Openshift deployments don't allow assigning an elastic public IP
-to existing worker nodes, something that it's necessary at least on one end of the IPSEC connections. 
+to existing worker nodes which is necessary on at least one end of the IPSEC connections. 
 
-To handle all those details we provide a script that will prepare your AWS OpenShift deployment
+To handle these requirements, a script is provided that will prepare your AWS OpenShift deployment
 for submariner, and will create an additional gateway node with an external IP.
 
 ```bash
@@ -97,7 +97,7 @@ chmod a+x ./prep_for_subm.sh
 
 {{% notice info %}}
 
-Please note that the prep_for_subm.sh script has a few pre-requirements, you will need to install: **oc, aws-cli, terraform, and unzip**. 
+Please note that the prep_for_subm.sh script requires that you first have the following installed: **oc, aws-cli, terraform, and unzip**. 
 
 {{% /notice %}}
 
