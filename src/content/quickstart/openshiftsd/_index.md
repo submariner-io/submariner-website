@@ -132,7 +132,7 @@ ARCH=amd64
 curl -LO https://github.com/kubernetes-sigs/kubefed/releases/download/v${VERSION}/kubefedctl-${VERSION}-${OS}-${ARCH}.tgz
 tar -zxvf kubefedctl-*.tgz
 chmod u+x kubefedctl
-sudo mv kubefedctl /usr/local/bin/
+mv kubefedctl ~/.local/bin/
 ```
 
 ### Install Submariner with Service Discovery
