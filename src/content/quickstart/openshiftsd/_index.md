@@ -121,6 +121,20 @@ Please note that the prep_for_subm.sh script has a few pre-requirements, you wil
 
 {{< subctl-install >}}
 
+### Install kubefedctl
+
+Download the kubefedctl binary and make it available on your PATH.
+
+```bash
+VERSION=0.1.0-rc3
+OS=linux
+ARCH=amd64
+curl -LO https://github.com/kubernetes-sigs/kubefed/releases/download/v${VERSION}/kubefedctl-${VERSION}-${OS}-${ARCH}.tgz
+tar -zxvf kubefedctl-*.tgz
+chmod u+x kubefedctl
+sudo mv kubefedctl /usr/local/bin/
+```
+
 ### Install Submariner with Service Discovery
 
 {{% notice info %}}
