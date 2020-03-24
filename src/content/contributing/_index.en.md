@@ -14,11 +14,6 @@ pre = "<b>7. </b>"
 
 ### Or propose an enhancement via github issues
 
-### Setting up a development environment
-
-
-### Testing your code
-
 ### Proposing a pull request
 Once your code is ready to be reviewed, you can propose a pull request.
 
