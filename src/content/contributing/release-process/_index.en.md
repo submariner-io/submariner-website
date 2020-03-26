@@ -15,8 +15,9 @@ Assuming that you have an existing submariner git directory, the following steps
 
 ```bash
 cd submariner
+git stash
 git remote add upstream ssh://git@github.com/submariner-io/submariner
-git fetch -a -v -t
+git fetch -a -v -t upstream
 git checkout remotes/upstream/master -B master
 git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
@@ -43,8 +44,9 @@ Assuming that you have an existing lighthouse git directory, run the following s
 
 ```bash
 cd lighthouse
+git stash
 git remote add upstream ssh://git@github.com/submariner-io/lighthouse
-git fetch -a -v -t
+git fetch -a -v -t upstream
 git checkout remotes/upstream/master -B master
 git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
@@ -86,8 +88,9 @@ Assuming you have an existing submariner-operator git directory, run the followi
 
 ```bash
 cd submariner-operator
+git stash
 git remote add upstream ssh://git@github.com/submariner-io/submariner-operator
-git fetch -a -v -t
+git fetch -a -v -t upstream
 git checkout remotes/upstream/master -B master
 git tag -s -m "Globalnet Overlapping IP support RC0" v0.2.0-rc0
 git push upstream v0.2.0-rc0
@@ -110,8 +113,9 @@ At this point the images tagged with 0.2.0-rc0 will be available [here](https://
 ## Create the subctl binaries release
 
 ```bash
+git stash
 cd submariner-operator
-git fetch -a -v -t
+git fetch -a -v -t upstream
 git checkout v0.2.0-rc0
 rm bin/subctl*
 make build-cross
@@ -121,6 +125,10 @@ At this point, you should see subctl binaries generated and listed for the vario
 Go to https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 and select "Edit release" to the right. Then upload the generated subctl binaries.
 
 If this is a pre-release, mark the checkbox "This is a pre-release".
+
+# Verify the version
+
+You can follow any of our quickstarts, for example [this](https://submariner-io.github.io/en/quickstart/openshiftgn/)
 
 # Announce
 
