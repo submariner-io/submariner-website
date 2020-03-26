@@ -11,21 +11,21 @@ weight = 15
 
 * Support for Overlapping CIDRs between clusters (globalnet)
 * Enhanced e2e scripts, which will be shared between repositories in the shipyard project (ongoing work)
-* Local registry in make e2e, improves e2e deployment.
-* Refactoring for support pluggable drivers (in preparation for [WireGuard](https://www.wireguard.com/) support)
+* Improved e2e deployment by using a local registry.
+* Refactoring to support pluggable drivers (in preparation for [WireGuard](https://www.wireguard.com/) support)
 
 
 ## v0.1.1 Submariner with more light
 
 > This release has focused on stability for the Lighthouse support
 
-* cleaner logging for submariner-engine
-* cleaner logging for submariner-route-agent
+* Cleaner logging for the submariner-engine
+* Cleaner logging for the submariner-route-agent
 * Fixed issue with wrong token stored in subm file #244
 * Added flag to disable the OpenShift CVO #235
 * Fixed several service-discovery related bugs #194 , #167
 * Fixed several panics on nil network discovery
-* Now checks if the IPs for the cluster you're trying to join overlaps with an existing one.
+* Added checks to ensure the CIDRs for joining cluster don't overlap with an existing ones.
 * Fix context handling related to service-discovery / kubefed #180
 * Use the right CoreDNS image for OpenShift.
 
