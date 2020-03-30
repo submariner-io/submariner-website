@@ -143,7 +143,8 @@ subctl join --kubecontext east --kubeconfig ./merged_kubeconfig broker-info.subm
 To verify the deployment follow the steps below.
 
 ```bash
-kubectl --context east create deployment ngnix --image=nginx
+export KUBECONFIG=./merged_kubeconfig
+kubectl --context east create deployment nginx --image=nginx
 kubectl --context east expose deployment nginx --port=80
 kubectl --context west run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
 curl nginx
