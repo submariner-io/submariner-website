@@ -4,6 +4,9 @@ date: 2020-03-18T16:03:26+01:00
 weight: 10
 ---
 
+Submariner strives to be an open, welcoming community for developers.
+Substantial tooling is provided to ease the contribution experience.
+
 ## Standard Development Environment
 
 Submariner provides a standard, shared development environment suitable for all
