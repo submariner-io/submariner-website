@@ -4,7 +4,7 @@ date: 2020-03-02T21:25:35+01:00
 weight: 15
 ---
 
-To make lighthouse release artifacts follow the below steps,
+To create lighthouse release artifacts follow the steps below.
 
 ## Build Lighthouse CoreDNS
 
@@ -72,7 +72,6 @@ git add .
 git commit -s 
 git push HEAD:<VERSION-NO> 
 ```
-
 
 
 
