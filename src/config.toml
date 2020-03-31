@@ -47,6 +47,12 @@ url = "https://www.youtube.com/channel/UCZ3brSgl2v4boglZoeChClQ/videos"
 weight = 40
 
 [[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bookmark'></i> Google Calendar"
+identifier = "gcal"
+url = "https://calendar.google.com/calendar?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+weight = 60
+
+[[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-fw fa-bookmark'></i> Twitter"
 identifier = "twitter"
 url = "https://twitter.com/submarinerio"
@@ -85,3 +91,8 @@ identifier = "twitter"
 url = "https://twitter.com/submarinerio"
 weight = 50
 
+[[Languages.es.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bookmark'></i> Google Calendar"
+identifier = "gcal"
+url = "https://calendar.google.com/calendar?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+weight = 60
