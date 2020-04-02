@@ -90,7 +90,6 @@ sed -i '/^kubernetes:kubernetes/a lighthouse:github.com/submariner-io/lighthouse
 sed -i '/^github.com/aws/aws-sdk-go/a github.com/submariner-io/lighthouse v0.2.0' go.mod
 sed -i '$a replace\ k8s.io\/apimachinery\ =>\ k8s.io\/apimachinery\ v0.0.0-20190313205120-d7deff9243b1' go.mod
 sed -i '$a replace\ github.com\/openzipkin-contrib\/zipkin-go-opentracing\ =>\ github.com\/openzipkin-contrib\/zipkin-go-opentracing\ v0.3.5' go.mod
-sed -i '$a replace\ github.com/bronze1man/goStrongswanVici\ =>\ github.com/mangelajo/goStrongswanVici\ v0.0.0-20190223031456-9a5ae4453bd' go.mod
 docker build  -f Dockerfile.openshift -t quay.io/submariner/${COREDNS_IMAGE} .
 docker push quay.io/submariner/${COREDNS_IMAGE}
 ```
