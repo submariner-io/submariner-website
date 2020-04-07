@@ -1,3 +1,5 @@
+## AWS
+
 ### openshift-install and pull-secret
 
 Download the **openshift-install** and _oc_ tools, and copy your _pull secret_ from:
@@ -7,7 +9,6 @@ Download the **openshift-install** and _oc_ tools, and copy your _pull secret_ f
 Find more detailed instructions here:
 
 > https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-default.html
-
 
 ### Make sure the aws cli is properly installed and configured
 
@@ -26,3 +27,4 @@ Default output format [None]: text
 See also for more details:
 
 > https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html
+

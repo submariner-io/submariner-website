@@ -9,17 +9,7 @@ The inner details of deploying a broker and connecting clusters to the broker ar
 
 ## Installing subctl
 
-Download the subctl binary and make it available on your PATH.
-
-<!-- TODO: create a "getsubctl.sh" to simplify this -->
-```bash
-mkdir -p ~/.local/bin
-curl -L -o ~/.local/bin/subctl https://github.com/submariner-io/submariner-operator/releases/download/v0.1.0/subctl-v0.1.0-linux-amd64
-chmod a+x ~/.local/bin/subctl
-export PATH=$PATH:~/.local/bin
-echo export PATH=\$PATH:~/.local/bin >> ~/.profile
-```
-
+{{< subctl-install >}}
 
 ## Deployment of broker
 
