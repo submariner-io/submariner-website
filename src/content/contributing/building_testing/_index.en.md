@@ -93,7 +93,7 @@ To build the `submariner/submariner`, `submariner/submariner-route-agent`, and
 [submariner-io/submariner][1] repository:
 
 ```
-make package
+make images
 ```
 
 ## submariner-io/submariner-operator
