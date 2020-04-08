@@ -94,7 +94,7 @@ docker build  -f Dockerfile.openshift -t quay.io/submariner/${COREDNS_IMAGE} .
 docker push quay.io/submariner/${COREDNS_IMAGE}
 ```
 
-## Build Lighthouse Cluster-DNS-Operator
+## Build Cluster-DNS-Operator
 
 1) Clone the cluster-dns-operator repository and create a version branch
 
