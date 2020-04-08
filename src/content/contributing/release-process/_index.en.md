@@ -73,7 +73,7 @@ Verify that the build successfully completes as indicated by a green checkmark a
 
 ## Build Lighthouse CoreDNS
 
-1) Get the coreDNS and change to the folder
+1) Get the coredns repository and change to the folder
 
 ```bash
 go get github.com/openshift/coredns
@@ -96,7 +96,7 @@ docker push quay.io/submariner/${COREDNS_IMAGE}
 
 ## Build Lighthouse Cluster-DNS-Operator
 
-1) Clone  the Lighthouse Cluster-DNS branch and create a version branch
+1) Clone the cluster-dns-operator repository and create a version branch
 
 ```bash
 git clone https://github.com/submariner-io/cluster-dns-operator.git
