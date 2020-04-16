@@ -8,10 +8,10 @@ weight = 5
 Submariner is a tool built to connect overlay networks of different
 Kubernetes clusters. These clusters can be on different public clouds
 or on-premise. An important use case for Submariner is to connect disparate
-independent clusters into a single cohesive multi-cluster. 
+independent clusters into a single cohesive multi-cluster fleet. 
 
-However, one key limitation of submariner's current design is that it doesn't
-support overlapping CIDRs (ServiceCIDR and ClusterCIDR) across these clusters.
+However, by default, a limitation of submariner is that it doesn't handle
+overlapping CIDRs (ServiceCIDR and ClusterCIDR) across these clusters.
 Each cluster must use distinct CIDRs that don't conflict or overlap with any
 other cluster that is going to be part of cluster fleet.
 
@@ -21,21 +21,21 @@ This is largely problematic because most actual deployments use the default CIDR
 
 ## Architecture
 
-To support overlapping CIDRs in clusters connected through submariner, we're introducing a new component called Global Private Network, GlobalNet (`globalnet`). This GlobalNet is a virtual network specifically to support submariner's multi-cluster solution with a Global CIDR. Each cluster is given a subnet from this Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is configurable at time of deployment
+To support overlapping CIDRs in clusters connected through submariner, submariner has a component called Global Private Network, GlobalNet (`globalnet`). This GlobalNet is a virtual network specifically to support submariner's multi-cluster solution with a Global CIDR. Each cluster is given a subnet from this Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is configurable at time of deployment
 
-Once configured, each service and pod that requires cross-cluster access is allocated an IP, `GlobalIp` from this `GlobalCIDR` and it is annotated on the Pod/Service object. This `GlobalIp` is used for all cross-cluster communication to and from to this Pod/Service. Routing and IPTable/OVS/OVN rules are configured to use this IP for ingress and egress. All address translations occur on the Gateway node.
+Once configured, each service and pod that requires cross-cluster access is allocated an IP, named `GlobalIp`, from this `GlobalCIDR` that is annotated on the Pod/Service object. This `GlobalIp` is used for all cross-cluster communication to and from to this Pod/Service. Routing and IPTable/OVS/OVN rules are configured to use this IP for ingress and egress. All address translations occur on the Gateway node.
 
 ![Figure 1 - Proposed solution](/images/globalnet/overlappingcidr-solution.png)
 
 ### submariner-globalnet
 
-Submariner GlobalNet is a component that provides cross-cluster connectivity between pods and services using their GlobalIps. Compiled as binary `submariner-globalnet`, it is the controller that is responsible for maintaining a pool of global IPs, allocating IPs from the globalIp pool to pods and services, annotating services and pods with their global Ip, and configuring the required rules on gateway node to provide cross-cluster connectivity using GlobalIps. It mainly consists of two key components: the IP Address Manager and Globalnet.
+Submariner GlobalNet is a component that provides cross-cluster connectivity between pods and services using their GlobalIps. Compiled as binary `submariner-globalnet`, it is responsible for maintaining a pool of global IPs, allocating IPs from the globalIp pool to pods and services, annotating services and pods with their GlobalIp, and configuring the required rules on the gateway node to provide cross-cluster connectivity using GlobalIps. It mainly consists of two key components: the IP Address Manager and Globalnet.
 
 #### IP Address Manager (IPAM)
 
 The IP Address Manager (IPAM) component does the following:
 
-* Creates a pool of IP addresses based on `GlobalCIDR` configured on cluster.
+* Creates a pool of IP addresses based on the `GlobalCIDR` configured on cluster.
 * On creation of a Pod/Service, allocates a GlobalIp from the GlobalIp pool.
 * Annotates the Pod/Service with `submariner.io/GlobalIp=<global-ip>`.
 * On deletion of a Pod/Service, releases its GlobalIp back to the pool.
@@ -56,8 +56,6 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
 This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for GlobalNet. The Lighthouse controller adds the service's GlobalIp to the `MultiClusterService` object that is distributed to all clusters. The [lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/master/plugin/lighthouse) then uses the service's GlobalIp when replying to DNS queries for the service.
-
-## Known Issues
 
 ## Building
 
