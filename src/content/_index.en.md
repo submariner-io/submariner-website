@@ -2,30 +2,24 @@
 title: "Submariner"
 ---
 
-# Cross-Cluster Network for Kubernetes
-## Submariner
+# Submariner
+#### Submariner enables direct networking between pods and services in different Kubernetes clusters, on premises or in the cloud. 
 
-Submariner enables direct networking between pods and services in different Kubernetes clusters, on premises or in the cloud.
+## Why Submariner?
 
-Submariner is completely opensource, and it's designed to be network-plugin agnostic and works with most plugins based on kube-proxy ([see compatibility matrix](#)).
+As Kubernetes gains adoption, teams are finding they must deploy and manage multiple clusters to facilitate features like geo-redundancy, scale, and fault isolation for their applications. With Submariner, your applications and services can span multiple cloud providers, data centers, and regions.
+
+Submariner is completely open source, and designed to be network plugin (CNI) agnostic.
 
 
-{{% notice info %}}
-Submariner routes **L3 traffic** in the kernel, *no traffic is handled at user level*, and inter-cluster traffic is encrypted with IPSEC, although more options are being added.
-{{% /notice %}}
+## What Submariner Provides?
 
-** add simpler diagram here **
-
-Joining a cluster to an existing submariner broker is as simple as running:
-
-`subctl join --kubeconfig /path/to/your/config broker-info.subm
-`
-
-Creating a broker is as simple as running:
-
-`subctl deploy-broker --kubeconfig /path/to/your/config`
+* Cross-cluster L3 connectivity using encrypted VPN tunnels
+* Service Discovery across clusters via [Lighthouse](./architecture/components/lighthouse/)
+* [subctl](./deployment/subctl/), a friendly deployment tool 
+* Support for interconnecting clusters with [overlapping CIDRs](./architecture/globalnet/)
 
 
 {{% notice tip %}}
-See the deployment section for more detailed deployment instructions.
+Check the [Quickstart guide](./en/quickstart/) section for deployment instructions.
 {{% /notice %}}
