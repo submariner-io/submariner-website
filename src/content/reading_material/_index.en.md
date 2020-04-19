@@ -21,4 +21,4 @@ There are multiple presentations/demo recordings on Submariner available online.
 1. [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
 
 If you find additional material that isn't listed here, please feel free to add it to this page.
-The contributing guide can be found at [here.](https://github.com/submariner-io/submariner-website)
+The contributing guide can be found [here.](https://github.com/submariner-io/submariner-website)
