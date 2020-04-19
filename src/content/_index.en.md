@@ -21,5 +21,5 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 
 
 {{% notice tip %}}
-Check the [Quickstart guide](./en/quickstart/) section for deployment instructions.
+Check the [Quickstart guide](./quickstart/) section for deployment instructions.
 {{% /notice %}}
