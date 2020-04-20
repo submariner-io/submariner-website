@@ -19,14 +19,14 @@ submariner-io repositories.
 ## Prescribed Tasks via Make Targets
 
 Make targets are provided to further ease the process of using the shared
-development environment. The specific make targets available differ by
-repository. For any submariner-io repository, see the Makefile at the root of
+development environment. The specific make targets available might differ by
+repository. For any submariner-io repository, see the `Makefile` at the root of
 the repository for the supported targets and the `.travis.yml` file for the
 targets actually used in CI.
 
 ## Common Build and Testing Targets
 
-All `submariner-io/*` repositories provide a standard set of Make targets for
+All **submariner-io/**\* repositories provide a standard set of Make targets for
 similar building and testing actions.
 
 ### Linting
@@ -45,28 +45,67 @@ To run Go unit tests:
 make test
 ```
 
-### End-to-end tests
+### Multi-Cluster KIND Based Environment {#clusters}
 
-To run functional tests with a full multicluster deployment:
+Shipyard provides a basic target that creates a KIND based multi-cluster
+environment, without any special deployment (apart from the default K8s):
+
+```
+make clusters
+```
+
+Optionally, you can specify flags to control the clusters being deployed:
+* k8s_version - Controls which K8s version the KIND nodes deploy with
+* globalnet - Deploys clusters that have overlapping CIDRs, to be used with
+  the globalnet capabilities of submariner.
+
+### Multi-Cluster Submariner Deployment
+
+Shipyard provides a basic target that deploys submariner on a KIND based
+multi-cluster environment (if one isn't deployed, this target will deploy it
+as well):
+
+```
+make deploy
+```
+
+Optionally, you can specify flags to control the clusters being deployed:
+* Any flag from [clusters](#clusters) taget (only if it wasn't created).
+* globalnet - Deploys submariner with the globalnet capability.
+* deploytool - Either helm or operator deployment methods are supported.
+
+### End-to-End Tests
+
+To run functional tests with a full multi-cluster deployment (if one isn't
+deployed, this target will deploy it as well):
 
 ```
 make e2e
 ```
 
-The `e2e` target supports flags to configure the deployment and testing. For
-example, here are two `e2e` flag variations used in `submariner-io/submariner`
-CI:
+Optionally, you can specify flags to control the running of the end to end
+testing and deployment (if it wasn't run separately).
+Currently these flags are project-specific so consult with the project's
+`Makefile` to learn which flags are supported.
+The flags can be combined or used separately, or not at all (in which case
+default values apply).
+
+For example, here's a flag variation used in **submariner-io/submariner** CI:
 
 ```
-make e2e status=keep
-make e2e status=keep deploytool=helm globalnet=true
+make e2e deploytool=helm globalnet=true
 ```
 
-To clean up the clusters deployed with `e2e status=keep`, use:
+### Environment Clean Up
+
+To clean up all the KIND clusters deployed in any of the previous steps, use:
 
 ```
-make e2e status=clean
+make cleanup
 ```
+
+this command will make sure to remove the clusters, and any clutter that
+might've been left in docker and is not needed any more (images, volumes, etc).
 
 ## submariner-io/submariner
 
