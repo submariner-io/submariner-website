@@ -15,6 +15,7 @@ We would love to hear from you, how you are using Submariner, and what we can do
 Check out the project and consider contributing. Pick up an issue to work on or propose an enhancement by reporting a new issue; once your code is ready to be reviewed, you can propose a pull request. You can find a good guide about the GitHub workflow [here](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
 
 #### [#submariner](https://kubernetes.slack.com/archives/C010RJV694M)
+
 Share your ideas in the #submariner channel in Kubernetes' Slack. If you need it, you can [request an invite to K8S slack instance](https://slack.k8s.io/).
 
 #### [Community Calendar](https://calendar.google.com/calendar/r?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
