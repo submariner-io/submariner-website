@@ -11,6 +11,7 @@ pre = "<b>7. </b>"
 We would love to hear from you, how you are using Submariner, and what we can do to make it better. 
 
 #### [GitHub Project](https://github.com/submariner-io)
+
 Check out the project and consider contributing. Pick up an issue to work on or propose an enhancement by reporting a new issue; once your code is ready to be reviewed, you can propose a pull request. You can find a good guide about the GitHub workflow [here](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
 
 #### [#submariner](https://kubernetes.slack.com/archives/C010RJV694M)
@@ -22,4 +23,3 @@ As a member of the Submariner Community, join any of our community meetings - no
 #### [Mailing List](https://groups.google.com/forum/#!forum/submariner-dev)
 
 Join the developer mailing list.
-
