@@ -67,9 +67,9 @@ are expected to remain active contributors to the community.
       code/design/proposal review, coordinating on issues, etc.
     - Sponsors must be committers in at least 1 CODEOWNERS file either in any
       repo in the [Submariner org]
-- [Open an issue][open issue] against the submariner-io/submariner repo
+- [Open an issue][membership request issue] against the submariner-io/submariner repo
    - Ensure your sponsors are @mentioned on the issue
-   - Complete every item on the checklist ([preview the current version of the template][membership template])
+   - Complete every item on the checklist ([preview the current version of the member template][membership template])
    - Make sure that the list of contributions included is representative of
      your work on the project
 - Have your sponsoring committers reply confirmation of sponsorship: `+1`
@@ -119,6 +119,14 @@ in an CODEOWNERS file:
 - Sponsored by two committers or project owners
   - With no objections from other committers or project owners
 - May either self-nominate or be nominated by a committer/owner
+- [Open an issue][committership request issue] against the submariner-io/submariner repo
+   - Ensure your sponsors are @mentioned on the issue
+   - Complete every item on the checklist ([preview the current version of the committer template][committership template])
+   - Make sure that the list of contributions included is representative of
+     your work on the project
+- Have your sponsoring committers/owners reply confirmation of sponsorship: `+1`
+- Once your sponsors have responded, your request will be reviewed. Any missing
+  information will be requested.
 
 ### Responsibilities and privileges
 
@@ -186,8 +194,10 @@ The following apply to people who would be an owner:
 [contributor guide]: https://submariner-io.github.io/en/contributing/
 [Submariner org]: https://github.com/submariner
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
-[open issue]: https://github.com/submariner-io/submariner/issues/new
-[membership template]: https://git.k8s.io/org/.github/ISSUE_TEMPLATE/membership.md
+[membership request issue]: https://github.com/submariner-io/submariner/issues/new?template=membership.md&title=REQUEST%3A%20New%20membership%20request%20for%20%3Cyour-GH-handle%3E
+[membership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/membership.md
+[committership request issue]: https://github.com/submariner-io/submariner/issues/new?template=committership.md&title=REQUEST%3A%20New%20committer%20rights%20request%20for%20%3Cyour-GH-handle%3E
+[committership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/committership.md
 [two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication
 [owners team]: https://github.com/orgs/submariner-io/teams/submariner-core
 [org members]: https://github.com/orgs/submariner-io/people
