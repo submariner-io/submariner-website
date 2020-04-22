@@ -194,7 +194,7 @@ If this is a pre-release, mark the checkbox "This is a pre-release".
 
 # Verify the version
 
-You can follow any of our quickstarts, for example [this](https://submariner-io.github.io/en/quickstart/openshiftgn/)
+You can follow any of our quickstarts, for example [this](https://submariner-io.github.io/quickstart/openshiftgn/)
 
 # Announce
 

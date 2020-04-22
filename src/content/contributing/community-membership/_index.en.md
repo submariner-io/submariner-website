@@ -183,7 +183,7 @@ The following apply to people who would be an owner:
 [parent process]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/community-membership.md
 [code reviews]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/collab.md
 [community expectations]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/expectations.md
-[contributor guide]: https://submariner-io.github.io/en/contributing/
+[contributor guide]: https://submariner-io.github.io/contributing/
 [Submariner org]: https://github.com/submariner
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
 [open issue]: https://github.com/submariner-io/submariner/issues/new
