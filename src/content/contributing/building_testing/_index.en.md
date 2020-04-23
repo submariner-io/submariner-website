@@ -16,6 +16,8 @@ The [submariner-io/shipyard](https://github.com/submariner-io/shipyard) project
 contains the logic to build the base container images used across all
 submariner-io repositories.
 
+You can find out more about [working with Shipyard](../shipyard)
+
 ## Prescribed Tasks via Make Targets
 
 Make targets are provided to further ease the process of using the shared
@@ -54,10 +56,7 @@ environment, without any special deployment (apart from the default K8s):
 make clusters
 ```
 
-Optionally, you can specify flags to control the clusters being deployed:
-* k8s_version - Controls which K8s version the KIND nodes deploy with
-* globalnet - Deploys clusters that have overlapping CIDRs, to be used with
-  the globalnet capabilities of submariner.
+Find out more about [Shipyard's clusters target](../shipyard#clusters).
 
 ### Multi-Cluster Submariner Deployment
 
@@ -69,10 +68,7 @@ as well):
 make deploy
 ```
 
-Optionally, you can specify flags to control the clusters being deployed:
-* Any flag from [clusters](#clusters) taget (only if it wasn't created).
-* globalnet - Deploys submariner with the globalnet capability.
-* deploytool - Either helm or operator deployment methods are supported.
+Find out more about [Shipyard's deploy target](../shipyard#deploy).
 
 ### End-to-End Tests
 
@@ -104,8 +100,7 @@ To clean up all the KIND clusters deployed in any of the previous steps, use:
 make cleanup
 ```
 
-this command will make sure to remove the clusters, and any clutter that
-might've been left in docker and is not needed any more (images, volumes, etc).
+Find out more about [Shipyard's cleanup target](../shipyard#cleanup).
 
 ## submariner-io/submariner
 
