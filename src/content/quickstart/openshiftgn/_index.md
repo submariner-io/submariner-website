@@ -77,11 +77,11 @@ subctl deploy-broker  --kubecontext west --kubeconfig ./merged_kubeconfig --serv
 #### Join cluster-a and cluster-b to the broker
 
 ```bash
-subctl join --kubecontext west --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid west --broker-cluster-context west
+subctl join --kubecontext west --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid west
 ```
 
 ```bash
-subctl join --kubecontext east --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid east --broker-cluster-context west
+subctl join --kubecontext east --kubeconfig ./merged_kubeconfig broker-info.subm --clusterid east
 ```
 
 ####  Verify Deployment

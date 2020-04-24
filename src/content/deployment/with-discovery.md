@@ -20,7 +20,7 @@ The [Lighthouse](https://github.com/submariner-io/lighthouse) project helps in c
 #### Deploy Broker
 
 ```
-subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER> --service-discovery --broker-cluster-context <BROKER-CONTEXT-NAME>
+subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER> --service-discovery
 ```
 
 kubefed will be installed in the broker cluster, as lighthouse currently depends on it for resource distribution. This dependency will be eliminated in the future.
@@ -36,7 +36,7 @@ cluster from the previous step. This is a requirement from kubefedctl.
 {{% /notice %}}
 
 ```
-subctl join --kubeconfig <PATH-TO-KUBECONFIG-DATA-CLUSTER> broker-info.subm  --broker-cluster-context <BROKER-CONTEXT-NAME>
+subctl join --kubeconfig <PATH-TO-KUBECONFIG-DATA-CLUSTER> broker-info.subm
 ```
 
 As for a normal deployment, subctl will try to figure out all necessary information and will
