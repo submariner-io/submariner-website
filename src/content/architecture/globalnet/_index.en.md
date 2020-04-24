@@ -21,7 +21,8 @@ This is largely problematic because most actual deployments use the default CIDR
 
 ## Architecture
 
-To support overlapping CIDRs in clusters connected through submariner, submariner has a component called Global Private Network, GlobalNet (`globalnet`). This GlobalNet is a virtual network specifically to support submariner's multi-cluster solution with a Global CIDR. Each cluster is given a subnet from this Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is configurable at time of deployment
+To support overlapping CIDRs in clusters connected through submariner, submariner has a component called Global Private Network, GlobalNet (`globalnet`). This GlobalNet is a virtual network specifically to support submariner's multi-cluster solution with a global CIDR. Each cluster is given a subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is configurable at time of deployment.
+User can also manually specify GlobalCIDR for each cluster that is joined to the broker using the flag ```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the broker or if a GlobalCIDR is preconfigured in the cluster,  the supplied globalnet-cidr will be ignored.
 
 Once configured, each Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`, from this `GlobalCIDR` that is annotated on the Pod/Service object. This globalIp is used for all cross-cluster communication to and from a Pod and the globalIp of a remote Service. Routing and IPTable rules are configured to use the globalIp for ingress and egress. All address translations occur on the Gateway node.
 
