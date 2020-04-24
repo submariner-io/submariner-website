@@ -143,7 +143,19 @@ Once the other builds have finished and you have 0.2.0-rc0 release tags for the 
 
 Edit the operator [versions](https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go) file and change the project version constants to reference the new release, "0.2.0-rc0".
 
-> https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go
+
+```bash
+cd submariner-operator
+git stash
+git remote add upstream ssh://git@github.com/submariner-io/submariner-operator
+git fetch -a -v -t upstream
+git checkout remotes/upstream/master -B update-references-to-v0.2.0-rc0
+vim pkg/versions/versions.go
+# make sure we are referencing the latest submariner code (we use it for verify-connectivity and the API)
+GO111MODULES=on go get github.com/submariner-io/submariner@v0.2.0-rc0
+git push my-repo update-references-to-v0.2.0-rc0
+```
+
 
 Create a pull request, wait for the CI job to pass, and get approval/merge. See an example PR [here](https://github.com/submariner-io/submariner-operator/pull/276)
 
