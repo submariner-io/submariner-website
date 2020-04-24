@@ -11,18 +11,17 @@ The below digram shows the basic Lighthouse architecture.
 
 ![Lighthouse Architecture](/images/lighthouse/architecture.png)
 
-### Lighthouse Controller
-This is the central discovery controller that gathers the information from the clusters, decides what information is to be shared and distributes the information as newly defined CRDs (Kubernetes custom resources).
+### Lighthouse Agent
+The Lighthouse Agent runs in every cluster and it has access to the Kubernetes api-server running in the broker. It creates a lighthouse crd for each service and sync the CRD with broker. It also retrieves the information about services running in another cluster from the broker and creates a lighthouse CRD locally.
 
-The Lighthouse controller uses [kubefed](https://github.com/kubernetes-sigs/kubefed) to discover clusters and to extract and distribute aggregated Service information used to perform DNS resolution.
+The lighthouse agent will get updated, whenever a new lighthouse CRD is created or deleted in the broker.
 
 #### WorkFlow
-The workflow is as follows.
+The workflow is as follows,
 
-- Lighthouse controller registers to be notified when clusters join and unjoin the kubefed control plane.
-- When notified about a join event, it retrieves the credentials from kubefed and registers a watch for Service creation and removal on that cluster.
-- When notified of a new Service created, it creates a MultiClusterService resource with the Service info and distributes it to all the clusters that are connected to the kubefed  control plane.
-- When notified of a Service deleted, its info is removed from the MultiClusterService resource and re-distributed.
+- Lighthouse agent connects to the kube-api-server of the broker.
+- It creates Lighthouse CRD for every service in the local cluster.
+- It syncs the Lighthouse CRD to and from the broker.
 
 ![Lighthouse Controller WorkFlow](/images/lighthouse/controllerWorkFlow.png)
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
