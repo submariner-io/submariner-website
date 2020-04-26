@@ -6,32 +6,32 @@ weight: 10
 
 ## Overview
 
-The Shipyard project provides tooling for creating K8s clusters with [KIND](https://github.com/kubernetes-sigs/kind) (K8s in Docker) and provides a Go framework for creating end to end tests.
+The Shipyard project provides common tooling for creating K8s clusters with [KIND](https://github.com/kubernetes-sigs/kind) (K8s in Docker) and provides a common Go framework for creating end to end tests.
 Feel free to add any capabilities that need to be shared to Shipyard, while any project specific capabilities should probably be part of that project.
 
-A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard, and contains all the tooling to build your projects and run any kind of tests in a consistent environment.
+A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run tests in a consistent environment.
 
 Shipyard has several folders at the root of the project, with different usages:
-* **package:** Contains the ingerdients to build the base image.
-* **scripts:** Contains general scripts for Shipyard make targets, each executable one is a target.
-  * **shared:** Gets copied into the base image under `$SCRIPTS_DIR`. Contains all shared scripts that projects can consume.
+* **package:** Contains the ingredients to build the base image.
+* **scripts:** Contains general scripts for Shipyard make targets.
+  * **shared:** Contains all the shared scripts that projects can consume. These are copied into the base image under `$SCRIPTS_DIR`.
     * **lib:** Library functions that shared scripts, or consuming projects, can use.
     * **resources:** Resource files to be used by the shared scripts.
 * **test:** Test library to be used by other projects.
 
-Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can be used by consuming projects, and are used by Shipyard's CI to test and validate itself. It also has some [specific Makefile targets](#specific-makefile-targets) which are used by the project itself.
+Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can be used by consuming projects and are used by Shipyard's CI to test and validate itself. It also has some [specific Makefile targets](#specific-makefile-targets) which are used by the project itself.
 
 ## Usage
 
 #### Add Shipyard to a Project
 
-To add Shipyard to a project that doesn't have it, please see [Adding Shipyard to a Project](first_time).
+To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Project](first_time).
 
 #### Use Shipyard in Your Project
 
-If your project already uses Shipyard, you can use any of the [Makefile targets](#shared-makefile-targets) that it provides.
+Once Shipyard has been added to a project, you can use any of the [Makefile targets](#shared-makefile-targets) that it provides.
 
-Make sure to pass any variables that you need in these targets in your Dockerfile.dapper, so that they're available in the Dapper environment.
+Any variables that you need to pass to these targets should be specified in your Dockerfile.dapper so they're available in the Dapper environment.
 For example:
 
 ```Dockerfile
@@ -49,30 +49,30 @@ clusters: build images
 
 #### Use an Updated Shipyard Image in Your Project
 
-If you've made changes to Shipyard's [base image](#dapper-image) and need to test them in your project, it's as simple as running:
+If you've made changes to Shipyard's [base image](#dapper-image) and need to test them in your project, run:
 
 ```
 make dapper-image
 ```
 
-Within the Shipyard directory. You would then have a local image with your changes, and can run the necessary procedure from your project's directory.
+in the Shipyard directory. This creates a local image with your changes available for consumption in other projects.
 
 ## Shared Makefile Targets
 
 Shipyard ships a [Makefile.inc] file which defines these basic targets:
-* **[clusters](#clusters):** Creates the multi-cluster environment in KIND.
-* **[deploy](#deploy)** (depends on clusters): Deploys submariner on to the multi-cluster environment.
+* **[clusters](#clusters):** Creates the KIND -based cluster environment.
+* **[deploy](#deploy)** : Deploys submariner components in the cluster environment (depends on clusters).
 * **[cleanup](#cleanup):** Deletes the KIND environment (if it exists) and any residual resources.
 * **[release](#release):** Uploads the requested image(s) to Quay.io.
 * **vendor/modules.txt:** Populates go modules (in case go.mod exists in the root directory).
 
 If your project uses Shipyard then it has all these targets and supports all the variables these targets support.
 
-Any variables supported by these targets can be either declared as environment variables, or assigned on the make call (takes precedence over environment variables).
+Any variables supported by these targets can be either declared as environment variables or assigned on the make command line (takes precedence over environment variables).
 
 ### Clusters {#clusters}
 
-A basic target that creates a KIND based multi-cluster environment, without any special deployment (apart from the default K8s).
+A make target that creates a KIND based multi-cluster environment with just the default K8s deployment.
 
 ```
 make clusters
@@ -83,7 +83,7 @@ Respected variables:
 
 ### Deploy {#deploy}
 
-A basic target that deploys submariner on a KIND based multi-cluster environment (if one isn't deployed, this target will deploy it as well):
+A make target that deploys submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first invoke the clusters target to do so):
 
 ```
 make deploy
@@ -101,7 +101,7 @@ To clean up all the KIND clusters deployed in any of the previous steps, use:
 make cleanup
 ```
 
-This command will make sure to remove the clusters, and any clutter that might've been left in docker and is not needed any more (images, volumes, etc).
+This command will remove the clusters and any resources that might've been left in docker that are not needed any more (images, volumes, etc).
 
 ### Release {#release}
 
@@ -113,7 +113,7 @@ make release release_images="<image name>"
 
 Respected variables:
 * **QUAY_USERNAME, QUAY_PASSWORD:** Needed in order to log in to Quay.
-* **release_images:** Has to have at least one image name to release, and could have several separated by spaces.
+* **release_images:** One or more image names to release separated by spaces.
 * **release_tag:** A tag to use for the release (default is *latest*).
 * **repo:** The quay repo to use (default is *quay.io/submariner*).
 
