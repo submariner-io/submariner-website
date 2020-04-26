@@ -16,7 +16,7 @@ The [submariner-io/shipyard](https://github.com/submariner-io/shipyard) project
 contains the logic to build the base container images used across all
 submariner-io repositories.
 
-You can find out more about [working with Shipyard](../shipyard)
+Learn more about working with Shipyard [here](../shipyard).
 
 ## Prescribed Tasks via Make Targets
 
@@ -61,7 +61,7 @@ Find out more about [Shipyard's clusters target](../shipyard#clusters).
 ### Multi-Cluster Submariner Deployment
 
 Shipyard provides a basic target that deploys submariner on a KIND based
-multi-cluster environment (if one isn't deployed, this target will deploy it
+multi-cluster environment (if one isn't yet created, this target will first invoke the clusters target to do so):
 as well):
 
 ```
@@ -72,16 +72,16 @@ Find out more about [Shipyard's deploy target](../shipyard#deploy).
 
 ### End-to-End Tests
 
-To run functional tests with a full multi-cluster deployment (if one isn't
+To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the deploy target to do so):
 deployed, this target will deploy it as well):
 
 ```
 make e2e
 ```
 
-Optionally, you can specify flags to control the running of the end to end
+Optionally, you can specify flags to control the execution of the end to end
 testing and deployment (if it wasn't run separately).
-Currently these flags are project-specific so consult with the project's
+Currently these flags are project-specific so consult the project's
 `Makefile` to learn which flags are supported.
 The flags can be combined or used separately, or not at all (in which case
 default values apply).
@@ -100,7 +100,7 @@ To clean up all the KIND clusters deployed in any of the previous steps, use:
 make cleanup
 ```
 
-Find out more about [Shipyard's cleanup target](../shipyard#cleanup).
+Learn more about Shipyard's cleanup target [here](../shipyard#cleanup).
 
 ## submariner-io/submariner
 

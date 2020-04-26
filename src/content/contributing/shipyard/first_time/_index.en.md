@@ -4,7 +4,7 @@ date: 2020-04-20T17:12:52+0300
 weight: 10
 ---
 
-To use Shipyard for your project, it's easiest to use *[Dapper](https://github.com/rancher/dapper)* and *make*.
+To use Shipyard in your project, it's easiest to use *[Dapper](https://github.com/rancher/dapper)* and *Make*.
 To use Dapper you'll need a specific Dockerfile that Dapper consumes to create a consistent environment based upon Shipyard's base image.
 To use make you'll need some commands to enable Dapper and also include the targets which ship in the base image.
 
@@ -40,8 +40,8 @@ make dapper-image
 
 ### Makefile
 
-The Makefile should include targets to run everything in Dapper, they're defined in [Makefile.dapper](https://github.com/submariner-io/shipyard/blob/master/Makefile.dapper) and can be copied as is and included.
-To use Shipyard's target simply include the [Makefile.inc](https://github.com/submariner-io/shipyard/blob/master/Makefile.inc) file in your own Makefile.
+The project's Makefile should include targets to run everything in Dapper. These are defined in Shipyard's  [Makefile.dapper](https://github.com/submariner-io/shipyard/blob/master/Makefile.dapper) which can be copied as is into your project and included in the Makefile.
+To use Shipyard's built-in targets available in the base Dapper image, include the [Makefile.inc](https://github.com/submariner-io/shipyard/blob/master/Makefile.inc) file in the project's Makefile within the section where the Dapper environment is detected.
 
 The simplest Makefile would look like this:
 
@@ -65,4 +65,3 @@ Makefile Makefile.dapper Makefile.inc: ;
 ```
 
 You can also refer to the project's own [Makefile](https://github.com/submariner-io/shipyard/blob/master/Makefile) as an example.
-
