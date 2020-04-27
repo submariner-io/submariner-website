@@ -12,7 +12,6 @@ Deployment with discovery will include the ([lighthouse](https://github.com/subm
 
 The [Lighthouse](https://github.com/submariner-io/lighthouse) project helps in cross-cluster service discovery. It has the below **additional dependencies**
 
-- kubefedctl installed ([0.1.0-rc3](https://github.com/kubernetes-sigs/kubefed/releases/tag/v0.1.0-rc3)).
 - kubectl installed.
 
 ### Deploying Submariner with Lighthouse
@@ -23,17 +22,9 @@ The [Lighthouse](https://github.com/submariner-io/lighthouse) project helps in c
 subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER> --service-discovery
 ```
 
-kubefed will be installed in the broker cluster, as lighthouse currently depends on it for resource distribution. This dependency will be eliminated in the future.
-
 #### Join Clusters
 
 To join all the other clusters with the broker cluster, run subctl using the broker-info.subm generated in the folder from which the previous step was run.
-
-{{% notice info %}}
-You will need a kubeconfig file with multiple contexts, a default admin context pointing to
-the cluster you're trying to join, and another context which provides access to the broker
-cluster from the previous step. This is a requirement from kubefedctl.
-{{% /notice %}}
 
 ```
 subctl join --kubeconfig <PATH-TO-KUBECONFIG-DATA-CLUSTER> broker-info.subm
