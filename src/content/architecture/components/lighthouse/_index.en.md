@@ -17,11 +17,11 @@ The Lighthouse Agent runs in every cluster and it has access to the Kubernetes a
 The lighthouse agent will get updated, whenever a new lighthouse CRD is created or deleted in the broker.
 
 #### WorkFlow
-The workflow is as follows,
+The workflow is as follows:
 
 - Lighthouse agent connects to the kube-api-server of the broker.
-- It creates Lighthouse CRD for every service in the local cluster.
-- It syncs the Lighthouse CRD to and from the broker.
+- It creates MultiClusterService CR for every service in the local cluster.
+- It syncs the MutltiClusterService CR to and from the broker.
 
 ![Lighthouse Controller WorkFlow](/images/lighthouse/controllerWorkFlow.png)
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
