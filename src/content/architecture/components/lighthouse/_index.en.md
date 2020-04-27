@@ -12,18 +12,16 @@ The below digram shows the basic Lighthouse architecture.
 ![Lighthouse Architecture](/images/lighthouse/architecture.png)
 
 ### Lighthouse Agent
-The Lighthouse Agent runs in every cluster and it has access to the Kubernetes api-server running in the broker. It creates a lighthouse crd for each service and sync the CRD with broker. It also retrieves the information about services running in another cluster from the broker and creates a lighthouse CRD locally.
-
-The lighthouse agent will get updated, whenever a new lighthouse CRD is created or deleted in the broker.
+The Lighthouse Agent runs in every cluster and accesses the Kubernetes API server running in the broker cluster to exchange service metadata information with other clusters. Local service information is exported to the broker and service information from other clusters is imported.
 
 #### WorkFlow
 The workflow is as follows:
 
-- Lighthouse agent connects to the kube-api-server of the broker.
-- It creates MultiClusterService CR for every service in the local cluster.
-- It syncs the MutltiClusterService CR to and from the broker.
+- Lighthouse agent connects to the broker's K8s API server.
+-  For every service in the local cluster, it creates a corresponding MultiClusterService resource and exports it to the broker to be consumed by other clusters.
+- For every MultiClusterService resource in the broker exported from another cluster, it creates a copy of it in the local cluster.
 
-![Lighthouse Controller WorkFlow](/images/lighthouse/controllerWorkFlow.png)
+![Lighthouse Agent WorkFlow](/images/lighthouse/controllerWorkFlow.png)
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
 
 ### Lighthouse Plugin
