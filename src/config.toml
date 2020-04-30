@@ -32,7 +32,7 @@ url = "https://github.com/submariner-io/"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-slack'></i> Slack"
+name = "<i class='fab fa-fw fa-slack'></i> Slack"
 identifier = "slack"
 url = "https://kubernetes.slack.com/archives/C010RJV694M"
 weight = 20
