@@ -73,7 +73,6 @@ Find out more about [Shipyard's deploy target](../shipyard#deploy).
 ### End-to-End Tests
 
 To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the deploy target to do so):
-deployed, this target will deploy it as well):
 
 ```
 make e2e
