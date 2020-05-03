@@ -79,9 +79,9 @@ deployed, this target will deploy it as well):
 make e2e
 ```
 
-Optionally, you can specify flags to control the execution of the end to end
+Optionally, you can specify flags to control the execution of the end-to-end
 testing and deployment (if it wasn't run separately).
-Currently these flags are project-specific so consult the project's
+Currently these flags are project-specific, so consult the project's
 `Makefile` to learn which flags are supported.
 The flags can be combined or used separately, or not at all (in which case
 default values apply).
