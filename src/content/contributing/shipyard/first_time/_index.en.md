@@ -6,11 +6,11 @@ weight: 10
 
 To use Shipyard in your project, it's easiest to use *[Dapper](https://github.com/rancher/dapper)* and *Make*.
 To use Dapper you'll need a specific Dockerfile that Dapper consumes to create a consistent environment based upon Shipyard's base image.
-To use make you'll need some commands to enable Dapper and also include the targets which ship in the base image.
+To use Make you'll need some commands to enable Dapper and also include the targets which ship in the base image.
 
 ## Dockerfile.dapper
 
-The project should have a `Dockerfile.dapper` dockerfile which builds upon `quay.io/submariner/shipyard-dapper-base`.
+The project should have a `Dockerfile.dapper` Dockerfile which builds upon `quay.io/submariner/shipyard-dapper-base`.
 
 For example:
 

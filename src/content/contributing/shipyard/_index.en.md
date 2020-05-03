@@ -11,7 +11,7 @@ Feel free to add any capabilities that need to be shared to Shipyard, while any 
 
 A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run tests in a consistent environment.
 
-Shipyard has several folders at the root of the project, with different usages:
+Shipyard has several folders at the root of the project:
 * **package:** Contains the ingredients to build the base image.
 * **scripts:** Contains general scripts for Shipyard make targets.
   * **shared:** Contains all the shared scripts that projects can consume. These are copied into the base image under `$SCRIPTS_DIR`.
@@ -68,11 +68,11 @@ Shipyard ships a [Makefile.inc] file which defines these basic targets:
 
 If your project uses Shipyard then it has all these targets and supports all the variables these targets support.
 
-Any variables supported by these targets can be either declared as environment variables or assigned on the make command line (takes precedence over environment variables).
+Any variables supported by these targets can be either declared as environment variables or assigned on the `make` command line (takes precedence over environment variables).
 
 ### Clusters {#clusters}
 
-A make target that creates a KIND based multi-cluster environment with just the default K8s deployment.
+A Make target that creates a KIND-based multi-cluster environment with just the default K8s deployment:
 
 ```
 make clusters
@@ -83,7 +83,7 @@ Respected variables:
 
 ### Deploy {#deploy}
 
-A make target that deploys submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first invoke the clusters target to do so):
+A Make target that deploys Submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first invoke the clusters target to do so):
 
 ```
 make deploy
@@ -115,11 +115,11 @@ Respected variables:
 * **QUAY_USERNAME, QUAY_PASSWORD:** Needed in order to log in to Quay.
 * **release_images:** One or more image names to release separated by spaces.
 * **release_tag:** A tag to use for the release (default is *latest*).
-* **repo:** The quay repo to use (default is *quay.io/submariner*).
+* **repo:** The Quay repo to use (default is *quay.io/submariner*).
 
 ## Specific Makefile Targets
 
-Shipyard has some project specific targets which are used to build parts of the projects:
+Shipyard has some project-specific targets which are used to build parts of the projects:
 * **[dapper-image](#dapper-image):** Builds the base image that can be used by other projects.
 * **validate:** Validates the go code that Shipyard provides, and the shared shell scripts.
 
