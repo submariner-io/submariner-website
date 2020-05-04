@@ -1,9 +1,26 @@
 +++
-date = 2016-04-09T16:50:16+02:00
+date = 2020-05-04T16:50:16+02:00
 title = "Releases"
 pre = "<b>4. </b>"
 weight = 15
 +++
+
+## v0.3.0 Lighthouse service discover without kubefed
+
+> This release is focused on removing the kubefed dependency from Lighthouse, the user experience
+> and adding experimental wireguard support
+
+* Lighthouse does not depend anymore on kubefed and all metadata exchange is handled
+  over the broker as MultiClusterService CRs
+* Experimental *wireguard* support has been added as a Cable driver.
+* Submariner reports the active and passive gateways as a gateway.submariner.io CRD
+* The submariner operator reports detailed status on the deployment.
+* The *gateway redundancy/failover* tests are now enabled and stable on CI
+* *Globalnet hostNetwork* to remote globalIP is supported now
+* A manual globalCIDR can be specified when joining a cluster with globalnet enabled
+* Operator and subctl made more robust with standard retries on updates.
+* Subctl creates a new *individual access token* for every new joined cluster
+
 
 ## v0.2.0 Overlapping CIDR support
 
