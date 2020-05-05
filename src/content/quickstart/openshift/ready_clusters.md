@@ -20,8 +20,4 @@ chmod a+x ./prep_for_subm.sh
 
 ```
 
-{{% notice info %}}
-
-Please note that the prep_for_subm.sh script has a few pre-requirements, you will need to install: **oc, aws-cli, terraform, and unzip**. 
-
-{{% /notice %}}
+> **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **unzip** need to be installed before running the `prep_for_subm.sh` script. 
