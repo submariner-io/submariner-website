@@ -1,5 +1,5 @@
 ---
-title: "Community membership"
+title: "Community Membership"
 date: 2020-02-19T21:43:46+01:00
 weight: 20
 ---
@@ -23,18 +23,18 @@ This doc outlines the various responsibilities of contributor roles in
 Submariner.
 
 | Role | Responsibilities | Requirements | Defined by |
-| -----| ---------------- | ------------ | -------|
+| ---- | ---------------- | ------------ | ---------- |
 | Member | Active contributor in the community | Sponsored by 2 committers, multiple contributions to the project | [Submariner GitHub org member][org members] |
 | Committer | Approve contributions from other members | History of review and authorship | CODEOWNERS file entry |
 | Owner | Set direction and priorities for the project | Demonstrated responsibility and excellent technical judgement for the project | [Submariner-owners GitHub team member][owners team] |
 
-## New contributors
+## New Contributors
 
 New contributors should be welcomed to the community by existing members,
 helped with PR workflow, and directed to relevant documentation and
 communication channels.
 
-## Established community members
+## Established Community Members
 
 Established community members are expected to demonstrate their adherence to
 the principles in this document, familiarity with project organization, roles,
@@ -76,7 +76,7 @@ are expected to remain active contributors to the community.
 - Once your sponsors have responded, your request will be reviewed. Any missing
   information will be requested.
 
-### Responsibilities and privileges
+### Responsibilities and Privileges
 
 - Responsive to issues and PRs assigned to them
 - Responsive to mentions of teams they are members of
@@ -120,7 +120,7 @@ in an CODEOWNERS file:
   - With no objections from other committers or project owners
 - May either self-nominate or be nominated by a committer/owner
 
-### Responsibilities and privileges
+### Responsibilities and Privileges
 
 The following apply to the part of codebase for which one would be a committer
 in an CODEOWNERS file:
@@ -165,7 +165,7 @@ The following apply to people who would be an owner:
   - Identifying subtle or complex issues in designs and implementation PRs
 - Directly contributed to the project through implementation and / or review
 
-### Responsibilities and privileges
+### Responsibilities and Privileges
 
 The following apply to people who would be an owner:
 
