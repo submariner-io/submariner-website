@@ -22,14 +22,14 @@
 }
 
 #TableOfContents > ul > li > a   {
-  font-weight: bold; padding: 0 18px; margin: 0 2px;
-}
-
-#TableOfContents > ul > li > ul > li > a {
   font-weight: bold;
 }
 
-#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li  {
+#TableOfContents > ul > li > ul > li > a {
+  padding: 0 18px;
+}
+
+#TableOfContents > ul > li > ul > li > ul > li {
     display: none;
 }
 
