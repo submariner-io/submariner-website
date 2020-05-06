@@ -1,8 +1,8 @@
 +++
 date = 2020-05-04T16:50:16+02:00
 title = "Releases"
-pre = "<b>4. </b>"
-weight = 20
+pre = "<b>5. </b>"
+weight = 15
 +++
 
 ## v0.3.0 Lighthouse Service Discovery without KubeFed

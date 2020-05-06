@@ -2,25 +2,21 @@
 title = "Troubleshooting Guide"
 date = 2020-05-04T19:01:14+05:30
 weight = 5
-pre = "<b>1. </b>"
+pre = "<b>4. </b>"
 +++
 
 ## Overview
 
 You have followed steps in [Deployment](../deployment) but something has gone wrong. You're not sure what and how to fix it, or what information to collect to raise an issue. Welcome to the Submariner troubleshooting guide where we will help you get your deployment working again.
 
-To recap, Submariner consists of two main core components (broker and submariner) and optional components (lighthouse), detailed in [Architecture](../architecture) section. Basic familiarity with the architecture will be helpful when troubleshooting.
+Basic familiarity with the Submariner components and architecture will be helpful when troubleshooting so please review the [Architecture](../architecture) section.
 
 The guide has been broken into different sections for easy navigation.
 
 ### Pre-requisite
-Before we begin troubleshooting, it would be good to know which version of submariner and its components you are running.
+Before we begin troubleshooting, run `subctl version` to obtain which version of the Submariner components you are running.
 
-Run `subctl version` to get version information.
-
-Get information about the service you're trying to access.
-
-`kubectl get services |grep <service-name>` will provide you with Service *Name*, *Namespace* and *ServiceIP*. If you enabled **Globalnet** you will also need the *GlobalnetIP* of the service by running
+Run `kubectl get services | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **Globalnet** is enabled, you will also need the *globalIp* of the service by running
 
 ``` kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}' ```
 
@@ -56,10 +52,10 @@ TBD
 -->
 
 ### Service Discovery Issues
-If you are able to connect to remote service by using ServiceIP or GlobalnetIP, but not by service name, it is a Service Discovery Issue.
+If you are able to connect to remote service by using ServiceIP or globalIp, but not by service name, it is a Service Discovery Issue.
 
 #### Service Discovery not working
-This is good time to familiarize yourself with [Lighthouse Architecture](../architecture/components/lighthouse) if you haven't already.
+This is good time to familiarize yourself with [ServiceDiscovery Architecture](../architecture/service-discovery/) if you haven't already.
 
 ##### Check CoreDNS Configuration
 Submariner configures CoreDNS deployment to enable `lighthouse` plugin. Since CoreDNS is the first point of entry for any DNS queries, that is where we will start first. 
@@ -99,15 +95,15 @@ If status is just error, run `kubectl -n submariner-operator get pods` to get th
 If there are no errors, grep the logs for service name that you're trying to query, we may need them later for raising an issue.
 
 ##### Check multiclusterservice CRs
-If all this was fine, next we need to check if `multiclusterservices` CRs were created correctly for the service you're trying to access. The format of `multiclusterservice` object's name is as follows:
+If the steps above did not indicate an issue, next we check if the Multiclusterservice resources were properly created for the service you're trying to access. The format of a Multiclusterservice resources's name is as follows:
 
 `<service-name>-<service-namespace>-<cluster-id>`
 
-Run `kubectl get multiclusterservices --all-namespaces |grep <your-service-name>` on the broker cluster to see if CR was created for your service or not. If not, check the Lighthouse Agent logs on the cluster where service was created, there should be some error or warning messages about being unable to create `multiclusterservice` object for your service. Most common error can be `Forbidden` if the RBAC wasn't configured correctly. Depending on deployment used, *subctl* or *helm* it should've been done for you. Create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+Run `kubectl get multiclusterservices --all-namespaces |grep <your-service-name>` on the broker cluster to check if a resource was created for your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning messages indicating a failure to create the Multiclusterservice resource for your service. The most common error is `Forbidden` if the RBAC wasn't configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the CR was created correctly on broker cluster, next step is to check for it on the cluster where you're trying to access the service. Follow the same steps as earlier to get list of `multiclusterservices` objects created and if your service name shows up in it or not. If not, again check the logs of Lighthouse Agent but this time on the cluster where you are trying to access the service. Again, it will likely be an issue with RBAC so you follow the same steps and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+If the Multiclusterservice resource was created correctly on the broker cluster, the next step is to check if it exists on the cluster where you're trying to access the service. Follow the same steps as earlier to get the list of the Multiclusterservice resources and check if the Multiclusterservice for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the service. As described earlier, it will most commonly be an issue with RBAC otherwise create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the CR was created correctly, run `kubectl -n submariner-operator describe multiclusterservice <your-multiclusterservice-name>` and check if it has correct `ClusterID` and `ServiceIP`.
+If the Multiclusterservice resource was created properly on the cluster, run `kubectl -n submariner-operator describe multiclusterservice <your-multiclusterservice-name>` and check if it has the correct `ClusterID` and `ServiceIP`:
 
 ```
 Name:         nginx-demo-default-cluster2
@@ -130,6 +126,6 @@ Spec:
 Events:              <none>
 ```
 
-If not correct, you can manually edit the `multiclusterservices` CR to the correct IP as a workaround and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
+If the data is not correct, you can manually edit the Multiclusterservice resource to set the correct IP as a workaround and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
 
 If it is correct, congratulations - you've found a new [issue](https://github.com/submariner-io/lighthouse/issues).
