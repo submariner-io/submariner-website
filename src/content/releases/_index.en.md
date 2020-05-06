@@ -5,21 +5,20 @@ pre = "<b>4. </b>"
 weight = 15
 +++
 
-## v0.3.0 Lighthouse service discover without kubefed
+## v0.3.0 Lighthouse Service Discovery without KubeFed
 
-> This release is focused on removing the kubefed dependency from Lighthouse, the user experience
-> and adding experimental wireguard support
+> This release is focused on removing the KubeFed dependency from Lighthouse, improving the user experience
+> and adding experimental WireGuard support as an alternative to IPsec
 
-* Lighthouse does not depend anymore on kubefed and all metadata exchange is handled
-  over the broker as MultiClusterService CRs
-* Experimental *wireguard* support has been added as a Cable driver.
-* Submariner reports the active and passive gateways as a gateway.submariner.io CRD
-* The submariner operator reports detailed status on the deployment.
-* The *gateway redundancy/failover* tests are now enabled and stable on CI
-* *Globalnet hostNetwork* to remote globalIP is supported now
-* A manual globalCIDR can be specified when joining a cluster with globalnet enabled
-* Operator and subctl made more robust with standard retries on updates.
-* Subctl creates a new *individual access token* for every new joined cluster
+* Lighthouse no longer depends KubeFed. All metadata exchange is handled over the Broker as MultiClusterService CRs.
+* Experimental **Wireguard** support has been added as a pluggable CableDriver option in addition to the current default IPsec.
+* Submariner reports the active and passive gateways as a gateway.submariner.io CRD.
+* The Submariner Operator reports a detailed status of the deployment.
+* The **gateway redundancy/failover** tests are now enabled and stable in CI.
+* *Globalnet hostNetwork* to remote globalIP is now supported. Previously, when a pod used hostNetworking it was unable to connect to a remote service via globalIP.
+* A globalCIDR can be manually specified when joining a cluster with globalnet enabled. This enables CI speed optimizations via better parallelism.
+* Operator and subctl are more robust via standard retries on updates.
+* Subctl creates a new **individual access token** for every new joined cluster.
 
 
 ## v0.2.0 Overlapping CIDR support
