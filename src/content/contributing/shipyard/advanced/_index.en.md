@@ -28,10 +28,10 @@ ${SCRIPTS_DIR}/build_image.sh -i submariner -f package/Dockerfile
 
 ### Per Cluster Settings
 
-Shipyard supports specifying variuos settings per deployed cluster. A default `cluster_settings` is supplied in the image, so any custom settings override those.
+Shipyard supports specifying different settings for each deployed cluster. A default `cluster_settings` is supplied in the image, so any custom settings override those.
 The settings are sent to supporting scripts using a `--cluster_settings` flag.
 
-Currently, several settings are supported:
+Currently, the following settings are supported:
 * **clusters:** An array of the clusters to deploy.
   ```bash
   clusters=(cluster1,cluster2)
@@ -58,13 +58,14 @@ cluster_nodes['cluster3']="control-plane worker worker"
 cluster_subm['cluster1']="false"
 ```
 
-Then, to utilize these settings, add this snippet to the Makefile:
+Then, to apply these settings, add this snippet to the Makefile:
 
 ```Makefile
 CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/path/to/cluster_settings
 CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
 DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG)
 ```
+The path to `cluster_settings` should be specified relative to the project root; this ends up available in the build container in the directory referenced by `$DAPPER_SOURCE`.
 
 ### Clusters Deployment Customization
 
@@ -122,4 +123,3 @@ make deploy [deploytool=operator]
 ```
 
 Note that `deploytool` is a variable used to determine the tool to use, but isn't passed to or used by Shipyard.
-
