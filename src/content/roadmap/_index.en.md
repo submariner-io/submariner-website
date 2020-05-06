@@ -10,15 +10,11 @@ as a guideline about what's ahead.
 
 Please see details of previous releases [here](../releases)
 
-### v0.2.0
-* Support for Overlapping CIDRs
-* Improve documentation and website
+## v0.4.0
+* In planning <https://github.com/orgs/submariner-io/projects/7>
 
-### Future releases
-* Removing the kubefed dependency from Lighthouse service discovery
-* De-duplicate E2E scripts and go code, into shipyard.
+## Future Releases
 * Libreswan support
-* Support for multiple cable engines, including WireGuard
 * Auto detecting NAT vs non-NAT scenarios.
 * Supporting different ports for IPSEC for each cluster
 * Measuring and improving A/P HA (different scenarios)
