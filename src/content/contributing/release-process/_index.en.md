@@ -1,5 +1,5 @@
 ---
-title: "Release process"
+title: "Release Process"
 date: 2020-03-18T16:03:26+01:00
 weight: 10
 ---
@@ -8,7 +8,7 @@ This section explains the necessary steps to make a submariner release.
 It is assumed that you are familiar with the submariner project and the various repositories.
 
 
-# Step 1: create a submariner release
+## Step 1: Create a Submariner Release
 
 
 Assuming that you have an existing submariner git directory, the following steps create a release named "Globalnet Overlapping IP support RC0" with version v0.2.0-rc0 based on the master branch.
@@ -38,11 +38,11 @@ Verify that the build successfully completes as indicated by a green checkmark a
 <!-- TODO(mangelajo) https://github.com/submariner-io/submariner-website/issues/46 -->
 
 
-# Step 2: create a lighthouse release
+## Step 2: Create a Lighthouse Release
 
 To create lighthouse release artifacts follow the steps below.
 
-## Build Lighthouse Controller
+### Build Lighthouse Controller
 
 Assuming that you have an existing lighthouse git directory, run the following steps .
 
@@ -71,7 +71,7 @@ Verify that the build successfully completes as indicated by a green checkmark a
 > https://quay.io/repository/submariner/lighthouse-controller?tab=tags
 > https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
 
-## Build Lighthouse CoreDNS
+### Build Lighthouse CoreDNS
 
 1) Get the coredns repository and change to the folder
 
@@ -94,7 +94,7 @@ docker build  -f Dockerfile.openshift -t quay.io/submariner/${COREDNS_IMAGE} .
 docker push quay.io/submariner/${COREDNS_IMAGE}
 ```
 
-## Build Cluster-DNS-Operator
+### Build Cluster-DNS-Operator
 
 1) Clone the cluster-dns-operator repository and create a version branch
 
@@ -135,11 +135,11 @@ git commit -s
 git push HEAD:<VERSION-NO>
 ```
 
-# Step 3: update the operator version references and create a release
+## Step 3: Update the Operator Version References and Create a Release
 
 Once the other builds have finished and you have 0.2.0-rc0 release tags for the submariner and lighthouse projects, you can proceed with changes to the operator.
 
-## Change referenced versions
+### Change Referenced Versions
 
 Edit the operator [versions](https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go) file and change the project version constants to reference the new release, "0.2.0-rc0".
 
@@ -160,7 +160,7 @@ git push my-repo update-references-to-v0.2.0-rc0
 Create a pull request, wait for the CI job to pass, and get approval/merge. See an example PR [here](https://github.com/submariner-io/submariner-operator/pull/276)
 
 
-## Create a submariner-operator release
+### Create a Submariner-Operator Release
 
 Assuming you have an existing submariner-operator git directory, run the following steps:
 
@@ -188,7 +188,7 @@ At this point the images tagged with 0.2.0-rc0 will be available [here](https://
 > https://quay.io/repository/submariner/submariner-operator?tab=tags
 
 
-## Create the subctl binaries release
+### Create the Subctl Binaries Release
 
 ```bash
 git stash
@@ -204,19 +204,17 @@ Go to https://github.com/submariner-io/submariner-operator/tags, find the tag fo
 
 If this is a pre-release, mark the checkbox "This is a pre-release".
 
-# Verify the version
+## Step 4: Verify the Version
 
-You can follow any of our quickstarts, for example [this](https://submariner-io.github.io/quickstart/openshiftgn/)
+You can follow any of our quickstarts, for example [this one](../../quickstart/openshiftgn/)
 
-# Announce
+## Step 5: Announce
 
-## email
+### Via E-Mail
 
-to:
-* bit.ly/submariner-dev
-* bit.ly/submariner-users
+* <https://bit.ly/submariner-dev>
+* <https://bit.ly/submariner-users>
 
-## twitter
+### Via Twitter
 
-under:
-* twitter.com/submarinerio
+* <https://twitter.com/submarinerio>
