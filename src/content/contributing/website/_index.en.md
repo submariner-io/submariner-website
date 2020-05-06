@@ -1,25 +1,22 @@
 ---
-title: "Contributing to the website"
+title: "Contributing to the Website"
 date: 2020-02-19T22:03:26+01:00
 weight: 5
 ---
 
-The Submariner documentation website is based on hugo, grav, and the
-hugo-learn-theme, and is written in [Markdown](https://www.markdownguide.org/getting-started/) format.
+The Submariner documentation website is based on hugo, grav, and the hugo-learn-theme, and is written in [Markdown](https://www.markdownguide.org/getting-started/) format.
 
-If you want to contribute, we recommend reading the
-[hugo-learn-theme documentation](https://themes.gohugo.io//theme/hugo-theme-learn/en/cont/pages/).
+If you want to contribute, we recommend reading the [hugo-learn-theme documentation](https://themes.gohugo.io//theme/hugo-theme-learn/en/cont/pages/).
 
-You can always click the "Edit this page" link at the top right of each page, but
-if you want to test your changes locally before submitting you can:
+You can always click the **Edit this page** link at the top right of each page, but if you want to test your changes locally before submitting you can:
 
 1. Fork the [submariner-io/submariner-website](https://github.com/submariner-io/submariner-website/fork) on GitHub.
 
 2. Checkout your copy locally:
 ```bash
-$ git clone ssh://git@github.com/<your-user>/submariner-website.git
-$ cd submariner-website
-$ make server
+git clone ssh://git@github.com/<your-user>/submariner-website.git
+cd submariner-website
+make server
 ```
 
 3. An instance of the website is now running locally on your machine and is accessible at [http://localhost:1313](http://localhost:1313)
