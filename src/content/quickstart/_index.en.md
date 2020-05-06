@@ -5,19 +5,19 @@ weight = 5
 pre = "<b>1. </b>"
 +++
 
-## Basic overview
+## Basic Overview
 
 Submariner has two main core pieces (the broker and submariner), more information about 
 this topic can be found in the [Architecture](../architecture) section.
 
-#### The broker
+### The Broker
 The broker is an API to which all participating clusters are given access and where two objects are exchanged via CRDs:
 * Cluster(.submariner.io): defines a participating cluster and its IP CIDRs.
 * Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from the endpoint.
 
 The broker must be deployed on a single Kubernetes cluster. This cluster’s API server must be reachable by all Kubernetes clusters connected by Submariner. It can be a dedicated cluster, or one of the connected clusters.
 
-#### The submariner deployment on a cluster
+### The Submariner Deployment on a Cluster
 Once submariner is deployed on a cluster with the proper credentials to the broker it will exchange Cluster and Endpoint objects with other clusters (via push/pull/watching), and start forming connections and routes to other clusters.
 
 
@@ -48,8 +48,8 @@ An example of three clusters configured to use with Submariner would look like t
 ## Deployment
 
 The available methods for deployment are:
-  * [subctl](../deployment) (+ submariner-operator).
-  * helm charts.
+* [subctl](../deployment) (+ submariner-operator).
+* [helm charts](../deployment/helm).
   
   
 The community recommends the use of **_subctl_**, because it simplifies most of the
