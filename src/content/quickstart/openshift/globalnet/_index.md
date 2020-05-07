@@ -75,7 +75,6 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid 
 ```bash
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid east
 ```
- 
 ####  Verify Deployment
 To verify the deployment follow the steps below.
 
