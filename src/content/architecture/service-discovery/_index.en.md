@@ -1,7 +1,7 @@
 ---
 title: "Service Discovery"
 date: 2020-03-02T21:25:35+01:00
-weight: 10
+weight: 5
 ---
 
 The Lighthouse project provides DNS discovery for Kubernetes clusters connected by [Submariner](https://github.com/submariner-io/submariner) in multi-cluster environments. The solution is compatible with any CNI (Container Network Interfaces) plugin.
