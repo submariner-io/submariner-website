@@ -63,7 +63,7 @@ Are you using Submariner in an environment which is not described here? Please [
 
 ### Kubernetes CNI Plugins
 
-Presently, Submariner supports CNI Plugins that leverage kube-proxy with iptables mode:
+Presently, Submariner has been tested with the following CNI Plugins that leverage kube-proxy with iptables mode:
 
 * [openshift-sdn](https://github.com/openshift/sdn)
 * [Weave](https://github.com/weaveworks/weave)
