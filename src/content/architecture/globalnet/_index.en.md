@@ -1,7 +1,7 @@
 +++
 title = "Globalnet Controller"
 date = 2020-02-19T21:08:37+01:00
-weight = 5
+weight = 4
 +++
 ## Introduction
 
