@@ -48,7 +48,7 @@ An example of three clusters configured to use with Submariner would look like t
 
 ## Support Matrix
 
-Submariner was designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner was tested and known to be working properly with the following cloud environments:
+Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner has been tested with and known to be working properly with the following cloud environments:
 
 {{% notice tip %}}
 Are you using Submariner in an environment which is not described here? Please [let us know](../contributing/website) so that we can update this document. 
