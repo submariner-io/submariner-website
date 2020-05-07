@@ -45,6 +45,32 @@ An example of three clusters configured to use with Submariner would look like t
 | east         | OnPrem   | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
 
 
+
+## Support Matrix
+
+Submariner was designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner was tested and known to be working properly with the following cloud environments:
+
+{{% notice tip %}}
+Are you using Submariner in an environment which is not described here? Please [let us know](../contributing/website) so that we can update this document. 
+{{% /notice %}}
+
+### Cloud Providers
+
+* AWS
+* VMware vSphere
+* OpenStack
+* GCP
+
+### Kubernetes CNI Plugins
+
+Presently, Submariner supports CNI Plugins that leverage kube-proxy with iptables mode:
+
+* [openshift-sdn](https://github.com/openshift/sdn)
+* [Weave](https://github.com/weaveworks/weave)
+* [Flannel](https://github.com/coreos/flannel)
+* [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
+
+
 ## Deployment
 
 The available methods for deployment are:
