@@ -29,7 +29,7 @@ And generate a broker-info.subm file which contains the following elements:
 * The API endpoint
 * A CA certificate to for the API endpoint
 * The service account token for accessing the API endpoint / submariner-k8s-broker namespace.
-* A random IPSEC PSK which will be stored only in this file.
+* A random IPsec PSK which will be stored only in this file.
 * Globalnet settings
 * Service discovery settings
 

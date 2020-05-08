@@ -12,7 +12,7 @@ Submariner across your clusters.
 
 ## Description
 
-`subctl` helps to automate the deployment of the Submariner [operator](https://github.com/submariner-io/submariner-operator) thereby reducing the possibility of mistakes during the process.
+`subctl` helps to automate the deployment of the Submariner [operator](https://github.com/submariner-io/submariner-operator), thereby reducing the possibility of mistakes during the process.
 
 `subctl` connects to specified cluster(s) and performs the requested *command*.
 
@@ -117,7 +117,11 @@ The `verify-connectivity` command verifies dataplane connectivity between two cl
 `kubeConfig1` file will be `ClusterA` in the reports, while `kubeConfig2` will be `ClusterB` in the
 reports. The `--verbose` flag is recommended to see what's happening during the tests.
 
-Dataplane connectivity is verified in multiple ways: between pods and services, between pods and pods,
+Dataplane connectivity is verified in multiple ways:
+ * Pods (on gateways) to Services
+ * Pods (on non-gateways) to Services
+ * Pods (on gateways) to Pods
+ * Pods (on non-gateways) to Pods
 and between gateway and non-gateway node combinations.
 
 
