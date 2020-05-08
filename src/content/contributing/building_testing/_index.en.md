@@ -144,12 +144,11 @@ make build
 
 ### Building Lighthouse Controller, CoreDNS and DNSServer container images
 
-To build the `lighthouse-controller`, `lighthouse-coredns`, and
-`lighthouse-dnsserver` contaienr images, in the [submariner-io/lighthouse][3]
+To build the `lighthouse-agent` and `lighthouse-coredns` container images, in the [submariner-io/lighthouse][3]
 repository:
 
 ```
-make build-controller build-coredns build-dnsserver
+make build-agent build-coredns
 ```
 
 ## submariner-io/shipyard
