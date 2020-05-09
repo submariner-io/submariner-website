@@ -1,7 +1,7 @@
 +++
 title = "Roadmap"
 date = 2020-02-19T20:24:34+01:00
-weight = 100
+weight = 30
 pre = "<b>6. </b>"
 +++
 

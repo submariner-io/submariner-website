@@ -14,17 +14,17 @@ others await in standby mode ready to take over should the active instance
 fail. 
 
 The active Gateway Engine communicates with the central Broker to advertise
-its Endpoint and Cluster resources to the other clusters connected to the
-Broker, also ensuring that it is the sole Endpoint for its cluster. The
+its `Endpoint` and `Cluster` resources to the other clusters connected to the
+Broker, also ensuring that it is the sole `Endpoint` for its cluster. The
 active Gateway Engine also establishes a watch on the Broker to learn about
-the active Endpoint and Cluster resources advertised by the other clusters.
-Once two clusters are aware of each other's Endpoints, they can establish a
+the active `Endpoint` and `Cluster` resources advertised by the other clusters.
+Once two clusters are aware of each other's `Endpoints`, they can establish a
 secure tunnel through which traffic can be routed.
 
 If the active Gateway Engine fails, another Gateway Engine on one of the
 other designated nodes will gain leadership and perform reconciliation to
-advertise its Endpoint and to ensure that it is the sole Endpoint. The
-remote clusters will learn of the new Endpoint via the Broker and establish
+advertise its `Endpoint` and to ensure that it is the sole `Endpoint`. The
+remote clusters will learn of the new `Endpoint` via the Broker and establish
 a new tunnel.
 
 The Gateway Engine is deployed as a DaemonSet that is configured to only run

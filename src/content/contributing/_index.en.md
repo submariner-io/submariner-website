@@ -1,7 +1,7 @@
 +++
 title = "Contributing"
 date = 2020-02-19T20:24:34+01:00
-weight = 150
+weight = 35
 pre = "<b>7. </b>"
 +++
 
