@@ -62,12 +62,11 @@ broker-info file.
 | Flag                               | Description
 |:-----------------------------------|:----------------------------------------------------------------------------|
 | `--cable-driver` `<string>`        | Cable driver implementation (defaults to strongswan -IPSec-)
-| `--clusterid` `<string>`           | Cluster ID used to identify the tunnels. Every cluster needs to have an unique cluster ID, if not provided `subctl` will prompt the admin for a cluster ID.
-| `--clustercidr` `<string>`         | Cluster CIDR specify a cluster CIDR (generally the IP addresses used for the pods in this cluster), if not specified subctl will try to discover this detail, and if it's unable to discover it will prompt the admin.
-| `--colorcodes` `<string>`          | Color codes (default "blue"), coma separated values. Please use with caution, as it may change in the future. This setting is used to make Submariner gateway form connections only with clusters which share the same color code. This will be replaced by something more flexible in the future.
-| `--no-label `                      | Skip gateway labeling this will disable prompting the administrator for a worker node to use as gateway.
+| `--clusterid` `<string>`           | Cluster ID used to identify the tunnels. Every cluster needs to have a unique cluster ID, if not provided `subctl` will prompt the admin for a cluster ID.
+| `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, subctl will try to discover it and, if unable to do so, it will prompt the user.
+| `--no-label `                      | Skip gateway labeling. This disables the prompt for a worker node to use as gateway.
 | `--subm-debug`                     | Enable Submariner debugging (verbose logging)
-| `--disable-cvo`                    | Disable OpenShift's cluster version operator if necessary, without prompting. Currently, lighthouse service modifies the cluster dns operator in OpenShift and we need to disable CVO, this setting disables the prompt which warns the administrator.
+| `--disable-cvo`                    | Disable OpenShift's cluster version operator, if necessary, without prompting as a warning. Currently, Lighthouse modifies the cluster DNS operator in OpenShift to disable CVO.
 
 #### join flags (globalnet)
 
@@ -89,11 +88,11 @@ broker-info file.
 
 | Flag                                    | Description
 |:----------------------------------------|:----------------------------------------------------------------------------|
-| `--repository` `<string>`               | Image repository, the repository from where the various submariner images will be sourced. (default "quay.io/submariner")
+| `--repository` `<string>`               | The repository from where the various submariner images will be sourced. (default "quay.io/submariner")
 | `--version` `<string>`                  | Image version
-| `-o`, `--operator-image` `<string>`     | The operator image you wish to use (default "quay.io/submariner/submariner-operator:$version")
-| `--service-discovery-repo` `<string>`   | Service Discovery Image repository (default "quay.io/submariner")
-| `--service-discovery-version` `<string>`| Service Discovery Image version
+| `-o`, `--operator-image` `<string>`     | The operator image location (default "quay.io/submariner/submariner-operator:$version")
+| `--service-discovery-repo` `<string>`   | Service Discovery image repository (default "quay.io/submariner")
+| `--service-discovery-version` `<string>`| Service Discovery image version
 
 ### info
 
