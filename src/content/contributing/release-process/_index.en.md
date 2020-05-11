@@ -203,7 +203,6 @@ If this is a pre-release, mark the checkbox "This is a pre-release".
  
  If this is not a pre-release update [the release notes on the website](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md).
 
-If this is a pre-release, mark the checkbox "This is a pre-release".
 
 ## Step 4: Verify the Version
 
