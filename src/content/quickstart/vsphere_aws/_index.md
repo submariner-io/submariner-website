@@ -8,7 +8,7 @@ In this quickstart guide, we shall cover the necessary steps to deploy OpenShift
 
 ### OpenShift Prerequisites
 
-Before we proceed, the following prerequisites have to be downloaded and added to your PATH
+Before we proceed, the following prerequisites have to be downloaded and added to your `$PATH:`
 
  1. [openshift-installer](https://cloud.redhat.com/openshift/install/aws/installer-provisioned) 
  2. [pull secret](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
@@ -32,7 +32,7 @@ Assuming that you deployed the cluster (say, cluster-a) with default network con
 |--------------|--------------|
 |10.128.0.0/14 |172.30.0.0/16 |
 
-Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes to preserve the source-ip for the inter-cluster traffic.
+Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes to preserve the source IP of the inter-cluster traffic.
 Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all the worker nodes. 
 
 |  Protocol  |  Port  |     Description                              |
@@ -41,7 +41,7 @@ Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all
 
 {{% notice tip %}}
 
-Although we are using default OCP network configuration on vSphere, you can install vSphere with custom network customization as shown [here](https://red.ht/2WFjEVg)
+Although we are using the default OCP network configuration on vSphere, you can install vSphere with a custom network configuration as shown [here](https://red.ht/2WFjEVg)
 
 {{% /notice %}}
 
@@ -61,7 +61,7 @@ For more details, follow this link:
 
 > https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html
 
-In this step we shall deploy cluster-b on AWS, modifying the default Cluster and Service CIDRs
+In this step we shall modify the default Cluster/Service CIDRs and deploy cluster-b on AWS.
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -72,14 +72,14 @@ In this step we shall deploy cluster-b on AWS, modifying the default Cluster and
 openshift-install create install-config --dir cluster-b
 ```
 
-Change the POD IP network, please note it’s a /14 range by default so you need to use 
+Change the Pod IP network. Please note it’s a /14 range by default so you need to use
 +4 increments for “128”, for example: 10.132.0.0, 10.136.0.0, 10.140.0.0, ...
  
 ```bash
 sed -i 's/10.128.0.0/10.132.0.0/g' cluster-b/install-config.yaml
 ```
 
-Change the service IP network, this is a /16 range by default, so just use +1 increments
+Change the Service IP network. This is a /16 range by default, so just use +1 increments
 for “30”: for example: 172.31.0.0, 172.32.0.0, 172.33.0.0, ...
 
 ```bash
@@ -95,14 +95,14 @@ openshift-install create cluster --dir cluster-b
 ### Make your AWS cluster ready for Submariner
 
 Submariner gateway nodes need to be able to accept IPsec traffic. The default ports are 4500/UDP and 500/UDP.
-However, when you have some clusters in OnPrem (like vSphere in this example) which are typically inside a corporate network, the firewall configuration on the corporate router may not allow the default IPsec traffic.
+However, when you have some on-premise clusters (like vSphere in this example) which are typically inside a corporate network, the firewall configuration on the corporate router may not allow the default IPsec traffic.
 We can overcome this limitation by using non-standard ports like 4501/UDP and 501/UDP.
 
 Additionally, the default OpenShift deployments do not allow assigning an elastic public IP
 to existing worker nodes, something that's necessary at least on one end of the IPsec connections. 
 
 To handle these requirements on AWS, we provide a script that will prepare your AWS OpenShift deployment
-for submariner, and will create an additional gateway node with an external IP.
+for Submariner, and will create an additional gateway node with an external IP.
 
 ```bash
 
@@ -116,7 +116,7 @@ chmod a+x ./prep_for_subm.sh
 > **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **unzip** need to be installed before running the `prep_for_subm.sh` script.
 
 Currently, prep_for_subm.sh script does not support specifying custom IPsec ports.
-Until the [issue](https://github.com/submariner-io/submariner/issues/240) is resolved, execute the following commands to open the necessary ports
+Until the [issue](https://github.com/submariner-io/submariner/issues/240) is resolved, execute the following commands to open the necessary ports:
 
 ```bash
 
@@ -160,11 +160,17 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid 
 ```
 
 ####  Verify Deployment
-To verify the deployment follow the steps below.
+To verify the deployment follow the steps below:
 
 ```bash
 kubectl --kubeconfig cluster-b/auth/kubeconfig create deployment nginx --image=nginx
 kubectl --kubeconfig cluster-b/auth/kubeconfig expose deployment nginx --port=80
 kubectl --kubeconfig cluster-a/auth/kubeconfig run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
 curl nginx
+```
+
+Alternately, you can also run the Submariner test-suite that validates various use-cases:
+
+```bash
+subctl verify-connectivity cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig
 ```
