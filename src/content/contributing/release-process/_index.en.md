@@ -191,7 +191,17 @@ At this point the images tagged with 0.2.0-rc0 will be available [here](https://
 ### Verify the Subctl Binaries Release
 
 At this point, you should see subctl binaries generated and listed for the various platforms under the release
- https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 
+ https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 , verify that the binaries uploaded, the process needs around 5 minutes.
+ 
+ ### Update the release notes
+ 
+ Go to https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 and select "Edit release" to the right. 
+ 
+Update the release notes.
+ 
+If this is a pre-release, mark the checkbox "This is a pre-release".
+ 
+ If this is not a pre-release update [the release notes on the website](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md).
 
 If this is a pre-release, mark the checkbox "This is a pre-release".
 
