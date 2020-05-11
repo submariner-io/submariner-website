@@ -188,21 +188,21 @@ At this point the images tagged with 0.2.0-rc0 will be available [here](https://
 > https://quay.io/repository/submariner/submariner-operator?tab=tags
 
 
-### Create the Subctl Binaries Release
+### Verify the Subctl Binaries Release
 
-```bash
-git stash
-cd submariner-operator
-git fetch -a -v -t upstream
-git checkout v0.2.0-rc0
-rm bin/subctl*
-make build-cross
-ls -la bin/subctl*
-```
-At this point, you should see subctl binaries generated and listed for the various platforms under bin.
-Go to https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 and select "Edit release" to the right. Then upload the generated subctl binaries.
-
+At this point, you should see subctl binaries generated and listed for the various platforms under the release
+ https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 , verify that the binaries uploaded, the process needs around 5 minutes.
+ 
+ ### Update the release notes
+ 
+ Go to https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 and select "Edit release" to the right. 
+ 
+Update the release notes.
+ 
 If this is a pre-release, mark the checkbox "This is a pre-release".
+ 
+ If this is not a pre-release update [the release notes on the website](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md).
+
 
 ## Step 4: Verify the Version
 
