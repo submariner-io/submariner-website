@@ -1,7 +1,7 @@
 +++
 title = "Troubleshooting Guide"
 date = 2020-05-04T19:01:14+05:30
-weight = 5
+weight = 20
 pre = "<b>4. </b>"
 +++
 
@@ -16,7 +16,7 @@ The guide has been broken into different sections for easy navigation.
 ### Pre-requisite
 Before we begin troubleshooting, run `subctl version` to obtain which version of the Submariner components you are running.
 
-Run `kubectl get services | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **Globalnet** is enabled, you will also need the *globalIp* of the service by running
+Run `kubectl get services -n <service-namespace> | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **GlobalNet** is enabled, you will also need the *globalIp* of the service by running
 
 ``` kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}' ```
 
@@ -27,7 +27,7 @@ This section will contain information about common deployment issues you can run
 #### TBD
 
 ### Connectivity Issues
-Deployment went through successfully but services/pods on one cluster are unable to connect to services on another clusters. This can be due to multuple factors - IP Sec tunnels, IP Table rules, Gateway pods, Routeagent etc.
+Submariner deployment completed successfully but Services/Pods on one cluster are unable to connect to Services on another cluster. This can be due to multiple factors outlined in the following sections.
 
 #### IPSec tunnel not created between clusters
 TBD
@@ -37,16 +37,16 @@ TBD
 
 #### None of pods/services able to connect to remote service
 TBD
-##### Without Globalnet
+##### Without GlobalNet
 TBD
-##### With Globalnet
+##### With GlobalNet
 TBD
 
 #### Pods on non-gateway nodes not able to connect to remote service
 TBD
-##### Without Globalnet
+##### Without GlobalNet
 TBD
-##### With Globalnet
+##### With GlobalNet
 TBD
 
 -->
@@ -55,18 +55,25 @@ TBD
 If you are able to connect to remote service by using ServiceIP or globalIp, but not by service name, it is a Service Discovery Issue.
 
 #### Service Discovery not working
-This is good time to familiarize yourself with [ServiceDiscovery Architecture](../architecture/service-discovery/) if you haven't already.
+This is good time to familiarize yourself with [Service Discovery Architecture](../architecture/service-discovery/) if you haven't already.
 
 ##### Check CoreDNS Configuration
 Submariner configures CoreDNS deployment to enable `lighthouse` plugin. Since CoreDNS is the first point of entry for any DNS queries, that is where we will start first. 
 
-First we check if we are running the correct image. We need CoreDNS image with ligthouse enabled.
+First we check if we are running the CoreDNS image with the Lighthouse plugin enabled.
 
 ```kubectl -n kube-system kube-dns describe deployment```
 
-Make sure that `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and version is correct. If not, change it to use the Lighthouse image.
+{{% notice info %}}
 
-If image is correct, next we need to check if `lighthouse` plugin is enabled on the CoreDNS in the source cluster i.e. the cluster making the query.
+For Openshift use `kubectl -n openshift-dns dns describe deployment`. Some deployments may use different name and namespace for DNS service e.g. `coredns`, `core-dns` etc.
+
+{{% /notice %}}
+
+
+Make sure that `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and the version is correct. If not, change it to use the Lighthouse image.
+
+If the image is correct, next we check if the Lighthouse plugin is enabled on the CoreDNS in the cluster making the query.
 
 ```kubectl describe configmap coredns```
 
@@ -83,18 +90,18 @@ In the output look for something like this:
            fallthrough =====> proceed as usual if lighthouse can't resolve
         }
 ```
-If the entries highlighted above are missing, it means CoreDNS wasn't configured with lighthouse. It can be easily added by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
+If the entries highlighted above are missing, it means CoreDNS wasn't configured to enable Lighthouse. It can be enabled by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
 
 ##### Check submariner-lighthouse-agent
-Next we check if `submariner-lighthouse-agent` is running correctly or not. Run `kubectl -n submariner-operator get pods submariner-lighthouse-agent` and check status of pods.
+Next we check if the `submariner-lighthouse-agent` is properly running. Run `kubectl -n submariner-operator get pods submariner-lighthouse-agent` and check the status of Pods.
 
-If status is error with `ImagePullBackOff`, run `kubectl -n submariner-operator describe deployment submariner-lighthouse-agent` and check if `Image` is set correctly to `quay.io/submariner/lighthouse-agent:<version>`. If it is and still getting the same error, raise an issue [here](https://github.com/submariner-io/lighthouse/issues) or ping us on the community slack channel.
+If the status indicates the `ImagePullBackOff` error, run `kubectl -n submariner-operator describe deployment submariner-lighthouse-agent` and check if `Image` is set correctly to `quay.io/submariner/lighthouse-agent:<version>`. If it is and the same error still occurs, raise an issue [here](https://github.com/submariner-io/lighthouse/issues) or ping us on the community slack channel.
 
-If status is just error, run `kubectl -n submariner-operator get pods` to get the pod name for lighthouse agent. Then run `kubectl -n submariner-operator logs <lighthouse-agent-pod-name>` to get the logs. See if there are any errors in the log. If yes, raise an [issue](https://github.com/submariner-io/lighthouse/issues) with log contents, or you can continue reading through document to troubleshoot this further.
+If the status indicates any other error, run `kubectl -n submariner-operator get pods` to get the name of the `lighthouse-agent` Pod. Then run `kubectl -n submariner-operator logs <lighthouse-agent-pod-name>` to get the logs. See if there are any errors in the log. If yes, raise an [issue](https://github.com/submariner-io/lighthouse/issues) with the log contents, or you can continue reading through this guide to troubleshoot further.
 
-If there are no errors, grep the logs for service name that you're trying to query, we may need them later for raising an issue.
+If there are no errors, grep the log for the service name that you're trying to query as we may need the log entries later for raising an issue.
 
-##### Check multiclusterservice CRs
+##### Check Multiclusterservice resources
 If the steps above did not indicate an issue, next we check if the Multiclusterservice resources were properly created for the service you're trying to access. The format of a Multiclusterservice resources's name is as follows:
 
 `<service-name>-<service-namespace>-<cluster-id>`
