@@ -7,6 +7,9 @@ theme = "hugo-theme-learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
   editURL = "https://github.com/submariner-io/website/edit/master/src/content/"
   description = "Documentation website for the submariner project"
