@@ -14,6 +14,44 @@ Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that d
 Docker must be installed and running on your computer.
 {{% /notice %}}
 
+### Deploying manually
+
+If you wish to try out Submariner deployment manually, you can first create KIND clusters using [Shipyard](../../contributing/shipyard) provided scripts and [subctl](../../deployment/subctl).
+
+#### Create KIND clusters
+
+To create KIND clusters, run:
+
+```bash
+git clone https://github.com/submariner-io/shipyard
+cd shipyard
+make clusters
+```
+
+This creates 3 Kubernetes clusters, cluster1, cluster2 and cluster3.
+
+#### Install subctl
+
+{{< subctl-install >}}
+
+#### Use cluster1 as broker
+
+```bash
+subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1
+```
+
+#### Join cluster2 and cluster3 to the broker
+
+```bash
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2
+```
+
+```bash
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.subm --clusterid cluster3
+```
+
+You now have a Submariner environment that you can experiment with.
+
 ### Deploying a Basic Environment
 
 If you wish to deploy just a basic multi cluster environment, run:
