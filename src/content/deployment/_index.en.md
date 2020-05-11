@@ -23,13 +23,15 @@ this will create:
 * The submariner-k8s-broker namespace
 * The Cluster and Endpoint (.submariner.io) CRDs in the cluster
 * A service account in the namespace for subsequent subctl access.
-* A random IPSEC PSK which will be stored only in the `broker-info.subm` file.
 
 And generate a broker-info.subm file which contains the following elements:
 
 * The API endpoint
 * A CA certificate to for the API endpoint
 * The service account token for accessing the API endpoint / submariner-k8s-broker namespace.
+* A random IPsec PSK which will be stored only in this file.
+* Globalnet settings
+* Service discovery settings
 
 
 {{% notice info %}}
