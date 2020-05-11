@@ -12,7 +12,7 @@ weight = 20
 
 * Lighthouse no longer depends KubeFed. All metadata exchange is handled over the Broker as MultiClusterService CRs.
 * Experimental **Wireguard** support has been added as a pluggable CableDriver option in addition to the current default IPsec.
-* Submariner reports the active and passive gateways as a gateway.submariner.io CRD.
+* Submariner reports the active and passive gateways as a gateway.submariner.io resource.
 * The Submariner Operator reports a detailed status of the deployment.
 * The **gateway redundancy/failover** tests are now enabled and stable in CI.
 * *Globalnet hostNetwork* to remote globalIP is now supported. Previously, when a pod used hostNetworking it was unable to connect to a remote service via globalIP.
