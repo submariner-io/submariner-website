@@ -23,13 +23,13 @@ git checkout -b <BRANCH-NAME>
 The Lighthouse Agent code is located under the `pkg/agent` directory. The `Controller` is the main component that performs bi-directional syncing of Service and MultiClusterService resources. After making code changes, please refer to [building](../building_testing/#submariner-iolighthouse)
 and [testing](../building_testing/#common-build-and-testing-targets) to build and verify your changes.
 
-Running `make e2e` will create a 3-cluster deployment which you can use it manually verify changes if necessary.
+Running `make e2e` will create a 3-cluster deployment which you can use to manually verify changes if necessary.
 The Lighthouse Agent will be deployed in the `submariner-operator` namespace in each cluster. You can use `kubectl` commands to check the pod's logs and status.
 
 #### Contributing to Lighthouse Plugin
 
-The Lighthouse plugin code is located under the `plugin/lighthouse` directory and uses the structure as required by a standard code CoreDNS plugin.
-The plugin answers the DNS requests by using the info in multicluster service. After making code changes, please refer to [building](../building_testing/#submariner-iolighthouse)
+The Lighthouse plugin code is located under the `plugin/lighthouse` directory and uses the structure as required by a standard CoreDNS plugin.
+The plugin answers DNS requests by using the MultiClusterService resources populated by the Lighthouse Agent. After making code changes, please refer to [building](../building_testing/#submariner-iolighthouse)
 and [testing](../building_testing/#common-build-and-testing-targets) to build and verify your changes.
 
 Similar to the agent, you can use the deployment created using `make e2e` to manually test and verify as well. The Lighthouse plugin will be running as a part of the CoreDNS in the `kube-system`  
