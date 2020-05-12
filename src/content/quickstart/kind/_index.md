@@ -37,7 +37,7 @@ This creates 3 Kubernetes clusters, cluster1, cluster2 and cluster3.
 #### Use cluster1 as broker
 
 ```bash
-subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1
+subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1 --service-discovery
 ```
 
 #### Join cluster2 and cluster3 to the broker
