@@ -72,23 +72,23 @@ Find out more about [Shipyard's deploy target](../shipyard#deploy).
 
 ### End-to-End Tests
 
-To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the deploy target to do so):
+To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the `deploy` target to do so):
 
-```
+```shell
 make e2e
 ```
 
-Optionally, you can specify flags to control the execution of the end-to-end
-testing and deployment (if it wasn't run separately).
-Currently these flags are project-specific, so consult the project's
-`Makefile` to learn which flags are supported.
-The flags can be combined or used separately, or not at all (in which case
-default values apply).
+Optionally, you can specify arguments to control the execution of the end-to-end testing and deployment (if it wasn't run separately).
+Currently some arguments are project-specific, while standard ones are supplied by [Shipyard](../shipyard).
+Please consult the project's `Makefile` to learn which arguments are supported.
+The arguments can be combined or used separately, or not at all (in which case default values apply).
 
-For example, here's a flag variation used in **submariner-io/submariner** CI:
+[Learn more](../shipyard/advanced) about controlling the deployments via Shipyard's standard arguments.
 
-```
-make e2e deploytool=helm globalnet=true
+For example, here's a variation used in **submariner-io/submariner** CI to deploy with *globalnet*, using *helm*:
+
+```shell
+make e2e CLUSTERS_ARGS="--globalnet" DEPLOY_ARGS="--globalnet --deploytool helm"
 ```
 
 ### Environment Clean Up
@@ -116,7 +116,7 @@ make build
 There is an optional flag to build with debug flags set:
 
 ```
-make build --build_debug=true
+make build build_debug=true
 ```
 
 ### Building Engine, Routeagent, and Globalnet container images
