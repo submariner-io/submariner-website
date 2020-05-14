@@ -52,28 +52,20 @@ subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.sub
 
 You now have a Submariner environment that you can experiment with.
 
-### Deploying a Basic Environment
 
-If you wish to deploy just a basic multi cluster environment, run:
-
-```bash
-git clone https://github.com/submariner-io/shipyard
-cd shipyard
-make deploy
-```
-
-At the end of the deployment you'll have a very basic environment that you can experiment with.
-
-### Deploying Like a Submariner
-
-To deploy the environment like Submariner does it, run:
+####  Verify Deployment
+To manually verify the deployment follow the steps below.
 
 ```bash
-git clone https://github.com/submariner-io/submariner
-cd submariner
-make e2e
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+curl nginx
 ```
 
-This will deploy 3 Kubernetes clusters and run basic [end-to-end tests](https://github.com/submariner-io/submariner/tree/master/test/e2e). The environment will remain available after the tests complete.
+You can also verify manually with the help of `subctl verify-connectivity`
 
-More details on testing can be found in the [testing guide](../../contributing/building_testing).
+```bash
+subctl verify-connectivity --verbose output/kubeconfigs/kind-config-cluster2 output/kubeconfigs/kind-config-cluster3
+```
+
