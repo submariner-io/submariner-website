@@ -16,15 +16,16 @@ Docker must be installed and running on your computer.
 
 ### Deploying manually
 
-If you wish to try out Submariner deployment manually, you can first create KIND clusters using [Shipyard](../../contributing/shipyard) provided scripts and [subctl](../../deployment/subctl).
+If you wish to try out Submariner deployment manually, you can first create KIND clusters
+using our scripts and [subctl](../../deployment/subctl).
 
 #### Create KIND clusters
 
 To create KIND clusters, run:
 
 ```bash
-git clone https://github.com/submariner-io/shipyard
-cd shipyard
+git clone https://github.com/submariner-io/submariner
+cd submariner
 make clusters
 ```
 
