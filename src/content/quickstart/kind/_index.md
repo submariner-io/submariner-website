@@ -64,9 +64,8 @@ kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 run --generator=run
 curl nginx
 ```
 
-You can also verify manually with the help of `subctl verify-connectivity`
+Alternately, you can also run the Submariner test-suite that validates various use-cases: `subctl verify-connectivity`
 
 ```bash
 subctl verify-connectivity --verbose output/kubeconfigs/kind-config-cluster2 output/kubeconfigs/kind-config-cluster3
 ```
-
