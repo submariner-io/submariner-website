@@ -25,6 +25,7 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
     grid-gap: 12px;  
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     grid-template-rows: repeat(2, 100px);  
+    padding-bottom: 5em;
 }
 .mygrid h5 {
     text-align: center;
@@ -32,11 +33,11 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 
 </style>
 
-### Examples
+## Demos
 <div class="mygrid">
   <div>
     <div> {{< youtube fMhZRNn0fxQ >}}</div>
-    <h5> Connecting containers accross clusters</h5>
+    <h5> Connecting Pods and Services across Clusters</h5>
   </div>
   <div>
     <div> {{< youtube cInmBXuZsU8 >}}</div>
@@ -51,4 +52,3 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 {{% notice tip %}}
 Check the [Quickstart guide](./quickstart/) section for deployment instructions.
 {{% /notice %}}
-
