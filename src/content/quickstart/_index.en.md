@@ -27,16 +27,16 @@ Submariner has a few requirements to get started:
 
 - At least **2 Kubernetes** clusters, one of which is designated to serve as the central broker that is accessible by all of your connected clusters; this can be one of your connected clusters, but comes with the limitation that the cluster is required to be up to facilitate interconnectivity/negotiation.
 
-- Different service/pod CIDRs between clusters. This is to prevent routing conflicts.
+- **Non-overlapping** Service and Pod CIDRs between clusters. This is to prevent routing conflicts. For cases where addresses **do overlap**, [GlobalNet](../architecture/globalnet) can be set up.
 <!-- This is not true yet, but eventually will be: (as well as different Kubernetes DNS suffixes).
 -->
-- Direct **IP connectivity between the gateway nodes** through the internet (or on the same network if not running Submariner over the internet). Submariner supports 1:1 NAT setups but has a few caveats/provider-specific configuration instructions in this configuration.<!--TODO: add section explaining nat -->
+- **IP reachability between the gateway nodes**. Also, when connecting two clusters, at least one of the clusters should have a publicly routable IP address designated to the gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that block the default ports, Submariner also supports NAT Traversal (NAT-T) with the option to set custom non-standard ports like 4501/UDP and 501/UDP.
 
 - Knowledge of each cluster's network configuration.
 
-- Worker node IPs on all the clusters must be outside of the cluster/service CIDR ranges.
+- Worker node IPs on all connected clusters must be outside of the Pods/Service CIDR ranges.
 
-An example of three clusters configured to use with Submariner would look like the following:
+An example of three clusters configured to use with Submariner (without GlobalNet) would look like the following:
 
 | Cluster Name | Provider | Pods CIDR    | Service CIDR | Cluster Nodes CIDR |
 |:-------------|:---------|:-------------|:-------------|--------------------|
