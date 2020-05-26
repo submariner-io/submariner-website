@@ -2,7 +2,8 @@
 title: "Submariner"
 ---
 
-# Submariner
+![Submariner](/images/frontpage-illustration-logo.svg)
+
 #### Submariner enables direct networking between pods and services in different Kubernetes clusters, either on premise or in the cloud. 
 
 ## Why Submariner?
