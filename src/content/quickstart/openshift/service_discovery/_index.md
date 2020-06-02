@@ -42,8 +42,8 @@ subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid 
 To verify the deployment follow the steps below.
 
 ```bash
-kubectl --kubeconfig cluster-b/auth/kubeconfig create deployment nginx --image=nginx
-kubectl --kubeconfig cluster-b/auth/kubeconfig expose deployment nginx --port=80
-kubectl --kubeconfig cluster-a/auth/kubeconfig run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
-curl nginx
+kubectl --kubeconfig cluster-b/auth/kubeconfig create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
+kubectl --kubeconfig cluster-b/auth/kubeconfig expose deployment nginx --port=8080
+kubectl --kubeconfig cluster-a/auth/kubeconfig run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+curl nginx.default.svc.supercluster.local:8080
 ```
