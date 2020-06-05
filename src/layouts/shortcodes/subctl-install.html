@@ -1,15 +1,11 @@
 Download the subctl binary and make it available on your PATH.
 
-<!-- TODO: create a "getsubctl.sh" to simplify this -->
-
 <div class="highlight">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <code class="language-bash" data-lang="bash">
-mkdir -p ~/.local/bin
-curl -L -o ~/.local/bin/subctl https://github.com/submariner-io/submariner-operator/releases/download/v0.3.0/subctl-v0.3.0-linux-amd64
-chmod a+x ~/.local/bin/subctl
+curl -Ls https://bit.ly/get-subctl | bash
 export PATH=$PATH:~/.local/bin
-echo export PATH=$PATH:~/.local/bin >> ~/.profile
+echo export PATH=\$PATH:~/.local/bin >> ~/.profile
 </code>
 </pre>
 </div>
