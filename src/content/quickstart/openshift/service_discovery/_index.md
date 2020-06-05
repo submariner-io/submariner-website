@@ -42,8 +42,25 @@ subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid 
 To verify the deployment follow the steps below.
 
 ```bash
-kubectl --kubeconfig cluster-b/auth/kubeconfig create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
-kubectl --kubeconfig cluster-b/auth/kubeconfig expose deployment nginx --port=8080
-kubectl --kubeconfig cluster-a/auth/kubeconfig run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+export KUBECONFIG=cluster-b/auth/kubeconfig
+kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
+kubectl -n default expose deployment nginx --port=8080
+kubectl -n default apply -f - <<EOF
+apiVersion: lighthouse.submariner.io/v2alpha1
+kind: ServiceExport
+metadata:
+  name: nginx-demo
+EOF
+```
+
+```bash
+export KUBECONFIG=cluster-a/auth/kubeconfig
+kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.supercluster.local:8080
+```
+
+#### Perform automated verification
+This will perform all automated verification between your clusters
+```bash
+subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
 ```
