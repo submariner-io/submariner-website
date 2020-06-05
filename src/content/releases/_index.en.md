@@ -5,26 +5,25 @@ pre = "<b>5. </b>"
 weight = 25
 +++
 
-## v0.4.0 Libreswan cable driver, k8s multicluster service discovery
+## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
 
-> This release is focused on the libreswan cabledriver implementation, as well 
-> as standardizing the service discovery support in lighthouse with the upstream
-> kubernetes kep [1].
+> This release is mainly focused on the libreswan Submariner cable driver implementation, as well 
+> as standardizing the service discovery support in Lighthouse with the upstream
+> kubernetes KEP [1].
 
-* The **libreswan** IPsec cabledriver is available for testing. It's been included
+* The **libreswan** IPsec cable driver is available for testing. It's been included
   on the testing matrix of the project.
-* **Lighthouse** behavior has been modified following [1] for the next details:
-   - A `ServiceExport` object needs to be created alongside any `Service` that we
-     want exported to the participant clusters
+* **Lighthouse** has been modified per [1] as follows:
+   - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be exported to participant clusters
    - The supercluster services can now be accessed with `<service-name>.<namespace>.svc.supercluster.local`
 
-* **Globanet** overlapping CIDR support improvement and bugfixes
+* **Globanet** overlapping CIDR support improvement and bug fixes
 
 * Multiple **CI** improvements implemented from shipyard
 
-* Our dense testing matrix runs now on [GitHub actions](https://github.com/submariner-io/submariner/actions)
+* The testing matrix is now run via [GitHub actions](https://github.com/submariner-io/submariner/actions)
 
-* The submariner-operator now handles the Lighthouse deployment in full via `ServiceDiscovery` CRD.
+* The submariner-operator now completely handles the Lighthouse deployment via the `ServiceDiscovery` CRD.
 
 * `subctl verify` is now available for `connectivity`, `service-discovery` and `gateway-failover`.
 
