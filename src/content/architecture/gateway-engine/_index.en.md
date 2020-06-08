@@ -31,6 +31,10 @@ The Gateway Engine is deployed as a DaemonSet that is configured to only run
 on nodes labelled with `submariner.io/gateway=true`.
 
 The Gateway Engine has a pluggable architecture for the cable engine component
-that maintains the tunnels. The default implementation uses the
-[Strongswan](https://github.com/bronze1man/goStrongswanVici) IPsec library. 
-An implementation for [WireGuard](https://www.wireguard.com/) is also available.
+that maintains the tunnels. The following implementations are available:
+
+* an IPsec implementation using [strongSwan](https://www.strongswan.org/) (via the
+  [goStrongswanVici](https://github.com/bronze1man/goStrongswanVici) library);
+  this is currently the default;
+* an IPsec implementation using [Libreswan](https://libreswan.org/);
+* an implementation for [WireGuard](https://www.wireguard.com/).
