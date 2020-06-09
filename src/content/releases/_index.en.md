@@ -17,7 +17,7 @@ weight = 25
    - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be exported to participant clusters
    - The supercluster services can now be accessed with `<service-name>.<namespace>.svc.supercluster.local`
 
-* **Globanet** overlapping CIDR support improvement and bug fixes
+* **Globanet** overlapping CIDR support improvements and bug fixes
 
 * Multiple **CI** improvements implemented from shipyard
 
