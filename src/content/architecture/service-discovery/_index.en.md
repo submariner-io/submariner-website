@@ -6,7 +6,6 @@ weight: 5
 
 The Lighthouse project provides DNS discovery for Kubernetes clusters connected by
 [Submariner](https://github.com/submariner-io/submariner) in multi-cluster environments.
-The solution is compatible with any CNI (Container Network Interfaces) plugin.
 
 ## Architecture
 The below diagram shows the basic Lighthouse architecture.
@@ -18,7 +17,7 @@ The Lighthouse Agent runs in every cluster and accesses the Kubernetes API serve
 the broker cluster to exchange service metadata information with other clusters. Local service
 information is exported to the broker and service information from other clusters is imported.
 
-#### WorkFlow
+#### Workflow
 The workflow is as follows:
 
 - Lighthouse agent connects to the broker's K8s API server.
@@ -31,15 +30,15 @@ it creates a copy of it in the local cluster.
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
 
 ### Lighthouse DNS Server
-The Lighthouse DNS server runs as an external DNS server which owns the domain supercluster.local.The
-KubeDNS is configured to forward any request supercluster.local to the Lighthouse DNS server, which
-uses the MultiClusterService resources that are distributed by the controller for DNS resolution
+The Lighthouse DNS server runs as an external DNS server which owns the domain supercluster.local.
+KubeDNS is configured to forward any request sent to supercluster.local to the Lighthouse DNS server,
+which uses the MultiClusterService resources that are distributed by the controller for DNS resolution.
 
-#### WorkFlow
+#### Workflow
 The workflow is as follows.
 
-- A pod tries to resolve a Service name using the domain name supercluster.local 
-- The KubeDNS forwards the request to the Lighthouse DNS server.
+- A Pod tries to resolve a Service name using the domain name supercluster.local 
+- KubeDNS forwards the request to the Lighthouse DNS server.
 - The Lighthouse DNS server will use its MultiClusterService cache to try to resolve the request.
 - If a record exists it will be returned, else an NXDomain error will be returned.
 
