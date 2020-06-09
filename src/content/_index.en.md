@@ -2,7 +2,7 @@
 title: "Submariner"
 ---
 
-![Submariner](/images/frontpage-illustration-logo.svg)
+![Submariner](/images/logo-submariner-blue.svg)
 
 #### Submariner enables direct networking between pods and services in different Kubernetes clusters, either on premise or in the cloud. 
 
@@ -12,6 +12,7 @@ As Kubernetes gains adoption, teams are finding they must deploy and manage mult
 
 Submariner is completely open source, and designed to be network plugin (CNI) agnostic.
 
+![Submariner illustrations](/images/frontpage-illustration.svg)
 
 ## What Submariner Provides?
 
