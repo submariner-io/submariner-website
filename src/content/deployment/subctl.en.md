@@ -104,23 +104,34 @@ detected network plugin, and the detected Cluster and Service CIDRs.
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 
-### verify-connectivity
+### verify
 
-`subctl verify-connectivity <kubeConfig1> <kubeConfig2> [flags]`
+`subctl verify <kubeConfig1> <kubeConfig2> [flags]`
 
-The `verify-connectivity` command verifies dataplane connectivity between two clusters. The
+The `verify` command verifies a Submariner deployment between two clusters is functioning properly. The
 `kubeConfig1` file will be `ClusterA` in the reports, while `kubeConfig2` will be `ClusterB` in the
 reports. The `--verbose` flag is recommended to see what's happening during the tests.
 
-Dataplane connectivity is verified in multiple ways:
+There are several suites of verifications that can be performed. By default all verifications are performed.
+Some verifications are deemed disruptive in that they change some state of the clusters as a side effect.
+If running the command interactively, you will be prompted for confirmation to perform disruptive
+verifications unless the `--enable-disruptive` flag is also specified. If running non-interactively (that is with no stdin), `--enable-disruptive` must be specified otherwise disruptive verifications are skipped.
+
+The `connectivity` suite verifies dataplane connectivity across the clusters for the following cases:
  * Pods (on gateways) to Services
  * Pods (on non-gateways) to Services
  * Pods (on gateways) to Pods
  * Pods (on non-gateways) to Pods
 and between gateway and non-gateway node combinations.
 
+The `service-discovery` suite verifies dns discovery of `<service>.<namespace>.svc.supercluster.local`
+entries across the clusters.
 
-#### verify-connectivity flags
+The `gateway-failover` suite verifies the continuity of cross-cluster dataplane connectivity after a
+gateway failure in a cluster occurs. This suite requires a single gateway configured on `ClusterA` and other
+available worker nodes capable of serving as gateways. Please note that this verification is disruptive.
+
+#### verify flags
 
 | Flag                                | Description
 |:------------------------------------|:----------------------------------------------------------------------------|
@@ -129,6 +140,8 @@ and between gateway and non-gateway node combinations.
 | `--operation-timeout` `<value>`     | Operation timeout for K8s API calls (default 240)
 | `--report-dir` `<string>`           | XML report directory (default ".")
 | `--verbose`                         | Produce verbose logs during connectivity verification
+| `--only`                            | Comma separated list of specific verifications to perform 
+| `--enable-disruptive`               | Enable verifications which are potentially disruptive to your deployment
 
 ### version
 

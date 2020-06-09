@@ -69,12 +69,5 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid 
 ```bash
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid east
 ```
-####  Verify Deployment
-To verify the deployment follow the steps below.
 
-```bash
-kubectl --kubeconfig cluster-b/auth/kubeconfig create deployment nginx --image=nginx
-kubectl --kubeconfig cluster-b/auth/kubeconfig expose deployment nginx --port=80
-kubectl --kubeconfig cluster-a/auth/kubeconfig run --generator=run-pod/v1 tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash
-curl nginx
-```
+{{< include "quickstart/verify_with_discovery.md" >}}
