@@ -52,12 +52,6 @@ openshift-install create cluster --dir cluster-b
 
 ### Install Submariner with Service Discovery and Globalnet
 
-{{% notice info %}}
-
-The Lighthouse project is meant only to be used as a development preview. Installing the operator on an Openshift cluster will disable Openshift CVO.
-
-{{% /notice %}}
-
 To install Submariner with multi-cluster service discovery and support for overlapping CIDRs follow the steps below.
 
 #### Use cluster-a as broker with service discovery and globalnet enabled

@@ -66,7 +66,6 @@ broker-info file.
 | `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, subctl will try to discover it and, if unable to do so, it will prompt the user.
 | `--no-label `                      | Skip gateway labeling. This disables the prompt for a worker node to use as gateway.
 | `--subm-debug`                     | Enable Submariner debugging (verbose logging)
-| `--disable-cvo`                    | Disable OpenShift's cluster version operator, if necessary, without prompting as a warning. Currently, Lighthouse modifies the cluster DNS operator in OpenShift to disable CVO.
 
 #### join flags (globalnet)
 

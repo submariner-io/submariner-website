@@ -135,12 +135,6 @@ sed "s/\ 4500/\ $NAT_PORT/g" -i cluster-b/ocp-ipi-aws/ocp-ipi-aws-prep/ec2-resou
 
 #### Install Submariner with Service Discovery
 
-{{% notice info %}}
-
-The Lighthouse project is meant only to be used as a development preview. Installing the operator on an OpenShift cluster will disable OpenShift CVO
-
-{{% /notice %}}
-
 To install Submariner with multi-cluster service discovery, follow the steps below.
 
 ##### Use cluster-b (AWS) as broker with service discovery enabled
