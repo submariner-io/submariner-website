@@ -14,12 +14,6 @@ weight: 15
 
 ### Install Submariner with Service Discovery
 
-{{% notice info %}}
-
-The Lighthouse project is meant only to be used as a development preview. Installing the operator on an Openshift cluster will disable Openshift CVO.
-
-{{% /notice %}}
-
 To install Submariner with multi-cluster service discovery follow the steps below.
 
 #### Use cluster-a as broker with service discovery enabled
