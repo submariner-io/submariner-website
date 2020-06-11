@@ -45,7 +45,6 @@ to connect clusters to the Broker. This file contains the following details:
 |`--globalnet`                       | Enable support for Overlapping cluster/service CIDRs in connecting clusters (default disabled)
 |`--globalnet-cidr-range` `<string>` | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
 |`--ipsec-psk-from` `<string>`       | Import IPSEC PSK from existing Submariner broker file, like broker-info.subm (default "broker-info.subm)
-|`--dataplane`                       | Install the Submariner dataplane on the broker. If this flag is enabled, the broker will be joined as if a join command was run right after deploy-broker. Use the join flags too if you use --dataplane.
 
 ### join
 
