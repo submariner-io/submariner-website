@@ -89,8 +89,6 @@ broker-info file.
 | `--repository` `<string>`               | The repository from where the various submariner images will be sourced. (default "quay.io/submariner")
 | `--version` `<string>`                  | Image version
 | `-o`, `--operator-image` `<string>`     | The operator image location (default "quay.io/submariner/submariner-operator:$version")
-| `--service-discovery-repo` `<string>`   | Service Discovery image repository (default "quay.io/submariner")
-| `--service-discovery-version` `<string>`| Service Discovery image version
 
 ### info
 
