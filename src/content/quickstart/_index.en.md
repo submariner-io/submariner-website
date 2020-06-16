@@ -30,7 +30,9 @@ Submariner has a few requirements to get started:
 - **Non-overlapping** Service and Pod CIDRs between clusters. This is to prevent routing conflicts. For cases where addresses **do overlap**, [GlobalNet](../architecture/globalnet) can be set up.
 <!-- This is not true yet, but eventually will be: (as well as different Kubernetes DNS suffixes).
 -->
-- **IP reachability between the gateway nodes**. Also, when connecting two clusters, at least one of the clusters should have a publicly routable IP address designated to the gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that block the default ports, Submariner also supports NAT Traversal (NAT-T) with the option to set custom non-standard ports like 4501/UDP and 501/UDP.
+- **IP reachability between the gateway nodes**. When connecting two clusters, at least one of the clusters should have a publicly routable IP address designated to the gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that block the default ports, Submariner also supports NAT Traversal (NAT-T) with the option to set custom non-standard ports like 4501/UDP and 501/UDP. 
+
+- We use port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes and ensuring that Pod IP addresses are preserved. Ensure that firewall configuration allows 4800/UDP across all the worker nodes.
 
 - Knowledge of each cluster's network configuration.
 
