@@ -57,7 +57,6 @@ are expected to remain active contributors to the community.
 ### Requirements
 
 - Enabled [two-factor authentication] on their GitHub account
-- Compliance with [Developer Certificate Of Origin (DCO)](https://developercertificate.org/). This can be done by adding --signoff to your Git command line.
 - Have made multiple contributions to the project or community. Contribution
   may include, but is not limited to:
     - Authoring or reviewing PRs on GitHub
