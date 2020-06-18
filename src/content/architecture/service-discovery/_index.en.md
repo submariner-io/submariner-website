@@ -21,8 +21,8 @@ information is exported to the broker and service information from other cluster
 The workflow is as follows:
 
 - Lighthouse agent connects to the broker's K8s API server.
--  For every service in the local cluster, it creates a corresponding MultiClusterService resource
-and exports it to the broker to be consumed by other clusters.
+- For every Service in the local cluster for which a ServiceExport has been created, the agent creates a corresponding
+MultiClusterService resource and exports it to the broker to be consumed by other clusters.
 - For every MultiClusterService resource in the broker exported from another cluster, 
 it creates a copy of it in the local cluster.
 
