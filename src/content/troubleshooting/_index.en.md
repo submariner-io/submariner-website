@@ -57,40 +57,56 @@ If you are able to connect to remote service by using ServiceIP or globalIp, but
 #### Service Discovery not working
 This is good time to familiarize yourself with [Service Discovery Architecture](../architecture/service-discovery/) if you haven't already.
 
+##### Check ServiceExport for your Service
+For a Service to be accessible across clusters, you must first create a `ServiceExport` resource. Make sure the `ServiceExport` resource exists and has the same name and namespace as the Service you're trying to export.
+
+```kubectl get serviceexport -n <service-namespace> <service-name>```
+
+Sample output:
+```
+apiVersion: lighthouse.submariner.io/v2alpha1
+kind: ServiceExport
+metadata:
+  name: nginx
+```
+
+##### Check Lighthouse CoreDNS Service
+All cross-cluster service queries are handled by Lighthouse CoreDNS server. First we check if the Lighthouse CoreDNS Service is running properly.
+
+```kubectl -n submariner-operator get service submariner-lighthouse-coredns``` 
+
+If it is running fine, note down the `ServiceIP` for the next steps. If not, check the logs for an error.
+
+If the error is due to a wrong image, run ```kubectl -n submariner-operator get deployment submariner-lighthouse-coredns``` and make sure `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and refers to the correct version.
+
+For any other errors, capture the information and raise a new [issue](https://github.com/submariner-io/lighthouse/issues)
+
+If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run ```kubectl describe configmap submariner-lighthouse-coredns``` and make sure it has following configuration:
+
+```
+    supercluster.local:53 {
+        lighthouse
+        errors
+        health
+        ready
+    }
+```
+
 ##### Check CoreDNS Configuration
-Submariner configures CoreDNS deployment to enable `lighthouse` plugin. Since CoreDNS is the first point of entry for any DNS queries, that is where we will start first. 
+Submariner requires the CoreDNS deployment to forward requests for the domain `supercluster.local` to the Lighthouse CoreDNS server in the cluster making the query. Ensure this configuration exists and is correct.
 
-First we check if we are running the CoreDNS image with the Lighthouse plugin enabled.
-
-```kubectl -n kube-system kube-dns describe deployment```
-
-{{% notice info %}}
-
-For Openshift use `kubectl -n openshift-dns dns describe deployment`. Some deployments may use different name and namespace for DNS service e.g. `coredns`, `core-dns` etc.
-
-{{% /notice %}}
-
-
-Make sure that `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and the version is correct. If not, change it to use the Lighthouse image.
-
-If the image is correct, next we check if the Lighthouse plugin is enabled on the CoreDNS in the cluster making the query.
+First we check if CoreDNS is configured to forward requests for domain `supercluster.local` to Lighthouse CoreDNS Server in the cluster making the query.
 
 ```kubectl describe configmap coredns```
 
 In the output look for something like this:
 
 ```
-        kubernetes cluster2.local in-addr.arpa ip6.arpa {
-           pods insecure
-           upstream
-           #fallthrough in-addr.arpa ip6.arpa
-           fallthrough     =====> This tells kubernetes to go to next plugin if query fails locally
-        }
-        lighthouse { ====> Lighthouse plugin will catch any queries that local kubernetes can't resolve
-           fallthrough =====> proceed as usual if lighthouse can't resolve
-        }
+    supercluster.local:53 {
+        forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in previous section
+    }
 ```
-If the entries highlighted above are missing, it means CoreDNS wasn't configured to enable Lighthouse. It can be enabled by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
+If the entries highlighted above are missing or `ServiceIp` is incorrect, it means CoreDNS wasn't configured correctly. It can be fixed by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
 
 ##### Check submariner-lighthouse-agent
 Next we check if the `submariner-lighthouse-agent` is properly running. Run `kubectl -n submariner-operator get pods submariner-lighthouse-agent` and check the status of Pods.

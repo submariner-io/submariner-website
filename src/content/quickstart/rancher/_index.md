@@ -38,6 +38,7 @@ subctl join --kubeconfig kubeconfig-cluster-b broker-info.subm --clusterid clust
 
 This will run a series of E2E tests to verify proper connectivity between the cluster Pods and Services
 
+
 ```bash
-subctl verify-connectivity kubeconfig-cluster-a kubeconfig-cluster-b --verbose
+subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only connectivity --verbose
 ```

@@ -43,7 +43,7 @@ kubectl -n default apply -f - <<EOF
 apiVersion: lighthouse.submariner.io/v2alpha1
 kind: ServiceExport
 metadata:
-  name: nginx-demo
+  name: nginx
 EOF
 ```
 
@@ -53,8 +53,15 @@ kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image q
 curl nginx.default.svc.supercluster.local:8080
 ```
 
+{{% notice info %}}
+
+The `ServiceExport` resource must be created in the same namespace as the Service you're trying to export. In the example above, `nginx` is created in `default` so we create the `ServiceExport` resource in `default` as well.
+
+{{% /notice %}}
+
 #### Perform automated verification
-This will perform all automated verification between your clusters
+You can also perform automated verifications of service discovery via the `subctl verify` command.
+
 ```bash
 subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
 ```
