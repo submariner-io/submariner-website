@@ -103,7 +103,7 @@ In the output look for something like this:
 
 ```
     supercluster.local:53 {
-        forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in pervious section
+        forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in previous section
     }
 ```
 If the entries highlighted above are missing or `ServiceIp` is incorrect, it means CoreDNS wasn't configured correctly. It can be fixed by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.

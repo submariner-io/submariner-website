@@ -157,15 +157,15 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid 
 To manually verify the deployment follow the steps below.
 
 ```bash
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=8080
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 -n default apply -f - <<EOF
 apiVersion: lighthouse.submariner.io/v2alpha1
 kind: ServiceExport
 metadata:
   name: nginx
 EOF
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash curl nginx.default.svc.supercluster.local:8080
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash curl -4 nginx.default.svc.supercluster.local:8080
 ```
 
 {{% notice info %}}
