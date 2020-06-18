@@ -34,6 +34,10 @@ New contributors should be welcomed to the community by existing members,
 helped with PR workflow, and directed to relevant documentation and
 communication channels.
 
+We require every contributor to certify that they are legally permitted to contribute to our project. 
+A contributor expresses this by consciously signing their commits, 
+and by this act expressing that they comply with the [Developer Certificate Of Origin](https://developercertificate.org/).
+
 ## Established Community Members
 
 Established community members are expected to demonstrate their adherence to
@@ -53,6 +57,7 @@ are expected to remain active contributors to the community.
 ### Requirements
 
 - Enabled [two-factor authentication] on their GitHub account
+- Compliance with [Developer Certificate Of Origin (DCO)](https://developercertificate.org/). This can be done by adding --signoff to your Git command line.
 - Have made multiple contributions to the project or community. Contribution
   may include, but is not limited to:
     - Authoring or reviewing PRs on GitHub
