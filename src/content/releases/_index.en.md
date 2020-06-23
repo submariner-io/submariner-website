@@ -7,28 +7,22 @@ weight = 25
 
 ## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
 
-> This release is mainly focused on the libreswan Submariner cable driver implementation, as well 
-> as standardizing the service discovery support in Lighthouse with the upstream
-> kubernetes KEP [1].
+> This release is mainly focused on Submariner's Libreswan cable driver implementation, as well
+> as standardizing Lighthouse's service discovery support with the [Kubernetes Multicluster
+> Services KEP][MCS KEP].
 
-* The **libreswan** IPsec cable driver is available for testing. It's been included
-  on the testing matrix of the project.
-* **Lighthouse** has been modified per [1] as follows:
-   - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be exported to participant clusters
-   - The supercluster services can now be accessed with `<service-name>.<namespace>.svc.supercluster.local`
-
-* **Globanet** overlapping CIDR support improvements and bug fixes
-
-* Multiple **CI** improvements implemented from shipyard
-
-* The testing matrix is now run via [GitHub actions](https://github.com/submariner-io/submariner/actions)
-
-* The submariner-operator now completely handles the Lighthouse deployment via the `ServiceDiscovery` CRD.
-
+* **Libreswan** IPsec cable driver is available for testing and is covered in Submariner's CI.
+* **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
+   - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
+     exported to participant clusters.
+   - Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
+* **Globanet** overlapping CIDR support improvements and bug fixes.
+* Multiple **CI** improvements implemented from Shipyard.
+* CI tests are now run via **[GitHub Actions](https://github.com/submariner-io/submariner/actions)**.
+* Submariner-operator now completely handles the Lighthouse deployment via the `ServiceDiscovery` CRD.
 * `subctl verify` is now available for `connectivity`, `service-discovery` and `gateway-failover`.
 
-
-[1] https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api
+[MCS KEP]: https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api
 
 ## v0.3.0 Lighthouse Service Discovery without KubeFed
 
