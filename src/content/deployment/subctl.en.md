@@ -90,14 +90,14 @@ broker-info file.
 | `--version` `<string>`                  | Image version
 | `-o`, `--operator-image` `<string>`     | The operator image location (default "quay.io/submariner/submariner-operator:$version")
 
-### info
+### show
 
-`subctl info [flags]`
+`subctl show networks [flags]`
 
-The `info` command inspects the cluster and reports information related to Submariner, like the
+The `show networks` command inspects the cluster and reports information related to Submariner, like the
 detected network plugin, and the detected Cluster and Service CIDRs.
 
-#### info flags
+#### show flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
