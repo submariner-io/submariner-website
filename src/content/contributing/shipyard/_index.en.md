@@ -57,6 +57,12 @@ make dapper-image
 
 in the Shipyard directory. This creates a local image with your changes available for consumption in other projects.
 
+The local image is tagged `:dev`, so you will need to manually tag that as `:devel`, or temporarily change your project's `Dockerfiles.dapper`, if you want it to incorporate your changes to the Shipyard base image. This applies even within Shipyard: if you make a change to the base image, you need to tag it, otherwise the Dapper build will still use the latest upstream image, not your new image.
+
+```
+docker tag quay.io/submariner/shipyard-dapper-base:dev quay.io/submariner/shipyard-dapper-base:devel
+```
+
 ## Shared Makefile Targets
 
 Shipyard ships a [Makefile.inc] file which defines these basic targets:
