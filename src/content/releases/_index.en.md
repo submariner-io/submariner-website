@@ -5,6 +5,26 @@ pre = "<b>5. </b>"
 weight = 25
 +++
 
+## v0.5.0 Lighthouse service discovery alignment
+
+> This release mainly focused on continuing the alignment of Lighthouse's service discovery support with the [Kubernetes Multicluster
+> Services KEP][MCS KEP].
+
+* **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
+  - The `MultiClusterService` resource has been replaced by `ServiceImport`.
+  - The `ServiceExport` resource is now updated with status information as lifecycle events occur.
+* **Lighthouse** now allows a `ServiceExport` resource to be created prior to the associated `Service`.
+* Network discovery was moved from `subctl` to the subamriner operator.
+* Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
+  and `show gateways`.
+* The **Globanet** configuration has been moved from the `broker-info.subm` file to a `ConfigMap` resource stored on the
+  broker cluster.
+* The separate `--operator-image` parameter has been removed from `subctl join` and the `--repoository` and `--version`
+  parameters are now used for all images.
+* The submariner operator status now includes `Gateway` information.
+* Closed technical requirements for submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
+  and source code linting.
+  
 ## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
 
 > This release is mainly focused on Submariner's Libreswan cable driver implementation, as well
