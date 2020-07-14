@@ -22,8 +22,8 @@ The workflow is as follows:
 
 - Lighthouse agent connects to the broker's K8s API server.
 - For every Service in the local cluster for which a ServiceExport has been created, the agent creates a corresponding
-MultiClusterService resource and exports it to the broker to be consumed by other clusters.
-- For every MultiClusterService resource in the broker exported from another cluster, 
+ServiceImport resource and exports it to the broker to be consumed by other clusters.
+- For every ServiceImport resource in the broker exported from another cluster, 
 it creates a copy of it in the local cluster.
 
 ![Lighthouse Agent WorkFlow](/images/lighthouse/controllerWorkFlow.png)
@@ -32,14 +32,14 @@ it creates a copy of it in the local cluster.
 ### Lighthouse DNS Server
 The Lighthouse DNS server runs as an external DNS server which owns the domain supercluster.local.
 KubeDNS is configured to forward any request sent to supercluster.local to the Lighthouse DNS server,
-which uses the MultiClusterService resources that are distributed by the controller for DNS resolution.
+which uses the ServiceImport resources that are distributed by the controller for DNS resolution.
 
 #### Workflow
 The workflow is as follows.
 
 - A Pod tries to resolve a Service name using the domain name supercluster.local 
 - KubeDNS forwards the request to the Lighthouse DNS server.
-- The Lighthouse DNS server will use its MultiClusterService cache to try to resolve the request.
+- The Lighthouse DNS server will use its ServiceImport cache to try to resolve the request.
 - If a record exists it will be returned, else an NXDomain error will be returned.
 
 ![Lighthouse CoreDNS WorkFlow](/images/lighthouse/coreDNSWorkFlow.png)
