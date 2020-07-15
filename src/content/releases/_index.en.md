@@ -18,8 +18,9 @@ weight = 25
 * Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
   `show endpoints`, and `show gateways`.
 * The `subctl info` command has been removed in lieu of the new `show networks` command.
-* The **Globanet** configuration has been moved from the `broker-info.subm` file to a `ConfigMap` resource stored on the
-  broker cluster.
+* The **Globanet** configuration has been moved from the _broker-info.subm_ file to a `ConfigMap` resource stored on the
+  broker cluster. Therefore, the new `subctl` cannot be used on brownfield **Globalnet** deployments where this information
+  was stored as part of _broker-info.subm_.
 * `subctl` now supports joining multiple clusters in parallel without having to explicitly specify the `globalnet-cidr` for the
   cluster to work around this issue. The `globalnet-cidr` will automatically be allocated by `subctl` for each cluster.
 * The separate `--operator-image` parameter has been removed from `subctl join` and the `--repository` and `--version`
