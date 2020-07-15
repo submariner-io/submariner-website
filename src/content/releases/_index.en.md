@@ -14,15 +14,18 @@ weight = 25
   - The `MultiClusterService` resource has been replaced by `ServiceImport`.
   - The `ServiceExport` resource is now updated with status information as lifecycle events occur.
 * **Lighthouse** now allows a `ServiceExport` resource to be created prior to the associated `Service`.
-* Network discovery was moved from `subctl` to the subamriner operator.
+* Network discovery was moved from `subctl` to the Submariner operator.
 * Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
-  and `show gateways`.
+  `show endpoints`, and `show gateways`.
+* The `subctl info` command has been removed in lieu of the new `show networks` command.
 * The **Globanet** configuration has been moved from the `broker-info.subm` file to a `ConfigMap` resource stored on the
   broker cluster.
-* The separate `--operator-image` parameter has been removed from `subctl join` and the `--repoository` and `--version`
+* `subctl` now supports joining multiple clusters in parallel without having to explicitly specify the `globalnet-cidr` for the
+  cluster to work around this issue. The `globalnet-cidr` will automatically be allocated by `subctl` for each cluster.
+* The separate `--operator-image` parameter has been removed from `subctl join` and the `--repository` and `--version`
   parameters are now used for all images.
-* The submariner operator status now includes `Gateway` information.
-* Closed technical requirements for submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
+* The Submariner operator status now includes `Gateway` information.
+* Closed technical requirements for Submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
   and source code linting.
   
 ## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
