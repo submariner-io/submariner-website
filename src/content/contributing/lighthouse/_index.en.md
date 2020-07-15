@@ -20,7 +20,7 @@ git checkout -b <BRANCH-NAME>
 
 #### Contributing to Lighthouse Agent
 
-The Lighthouse Agent code is located under the `pkg/agent` directory. The `Controller` is the main component that performs bi-directional syncing of ServiceImports. After making code changes, please refer to [building](../building_testing/#submariner-iolighthouse)
+The Lighthouse Agent code is located under the `pkg/agent` directory. The `Controller` is the main component that performs bi-directional syncing of `ServiceImport` objects. After making code changes, please refer to [building](../building_testing/#submariner-iolighthouse)
 and [testing](../building_testing/#common-build-and-testing-targets) to build and verify your changes.
 
 Running `make e2e` will create a 3-cluster deployment which you can use to manually verify changes if necessary.

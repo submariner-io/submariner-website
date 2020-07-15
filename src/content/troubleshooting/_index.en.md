@@ -156,5 +156,3 @@ Events:  <none>
 ```
 
 If the data is not correct, you can manually edit the ServiceImport resource to set the correct IP as a workaround and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
-
-If it is correct, congratulations - you've found a new [issue](https://github.com/submariner-io/lighthouse/issues).
