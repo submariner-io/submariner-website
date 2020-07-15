@@ -117,38 +117,42 @@ If the status indicates any other error, run `kubectl -n submariner-operator get
 
 If there are no errors, grep the log for the service name that you're trying to query as we may need the log entries later for raising an issue.
 
-##### Check Multiclusterservice resources
-If the steps above did not indicate an issue, next we check if the Multiclusterservice resources were properly created for the service you're trying to access. The format of a Multiclusterservice resources's name is as follows:
+##### Check ServiceImport resources
+If the steps above did not indicate an issue, next we check if the ServiceImport resources were properly created for the service you're trying to access. The format of a ServiceImport resources's name is as follows:
 
 `<service-name>-<service-namespace>-<cluster-id>`
 
-Run `kubectl get multiclusterservices --all-namespaces |grep <your-service-name>` on the broker cluster to check if a resource was created for your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning messages indicating a failure to create the Multiclusterservice resource for your service. The most common error is `Forbidden` if the RBAC wasn't configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+Run `kubectl get serviceimports --all-namespaces |grep <your-service-name>` on the broker cluster to check if a resource was created for your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning messages indicating a failure to create the ServiceImport resource for your service. The most common error is `Forbidden` if the RBAC wasn't configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the Multiclusterservice resource was created correctly on the broker cluster, the next step is to check if it exists on the cluster where you're trying to access the service. Follow the same steps as earlier to get the list of the Multiclusterservice resources and check if the Multiclusterservice for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the service. As described earlier, it will most commonly be an issue with RBAC otherwise create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+If the ServiceImport resource was created correctly on the broker cluster, the next step is to check if it exists on the cluster where you're trying to access the service. Follow the same steps as earlier to get the list of the ServiceImport resources and check if the ServiceImport for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the service. As described earlier, it will most commonly be an issue with RBAC otherwise create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the Multiclusterservice resource was created properly on the cluster, run `kubectl -n submariner-operator describe multiclusterservice <your-multiclusterservice-name>` and check if it has the correct `ClusterID` and `ServiceIP`:
+If the ServiceImport resource was created properly on the cluster, run `kubectl -n submariner-operator describe serviceimport <your-serviceimport-name>` and check if it has the correct `ClusterID` and `ServiceIP`:
 
 ```
-Name:         nginx-demo-default-cluster2
+Name:         nginx-default-cluster2
 Namespace:    submariner-operator
-Labels:       submariner-io/clusterID=cluster2
-Annotations:  <none>
-API Version:  lighthouse.submariner.io/v1
-Kind:         MultiClusterService
+Labels:       <none>
+Annotations:  origin-name: nginx
+              origin-namespace: default
+API Version:  lighthouse.submariner.io/v2alpha1
+Kind:         ServiceImport
 Metadata:
-  Creation Timestamp:  2020-04-16T15:40:36Z
+  Creation Timestamp:  2020-07-14T17:27:32Z
   Generation:          1
-  Resource Version:    6847
-  Self Link:           /apis/lighthouse.submariner.io/v1/namespaces/submariner-operator/multiclusterservices/nginx-demo-ns-default-src-cluster2
-  UID:                 9db7759c-7ff8-11ea-85a3-0242ac110006
+  Resource Version:    2790
+  Self Link:           /apis/lighthouse.submariner.io/v2alpha1/namespaces/submariner-operator/serviceimports/nginx-default-cluster2
+  UID:                 4cbe1c2b-c5f7-11ea-9bbe-0242ac110009
 Spec:
-  Cluster Service Info:
-    Cluster Domain:  
-    Cluster ID:      cluster2       ==========> ClusterID of cluster where service is running
-    Service IP:      100.92.243.156 ==========> ServiceIP or GlobalIP of service you're trying to access
-Events:              <none>
+  Ports:                    <nil>
+  Session Affinity:
+  Session Affinity Config:  <nil>
+  Type:                     SuperclusterIP
+Status:
+  Clusters:
+    Cluster:  cluster2 ==========> ClusterID of cluster where service is running
+    Ips:
+      100.92.43.63     ==========> ServiceIP or GlobalIP of service you're trying to access
+Events:  <none>
 ```
 
-If the data is not correct, you can manually edit the Multiclusterservice resource to set the correct IP as a workaround and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
-
-If it is correct, congratulations - you've found a new [issue](https://github.com/submariner-io/lighthouse/issues).
+If the data is not correct, you can manually edit the ServiceImport resource to set the correct IP as a workaround and create an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
