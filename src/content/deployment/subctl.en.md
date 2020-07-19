@@ -96,38 +96,37 @@ broker-info file.
 
 `subctl show networks [flags]`
 
-The `show networks` command inspects the cluster and reports information related to Submariner, like the
-detected network plugin, and the detected Cluster and Service CIDRs.
+Inspects the cluster and reports information about the detected network plugin and detected Cluster and Service CIDRs.
 
 #### show versions
 
 `subctl show versions [flags]`
 
-The `show versions` command shows the version and repository of the submariner components in the cluster.
+Shows the version and image repository of each Submariner component in the cluster.
 
 #### show gateways
 
 `subctl show gateways [flags]`
 
-The `show gateways` command shows summary information about the submariner gateways in the cluster.
+Shows summary information about the Submariner gateways in the cluster.
  
 #### show connections
 
 `subctl show connections [flags]`
 
-The `show connections` command shows information about submariner endpoint connections with other cluster
+Shows information about the Submariner endpoint connections with other clusters.
 
 #### show endpoints
 
 `subctl show endpoints [flags]`
 
-The `show endpoints` command shows information about submariner endpoints in the cluster.
+Shows information about the Submariner endpoints in the cluster.
 
 #### show all
 
 `subctl show all [flags]`
 
-The `show all` command shows the information from all other show commands.
+Shows the aggregated information from all the other show commands.
 
 #### show flags
 
