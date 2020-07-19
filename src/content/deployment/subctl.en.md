@@ -89,14 +89,45 @@ broker-info file.
 | `--repository` `<string>`               | The repository from where the various submariner images will be sourced. (default "quay.io/submariner")
 | `--version` `<string>`                  | Image version
 
-### info
+### show
 
-`subctl info [flags]`
+#### show networks
 
-The `info` command inspects the cluster and reports information related to Submariner, like the
-detected network plugin, and the detected Cluster and Service CIDRs.
+`subctl show networks [flags]`
 
-#### info flags
+Inspects the cluster and reports information about the detected network plugin and detected Cluster and Service CIDRs.
+
+#### show versions
+
+`subctl show versions [flags]`
+
+Shows the version and image repository of each Submariner component in the cluster.
+
+#### show gateways
+
+`subctl show gateways [flags]`
+
+Shows summary information about the Submariner gateways in the cluster.
+ 
+#### show connections
+
+`subctl show connections [flags]`
+
+Shows information about the Submariner endpoint connections with other clusters.
+
+#### show endpoints
+
+`subctl show endpoints [flags]`
+
+Shows information about the Submariner endpoints in the cluster.
+
+#### show all
+
+`subctl show all [flags]`
+
+Shows the aggregated information from all the other show commands.
+
+#### show flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
