@@ -75,7 +75,8 @@ projects require, you will need to create a pre-release (for example `v0.5.0-pre
 
 2) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
 
-3) Commit the change, create a pull request and merge it.
+3) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
+   projects as well. After the tests successfully complete, have it merged.
 
 ### Step 1: Create release for the `shipyard` project
 
@@ -101,7 +102,7 @@ go mod tidy
 exit
 ```
 
-3) Commit the changes, create a pull request and merge it.
+3) Commit the changes, create a pull request, and have it merged.
 
 4) Navigate to [releases](https://github.com/submariner-io/admiral/releases) and create the release for the new version.
 
@@ -122,7 +123,7 @@ go mod vendor
 go mod tidy
 ```
 
-3) Commit the changes, create a pull request and merge it.
+3) Commit the changes, create a pull request, and have it merged.
 
 4) Navigate to the project's releases page and create the release for the new version.
 
@@ -163,7 +164,7 @@ DefaultSubmarinerOperatorVersion = "0.5.0"
 DefaultSubmarinerVersion         = "0.5.0"
 DefaultLighthouseVersion         = "0.5.0"
 ```
-3) Commit the changes, create a pull request and merge it.
+3) Commit the changes, create a pull request, and have it merged.
 
 4) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
    new version.
@@ -181,11 +182,12 @@ Update the dapper base image to pull in the latest `subctl` binary:
 
 1) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
 
-2) Commit the change, create a pull request and merge it.
+2) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
+   projects as well. After the tests successfully complete, have it merged.
 
 ### Step 6: Add release notes
  
-If this is a final release, add a section for it on this website's [release notes](../..//releases/) page.
+If this is a final release, add a section for it on this website's [release notes](../../releases/) page.
 
 1) Clone the [submariner-website](https://github.com/submariner-io/submariner-website) project.
 
