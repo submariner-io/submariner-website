@@ -61,9 +61,12 @@ simpler:
 7) Click `Publish release`.
 
 For most projects a GitHub action job will be initiated to build release artifacts and publish to Quay. This will take
-several minutes. You can monitor the progress from the project's main page. A small yellow circle should be present to
-the right of the heading above the file listing which indicates it's in progress. You can click it to see details. When
-complete, it will change to either a green check mark or a red X.
+several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down above the
+file listing heading, select the tag for the new version. A small yellow circle icon should be present to the right of the
+file listing heading which indicates a job is in progress. You can click it to see details. There should be several checks
+for the job listed but the important one is `Release Images`. When complete, the indicator icon will change to either a
+green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
+which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
 ### Step 0: Create a `subctl` pre-release, optional
 
