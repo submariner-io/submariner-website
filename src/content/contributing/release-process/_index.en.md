@@ -150,7 +150,6 @@ For `lighthouse`:
 ```
 make shell
 go get github.com/submariner-io/shipyard@v0.5.0
-go get github.com/submariner-io/admiral@v0.5.0
 go get github.com/submariner-io/submariner@v0.5.0
 go get github.com/submariner-io/lighthouse@v0.5.0
 go mod vendor
@@ -185,7 +184,19 @@ Update the dapper base image to pull in the latest `subctl` binary:
 2) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
    projects as well. After the tests successfully complete, have it merged.
 
-### Step 6: Add release notes
+### Step 6: Unpin the `shipyard` dapper base image version
+
+At this point the new product release has been successfully created however we don't want to leave each downstream 
+project pinned to the new `shipyard` dapper base image version. For ongoing development we want each project to
+automatically pick up the latest changes to the base image.
+
+For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operator`:
+
+1) Edit `Dockerfile.dapper` and, on the first line, change the `shipyard-dapper-base` image version back to `devel`.
+
+2) Commit the changes, create a pull request, and have it merged.
+
+### Step 7: Add release notes
  
 If this is a final release, add a section for it on this website's [release notes](../../releases/) page.
 
@@ -193,16 +204,16 @@ If this is a final release, add a section for it on this website's [release note
 
 2) Open `src/content/releases/_index.en.md` and make changes.
 
-3) Commit the changes and create a pull request.
+3) Commit the changes, create a pull request, and have it reviewed and merged.
 
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md)
  
-### Step 7: Verify the release
+### Step 8: Verify the release
 
 You can follow any of the [quick start guides](../../quickstart).
 
-### Step 8: Announce the release
+### Step 9: Announce the release
 
 #### Via E-Mail
 
