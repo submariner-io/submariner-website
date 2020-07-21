@@ -5,6 +5,30 @@ pre = "<b>5. </b>"
 weight = 25
 +++
 
+## v0.5.0 Lighthouse service discovery alignment
+
+> This release mainly focused on continuing the alignment of Lighthouse's service discovery support with the [Kubernetes Multicluster
+> Services KEP][MCS KEP].
+
+* **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
+  - The `MultiClusterService` resource has been replaced by `ServiceImport`.
+  - The `ServiceExport` resource is now updated with status information as lifecycle events occur.
+* **Lighthouse** now allows a `ServiceExport` resource to be created prior to the associated `Service`.
+* Network discovery was moved from `subctl` to the Submariner operator.
+* Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
+  `show endpoints`, and `show gateways`.
+* The `subctl info` command has been removed in lieu of the new `show networks` command.
+* The **Globanet** configuration has been moved from the _broker-info.subm_ file to a `ConfigMap` resource stored on the
+  broker cluster. Therefore, the new `subctl` cannot be used on brownfield **Globalnet** deployments where this information
+  was stored as part of _broker-info.subm_.
+* `subctl` now supports joining multiple clusters in parallel without having to explicitly specify the `globalnet-cidr` for the
+  cluster to work around this issue. The `globalnet-cidr` will automatically be allocated by `subctl` for each cluster.
+* The separate `--operator-image` parameter has been removed from `subctl join` and the `--repository` and `--version`
+  parameters are now used for all images.
+* The Submariner operator status now includes `Gateway` information.
+* Closed technical requirements for Submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
+  and source code linting.
+  
 ## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
 
 > This release is mainly focused on Submariner's Libreswan cable driver implementation, as well
