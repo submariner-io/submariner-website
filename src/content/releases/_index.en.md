@@ -18,7 +18,7 @@ weight = 25
 * Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
   `show endpoints`, and `show gateways`.
 * The `subctl info` command has been removed in lieu of the new `show networks` command.
-* The **Globanet** configuration has been moved from the _broker-info.subm_ file to a `ConfigMap` resource stored on the
+* The **Globalnet** configuration has been moved from the _broker-info.subm_ file to a `ConfigMap` resource stored on the
   broker cluster. Therefore, the new `subctl` cannot be used on brownfield **Globalnet** deployments where this information
   was stored as part of _broker-info.subm_.
 * `subctl` now supports joining multiple clusters in parallel without having to explicitly specify the `globalnet-cidr` for the
@@ -28,7 +28,7 @@ weight = 25
 * The Submariner operator status now includes `Gateway` information.
 * Closed technical requirements for Submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
   and source code linting.
-  
+
 ## v0.4.0 Libreswan cable driver, Kubernetes multicluster service discovery
 
 > This release is mainly focused on Submariner's Libreswan cable driver implementation, as well
@@ -40,7 +40,7 @@ weight = 25
    - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
      exported to participant clusters.
    - Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
-* **Globanet** overlapping CIDR support improvements and bug fixes.
+* **Globalnet** overlapping CIDR support improvements and bug fixes.
 * Multiple **CI** improvements implemented from Shipyard.
 * CI tests are now run via **[GitHub Actions](https://github.com/submariner-io/submariner/actions)**.
 * Submariner-operator now completely handles the Lighthouse deployment via the `ServiceDiscovery` CRD.
