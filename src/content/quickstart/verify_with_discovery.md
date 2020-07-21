@@ -5,12 +5,7 @@ To verify the deployment follow the steps below.
 export KUBECONFIG=cluster-b/auth/kubeconfig
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
 kubectl -n default expose deployment nginx --port=8080
-kubectl -n default apply -f - <<EOF
-apiVersion: lighthouse.submariner.io/v2alpha1
-kind: ServiceExport
-metadata:
-  name: nginx
-EOF
+subctl export service --namespace default nginx
 ```
 
 **NOTE**: The `ServiceExport` resource must be created in the same namespace as the Service you're trying to export. In the example above, `nginx` is created in `default` so we create the `ServiceExport` resource in `default` as well.
