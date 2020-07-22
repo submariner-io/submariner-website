@@ -33,7 +33,6 @@ And generate the `broker-info.subm` file which contains the following elements:
 * A CA certificate for the API endpoint.
 * The Service Account token for accessing the API endpoint.
 * A random IPsec PSK which will be stored only in this file.
-* Globalnet settings.
 * Service Discovery settings.
 
 
