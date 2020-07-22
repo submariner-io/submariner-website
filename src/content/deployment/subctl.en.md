@@ -46,6 +46,22 @@ to connect clusters to the Broker. This file contains the following details:
 |`--globalnet-cidr-range` `<string>` | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
 |`--ipsec-psk-from` `<string>`       | Import IPSEC PSK from existing Submariner broker file, like broker-info.subm (default "broker-info.subm)
 
+### export
+
+#### export service
+
+`subctl export service [flags] <name>` creates a `ServiceExport` resource for the given Service name. This makes the corresponding Service discoverable from other clusters in the Submariner deployment.
+
+#### export service flags
+
+| Flag                         | Description
+|:-----------------------------|:----------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
+| `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--namespace` `<string>`     | Namespace in which the Service to be exported belongs
+
+If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
+
 ### join
 
 `subctl join broker-info.subm [flags]`
