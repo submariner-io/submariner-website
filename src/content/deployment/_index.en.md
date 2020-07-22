@@ -49,4 +49,4 @@ For each cluster you want to join, issue the following command:
 subctl join --kubeconfig <PATH-TO-JOINING-CLUSTER> broker-info.subm --clusterid <ID>
 ```
 
-subctl will automatically discover as much as it can, and prompt the user for any missing necessary information. Note that the each cluster must be configured with a unique 'clusterid' value.
+subctl will automatically discover as much as it can, and prompt the user for any missing necessary information. Note that each cluster must be configured with a unique 'clusterid' value.
