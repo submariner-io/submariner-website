@@ -7,7 +7,7 @@ pre: "<b>2. </b>"
 
 Submariner provides an [Operator](https://github.com/submariner-io/submariner-operator), a Go-based Kubernetes custom controller, for easy API-based installation and management. A command line utility, *subctl*, wraps the Operator to aid users with manual deployments and easy experimentation. subctl greatly automates and simplifies the deployment of Submariner, and is therefore the recommended deployment method. For complete information about subctl, please refer to [this page](subctl). 
 
-In addition to Operator and Helm, Submariner also provides [Helm Charts](helm).
+In addition to Operator and subctl, Submariner also provides [Helm Charts](helm).
 
 ## Installing subctl
 
