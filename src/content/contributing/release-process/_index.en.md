@@ -23,7 +23,7 @@ The Docker image dependency hierarchy flow is as follows:
 
 `subctl binary` <- `shipyard dapper base image` <- `[admiral, submariner, lighthouse, submariner-operator]`
 
-The dapper base image that is provided by `shipyard` for building and E2E tests in all of the other projects pulls in the
+The Dapper base image that is provided by `shipyard` for building and E2E tests in all of the other projects pulls in the
 `subctl` binary.
  
 ## Release versions
@@ -70,7 +70,7 @@ which case select the failed check, inspect the logs, correct the issue and re-r
 
 ### Step 0: Create a `subctl` pre-release, optional
 
-Since `subctl` is provided by `shipyard`'s dapper base image, if there are specific changes to `subctl` which other
+Since `subctl` is provided by `shipyard`'s Dapper base image, if there are specific changes to `subctl` which other
 projects require, you will need to create a pre-release (for example `v0.5.0-pre0`) of the `submariner-operator` project: 
 
 1) Navigate to the [releases](https://github.com/submariner-io/submariner-operator/releases) page and create the release
@@ -84,7 +84,7 @@ projects require, you will need to create a pre-release (for example `v0.5.0-pre
 ### Step 1: Create release for the `shipyard` project
 
 Navigate to the [releases](https://github.com/submariner-io/shipyard/releases) page and create the release with the new
-version. This will initiate a job to build the dapper base image. Once successfully completed, the generated image
+version. This will initiate a job to build the Dapper base image. Once successfully completed, the generated image
 version (`0.5.0`) should be available on Quay here: 
 
 > https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags
@@ -92,7 +92,7 @@ version (`0.5.0`) should be available on Quay here:
 
 ### Step 2: Create release for the `admiral` project
 
-1) Pin the `shipyard` dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
+1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
    the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
 
 2) Update the _go.mod_ and _go.sum_ references for `shipyard` to the new version:
@@ -113,7 +113,7 @@ exit
 
 These can be done in any order or in parallel and the process is the same.
 
-1) Pin the `shipyard` dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
+1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
    the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
 
 2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
@@ -145,7 +145,7 @@ For `lighthouse`:
 
 ### Step 4: Create release for the `submariner-operator` project
 
-1) Pin the `shipyard` dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
+1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
    the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
    
 2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
@@ -180,17 +180,17 @@ main [releases](https://github.com/submariner-io/submariner-operator/releases) p
  
 ### Step 5: Update `subctl` version in `shipyard`
 
-Update the dapper base image to pull in the latest `subctl` binary:
+Update the Dapper base image to pull in the latest `subctl` binary:
 
 1) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
 
 2) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
    projects as well. After the tests successfully complete, have it merged.
 
-### Step 6: Unpin the `shipyard` dapper base image version
+### Step 6: Unpin the `shipyard` Dapper base image version
 
 At this point the new product release has been successfully created however we don't want to leave each downstream 
-project pinned to the new `shipyard` dapper base image version. For ongoing development we want each project to
+project pinned to the new `shipyard` Dapper base image version. For ongoing development we want each project to
 automatically pick up the latest changes to the base image.
 
 For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operator`:
