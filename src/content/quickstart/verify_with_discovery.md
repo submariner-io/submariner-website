@@ -1,5 +1,6 @@
 ####  Verify Deployment
-To verify the deployment follow the steps below.
+To verify the deployment follow the steps below which creates an nginx service and
+ServiceExport for it.
 
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
