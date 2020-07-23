@@ -64,12 +64,6 @@ kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 -n default apply -f
 subctl export service --namespace default nginx
 ```
 
-{{% notice info %}}
-
-The `ServiceExport` resource must be created in the same namespace as the Service you're trying to export. In the example above, `nginx` is created in `default` so we create the `ServiceExport` resource in `default` as well.
-
-{{% /notice %}}
-
 #### Perform automated verification
 You can also perform automated verifications of service discovery via the `subctl verify` command.
 

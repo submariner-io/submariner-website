@@ -8,8 +8,6 @@ kubectl -n default expose deployment nginx --port=8080
 subctl export service --namespace default nginx
 ```
 
-**NOTE**: The `ServiceExport` resource must be created in the same namespace as the Service you're trying to export. In the example above, `nginx` is created in `default` so we create the `ServiceExport` resource in `default` as well.
-
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
 kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash

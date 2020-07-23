@@ -58,7 +58,7 @@ If you are able to connect to remote service by using ServiceIP or globalIp, but
 This is good time to familiarize yourself with [Service Discovery Architecture](../architecture/service-discovery/) if you haven't already.
 
 ##### Check ServiceExport for your Service
-For a Service to be accessible across clusters, you must first create a `ServiceExport` resource. Make sure the `ServiceExport` resource exists and has the same name and namespace as the Service you're trying to export. If it exists, check if the status of ServiceExport is `Exported'. If not, check the status and the message to know the exact reason.
+For a Service to be accessible across clusters, you must first export the Service via `subctl` which create a `ServiceExport` resource. Ensure the `ServiceExport` resource exists and check if its status condition indicates `Exported'. Otherwise, its status condition will indicate the reason it wasn't exported.
 
 ```kubectl get serviceexport -n <service-namespace> <service-name>```
 
