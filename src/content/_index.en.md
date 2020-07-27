@@ -33,22 +33,6 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 
 </style>
 
-## Demos
-<div class="mygrid">
-  <div>
-    <div> {{< youtube fMhZRNn0fxQ >}}</div>
-    <h5> Connecting Pods and Services across Clusters</h5>
-  </div>
-  <div>
-    <div> {{< youtube cInmBXuZsU8 >}}</div>
-    <h5> Deploying Submariner with subctl</h5>
-  </div>
-  <div>
-    <div> {{< youtube tXsemQPNhyQ >}}</div>
-    <h5> Cross-cluster Service Discovery</h5>
-  </div>
-</div>
-
 {{% notice tip %}}
 Check the [Quickstart guide](./quickstart/) section for deployment instructions.
 {{% /notice %}}
