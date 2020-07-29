@@ -13,7 +13,7 @@ subctl export service --namespace default nginx
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
 kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
-curl nginx.default.svc.supercluster.local:8080
+curl nginx.default.svc.clusterset.local:8080
 ```
 
 #### Perform automated verification

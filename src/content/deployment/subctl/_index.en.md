@@ -175,7 +175,7 @@ The `connectivity` suite verifies dataplane connectivity across the clusters for
 
 and between gateway and non-gateway node combinations.
 
-The `service-discovery` suite verifies dns discovery of `<service>.<namespace>.svc.supercluster.local` entries across the clusters.
+The `service-discovery` suite verifies dns discovery of `<service>.<namespace>.svc.clusterset.local` entries across the clusters.
 
 The `gateway-failover` suite verifies the continuity of cross-cluster dataplane connectivity after a gateway failure in a cluster occurs.
 This suite requires a single gateway configured on `ClusterA` and other available worker nodes capable of serving as gateways. Please note
