@@ -22,8 +22,8 @@ Details of past releases are described [here](../releases).
 * Support for more network plugins (OVN, Calico, others)
 * Globalnet: annotating Global IPs per namespaces
 * Globalnet: only annotate Services for which a ServiceExport has been created
-* More tunnel encapsulation options 
-* Dynamic routing with BGP to support multi-path forwarding across gateways 
+* More tunnel encapsulation options
+* Dynamic routing with BGP to support multi-path forwarding across gateways
 * Testing with multi-cluster Istio
 
 ## How You Can Help

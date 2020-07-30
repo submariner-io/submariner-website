@@ -4,14 +4,14 @@ weight = 2
 +++
 
 The Gateway Engine component is deployed in each participating cluster and
-is responsible for establishing secure tunnels to other clusters. 
+is responsible for establishing secure tunnels to other clusters.
 
 Instances of the Gateway Engine run on specifically designated nodes in a
 cluster of which there may be more than one for fault tolerance. There is
 only one active Gateway Engine instance at a time in a cluster. They
 perform a leader election process to determine the active instance and the
 others await in standby mode ready to take over should the active instance
-fail. 
+fail.
 
 The active Gateway Engine communicates with the central Broker to advertise
 its `Endpoint` and `Cluster` resources to the other clusters connected to the

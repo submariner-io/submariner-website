@@ -8,7 +8,7 @@ weight = 4
 Submariner is a tool built to connect overlay networks of different
 Kubernetes clusters. These clusters can be on different public clouds
 or on-premise. An important use case for Submariner is to connect disparate
-independent clusters into a single cohesive multi-cluster fleet. 
+independent clusters into a single cohesive multi-cluster fleet.
 
 However, by default, a limitation of submariner is that it doesn't handle
 overlapping CIDRs (ServiceCIDR and ClusterCIDR) across these clusters.

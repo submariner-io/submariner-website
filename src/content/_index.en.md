@@ -3,7 +3,7 @@ title: "Submariner"
 ---
 
 # Submariner
-#### Submariner enables direct networking between Pods and Services in different Kubernetes clusters, either on premise or in the cloud. 
+#### Submariner enables direct networking between Pods and Services in different Kubernetes clusters, either on premise or in the cloud.
 
 ## Why Submariner?
 
@@ -16,7 +16,7 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 
 * Cross-cluster L3 connectivity using encrypted VPN tunnels
 * [Service Discovery](./architecture/service-discovery/) across clusters
-* [subctl](./deployment/), a friendly deployment tool 
+* [subctl](./deployment/), a friendly deployment tool
 * Support for interconnecting clusters with [overlapping CIDRs](./architecture/globalnet/)
 
 <style>

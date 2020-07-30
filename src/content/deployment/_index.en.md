@@ -5,7 +5,7 @@ weight: 10
 pre: "<b>2. </b>"
 ---
 
-Submariner provides a Go-based Kubernetes custom controller, called an [Operator](https://github.com/submariner-io/submariner-operator), that provides easy API-based installation and management. A command line utility, *subctl*, wraps the Operator to aid users with manual deployments and easy experimentation. subctl greatly simplifies the deployment of Submariner, and is therefore the recommended deployment method. For complete information about subctl, please refer to [this page](subctl). 
+Submariner provides a Go-based Kubernetes custom controller, called an [Operator](https://github.com/submariner-io/submariner-operator), that provides easy API-based installation and management. A command line utility, *subctl*, wraps the Operator to aid users with manual deployments and easy experimentation. subctl greatly simplifies the deployment of Submariner, and is therefore the recommended deployment method. For complete information about subctl, please refer to [this page](subctl).
 
 In addition to Operator and subctl, Submariner also provides [Helm Charts](helm).
 
@@ -18,7 +18,7 @@ In addition to Operator and subctl, Submariner also provides [Helm Charts](helm)
 The Broker is a set of Custom Resource Definitions (CRDs) backed by the Kubernetes datastore. The Broker must be deployed on a cluster whose Kubernetes API is accessible by all of the participating clusters:
 
 ```bash
-subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER> 
+subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER>
 ```
 
 This will create:

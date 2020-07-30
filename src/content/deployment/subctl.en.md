@@ -124,7 +124,7 @@ Shows the version and image repository of each Submariner component in the clust
 `subctl show gateways [flags]`
 
 Shows summary information about the Submariner gateways in the cluster.
- 
+
 #### show connections
 
 `subctl show connections [flags]`
@@ -186,7 +186,7 @@ available worker nodes capable of serving as gateways. Please note that this ver
 | `--operation-timeout` `<value>`     | Operation timeout for K8s API calls (default 240)
 | `--report-dir` `<string>`           | XML report directory (default ".")
 | `--verbose`                         | Produce verbose logs during connectivity verification
-| `--only`                            | Comma separated list of specific verifications to perform 
+| `--only`                            | Comma separated list of specific verifications to perform
 | `--enable-disruptive`               | Enable verifications which are potentially disruptive to your deployment
 
 ### version

@@ -34,8 +34,8 @@ New contributors should be welcomed to the community by existing members,
 helped with PR workflow, and directed to relevant documentation and
 communication channels.
 
-We require every contributor to certify that they are legally permitted to contribute to our project. 
-A contributor expresses this by consciously signing their commits, 
+We require every contributor to certify that they are legally permitted to contribute to our project.
+A contributor expresses this by consciously signing their commits,
 and by this act expressing that they comply with the [Developer Certificate Of Origin](https://developercertificate.org/).
 
 ## Established Community Members
