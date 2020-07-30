@@ -15,7 +15,7 @@ weight: 10
 ### Use cluster-a as broker
 
 ```bash
-subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig 
+subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 ```
 
 

@@ -31,9 +31,9 @@ openshift-install create install-config --dir cluster-b
 ```
 
 
-Change the POD IP network, please note it’s a /14 range by default so you need to use 
+Change the POD IP network, please note it’s a /14 range by default so you need to use
 +4 increments for “128”, for example: 10.132.0.0, 10.136.0.0, 10.140.0.0, ...
- 
+
 ```bash
 sed -i 's/10.128.0.0/10.132.0.0/g' cluster-b/install-config.yaml
 ```

@@ -8,7 +8,7 @@ pre = "<b>8. </b>"
 
 ### Talk to Us!
 
-We would love to hear from you, how you are using Submariner, and what we can do to make it better. 
+We would love to hear from you, how you are using Submariner, and what we can do to make it better.
 
 #### [GitHub Project](https://github.com/submariner-io)
 

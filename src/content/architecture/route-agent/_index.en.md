@@ -6,7 +6,7 @@ weight = 3
 The Route Agent component runs on every worker node in each participating cluster. It is
 responsible for setting up VxLAN tunnels and routing the cross cluster traffic
 from the node to the cluster’s active Gateway Engine which subsequently sends the
-traffic to the destination cluster. 
+traffic to the destination cluster.
 
 When running on the same node as the active Gateway Engine, the Route Agent creates
 a VxLAN VTEP interface to which the Route Agent instances running on the other worker

@@ -78,7 +78,7 @@ Status:
 ##### Check Lighthouse CoreDNS Service
 All cross-cluster service queries are handled by Lighthouse CoreDNS server. First we check if the Lighthouse CoreDNS Service is running properly.
 
-```kubectl -n submariner-operator get service submariner-lighthouse-coredns``` 
+```kubectl -n submariner-operator get service submariner-lighthouse-coredns```
 
 If it is running fine, note down the `ServiceIP` for the next steps. If not, check the logs for an error.
 

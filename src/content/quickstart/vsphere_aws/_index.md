@@ -10,7 +10,7 @@ In this quickstart guide, we shall cover the necessary steps to deploy OpenShift
 
 Before we proceed, the following prerequisites have to be downloaded and added to your `$PATH:`
 
- 1. [openshift-installer](https://cloud.redhat.com/openshift/install/aws/installer-provisioned) 
+ 1. [openshift-installer](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
  2. [pull secret](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
  3. [oc](https://cloud.redhat.com/openshift/install/aws/installer-provisioned) tools
  4. [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
@@ -33,7 +33,7 @@ Assuming that you deployed the cluster (say, cluster-a) with default network con
 |10.128.0.0/14 |172.30.0.0/16 |
 
 Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes to preserve the source IP of the inter-cluster traffic.
-Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all the worker nodes. 
+Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all the worker nodes.
 
 |  Protocol  |  Port  |     Description                              |
 |------------|--------|----------------------------------------------|
@@ -74,7 +74,7 @@ openshift-install create install-config --dir cluster-b
 
 Change the Pod IP network. Please note it’s a /14 range by default so you need to use
 +4 increments for “128”, for example: 10.132.0.0, 10.136.0.0, 10.140.0.0, ...
- 
+
 ```bash
 sed -i 's/10.128.0.0/10.132.0.0/g' cluster-b/install-config.yaml
 ```
@@ -99,7 +99,7 @@ However, when you have some on-premise clusters (like vSphere in this example) w
 We can overcome this limitation by using non-standard ports like 4501/UDP and 501/UDP.
 
 Additionally, the default OpenShift deployments do not allow assigning an elastic public IP
-to existing worker nodes, something that's necessary at least on one end of the IPsec connections. 
+to existing worker nodes, something that's necessary at least on one end of the IPsec connections.
 
 To handle these requirements on AWS, we provide a script that will prepare your AWS OpenShift deployment
 for Submariner, and will create an additional gateway node with an external IP.
@@ -146,11 +146,11 @@ subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig --service-discovery
 ##### Join cluster-b (AWS) and cluster-a (vSphere) to the broker
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b --ikeport 501 --nattport 4501 
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b --ikeport 501 --nattport 4501
 ```
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a --ikeport 501 --nattport 4501 
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a --ikeport 501 --nattport 4501
 ```
 
 {{< include "quickstart/verify_with_discovery.md" >}}

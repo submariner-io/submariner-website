@@ -5,7 +5,7 @@ when using IPSEC. In addition we use port 4800/UDP to encapsulate traffic from t
 to the gateway nodes and ensuring that Pod IP addresses are preserved.
 
 Additionally, the default Openshift deployments don't allow assigning an elastic public IP
-to existing worker nodes, something that it's necessary at least on one end of the IPSEC connections. 
+to existing worker nodes, something that it's necessary at least on one end of the IPSEC connections.
 
 To handle all those details we provide a script that will prepare your AWS OpenShift deployment
 for submariner, and will create an additional gateway node with an external IP.
@@ -20,4 +20,4 @@ chmod a+x ./prep_for_subm.sh
 
 ```
 
-> **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **unzip** need to be installed before running the `prep_for_subm.sh` script. 
+> **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **unzip** need to be installed before running the `prep_for_subm.sh` script.
