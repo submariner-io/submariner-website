@@ -35,13 +35,11 @@ It also generates the `broker-info.subm` file which contains the following eleme
 * A random IPsec PSK which will be stored only in this file.
 * Service Discovery settings.
 
-
 {{% notice info %}}
 The cluster in which the Broker is deployed can also participate in the dataplane connectivity with other clusters, but it will need to be joined (see following step).
 {{% /notice %}}
 
 ## Joining clusters
-
 
 For each cluster you want to join, issue the following command:
 ```bash

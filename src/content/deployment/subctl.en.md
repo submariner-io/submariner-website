@@ -36,7 +36,6 @@ to connect clusters to the Broker. This file contains the following details:
 
 #### deploy-broker flags
 
-
 | Flag                               | Description
 |:-----------------------------------|:----------------------------------------------------------------------------|
 |`--kubeconfig` `<string>`           | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
@@ -70,7 +69,6 @@ The **join** command deploys the Submariner operator in a cluster using the sett
 The service account credentials needed for the new cluster to access the Broker cluster will be created and provided to the Submariner operator
 deployment. All the other settings like service discovery enablement and globalnet support are sourced from the
 broker-info file.
-
 
 #### join flags (general)
 
@@ -194,7 +192,6 @@ available worker nodes capable of serving as gateways. Please note that this ver
 `subctl version`
 
 Prints the version details for the subctl binary.
-
 
 ## Installation
 

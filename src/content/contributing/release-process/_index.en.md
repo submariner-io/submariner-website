@@ -7,9 +7,7 @@ weight: 10
 This section explains the necessary steps to make a submariner release.
 It is assumed that you are familiar with the submariner project and the various repositories.
 
-
 ## Step 1: Create a Submariner Release
-
 
 Assuming that you have an existing submariner git directory, the following steps create a release named "Globalnet Overlapping IP support RC0" with version v0.2.0-rc0 based on the master branch.
 
@@ -36,7 +34,6 @@ Verify that the build successfully completes as indicated by a green checkmark a
 > https://quay.io/repository/submariner/submariner?tab=tags
 
 <!-- TODO(mangelajo) https://github.com/submariner-io/submariner-website/issues/46 -->
-
 
 ## Step 2: Create a Lighthouse Release
 
@@ -71,7 +68,6 @@ Verify that the build successfully completes as indicated by a green checkmark a
 > https://quay.io/repository/submariner/lighthouse-agent?tab=tags
 > https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
 
-
 ## Step 3: Update the Operator Version References and Create a Release
 
 Once the other builds have finished and you have 0.2.0-rc0 release tags for the submariner and lighthouse projects, you can proceed with changes to the operator.
@@ -79,7 +75,6 @@ Once the other builds have finished and you have 0.2.0-rc0 release tags for the 
 ### Change Referenced Versions
 
 Edit the operator [versions](https://github.com/submariner-io/submariner-operator/edit/master/pkg/versions/versions.go) file and change the project version constants to reference the new release, "0.2.0-rc0".
-
 
 ```bash
 cd submariner-operator
@@ -93,9 +88,7 @@ GO111MODULES=on go get github.com/submariner-io/submariner@v0.2.0-rc0
 git push my-repo update-references-to-v0.2.0-rc0
 ```
 
-
 Create a pull request, wait for the CI job to pass, and get approval/merge. See an example PR [here](https://github.com/submariner-io/submariner-operator/pull/276)
-
 
 ### Create a Submariner-Operator Release
 
@@ -124,7 +117,6 @@ At this point the images tagged with 0.2.0-rc0 will be available [here](https://
 
 > https://quay.io/repository/submariner/submariner-operator?tab=tags
 
-
 ### Verify the Subctl Binaries Release
 
 At this point, you should see subctl binaries generated and listed for the various platforms under the release
@@ -139,7 +131,6 @@ Update the release notes.
 If this is a pre-release, mark the checkbox "This is a pre-release".
 
 If this is not a pre-release update [the release notes on the website](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md).
-
 
 ## Step 4: Verify the Version
 

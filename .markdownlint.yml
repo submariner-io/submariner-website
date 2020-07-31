@@ -1,6 +1,5 @@
 line-length: false
 no-bare-urls: false
-no-multiple-blanks: false
 ul-style: false
 ul-indent: false
 blanks-around-fences: false

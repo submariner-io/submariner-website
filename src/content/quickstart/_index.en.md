@@ -20,7 +20,6 @@ The broker must be deployed on a single Kubernetes cluster. This cluster’s API
 ### The Submariner Deployment on a Cluster
 Once submariner is deployed on a cluster with the proper credentials to the broker it will exchange Cluster and Endpoint objects with other clusters (via push/pull/watching), and start forming connections and routes to other clusters.
 
-
 ## Prerequisites
 
 Submariner has a few requirements to get started:
@@ -46,8 +45,6 @@ An example of three clusters configured to use with Submariner (without GlobalNe
 | west         | vSphere  | 10.0.0.0/16  | 10.1.0.0/16  | 192.168.1.0/24     |
 | east         | OnPrem   | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
 
-
-
 ## Support Matrix
 
 Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner has been tested with and known to be working properly with the following cloud environments:
@@ -72,13 +69,11 @@ Presently, Submariner has been tested with the following CNI Plugins that levera
 * [Flannel](https://github.com/coreos/flannel)
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
 
-
 ## Deployment
 
 The available methods for deployment are:
 * [subctl](../deployment) (+ submariner-operator).
 * [helm charts](../deployment/helm).
-  
   
 The community recommends the use of **_subctl_**, because it simplifies most of the
 manual steps required for deployment, as well as verification of connectivity between the clusters. In the _future_ it may provide additional capabilities like:
@@ -89,7 +84,6 @@ manual steps required for deployment, as well as verification of connectivity be
 * Configuration updates
 * Maintenance and debugs tasks
 * Wrapping of logs for support tasks.
-
 
 To deploy submariner with **subctl** please follow the [deployment](../deployment) guide.
 If **helm** fits better your deployment methodologies, please find the details [here](../deployment/helm)
