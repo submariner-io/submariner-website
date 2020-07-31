@@ -77,7 +77,7 @@ broker-info file.
 | `--cable-driver` `<string>`        | Cable driver implementation (defaults to strongswan -IPSec-)
 | `--clusterid` `<string>`           | Cluster ID used to identify the tunnels. Every cluster needs to have a unique cluster ID, if not provided `subctl` will prompt the admin for a cluster ID.
 | `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, subctl will try to discover it and, if unable to do so, it will prompt the user.
-| `--no-label `                      | Skip gateway labeling. This disables the prompt for a worker node to use as gateway.
+| `--no-label`                       | Skip gateway labeling. This disables the prompt for a worker node to use as gateway.
 | `--subm-debug`                     | Enable Submariner debugging (verbose logging)
 
 #### join flags (globalnet)

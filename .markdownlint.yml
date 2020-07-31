@@ -10,7 +10,6 @@ no-duplicate-header: false
 no-trailing-punctuation: false
 header-start-left: false
 single-trailing-newline: false
-no-space-in-code: false
 header-increment: false
 ol-prefix: false
 single-h1: false

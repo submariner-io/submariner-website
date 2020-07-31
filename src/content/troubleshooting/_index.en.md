@@ -18,7 +18,7 @@ Before we begin troubleshooting, run `subctl version` to obtain which version of
 
 Run `kubectl get services -n <service-namespace> | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **GlobalNet** is enabled, you will also need the *globalIp* of the service by running
 
-``` kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}' ```
+```kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'```
 
 <!---
 ### Deployment Issues
