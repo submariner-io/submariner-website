@@ -63,6 +63,7 @@ For a Service to be accessible across clusters, you must first export the Servic
 ```kubectl get serviceexport -n <service-namespace> <service-name>```
 
 Sample output:
+
 ```
 apiVersion: lighthouse.submariner.io/v2alpha1
 kind: ServiceExport
@@ -111,6 +112,7 @@ In the output look for something like this:
         forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in previous section
     }
 ```
+
 If the entries highlighted above are missing or `ServiceIp` is incorrect, it means CoreDNS wasn't configured correctly. It can be fixed by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
 
 ##### Check submariner-lighthouse-agent

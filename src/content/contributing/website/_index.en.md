@@ -13,6 +13,7 @@ You can always click the **Edit this page** link at the top right of each page, 
 1. Fork the [submariner-io/submariner-website](https://github.com/submariner-io/submariner-website/fork) on GitHub.
 
 2. Checkout your copy locally:
+
 ```bash
 git clone ssh://git@github.com/<your-user>/submariner-website.git
 cd submariner-website

@@ -20,6 +20,7 @@ The script accepts several flags:
 * **[no]cache:** Turns the caching on (or off).
 
 For example, to build the submariner image use:
+
 ```bash
 ${SCRIPTS_DIR}/build_image.sh -i submariner -f package/Dockerfile
 ```
@@ -33,15 +34,20 @@ The settings are sent to supporting scripts using a `--cluster_settings` flag.
 
 Currently, the following settings are supported:
 * **clusters:** An array of the clusters to deploy.
+
   ```bash
   clusters=(cluster1,cluster2)
   ```
+
 * **cluster_nodes:** A map of cluster names to a space separated string, representing a list of nodes to deploy. Supported values are `control-plane` and `worker`.
+
   ```bash
   cluster_nodes[cluster1]="control-plane worker"
   cluster_nodes[cluster2]="control-plane worker worker"
   ```
+
 * **cluster_subm:** A map of cluster names to values specifying if Submariner should be installed. Set to `true` to have Submariner installed, or to `false` to skip the installation.
+
   ```bash
   cluster_subm[cluster1]="false"
   cluster_subm[cluster2]="true"
@@ -65,6 +71,7 @@ CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/path/to/cluster_sett
 CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
 DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG)
 ```
+
 The path to `cluster_settings` should be specified relative to the project root; this ends up available in the build container in the directory referenced by `$DAPPER_SOURCE`.
 
 ### Clusters Deployment Customization
@@ -73,10 +80,13 @@ It's possible to supply extra flags when calling `make clusters` via a make vari
 
 Flags of note:
 * **k8s_version:** Allows to specify the K8s version that [KIND](https://kind.sigs.k8s.io/) will deploy. Available versions can be found [here](https://hub.docker.com/r/kindest/node/tags).
+
   ```bash
   make clusters CLUSTERS_ARGS='--k8s_version 1.18.0'
   ```
+
 * **globalnet:** When set, deploys the clusters with overlapping Pod & Service CIDRs to simulate this scenario.
+
   ```bash
   make clusters CLUSTERS_ARGS='--globalnet'
   ```
@@ -89,18 +99,25 @@ Since `deploy` relies on `clusters` then effectively you could also specify `CLU
 
 Flags of note:
 * **deploytool:** Specifies the deployment tool to use: `operator` (default) or `helm`.
+
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator'
   ```
+
 * **deploytool_broker_args:** Any extra arguments to pass to the deploy tool when deploying the broker.
+
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator --deploytool_broker_args "--service-discovery"'
   ```
+
 * **deploytool_submariner_args:** Any extra arguments to pass to the deploy tool when deploying Submariner.
+
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator --deploytool_submariner_args "--cable-driver wireguard"'
   ```
+
 * **globalnet:** When set, deploys Submariner with the globalnet controller, and assigns a unique Global CIDR to each cluster.
+
   ```bash
   make deploy DEPLOY_ARGS='--globalnet'
   ```
@@ -118,6 +135,7 @@ endif
 ```
 
 In such a case, the call to deploy the environment would look like this:
+
 ```
 make deploy [deploytool=operator]
 ```
