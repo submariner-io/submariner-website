@@ -12,6 +12,7 @@ this topic can be found in the [Architecture](../architecture) section.
 
 ### The Broker
 The broker is an API to which all participating clusters are given access and where two objects are exchanged via CRDs:
+
 * Cluster(.submariner.io): defines a participating cluster and its IP CIDRs.
 * Endpoint(.submariner.io): defines a connection endpoint to a Cluster, and the reachable cluster IPs from the endpoint.
 
@@ -25,16 +26,10 @@ Once submariner is deployed on a cluster with the proper credentials to the brok
 Submariner has a few requirements to get started:
 
 * At least **2 Kubernetes** clusters, one of which is designated to serve as the central broker that is accessible by all of your connected clusters; this can be one of your connected clusters, but comes with the limitation that the cluster is required to be up to facilitate interconnectivity/negotiation.
-
 * **Non-overlapping** Service and Pod CIDRs between clusters. This is to prevent routing conflicts. For cases where addresses **do overlap**, [GlobalNet](../architecture/globalnet) can be set up.
-<!-- This is not true yet, but eventually will be: (as well as different Kubernetes DNS suffixes).
--->
 * **IP reachability between the gateway nodes**. When connecting two clusters, at least one of the clusters should have a publicly routable IP address designated to the gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that block the default ports, Submariner also supports NAT Traversal (NAT-T) with the option to set custom non-standard ports like 4501/UDP and 501/UDP.
-
 * We use port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes and ensuring that Pod IP addresses are preserved. Ensure that firewall configuration allows 4800/UDP across all the worker nodes.
-
 * Knowledge of each cluster's network configuration.
-
 * Worker node IPs on all connected clusters must be outside of the Pods/Service CIDR ranges.
 
 An example of three clusters configured to use with Submariner (without GlobalNet) would look like the following:
@@ -72,6 +67,7 @@ Presently, Submariner has been tested with the following CNI Plugins that levera
 ## Deployment
 
 The available methods for deployment are:
+
 * [subctl](../deployment) (+ submariner-operator).
 * [helm charts](../deployment/helm).
   

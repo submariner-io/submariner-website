@@ -2,7 +2,6 @@ line-length: false
 no-bare-urls: false
 ul-indent: false
 first-line-heading: false
-blanks-around-lists: false
 fenced-code-language: false
 no-inline-html: false
 blanks-around-headers: false
