@@ -27,4 +27,3 @@ Default output format [None]: text
 See also for more details:
 
 > https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html
-

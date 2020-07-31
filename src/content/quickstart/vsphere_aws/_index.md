@@ -67,7 +67,6 @@ In this step we shall modify the default Cluster/Service CIDRs and deploy cluste
 |--------------|--------------|
 |10.132.0.0/14 |172.31.0.0/16 |
 
-
 ```bash
 openshift-install create install-config --dir cluster-b
 ```

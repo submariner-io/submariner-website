@@ -14,7 +14,6 @@ This step will create a cluster named "cluster-a" with the default IP CIDRs.
 |--------------|--------------|
 |10.128.0.0/14 |172.30.0.0/16 |
 
-
 ```bash
 openshift-install create install-config --dir cluster-a
 ```
@@ -32,7 +31,6 @@ This step will create a cluster named "cluster-b" with the default IP CIDRs.
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
 |10.128.0.0/14 |172.30.0.0/16 |
-
 
 ```bash
 openshift-install create install-config --dir cluster-b

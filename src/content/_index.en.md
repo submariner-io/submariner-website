@@ -11,7 +11,6 @@ As Kubernetes gains adoption, teams are finding they must deploy and manage mult
 
 Submariner is completely open source, and designed to be network plugin (CNI) agnostic.
 
-
 ## What Does Submariner Provide?
 
 * Cross-cluster L3 connectivity using encrypted VPN tunnels

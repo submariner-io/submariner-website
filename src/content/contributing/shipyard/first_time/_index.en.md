@@ -37,7 +37,6 @@ To build the base container image used in the shared developer and CI enviroment
 make dapper-image
 ```
 
-
 ### Makefile
 
 The project's Makefile should include targets to run everything in Dapper. These are defined in Shipyard's  [Makefile.dapper](https://github.com/submariner-io/shipyard/blob/master/Makefile.dapper) which can be copied as is into your project and included in the Makefile.

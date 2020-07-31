@@ -18,7 +18,6 @@ weight: 10
 subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 ```
 
-
 ### Join cluster-a and cluster-b to the broker
 
 ```bash

@@ -53,7 +53,6 @@ subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.sub
 
 You now have a Submariner environment that you can experiment with.
 
-
 ####  Verify Deployment
 To manually verify the deployment follow the steps below.
 

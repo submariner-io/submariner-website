@@ -24,4 +24,3 @@ make server
 4. Edit files in src. The browser should automatically reload so you can test your changes.
 
 5. Eventually commit, push, and pull-request your changes. You can find a good guide about the GitHub workflow [here](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
-

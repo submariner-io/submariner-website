@@ -59,7 +59,6 @@ In summary:
 6. Wrap the body at 72 characters
 7. Use the body to explain what and why vs how
 
-
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits

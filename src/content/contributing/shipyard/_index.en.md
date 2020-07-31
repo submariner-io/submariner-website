@@ -134,5 +134,4 @@ make dapper-image
 Respected variables:
 * **dapper_image_flags:** Any additional flags and values to be sent to the `build_image.sh` script.
 
-
 [Makefile.inc]: https://github.com/submariner-io/shipyard/blob/master/Makefile.inc

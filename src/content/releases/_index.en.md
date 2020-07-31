@@ -63,7 +63,6 @@ weight = 25
 * Operator and subctl are more robust via standard retries on updates.
 * Subctl creates a new **individual access token** for every new joined cluster.
 
-
 ## v0.2.0 Overlapping CIDR support
 
 > This release is focused on overlapping CIDR support between clusters
@@ -72,7 +71,6 @@ weight = 25
 * Enhanced e2e scripts, which will be shared between repositories in the shipyard project (ongoing work)
 * Improved e2e deployment by using a local registry.
 * Refactoring to support pluggable drivers (in preparation for [WireGuard](https://www.wireguard.com/) support)
-
 
 ## v0.1.1 Submariner with more light
 
@@ -108,7 +106,6 @@ weight = 25
 * stop storing IPSEC key on broker during deploy-broker, now it's only contained into the .subm file
 * version command for subctl
 * nicer spinners during deployment (thanks to kind)
-
 
 ## v0.0.3 -- KubeCon NA 2019
 
