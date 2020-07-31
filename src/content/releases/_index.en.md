@@ -11,8 +11,8 @@ weight = 25
 > Services KEP][MCS KEP].
 
 * **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
-  - The `MultiClusterService` resource has been replaced by `ServiceImport`.
-  - The `ServiceExport` resource is now updated with status information as lifecycle events occur.
+  * The `MultiClusterService` resource has been replaced by `ServiceImport`.
+  * The `ServiceExport` resource is now updated with status information as lifecycle events occur.
 * **Lighthouse** now allows a `ServiceExport` resource to be created prior to the associated `Service`.
 * Network discovery was moved from `subctl` to the Submariner operator.
 * Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
@@ -37,9 +37,9 @@ weight = 25
 
 * **Libreswan** IPsec cable driver is available for testing and is covered in Submariner's CI.
 * **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
-   - A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
+   * A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
      exported to participant clusters.
-   - Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
+   * Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
 * **Globalnet** overlapping CIDR support improvements and bug fixes.
 * Multiple **CI** improvements implemented from Shipyard.
 * CI tests are now run via **[GitHub Actions](https://github.com/submariner-io/submariner/actions)**.
