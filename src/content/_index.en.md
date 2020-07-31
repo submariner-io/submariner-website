@@ -18,20 +18,6 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 * [subctl](./deployment/), a friendly deployment tool
 * Support for interconnecting clusters with [overlapping CIDRs](./architecture/globalnet/)
 
-<style>
-.mygrid {  
-    display: grid;
-    grid-gap: 12px;  
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    grid-template-rows: repeat(2, 100px);  
-    padding-bottom: 5em;
-}
-.mygrid h5 {
-    text-align: center;
-}
-
-</style>
-
 {{% notice tip %}}
 Check the [Quickstart guide](./quickstart/) section for deployment instructions.
 {{% /notice %}}
