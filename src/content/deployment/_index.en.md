@@ -42,6 +42,7 @@ The cluster in which the Broker is deployed can also participate in the dataplan
 ## Joining clusters
 
 For each cluster you want to join, issue the following command:
+
 ```bash
 subctl join --kubeconfig <PATH-TO-JOINING-CLUSTER> broker-info.subm --clusterid <ID>
 ```

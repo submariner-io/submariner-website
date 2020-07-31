@@ -17,6 +17,7 @@ curl nginx.default.svc.supercluster.local:8080
 
 #### Perform automated verification
 This will perform all automated verification between your clusters
+
 ```bash
 subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
 ```
