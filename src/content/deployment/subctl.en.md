@@ -162,6 +162,7 @@ If running the command interactively, you will be prompted for confirmation to p
 verifications unless the `--enable-disruptive` flag is also specified. If running non-interactively (that is with no stdin), `--enable-disruptive` must be specified otherwise disruptive verifications are skipped.
 
 The `connectivity` suite verifies dataplane connectivity across the clusters for the following cases:
+
  * Pods (on gateways) to Services
  * Pods (on non-gateways) to Services
  * Pods (on gateways) to Pods

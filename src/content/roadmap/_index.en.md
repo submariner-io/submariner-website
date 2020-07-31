@@ -10,9 +10,11 @@ This is a preliminary community roadmap. It represents our best guess at broad p
 Details of past releases are described [here](../releases).
 
 ## v0.6.0
+
 * In progress: <https://github.com/orgs/submariner-io/projects/9>
 
 ## Future Releases
+
 * Auto detecting NAT vs non-NAT scenarios (https://github.com/submariner-io/submariner/issues/300)
 * Support different IPsec ports for each cluster
 * Measuring and improving High Availability for gateway-labeled nodes

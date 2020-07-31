@@ -12,6 +12,7 @@ Shipyard contains common functionality shared by other projects. Any project spe
 A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run tests in a consistent environment.
 
 Shipyard has several folders at the root of the project:
+
 * **package:** Contains the ingredients to build the base image.
 * **scripts:** Contains general scripts for Shipyard make targets.
   * **shared:** Contains all the shared scripts that projects can consume. These are copied into the base image under `$SCRIPTS_DIR`.
@@ -60,6 +61,7 @@ in the Shipyard directory. This creates a local image with your changes availabl
 ## Shared Makefile Targets
 
 Shipyard ships a [Makefile.inc] file which defines these basic targets:
+
 * **[clusters](#clusters):** Creates the KIND -based cluster environment.
 * **[deploy](#deploy)** : Deploys submariner components in the cluster environment (depends on clusters).
 * **[cleanup](#cleanup):** Deletes the KIND environment (if it exists) and any residual resources.
@@ -79,6 +81,7 @@ make clusters
 ```
 
 Respected variables:
+
 * **CLUSTERS_ARGS:** Any arguments (flags and/or values) to be sent to the `clusters.sh` script. To get a list of available arguments, run: `scripts/shared/clusters.sh --help`
 
 ### Deploy {#deploy}
@@ -90,6 +93,7 @@ make deploy
 ```
 
 Respected variables:
+
 * Any variable from [clusters](#clusters) target (only if it wasn't created).
 * **DEPLOY_ARGS:** Any arguments (flags and/or values) to be sent to the `deploy.sh` script. To get a list of available arguments, run: `scripts/shared/deploy.sh --help`
 
@@ -112,6 +116,7 @@ make release release_images="<image name>"
 ```
 
 Respected variables:
+
 * **QUAY_USERNAME, QUAY_PASSWORD:** Needed in order to log in to Quay.
 * **release_images:** One or more image names to release separated by spaces.
 * **release_tag:** A tag to use for the release (default is *latest*).
@@ -120,6 +125,7 @@ Respected variables:
 ## Specific Makefile Targets
 
 Shipyard has some project-specific targets which are used to build parts of the projects:
+
 * **[dapper-image](#dapper-image):** Builds the base image that can be used by other projects.
 * **validate:** Validates the go code that Shipyard provides, and the shared shell scripts.
 
@@ -132,6 +138,7 @@ make dapper-image
 ```
 
 Respected variables:
+
 * **dapper_image_flags:** Any additional flags and values to be sent to the `build_image.sh` script.
 
 [Makefile.inc]: https://github.com/submariner-io/shipyard/blob/master/Makefile.inc

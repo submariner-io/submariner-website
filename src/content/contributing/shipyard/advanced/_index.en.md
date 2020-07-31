@@ -13,6 +13,7 @@ To utilize an advanced feature in a project consuming Shipyard, a good practice 
 Shipyard ships an image building script `build_image.sh` which can be used to build the image(s) that you require. The script has built in caching capabilities to speed up local and pull request CI builds, by utilizing docker's ability to reuse layers from a cached image.
 
 The script accepts several flags:
+
 * **tag:** The tag to set for the local image (defaults to *dev*).
 * **repo:** The repo portion to use for the image name.
 * **image (-i):** The image name itself.
@@ -33,6 +34,7 @@ Shipyard supports specifying different settings for each deployed cluster. A def
 The settings are sent to supporting scripts using a `--cluster_settings` flag.
 
 Currently, the following settings are supported:
+
 * **clusters:** An array of the clusters to deploy.
 
   ```bash
@@ -79,6 +81,7 @@ The path to `cluster_settings` should be specified relative to the project root;
 It's possible to supply extra flags when calling `make clusters` via a make variable `CLUSTERS_ARGS` (or an environment variable with the same name). These flags affect how the clusters are deployed (and possibly influence how Submariner works).
 
 Flags of note:
+
 * **k8s_version:** Allows to specify the K8s version that [KIND](https://kind.sigs.k8s.io/) will deploy. Available versions can be found [here](https://hub.docker.com/r/kindest/node/tags).
 
   ```bash
@@ -98,6 +101,7 @@ It's possible to supply extra flags when calling `make deploy` via a make variab
 Since `deploy` relies on `clusters` then effectively you could also specify `CLUSTERS_ARGS` to control the cluster deployment (provided the cluster hasn't been deployed yet).
 
 Flags of note:
+
 * **deploytool:** Specifies the deployment tool to use: `operator` (default) or `helm`.
 
   ```bash
