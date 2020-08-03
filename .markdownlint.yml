@@ -10,5 +10,4 @@ header-start-left: false
 single-trailing-newline: false
 header-increment: false
 ol-prefix: false
-single-h1: false
 ul-start-left: false
