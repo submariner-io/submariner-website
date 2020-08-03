@@ -6,7 +6,7 @@ pre = "<b>8. </b>"
 +++
 
 
-### Talk to Us!
+### Talk to Us
 
 We would love to hear from you, how you are using Submariner, and what we can do to make it better.
 

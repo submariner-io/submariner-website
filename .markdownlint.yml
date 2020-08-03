@@ -1,6 +1,5 @@
 line-length: false
 first-line-heading: false
-no-trailing-punctuation: false
 header-start-left: false
 single-trailing-newline: false
 header-increment: false
