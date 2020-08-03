@@ -38,11 +38,11 @@ case, the suggested naming convention is to append `-preN`.
 
 ## Create Submariner product release
 
-The following outlines the steps to be taken in order to create a full Submariner product release. As an example, we'll
-use version `v0.5.0`.
+The following sections outline the steps to be taken in order to create a full Submariner product release. As an example,
+we'll use version `v0.5.0`.
 
 Project releases can either be created via the git CLI or the GitHub UI. This guide uses the GitHub UI as it is
-simpler:
+simpler. Here are general steps for creating a new release in a project:
 
 1) Navigate to the project's main releases page.
 
