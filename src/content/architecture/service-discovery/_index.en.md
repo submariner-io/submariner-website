@@ -8,16 +8,19 @@ The Lighthouse project provides DNS discovery for Kubernetes clusters connected 
 [Submariner](https://github.com/submariner-io/submariner) in multi-cluster environments.
 
 ## Architecture
+
 The below diagram shows the basic Lighthouse architecture.
 
 ![Lighthouse Architecture](/images/lighthouse/architecture.png)
 
 ### Lighthouse Agent
+
 The Lighthouse Agent runs in every cluster and accesses the Kubernetes API server running in
 the broker cluster to exchange service metadata information with other clusters. Local service
 information is exported to the broker and service information from other clusters is imported.
 
 #### Workflow
+
 The workflow is as follows:
 
 - Lighthouse agent connects to the broker's K8s API server.
@@ -30,11 +33,13 @@ it creates a copy of it in the local cluster.
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
 
 ### Lighthouse DNS Server
+
 The Lighthouse DNS server runs as an external DNS server which owns the domain supercluster.local.
 KubeDNS is configured to forward any request sent to supercluster.local to the Lighthouse DNS server,
 which uses the ServiceImport resources that are distributed by the controller for DNS resolution.
 
 #### Workflow
+
 The workflow is as follows.
 
 - A Pod tries to resolve a Service name using the domain name supercluster.local

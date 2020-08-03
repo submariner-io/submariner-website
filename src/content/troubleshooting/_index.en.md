@@ -14,6 +14,7 @@ Basic familiarity with the Submariner components and architecture will be helpfu
 The guide has been broken into different sections for easy navigation.
 
 ### Pre-requisite
+
 Before we begin troubleshooting, run `subctl version` to obtain which version of the Submariner components you are running.
 
 Run `kubectl get services -n <service-namespace> | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **GlobalNet** is enabled, you will also need the *globalIp* of the service by running
@@ -21,43 +22,61 @@ Run `kubectl get services -n <service-namespace> | grep <service-name>` to get i
 ```kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'```
 
 <!---
+
 ### Deployment Issues
+
 This section will contain information about common deployment issues you can run into.
 
 #### TBD
 
 ### Connectivity Issues
+
 Submariner deployment completed successfully but Services/Pods on one cluster are unable to connect to Services on another cluster. This can be due to multiple factors outlined in the following sections.
 
 #### IPSec tunnel not created between clusters
+
 TBD
 
 #### IPSEc tunnel is not up between clusters
+
 TBD
 
 #### None of pods/services able to connect to remote service
+
 TBD
+
 ##### Without GlobalNet
+
 TBD
+
 ##### With GlobalNet
+
 TBD
 
 #### Pods on non-gateway nodes not able to connect to remote service
+
 TBD
+
 ##### Without GlobalNet
+
 TBD
+
 ##### With GlobalNet
+
 TBD
 
 -->
 
 ### Service Discovery Issues
+
 If you are able to connect to remote service by using ServiceIP or globalIp, but not by service name, it is a Service Discovery Issue.
 
 #### Service Discovery not working
+
 This is good time to familiarize yourself with [Service Discovery Architecture](../architecture/service-discovery/) if you haven't already.
 
 ##### Check ServiceExport for your Service
+
 For a Service to be accessible across clusters, you must first export the Service via `subctl` which creates a `ServiceExport` resource. Ensure the `ServiceExport` resource exists and check if its status condition indicates `Exported'. Otherwise, its status condition will indicate the reason it wasn't exported.
 
 ```kubectl get serviceexport -n <service-namespace> <service-name>```
@@ -77,6 +96,7 @@ Status:
 ```
 
 ##### Check Lighthouse CoreDNS Service
+
 All cross-cluster service queries are handled by Lighthouse CoreDNS server. First we check if the Lighthouse CoreDNS Service is running properly.
 
 ```kubectl -n submariner-operator get service submariner-lighthouse-coredns```
@@ -99,6 +119,7 @@ If there's no error, then check if the Lighthouse CoreDNS server is configured c
 ```
 
 ##### Check CoreDNS Configuration
+
 Submariner requires the CoreDNS deployment to forward requests for the domain `supercluster.local` to the Lighthouse CoreDNS server in the cluster making the query. Ensure this configuration exists and is correct.
 
 First we check if CoreDNS is configured to forward requests for domain `supercluster.local` to Lighthouse CoreDNS Server in the cluster making the query.
@@ -116,6 +137,7 @@ In the output look for something like this:
 If the entries highlighted above are missing or `ServiceIp` is incorrect, it means CoreDNS wasn't configured correctly. It can be fixed by running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
 
 ##### Check submariner-lighthouse-agent
+
 Next we check if the `submariner-lighthouse-agent` is properly running. Run `kubectl -n submariner-operator get pods submariner-lighthouse-agent` and check the status of Pods.
 
 If the status indicates the `ImagePullBackOff` error, run `kubectl -n submariner-operator describe deployment submariner-lighthouse-agent` and check if `Image` is set correctly to `quay.io/submariner/lighthouse-agent:<version>`. If it is and the same error still occurs, raise an issue [here](https://github.com/submariner-io/lighthouse/issues) or ping us on the community slack channel.
@@ -125,6 +147,7 @@ If the status indicates any other error, run `kubectl -n submariner-operator get
 If there are no errors, grep the log for the service name that you're trying to query as we may need the log entries later for raising an issue.
 
 ##### Check ServiceImport resources
+
 If the steps above did not indicate an issue, next we check if the ServiceImport resources were properly created for the service you're trying to access. The format of a ServiceImport resources's name is as follows:
 
 `<service-name>-<service-namespace>-<cluster-id>`
