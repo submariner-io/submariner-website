@@ -25,13 +25,13 @@ The Docker image dependency hierarchy flow is as follows:
 
 The Dapper base image that is provided by `shipyard` for building and E2E tests in all of the other projects pulls in the
 `subctl` binary.
- 
+
 ## Release versions
 
 The `vx.x.x` version format is used for the git projects while `x.x.x` is used for Docker images.
 
 The typical workflow is to first create release candidate(s) for testing before creating the final release. The suggested
-naming convention is to append `-rcN` to the final version, for example `v0.5.0-rc0`, `v0.5.0-rc1` etc. 
+naming convention is to append `-rcN` to the final version, for example `v0.5.0-rc0`, `v0.5.0-rc1` etc.
 
 Sometimes you may want to create a specific project release for testing prior to creating a release candidate. In this
 case, the suggested naming convention is to append `-preN`.
@@ -52,10 +52,10 @@ simpler:
 
 4) Fill in the `Release title` field as appropriate. Typically this is just the version (sans the leading `v`) as a release
    usually contains various changes. But if it's a targeted release then the `Release title` can reflect that.
-   
+
 5) Enter information to describe the release. This is optional for pre-releases but should be filled in for
    a final release.
-   
+
 6) If this is not a final release, mark the checkbox `This is a pre-release`.
 
 7) Click `Publish release`.
@@ -71,7 +71,7 @@ which case select the failed check, inspect the logs, correct the issue and re-r
 ### Step 0: Create a `subctl` pre-release, optional
 
 Since `subctl` is provided by `shipyard`'s Dapper base image, if there are specific changes to `subctl` which other
-projects require, you will need to create a pre-release (for example `v0.5.0-pre0`) of the `submariner-operator` project: 
+projects require, you will need to create a pre-release (for example `v0.5.0-pre0`) of the `submariner-operator` project:
 
 1) Navigate to the [releases](https://github.com/submariner-io/submariner-operator/releases) page and create the release
    with the new version.
@@ -85,10 +85,9 @@ projects require, you will need to create a pre-release (for example `v0.5.0-pre
 
 Navigate to the [releases](https://github.com/submariner-io/shipyard/releases) page and create the release with the new
 version. This will initiate a job to build the Dapper base image. Once successfully completed, the generated image
-version (`0.5.0`) should be available on Quay here: 
+version (`0.5.0`) should be available on Quay here:
 
 > https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags
-
 
 ### Step 2: Create release for the `admiral` project
 
@@ -147,7 +146,7 @@ For `lighthouse`:
 
 1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
    the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
-   
+
 2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
 
 ```
@@ -166,18 +165,19 @@ DefaultSubmarinerOperatorVersion = "0.5.0"
 DefaultSubmarinerVersion         = "0.5.0"
 DefaultLighthouseVersion         = "0.5.0"
 ```
+
 3) Commit the changes, create a pull request, and have it merged.
 
 4) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
    new version.
 
-Once the build job successfully completes, the generated image version (`0.5.0`) should be available on Quay here: 
+Once the build job successfully completes, the generated image version (`0.5.0`) should be available on Quay here:
 
 > https://quay.io/repository/submariner/submariner-operator?tab=tags
 
 The `subctl` binaries for the various platforms should be listed under the `Assets` section for the new release on the
 main [releases](https://github.com/submariner-io/submariner-operator/releases) page.
- 
+
 ### Step 5: Update `subctl` version in `shipyard`
 
 Update the Dapper base image to pull in the latest `subctl` binary:
@@ -189,7 +189,7 @@ Update the Dapper base image to pull in the latest `subctl` binary:
 
 ### Step 6: Unpin the `shipyard` Dapper base image version
 
-At this point the new product release has been successfully created however we don't want to leave each downstream 
+At this point the new product release has been successfully created however we don't want to leave each downstream
 project pinned to the new `shipyard` Dapper base image version. For ongoing development we want each project to
 automatically pick up the latest changes to the base image.
 
@@ -200,7 +200,7 @@ For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operato
 2) Commit the changes, create a pull request, and have it merged.
 
 ### Step 7: Add release notes
- 
+
 If this is a final release, add a section for it on this website's [release notes](../../releases/) page.
 
 1) Clone the [submariner-website](https://github.com/submariner-io/submariner-website) project.
@@ -211,7 +211,7 @@ If this is a final release, add a section for it on this website's [release note
 
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md)
- 
+
 ### Step 8: Verify the release
 
 You can follow any of the [quick start guides](../../quickstart).
