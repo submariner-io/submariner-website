@@ -14,11 +14,11 @@ You can always click the **Edit this page** link at the top right of each page, 
 
 2. Checkout your copy locally:
 
-```bash
-git clone ssh://git@github.com/<your-user>/submariner-website.git
-cd submariner-website
-make server
-```
+    ```bash
+    git clone ssh://git@github.com/<your-user>/submariner-website.git
+    cd submariner-website
+    make server
+    ```
 
 3. An instance of the website is now running locally on your machine and is accessible at [http://localhost:1313](http://localhost:1313)
 
