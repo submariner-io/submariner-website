@@ -35,7 +35,7 @@ similar building and testing actions.
 
 To run static Go linting (goimports, golangci-lint):
 
-```
+```shell
 make validate
 ```
 
@@ -43,7 +43,7 @@ make validate
 
 To run Go unit tests:
 
-```
+```shell
 make test
 ```
 
@@ -52,7 +52,7 @@ make test
 Shipyard provides a basic target that creates a KIND based multi-cluster
 environment, without any special deployment (apart from the default K8s):
 
-```
+```shell
 make clusters
 ```
 
@@ -64,7 +64,7 @@ Shipyard provides a basic target that deploys submariner on a KIND based
 multi-cluster environment (if one isn't yet created, this target will first invoke the clusters target to do so):
 as well):
 
-```
+```shell
 make deploy
 ```
 
@@ -95,7 +95,7 @@ make e2e CLUSTERS_ARGS="--globalnet" DEPLOY_ARGS="--globalnet --deploytool helm"
 
 To clean up all the KIND clusters deployed in any of the previous steps, use:
 
-```
+```shell
 make cleanup
 ```
 
@@ -109,13 +109,13 @@ To build the `submariner-route-agent`, `submariner-engine`, and
 `submariner-globalnet` Go binaries, in the [submariner-io/submariner][1]
 repository:
 
-```
+```shell
 make build
 ```
 
 There is an optional flag to build with debug flags set:
 
-```
+```shell
 make build build_debug=true
 ```
 
@@ -125,7 +125,7 @@ To build the `submariner/submariner`, `submariner/submariner-route-agent`, and
 `submariner/submariner-globalnet` container images, in the
 [submariner-io/submariner][1] repository:
 
-```
+```shell
 make images
 ```
 
@@ -136,7 +136,7 @@ make images
 To build the `submariner-operator` container image and the `subctl` Go binary,
 in the [submariner-io/submariner-operator][2] repository:
 
-```
+```shell
 make build
 ```
 
@@ -147,7 +147,7 @@ make build
 To build the `lighthouse-agent` and `lighthouse-coredns` container images, in the [submariner-io/lighthouse][3]
 repository:
 
-```
+```shell
 make build-agent build-coredns
 ```
 
@@ -158,7 +158,7 @@ make build-agent build-coredns
 To build the base container image used in the shared developer and CI
 enviroment, in the [submariner-io/shipyard][4]:
 
-```
+```shell
 make dapper-image
 ```
 
