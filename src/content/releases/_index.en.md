@@ -37,9 +37,9 @@ weight = 25
 
 * **Libreswan** IPsec cable driver is available for testing and is covered in Submariner's CI.
 * **Lighthouse** has been modified per the [Kubernetes Multicluster Services KEP][MCS KEP] as follows:
-   * A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
-     exported to participant clusters.
-   * Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
+  * A `ServiceExport` object needs to be created alongside any `Service` that is intended to be
+    exported to participant clusters.
+  * Supercluster services can be accessed with `<service-name>.<namespace>.svc.supercluster.local`.
 * **Globalnet** overlapping CIDR support improvements and bug fixes.
 * Multiple **CI** improvements implemented from Shipyard.
 * CI tests are now run via **[GitHub Actions](https://github.com/submariner-io/submariner/actions)**.
@@ -113,4 +113,5 @@ weight = 25
 was created to make deployment of submariner easier.
 
 ## v0.0.1 Second Submariner release
+
 ## v0.0.1 First Submariner release

@@ -52,7 +52,7 @@ clusters: build images
 
 If you've made changes to Shipyard's [base image](#dapper-image) and need to test them in your project, run:
 
-```
+```shell
 make dapper-image
 ```
 
@@ -76,7 +76,7 @@ Any variables supported by these targets can be either declared as environment v
 
 A Make target that creates a KIND-based multi-cluster environment with just the default K8s deployment:
 
-```
+```shell
 make clusters
 ```
 
@@ -88,7 +88,7 @@ Respected variables:
 
 A Make target that deploys Submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first invoke the clusters target to do so):
 
-```
+```shell
 make deploy
 ```
 
@@ -101,7 +101,7 @@ Respected variables:
 
 To clean up all the KIND clusters deployed in any of the previous steps, use:
 
-```
+```shell
 make cleanup
 ```
 
@@ -111,7 +111,7 @@ This command will remove the clusters and any resources that might've been left 
 
 Uploads the built images to Quay.io:
 
-```
+```shell
 make release release_images="<image name>"
 ```
 
@@ -133,7 +133,7 @@ Shipyard has some project-specific targets which are used to build parts of the 
 
 Builds the basic image which is then used by other projects to build the code and run tests:
 
-```
+```shell
 make dapper-image
 ```
 

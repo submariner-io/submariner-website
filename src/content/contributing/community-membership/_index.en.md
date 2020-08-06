@@ -59,23 +59,23 @@ are expected to remain active contributors to the community.
 * Enabled [two-factor authentication] on their GitHub account
 * Have made multiple contributions to the project or community. Contribution
   may include, but is not limited to:
-    * Authoring or reviewing PRs on GitHub
-    * Filing or commenting on issues on GitHub
-    * Contributing to community discussions (e.g. meetings, Slack, email
-      discussion forums, Stack Overflow)
+  * Authoring or reviewing PRs on GitHub
+  * Filing or commenting on issues on GitHub
+  * Contributing to community discussions (e.g. meetings, Slack, email
+    discussion forums, Stack Overflow)
 * Subscribed to [submariner-dev@googlegroups.com]
 * Have read the [contributor guide]
 * Actively contributing
 * Sponsored by 2 committers. **Note the following requirements for sponsors**:
-    * Sponsors must have close interactions with the prospective member - e.g.
-      code/design/proposal review, coordinating on issues, etc.
-    * Sponsors must be committers in at least 1 CODEOWNERS file either in any
-      repo in the [Submariner org]
+  * Sponsors must have close interactions with the prospective member - e.g.
+    code/design/proposal review, coordinating on issues, etc.
+  * Sponsors must be committers in at least 1 CODEOWNERS file either in any
+    repo in the [Submariner org]
 * [Open an issue][membership request issue] against the submariner-io/submariner repo
-   * Ensure your sponsors are @mentioned on the issue
-   * Complete every item on the checklist ([preview the current version of the member template][membership template])
-   * Make sure that the list of contributions included is representative of
-     your work on the project
+  * Ensure your sponsors are @mentioned on the issue
+  * Complete every item on the checklist ([preview the current version of the member template][membership template])
+  * Make sure that the list of contributions included is representative of
+    your work on the project
 * Have your sponsoring committers reply confirmation of sponsorship: `+1`
 * Once your sponsors have responded, your request will be reviewed. Any missing
   information will be requested.
@@ -124,10 +124,10 @@ in an CODEOWNERS file:
   * With no objections from other committers or project owners
 * May either self-nominate or be nominated by a committer/owner
 * [Open an issue][committership request issue] against the submariner-io/submariner repo
-   * Ensure your sponsors are @mentioned on the issue
-   * Complete every item on the checklist ([preview the current version of the committer template][committership template])
-   * Make sure that the list of contributions included is representative of
-     your work on the project
+  * Ensure your sponsors are @mentioned on the issue
+  * Complete every item on the checklist ([preview the current version of the committer template][committership template])
+  * Make sure that the list of contributions included is representative of
+    your work on the project
 * Have your sponsoring committers/owners reply confirmation of sponsorship: `+1`
 * Once your sponsors have responded, your request will be reviewed. Any missing
   information will be requested.
