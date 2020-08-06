@@ -140,7 +140,7 @@ endif
 
 In such a case, the call to deploy the environment would look like this:
 
-```
+```shell
 make deploy [deploytool=operator]
 ```
 

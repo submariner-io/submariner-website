@@ -19,7 +19,7 @@ Before we begin troubleshooting, run `subctl version` to obtain which version of
 
 Run `kubectl get services -n <service-namespace> | grep <service-name>` to get information about the service you're trying to access. This will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **GlobalNet** is enabled, you will also need the *globalIp* of the service by running
 
-```kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'```
+`kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'`
 
 <!---
 
@@ -79,11 +79,11 @@ This is good time to familiarize yourself with [Service Discovery Architecture](
 
 For a Service to be accessible across clusters, you must first export the Service via `subctl` which creates a `ServiceExport` resource. Ensure the `ServiceExport` resource exists and check if its status condition indicates `Exported'. Otherwise, its status condition will indicate the reason it wasn't exported.
 
-```kubectl get serviceexport -n <service-namespace> <service-name>```
+`kubectl get serviceexport -n <service-namespace> <service-name>`
 
 Sample output:
 
-```
+```yaml
 apiVersion: lighthouse.submariner.io/v2alpha1
 kind: ServiceExport
 metadata:
@@ -99,17 +99,17 @@ Status:
 
 All cross-cluster service queries are handled by Lighthouse CoreDNS server. First we check if the Lighthouse CoreDNS Service is running properly.
 
-```kubectl -n submariner-operator get service submariner-lighthouse-coredns```
+`kubectl -n submariner-operator get service submariner-lighthouse-coredns`
 
 If it is running fine, note down the `ServiceIP` for the next steps. If not, check the logs for an error.
 
-If the error is due to a wrong image, run ```kubectl -n submariner-operator get deployment submariner-lighthouse-coredns``` and make sure `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and refers to the correct version.
+If the error is due to a wrong image, run `kubectl -n submariner-operator get deployment submariner-lighthouse-coredns` and make sure `Image` is set to `quay.io/submariner/lighthouse-coredns:<version>` and refers to the correct version.
 
 For any other errors, capture the information and raise a new [issue](https://github.com/submariner-io/lighthouse/issues)
 
-If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run ```kubectl describe configmap submariner-lighthouse-coredns``` and make sure it has following configuration:
+If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run `kubectl describe configmap submariner-lighthouse-coredns` and make sure it has following configuration:
 
-```
+```text
     supercluster.local:53 {
         lighthouse
         errors
@@ -124,11 +124,11 @@ Submariner requires the CoreDNS deployment to forward requests for the domain `s
 
 First we check if CoreDNS is configured to forward requests for domain `supercluster.local` to Lighthouse CoreDNS Server in the cluster making the query.
 
-```kubectl describe configmap coredns```
+`kubectl describe configmap coredns`
 
 In the output look for something like this:
 
-```
+```text
     supercluster.local:53 {
         forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in previous section
     }
@@ -158,7 +158,7 @@ If the ServiceImport resource was created correctly on the broker cluster, the n
 
 If the ServiceImport resource was created properly on the cluster, run `kubectl -n submariner-operator describe serviceimport <your-serviceimport-name>` and check if it has the correct `ClusterID` and `ServiceIP`:
 
-```
+```text
 Name:         nginx-default-cluster2
 Namespace:    submariner-operator
 Labels:       <none>

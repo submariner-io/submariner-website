@@ -12,7 +12,7 @@ Learn more about the architecture [here](../../architecture/service-discovery/).
 First log into your GitHub account and create a [fork of the Lighthouse repository](https://github.com/submariner-io/lighthouse/fork).
 Then clone your forked repository locally and switch to the lighthouse folder. You will need to create a branch in order to raise a PR.
 
-```
+```shell
 git clone https://github.com/<your-github-username>/lighthouse.git
 cd lighthouse
 git checkout -b <BRANCH-NAME>
@@ -41,7 +41,7 @@ You can add the debug entry in the CoreDNS config map if you require more loggin
 You can commit your changes using `git commit` and push the changes to your fork branch. Then you will see an option to create a PR in
 the GitHub UI in your browser when you go to your forked repository.
 
-```
+```shell
 git commit -s #Give a commit message
 git push -f origin HEAD:<Your-Branch-Name>
 ```
