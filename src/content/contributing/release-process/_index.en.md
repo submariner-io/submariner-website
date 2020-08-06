@@ -23,15 +23,15 @@ git push upstream v0.2.0-rc0
 
 A tagged release should appear [here](https://github.com/submariner-io/submariner/tags).
 
-> https://github.com/submariner-io/submariner/tags
+> <https://github.com/submariner-io/submariner/tags>
 
 A build for v0.2.0-rc0 should start and appear under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/submariner/branches).
 
-> https://travis-ci.com/github/submariner-io/submariner/branches
+> <https://travis-ci.com/github/submariner-io/submariner/branches>
 
 Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner?tab=tags).
 
-> https://quay.io/repository/submariner/submariner?tab=tags
+> <https://quay.io/repository/submariner/submariner?tab=tags>
 
 <!-- TODO(mangelajo) https://github.com/submariner-io/submariner-website/issues/46 -->
 
@@ -55,18 +55,18 @@ git push upstream v0.2.0-rc0
 
 A tagged release should appear [here](https://github.com/submariner-io/lighthouse/tags)
 
-> https://github.com/submariner-io/lighthouse/tags
+> <https://github.com/submariner-io/lighthouse/tags>
 
 A build for v0.2.0-rc0 should start and appear under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/lighthouse/branches)
 
-> https://travis-ci.com/github/submariner-io/lighthouse/branches
+> <https://travis-ci.com/github/submariner-io/lighthouse/branches>
 
 For this example the build can be found [here](https://travis-ci.com/github/submariner-io/lighthouse/builds/153946391).
 
 Verify that the build successfully completes as indicated by a green checkmark at the right. At this point the images tagged with 0.2.0-rc0 will be available on quay.io at:
 
-> https://quay.io/repository/submariner/lighthouse-agent?tab=tags
-> https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
+> <https://quay.io/repository/submariner/lighthouse-agent?tab=tags>
+> <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
 
 ## Step 3: Update the Operator Version References and Create a Release
 
@@ -106,25 +106,24 @@ git push upstream v0.2.0-rc0
 
 A tagged release should appear [here](https://github.com/submariner-io/submariner-operator/tags).
 
-> https://github.com/submariner-io/submariner-operator/tags
+> <https://github.com/submariner-io/submariner-operator/tags>
 
 A build for v0.2.0-rc0 should start and appear under the under the "Active branches" section [here](https://travis-ci.com/github/submariner-io/submariner-operator/branches).
 
-> https://travis-ci.com/github/submariner-io/submariner-operator/branches
+> <https://travis-ci.com/github/submariner-io/submariner-operator/branches>
 
 Verify that the build successfully completes as indicated by a green checkmark at the right.
 At this point the images tagged with 0.2.0-rc0 will be available [here](https://quay.io/repository/submariner/submariner-operator?tab=tags).
 
-> https://quay.io/repository/submariner/submariner-operator?tab=tags
+> <https://quay.io/repository/submariner/submariner-operator?tab=tags>
 
 ### Verify the Subctl Binaries Release
 
-At this point, you should see subctl binaries generated and listed for the various platforms under the release
- https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 , verify that the binaries uploaded, the process needs around 5 minutes.
+At this point, you should see subctl binaries generated and listed for the various platforms under the [release](https://github.com/submariner-io/submariner-operator/tags), find the tag for v0.2.0-rc0 , verify that the binaries uploaded, the process needs around 5 minutes.
 
 ### Update the release notes
 
-Go to https://github.com/submariner-io/submariner-operator/tags, find the tag for v0.2.0-rc0 and select "Edit release" to the right.
+Go to <https://github.com/submariner-io/submariner-operator/tags>, find the tag for v0.2.0-rc0 and select "Edit release" to the right.
 
 Update the release notes.
 

@@ -59,7 +59,7 @@ Default output format [None]: text
 
 For more details, follow this link:
 
-> https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html
+> <https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html>
 
 In this step we shall modify the default Cluster/Service CIDRs and deploy cluster-b on AWS.
 
