@@ -19,7 +19,7 @@ The Lighthouse Agent runs in every cluster and accesses the Kubernetes API serve
 the broker cluster to exchange service metadata information with other clusters. Local service
 information is exported to the broker and service information from other clusters is imported.
 
-#### Workflow
+#### Agent Workflow
 
 The workflow is as follows:
 
@@ -38,7 +38,7 @@ The Lighthouse DNS server runs as an external DNS server which owns the domain s
 KubeDNS is configured to forward any request sent to supercluster.local to the Lighthouse DNS server,
 which uses the ServiceImport resources that are distributed by the controller for DNS resolution.
 
-#### Workflow
+#### Server Workflow
 
 The workflow is as follows.
 

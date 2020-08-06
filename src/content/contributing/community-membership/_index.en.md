@@ -54,7 +54,7 @@ are expected to remain active contributors to the community.
 
 **Defined by:** Member of the [Submariner GitHub organization][org members].
 
-### Requirements
+### Member Requirements
 
 * Enabled [two-factor authentication] on their GitHub account
 * Have made multiple contributions to the project or community. Contribution
@@ -80,7 +80,7 @@ are expected to remain active contributors to the community.
 * Once your sponsors have responded, your request will be reviewed. Any missing
   information will be requested.
 
-### Responsibilities and Privileges
+### Member Responsibilities and Privileges
 
 * Responsive to issues and PRs assigned to them
 * Responsive to mentions of teams they are members of
@@ -111,7 +111,7 @@ project.
 
 **Committer status is scoped to a part of the codebase.**
 
-### Requirements
+### Committer Requirements
 
 The following apply to the part of codebase for which one would be a committer
 in an CODEOWNERS file:
@@ -132,7 +132,7 @@ in an CODEOWNERS file:
 * Once your sponsors have responded, your request will be reviewed. Any missing
   information will be requested.
 
-### Responsibilities and Privileges
+### Committer Responsibilities and Privileges
 
 The following apply to the part of codebase for which one would be a committer
 in an CODEOWNERS file:
@@ -160,7 +160,7 @@ delegation of these responsibilities.
 
 **Defined by:** Member of the [submariner-owners GitHub team][owners team].
 
-### Requirements
+### Owner Requirements
 
 Unlike the roles outlined above, the owners of the project are typically
 limited to a relatively small group of decision makers and updated as fits the
@@ -177,7 +177,7 @@ The following apply to people who would be an owner:
   * Identifying subtle or complex issues in designs and implementation PRs
 * Directly contributed to the project through implementation and / or review
 
-### Responsibilities and Privileges
+### Owner Responsibilities and Privileges
 
 The following apply to people who would be an owner:
 
