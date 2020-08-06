@@ -29,10 +29,10 @@ the necessary CRDs and the `submariner-k8s-broker` namespace.
 In addition, it generates a `broker-info.subm` file which can be used with the `join` command
 to connect clusters to the Broker. This file contains the following details:
 
- * Encryption PSK key
- * Broker access details for subsequent `subctl` runs.
- * Service discovery settings
- * Globalnet settings
+* Encryption PSK key
+* Broker access details for subsequent `subctl` runs.
+* Service discovery settings
+* Globalnet settings
 
 #### deploy-broker flags
 
@@ -163,10 +163,11 @@ verifications unless the `--enable-disruptive` flag is also specified. If runnin
 
 The `connectivity` suite verifies dataplane connectivity across the clusters for the following cases:
 
- * Pods (on gateways) to Services
- * Pods (on non-gateways) to Services
- * Pods (on gateways) to Pods
- * Pods (on non-gateways) to Pods
+* Pods (on gateways) to Services
+* Pods (on non-gateways) to Services
+* Pods (on gateways) to Pods
+* Pods (on non-gateways) to Pods
+
 and between gateway and non-gateway node combinations.
 
 The `service-discovery` suite verifies dns discovery of `<service>.<namespace>.svc.supercluster.local`

@@ -1,6 +1,5 @@
 line-length: false
 no-bare-urls: false
-ul-indent: false
 first-line-heading: false
 fenced-code-language: false
 blanks-around-headers: false
