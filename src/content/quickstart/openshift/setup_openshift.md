@@ -4,17 +4,17 @@
 
 Download the **openshift-install** and _oc_ tools, and copy your _pull secret_ from:
 
-> https://cloud.redhat.com/openshift/install/aws/installer-provisioned
+> <https://cloud.redhat.com/openshift/install/aws/installer-provisioned>
 
 Find more detailed instructions here:
 
-> https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-default.html
+> <https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-default.html>
 
 ### Make sure the aws cli is properly installed and configured
 
 Installation instructions
 
-> https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+> <https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html>
 
 ```bash
 $ aws configure
@@ -26,4 +26,4 @@ Default output format [None]: text
 
 See also for more details:
 
-> https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html
+> <https://docs.openshift.com/container-platform/4.3/installing/installing_aws/installing-aws-account.html>

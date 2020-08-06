@@ -88,7 +88,7 @@ weight = 25
 
 ## v0.1.0 Submariner with some light
 
-> This release has focused on stability, bugfixes and making https://github.com/submariner.io/lighthouse available as developer preview via subctl deployments.
+> This release has focused on stability, bugfixes and making [Lighthouse](https://github.com/submariner.io/lighthouse) available as developer preview via subctl deployments.
 
 * Several bugfixes and enhancements around HA failover (#346, #348, #332)
 * Migrated to Daemonsets for submariner gateway deployment

@@ -15,12 +15,12 @@ Details of past releases are described [here](../releases).
 
 ## Future Releases
 
-* Auto detecting NAT vs non-NAT scenarios (https://github.com/submariner-io/submariner/issues/300)
+* Auto detecting NAT vs non-NAT scenarios (<https://github.com/submariner-io/submariner/issues/300>)
 * Support different IPsec ports for each cluster
 * Measuring and improving High Availability for gateway-labeled nodes
 * Network Policy across clusters (Coastguard)
 * Richer monitoring and alerting with Prometheus
-* Support for finer-grained connectivity policies (https://github.com/submariner-io/submariner/issues/533)
+* Support for finer-grained connectivity policies (<https://github.com/submariner-io/submariner/issues/533>)
 * Support for more network plugins (OVN, Calico, others)
 * Globalnet: annotating Global IPs per namespaces
 * Globalnet: only annotate Services for which a ServiceExport has been created
