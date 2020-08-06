@@ -6,5 +6,4 @@ no-trailing-punctuation: false
 header-start-left: false
 single-trailing-newline: false
 header-increment: false
-single-h1: false
 ul-start-left: false
