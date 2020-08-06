@@ -1,13 +1,8 @@
 line-length: false
 no-bare-urls: false
-ul-indent: false
 first-line-heading: false
-fenced-code-language: false
-blanks-around-headers: false
 no-trailing-punctuation: false
 header-start-left: false
 single-trailing-newline: false
 header-increment: false
-ol-prefix: false
-single-h1: false
 ul-start-left: false

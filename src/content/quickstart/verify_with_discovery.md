@@ -1,4 +1,5 @@
 #### Verify Deployment
+
 To verify the deployment follow the steps below which creates an nginx service and
 ServiceExport for it.
 
@@ -16,6 +17,7 @@ curl nginx.default.svc.supercluster.local:8080
 ```
 
 #### Perform automated verification
+
 This will perform all automated verification between your clusters
 
 ```bash

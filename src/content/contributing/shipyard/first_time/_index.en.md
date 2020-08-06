@@ -33,7 +33,7 @@ You can also refer to the project's own [Dockerfile.dapper](https://github.com/s
 
 To build the base container image used in the shared developer and CI enviroment, simply run:
 
-```
+```shell
 make dapper-image
 ```
 
