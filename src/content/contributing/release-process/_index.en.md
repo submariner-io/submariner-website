@@ -87,7 +87,7 @@ Navigate to the [releases](https://github.com/submariner-io/shipyard/releases) p
 version. This will initiate a job to build the Dapper base image. Once successfully completed, the generated image
 version (`0.5.0`) should be available on Quay here:
 
-> https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags
+> <https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags>
 
 ### Step 2: Create release for the `admiral` project
 
@@ -96,13 +96,13 @@ version (`0.5.0`) should be available on Quay here:
 
 2) Update the _go.mod_ and _go.sum_ references for `shipyard` to the new version:
 
-```
-make shell
-go get github.com/submariner-io/shipyard@v0.5.0
-go mod vendor
-go mod tidy
-exit
-```
+   ```bash
+   make shell
+   go get github.com/submariner-io/shipyard@v0.5.0
+   go mod vendor
+   go mod tidy
+   exit
+   ```
 
 3) Commit the changes, create a pull request, and have it merged.
 
@@ -117,13 +117,13 @@ These can be done in any order or in parallel and the process is the same.
 
 2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
 
-```
-make shell
-go get github.com/submariner-io/shipyard@v0.5.0
-go get github.com/submariner-io/admiral@v0.5.0
-go mod vendor
-go mod tidy
-```
+   ```bash
+   make shell
+   go get github.com/submariner-io/shipyard@v0.5.0
+   go get github.com/submariner-io/admiral@v0.5.0
+   go mod vendor
+   go mod tidy
+   ```
 
 3) Commit the changes, create a pull request, and have it merged.
 
@@ -133,14 +133,14 @@ Wait for the project's new images to be generated and published to Quay.
 
 For `submariner`:
 
-> https://quay.io/repository/submariner/submariner?tab=tags
-> https://quay.io/repository/submariner/submariner-route-agent?tab=tags
-> https://quay.io/repository/submariner/submariner-globalnet?tab=tags
+> <https://quay.io/repository/submariner/submariner?tab=tags>
+> <https://quay.io/repository/submariner/submariner-route-agent?tab=tags>
+> <https://quay.io/repository/submariner/submariner-globalnet?tab=tags>
 
 For `lighthouse`:
 
-> https://quay.io/repository/submariner/lighthouse-agent?tab=tags
-> https://quay.io/repository/submariner/lighthouse-coredns?tab=tags
+> <https://quay.io/repository/submariner/lighthouse-agent?tab=tags>
+> <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
 
 ### Step 4: Create release for the `submariner-operator` project
 
@@ -149,31 +149,31 @@ For `lighthouse`:
 
 2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
 
-```
-make shell
-go get github.com/submariner-io/shipyard@v0.5.0
-go get github.com/submariner-io/submariner@v0.5.0
-go get github.com/submariner-io/lighthouse@v0.5.0
-go mod vendor
-go mod tidy
-```
+   ```bash
+   make shell
+   go get github.com/submariner-io/shipyard@v0.5.0
+   go get github.com/submariner-io/submariner@v0.5.0
+   go get github.com/submariner-io/lighthouse@v0.5.0
+   go mod vendor
+   go mod tidy
+   ```
 
 3) Edit _pkg/versions/versions.go_ and update the *Version constants to the new version:
 
-```
-DefaultSubmarinerOperatorVersion = "0.5.0"
-DefaultSubmarinerVersion         = "0.5.0"
-DefaultLighthouseVersion         = "0.5.0"
-```
+   ```go
+   DefaultSubmarinerOperatorVersion = "0.5.0"
+   DefaultSubmarinerVersion         = "0.5.0"
+   DefaultLighthouseVersion         = "0.5.0"
+   ```
 
-3) Commit the changes, create a pull request, and have it merged.
+4) Commit the changes, create a pull request, and have it merged.
 
-4) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
+5) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
    new version.
 
 Once the build job successfully completes, the generated image version (`0.5.0`) should be available on Quay here:
 
-> https://quay.io/repository/submariner/submariner-operator?tab=tags
+> <https://quay.io/repository/submariner/submariner-operator?tab=tags>
 
 The `subctl` binaries for the various platforms should be listed under the `Assets` section for the new release on the
 main [releases](https://github.com/submariner-io/submariner-operator/releases) page.
