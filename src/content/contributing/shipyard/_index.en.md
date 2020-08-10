@@ -24,11 +24,11 @@ Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can 
 
 ## Usage
 
-#### Add Shipyard to a Project
+### Add Shipyard to a Project
 
 To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Project](first_time).
 
-#### Use Shipyard in Your Project
+### Use Shipyard in Your Project
 
 Once Shipyard has been added to a project, you can use any of the [Makefile targets](#shared-makefile-targets) that it provides.
 
@@ -39,7 +39,7 @@ For example:
 ENV DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD TRAVIS_COMMIT CLUSTERS_ARGS DEPLOY_ARGS"
 ```
 
-#### Have Shipyard Targets Depend on Your Project's Targets
+### Have Shipyard Targets Depend on Your Project's Targets
 
 Having any of the Shipyard Makefile targets rely on your project's specific targets can be done easily by adding the dependency in your project's Makefile.
 For example:
@@ -48,7 +48,7 @@ For example:
 clusters: build images
 ```
 
-#### Use an Updated Shipyard Image in Your Project
+### Use an Updated Shipyard Image in Your Project
 
 If you've made changes to Shipyard's [base image](#dapper-image) and need to test them in your project, run:
 
