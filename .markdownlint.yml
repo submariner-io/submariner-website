@@ -2,7 +2,6 @@ line-length: false
 first-line-heading: false
 header-start-left: false
 single-trailing-newline: false
-header-increment: false
 ul-start-left: false
 no-inline-html:
   allowed_elements:
