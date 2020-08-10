@@ -1,7 +1,10 @@
-line-length: false
+# Breaks reusing MD snippets extracted to files
 first-line-heading: false
-header-start-left: false
-ul-start-left: false
+
+# Allow HTML span elements to set font sizes
 no-inline-html:
   allowed_elements:
     - span
+
+# FIXME: Enable these, fix errors
+line-length: false
