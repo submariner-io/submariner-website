@@ -1,0 +1,18 @@
+name: Markdown Link Checks
+on: pull_request
+  schedule:
+  - cron: "0 0 * * 0"
+
+jobs:
+  markdown-link-check-periodic:
+    runs-on: ubuntu-latest
+    name: Markdown Link Checks
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v1
+
+    - name: Run markdown-link-check
+      uses: gaurav-nelson/github-action-markdown-link-check@0.6.0
+      with:
+        config-file: ".markdownlinkcheck.json"
+        folder-path: "src/content"
