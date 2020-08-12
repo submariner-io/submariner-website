@@ -6,10 +6,12 @@ weight: 10
 
 ## Overview
 
-The Shipyard project provides common tooling for creating K8s clusters with [KIND](https://github.com/kubernetes-sigs/kind) (K8s in Docker) and provides a common Go framework for creating end to end tests.
+The Shipyard project provides common tooling for creating K8s clusters with [KIND](https://github.com/kubernetes-sigs/kind) (K8s in Docker)
+and provides a common Go framework for creating end to end tests.
 Shipyard contains common functionality shared by other projects. Any project specific functionality should be part of that project.
 
-A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run tests in a consistent environment.
+A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run
+tests in a consistent environment.
 
 Shipyard has several folders at the root of the project:
 
@@ -20,7 +22,8 @@ Shipyard has several folders at the root of the project:
     * **resources:** Resource files to be used by the shared scripts.
 * **test:** Test library to be used by other projects.
 
-Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can be used by consuming projects and are used by Shipyard's CI to test and validate itself. It also has some [specific Makefile targets](#specific-makefile-targets) which are used by the project itself.
+Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can be used by consuming projects and are used by Shipyard's CI
+to test and validate itself. It also has some [specific Makefile targets](#specific-makefile-targets) which are used by the project itself.
 
 ## Usage
 
@@ -32,8 +35,8 @@ To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Pr
 
 Once Shipyard has been added to a project, you can use any of the [Makefile targets](#shared-makefile-targets) that it provides.
 
-Any variables that you need to pass to these targets should be specified in your Dockerfile.dapper so they're available in the Dapper environment.
-For example:
+Any variables that you need to pass to these targets should be specified in your Dockerfile.dapper so they're available in the Dapper
+environment. For example:
 
 ```Dockerfile
 ENV DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD TRAVIS_COMMIT CLUSTERS_ARGS DEPLOY_ARGS"
@@ -41,8 +44,8 @@ ENV DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD TRAVIS_COMMIT CLUSTERS_ARGS
 
 ### Have Shipyard Targets Depend on Your Project's Targets
 
-Having any of the Shipyard Makefile targets rely on your project's specific targets can be done easily by adding the dependency in your project's Makefile.
-For example:
+Having any of the Shipyard Makefile targets rely on your project's specific targets can be done easily by adding the dependency in your
+project's Makefile. For example:
 
 ```Makefile
 clusters: build images
@@ -70,7 +73,8 @@ Shipyard ships a [Makefile.inc] file which defines these basic targets:
 
 If your project uses Shipyard then it has all these targets and supports all the variables these targets support.
 
-Any variables supported by these targets can be either declared as environment variables or assigned on the `make` command line (takes precedence over environment variables).
+Any variables supported by these targets can be either declared as environment variables or assigned on the `make` command line (takes
+precedence over environment variables).
 
 ### Clusters {#clusters}
 
@@ -82,11 +86,13 @@ make clusters
 
 Respected variables:
 
-* **CLUSTERS_ARGS:** Any arguments (flags and/or values) to be sent to the `clusters.sh` script. To get a list of available arguments, run: `scripts/shared/clusters.sh --help`
+* **CLUSTERS_ARGS:** Any arguments (flags and/or values) to be sent to the `clusters.sh` script. To get a list of available arguments, run:
+  `scripts/shared/clusters.sh --help`
 
 ### Deploy {#deploy}
 
-A Make target that deploys Submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first invoke the clusters target to do so):
+A Make target that deploys Submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first
+invoke the clusters target to do so):
 
 ```shell
 make deploy
@@ -95,7 +101,8 @@ make deploy
 Respected variables:
 
 * Any variable from [clusters](#clusters) target (only if it wasn't created).
-* **DEPLOY_ARGS:** Any arguments (flags and/or values) to be sent to the `deploy.sh` script. To get a list of available arguments, run: `scripts/shared/deploy.sh --help`
+* **DEPLOY_ARGS:** Any arguments (flags and/or values) to be sent to the `deploy.sh` script. To get a list of available arguments, run:
+  `scripts/shared/deploy.sh --help`
 
 ### Cleanup {#cleanup}
 
@@ -105,7 +112,8 @@ To clean up all the KIND clusters deployed in any of the previous steps, use:
 make cleanup
 ```
 
-This command will remove the clusters and any resources that might've been left in docker that are not needed any more (images, volumes, etc).
+This command will remove the clusters and any resources that might've been left in docker that are not needed any more (images, volumes,
+etc).
 
 ### Release {#release}
 

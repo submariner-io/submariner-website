@@ -4,7 +4,8 @@ title: "OpenShift with Service Discovery (vSphere/AWS)"
 weight: 15
 ---
 
-In this quickstart guide, we shall cover the necessary steps to deploy OpenShift Container Platform (OCP) on vSphere and AWS. Once the OCP clusters are deployed, we shall cover how to deploy Submariner and connect the two clusters.
+In this quickstart guide, we shall cover the necessary steps to deploy OpenShift Container Platform (OCP) on vSphere and AWS.
+Once the OCP clusters are deployed, we shall cover how to deploy Submariner and connect the two clusters.
 
 ### OpenShift Prerequisites
 
@@ -24,7 +25,8 @@ Please ensure that the tools you downloaded above are compatible with the OpenSh
 ### Deploy Cluster on vSphere (OnPrem)
 
 Create the necessary infrastructure on vSphere and ensure that your machines have direct internet access before starting the installation.
-To deploy OCP 4.4, follow the instructions shown [here](https://docs.openshift.com/container-platform/4.4/installing/installing_vsphere/installing-vsphere.html)
+To deploy OCP 4.4, follow the instructions shown
+[here](https://docs.openshift.com/container-platform/4.4/installing/installing_vsphere/installing-vsphere.html)
 
 Assuming that you deployed the cluster (say, cluster-a) with default network configuration, the Pod and Service CIDRs would be
 
@@ -32,7 +34,8 @@ Assuming that you deployed the cluster (say, cluster-a) with default network con
 |--------------|--------------|
 |10.128.0.0/14 |172.30.0.0/16 |
 
-Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the gateway nodes to preserve the source IP of the inter-cluster traffic.
+Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the
+gateway nodes to preserve the source IP of the inter-cluster traffic.
 Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all the worker nodes.
 
 |  Protocol  |  Port  |     Description                              |
@@ -41,7 +44,8 @@ Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all
 
 {{% notice tip %}}
 
-Although we are using the default OCP network configuration on vSphere, you can install vSphere with a custom network configuration as shown [here](https://red.ht/2WFjEVg)
+Although we are using the default OCP network configuration on vSphere, you can install vSphere with a custom network configuration as shown
+[here](https://red.ht/2WFjEVg)
 
 {{% /notice %}}
 
@@ -71,15 +75,15 @@ In this step we shall modify the default Cluster/Service CIDRs and deploy cluste
 openshift-install create install-config --dir cluster-b
 ```
 
-Change the Pod IP network. Please note it’s a /14 range by default so you need to use
-+4 increments for “128”, for example: 10.132.0.0, 10.136.0.0, 10.140.0.0, ...
+Change the Pod IP network. Please note it’s a /14 range by default so you need to use +4 increments for “128”, for example: 10.132.0.0,
+10.136.0.0, 10.140.0.0, ...
 
 ```bash
 sed -i 's/10.128.0.0/10.132.0.0/g' cluster-b/install-config.yaml
 ```
 
-Change the Service IP network. This is a /16 range by default, so just use +1 increments
-for “30”: for example: 172.31.0.0, 172.32.0.0, 172.33.0.0, ...
+Change the Service IP network. This is a /16 range by default, so just use +1 increments for “30”: for example: 172.31.0.0, 172.32.0.0,
+172.33.0.0, ...
 
 ```bash
 sed -i 's/172.30.0.0/172.31.0.0/g' cluster-b/install-config.yaml
@@ -94,14 +98,15 @@ openshift-install create cluster --dir cluster-b
 ### Make your AWS cluster ready for Submariner
 
 Submariner gateway nodes need to be able to accept IPsec traffic. The default ports are 4500/UDP and 500/UDP.
-However, when you have some on-premise clusters (like vSphere in this example) which are typically inside a corporate network, the firewall configuration on the corporate router may not allow the default IPsec traffic.
+However, when you have some on-premise clusters (like vSphere in this example) which are typically inside a corporate network, the firewall
+configuration on the corporate router may not allow the default IPsec traffic.
 We can overcome this limitation by using non-standard ports like 4501/UDP and 501/UDP.
 
 Additionally, the default OpenShift deployments do not allow assigning an elastic public IP
 to existing worker nodes, something that's necessary at least on one end of the IPsec connections.
 
-To handle these requirements on AWS, we provide a script that will prepare your AWS OpenShift deployment
-for Submariner, and will create an additional gateway node with an external IP.
+To handle these requirements on AWS, we provide a script that will prepare your AWS OpenShift deployment for Submariner, and will create an
+additional gateway node with an external IP.
 
 ```bash
 

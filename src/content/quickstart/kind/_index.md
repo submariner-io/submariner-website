@@ -8,7 +8,8 @@ weight: 100
 
 [KIND](https://github.com/kubernetes-sigs/kind) is a tool to run local Kubernetes clusters inside Docker container nodes.
 
-Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that deploy 3 Kubernetes clusters locally - 1 broker and 2 data clusters with the Submariner dataplane components deployed on all the clusters.
+Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that deploy 3 Kubernetes clusters locally - 1 broker and 2 data
+clusters with the Submariner dataplane components deployed on all the clusters.
 
 {{% notice note %}}
 Docker must be installed and running on your computer.
@@ -16,8 +17,8 @@ Docker must be installed and running on your computer.
 
 ### Deploying manually
 
-If you wish to try out Submariner deployment manually, you can first create KIND clusters
-using our scripts and [subctl](../../deployment/subctl).
+If you wish to try out Submariner deployment manually, you can first create KIND clusters using our scripts and
+[subctl](../../deployment/subctl).
 
 #### Create KIND clusters
 

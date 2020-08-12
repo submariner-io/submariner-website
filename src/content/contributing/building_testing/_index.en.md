@@ -9,27 +9,22 @@ Substantial tooling is provided to ease the contribution experience.
 
 ## Standard Development Environment
 
-Submariner provides a standard, shared development environment suitable for all
-local work. The same environment is used in CI.
+Submariner provides a standard, shared development environment suitable for all local work. The same environment is used in CI.
 
-The [submariner-io/shipyard](https://github.com/submariner-io/shipyard) project
-contains the logic to build the base container images used across all
-submariner-io repositories.
+The [submariner-io/shipyard](https://github.com/submariner-io/shipyard) project contains the logic to build the base container images used
+across all submariner-io repositories.
 
 Learn more about working with Shipyard [here](../shipyard).
 
 ## Prescribed Tasks via Make Targets
 
-Make targets are provided to further ease the process of using the shared
-development environment. The specific make targets available might differ by
-repository. For any submariner-io repository, see the `Makefile` at the root of
-the repository for the supported targets and the `.travis.yml` file for the
-targets actually used in CI.
+Make targets are provided to further ease the process of using the shared development environment. The specific make targets available might
+differ by repository. For any submariner-io repository, see the `Makefile` at the root of the repository for the supported targets and the
+`.travis.yml` file for the targets actually used in CI.
 
 ## Common Build and Testing Targets
 
-All **submariner-io/**\* repositories provide a standard set of Make targets for
-similar building and testing actions.
+All **submariner-io/**\* repositories provide a standard set of Make targets for similar building and testing actions.
 
 ### Linting
 
@@ -49,8 +44,8 @@ make test
 
 ### Multi-Cluster KIND Based Environment {#clusters}
 
-Shipyard provides a basic target that creates a KIND based multi-cluster
-environment, without any special deployment (apart from the default K8s):
+Shipyard provides a basic target that creates a KIND based multi-cluster environment,
+without any special deployment (apart from the default K8s):
 
 ```shell
 make clusters
@@ -60,9 +55,8 @@ Find out more about [Shipyard's clusters target](../shipyard#clusters).
 
 ### Multi-Cluster Submariner Deployment
 
-Shipyard provides a basic target that deploys submariner on a KIND based
-multi-cluster environment (if one isn't yet created, this target will first invoke the clusters target to do so):
-as well):
+Shipyard provides a basic target that deploys submariner on a KIND based multi-cluster environment (if one isn't yet created, this target
+will first invoke the clusters target to do so):
 
 ```shell
 make deploy
@@ -72,7 +66,8 @@ Find out more about [Shipyard's deploy target](../shipyard#deploy).
 
 ### End-to-End Tests
 
-To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the `deploy` target to do so):
+To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the
+`deploy` target to do so):
 
 ```shell
 make e2e
@@ -105,8 +100,7 @@ Learn more about Shipyard's cleanup target [here](../shipyard#cleanup).
 
 ### Building Engine, Routeagent, and Globalnet Go binaries
 
-To build the `submariner-route-agent`, `submariner-engine`, and
-`submariner-globalnet` Go binaries, in the [submariner-io/submariner][1]
+To build the `submariner-route-agent`, `submariner-engine`, and `submariner-globalnet` Go binaries, in the [submariner-io/submariner][1]
 repository:
 
 ```shell
@@ -121,8 +115,7 @@ make build build_debug=true
 
 ### Building Engine, Routeagent, and Globalnet container images
 
-To build the `submariner/submariner`, `submariner/submariner-route-agent`, and
-`submariner/submariner-globalnet` container images, in the
+To build the `submariner/submariner`, `submariner/submariner-route-agent`, and `submariner/submariner-globalnet` container images, in the
 [submariner-io/submariner][1] repository:
 
 ```shell
@@ -133,8 +126,7 @@ make images
 
 ### Building the Operator and subctl
 
-To build the `submariner-operator` container image and the `subctl` Go binary,
-in the [submariner-io/submariner-operator][2] repository:
+To build the `submariner-operator` container image and the `subctl` Go binary, in the [submariner-io/submariner-operator][2] repository:
 
 ```shell
 make build
@@ -144,8 +136,7 @@ make build
 
 ### Building Lighthouse Controller, CoreDNS and DNSServer container images
 
-To build the `lighthouse-agent` and `lighthouse-coredns` container images, in the [submariner-io/lighthouse][3]
-repository:
+To build the `lighthouse-agent` and `lighthouse-coredns` container images, in the [submariner-io/lighthouse][3] repository:
 
 ```shell
 make build-agent build-coredns
@@ -155,8 +146,7 @@ make build-agent build-coredns
 
 ### Building dapper-base container image
 
-To build the base container image used in the shared developer and CI
-enviroment, in the [submariner-io/shipyard][4]:
+To build the base container image used in the shared developer and CI enviroment, in the [submariner-io/shipyard][4]:
 
 ```shell
 make dapper-image
