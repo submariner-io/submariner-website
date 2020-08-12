@@ -1,8 +1,8 @@
 +++
 title = "Troubleshooting Guide"
 date = 2020-05-04T19:01:14+05:30
-weight = 20
-pre = "<b>4. </b>"
+weight = 25
+pre = "<b>5. </b>"
 +++
 
 ## Overview

@@ -1,8 +1,8 @@
 +++
 date = 2020-05-04T16:50:16+02:00
 title = "Releases"
-pre = "<b>5. </b>"
-weight = 25
+pre = "<b>6. </b>"
+weight = 30
 +++
 
 ## v0.5.0 Lighthouse service discovery alignment
