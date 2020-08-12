@@ -5,7 +5,10 @@ weight: 10
 pre: "<b>2. </b>"
 ---
 
-Submariner provides a Go-based Kubernetes custom controller, called an [Operator](https://github.com/submariner-io/submariner-operator), that provides easy API-based installation and management. A command line utility, *subctl*, wraps the Operator to aid users with manual deployments and easy experimentation. subctl greatly simplifies the deployment of Submariner, and is therefore the recommended deployment method. For complete information about subctl, please refer to [this page](subctl).
+Submariner provides a Go-based Kubernetes custom controller, called an [Operator](https://github.com/submariner-io/submariner-operator),
+that provides easy API-based installation and management. A command line utility, *subctl*, wraps the Operator to aid users with manual
+deployments and easy experimentation. subctl greatly simplifies the deployment of Submariner, and is therefore the recommended deployment
+method. For complete information about subctl, please refer to [this page](subctl).
 
 In addition to Operator and subctl, Submariner also provides [Helm Charts](helm).
 
@@ -15,7 +18,8 @@ In addition to Operator and subctl, Submariner also provides [Helm Charts](helm)
 
 ## Deployment of the Broker
 
-The Broker is a set of Custom Resource Definitions (CRDs) backed by the Kubernetes datastore. The Broker must be deployed on a cluster whose Kubernetes API is accessible by all of the participating clusters:
+The Broker is a set of Custom Resource Definitions (CRDs) backed by the Kubernetes datastore. The Broker must be deployed on a cluster whose
+Kubernetes API is accessible by all of the participating clusters:
 
 ```bash
 subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER>
@@ -36,7 +40,8 @@ It also generates the `broker-info.subm` file which contains the following eleme
 * Service Discovery settings.
 
 {{% notice info %}}
-The cluster in which the Broker is deployed can also participate in the dataplane connectivity with other clusters, but it will need to be joined (see following step).
+The cluster in which the Broker is deployed can also participate in the dataplane connectivity with other clusters, but it will need to be
+joined (see following step).
 {{% /notice %}}
 
 ## Joining clusters
@@ -47,4 +52,5 @@ For each cluster you want to join, issue the following command:
 subctl join --kubeconfig <PATH-TO-JOINING-CLUSTER> broker-info.subm --clusterid <ID>
 ```
 
-subctl will automatically discover as much as it can, and prompt the user for any missing necessary information. Note that each cluster must be configured with a unique cluster ID.
+subctl will automatically discover as much as it can, and prompt the user for any missing necessary information. Note that each cluster must
+be configured with a unique cluster ID.

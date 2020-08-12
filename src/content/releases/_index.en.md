@@ -58,8 +58,10 @@ weight = 25
 * Submariner reports the active and passive gateways as a gateway.submariner.io resource.
 * The Submariner Operator reports a detailed status of the deployment.
 * The **gateway redundancy/failover** tests are now enabled and stable in CI.
-* *Globalnet hostNetwork* to remote globalIP is now supported. Previously, when a pod used hostNetworking it was unable to connect to a remote service via globalIP.
-* A globalCIDR can be manually specified when joining a cluster with globalnet enabled. This enables CI speed optimizations via better parallelism.
+* *Globalnet hostNetwork* to remote globalIP is now supported. Previously, when a pod used hostNetworking it was unable to connect to a
+  remote service via globalIP.
+* A globalCIDR can be manually specified when joining a cluster with globalnet enabled. This enables CI speed optimizations via better
+  parallelism.
 * Operator and subctl are more robust via standard retries on updates.
 * Subctl creates a new **individual access token** for every new joined cluster.
 
@@ -88,7 +90,8 @@ weight = 25
 
 ## v0.1.0 Submariner with some light
 
-> This release has focused on stability, bugfixes and making [Lighthouse](https://github.com/submariner-io/lighthouse) available as developer preview via subctl deployments.
+> This release has focused on stability, bugfixes and making [Lighthouse](https://github.com/submariner-io/lighthouse) available as
+> developer preview via subctl deployments.
 
 * Several bugfixes and enhancements around HA failover (#346, #348, #332)
 * Migrated to Daemonsets for submariner gateway deployment
@@ -109,8 +112,9 @@ weight = 25
 
 ## v0.0.3 -- KubeCon NA 2019
 
->Submariner has been greatly enhanced to allow operators to deploy into Kubernetes clusters without the necessity for layer-2 adjacency for nodes. Submariner now allows for VXLAN interconnectivity between nodes (facilitated by the route agent). Subctl
-was created to make deployment of submariner easier.
+Submariner has been greatly enhanced to allow operators to deploy into Kubernetes clusters without the necessity for layer-2 adjacency for
+nodes. Submariner now allows for VXLAN interconnectivity between nodes (facilitated by the route agent). Subctl was created to make
+deployment of submariner easier.
 
 ## v0.0.1 Second Submariner release
 
