@@ -1,8 +1,8 @@
 +++
 date = 2020-08-24T11:35:16+02:00
 title = "Releases"
-pre = "<b>5. </b>"
-weight = 25
+pre = "<b>6. </b>"
+weight = 30
 +++
 
 ## v0.6.0 Improved Submariner High Availability and various Lighthouse enhancements
