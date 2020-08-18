@@ -81,7 +81,7 @@ deployment. All the other settings like service discovery enablement and globaln
 | `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, subctl will try to discover it and, if unable to do so, it will prompt the user.
 <!-- markdownlint-enable line-length -->
 | `--no-label`                       | Skip gateway labeling. This disables the prompt for a worker node to use as gateway.
-| `--subm-debug`                     | Enable Submariner debugging (verbose logging)
+| `--enable-pod-debugging`          | Enable Submariner pod debugging (verbose logging in the deployed pods)
 
 #### join flags (globalnet)
 
