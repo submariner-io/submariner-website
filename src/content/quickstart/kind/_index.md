@@ -61,7 +61,7 @@ To manually verify the deployment follow the steps below.
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
-subctl export service --namespace default nginx
+subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
 ```
 
 #### Perform automated verification
