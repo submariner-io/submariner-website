@@ -121,7 +121,7 @@ If there's no error, then check if the Lighthouse CoreDNS server is configured c
 submariner-lighthouse-coredns` and make sure it has following configuration:
 
 ```text
-    supercluster.local:53 {
+    clusterset.local:53 {
         lighthouse
         errors
         health
@@ -131,10 +131,10 @@ submariner-lighthouse-coredns` and make sure it has following configuration:
 
 ##### Check CoreDNS Configuration
 
-Submariner requires the CoreDNS deployment to forward requests for the domain `supercluster.local` to the Lighthouse CoreDNS server in the
+Submariner requires the CoreDNS deployment to forward requests for the domain `clusterset.local` to the Lighthouse CoreDNS server in the
 cluster making the query. Ensure this configuration exists and is correct.
 
-First we check if CoreDNS is configured to forward requests for domain `supercluster.local` to Lighthouse CoreDNS Server in the cluster
+First we check if CoreDNS is configured to forward requests for domain `clusterset.local` to Lighthouse CoreDNS Server in the cluster
 making the query.
 
 `kubectl describe configmap coredns`
@@ -142,7 +142,7 @@ making the query.
 In the output look for something like this:
 
 ```text
-    supercluster.local:53 {
+    clusterset.local:53 {
         forward . <lighthouse-coredns-serviceip> ======> ServiceIP of lighthouse-coredns service as noted in previous section
     }
 ```
