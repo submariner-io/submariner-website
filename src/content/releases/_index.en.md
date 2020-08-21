@@ -1,9 +1,35 @@
 +++
-date = 2020-05-04T16:50:16+02:00
+date = 2020-08-24T11:35:16+02:00
 title = "Releases"
 pre = "<b>5. </b>"
 weight = 25
 +++
+
+## v0.6.0 Improved Submariner High Availability and various Lighthouse enhancements
+
+> This release mainly focused on support for headless Services in Lighthouse,
+> as well as improving Submariner's High Availability (HA).
+
+{{% notice warning %}}
+  The DNS domains have been updated from \<service\>.\<namespace\>.svc.**supercluster**.local to
+  \<service\>.\<namespace\>.svc.**clusterset**.local to align with the change in Kubernetes MultiCluster Service API.
+  Both domains will be supported for 0.6.0 but 0.7.0 will remove support for **supercluster**.local.
+  Please update your deployments and applications.
+{{% /notice %}}
+
+* **Lighthouse** has been enhanced to:
+  * Be aware of the local cluster Gateway connectivity so as not to announce the IP addresses for disconnected remote clusters.
+  * Support headless Services for non-**Globalnet** deployments. Support for **Globalnet** will be available in a future release.
+  * Be aware of a Service's backend Pods so as not to announce IP addresses for Services that have no active pods.
+  * Use Round Robin IP resolution for services available in multiple clusters.
+  * Enable Service discovery by default for **subctl** deployments.
+* **subctl** auto-detects the cluster ID from the kubeconfig file information when possible.
+* The Submariner Pods now shutdown gracefully and do proper cleanup which reduces the downtime during Gateway failover.
+* The operator now automatically exports Prometheus metrics; these integrate seamlessly with OpenShift Prometheus if user
+  workload monitoring is enabled, and can be included in any other Prometheus setup.
+* Minimum Kubernetes version is now 1.17.
+* HostNetwork to remote Service connectivity fixes for AWS clusters ([Issue 736](https://github.com/submariner-io/submariner/issues/736)).
+* The project's codebase quality and readability has been improved using various linters.
 
 ## v0.5.0 Lighthouse service discovery alignment
 
