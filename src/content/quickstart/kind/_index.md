@@ -78,7 +78,7 @@ kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image q
 dig mehdb.default.svc.clusterset.local:8080
 ```
 
-The `dig` command will return a set of A records containing the IP addresses of the pods backing the `mehdb` service in cluster-b.
+The `dig` command will return a set of A records containing the IP addresses of the Pods backing the `mehdb` service in cluster-b.
 
 #### Perform automated verification
 

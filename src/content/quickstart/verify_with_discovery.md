@@ -27,14 +27,14 @@ subctl export service --namespace default mehdb
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
 kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
-dig mehdb.default.svc.clusterset.local:8080
+dig mehdb.default.svc.clusterset.local:8080 +short
 ```
 
-The dig will return a set of A records containing the IP address of pods backing the service mehdb in cluster-b.
+The dig will return a set of A records containing the IP address of Pods backing the service mehdb in cluster-b.
 
 #### Perform automated verification
 
-This will perform all automated verification between your clusters
+This will perform all automated verification between your clusters.
 
 ```bash
 subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
