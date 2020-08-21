@@ -64,6 +64,22 @@ kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment n
 subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
 ```
 
+To verify a headless service follow the steps below using a mehdb service
+
+```bash
+export KUBECONFIG=cluster-b/auth/kubeconfig
+kubectl apply -f https://raw.githubusercontent.com/openshift-evangelists/mehdb/master/app.yaml
+subctl export service --namespace default mehdb
+```
+
+```bash
+export KUBECONFIG=cluster-a/auth/kubeconfig
+kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+dig mehdb.default.svc.clusterset.local:8080
+```
+
+The dig will return a set of A records containing the IP address of pods backing the service mehdb in cluster-b.
+
 #### Perform automated verification
 
 You can also perform automated verifications of service discovery via the `subctl verify` command.
