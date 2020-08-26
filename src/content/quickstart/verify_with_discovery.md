@@ -1,11 +1,13 @@
 #### Verify Deployment
 
-To verify the deployment follow the steps below which creates an nginx service and
+To verify the deployment follow the steps below which creates a headless or ClusterIp nginx service and
 ServiceExport for it.
 
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
 ```
+
+##### Deploy ClusterIP Service
 
 To verify a ClusterIP service follow the steps below
 
@@ -16,7 +18,9 @@ kubectl -n default expose deployment nginx --port=8080
 subctl export service --namespace default nginx
 ```
 
-To verify a headless service follow the steps below instead of the above one
+##### Deploy Headless Service
+
+To verify a headless service follow the steps below
 
 ```bash
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
@@ -24,7 +28,9 @@ kubectl -n default expose deployment nginx --port=8080 --cluster-ip=''
 subctl export service --namespace default nginx
 ```
 
-Now verify it from custer-b
+##### Verify
+
+Now verify the service deployed from custer-a
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig

@@ -58,13 +58,19 @@ You now have a Submariner environment that you can experiment with.
 
 To manually verify the deployment follow the steps below.
 
+##### Deploy ClusterIP Service
+
+To verify a ClusterIP service follow the steps below
+
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
 subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
 ```
 
-To verify a headless service follow the steps below instead of the above one
+##### Deploy Headless Service
+
+To verify a headless service follow the steps below
 
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
