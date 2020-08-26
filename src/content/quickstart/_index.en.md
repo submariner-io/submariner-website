@@ -72,10 +72,11 @@ this document.
 
 Presently, Submariner has been tested with the following CNI Plugins that leverage kube-proxy with iptables mode:
 
-* [openshift-sdn](https://github.com/openshift/sdn)
+* [Openshift-SDN](https://github.com/openshift/sdn)
 * [Weave](https://github.com/weaveworks/weave)
 * [Flannel](https://github.com/coreos/flannel)
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
+* [Calico](https://www.projectcalico.org/). Please refer to the [following section](../deployment/calico/) for deployment instructions.
 
 ## Deployment
 
