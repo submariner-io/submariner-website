@@ -217,5 +217,11 @@ Status:
 Events:  <none>
 ```
 
+Note that for a headless Service, the `Ips` field will contain the list of associated Endpoint IPs.
+
 If the data is not correct, you can manually edit the ServiceImport resource to set the correct IP as a workaround and create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
+
+If the ServiceImport `Ips` are correct but still not being returned from DNS queries, check the connectivity to the cluster
+using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
+from connected clusters.
