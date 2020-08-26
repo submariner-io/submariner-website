@@ -37,7 +37,7 @@ it creates a copy of it in the local cluster.
 The Lighthouse DNS server runs as an external DNS server which owns the domain supercluster.local.
 KubeDNS is configured to forward any request sent to supercluster.local to the Lighthouse DNS server,
 which uses the ServiceImport resources that are distributed by the controller for DNS resolution. The
-DNS server uses a round robin algorithm for IP selection to distribute the load evenly across the clusters.
+Lighthouse DNS server uses a round robin algorithm for IP selection to distribute the load evenly across the clusters.
 
 #### Server Workflow
 
