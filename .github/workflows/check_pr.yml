@@ -1,6 +1,7 @@
+---
 name: check-pr
 
-on: pull_request 
+on: pull_request
 
 jobs:
   build:
@@ -8,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Make the static files
-      run: make static
-  
-    - uses: actions/upload-artifact@v1
-      with:
-        name: static-website 
-        path: output
+      - name: Make the static files
+        run: make static
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: static-website
+          path: output
