@@ -60,8 +60,6 @@ To manually verify the deployment follow the steps below.
 
 ##### Deploy ClusterIP Service
 
-To verify a ClusterIP service follow the steps below
-
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
@@ -70,12 +68,20 @@ subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --nam
 
 ##### Deploy Headless Service
 
-To verify a headless service follow the steps below
-
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80 --cluster-ip=''
 subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
+```
+
+##### Verify
+
+Run `nettest` from `cluster2` to access the `nginx` service:
+
+```bash
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
+tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+curl nginx.default.svc.supercluster.local:8080
 ```
 
 #### Perform automated verification
