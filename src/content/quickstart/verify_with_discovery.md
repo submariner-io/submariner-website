@@ -2,10 +2,6 @@
 
 To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster-b`.
 
-```bash
-export KUBECONFIG=cluster-b/auth/kubeconfig
-```
-
 ##### Deploy ClusterIP Service
 
 ```bash
@@ -18,8 +14,9 @@ subctl export service --namespace default nginx
 ##### Deploy Headless Service
 
 ```bash
+export KUBECONFIG=cluster-b/auth/kubeconfig
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
-kubectl -n default expose deployment nginx --port=8080 --cluster-ip=''
+kubectl -n default expose deployment nginx --port=8080 --cluster-ip='None'
 subctl export service --namespace default nginx
 ```
 
