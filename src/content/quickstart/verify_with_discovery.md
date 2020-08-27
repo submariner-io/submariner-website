@@ -1,7 +1,6 @@
 #### Verify Deployment
 
-To verify the deployment follow the steps below which creates a headless or ClusterIp nginx service and
-ServiceExport for it.
+To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster-b`.
 
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
@@ -30,7 +29,7 @@ subctl export service --namespace default nginx
 
 ##### Verify
 
-Now verify the service deployed from custer-a
+Run `nettest` from `cluster-a` to access the `nginx` service: 
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
@@ -40,7 +39,7 @@ curl nginx.default.svc.supercluster.local:8080
 
 #### Perform automated verification
 
-This will perform all automated verification between your clusters.
+This will perform automated verifications between the clusters.
 
 ```bash
 subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
