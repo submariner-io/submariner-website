@@ -16,7 +16,7 @@ subctl export service --namespace default nginx
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
-kubectl -n default expose deployment nginx --port=8080 --cluster-ip='None'
+kubectl -n default expose deployment nginx --port=8080 --cluster-ip=None
 subctl export service --namespace default nginx
 ```
 
