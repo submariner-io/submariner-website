@@ -9,21 +9,19 @@ This is a preliminary community roadmap. It represents our best guess at broad p
 
 Details of past releases are described [here](../releases).
 
-## v0.6.0
+## v0.7.0
 
-* In progress: <https://github.com/orgs/submariner-io/projects/9>
+* In progress: <https://github.com/orgs/submariner-io/projects/10>
 
 ## Future Releases
 
 * Auto detecting NAT vs non-NAT scenarios (<https://github.com/submariner-io/submariner/issues/300>)
 * Support different IPsec ports for each cluster
-* Measuring and improving High Availability for gateway-labeled nodes
 * Network Policy across clusters (Coastguard)
-* Richer monitoring and alerting with Prometheus
 * Support for finer-grained connectivity policies (<https://github.com/submariner-io/submariner/issues/533>)
-* Support for more network plugins (OVN, Calico, others)
-* Globalnet: annotating Global IPs per namespaces
-* Globalnet: only annotate Services for which a ServiceExport has been created
+* Support for OVN-based clusters
+* Globalnet: annotating Global IPs per namespaces (<https://github.com/submariner-io/submariner/issues/528>)
+* Globalnet: only annotate Services for which a ServiceExport has been created (<https://github.com/submariner-io/submariner/issues/652>)
 * More tunnel encapsulation options
 * Dynamic routing with BGP to support multi-path forwarding across gateways
 * Testing with multi-cluster Istio
