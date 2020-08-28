@@ -13,6 +13,8 @@ subctl export service --namespace default nginx
 
 ##### Deploy Headless Service
 
+Note that headless Services can only be exported on non-globalnet deployments.
+
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine

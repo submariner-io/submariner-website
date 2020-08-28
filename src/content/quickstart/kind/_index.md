@@ -68,6 +68,8 @@ subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --nam
 
 ##### Deploy Headless Service
 
+Note that headless Services can only be exported on non-globalnet deployments.
+
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80 --cluster-ip=None
