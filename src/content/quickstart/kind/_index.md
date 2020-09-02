@@ -56,7 +56,9 @@ You now have a Submariner environment that you can experiment with.
 
 #### Verify Deployment
 
-To manually verify the deployment follow the steps below.
+To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster3`.
+
+##### Deploy ClusterIP Service
 
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
@@ -64,9 +66,29 @@ kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment n
 subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
 ```
 
+##### Deploy Headless Service
+
+Note that headless Services can only be exported on non-globalnet deployments.
+
+```bash
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80 --cluster-ip=None
+subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
+```
+
+##### Verify
+
+Run `nettest` from `cluster2` to access the `nginx` service:
+
+```bash
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
+tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+curl nginx.default.svc.supercluster.local:8080
+```
+
 #### Perform automated verification
 
-You can also perform automated verifications of service discovery via the `subctl verify` command.
+This will perform automated verifications between the clusters.
 
 ```bash
 subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
