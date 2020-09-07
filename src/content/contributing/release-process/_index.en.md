@@ -217,7 +217,8 @@ Alternatively you can edit the file and create a pull request directly on GitHub
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
 2) Make sure you have operator-sdk installed on your machine
 3) Generate a new csv file by running the command:
-    ```
+    
+   ```bash
    operator-sdk generate csv \
     --csv-version=${OPERATOR_VERSION} \
     --csv-channel=alpha \
@@ -227,6 +228,7 @@ Alternatively you can edit the file and create a pull request directly on GitHub
     --make-manifests=false \
     --interactive=false
    ```
+   
    the output generated package should be located in `deploy/olm-catalog/submariner`
 4) Fork and clone [community-operators](https://github.com/operator-framework/community-operators) project.
 5) Update the kubernetes operator
