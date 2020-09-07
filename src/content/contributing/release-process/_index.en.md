@@ -217,13 +217,14 @@ Alternatively you can edit the file and create a pull request directly on GitHub
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
 2) Make sure you have operator-sdk installed on your machine
 3) Generate a new csv file by running the command:
-    ```operator-sdk generate csv \
+    ```
+   operator-sdk generate csv \
     --csv-version=${OPERATOR_VERSION} \
     --csv-channel=alpha \
     --default-channel=true \
     --operator-name=submariner \
     --update-crds \
-    --make-manifests=false \ 
+    --make-manifests=false \
     --interactive=false
    ```
    the output generated package should be located in `deploy/olm-catalog/submariner`
@@ -234,7 +235,9 @@ Alternatively you can edit the file and create a pull request directly on GitHub
     * update the version in `upstream-community-operators/submariner/submariner.package.yaml`
     * test the operator by running the command: `make operator.test OP_PATH=upstream-community-operators/submariner`
     * preview the operator on [OperatorHub.io](https://operatorhub.io/preview)
-    * once everything is fine, review this [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md) and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
+    * once everything is fine, review this
+    [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
+    and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
 6) Update the openshift operator
    * run step 5 again but this time on `community-operators/submariner` directory.
 
