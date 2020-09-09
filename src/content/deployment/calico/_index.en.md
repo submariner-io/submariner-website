@@ -3,18 +3,17 @@ title =  "Calico CNI"
 weight = 30
 +++
 
-Typically, the Kubernetes network plugin (based on kube-proxy) programs iptables rules for Pods
-networking within the cluster. When a Pod in the cluster tries to access an external IP, the plugin
-performs different Network Address Translation (NAT) manipulation on the traffic as it does not
+Typically, the Kubernetes network plugin (based on kube-proxy) programs iptables rules for Pod
+networking within a cluster. When a Pod in a cluster tries to access an external IP, the plugin
+performs specific Network Address Translation (NAT) manipulation on the traffic as it does not
 belong to the local cluster. Similarly, Submariner also programs certain iptables rules and it
 requires these rules to be applied prior to the ones programmed by the network plugin.
 Submariner tries to preserve the source IP of the Pods for cross-cluster communication for visibility,
 ease of debugging, and security purposes.
 
-So, Submariner requires its iptables rules to take precedence over the rules that are programmed
-by the local cluster network plugin. On clusters deployed with Calico as the network plugin, it was
-seen that rules inserted by Calico take precedence over Submariner, causing issues with cross-cluster
-communication. To make Calico compatible with Submariner, it needs to be configured, via IPPools,
+On clusters deployed with Calico as the network plugin, the rules inserted by Calico take
+precedence over Submariner, causing issues with cross-cluster communication.
+To make Calico compatible with Submariner, it needs to be configured, via IPPools,
 not to perform NAT on the subnets associated with the Pod and Service CIDRs of the remote clusters.
 Once the IPPools are configured in the clusters, Calico will not perform NAT for the configured CIDRs
 and allows Submariner to support cross-cluster connectivity.
@@ -25,9 +24,10 @@ globalnet-cidr (i.e., 169.254.0.0/16) as its used internally within Calico. You 
 a non-overlapping globalnet-cidr while deploying Submariner.
 {{% /notice %}}
 
-**Let's take an example**:
-If you have two clusters, East and West, deployed with the Calico network plugin and connected
-via Submariner, you should create the following IPPools:
+As an example, consider two clusters, East and West, deployed with the Calico network plugin
+and connected via Submariner. For cluster East, the Service CIDR is 100.93.0.0/16 and the Pod CIDR is
+10.243.0.0/16. For cluster West, they are 100.92.0.0/16 and 10.242.0.0/16. The following IPPools
+should be created:
 
 ![Sample Clusters](/images/sampleclusters.png)
 
