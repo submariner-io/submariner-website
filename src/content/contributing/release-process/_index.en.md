@@ -212,18 +212,24 @@ If this is a final release, add a section for it on this website's [release note
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md)
 
-### Step 8: Update the Submariner operator on OperatorHub.io
+### Step 8: Verify the release
 
-The Git repository called [community-operators](https://github.com/operator-framework/community-operators)
-is the source for community based operators. This repository is split into two sections:
+You can follow any of the [quick start guides](../../quickstart).
 
-* Operators for deployment to a vanilla Kubernetes environment (upstream-community-operators)
+### Step 9: Update the Submariner operator on OperatorHub.io
+
+The [community-operators](https://github.com/operator-framework/community-operators) Git repository
+is the source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
+
+* Operators for deployment to a vanilla Kubernetes environment (upstream-community-operators).
+These are shared with the Kubernetes community via [OperatorHub.io](https://operatorhub.io/).
 * Operators for deployment to OpenShift (community-operators)
 
-OperatorHub.io displays content that is targeted for vanilla Kubernetes.
+To publish the Submariner operator to the community, perform the following steps:
 
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
-2) Make sure you have operator-sdk installed on your machine
+2) Make sure you have the operator-sdk v0-18-x installed on your machine
+   otherwise follow [this guide](https://v0-18-x.sdk.operatorframework.io/docs/install-operator-sdk/)
 3) Generate a new CSV file by running the command:
 
    ```bash
@@ -237,10 +243,10 @@ OperatorHub.io displays content that is targeted for vanilla Kubernetes.
     --interactive=false
    ```
 
-   the output generated package should be located in `deploy/olm-catalog/submariner`
+   the generated package output should be located in `deploy/olm-catalog/submariner`
 4) Fork and clone [community-operators](https://github.com/operator-framework/community-operators) project.
 5) Update the Kubernetes operator:
-    * copy the new generated package from step 3 into `upstream-community-operators/submariner`
+    * copy the generated package from step 3 into `upstream-community-operators/submariner`
     * compare the new CSV file with the previous one and update the missing fields (e.g spec.description)
     * update the version in `upstream-community-operators/submariner/submariner.package.yaml`
     * test the operator by running the command: `make operator.test OP_PATH=upstream-community-operators/submariner`
@@ -249,11 +255,7 @@ OperatorHub.io displays content that is targeted for vanilla Kubernetes.
     [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
     and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
 6) Update the OpenShift operator:
-   * run step 5 again but this time on `community-operators/submariner` directory.
-
-### Step 9: Verify the release
-
-You can follow any of the [quick start guides](../../quickstart).
+   * re-run step 5 on the `community-operators/submariner` directory.
 
 ### Step 10: Announce the release
 
