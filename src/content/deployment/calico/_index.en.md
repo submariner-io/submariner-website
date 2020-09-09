@@ -29,8 +29,6 @@ and connected via Submariner. For cluster East, the Service CIDR is 100.93.0.0/1
 10.243.0.0/16. For cluster West, they are 100.92.0.0/16 and 10.242.0.0/16. The following IPPools
 should be created:
 
-![Sample Clusters](/images/sampleclusters.png)
-
 On East Cluster:
 
 ```bash
