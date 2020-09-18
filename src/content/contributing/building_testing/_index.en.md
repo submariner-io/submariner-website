@@ -96,6 +96,14 @@ make cleanup
 
 Learn more about Shipyard's cleanup target [here](../shipyard#cleanup).
 
+## Shell Session in Development Environment
+
+To jump into a shell in Submariner's standard development environment, use:
+
+```shell
+make shell
+```
+
 ## submariner-io/submariner
 
 ### Building Engine, Routeagent, and Globalnet Go binaries
