@@ -15,6 +15,10 @@ reducing the possibility of mistakes during the process.
 
 `subctl [command] [--flags] ...`
 
+## Installation
+
+{{< subctl-install >}}
+
 ## Commands
 
 ### deploy-broker
@@ -215,7 +219,3 @@ When running `benchmark latency` command, two type of tests will be issued:
 `subctl version`
 
 Prints the version details for the subctl binary.
-
-## Installation
-
-{{< subctl-install >}}
