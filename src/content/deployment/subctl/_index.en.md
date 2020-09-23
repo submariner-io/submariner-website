@@ -6,16 +6,14 @@ weight: 10
 `subctl` is a command line utility designed to simplify the deployment and maintenance of
 Submariner across your clusters.
 
-## Synopsis
-
-`subctl [command] [--flags] ...`
-
-## Description
-
 `subctl` helps to automate the deployment of the Submariner [operator](https://github.com/submariner-io/submariner-operator), thereby
 reducing the possibility of mistakes during the process.
 
 `subctl` connects to specified cluster(s) and performs the requested *command*.
+
+## Synopsis
+
+`subctl [command] [--flags] ...`
 
 ## Commands
 
@@ -192,6 +190,28 @@ that this verification is disruptive.
 | `--verbose`                         | Produce verbose logs during connectivity verification
 | `--only`                            | Comma separated list of specific verifications to perform
 | `--enable-disruptive`               | Enable verifications which are potentially disruptive to your deployment
+
+### benchmark
+
+#### benchmark throughput
+
+`subctl benchmark throughput <kubeconfig1> <kubeconfig2>`
+
+The `benchmark throughput` command runs a throughput benchmark test between two clusters.
+When running `benchmark throughput` command, two type of tests will be issued:
+
+* Pod to Pod - gateway to gateway
+* Pod tp Pod - non-gateway to non-gateway
+
+#### benchmark latency
+
+`subctl benchmark latency <kubeconfig1> <kubeconfig2>`
+
+The `benchmark latency` command runs a latency benchmark test between two clusters.
+When running `benchmark latency` command, two type of tests will be issued:
+
+* Pod to Pod - gateway to gateway
+* Pod tp Pod - non-gateway to non-gateway
 
 ### version
 
