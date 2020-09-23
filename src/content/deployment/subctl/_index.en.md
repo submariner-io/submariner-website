@@ -197,21 +197,21 @@ that this verification is disruptive.
 
 `subctl benchmark throughput <kubeconfig1> <kubeconfig2>`
 
-The `benchmark throughput` command runs a throughput benchmark test between two clusters.
+The `benchmark throughput` command runs a throughput benchmark test between two specified clusters.  
 When running `benchmark throughput` command, two type of tests will be issued:
 
-* Pod to Pod - gateway to gateway
-* Pod tp Pod - non-gateway to non-gateway
+* Pod to Pod - where both Pods are scheduled on Gateway nodes
+* Pod tp Pod - where both Pods are scheduled on non-Gateway nodes
 
 #### benchmark latency
 
 `subctl benchmark latency <kubeconfig1> <kubeconfig2>`
 
-The `benchmark latency` command runs a latency benchmark test between two clusters.
+The `benchmark latency` command runs a latency benchmark test between two specified clusters.  
 When running `benchmark latency` command, two type of tests will be issued:
 
-* Pod to Pod - gateway to gateway
-* Pod tp Pod - non-gateway to non-gateway
+* Pod to Pod - where both Pods are scheduled on Gateway nodes
+* Pod tp Pod - where both Pods are scheduled on non-Gateway nodes
 
 ### version
 
