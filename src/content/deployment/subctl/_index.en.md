@@ -201,7 +201,7 @@ The `benchmark throughput` command runs a throughput benchmark test between two 
 When running `benchmark throughput` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
-* Pod tp Pod - where both Pods are scheduled on non-Gateway nodes
+* Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
 #### benchmark latency
 
@@ -211,7 +211,7 @@ The `benchmark latency` command runs a latency benchmark test between two specif
 When running `benchmark latency` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
-* Pod tp Pod - where both Pods are scheduled on non-Gateway nodes
+* Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
 ### version
 
