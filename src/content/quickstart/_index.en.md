@@ -7,7 +7,7 @@ pre = "<b>1. </b>"
 
 ## Basic Overview
 
-Submariner consists of several main components that work in conjunction to securely connect workloads across multiple Kubernetes clusters. 
+Submariner consists of several main components that work in conjunction to securely connect workloads across multiple Kubernetes clusters.
 For more information about Submariner's architecture, please refer to the [Architecture](../architecture) section.
 
 ### The Broker
