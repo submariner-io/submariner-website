@@ -84,5 +84,5 @@ The available methods for deployment are:
 * [Operator](https://github.com/submariner-io/submariner-operator)
 * [Helm](../deployment/helm)
   
-subctl greatly simplifies the deployment of Submariner, and is therefore the recommended deployment
+`subctl` greatly simplifies the deployment of Submariner, and is therefore the recommended deployment
 method.
