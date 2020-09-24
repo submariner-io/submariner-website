@@ -41,7 +41,7 @@ contains the following details:
 | `--service-discovery`                 | Enable Multi Cluster Service Discovery (default true)
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
-| `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default "broker-info.subm)
+| `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default "broker-info.subm")
 <!-- markdownlint-enable line-length -->
 
 ### export
