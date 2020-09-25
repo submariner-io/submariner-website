@@ -16,7 +16,7 @@ such as its IP, needed for clusters to connect to one another. The `Cluster` CRD
 static information about the originating cluster, such as its Service and Pod CIDRs.
 
 The Broker is a singleton component that is deployed on a cluster whose Kubernetes API must
-be accessible by all of the participating clusters. If there is a mix of on-premise and
+be accessible by all of the participating clusters. If there is a mix of on-premises and
 public clusters, the Broker can be deployed on a public cluster. The Broker cluster may be
 one of the participating clusters or a standalone cluster without the other Submariner
 components deployed. The Gateway Engine components deployed in each participating cluster are

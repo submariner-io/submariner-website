@@ -98,7 +98,7 @@ openshift-install create cluster --dir cluster-b
 ### Make your AWS cluster ready for Submariner
 
 Submariner gateway nodes need to be able to accept IPsec traffic. The default ports are 4500/UDP and 500/UDP.
-However, when you have some on-premise clusters (like vSphere in this example) which are typically inside a corporate network, the firewall
+However, when you have some on-premises clusters (like vSphere in this example) which are typically inside a corporate network, the firewall
 configuration on the corporate router may not allow the default IPsec traffic.
 We can overcome this limitation by using non-standard ports like 4501/UDP and 501/UDP.
 
