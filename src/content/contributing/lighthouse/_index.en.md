@@ -1,7 +1,7 @@
 ---
 title: "Contributing to Lighthouse"
 date: 2020-04-20T17:12:52+0300
-weight: 10
+weight: 50
 ---
 
 The [Lighthouse Project](https://github.com/submariner-io/lighthouse) contains the code for the service discovery component of Submariner.
