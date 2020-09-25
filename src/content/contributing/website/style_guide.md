@@ -21,6 +21,7 @@ Term | Usage
 :--- | :----
 Admiral | The project name *Admiral* should always be capitalized.
 Coastguard | The project name *Coastguard* should always be capitalized.
+Globalnet | The feature name *Globalnet* is one word, and so should always be capitalized and should have a lowercase "n".
 Lighthouse | The project name *Lighthouse* should always be capitalized.
 Shipyard | The project name *Shipyard* should always be capitalized.
 `subctl` | The artifact `subctl` should not be capitalized and should be formatted in code style.
