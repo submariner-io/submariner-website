@@ -15,10 +15,20 @@ clusters with the Submariner dataplane components deployed on all the clusters.
 Docker must be installed and running on your computer.
 {{% /notice %}}
 
+### Deploying automatically
+
+To create KIND clusters and deploy Submariner, run:
+
+```bash
+git clone https://github.com/submariner-io/submariner
+cd submariner
+make deploy
+```
+
 ### Deploying manually
 
-If you wish to try out Submariner deployment manually, you can first create KIND clusters using our scripts and
-[subctl](../../deployment/subctl).
+If you wish to try out Submariner deployment manually, an easy option is to create KIND clusters using our scripts and deploy Submariner
+with [subctl](../../deployment/subctl).
 
 #### Create KIND clusters
 
