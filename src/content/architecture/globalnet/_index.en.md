@@ -20,8 +20,8 @@ clusters with overlapping CIDRs to connect together.
 
 ## Architecture
 
-To support overlapping CIDRs in connected clusters, Submariner has a component called Global Private Network, GlobalNet (`globalnet`). This
-GlobalNet is a virtual network specifically to support Submariner's multi-cluster solution with a global CIDR. Each cluster is given a
+To support overlapping CIDRs in connected clusters, Submariner has a component called Global Private Network, Globalnet (`globalnet`). This
+Globalnet is a virtual network specifically to support Submariner's multi-cluster solution with a global CIDR. Each cluster is given a
 subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is
 configurable at time of deployment. User can also manually specify GlobalCIDR for each cluster that is joined to the broker using the flag
 ```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the broker or if a GlobalCIDR is preconfigured in
@@ -36,14 +36,14 @@ Gateway node.
 
 {{% notice info %}}
 
-Unlike vanilla Submariner, where Pod to Pod connectivity is also supported, GlobalNet only supports Pod to remote Service connectivity using
+Unlike vanilla Submariner, where Pod to Pod connectivity is also supported, Globalnet only supports Pod to remote Service connectivity using
 globalIps.
 
 {{% /notice %}}
 
 ### submariner-globalnet
 
-Submariner GlobalNet is a component that provides cross-cluster connectivity from Pods to remote Services using their globalIps. Compiled as
+Submariner Globalnet is a component that provides cross-cluster connectivity from Pods to remote Services using their globalIps. Compiled as
 binary `submariner-globalnet`, it is responsible for maintaining a pool of global IPs, allocating IPs from the GlobalIp pool to pods and
 services, annotating Services and Pods with their globalIp, and configuring the required rules on the gateway node to provide cross-cluster
 connectivity using globalIps.
@@ -76,7 +76,7 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
-This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for GlobalNet. The Lighthouse
+This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
 controller adds the service's globalIp to the `ServiceImport` object that is distributed to all clusters. The [lighthouse
 plugin](https://github.com/submariner-io/lighthouse/tree/master/plugin/lighthouse) then uses the Service's globalIp when replying to DNS
 queries for the Service.
