@@ -4,7 +4,7 @@ title: "KIND (Local Environment)"
 weight: 100
 ---
 
-## Locally Testing With KIND
+## Deploy KIND+Submariner Locally
 
 [KIND](https://github.com/kubernetes-sigs/kind) is a tool to run local Kubernetes clusters inside Docker container nodes.
 
@@ -15,7 +15,7 @@ clusters with the Submariner dataplane components deployed on all the clusters.
 Docker must be installed and running on your computer.
 {{% /notice %}}
 
-### Deploying automatically
+### Deploy Automatically
 
 To create KIND clusters and deploy Submariner, run:
 
@@ -25,12 +25,12 @@ cd submariner
 make deploy
 ```
 
-### Deploying manually
+### Deploy Manually
 
 If you wish to try out Submariner deployment manually, an easy option is to create KIND clusters using our scripts and deploy Submariner
 with [subctl](../../deployment/subctl).
 
-#### Create KIND clusters
+#### Create KIND Clusters
 
 To create KIND clusters, run:
 
@@ -42,17 +42,17 @@ make clusters
 
 This creates 3 Kubernetes clusters, cluster1, cluster2 and cluster3.
 
-#### Install subctl
+#### Install `subctl`
 
 {{< subctl-install >}}
 
-#### Use cluster1 as broker
+#### Use cluster1 as Broker
 
 ```bash
 subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1 --service-discovery
 ```
 
-#### Join cluster2 and cluster3 to the broker
+#### Join cluster2 and cluster3 to the Broker
 
 ```bash
 subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2 --disable-nat
@@ -64,7 +64,17 @@ subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.sub
 
 You now have a Submariner environment that you can experiment with.
 
-#### Verify Deployment
+### Verify Deployment
+
+#### Verify Automatically with `subctl`
+
+This will perform automated verifications between the clusters.
+
+```bash
+subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
+```
+
+#### Verify Manually
 
 To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster3`.
 
@@ -94,12 +104,4 @@ Run `nettest` from `cluster2` to access the `nginx` service:
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.supercluster.local:8080
-```
-
-#### Perform automated verification
-
-This will perform automated verifications between the clusters.
-
-```bash
-subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
 ```
