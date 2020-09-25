@@ -20,6 +20,8 @@ the site.
 Term | Usage
 :--- | :----
 Admiral | The project name *Admiral* should always be capitalized.
+ClusterSet | The Kubernetes object *ClusterSet* proposed in KEP1645 should always be CamelCase.
+Cluster set | The words "cluster set" should be used as a term for a group of clusters, but not the proposed Kubernetes object.
 Coastguard | The project name *Coastguard* should always be capitalized.
 Globalnet | The feature name *Globalnet* is one word, and so should always be capitalized and should have a lowercase "n".
 Lighthouse | The project name *Lighthouse* should always be capitalized.
