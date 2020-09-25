@@ -1,7 +1,7 @@
 ---
 title: "Code Review Guide"
 date: 2020-05-06T08:19:26+02:00
-weight: 5
+weight: 30
 ---
 
 ## Code Review Guide

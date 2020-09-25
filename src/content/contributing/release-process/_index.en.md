@@ -1,7 +1,7 @@
 ---
 title: "Release Process"
 date: 2020-03-18T16:03:26+01:00
-weight: 10
+weight: 70
 ---
 
 This section describes how to create a Submariner product release. It is assumed that you are familiar with the various

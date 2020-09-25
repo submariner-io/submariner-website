@@ -1,7 +1,7 @@
 ---
 date: 2020-03-17T13:36:18+01:00
 title: "KIND (Local Environment)"
-weight: 100
+weight: 10
 ---
 
 ## Deploy KIND+Submariner Locally

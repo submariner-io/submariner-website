@@ -1,7 +1,7 @@
 ---
 date: 2020-05-15T15:30:00+00:00
 title: "Rancher 2.x"
-weight: 10
+weight: 40
 ---
 
 {{< include "quickstart/rancher/prerequisites.md" >}}

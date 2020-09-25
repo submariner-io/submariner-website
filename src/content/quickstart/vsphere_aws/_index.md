@@ -1,7 +1,7 @@
 ---
 date: 2020-02-21T13:36:18+01:00
 title: "OpenShift with Service Discovery (vSphere/AWS)"
-weight: 15
+weight: 30
 ---
 
 In this quickstart guide, we shall cover the necessary steps to deploy OpenShift Container Platform (OCP) on vSphere and AWS.
