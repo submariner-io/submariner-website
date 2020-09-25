@@ -7,10 +7,10 @@ weight = 4
 ## Introduction
 
 Submariner is a tool built to connect overlay networks of different Kubernetes clusters. These clusters can be on different public clouds or
-on-premises. An important use case for Submariner is to connect disparate independent clusters into a cluster set.
+on-premises. An important use case for Submariner is to connect disparate independent clusters into a ClusterSet.
 
 However, by default, a limitation of Submariner is that it doesn't handle overlapping CIDRs (ServiceCIDR and ClusterCIDR) across clusters.
-Each cluster must use distinct CIDRs that don't conflict or overlap with any other cluster that is going to be part of the cluster set.
+Each cluster must use distinct CIDRs that don't conflict or overlap with any other cluster that is going to be part of the ClusterSet.
 
 ![Figure 1 - Problem with overlapping CIDRs](/images/globalnet/overlappingcidr-problem.png)
 
