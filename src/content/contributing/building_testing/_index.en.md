@@ -4,163 +4,99 @@ date: 2020-03-18T16:03:26+01:00
 weight: 10
 ---
 
-Submariner strives to be an open, welcoming community for developers.
-Substantial tooling is provided to ease the contribution experience.
+Submariner strives to be an open, welcoming community. Substantial tooling is provided to ease the contribution experience.
 
 ## Standard Development Environment
 
-Submariner provides a standard, shared development environment suitable for all local work. The same environment is used in CI.
-
-The [submariner-io/shipyard](https://github.com/submariner-io/shipyard) project contains the logic to build the base container images used
-across all submariner-io repositories.
+Submariner provides a standard, shared environment for both development and CI that is maintained in the
+[Shipyard](https://github.com/submariner-io/shipyard) project.
 
 Learn more about working with Shipyard [here](../shipyard).
 
-## Prescribed Tasks via Make Targets
+## Building and Testing
 
-Make targets are provided to further ease the process of using the shared development environment. The specific make targets available might
-differ by repository. For any submariner-io repository, see the `Makefile` at the root of the repository for the supported targets and the
-`.travis.yml` file for the targets actually used in CI.
-
-## Common Build and Testing Targets
-
-All **submariner-io/**\* repositories provide a standard set of Make targets for similar building and testing actions.
+Submariner provides a set of Make targets for building and testing in the standard development environment.
 
 ### Linting
 
-To run static Go linting (goimports, golangci-lint):
+To run all linting:
 
 ```shell
-make validate
+make lint
 ```
 
-### Unit tests
+There are also Make targets for each type of linting:
+
+```shell
+make gitlint golangci-lint markdownlint yamllint
+```
+
+See the linter configuration files at the root of each repository for details about which checks are enabled.
+
+Note that a few linters only run in CI via GitHub Actions and are not available in the standard development environment.
+
+### Unit Tests
 
 To run Go unit tests:
 
 ```shell
-make test
+make unit
 ```
 
-### Multi-Cluster KIND Based Environment {#clusters}
+### Building
 
-Shipyard provides a basic target that creates a KIND based multi-cluster environment,
-without any special deployment (apart from the default K8s):
-
-```shell
-make clusters
-```
-
-Find out more about [Shipyard's clusters target](../shipyard#clusters).
-
-### Multi-Cluster Submariner Deployment
-
-Shipyard provides a basic target that deploys submariner on a KIND based multi-cluster environment (if one isn't yet created, this target
-will first invoke the clusters target to do so):
-
-```shell
-make deploy
-```
-
-Find out more about [Shipyard's deploy target](../shipyard#deploy).
-
-### End-to-End Tests
-
-To run functional end-to-end tests with a full multi-cluster deployment (if one isn't yet deployed, this target will first invoke the
-`deploy` target to do so):
-
-```shell
-make e2e
-```
-
-Optionally, you can specify arguments to control the execution of the end-to-end testing and deployment (if it wasn't run separately).
-Currently some arguments are project-specific, while standard ones are supplied by [Shipyard](../shipyard).
-Please consult the project's `Makefile` to learn which arguments are supported.
-The arguments can be combined or used separately, or not at all (in which case default values apply).
-
-[Learn more](../shipyard/advanced) about controlling the deployments via Shipyard's standard arguments.
-
-For example, here's a variation used in **submariner-io/submariner** CI to deploy with *globalnet*, using *helm*:
-
-```shell
-make e2e CLUSTERS_ARGS="--globalnet" DEPLOY_ARGS="--globalnet --deploytool helm"
-```
-
-### Environment Clean Up
-
-To clean up all the KIND clusters deployed in any of the previous steps, use:
-
-```shell
-make cleanup
-```
-
-Learn more about Shipyard's cleanup target [here](../shipyard#cleanup).
-
-## Shell Session in Development Environment
-
-To jump into a shell in Submariner's standard development environment, use:
-
-```shell
-make shell
-```
-
-## submariner-io/submariner
-
-### Building Engine, Routeagent, and Globalnet Go binaries
-
-To build the `submariner-route-agent`, `submariner-engine`, and `submariner-globalnet` Go binaries, in the [submariner-io/submariner][1]
-repository:
+To build the Go binaries provided by a repository:
 
 ```shell
 make build
 ```
 
-There is an optional flag to build with debug flags set:
-
-```shell
-make build build_debug=true
-```
-
-### Building Engine, Routeagent, and Globalnet container images
-
-To build the `submariner/submariner`, `submariner/submariner-route-agent`, and `submariner/submariner-globalnet` container images, in the
-[submariner-io/submariner][1] repository:
+To package those Go binaries into container images:
 
 ```shell
 make images
 ```
 
-## submariner-io/submariner-operator
+Note that Submariner will automatically rebuild binaries and images when they have been modified and are required by tests.
 
-### Building the Operator and subctl
+### End-to-End Tests
 
-To build the `submariner-operator` container image and the `subctl` Go binary, in the [submariner-io/submariner-operator][2] repository:
-
-```shell
-make build
-```
-
-## submariner-io/lighthouse
-
-### Building Lighthouse Controller, CoreDNS and DNSServer container images
-
-To build the `lighthouse-agent` and `lighthouse-coredns` container images, in the [submariner-io/lighthouse][3] repository:
+To run functional end-to-end tests with a full multi-cluster deployment:
 
 ```shell
-make build-agent build-coredns
+make e2e
 ```
 
-## submariner-io/shipyard
-
-### Building dapper-base container image
-
-To build the base container image used in the shared developer and CI enviroment, in the [submariner-io/shipyard][4]:
+Different types of deployments can be configured with `using` flags:
 
 ```shell
-make dapper-image
+make e2e using=helm,globalnet
 ```
 
-[1]: https://github.com/submariner-io/submariner
-[2]: https://github.com/submariner-io/submariner-operator
-[3]: https://github.com/submariner-io/lighthouse
-[4]: https://github.com/submariner-io/shipyard
+See [Shipyard's `Makefile.inc`](https://github.com/submariner-io/shipyard/blob/master/Makefile.inc) for the currently-supported `using` flags.
+
+To create a multi-cluster deployment and install Submariner but not run tests:
+
+```shell
+make deploy
+```
+
+To create a multi-cluster deployment without Submariner:
+
+```shell
+make clusters
+```
+
+To clean up a multi-cluster deployment from one of the previous commands:
+
+```shell
+make cleanup
+```
+
+### Shell Session in Development Environment
+
+To jump into a shell in Submariner's standard development environment:
+
+```shell
+make shell
+```
