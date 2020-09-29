@@ -34,6 +34,6 @@ Submariner | The project name *Submariner* should always be capitalized.
 Both the "Sub-mariner" ("Sub-MARE-en-er", like the watch) and "Submarine-er" ("Sub-muh-REEN-er", like the Navy job) pronunciations are okay.
 
 The second option, "Submarine-er", has historically been more common as Chris Kim (the initial creator) imagined the iconography of the
-project like a Submarine laying cables.
+project as related to submarine cables.
 
 [kube docs guide]: https://kubernetes.io/docs/contribute/style/style-guide
