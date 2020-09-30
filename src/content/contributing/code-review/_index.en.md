@@ -59,6 +59,14 @@ In summary:
 6. Wrap the body at 72 characters
 7. Use the body to explain what and why vs how
 
+### Dismiss reviews after substantial changes
+
+If a PR is substantially changed after a code review, the author should dismiss the stale reviews.
+
+With the current GitHub configuration, reviews are not automatically dismissed when PRs are updated. This is to cause less drag for the
+typical cases, like minor merge conflicts. As Submariner grows, it might make sense to trade this low-drag solution for one where only
+exactly the reviewed code can be merged.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
