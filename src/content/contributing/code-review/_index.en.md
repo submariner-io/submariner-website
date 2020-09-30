@@ -23,7 +23,7 @@ Membership/Committers](http://localhost:1313/contributing/community-membership/#
 
 Kubernetes recommends [avoiding merge commits][merge commits].
 
-Use `git fetch` and `git rebase` to avoid them.
+Our current GitHub configuration should automatically remove merge commits.
 
 ### Squash/amend commits into discrete steps
 
