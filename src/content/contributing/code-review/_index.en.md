@@ -58,6 +58,8 @@ In summary:
 6. Wrap the body at 72 characters
 7. Use the body to explain what and why vs how
 
+GitLint will automatically be run against all commits to try to validate these conventions.
+
 ### Dismiss reviews after substantial changes
 
 If a PR is substantially changed after a code review, the author should dismiss the stale reviews.
