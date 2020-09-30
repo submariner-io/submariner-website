@@ -67,6 +67,11 @@ With the current GitHub configuration, reviews are not automatically dismissed w
 typical cases, like minor merge conflicts. As Submariner grows, it might make sense to trade this low-drag solution for one where only
 exactly the reviewed code can be merged.
 
+### Address all -1s before merging
+
+If someone requests changes ("votes -1") for a PR, a best-effort should be made to address those concerns and achieve a neutral position or
+approval (0/+1 vote) before the PR is merged.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
