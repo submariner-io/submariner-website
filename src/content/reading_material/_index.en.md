@@ -26,8 +26,12 @@ There are multiple presentations/demo recordings on Submariner available online.
 
 1. [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
 2. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
-
 3. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
+
+## SIG Presentations
+
+1. [SIG Multicluster demo of Submariner's KEP1645 Multicluster Services implementation (2020/09/22)](https://youtu.be/bx4z9sMX8FM?t=1350)
+2. [SIG Multicluster demo of Submariner's multicluster networking deployed by Submariner's operator and `subctl` (2019/12/17)](https://youtu.be/4C4kc9AOz4M?t=273)
 
 If you find additional material that isn't listed here, please feel free to add it to this page by editing it.
 The website contributing guide is [here](../contributing/website).
