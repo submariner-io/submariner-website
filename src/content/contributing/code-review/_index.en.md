@@ -13,12 +13,11 @@ Submariner follows the [Kubernetes Code Review Guide][kube code review guide]
 wherever relevant. This guide collects the most important highlights of the
 K8s process and adds Submariner-specific extensions.
 
-### Two non-author approvals required
+### Two non-author Committer approvals required
 
-Pull Requests to Submariner require two non-author code review approvals.
-
-At least one approval must be from a Committer to the relevant part of the code
-base, as defined by the CODEOWNERS file at the root of the repository.
+Pull Requests to Submariner require two approvals from a Committer to the relevant part of the code base, as defined by the CODEOWNERS file
+at the root of each repository and the [Community
+Membership/Committers](http://localhost:1313/contributing/community-membership/#committers) process.
 
 ### No merge commits
 
