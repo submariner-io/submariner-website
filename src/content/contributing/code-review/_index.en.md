@@ -6,12 +6,10 @@ weight: 30
 
 ## Code Review Guide
 
-This guide is meant to facilitate Submariner code review by sharing norms, best
-practices, and useful patterns.
+This guide is meant to facilitate Submariner code review by sharing norms, best practices, and useful patterns.
 
-Submariner follows the [Kubernetes Code Review Guide][kube code review guide]
-wherever relevant. This guide collects the most important highlights of the
-K8s process and adds Submariner-specific extensions.
+Submariner follows the [Kubernetes Code Review Guide][kube code review guide] wherever relevant. This guide collects the most important
+highlights of the K8s process and adds Submariner-specific extensions.
 
 ### Two non-author Committer approvals required
 
@@ -31,9 +29,8 @@ Kubernetes recommends [squashing commits using these guidelines][squashing].
 
 After a review, prepare your PR for merging by squashing your commits.
 
-All commits left on your branch after a review should represent meaningful
-milestones or units of work. Use commits to add clarity to the development and
-review process.
+All commits left on your branch after a review should represent meaningful milestones or units of work. Use commits to add clarity to the
+development and review process.
 
 Before merging a PR, squash the following kinds of commits:
 
@@ -41,8 +38,7 @@ Before merging a PR, squash the following kinds of commits:
 * Typos
 * Merges and rebases
 * Work in progress
-* Aim to have every commit in a PR compile and pass tests independently if you
-  can, but it's not a requirement.
+* Aim to have every commit in a PR compile and pass tests independently if you can, but it's not a requirement.
 
 ### Commit message formatting
 
