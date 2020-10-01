@@ -42,6 +42,17 @@ Before merging a PR, squash the following kinds of commits:
 * Work in progress
 * Aim to have every commit in a PR compile and pass tests independently if you can, but it's not a requirement.
 
+### Address code review feedback with new commits
+
+When addressing review comments, as a general rule, push a new commit instead of amending to the prior commit as the former makes it easy
+for reviewers to determine what changed.
+
+To avoid cluttering the git log, squash the review commits into the appropriate commit before merging. The committer can do this in GitHub
+via the "Squash and merge" option. However you may want to preserve other commits, in which case squashing will need to be done manually via
+the Git CLI. To make that simpler, you can commit the review-prompted changes with `git commit --fixup` with the appropriate commit hash.
+This will keep them as separate commits, and if you later rebase with the `--autosquash` option (that is `git rebase --autosquash -i`) they
+will automatically be selected for squashing.
+
 ### Commit message formatting
 
 Kubernetes recommends [these commit message practices][commit messages].
