@@ -6,7 +6,7 @@ weight: 10
 `subctl` is a command line utility designed to simplify the deployment and maintenance of
 Submariner across your clusters.
 
-`subctl` helps to automate the deployment of the Submariner [operator](https://github.com/submariner-io/submariner-operator), thereby
+`subctl` helps to automate the deployment of the Submariner [Operator](https://github.com/submariner-io/submariner-operator), thereby
 reducing the possibility of mistakes during the process.
 
 `subctl` connects to specified cluster(s) and performs the requested *command*.
@@ -69,8 +69,8 @@ If no `namespace` flag is specified, it uses the default namespace from the curr
 
 `subctl join broker-info.subm [flags]`
 
-The **join** command deploys the Submariner operator in a cluster using the settings provided in the `broker-info.subm` file. The service
-account credentials needed for the new cluster to access the Broker cluster will be created and provided to the Submariner operator
+The **join** command deploys the Submariner Operator in a cluster using the settings provided in the `broker-info.subm` file. The service
+account credentials needed for the new cluster to access the Broker cluster will be created and provided to the Submariner Operator
 deployment.
 
 #### join flags (general)

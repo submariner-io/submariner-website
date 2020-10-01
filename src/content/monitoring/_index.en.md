@@ -29,13 +29,13 @@ This currently requires enabling user workload monitoring; see
 [the OpenShift documentation](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html/monitoring/monitoring-your-own-services)
 for details.
 
-### Prometheus operator
+### Prometheus Operator
 
-To start monitoring Submariner using the Prometheus operator, Prometheus needs to be configured to scrape the Submariner operator’s
+To start monitoring Submariner using the Prometheus Operator, Prometheus needs to be configured to scrape the Submariner Operator’s
 namespace (`submariner-operator` by default). The specifics depend on your Prometheus deployment, but typically, this will require
 you to:
 
-* add the Submariner operator’s namespace to Prometheus’ `ClusterRoleBinding`;
+* add the Submariner Operator’s namespace to Prometheus’ `ClusterRoleBinding`;
 
 * ensure that Prometheus’ configuration doesn’t prevent it from scraping this namespace.
 

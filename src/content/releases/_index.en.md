@@ -25,7 +25,7 @@ weight = 30
   * Enable Service discovery by default for **subctl** deployments.
 * **subctl** auto-detects the cluster ID from the kubeconfig file information when possible.
 * The Submariner Pods now shutdown gracefully and do proper cleanup which reduces the downtime during Gateway failover.
-* The operator now automatically exports Prometheus metrics; these integrate seamlessly with OpenShift Prometheus if user
+* The Operator now automatically exports Prometheus metrics; these integrate seamlessly with OpenShift Prometheus if user
   workload monitoring is enabled, and can be included in any other Prometheus setup.
 * Minimum Kubernetes version is now 1.17.
 * HostNetwork to remote Service connectivity fixes for AWS clusters ([Issue 736](https://github.com/submariner-io/submariner/issues/736)).
@@ -40,7 +40,7 @@ weight = 30
   * The `MultiClusterService` resource has been replaced by `ServiceImport`.
   * The `ServiceExport` resource is now updated with status information as lifecycle events occur.
 * **Lighthouse** now allows a `ServiceExport` resource to be created prior to the associated `Service`.
-* Network discovery was moved from `subctl` to the Submariner operator.
+* Network discovery was moved from `subctl` to the Submariner Operator.
 * Several new commands were added to `subctl`: `export service`, `show versions`, `show connections`, `show networks`,
   `show endpoints`, and `show gateways`.
 * The `subctl info` command has been removed in lieu of the new `show networks` command.
@@ -51,7 +51,7 @@ weight = 30
   cluster to work around this issue. The `globalnet-cidr` will automatically be allocated by `subctl` for each cluster.
 * The separate `--operator-image` parameter has been removed from `subctl join` and the `--repository` and `--version`
   parameters are now used for all images.
-* The Submariner operator status now includes `Gateway` information.
+* The Submariner Operator status now includes `Gateway` information.
 * Closed technical requirements for Submariner to become a CNFC project, including _Developer Certificate of Origin_ compliance,
   and source code linting.
 
@@ -126,7 +126,7 @@ weight = 30
 * Support for updated strongswan (#288)
 * Better iptables detection for some hosts (#227)
 
-> subctl and the submariner operator have the following improvements
+> subctl and the submariner Operator have the following improvements
 
 * support to verify-connectivity between two connected clusters
 * deployment of submariner gateways based in daemonsets instead of deployments
@@ -138,7 +138,7 @@ weight = 30
 
 ## v0.0.3 -- KubeCon NA 2019
 
-Submariner has been greatly enhanced to allow operators to deploy into Kubernetes clusters without the necessity for layer-2 adjacency for
+Submariner has been greatly enhanced to allow Operators to deploy into Kubernetes clusters without the necessity for layer-2 adjacency for
 nodes. Submariner now allows for VXLAN interconnectivity between nodes (facilitated by the route agent). Subctl was created to make
 deployment of submariner easier.
 
