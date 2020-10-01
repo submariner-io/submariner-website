@@ -23,8 +23,8 @@ clusters with overlapping CIDRs to connect together.
 To support overlapping CIDRs in connected clusters, Submariner has a component called Global Private Network, Globalnet (`globalnet`). This
 Globalnet is a virtual network specifically to support Submariner's multi-cluster solution with a global CIDR. Each cluster is given a
 subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is
-configurable at time of deployment. User can also manually specify GlobalCIDR for each cluster that is joined to the broker using the flag
-```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the broker or if a GlobalCIDR is preconfigured in
+configurable at time of deployment. User can also manually specify GlobalCIDR for each cluster that is joined to the Broker using the flag
+```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the Broker or if a GlobalCIDR is preconfigured in
 the cluster, the supplied globalnet-cidr will be ignored.
 
 Once configured, each Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`, from this `GlobalCIDR` that

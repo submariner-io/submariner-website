@@ -52,13 +52,13 @@ openshift-install create cluster --dir cluster-b
 
 To install Submariner with multi-cluster service discovery and support for overlapping CIDRs follow the steps below.
 
-#### Use cluster-a as broker with service discovery and globalnet enabled
+#### Use cluster-a as Broker with service discovery and globalnet enabled
 
 ```bash
 subctl deploy-broker  --kubeconfig cluster-a/auth/kubeconfig --service-discovery --globalnet
 ```
 
-#### Join cluster-a and cluster-b to the broker
+#### Join cluster-a and cluster-b to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid west

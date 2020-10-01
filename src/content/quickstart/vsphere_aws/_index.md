@@ -141,13 +141,13 @@ sed "s/\ 4500/\ $NAT_PORT/g" -i cluster-b/ocp-ipi-aws/ocp-ipi-aws-prep/ec2-resou
 
 To install Submariner with multi-cluster service discovery, follow the steps below.
 
-##### Use cluster-b (AWS) as broker with service discovery enabled
+##### Use cluster-b (AWS) as Broker with service discovery enabled
 
 ```bash
 subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig --service-discovery
 ```
 
-##### Join cluster-b (AWS) and cluster-a (vSphere) to the broker
+##### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b --ikeport 501 --nattport 4501

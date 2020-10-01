@@ -8,7 +8,7 @@ weight: 10
 
 [KIND](https://github.com/kubernetes-sigs/kind) is a tool to run local Kubernetes clusters inside Docker container nodes.
 
-Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that deploy 3 Kubernetes clusters locally - 1 broker and 2 data
+Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that deploy 3 Kubernetes clusters locally - 1 Broker and 2 data
 clusters with the Submariner dataplane components deployed on all the clusters.
 
 {{% notice note %}}

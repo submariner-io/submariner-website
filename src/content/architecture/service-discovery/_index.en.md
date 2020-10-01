@@ -16,17 +16,17 @@ The below diagram shows the basic Lighthouse architecture.
 ### Lighthouse Agent
 
 The Lighthouse Agent runs in every cluster and accesses the Kubernetes API server running in
-the broker cluster to exchange service metadata information with other clusters. Local service
-information is exported to the broker and service information from other clusters is imported.
+the Broker cluster to exchange service metadata information with other clusters. Local service
+information is exported to the Broker and service information from other clusters is imported.
 
 #### Agent Workflow
 
 The workflow is as follows:
 
-- Lighthouse agent connects to the broker's K8s API server.
+- Lighthouse agent connects to the Broker's K8s API server.
 - For every Service in the local cluster for which a ServiceExport has been created, the agent creates a corresponding
-ServiceImport resource and exports it to the broker to be consumed by other clusters.
-- For every ServiceImport resource in the broker exported from another cluster,
+ServiceImport resource and exports it to the Broker to be consumed by other clusters.
+- For every ServiceImport resource in the Broker exported from another cluster,
 it creates a copy of it in the local cluster.
 
 ![Lighthouse Agent WorkFlow](/images/lighthouse/controllerWorkFlow.png)
