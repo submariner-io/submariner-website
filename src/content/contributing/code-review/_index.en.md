@@ -32,7 +32,7 @@ Kubernetes recommends [squashing commits using these guidelines][squashing].
 After a review, prepare your PR for merging by squashing your commits.
 
 All commits left on your branch after a review should represent meaningful milestones or units of work. Use commits to add clarity to the
-development and review process.
+development and review process. Keep in mind that smaller commits are easier to review.
 
 Before merging a PR, squash the following kinds of commits:
 
