@@ -21,7 +21,9 @@ Membership/Committers](http://localhost:1313/contributing/community-membership/#
 
 Kubernetes recommends [avoiding merge commits][merge commits].
 
-Our current GitHub configuration should automatically remove merge commits.
+With our current GitHub setup, pull requests are liable to include merge commits temporarily. Whenever a PR is updated through the UI,
+GitHub merges the target branch into the PR. However, since we merge PRs by either squashing or rebasing them, those merge commits
+disappear from the series of commits which ultimately ends up in the target branch.
 
 ### Squash/amend commits into discrete steps
 
