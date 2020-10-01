@@ -25,6 +25,7 @@ Cluster set | The words "cluster set" should be used as a term for a group of cl
 Coastguard | The project name *Coastguard* should always be capitalized.
 Globalnet | The feature name *Globalnet* is one word, and so should always be capitalized and should have a lowercase "n".
 Lighthouse | The project name *Lighthouse* should always be capitalized.
+Operator | The design pattern *Operator* should always be capitalized.
 Shipyard | The project name *Shipyard* should always be capitalized.
 `subctl` | The artifact `subctl` should not be capitalized and should be formatted in code style.
 Submariner | The project name *Submariner* should always be capitalized.
