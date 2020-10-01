@@ -174,13 +174,13 @@ trying to access. The format of a ServiceImport resources's name is as follows:
 
 `<service-name>-<service-namespace>-<cluster-id>`
 
-Run `kubectl get serviceimports --all-namespaces |grep <your-service-name>` on the broker cluster to check if a resource was created for
+Run `kubectl get serviceimports --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
 your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning
 messages indicating a failure to create the ServiceImport resource for your service. The most common error is `Forbidden` if the RBAC wasn't
 configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the ServiceImport resource was created correctly on the broker cluster, the next step is to check if it exists on the cluster where
+If the ServiceImport resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
 you're trying to access the service. Follow the same steps as earlier to get the list of the ServiceImport resources and check if the
 ServiceImport for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
 service. As described earlier, it will most commonly be an issue with RBAC otherwise create an

@@ -16,13 +16,13 @@ weight: 15
 
 To install Submariner with multi-cluster service discovery follow the steps below.
 
-#### Use cluster-a as broker with service discovery enabled
+#### Use cluster-a as Broker with service discovery enabled
 
 ```bash
 subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig --service-discovery
 ```
 
-#### Join cluster-a and cluster-b to the broker
+#### Join cluster-a and cluster-b to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a

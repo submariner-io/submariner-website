@@ -12,13 +12,13 @@ weight: 20
 
 {{< subctl-install >}}
 
-### Use cluster-a as broker
+### Use cluster-a as Broker
 
 ```bash
 subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 ```
 
-### Join cluster-a and cluster-b to the broker
+### Join cluster-a and cluster-b to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a

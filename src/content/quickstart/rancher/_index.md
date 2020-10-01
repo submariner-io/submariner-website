@@ -18,13 +18,13 @@ Obtain the kubeconfig files from the Rancher UI for each of your clusters, placi
 |Cluster A|kubeconfig-cluster-a|
 |Cluster B|kubeconfig-cluster-b|
 
-### Use cluster-a as broker
+### Use cluster-a as Broker
 
 ```bash
 subctl deploy-broker --kubeconfig kubeconfig-cluster-a
 ```
 
-### Join cluster-a and cluster-b to the broker
+### Join cluster-a and cluster-b to the Broker
 
 ```bash
 subctl join --kubeconfig kubeconfig-cluster-a broker-info.subm --clusterid cluster-a
