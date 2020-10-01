@@ -21,7 +21,7 @@ The guide has been broken into different sections for easy navigation.
 Before we begin troubleshooting, run `subctl version` to obtain which version of the Submariner components you are running.
 
 Run `kubectl get services -n <service-namespace> | grep <service-name>` to get information about the service you're trying to access. This
-will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **GlobalNet** is enabled, you will also need the *globalIp* of the
+will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **Globalnet** is enabled, you will also need the *globalIp* of the
 service by running
 
 `kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'`
@@ -51,11 +51,11 @@ TBD
 
 TBD
 
-##### Without GlobalNet
+##### Without Globalnet
 
 TBD
 
-##### With GlobalNet
+##### With Globalnet
 
 TBD
 
@@ -63,11 +63,11 @@ TBD
 
 TBD
 
-##### Without GlobalNet
+##### Without Globalnet
 
 TBD
 
-##### With GlobalNet
+##### With Globalnet
 
 TBD
 
