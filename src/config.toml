@@ -12,8 +12,8 @@ defaultContentLanguageInSubdir= true
 
 [params]
   editURL = "https://github.com/submariner-io/website/edit/master/src/content/"
-  description = "Documentation website for the submariner project"
-  author = "The submariner community"
+  description = "Documentation website for the Submariner project"
+  author = "The Submariner community"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
