@@ -34,7 +34,7 @@ Assuming that you deployed the cluster (say, cluster-a) with default network con
 |--------------|--------------|
 |10.128.0.0/14 |172.30.0.0/16 |
 
-Submariner creates a VxLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the
+Submariner creates a VXLAN overlay network in the local cluster and uses port 4800/UDP to encapsulate traffic from the worker nodes to the
 gateway nodes to preserve the source IP of the inter-cluster traffic.
 Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all the worker nodes.
 
