@@ -51,24 +51,8 @@ An example of three clusters configured to use with Submariner (without Globalne
 
 ## Support Matrix
 
-Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner has been tested with and
-known to be working properly with the following cloud environments:
-
-{{% notice tip %}}
-Are you using Submariner in an environment which is not described here? Please [let us know](../contributing/website) so that we can update
-this document.
-{{% /notice %}}
-
-### Cloud Providers
-
-* AWS
-* VMware vSphere
-* OpenStack
-* GCP
-
-### Kubernetes CNI Plugins
-
-Presently, Submariner has been tested with the following CNI Plugins that leverage kube-proxy with iptables mode:
+Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Presently, Submariner has been
+tested with the following network (CNI) Plugins that leverage kube-proxy with iptables mode:
 
 * [OpenShift-SDN](https://github.com/openshift/sdn)
 * [Weave](https://github.com/weaveworks/weave)
