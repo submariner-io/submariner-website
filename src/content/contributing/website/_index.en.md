@@ -23,7 +23,7 @@ submitting you can:
     make server
     ```
 
-3. An instance of the website is now running locally on your machine and is accessible at [http://localhost:1313](http://localhost:1313)
+3. An instance of the website is now running locally on your machine and is accessible at <http://localhost:1313>.
 
 4. Edit files in src. The browser should automatically reload so you can test your changes.
 
