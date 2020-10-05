@@ -4,7 +4,7 @@ Submariner gateway nodes need to be able to accept traffic over ports 4500/UDP a
 when using IPSEC. In addition we use port 4800/UDP to encapsulate traffic from the worker nodes
 to the gateway nodes and ensuring that Pod IP addresses are preserved.
 
-Additionally, the default Openshift deployments don't allow assigning an elastic public IP
+Additionally, the default OpenShift deployments don't allow assigning an elastic public IP
 to existing worker nodes, something that it's necessary at least on one end of the IPSEC connections.
 
 To handle all those details we provide a script that will prepare your AWS OpenShift deployment
