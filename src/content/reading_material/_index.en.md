@@ -5,7 +5,7 @@ weight: 35
 pre: "<b>7. </b>"
 ---
 
-There are multiple presentations/demo recordings on Submariner available online.
+There are multiple presentations and demo recordings about Submariner available online.
 
 ## Conference Presentations
 
