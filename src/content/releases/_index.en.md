@@ -22,8 +22,8 @@ weight = 30
   * Support headless Services for non-**Globalnet** deployments. Support for **Globalnet** will be available in a future release.
   * Be aware of a Service's backend Pods so as not to announce IP addresses for Services that have no active pods.
   * Use Round Robin IP resolution for services available in multiple clusters.
-  * Enable Service discovery by default for **subctl** deployments.
-* **subctl** auto-detects the cluster ID from the kubeconfig file information when possible.
+  * Enable Service discovery by default for **`subctl`** deployments.
+* **`subctl`** auto-detects the cluster ID from the kubeconfig file information when possible.
 * The Submariner Pods now shutdown gracefully and do proper cleanup which reduces the downtime during Gateway failover.
 * The Operator now automatically exports Prometheus metrics; these integrate seamlessly with OpenShift Prometheus if user
   workload monitoring is enabled, and can be included in any other Prometheus setup.
@@ -88,8 +88,8 @@ weight = 30
   remote service via globalIP.
 * A globalCIDR can be manually specified when joining a cluster with globalnet enabled. This enables CI speed optimizations via better
   parallelism.
-* Operator and subctl are more robust via standard retries on updates.
-* Subctl creates a new **individual access token** for every new joined cluster.
+* Operator and `subctl` are more robust via standard retries on updates.
+* `subctl` creates a new **individual access token** for every new joined cluster.
 
 ## v0.2.0 Overlapping CIDR support
 
@@ -117,7 +117,7 @@ weight = 30
 ## v0.1.0 Submariner with some light
 
 > This release has focused on stability, bugfixes and making [Lighthouse](https://github.com/submariner-io/lighthouse) available as
-> developer preview via subctl deployments.
+> developer preview via `subctl` deployments.
 
 * Several bugfixes and enhancements around HA failover (#346, #348, #332)
 * Migrated to Daemonsets for submariner gateway deployment
@@ -126,20 +126,20 @@ weight = 30
 * Support for updated strongswan (#288)
 * Better iptables detection for some hosts (#227)
 
-> subctl and the submariner Operator have the following improvements
+> `subctl` and the submariner Operator have the following improvements
 
 * support to verify-connectivity between two connected clusters
 * deployment of submariner gateways based in daemonsets instead of deployments
 * renaming submariner pods to "submariner-gateway" pods for clarity
-* print version details on crash (subctl)
+* print version details on crash (`subctl`)
 * stop storing IPSEC key on broker during deploy-broker, now it's only contained into the .subm file
-* version command for subctl
+* version command for `subctl`
 * nicer spinners during deployment (thanks to kind)
 
 ## v0.0.3 -- KubeCon NA 2019
 
 Submariner has been greatly enhanced to allow Operators to deploy into Kubernetes clusters without the necessity for layer-2 adjacency for
-nodes. Submariner now allows for VXLAN interconnectivity between nodes (facilitated by the route agent). Subctl was created to make
+nodes. Submariner now allows for VXLAN interconnectivity between nodes (facilitated by the route agent). `subctl` was created to make
 deployment of submariner easier.
 
 ## v0.0.1 Second Submariner release

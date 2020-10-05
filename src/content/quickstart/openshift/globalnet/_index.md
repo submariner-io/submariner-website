@@ -44,7 +44,7 @@ openshift-install create cluster --dir cluster-b
 
 {{< include "quickstart/openshift/ready_clusters.md" >}}
 
-### Install subctl
+### Install `subctl`
 
 {{< subctl-install >}}
 

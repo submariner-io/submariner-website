@@ -18,7 +18,7 @@ There are multiple presentations/demo recordings on Submariner available online.
 ## Demo Recordings
 
 1. [Submariner in 60s](https://www.youtube.com/watch?v=pQgUWiGtKqM)
-2. [Deploying Submariner with subctl](https://www.youtube.com/watch?v=cInmBXuZsU8)
+2. [Deploying Submariner with `subctl`](https://www.youtube.com/watch?v=cInmBXuZsU8)
 3. [Connecting hybrid Kubernetes clusters using Submariner](https://www.youtube.com/watch?v=fMhZRNn0fxQ)
 4. [Cross-cluster service discovery in Submariner using Lighthouse](https://www.youtube.com/watch?v=tXsemQPNhyQ)
 
