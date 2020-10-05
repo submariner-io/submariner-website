@@ -28,7 +28,7 @@ make deploy
 ### Deploy Manually
 
 If you wish to try out Submariner deployment manually, an easy option is to create KIND clusters using our scripts and deploy Submariner
-with [subctl](../../deployment/subctl).
+with [`subctl`](../../deployment/subctl).
 
 #### Create KIND Clusters
 

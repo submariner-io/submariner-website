@@ -113,9 +113,9 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submar
 ## Perform automated verification
 
 Automated verification of the deployment can be performed by using the verification
-tests embedded in the subctl command line tool via the `subctl verify` command.
+tests embedded in the `subctl` command line tool via the `subctl verify` command.
 
-### Install subctl
+### Install `subctl`
 
 {{< subctl-install >}}
 
