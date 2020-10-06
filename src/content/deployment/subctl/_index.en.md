@@ -198,35 +198,28 @@ that this verification is disruptive.
 
 `subctl benchmark throughput <kubeconfig1> [<kubeconfig2>] [flags]`
 
-The `benchmark throughput` command runs a throughput benchmark test between two specified clusters.
+The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
 When running `benchmark throughput` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
-When using the flag `--intra-cluster-baseline`, the following test will be issued:
-
-* Pod to Pod - where both Pods are inside the same cluster, from Non-Gateway to Gateway
-
 #### benchmark latency
 
 `subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
 
-The `benchmark latency` command runs a latency benchmark test between two specified clusters.
+The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
 When running `benchmark latency` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
-When using the flag `--intra-cluster-baseline`, the following test will be issued:
-
-* Pod to Pod - where both Pods are inside the same cluster, from Non-Gateway to Gateway
-
 #### benchmark flags
-
+<!-- markdownlint-disable line-length -->
 | Flag                                | Description
-|:------------------------------------|:---------------------------------------------------------------------------------------|
-| `--intra-cluster-baseline`          | Issue a benchmark test inside a single cluster (from Non-Gateway node to Gateway node)
+|:------------------------------------|:----------------------------------------------------------------------------|
+| `--intra-cluster`                   | Performs the benchmark test within a single cluster between Pods from a Non-Gateway node to a Gateway node
+<!-- markdownlint-enable line-length -->
 
 ### version
 
