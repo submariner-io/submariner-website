@@ -65,7 +65,7 @@ in the Shipyard directory. This creates a local image with your changes availabl
 
 Shipyard ships a [Makefile.inc] file which defines these basic targets:
 
-* **[clusters](#clusters):** Creates the kind -based cluster environment.
+* **[clusters](#clusters):** Creates the kind-based cluster environment.
 * **[deploy](#deploy)** : Deploys submariner components in the cluster environment (depends on clusters).
 * **[cleanup](#cleanup):** Deletes the kind environment (if it exists) and any residual resources.
 * **[release](#release):** Uploads the requested image(s) to Quay.io.
