@@ -6,8 +6,8 @@ weight: 80
 
 ## Overview
 
-The Shipyard project provides common tooling for creating K8s clusters with [kind](https://github.com/kubernetes-sigs/kind) (K8s in Docker)
-and provides a common Go framework for creating end to end tests.
+The Shipyard project provides common tooling for creating Kubernetes clusters with [kind](https://github.com/kubernetes-sigs/kind)
+(Kubernetes in Docker) and provides a common Go framework for creating end to end tests.
 Shipyard contains common functionality shared by other projects. Any project specific functionality should be part of that project.
 
 A base image `quay.io/submariner/shipyard-dapper-base` is created from Shipyard and contains all the tooling to build other projects and run
@@ -78,7 +78,7 @@ precedence over environment variables).
 
 ### Clusters {#clusters}
 
-A Make target that creates a kind-based multi-cluster environment with just the default K8s deployment:
+A Make target that creates a kind-based multi-cluster environment with just the default Kubernetes deployment:
 
 ```shell
 make clusters

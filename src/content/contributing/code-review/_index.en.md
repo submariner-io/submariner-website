@@ -9,7 +9,7 @@ weight: 30
 This guide is meant to facilitate Submariner code review by sharing norms, best practices, and useful patterns.
 
 Submariner follows the [Kubernetes Code Review Guide][kube code review guide] wherever relevant. This guide collects the most important
-highlights of the K8s process and adds Submariner-specific extensions.
+highlights of the Kubernetes process and adds Submariner-specific extensions.
 
 ### Two non-author Committer approvals required
 

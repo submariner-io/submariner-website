@@ -89,8 +89,8 @@ same name). These flags affect how the clusters are deployed (and possibly influ
 
 Flags of note:
 
-* **k8s_version:** Allows to specify the K8s version that [kind](https://kind.sigs.k8s.io/) will deploy. Available versions can be found
-  [here](https://hub.docker.com/r/kindest/node/tags).
+* **k8s_version:** Allows to specify the Kubernetes version that [kind](https://kind.sigs.k8s.io/) will deploy. Available versions can be
+found [here](https://hub.docker.com/r/kindest/node/tags).
 
   ```bash
   make clusters CLUSTERS_ARGS='--k8s_version 1.18.0'

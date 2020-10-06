@@ -186,7 +186,7 @@ that this verification is disruptive.
 |:------------------------------------|:----------------------------------------------------------------------------|
 | `--connection-attempts` `<value>`   | The maximum number of connection attempts (default 2)
 | `--connection-timeout` `<value>`    | The timeout in seconds per connection attempt  (default 60)
-| `--operation-timeout` `<value>`     | Operation timeout for K8s API calls (default 240)
+| `--operation-timeout` `<value>`     | Operation timeout for Kubernetes API calls (default 240)
 | `--report-dir` `<string>`           | XML report directory (default ".")
 | `--verbose`                         | Produce verbose logs during connectivity verification
 | `--only`                            | Comma separated list of specific verifications to perform
