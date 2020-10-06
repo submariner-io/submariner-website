@@ -55,5 +55,5 @@ Gateway node in the cluster.
 ![Figure 2 - Gateway Failover Scenario](/images/high-availability/HA_Cluster2.png)
 <!-- Image Source: https://docs.google.com/presentation/d/180CtHZnr9PP5Rh98VEmkQz3ovc5AGXG9wosoHMLhgaY/edit -->
 
-The impact on datapath for various scenarios in a KIND setup are captured in the
+The impact on datapath for various scenarios in a kind setup are captured in the
 following [spreadsheet](https://docs.google.com/spreadsheets/d/1JsXsyRDDXkp6t55Gm-NP5EggWTyYi2yo27pyuDYwlpc/edit#gid=0).

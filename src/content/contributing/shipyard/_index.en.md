@@ -6,7 +6,7 @@ weight: 80
 
 ## Overview
 
-The Shipyard project provides common tooling for creating K8s clusters with [KIND](https://github.com/kubernetes-sigs/kind) (K8s in Docker)
+The Shipyard project provides common tooling for creating K8s clusters with [kind](https://github.com/kubernetes-sigs/kind) (K8s in Docker)
 and provides a common Go framework for creating end to end tests.
 Shipyard contains common functionality shared by other projects. Any project specific functionality should be part of that project.
 
@@ -65,9 +65,9 @@ in the Shipyard directory. This creates a local image with your changes availabl
 
 Shipyard ships a [Makefile.inc] file which defines these basic targets:
 
-* **[clusters](#clusters):** Creates the KIND -based cluster environment.
+* **[clusters](#clusters):** Creates the kind -based cluster environment.
 * **[deploy](#deploy)** : Deploys submariner components in the cluster environment (depends on clusters).
-* **[cleanup](#cleanup):** Deletes the KIND environment (if it exists) and any residual resources.
+* **[cleanup](#cleanup):** Deletes the kind environment (if it exists) and any residual resources.
 * **[release](#release):** Uploads the requested image(s) to Quay.io.
 * **vendor/modules.txt:** Populates go modules (in case go.mod exists in the root directory).
 
@@ -78,7 +78,7 @@ precedence over environment variables).
 
 ### Clusters {#clusters}
 
-A Make target that creates a KIND-based multi-cluster environment with just the default K8s deployment:
+A Make target that creates a kind-based multi-cluster environment with just the default K8s deployment:
 
 ```shell
 make clusters
@@ -91,7 +91,7 @@ Respected variables:
 
 ### Deploy {#deploy}
 
-A Make target that deploys Submariner components in a KIND-based cluster environment (if one isn't created yet, this target will first
+A Make target that deploys Submariner components in a kind-based cluster environment (if one isn't created yet, this target will first
 invoke the clusters target to do so):
 
 ```shell
@@ -106,7 +106,7 @@ Respected variables:
 
 ### Cleanup {#cleanup}
 
-To clean up all the KIND clusters deployed in any of the previous steps, use:
+To clean up all the kind clusters deployed in any of the previous steps, use:
 
 ```shell
 make cleanup
