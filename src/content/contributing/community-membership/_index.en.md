@@ -7,13 +7,13 @@ weight: 40
 **This is a stripped-down version of the [Kubernetes Community Membership
 process][parent process].**
 
-**Although we aspire to follow the K8s process, some parts are not currently
+**Although we aspire to follow the Kubernetes process, some parts are not currently
 relevant to our structure or possible with our tooling:**
 
 * **The SIG and subproject abstraction layers don't apply to Submariner.
   Submariner is treated as a single project with file-based commit rights, not
   a "project" per repository.**
-* **We hope to eventually move to K8s OWNERS and Prow, but until we do so we
+* **We hope to eventually move to Kubernetes OWNERS and Prow, but until we do so we
   can't support advanced role-based automation (reviewers vs approvers;
   PR workflow commands like /okay-to-test, /lgtm, /approved).**
 

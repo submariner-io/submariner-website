@@ -18,7 +18,7 @@ code is ready to be reviewed, you can propose a pull request. You can find a goo
 
 #### [#submariner](https://kubernetes.slack.com/archives/C010RJV694M)
 
-Share your ideas in the #submariner channel in Kubernetes' Slack. If you need it, you can [request an invite to K8S slack
+Share your ideas in the #submariner channel in Kubernetes' Slack. If you need it, you can [request an invite to Kubernetes Slack
 instance](https://slack.k8s.io/).
 
 #### [Community Calendar](https://calendar.google.com/calendar/r?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)

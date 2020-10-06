@@ -23,7 +23,7 @@ information is exported to the Broker and service information from other cluster
 
 The workflow is as follows:
 
-- Lighthouse agent connects to the Broker's K8s API server.
+- Lighthouse agent connects to the Broker's Kubernetes API server.
 - For every Service in the local cluster for which a ServiceExport has been created, the agent creates a corresponding
 ServiceImport resource and exports it to the Broker to be consumed by other clusters.
 - For every ServiceImport resource in the Broker exported from another cluster,
