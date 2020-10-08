@@ -5,6 +5,20 @@ pre = "<b>6. </b>"
 weight = 30
 +++
 
+## v0.7.0 StatefulSet support for service discovery and benchmark tooling
+
+> This release mainly focused on adding support for StatefulSets in Lighthouse for service discovery and adding new `subctl`
+> commands to benchmark the network performance across clusters.
+
+* Lighthouse enhancements/changes:
+  * Added support for accessing individual pods in a StatefulSet using their host names.
+  * A service in a specific cluster can now be explicitly queried.
+  * Removed support for the `supercluster.local` domain to align with the Kubernetes MultiCluster Service API.
+* Added new `subctl` benchmark commands for measuring the throughput and round trip latency between two Pods in separate
+  clusters or within the same cluster.
+* The data path is no longer disrupted when the Globalnet Pod is restarted.
+* The Route Agent component now runs on all worker nodes including those with taints.
+
 ## v0.6.0 Improved Submariner High Availability and various Lighthouse enhancements
 
 > This release mainly focused on support for headless Services in Lighthouse,
