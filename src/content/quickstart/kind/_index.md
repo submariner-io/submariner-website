@@ -103,5 +103,5 @@ Run `nettest` from `cluster2` to access the `nginx` service:
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
-curl nginx.default.svc.supercluster.local:8080
+curl nginx.default.svc.clusterset.local:8080
 ```
