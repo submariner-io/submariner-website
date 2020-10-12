@@ -117,8 +117,8 @@ If the error is due to a wrong image, run `kubectl -n submariner-operator get de
 
 For any other errors, capture the information and raise a new [issue](https://github.com/submariner-io/lighthouse/issues)
 
-If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run `kubectl describe configmap
-submariner-lighthouse-coredns` and make sure it has following configuration:
+If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run `kubectl -n submariner-operator describe 
+configmap submariner-lighthouse-coredns` and make sure it has following configuration:
 
 ```text
     clusterset.local:53 {
@@ -137,7 +137,7 @@ cluster making the query. Ensure this configuration exists and is correct.
 First we check if CoreDNS is configured to forward requests for domain `clusterset.local` to Lighthouse CoreDNS Server in the cluster
 making the query.
 
-`kubectl describe configmap coredns`
+`kubectl -n kube-system describe configmap coredns`
 
 In the output look for something like this:
 
