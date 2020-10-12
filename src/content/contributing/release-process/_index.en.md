@@ -56,14 +56,15 @@ simpler. Here are general steps for creating a new release in a project:
 5) Enter information to describe the release. This is optional for pre-releases but should be filled in for
    a final release.
 
-6) If this is not a final release, mark the checkbox `This is a pre-release`.
+6) If this is not a final release, mark the checkbox `This is a pre-release`. This includes release candidates. This is
+   important so it is not labeled as the Latest release in GitHub.
 
 7) Click `Publish release`.
 
 For most projects a GitHub action job will be initiated to build release artifacts and publish to Quay. This will take
 several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down above the
 file listing heading, select the tag for the new version. A small yellow circle icon should be present to the right of the
-file listing heading which indicates a job is in progress. You can click it to see details. There should be several checks
+file listing heading which indicates a job is in progress. You can click it to see details. There may be several checks
 for the job listed but the important one is `Release Images`. When complete, the indicator icon will change to either a
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
@@ -171,12 +172,15 @@ For `lighthouse`:
 5) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
    new version.
 
-Once the build job successfully completes, the generated image version (`0.5.0`) should be available on Quay here:
+Once the image release job successfully completes, the generated image version (`0.5.0`) should be available on Quay here:
 
 > <https://quay.io/repository/submariner/submariner-operator?tab=tags>
 
-The `subctl` binaries for the various platforms should be listed under the `Assets` section for the new release on the
-main [releases](https://github.com/submariner-io/submariner-operator/releases) page.
+There is a separate job to publish the `subctl` binaries for the various platforms. These should be listed under the `Assets`
+section for the new release on the main [releases](https://github.com/submariner-io/submariner-operator/releases) page.
+If not then the job failed so correct the issue and re-run the job.
+
+Note that either job could fail while the other succeeds so it is important to verify both.
 
 ### Step 5: Update `subctl` version in `shipyard`
 
