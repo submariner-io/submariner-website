@@ -117,7 +117,7 @@ If the error is due to a wrong image, run `kubectl -n submariner-operator get de
 
 For any other errors, capture the information and raise a new [issue](https://github.com/submariner-io/lighthouse/issues)
 
-If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run `kubectl -n submariner-operator describe 
+If there's no error, then check if the Lighthouse CoreDNS server is configured correctly. Run `kubectl -n submariner-operator describe
 configmap submariner-lighthouse-coredns` and make sure it has following configuration:
 
 ```text
