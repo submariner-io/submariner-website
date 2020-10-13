@@ -32,7 +32,7 @@ kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image q
 curl nginx.default.svc.clusterset.local:8080
 ```
 
-To access service in a specific cluster, prefix query with `<cluster-id>` as follows:
+To access a Service in a specific cluster, prefix the query with `<cluster-id>` as follows:
 
 ```bash
 curl cluster-a.nginx.default.svc.clusterset.local:8080
@@ -40,7 +40,7 @@ curl cluster-a.nginx.default.svc.clusterset.local:8080
 
 #### Verify StatefulSets
 
-StatefulSets use headless Service, so only work with non-globalnet deployments. Create a `web.yaml` as follows:
+A StatefulSet uses a headless Service. Create a `web.yaml` as follows:
 
 ```yaml
 apiVersion: v1
@@ -84,7 +84,7 @@ spec:
           name: web
 ```
 
-Use this yaml to create a StatefulSet `web` with `nginx-ss` as headless service.
+Use this yaml to create a StatefulSet `web` with `nginx-ss` as the headless Service.
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
@@ -92,13 +92,13 @@ kubectl -n default  apply -f web.yaml
 curl nginx-ss.default.svc.clusterset.local:8080
 ```
 
-To access service in a specific cluster, prefix query with `<cluster-id>` as follows:
+To access the Service in a specific cluster, prefix the query with `<cluster-id>`:
 
 ```bash
 curl cluster-a.nginx-ss.default.svc.clusterset.local:8080
 ```
 
-To access individual pod in a specific cluster, prefix query with `<pod-hostname>.<cluster-id>` as follows:
+To access an individual pod in a specific cluster, prefix the query with `<pod-hostname>.<cluster-id>`:
 
 ```bash
 curl web-0.cluster-a.nginx-ss.default.svc.clusterset.local:8080
