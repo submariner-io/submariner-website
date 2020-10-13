@@ -228,7 +228,7 @@ When running `benchmark throughput` command, two type of tests will be issued:
 `subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
-It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) and logs the output to the console.
+It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) tool and logs the output to the console.
 When running `benchmark latency` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
