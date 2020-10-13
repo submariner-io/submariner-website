@@ -228,22 +228,22 @@ from connected clusters.
 
 ##### Check EndpointSlice resources
 
-For headless Service, next we check if the EndpointSlice resources were properly created for the service you're
+For a headless Service, next we check if the EndpointSlice resources were properly created for the service you're
 trying to access. EndpointSlice resources are created in the same namespace as the source Service. The format of a EndpointSlice
 resource's name is as follows:
 
 `<service-name>--<cluster-id>`
 
 Run `kubectl get endpointslices --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
-your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning
-messages indicating a failure to create the ServiceImport resource for your service. The most common error is `Forbidden` if the RBAC wasn't
-configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an
-[issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+your Service. If not, then check the Lighthouse Agent logs on the cluster where the Service was created and look for any error or warning
+messages indicating a failure to create the ServiceImport resource for your Service. The most common error is `Forbidden` if the RBAC wasn't
+configured correctly. This is supposed to be done automatically during deployment so please file an
+[issue](https://github.com/submariner-io/lighthouse/issues) with the relevant log entries.
 
 If the EndpointSlice resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
-you're trying to access the service. Follow the same steps as earlier to get the list of the EndpointSlice resources and check if the
-EndpointSlice for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
-service. As described earlier, it will most commonly be an issue with RBAC otherwise create an
+you're trying to access the Service. Follow the same steps as earlier to get the list of the EndpointSlice resources and check if the
+EndpointSlice for the Service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
+Service. As described earlier, it will most commonly be an issue with RBAC so create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
 If the EndpointSlice resource was created properly on the cluster, run
@@ -278,11 +278,11 @@ Endpoints:
 Events:        <none>
 ```
 
-If the `Addresses` are correct but still not being returned from DNS queries, try querying IPs in specific cluster using
-by prefixing your service query with `<cluster-id>.` If that returns the IPs correctly, then check the connectivity to the cluster
+If the `Addresses` are correct but still not being returned from DNS queries, try querying IPs in a specific cluster
+by prefixing the query with `<cluster-id>.` If that returns the IPs correctly, then check the connectivity to the cluster
 using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
 from connected clusters.
 
-For errors querying specific pods of a `StatefulSet`, check the `Hostname` is correct for that endpoint.
+For errors querying specific pods of a StatefulSet, check that the `Hostname` is correct for the endpoint.
 
-If still not working, raise an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+If still not working, file an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
