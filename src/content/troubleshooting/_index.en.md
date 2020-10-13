@@ -268,7 +268,7 @@ Endpoints:
   - Addresses:  10.242.0.5  -----> Pod IP
     Conditions:
       Ready:    true
-    Hostname:   web-0   -----> pod hostname
+    Hostname:   web-0   -----> Pod hostname
     Topology:   kubernetes.io/hostname=cluster2-worker2
   - Addresses:  10.242.224.4
     Conditions:
@@ -283,6 +283,6 @@ by prefixing the query with `<cluster-id>.` If that returns the IPs correctly, t
 using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
 from connected clusters.
 
-For errors querying specific pods of a StatefulSet, check that the `Hostname` is correct for the endpoint.
+For errors querying specific Pods of a StatefulSet, check that the `Hostname` is correct for the endpoint.
 
 If still not working, file an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
