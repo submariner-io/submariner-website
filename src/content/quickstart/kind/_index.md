@@ -70,9 +70,11 @@ You now have a Submariner environment that you can experiment with.
 
 This will perform automated verifications between the clusters.
 
+<!-- markdownlint-disable line-length -->
 ```bash
-subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
+subctl verify output/kubeconfigs/kind-config-cluster2 output/kubeconfigs/kind-config-cluster3 --only service-discovery,connectivity --verbose
 ```
+<!-- markdownlint-enable line-length -->
 
 #### Verify Manually
 
