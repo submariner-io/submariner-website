@@ -217,7 +217,7 @@ that this verification is disruptive.
 `subctl benchmark throughput <kubeconfig1> [<kubeconfig2>] [flags]`
 
 The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
-The command will use *iperf* for the backend and will log the tool output to the console.
+It deploys a Pod to run the [iperf](https://iperf.fr/) tool and logs the output to the console.
 When running `benchmark throughput` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
@@ -228,7 +228,7 @@ When running `benchmark throughput` command, two type of tests will be issued:
 `subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
-The command will use *netperf* for the backend and will log the tool output to the console.
+It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) and logs the output to the console.
 When running `benchmark latency` command, two type of tests will be issued:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
