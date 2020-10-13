@@ -11,13 +11,18 @@ weight = 30
 > commands to benchmark the network performance across clusters.
 
 * Lighthouse enhancements/changes:
-  * Added support for accessing individual pods in a StatefulSet using their host names.
-  * A service in a specific cluster can now be explicitly queried.
+  * Added support for accessing individual Pods in a StatefulSet using their host names.
+  * A Service in a specific cluster can now be explicitly queried.
   * Removed support for the `supercluster.local` domain to align with the Kubernetes MultiCluster Service API.
 * Added new `subctl` benchmark commands for measuring the throughput and round trip latency between two Pods in separate
   clusters or within the same cluster.
 * The data path is no longer disrupted when the Globalnet Pod is restarted.
 * The Route Agent component now runs on all worker nodes including those with taints.
+
+When upgrading to 0.7.0 on a cluster already running Submariner, the current state must be cleared:
+
+* Remove the Submariner namespaces: `kubectl delete ns submariner-operator submariner-k8s-broker`
+* Remove the Submariner cluster roles: `kubectl delete clusterroles submariner-lighthouse submariner-operator submariner-operator:globalnet`
 
 ## v0.6.0 Improved Submariner High Availability and various Lighthouse enhancements
 
