@@ -217,7 +217,7 @@ Status:
 Events:  <none>
 ```
 
-Note that for a headless Service, the `Ips` field will contain the list of associated Endpoint IPs.
+For headless Service, you need to check `EndpointSlice` resource.
 
 If the data is not correct, you can manually edit the ServiceImport resource to set the correct IP as a workaround and create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
@@ -225,3 +225,64 @@ If the data is not correct, you can manually edit the ServiceImport resource to 
 If the ServiceImport `Ips` are correct but still not being returned from DNS queries, check the connectivity to the cluster
 using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
 from connected clusters.
+
+##### Check EndpointSlice resources
+
+For a headless Service, next we check if the EndpointSlice resources were properly created for the service you're
+trying to access. EndpointSlice resources are created in the same namespace as the source Service. The format of a EndpointSlice
+resource's name is as follows:
+
+`<service-name>--<cluster-id>`
+
+Run `kubectl get endpointslices --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
+your Service. If not, then check the Lighthouse Agent logs on the cluster where the Service was created and look for any error or warning
+messages indicating a failure to create the ServiceImport resource for your Service. The most common error is `Forbidden` if the RBAC wasn't
+configured correctly. This is supposed to be done automatically during deployment so please file an
+[issue](https://github.com/submariner-io/lighthouse/issues) with the relevant log entries.
+
+If the EndpointSlice resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
+you're trying to access the Service. Follow the same steps as earlier to get the list of the EndpointSlice resources and check if the
+EndpointSlice for the Service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
+Service. As described earlier, it will most commonly be an issue with RBAC so create an
+[issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+
+If the EndpointSlice resource was created properly on the cluster, run
+`kubectl -n <your-service-namespace> describe endpointslice <your-endpointslice-name>`
+and check if it has the correct endpoint addresses:
+
+```text
+Name:         nginx-ss-cluster2
+Namespace:    default
+Labels:       endpointslice.kubernetes.io/managed-by=lighthouse-agent.submariner.io
+              lighthouse.submariner.io/sourceCluster=cluster2
+              lighthouse.submariner.io/sourceName=nginx-ss
+              lighthouse.submariner.io/sourceNamespace=default
+              multicluster.kubernetes.io/service-name=nginx-ss-default-cluster2
+Annotations:  <none>
+AddressType:  IPv4
+Ports:
+  Name  Port  Protocol
+  ----  ----  --------
+  web   80    TCP
+Endpoints:
+  - Addresses:  10.242.0.5  -----> Pod IP
+    Conditions:
+      Ready:    true
+    Hostname:   web-0   -----> Pod hostname
+    Topology:   kubernetes.io/hostname=cluster2-worker2
+  - Addresses:  10.242.224.4
+    Conditions:
+      Ready:   true
+    Hostname:  web-1
+    Topology:  kubernetes.io/hostname=cluster2-worker
+Events:        <none>
+```
+
+If the `Addresses` are correct but still not being returned from DNS queries, try querying IPs in a specific cluster
+by prefixing the query with `<cluster-id>.` If that returns the IPs correctly, then check the connectivity to the cluster
+using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
+from connected clusters.
+
+For errors querying specific Pods of a StatefulSet, check that the `Hostname` is correct for the endpoint.
+
+If still not working, file an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
