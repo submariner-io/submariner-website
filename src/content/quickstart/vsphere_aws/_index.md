@@ -102,36 +102,29 @@ However, when you have some on-premises clusters (like vSphere in this example) 
 configuration on the corporate router may not allow the default IPsec traffic.
 We can overcome this limitation by using non-standard ports like 4501/UDP and 501/UDP.
 
-Additionally, the default OpenShift deployments do not allow assigning an elastic public IP
-to existing worker nodes, something that's necessary at least on one end of the IPsec connections.
+Additionally, the default OpenShift deployment does not allow assigning an elastic public IP
+to existing worker nodes, something that is necessary at least on one end of the IPsec connections.
 
-To handle these requirements on AWS, we provide a script that will prepare your AWS OpenShift deployment for Submariner, and will create an
-additional gateway node with an external IP.
+To handle these requirements on AWS, we provide a script
+[prep_for_subm.sh](https://github.com/submariner-io/submariner/blob/master/tools/openshift/ocp-ipi-aws/prep_for_subm.sh),
+that will prepare your AWS OpenShift deployment for Submariner, and will create an additional gateway node with an external IP.
+
+In the following example, we create the gateway node on cluster-b, with custom IPsec ports and instance type:
 
 ```bash
 
 curl https://raw.githubusercontent.com/submariner-io/submariner/master/tools/openshift/ocp-ipi-aws/prep_for_subm.sh -L -O
 chmod a+x ./prep_for_subm.sh
 
-./prep_for_subm.sh cluster-b      # respond yes when terraform asks
+export IPSEC_NATT_PORT=4501
+export IPSEC_IKE_PORT=501
+export GW_INSTANCE_TYPE=m4.xlarge
+
+./prep_for_subm.sh cluster-b  # respond yes when terraform asks to approve, or add after path: -auto-approve
 
 ```
 
-> **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **unzip** need to be installed before running the `prep_for_subm.sh` script.
-
-Currently, prep_for_subm.sh script does not support specifying custom IPsec ports.
-Until the [issue](https://github.com/submariner-io/submariner/issues/240) is resolved, execute the following commands to open the necessary ports:
-
-```bash
-
-export BROKER_IKEPORT=501
-export NAT_PORT=4501
-sed "s/\ 500/\ $BROKER_IKEPORT/g" -i cluster-b/ocp-ipi-aws/ocp-ipi-aws-prep/ec2-resources.tf
-sed "s/\ 4500/\ $NAT_PORT/g" -i cluster-b/ocp-ipi-aws/ocp-ipi-aws-prep/ec2-resources.tf
-
-./prep_for_subm.sh cluster-b      # respond yes when terraform asks
-
-```
+> **_INFO_** Please note that  **oc**, **aws-cli**, **terraform**, and **wget** need to be installed before running the `prep_for_subm.sh` script.
 
 ### Submariner Installation
 
@@ -150,11 +143,11 @@ subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig --service-discovery
 ##### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b --ikeport 501 --nattport 4501
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --ikeport 501 --nattport 4501
 ```
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a --ikeport 501 --nattport 4501
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --ikeport 501 --nattport 4501
 ```
 
 {{< include "quickstart/verify_with_discovery.md" >}}
