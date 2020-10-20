@@ -239,6 +239,7 @@ When running `benchmark latency` command, two type of tests will be issued:
 | Flag                                | Description
 |:------------------------------------|:----------------------------------------------------------------------------|
 | `--intra-cluster`                   | Performs the benchmark test within a single cluster between Pods from a Non-Gateway node to a Gateway node
+| `--verbose`                         | Produce verbose logs during benchmark tests
 <!-- markdownlint-enable line-length -->
 
 ### version
