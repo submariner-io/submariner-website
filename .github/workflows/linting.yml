@@ -1,0 +1,59 @@
+---
+name: Linting
+
+on:
+  pull_request:
+
+jobs:
+  dco:
+    name: DCO in Commit Message(s)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR commits
+        id: 'get-pr-commits'
+        uses: tim-actions/get-pr-commits@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run DCO check
+        uses: tim-actions/dco@master
+        with:
+          commits: ${{ steps.get-pr-commits.outputs.commits }}
+
+  markdown-link-check:
+    name: Markdown Links (modified files)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Run markdown-link-check
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          config-file: ".markdownlinkcheck.json"
+          check-modified-files-only: "yes"
+          folder-path: "src/content"
+
+  markdownlint:
+    name: Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Run markdownlint
+        uses: nosborn/github-action-markdown-cli@v1.1.1
+        with:
+          files: .
+          config_file: ".markdownlint.yml"
+          ignore_files: "src/themes/*"
+
+  yaml-lint:
+    name: YAML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+      - name: Run yamllint
+        uses: ibiqlik/action-yamllint@v1
+        with:
+          file_or_dir: .
+          config_file: .yamllint.yml
