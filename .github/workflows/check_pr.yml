@@ -1,20 +1,22 @@
 ---
-name: check-pr
+name: Website
 
-on: pull_request
+on:
+  pull_request:
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
 
-      - name: Make the static files
+      - name: Build the website static files
         run: make static
 
-      - uses: actions/upload-artifact@v1
+      - name: Upload proposed static website for review
+        uses: actions/upload-artifact@v1
         with:
-          name: static-website
+          name: Proposed static website
           path: output
