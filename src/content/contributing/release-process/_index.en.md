@@ -79,8 +79,8 @@ projects require, you will need to create a pre-release (for example `v0.5.0-pre
 
 2) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
 
-3) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
-   projects as well. After the tests successfully complete, have it merged.
+3) Commit the change and create a pull request with the `e2e-projects` label so it runs the E2E tests on the consuming projects. After the
+   tests successfully complete, have it merged.
 
 ### Step 1: Create release for the `shipyard` project
 
@@ -188,8 +188,8 @@ Update the Dapper base image to pull in the latest `subctl` binary:
 
 1) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
 
-2) Commit the change and create a pull request with the `test-projects` label so it runs the E2E tests on the consuming
-   projects as well. After the tests successfully complete, have it merged.
+2) Commit the change and create a pull request with the `e2e-projects` label so it runs the E2E tests on the consuming projects. After the
+   tests successfully complete, have it merged.
 
 ### Step 6: Unpin the `shipyard` Dapper base image version
 
