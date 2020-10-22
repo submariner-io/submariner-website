@@ -58,7 +58,7 @@ contains the following details:
 <!-- markdownlint-disable line-length -->
 | Flag                                  | Description
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
+| `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`            | kubeconfig context to use
 | `--service-discovery`                 | Enable Multi Cluster Service Discovery (default true)
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
@@ -77,7 +77,7 @@ discoverable from other clusters in the Submariner deployment.
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
+| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 | `--namespace` `<string>`     | Namespace in which the Service to be exported belongs
 
@@ -169,7 +169,7 @@ Shows the aggregated information from all the other show commands.
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
+| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 
 ### `verify`
