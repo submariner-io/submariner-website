@@ -22,7 +22,7 @@ Please ensure that the tools you downloaded above are compatible with the OpenSh
 
 {{% /notice %}}
 
-### Deploy Cluster on vSphere (OnPrem)
+### Deploy Cluster on vSphere (On-Prem)
 
 Create the necessary infrastructure on vSphere and ensure that your machines have direct internet access before starting the installation.
 To deploy OCP 4.4, follow the instructions shown

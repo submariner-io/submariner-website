@@ -47,7 +47,7 @@ An example of three clusters configured to use with Submariner (without Globalne
 |:-------------|:---------|:-------------|:-------------|--------------------|
 | broker       | AWS      | 10.42.0.0/16 | 10.43.0.0/16 | 192.168.1.0/24     |
 | west         | vSphere  | 10.0.0.0/16  | 10.1.0.0/16  | 192.168.1.0/24     |
-| east         | OnPrem   | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
+| east         | On-Prem  | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
 
 ## Support Matrix
 
