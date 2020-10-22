@@ -39,11 +39,11 @@ curl https://get.submariner.io | VERSION=devel bash
 
 ## Commands
 
-### deploy-broker
+### `deploy-broker`
 
 `subctl deploy-broker [flags]`
 
-The **deploy-broker** command configures the cluster specified by the `--kubeconfig` flag (or `KUBECONFIG` env var) and the `--kubecontext`
+The `deploy-broker` command configures the cluster specified by the `--kubeconfig` flag (or `KUBECONFIG` env var) and the `--kubecontext`
 flag as the Broker. It installs the necessary CRDs and the `submariner-k8s-broker` namespace.
 
 In addition, it generates a `broker-info.subm` file which can be used with the `join` command to connect clusters to the Broker. This file
@@ -53,7 +53,7 @@ contains the following details:
 * Broker access details for subsequent `subctl` runs
 * Service Discovery settings
 
-#### deploy-broker flags
+#### `deploy-broker` flags
 
 <!-- markdownlint-disable line-length -->
 | Flag                                  | Description
@@ -66,14 +66,14 @@ contains the following details:
 | `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default "broker-info.subm")
 <!-- markdownlint-enable line-length -->
 
-### export
+### `export`
 
-#### export service
+#### `export service`
 
 `subctl export service [flags] <name>` creates a `ServiceExport` resource for the given Service name. This makes the corresponding Service
 discoverable from other clusters in the Submariner deployment.
 
-#### export service flags
+#### `export service` flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
@@ -83,15 +83,15 @@ discoverable from other clusters in the Submariner deployment.
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
-### join
+### `join`
 
 `subctl join broker-info.subm [flags]`
 
-The **join** command deploys the Submariner Operator in a cluster using the settings provided in the `broker-info.subm` file. The service
+The `join` command deploys the Submariner Operator in a cluster using the settings provided in the `broker-info.subm` file. The service
 account credentials needed for the new cluster to access the Broker cluster will be created and provided to the Submariner Operator
 deployment.
 
-#### join flags (general)
+#### `join` flags (general)
 <!-- markdownlint-disable line-length -->
 | Flag                               | Description
 |:-----------------------------------|:----------------------------------------------------------------------------|
@@ -102,7 +102,7 @@ deployment.
 | `--enable-pod-debugging`           | Enable Submariner pod debugging (verbose logging in the deployed pods)
 <!-- markdownlint-enable line-length -->
 
-#### join flags (Globalnet)
+#### `join` flags (Globalnet)
 <!-- markdownlint-disable line-length -->
 | Flag                                 | Description
 |:-------------------------------------|:----------------------------------------------------------------------------|
@@ -110,7 +110,7 @@ deployment.
 | `--globalnet-cidr` `<string>`        | GlobalCIDR to be allocated to the cluster, this setting is exclusive with `--globalnet-cluster-size` and configures a specific Globalnet CIDR for this cluster
 <!-- markdownlint-enable line-length -->
 
-#### join flags (IPsec)
+#### `join` flags (IPsec)
 
 | Flag                    | Description
 |:------------------------|:-----------------------------------------------|
@@ -119,7 +119,7 @@ deployment.
 | `--ipsec-debug`         | Enable IPsec debugging (verbose logging)
 | `--nattport` `<value>`  | IPsec NAT-T port (default 4500)
 
-#### join flags (images and repositories)
+#### `join` flags (images and repositories)
 <!-- markdownlint-disable line-length -->
 | Flag                                    | Description
 |:----------------------------------------|:----------------------------------------------------------------------------|
@@ -127,52 +127,52 @@ deployment.
 | `--version` `<string>`                  | Image version
 <!-- markdownlint-enable line-length -->
 
-### show
+### `show`
 
-#### show networks
+#### `show networks`
 
 `subctl show networks [flags]`
 
 Inspects the cluster and reports information about the detected network plugin and detected Cluster and Service CIDRs.
 
-#### show versions
+#### `show versions`
 
 `subctl show versions [flags]`
 
 Shows the version and image repository of each Submariner component in the cluster.
 
-#### show gateways
+#### `show gateways`
 
 `subctl show gateways [flags]`
 
 Shows summary information about the Submariner gateways in the cluster.
 
-#### show connections
+#### `show connections`
 
 `subctl show connections [flags]`
 
 Shows information about the Submariner endpoint connections with other clusters.
 
-#### show endpoints
+#### `show endpoints`
 
 `subctl show endpoints [flags]`
 
 Shows information about the Submariner endpoints in the cluster.
 
-#### show all
+#### `show all`
 
 `subctl show all [flags]`
 
 Shows the aggregated information from all the other show commands.
 
-#### show flags
+#### `show` flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default "$HOME/.kube/config")
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 
-### verify
+### `verify`
 
 `subctl verify <kubeConfig1> <kubeConfig2> [flags]`
 
@@ -198,7 +198,7 @@ The `gateway-failover` suite verifies the continuity of cross-cluster dataplane 
 This suite requires a single gateway configured on `ClusterA` and other available Worker nodes capable of serving as gateways. Please note
 that this verification is disruptive.
 
-#### verify flags
+#### `verify` flags
 
 | Flag                                | Description
 |:------------------------------------|:----------------------------------------------------------------------------|
@@ -210,9 +210,9 @@ that this verification is disruptive.
 | `--only`                            | Comma separated list of specific verifications to perform
 | `--enable-disruptive`               | Enable verifications which are potentially disruptive to your deployment
 
-### benchmark
+### `benchmark`
 
-#### benchmark throughput
+#### `benchmark throughput`
 
 `subctl benchmark throughput <kubeconfig1> [<kubeconfig2>] [flags]`
 
@@ -223,7 +223,7 @@ When running `benchmark throughput` command, two type of tests will be issued:
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
-#### benchmark latency
+#### `benchmark latency`
 
 `subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
 
@@ -234,14 +234,14 @@ When running `benchmark latency` command, two type of tests will be issued:
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
 
-#### benchmark flags
+#### `benchmark` flags
 <!-- markdownlint-disable line-length -->
 | Flag                                | Description
 |:------------------------------------|:----------------------------------------------------------------------------|
 | `--intra-cluster`                   | Performs the benchmark test within a single cluster between Pods from a Non-Gateway node to a Gateway node
 <!-- markdownlint-enable line-length -->
 
-### version
+### `version`
 
 `subctl version`
 
