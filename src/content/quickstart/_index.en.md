@@ -58,7 +58,7 @@ tested with the following network (CNI) Plugins that leverage kube-proxy with ip
 * [Weave](https://github.com/weaveworks/weave)
 * [Flannel](https://github.com/coreos/flannel)
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
-* [Calico](https://www.projectcalico.org/). Please refer to the [following section](../deployment/calico/) for deployment instructions.
+* [Calico](https://www.projectcalico.org/) (see the [Calico-specific deployment instructions](../deployment/calico/))
 
 ## Deployment
 
