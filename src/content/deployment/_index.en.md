@@ -19,7 +19,7 @@ In addition to Operator and `subctl`, Submariner also provides [Helm Charts](hel
 ## Deployment of the Broker
 
 The Broker is a set of Custom Resource Definitions (CRDs) backed by the Kubernetes datastore. The Broker must be deployed on a cluster whose
-Kubernetes API is accessible by all of the participating clusters:
+Kubernetes API is accessible by all of the participating clusters.
 
 ```bash
 subctl deploy-broker --kubeconfig <PATH-TO-KUBECONFIG-BROKER>
