@@ -218,7 +218,7 @@ that this verification is disruptive.
 
 The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [iperf](https://iperf.fr/) tool and logs the output to the console.
-When running `benchmark throughput` command, two type of tests will be issued:
+When running `benchmark throughput`, two types of tests will be executed:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
@@ -229,7 +229,7 @@ When running `benchmark throughput` command, two type of tests will be issued:
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) tool and logs the output to the console.
-When running `benchmark latency` command, two type of tests will be issued:
+When running `benchmark latency`, two types of tests will be executed:
 
 * Pod to Pod - where both Pods are scheduled on Gateway nodes
 * Pod to Pod - where both Pods are scheduled on non-Gateway nodes
