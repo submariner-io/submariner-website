@@ -9,7 +9,7 @@ Submariner across your clusters.
 `subctl` helps to automate the deployment of the Submariner [Operator](https://github.com/submariner-io/submariner-operator), thereby
 reducing the possibility of mistakes during the process.
 
-`subctl` connects to specified cluster(s) and performs the requested *command*.
+`subctl` connects to specified cluster(s) and performs the requested command.
 
 ## Synopsis
 
