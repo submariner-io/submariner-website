@@ -14,6 +14,7 @@ There are multiple presentations and demo recordings about Submariner available 
 [video recording](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d)
 2. KubeCon North America 2019 [slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf)
    and [video recording](https://www.youtube.com/watch?v=jMvuchSMCKU&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien)
+3. Computing on the Edge with Kubernetes 2020 [video recording](https://www.youtube.com/watch?v=x7PbyTVEXFg)
 
 ## Demo Recordings
 
