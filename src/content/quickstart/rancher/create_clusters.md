@@ -19,7 +19,7 @@ In this step you will deploy cluster B, modifying the default IP CIDRs
 |--------------|--------------|
 |10.44.0.0/16  |10.45.0.0/16  |
 
-Create your cluster, but select **Edit as YAML** in the cluster creation UI. Edit the services stanza to reflect the options below, while
+Create your cluster, but select **Edit as YAML** in the cluster creation UI. Edit the `services` stanza to reflect the options below, while
 making sure to keep the options that were already defined.
 
 ```bash
