@@ -25,8 +25,8 @@ Please ensure that the tools you downloaded above are compatible with the OpenSh
 ### Deploy Cluster on vSphere (On-Prem)
 
 Create the necessary infrastructure on vSphere and ensure that your machines have direct internet access before starting the installation.
-To deploy OCP 4.4, follow the instructions shown
-[here](https://docs.openshift.com/container-platform/4.4/installing/installing_vsphere/installing-vsphere.html)
+See the [docs for deploying OCP 4.4 on
+vSphere](https://docs.openshift.com/container-platform/4.4/installing/installing_vsphere/installing-vsphere.html).
 
 Assuming that you deployed the cluster (say, cluster-a) with default network configuration, the Pod and Service CIDRs would be
 
@@ -44,8 +44,8 @@ Ensure that firewall configuration on vSphere cluster allows 4800/UDP across all
 
 {{% notice tip %}}
 
-Although we are using the default OCP network configuration on vSphere, you can install vSphere with a custom network configuration as shown
-[here](https://red.ht/2WFjEVg)
+Although we are using the default OCP network configuration on vSphere, you can [install vSphere with a custom network
+configuration](https://red.ht/2WFjEVg).
 
 {{% /notice %}}
 
@@ -61,9 +61,8 @@ Default region name [None]: ....
 Default output format [None]: text
 ```
 
-For more details, follow this link:
-
-> <https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html>
+For more details, see the [OCP 4.4 AWS account configuration
+docs](https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html).
 
 In this step we shall modify the default Cluster/Service CIDRs and deploy cluster-b on AWS.
 
