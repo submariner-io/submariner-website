@@ -9,7 +9,7 @@ Once the OCP clusters are deployed, we shall cover how to deploy Submariner and 
 
 ### OpenShift Prerequisites
 
-Before we proceed, the following prerequisites have to be downloaded and added to your `$PATH:`
+Before we proceed, the following prerequisites have to be downloaded and added to your `$PATH`:
 
  1. [openshift-installer](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
  2. [pull secret](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
