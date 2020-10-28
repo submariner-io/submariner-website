@@ -1,0 +1,5 @@
+Contact: submariner-security@googlegroups.com
+Preferred-Languages: en, es, fr
+Canonical: https://submariner.io/security.txt
+Policy: https://submariner.io/contributing/security/
+Expires: Thu, 28 Oct 2021 00:00:00 -0000
