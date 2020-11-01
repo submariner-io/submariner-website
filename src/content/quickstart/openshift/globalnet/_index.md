@@ -11,6 +11,13 @@ interconnecting the two clusters. Since the two clusters share the same Cluster 
 
 {{< include "quickstart/openshift/setup_openshift.md" >}}
 
+{{% notice info %}}
+Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
+please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
+{{% /notice %}}
+
+{{< include "quickstart/openshift/setup_aws.md" >}}
+
 ### Create cluster A
 
 This step will create a cluster named "cluster-a" with the default IP CIDRs.

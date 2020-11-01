@@ -8,20 +8,14 @@ This quickstart guide covers the necessary steps to deploy two OpenShift Contain
 provisioned infrastructure (UPI) and the other one on AWS with full stack automation (aka IPI). Once the OpenShift clusters are deployed,
 we will walk you through the deployment of Submariner with Service Discovery, interconnecting the two clusters.
 
-### OpenShift Prerequisites
-
-Before we proceed, the following prerequisites have to be downloaded and added to your `$PATH`:
-
- 1. [openshift-installer](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
- 2. [pull secret](https://cloud.redhat.com/openshift/install/aws/installer-provisioned)
- 3. [oc](https://cloud.redhat.com/openshift/install/aws/installer-provisioned) tools
- 4. [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+{{< include "quickstart/openshift/setup_openshift.md" >}}
 
 {{% notice info %}}
-
-Please ensure that the tools you downloaded above are compatible with the OpenShift Container Platform version.
-
+Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
+please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
+
+{{< include "quickstart/openshift/setup_aws.md" >}}
 
 ### Deploy Cluster on vSphere (On-Prem)
 
@@ -51,19 +45,6 @@ configuration](https://red.ht/2WFjEVg).
 {{% /notice %}}
 
 ### Deploy Cluster on AWS
-
-#### Configure AWS CLI with appropriate values
-
-```bash
-$ aws configure
-AWS Access Key ID [None]: ....
-AWS Secret Access Key [None]: ....
-Default region name [None]: ....
-Default output format [None]: text
-```
-
-For more details, see the [OCP 4.4 AWS account configuration
-docs](https://docs.openshift.com/container-platform/4.4/installing/installing_aws/installing-aws-account.html).
 
 In this step we shall modify the default Cluster/Service CIDRs and deploy cluster-b on AWS.
 

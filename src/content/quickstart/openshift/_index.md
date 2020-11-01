@@ -10,6 +10,13 @@ interconnecting the two clusters. Note that this guide focuses on Submariner for
 Service Discovery, please refer to [this guide](./service_discovery/).
 
 {{< include "quickstart/openshift/setup_openshift.md" >}}
+
+{{% notice info %}}
+Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
+please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
+{{% /notice %}}
+
+{{< include "quickstart/openshift/setup_aws.md" >}}
 {{< include "quickstart/openshift/create_clusters.md" >}}
 {{< include "quickstart/openshift/ready_clusters.md" >}}
 
