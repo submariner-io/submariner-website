@@ -4,6 +4,11 @@ title: "With Service Discovery and Globalnet"
 weight: 20
 ---
 
+This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters on AWS with full stack automation
+(aka IPI). Once the OpenShift clusters are deployed, we will walk you through the deployment of Submariner with Service Discovery,
+interconnecting the two clusters. Since the two clusters share the same Cluster and Service CIDR ranges,
+[Globalnet](../../../architecture/globalnet/) will be enabled.
+
 {{< include "quickstart/openshift/setup_openshift.md" >}}
 
 ### Create cluster A

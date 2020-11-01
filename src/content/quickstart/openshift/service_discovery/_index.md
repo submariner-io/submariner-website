@@ -4,6 +4,10 @@ title: "With Service Discovery"
 weight: 15
 ---
 
+This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters on AWS with full stack automation
+(aka IPI). Once the OpenShift clusters are deployed, we will walk you through the deployment of Submariner with Service Discovery,
+interconnecting the two clusters.
+
 {{< include "quickstart/openshift/setup_openshift.md" >}}
 {{< include "quickstart/openshift/create_clusters.md" >}}
 {{< include "quickstart/openshift/ready_clusters.md" >}}
