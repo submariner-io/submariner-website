@@ -4,8 +4,9 @@ title: "OpenShift with Service Discovery (vSphere/AWS)"
 weight: 30
 ---
 
-In this quickstart guide, we shall cover the necessary steps to deploy OpenShift Container Platform (OCP) on vSphere and AWS.
-Once the OCP clusters are deployed, we shall cover how to deploy Submariner and connect the two clusters.
+This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters: one on VMware vSphere with user
+provisioned infrastructure (UPI) and the other one on AWS with full stack automation (aka IPI). Once the OpenShift clusters are deployed,
+we will walk you through the deployment of Submariner with Service Discovery, interconnecting the two clusters.
 
 ### OpenShift Prerequisites
 
