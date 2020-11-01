@@ -1,6 +1,6 @@
-### Create and deploy cluster A
+### Create and Deploy cluster-a
 
-In this step you will deploy cluster A, with the default IP CIDRs
+In this step you will deploy **cluster-a** using the default IP CIDR ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -14,11 +14,13 @@ openshift-install create install-config --dir cluster-a
 openshift-install create cluster --dir cluster-a
 ```
 
-The create cluster step will take some time, you can create Cluster B in parallel if you wish.
+When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
+`kubeadmin` user, display in your terminal.
 
-### Create and deploy cluster B
+### Create and Deploy cluster-b
 
-In this step you will deploy cluster B, modifying the default IP CIDRs
+In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address conflicts. In this example, we will use the
+following IP ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -28,22 +30,23 @@ In this step you will deploy cluster B, modifying the default IP CIDRs
 openshift-install create install-config --dir cluster-b
 ```
 
-Change the POD IP network, please note it’s a /14 range by default so you need to use
-+4 increments for “128”, for example: 10.132.0.0, 10.136.0.0, 10.140.0.0, ...
+Change the Pod network CIDR from 10.128.0.0/14 to 10.132.0.0/14:
 
 ```bash
 sed -i 's/10.128.0.0/10.132.0.0/g' cluster-b/install-config.yaml
 ```
 
-Change the service IP network, this is a /16 range by default, so just use +1 increments
-for “30”: for example: 172.31.0.0, 172.32.0.0, 172.33.0.0, ...
+Change the Service network CIDR from 172.30.0.0/16 to 172.31.0.0/16:
 
 ```bash
 sed -i 's/172.30.0.0/172.31.0.0/g' cluster-b/install-config.yaml
 ```
 
-And finally deploy
+And finally deploy the cluster:
 
 ```bash
 openshift-install create cluster --dir cluster-b
 ```
+
+When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
+`kubeadmin` user, display in your terminal.

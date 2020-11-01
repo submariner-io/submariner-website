@@ -18,9 +18,9 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 
 {{< include "quickstart/openshift/setup_aws.md" >}}
 
-### Create cluster A
+### Create and Deploy cluster-a
 
-This step will create a cluster named "cluster-a" with the default IP CIDRs.
+In this step you will deploy **cluster-a** using the default IP CIDR ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -34,11 +34,12 @@ openshift-install create install-config --dir cluster-a
 openshift-install create cluster --dir cluster-a
 ```
 
-This may take some time to complete so you can move on to the next section in parallel if you wish.
+When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
+`kubeadmin` user, display in your terminal.
 
-### Create cluster B
+### Create and Deploy cluster-b
 
-This step will create a cluster named "cluster-b" with the default IP CIDRs.
+In this step you will deploy **cluster-b** using the same default IP CIDR ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -48,11 +49,12 @@ This step will create a cluster named "cluster-b" with the default IP CIDRs.
 openshift-install create install-config --dir cluster-b
 ```
 
-And finally deploy
-
 ```bash
 openshift-install create cluster --dir cluster-b
 ```
+
+When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
+`kubeadmin` user, display in your terminal.
 
 {{< include "quickstart/openshift/ready_clusters.md" >}}
 
