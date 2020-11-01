@@ -9,6 +9,13 @@ This quickstart guide covers the necessary steps to deploy two OpenShift Contain
 interconnecting the two clusters.
 
 {{< include "quickstart/openshift/setup_openshift.md" >}}
+
+{{% notice info %}}
+Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
+please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
+{{% /notice %}}
+
+{{< include "quickstart/openshift/setup_aws.md" >}}
 {{< include "quickstart/openshift/create_clusters.md" >}}
 {{< include "quickstart/openshift/ready_clusters.md" >}}
 
