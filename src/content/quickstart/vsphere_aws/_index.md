@@ -5,8 +5,8 @@ weight: 30
 ---
 
 This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters: one on VMware vSphere with user
-provisioned infrastructure (UPI) and the other one on AWS with full stack automation (aka IPI). Once the OpenShift clusters are deployed,
-we will walk you through the deployment of Submariner with Service Discovery, interconnecting the two clusters.
+provisioned infrastructure (UPI) and the other one on AWS with full stack automation, also known as installer-provisioned infrastructure
+(IPI). Once the OpenShift clusters are deployed, we deploy Submariner with Service Discovery to interconnect the two clusters.
 
 {{< include "quickstart/openshift/setup_openshift.md" >}}
 
