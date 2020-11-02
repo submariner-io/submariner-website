@@ -56,7 +56,15 @@ openshift-install create cluster --dir cluster-b
 When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
 `kubeadmin` user, display in your terminal.
 
-{{< include "quickstart/openshift/ready_clusters.md" >}}
+### Prepare Your AWS Clusters for Submariner
+
+{{< include "quickstart/openshift/download_prep_for_subm.md" >}}
+
+{{% notice info %}}
+Please note that  **oc**, **aws-cli**, **terraform**, and **wget** need to be installed before the `prep_for_subm.sh` script can be run.
+{{% /notice %}}
+
+{{< include "quickstart/openshift/run_prep_for_subm.md" >}}
 
 ### Install `subctl`
 
