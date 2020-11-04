@@ -25,9 +25,11 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Blogs
 
-1. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
-2. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
-3. [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
+1. [Geographically Distributed Stateful Workloads Part One: Cluster Preparation](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-one-cluster-preparation)
+2. [Geographically Distributed Stateful Workloads Part Two: CockroachDB](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb)
+3. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
+4. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
+5. [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
 
 ## SIG Presentations
 
