@@ -1,4 +1,4 @@
-* Run the `prep_for_subm.sh` script for **cluster-a** and **cluser-b**:
+* Run the `prep_for_subm.sh` script for **cluster-a** and **cluster-b**:
 
 ```bash
 ./prep_for_subm.sh cluster-a # respond "yes" when Terraform asks for approval, or otherwise add the -auto-approve flag
