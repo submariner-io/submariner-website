@@ -19,8 +19,11 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 ### Create and Deploy cluster-b
 
-In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address conflicts. In this example, we will use the
-following IP ranges:
+In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address conflicts with **cluster-a**. You can change
+the IP addresses block and prefix based on your requirements. For more information on IPv4 CIDR conversion,
+please check [this page](https://www.ipaddressguide.com/cidr).
+
+In this example, we will use the following IP ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
