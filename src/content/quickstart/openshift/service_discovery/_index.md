@@ -28,7 +28,7 @@ Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed 
 
 {{% notice note %}}
 The script deploys an `m5n.large` EC2 instance type by default, optimized for improved network throughput and packet rate performance,
-for the Submariner gateway node. Please ensure that the AWS Region you deploy to support this instance type. Alternatively, you can
+for the Submariner gateway node. Please ensure that the AWS Region you deploy to supports this instance type. Alternatively, you can
 customize the AWS instance type as shown below.
 {{% /notice %}}
 
