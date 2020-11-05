@@ -9,14 +9,14 @@ full stack automation, also known as installer-provisioned infrastructure (IPI).
 Submariner to interconnect the two clusters. Since the two clusters share the same Cluster and Service CIDR ranges,
 [Globalnet](../../../architecture/globalnet/) will be enabled.
 
-{{< include "quickstart/openshift/setup_openshift.md" >}}
+{{< include "/resources/shared/openshift/setup_openshift.md" >}}
 
 {{% notice info %}}
 Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
 please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
 
-{{< include "quickstart/openshift/setup_aws.md" >}}
+{{< include "/resources/shared/openshift/setup_aws.md" >}}
 
 ### Create and Deploy cluster-a
 
@@ -58,7 +58,7 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 ### Prepare AWS Clusters for Submariner
 
-{{< include "quickstart/openshift/download_prep_for_subm.md" >}}
+{{< include "/resources/shared/openshift/download_prep_for_subm.md" >}}
 
 {{% notice info %}}
 Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
@@ -70,7 +70,7 @@ for the Submariner gateway node. Please ensure that the AWS Region you deploy to
 customize the AWS instance type as shown below.
 {{% /notice %}}
 
-{{< include "quickstart/openshift/run_prep_for_subm.md" >}}
+{{< include "/resources/shared/openshift/run_prep_for_subm.md" >}}
 
 ### Install `subctl`
 

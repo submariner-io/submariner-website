@@ -4,8 +4,8 @@ title: "Rancher 2.x"
 weight: 50
 ---
 
-{{< include "quickstart/rancher/prerequisites.md" >}}
-{{< include "quickstart/rancher/create_clusters.md" >}}
+{{< include "/resources/shared/rancher/prerequisites.md" >}}
+{{< include "/resources/shared/rancher/create_clusters.md" >}}
 
 ### Install subctl
 

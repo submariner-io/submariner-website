@@ -10,19 +10,19 @@ Submariner with Service Discovery to interconnect the two clusters. Note that th
 non-overlapping Pod and Service CIDRs. For connecting clusters with overlapping CIDRs, please refer to the
 [Submariner with Globalnet guide](./globalnet/).
 
-{{< include "quickstart/openshift/setup_openshift.md" >}}
+{{< include "/resources/shared/openshift/setup_openshift.md" >}}
 
 {{% notice info %}}
 Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
 please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
 
-{{< include "quickstart/openshift/setup_aws.md" >}}
-{{< include "quickstart/openshift/create_clusters.md" >}}
+{{< include "/resources/shared/openshift/setup_aws.md" >}}
+{{< include "/resources/shared/openshift/create_clusters.md" >}}
 
 ### Prepare AWS Clusters for Submariner
 
-{{< include "quickstart/openshift/download_prep_for_subm.md" >}}
+{{< include "/resources/shared/openshift/download_prep_for_subm.md" >}}
 
 {{% notice info %}}
 Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
@@ -34,7 +34,7 @@ for the Submariner gateway node. Please ensure that the AWS Region you deploy to
 customize the AWS instance type as shown below.
 {{% /notice %}}
 
-{{< include "quickstart/openshift/run_prep_for_subm.md" >}}
+{{< include "/resources/shared/openshift/run_prep_for_subm.md" >}}
 
 ### Install `subctl`
 

@@ -8,7 +8,7 @@ This quickstart guide covers the necessary steps to deploy two OpenShift Contain
 provisioned infrastructure (UPI) and the other one on AWS with full stack automation, also known as installer-provisioned infrastructure
 (IPI). Once the OpenShift clusters are deployed, we deploy Submariner with Service Discovery to interconnect the two clusters.
 
-{{< include "quickstart/openshift/setup_openshift.md" >}}
+{{< include "/resources/shared/openshift/setup_openshift.md" >}}
 
 {{% notice info %}}
 Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
@@ -97,7 +97,7 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 #### Prepare AWS Cluster for Submariner
 
-{{< include "quickstart/openshift/download_prep_for_subm.md" >}}
+{{< include "/resources/shared/openshift/download_prep_for_subm.md" >}}
 
 {{% notice info %}}
 Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
