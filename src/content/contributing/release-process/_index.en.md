@@ -232,27 +232,20 @@ These are shared with the Kubernetes community via [OperatorHub.io](https://oper
 To publish the Submariner Operator to the community, perform the following steps:
 
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
-2) Make sure you have the operator-sdk v0-18-x installed on your machine
-   otherwise follow [this guide](https://v0-18-x.sdk.operatorframework.io/docs/install-operator-sdk/)
-3) Generate a new CSV file by running the command:
+2) Make sure you have operator-sdk v1 installed on your machine
+   otherwise follow [this guide](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/)
+3) Generate new package manifests by running the command:
 
    ```bash
-   operator-sdk generate csv \
-    --csv-version=${OPERATOR_VERSION} \
-    --csv-channel=alpha \
-    --default-channel=true \
-    --operator-name=submariner \
-    --update-crds \
-    --make-manifests=false \
-    --interactive=false
+   make packagemanifests VERSION=${new_version} FROM_VERSION=${previous_version} CHANNEL=${channel}
    ```
 
-   the generated package output should be located in `deploy/olm-catalog/submariner`
+   the generated package output should be located in `/packagemanifests/${VERSION}/`
 4) Fork and clone [community-operators](https://github.com/operator-framework/community-operators) project.
 5) Update the Kubernetes Operator:
     * copy the generated package from step 3 into `upstream-community-operators/submariner`
-    * compare the new CSV file with the previous one and update the missing fields (e.g spec.description)
-    * update the version in `upstream-community-operators/submariner/submariner.package.yaml`
+    * copy the generated package definition `/packagemanifests/submariner.package.yaml`
+    into `upstream-community-operators/submariner/`
     * test the Operator by running the command: `make operator.test OP_PATH=upstream-community-operators/submariner`
     * preview the Operator on [OperatorHub.io](https://operatorhub.io/preview)
     * once everything is fine, review this
