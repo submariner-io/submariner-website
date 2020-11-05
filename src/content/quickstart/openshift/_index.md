@@ -42,12 +42,12 @@ customize the AWS instance type as shown below.
 
 ### Install Submariner with Service Discovery
 
-To install Submariner with multi-cluster service discovery follow the steps below.
+To install Submariner with multi-cluster Service Discovery follow the steps below:
 
-#### Use cluster-a as Broker with service discovery enabled
+#### Use cluster-a as Broker
 
 ```bash
-subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig --service-discovery
+subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 ```
 
 #### Join cluster-a and cluster-b to the Broker
