@@ -36,7 +36,7 @@ customize the AWS instance type as shown below.
 
 {{< include "quickstart/openshift/run_prep_for_subm.md" >}}
 
-### Install subctl
+### Install `subctl`
 
 {{< subctl-install >}}
 
