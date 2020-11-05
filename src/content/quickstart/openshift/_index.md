@@ -6,8 +6,9 @@ weight: 20
 
 This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters on AWS with
 full stack automation, also known as installer-provisioned infrastructure (IPI). Once the OpenShift clusters are deployed, we deploy
-Submariner to interconnect the two clusters. Note that this guide focuses on Submariner for network connectivity only. For Submariner with
-Service Discovery, please refer to the [Submariner with Service Discovery guide](./service_discovery/).
+Submariner with Service Discovery to interconnect the two clusters. Note that this guide focuses on Submariner deployment on clusters with
+non-overlapping Pod and Service CIDRs. For connecting clusters with overlapping CIDRs, please refer to the
+[Submariner with Globalnet guide](./globalnet/).
 
 {{< include "quickstart/openshift/setup_openshift.md" >}}
 
@@ -35,17 +36,21 @@ customize the AWS instance type as shown below.
 
 {{< include "quickstart/openshift/run_prep_for_subm.md" >}}
 
-### Install `subctl`
+### Install subctl
 
 {{< subctl-install >}}
 
-### Use cluster-a as Broker
+### Install Submariner with Service Discovery
+
+To install Submariner with multi-cluster service discovery follow the steps below.
+
+#### Use cluster-a as Broker with service discovery enabled
 
 ```bash
-subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
+subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig --service-discovery
 ```
 
-### Join cluster-a and cluster-b to the Broker
+#### Join cluster-a and cluster-b to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a
@@ -55,10 +60,4 @@ subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid 
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b
 ```
 
-### Verify connectivity
-
-This will run a series of E2E tests to verify proper connectivity between the cluster pods and services
-
-```bash
-subctl verify --only connectivity cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --verbose
-```
+{{< include "quickstart/verify_with_discovery.md" >}}

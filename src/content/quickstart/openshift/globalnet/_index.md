@@ -1,7 +1,7 @@
 ---
 date: 2020-02-21T13:36:18+01:00
-title: "With Service Discovery and Globalnet"
-weight: 20
+title: "With Globalnet"
+weight: 30
 ---
 
 This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters on AWS with
