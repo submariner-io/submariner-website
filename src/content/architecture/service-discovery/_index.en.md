@@ -1,7 +1,7 @@
 ---
 title: "Service Discovery"
 date: 2020-03-02T21:25:35+01:00
-weight: 5
+weight: 4
 ---
 
 The Lighthouse project provides DNS discovery for Kubernetes clusters connected by
