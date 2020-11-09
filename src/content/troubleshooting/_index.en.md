@@ -87,7 +87,7 @@ For a Service to be accessible across clusters, you must first export the Servic
 Ensure the `ServiceExport` resource exists and check if its status condition indicates `Exported'. Otherwise, its status condition will
 indicate the reason it wasn't exported.
 
-`kubectl get serviceexport -n <service-namespace> <service-name>`
+`kubectl describe serviceexport -n <service-namespace> <service-name>`
 
 Sample output:
 
