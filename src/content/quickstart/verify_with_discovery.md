@@ -84,11 +84,12 @@ spec:
           name: web
 ```
 
-Use this yaml to create a StatefulSet `web` with `nginx-ss` as the headless Service.
+Use this yaml to create a StatefulSet `web` with `nginx-ss` as the Headless Service.
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
-kubectl -n default  apply -f web.yaml
+kubectl -n default apply -f web.yaml
+subctl export service -n default nginx-ss
 curl nginx-ss.default.svc.clusterset.local:8080
 ```
 
