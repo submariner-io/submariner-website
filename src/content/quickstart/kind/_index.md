@@ -9,8 +9,7 @@ weight: 10
 [kind](https://github.com/kubernetes-sigs/kind) is a tool for running local Kubernetes clusters using Docker container nodes. This guide
 uses kind to demonstrate deployment and operation of Submariner in three Kubernetes clusters running locally on your computer.
 
-Leveraging kind, Submariner provides scripts that deploy three Kubernetes clusters locally - one Broker and two data clusters - with the
-required Submariner components installed on all clusters.
+Submariner provides automation to deploy clusters using kind and connect them using Submariner.
 
 ### Prerequisites
 
@@ -26,6 +25,9 @@ git clone https://github.com/submariner-io/submariner
 cd submariner
 make deploy
 ```
+
+By default, the automation configuration in the main submariner-io/submariner repository deploys three clusters, with cluster1 configured as
+the Broker. See the [cluster-settings](https://github.com/submariner-io/submariner/blob/master/scripts/cluster_settings) file for details.
 
 ### Deploy Manually
 
