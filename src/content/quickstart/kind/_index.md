@@ -4,16 +4,18 @@ title: "kind (Local Environment)"
 weight: 10
 ---
 
-## Deploy kind+Submariner Locally
+## Deploy kind with Submariner Locally
 
-[kind](https://github.com/kubernetes-sigs/kind) is a tool to run local Kubernetes clusters inside Docker container nodes.
+[kind](https://github.com/kubernetes-sigs/kind) is a tool for running local Kubernetes clusters using Docker container nodes. This guide
+uses kind to demonstrate deployment and operation of Submariner in three Kubernetes clusters running locally on your computer.
 
-Submariner provides (via [Shipyard](../../contributing/shipyard)) scripts that deploy 3 Kubernetes clusters locally - 1 Broker and 2 data
-clusters with the Submariner dataplane components deployed on all the clusters.
+Leveraging kind, Submariner provides scripts that deploy three Kubernetes clusters locally - one Broker and two data clusters - with the
+required Submariner components installed on all clusters.
 
-{{% notice note %}}
-Docker must be installed and running on your computer.
-{{% /notice %}}
+### Prerequisites
+
+1. Install [Docker](https://docs.docker.com/get-docker/) and ensure it is running properly on your computer.
+2. Install and set up [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 ### Deploy Automatically
 
@@ -40,7 +42,37 @@ cd submariner
 make clusters
 ```
 
-This creates 3 Kubernetes clusters, cluster1, cluster2 and cluster3.
+This creates three Kubernetes clusters: cluster1, cluster2 and cluster3. To see the list of kind clusters, use the following command:
+
+```bash
+$ kind get clusters
+cluster1
+cluster2
+cluster3
+```
+<!-- markdownlint-disable no-trailing-spaces -->
+To list the local Kubernetes contexts, use the following command:
+
+```bash
+$ kubectl config get-contexts
+CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
+          cluster1   cluster1   cluster1   
+          cluster2   cluster2   cluster2   
+*         cluster3   cluster3   cluster3
+```
+<!-- markdownlint-enable no-trailing-spaces -->
+
+Since multiple clusters are running, you need to choose which cluster `kubectl` talks to. You can set a default cluster for `kubectl` by
+setting the current context in the Kubernetes kubeconfig file. Additionally, you can run the following command to set the current context
+for `kubectl`:
+
+```bash
+kubectl config use-context <cluster name>
+```
+
+{{% notice tip %}}
+For more information on interacting with kind, please refer to the [kind documentation](https://kind.sigs.k8s.io/docs/user/quick-start/).
+{{% /notice %}}
 
 #### Install `subctl`
 
@@ -90,7 +122,9 @@ subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --nam
 
 ##### Deploy Headless Service
 
-Note that headless Services can only be exported on non-globalnet deployments.
+{{% notice note %}}
+Headless Services can only be exported on non-Globalnet deployments.
+{{% /notice %}}
 
 ```bash
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
@@ -106,4 +140,12 @@ Run `nettest` from `cluster2` to access the `nginx` service:
 kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.clusterset.local
+```
+
+### Cleanup
+
+When you are done experimenting and you want to delete the clusters deployed in any of the previous steps, use the following command:
+
+```bash
+make cleanup
 ```
