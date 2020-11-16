@@ -26,6 +26,8 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 
 {{% notice info %}}
 Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
+Also note that the script is known to be working with [Terraform](https://releases.hashicorp.com/terraform/) version 0.12.
+Maximum compatible version is 0.12.12.
 {{% /notice %}}
 
 {{% notice note %}}
