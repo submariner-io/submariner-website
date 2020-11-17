@@ -91,11 +91,11 @@ subctl deploy-broker  --kubeconfig cluster-a/auth/kubeconfig --service-discovery
 #### Join cluster-a and cluster-b to the Broker
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid west
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a
 ```
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid east
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b
 ```
 
 {{< include "quickstart/verify_with_discovery.md" >}}
