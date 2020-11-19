@@ -30,15 +30,16 @@ clusters (via push/pull/watching), and start forming connections and routes to o
 Submariner has a few requirements to get started:
 
 * At least two Kubernetes clusters, one of which is designated to serve as the central Broker that is accessible by all of your connected
-  clusters; this can be one of your connected clusters, or a dedicated cluster.
+clusters; this can be one of your connected clusters, or a dedicated cluster.
 * Non-overlapping Pod and Service CIDRs between clusters. This is to prevent routing conflicts. For cases where addresses **do
-  overlap**, [Globalnet](../architecture/globalnet) can be set up.
+overlap**, [Globalnet](../architecture/globalnet) can be set up.
 * IP reachability between the gateway nodes. When connecting two clusters, at least one of the clusters should have a publicly routable
-  IP address designated to the Gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by
+IP address designated to the Gateway node. This is needed for creating the IPsec tunnel between the clusters. The default ports used by
 IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that block the default ports, Submariner also supports NAT Traversal
 (NAT-T) with the option to set custom non-standard ports like 4501/UDP and 501/UDP.
-* Submariner uses port 4800/UDP to encapsulate traffic from the Worker nodes to the Gateway nodes and ensuring that Pod IP addresses are
-preserved. Ensure that firewall configuration allows 4800/UDP across all the Worker nodes.
+* Submariner uses UDP port 4800 to encapsulate Pod traffic from worker and master nodes to the Gateway nodes. This is required in order to
+preserve the source IP addresses of the Pods. Ensure that firewall configuration allows 4800/UDP across all nodes in the cluster in both
+directions.
 * Worker node IPs on all connected clusters must be outside of the Pod/Service CIDR ranges.
 
 An example of three clusters configured to use with Submariner (without Globalnet) would look like the following:

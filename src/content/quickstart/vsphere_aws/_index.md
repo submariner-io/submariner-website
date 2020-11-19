@@ -27,12 +27,12 @@ Before you deploy an OpenShift Container Platform cluster that uses user-provisi
 infrastructure. Follow the [OpenShift documenation](https://docs.openshift.com/container-platform/) for installation instructions on
 supported versions of vSphere.
 
-Submariner gateway nodes need to be able to accept IPsec traffic. For on-premises clusters behind corporate firewalls, the default IPsec UDP
+Submariner Gateway nodes need to be able to accept IPsec traffic. For on-premises clusters behind corporate firewalls, the default IPsec UDP
 ports might be blocked. To overcome this, Submariner supports NAT Traversal (NAT-T) with the option to set custom non-standard ports.
 In this example, we use UDP 4501 and UDP 501. Ensure that those ports are allowed on the gateway node and on the corporate firewall.
 
-Submariner also uses VXLAN to encapsulate traffic from the worker nodes to the gateway nodes. Ensure that firewall configuration on the
-vSphere cluster allows UDP 4800 across all the worker nodes.
+Submariner also uses VXLAN to encapsulate traffic from the worker and master nodes to the Gateway nodes. Ensure that firewall configuration
+on the vSphere cluster allows 4800/UDP across all nodes in the cluster in both directions.
 
 | Protocol   | Port   | Description                                  |
 |------------|--------|----------------------------------------------|
