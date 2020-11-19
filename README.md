@@ -1,1 +1,1 @@
-src/content/contributing/website/_index.en.md
+src/content/for_developers/dev_guide/website/
