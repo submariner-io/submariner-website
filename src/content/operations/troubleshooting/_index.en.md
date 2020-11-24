@@ -33,11 +33,49 @@ This section will contain information about common deployment issues you can run
 
 #### TBD
 
+-->
+
 ### Connectivity Issues
 
 Submariner deployment completed successfully but Services/Pods on one cluster are unable to connect to Services on another cluster. This can
-be due to multiple factors outlined in the following sections.
+be due to multiple factors outlined.
 
+#### Check the connection statistics
+
+If you are unable to connect to a remote cluster, check the connection statistics.
+
+`kubectl describe gateways.submariner.io -n submariner-operator`
+
+Sample output:
+
+```yaml
+    Endpoint:
+      Backend:          strongswan
+      cable_name:       submariner-cable-cluster1-172-17-0-8
+      cluster_id:       cluster1
+      Health Check IP:  10.1.1.1
+      Hostname:         cluster1-worker
+      nat_enabled:      false
+      private_ip:       172.17.0.8
+      public_ip:
+      Subnets:
+        100.1.0.0/16
+        10.1.0.0/16
+    Latency:
+      Average RTT:   668235
+      Last RTT:      878320
+      Max RTT:       3084294
+      Min RTT:       165022
+      Stddev RTT:    371873
+    Status:          connected
+    Status Message:  Connected to 172.17.0.8:4500 - encryption alg=AES_GCM_16, keysize=128 rekey-time=12950
+```
+
+The gateway pings the 'Health Check IP' of the endpoint,  the connection status will be marked as an error if it fails to reach the IP.
+If you are facing connectivity issues status message here should give you more information about the possible reason for failure.
+It also gives you the statistics of the connection.
+
+<!---
 #### IPSec tunnel not created between clusters
 
 TBD

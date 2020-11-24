@@ -63,3 +63,11 @@ Gateway node in the cluster.
 
 The impact on datapath for various scenarios in a kind setup are captured in the
 following [spreadsheet](https://docs.google.com/spreadsheets/d/1JsXsyRDDXkp6t55Gm-NP5EggWTyYi2yo27pyuDYwlpc/edit#gid=0).
+
+#### Gateway Healthcheck
+
+The gateway engine continuously monitors the health of other connected clusters. It collects the statistics
+of each connection such as the round trip time, the average latency and so on. The live statistics are updated
+in the 'Gateway' object. Whenever the gateway engine detects an unhealthy cluster, the connection status is marked
+as an error. Other components like Service Discovery uses this and avoid this cluster while it discovers a service.
+If at a later point of time the connection recovers the status will be updated back to connected.
