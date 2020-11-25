@@ -21,3 +21,10 @@ public clusters, the Broker can be deployed on a public cluster. The Broker clus
 one of the participating clusters or a standalone cluster without the other Submariner
 components deployed. The Gateway Engine components deployed in each participating cluster are
 configured with the information to securely connect to the Broker cluster's API.
+
+The availability of the Broker cluster does not affect the operation of the dataplane on the
+participating clusters, that is the dataplane will continue to route traffic using the last known
+information while the Broker is unavailable. However, during this time, control plane components
+will be unable to advertise new or updated information to other clusters and learn about new or updated
+information from other clusters. When connection is re-established to the Broker, each component will
+automatically re-synchronize its local information with the Broker and update the dataplane if necessary.
