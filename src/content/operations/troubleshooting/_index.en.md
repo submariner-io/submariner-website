@@ -133,18 +133,36 @@ indicate the reason it wasn't exported.
 
 `kubectl describe serviceexport -n <service-namespace> <service-name>`
 
+Note that you can also use shorthand `svcex` for `serviceexport` and `svcim` for `serviceimport`.
+
 Sample output:
 
 ```yaml
-apiVersion: lighthouse.submariner.io/v2alpha1
-kind: ServiceExport
-metadata:
-  name: nginx
+Name:         nginx-demo
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+API Version:  multicluster.x-k8s.io/v1alpha1
+Kind:         ServiceExport
+Metadata:
+  Creation Timestamp:  2020-11-25T06:21:01Z
+  Generation:          1
+  Resource Version:    5254
+  Self Link:           /apis/multicluster.x-k8s.io/v1alpha1/namespaces/default/serviceexports/nginx-demo
+  UID:                 77509e43-8fd1-4173-805c-e03c4581ebbf
 Status:
   Conditions:
-    Message:  Service was successfully synced to the broker
-    Status:   True
-    Type:     Exported
+    Last Transition Time:  2020-11-25T06:21:01Z
+    Message:               Awaiting sync of the ServiceImport to the broker
+    Reason:                AwaitingSync
+    Status:                False
+    Type:                  Valid
+    Last Transition Time:  2020-11-25T06:21:01Z
+    Message:               Service was successfully synced to the broker
+    Reason:
+    Status:                True
+    Type:                  Valid
+Events:                    <none>
 ```
 
 ##### Check Lighthouse CoreDNS Service
@@ -235,30 +253,31 @@ If the ServiceImport resource was created properly on the cluster, run
 and check if it has the correct `ClusterID` and `ServiceIP`:
 
 ```text
-Name:         nginx-default-cluster2
+Name:         nginx-demo-default-cluster2
 Namespace:    submariner-operator
-Labels:       <none>
-Annotations:  origin-name: nginx
+Labels:       lighthouse.submariner.io/sourceCluster=cluster2
+              lighthouse.submariner.io/sourceName=nginx-demo
+              lighthouse.submariner.io/sourceNamespace=default
+              submariner-io/clusterID=cluster2
+Annotations:  cluster-ip: 100.2.33.171
+              origin-name: nginx-demo
               origin-namespace: default
-API Version:  lighthouse.submariner.io/v2alpha1
+API Version:  multicluster.x-k8s.io/v1alpha1
 Kind:         ServiceImport
 Metadata:
-  Creation Timestamp:  2020-07-14T17:27:32Z
+  Creation Timestamp:  2020-11-25T06:21:02Z
   Generation:          1
-  Resource Version:    2790
-  Self Link:           /apis/lighthouse.submariner.io/v2alpha1/namespaces/submariner-operator/serviceimports/nginx-default-cluster2
-  UID:                 4cbe1c2b-c5f7-11ea-9bbe-0242ac110009
+  Resource Version:    5312
+  Self Link:           /apis/multicluster.x-k8s.io/v1alpha1/namespaces/submariner-operator/serviceimports/nginx-demo-default-cluster2
+  UID:                 a4c4abe0-1c84-4118-ae09-760b26f7fe3c
 Spec:
-  Ports:                    <nil>
-  Session Affinity:
-  Session Affinity Config:  <nil>
-  Type:                     ClusterSetIP
-Status:
-  Clusters:
-    Cluster:  cluster2 ==========> ClusterID of cluster where service is running
-    Ips:
-      100.92.43.63     ==========> ServiceIP or GlobalIP of service you're trying to access
+  Ips:
+    100.2.33.171
+  Ports:
+  Session Affinity Config:
+  Type:  ClusterSetIP
 Events:  <none>
+
 ```
 
 For headless Service, you need to check `EndpointSlice` resource.
