@@ -8,13 +8,11 @@ weight: 20
 
 ### Installing Helm
 
+The latest Submariner charts require Helm 3; once you have that, run
+
 ```bash
 export KUBECONFIG=<kubeconfig-of-broker>
 helm repo add submariner-latest https://submariner-io.github.io/submariner-charts/charts
-kubectl -n kube-system create serviceaccount tiller
-kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-helm init --service-account tiller
-kubectl -n kube-system rollout status deploy/tiller-deploy
 ```
 
 ### Exporting environment variables needed later
@@ -28,8 +26,8 @@ export SUBMARINER_NS=submariner
 ### Deploying the Broker
 
 ```bash
-helm install submariner-latest/submariner-k8s-broker \
-             --name "${BROKER_NS}" \
+helm install "${BROKER_NS}" submariner-latest/submariner-k8s-broker \
+             --create-namespace \
              --namespace "${BROKER_NS}" \
              --set submariner.serviceDiscovery=true
 ```
@@ -68,8 +66,8 @@ export GLOBAL_CIDR=169.254.x.x/x # using an individual non-overlapping
 Joining the cluster:
 
 ```bash
-helm install submariner-latest/submariner \
-        --name submariner \
+helm install submariner submariner-latest/submariner \
+        --create-namespace \
         --namespace "${SUBMARINER_NS}" \
         --set ipsec.psk="${SUBMARINER_PSK}" \
         --set broker.server="${SUBMARINER_BROKER_URL}" \
