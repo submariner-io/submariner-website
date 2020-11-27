@@ -80,9 +80,9 @@ wget https://raw.githubusercontent.com/sridhargaddam/k8sscripts/main/rp_filter_s
 wget https://raw.githubusercontent.com/sridhargaddam/k8sscripts/main/rp_filter_settings/configure-rp-filter.sh
 chmod +x update-rp-filter.sh
 chmod +x configure-rp-filter.sh
-echo KUBECONTEXT=cluster-a
+kubectx cluster-a # kubectl config use-context cluster-a
 ./configure-rp-filter.sh
-echo KUBECONTEXT=cluster-b
+kubectx cluster-b # kubectl config use-context cluster-b
 ./configure-rp-filter.sh
 ```
 
