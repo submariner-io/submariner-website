@@ -241,3 +241,14 @@ Repeat both commands, the `CLUSTER_IP` discovery and the `kubectl apply`, this t
 {{% /notice %}}
 
 {{< include "/resources/shared/verify_with_discovery.md" >}}
+
+### Reconfig after Node Restart
+
+If the GKE Nodes were at some point drained or deleted, the Submariner Pods needed to terminate.
+Once the Nodes are up again, remember to
+
+* label one Node with `kubectl label node <name> submariner.io/gateway=true` in order for the Gateway to be deployed on this Node
+* apply the Node Configuration workaround again
+* change the applied KubeDNS workaround to reflect the current `submariner-lighthouse-coredns` IP.
+
+This makes Submariner functional again and work can be continued.
