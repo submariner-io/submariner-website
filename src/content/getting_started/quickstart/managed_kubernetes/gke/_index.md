@@ -80,9 +80,9 @@ wget https://raw.githubusercontent.com/sridhargaddam/k8sscripts/main/rp_filter_s
 wget https://raw.githubusercontent.com/sridhargaddam/k8sscripts/main/rp_filter_settings/configure-rp-filter.sh
 chmod +x update-rp-filter.sh
 chmod +x configure-rp-filter.sh
-echo KUBECONTEXT=cluster-a
+kubectx cluster-a # kubectl config use-context cluster-a
 ./configure-rp-filter.sh
-echo KUBECONTEXT=cluster-b
+kubectx cluster-b # kubectl config use-context cluster-b
 ./configure-rp-filter.sh
 ```
 
@@ -120,7 +120,7 @@ After this, the clusters are finally ready for Submariner!
 
 {{< subctl-install >}}
 
-We will deploy the [Broker](https://submariner.io/architecture/broker/) on **cluster-a**.
+We will deploy the [Broker](https://submariner.io/getting_started/architecture/broker/) on **cluster-a**.
 The command will output a file named `broker-info.subm` to the directory it is run from, which will be used to setup the
 IPsec tunnel between clusters.
 
@@ -241,3 +241,14 @@ Repeat both commands, the `CLUSTER_IP` discovery and the `kubectl apply`, this t
 {{% /notice %}}
 
 {{< include "/resources/shared/verify_with_discovery.md" >}}
+
+### Reconfig after Node Restart
+
+If the GKE Nodes were at some point drained or deleted, the Submariner Pods needed to terminate.
+Once the Nodes are up again, remember to
+
+* label one Node with `kubectl label node <name> submariner.io/gateway=true` in order for the Gateway to be deployed on this Node
+* apply the Node Configuration workaround again
+* change the applied KubeDNS workaround to reflect the current `submariner-lighthouse-coredns` IP.
+
+This makes Submariner functional again and work can be continued.
