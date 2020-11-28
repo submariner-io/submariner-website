@@ -205,7 +205,7 @@ For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operato
 
 ### Step 7: Add release notes
 
-If this is a final release, add a section for it on this website's [release notes](../../releases/) page.
+If this is a final release, add a section for it on this website's [release notes](../../community/releases/) page.
 
 1) Clone the [submariner-website](https://github.com/submariner-io/submariner-website) project.
 
