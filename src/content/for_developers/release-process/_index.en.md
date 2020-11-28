@@ -205,7 +205,7 @@ For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operato
 
 ### Step 7: Add release notes
 
-If this is a final release, add a section for it on this website's [release notes](../../releases/) page.
+If this is a final release, add a section for it on this website's [release notes](../../community/releases/) page.
 
 1) Clone the [submariner-website](https://github.com/submariner-io/submariner-website) project.
 
@@ -214,11 +214,11 @@ If this is a final release, add a section for it on this website's [release note
 3) Commit the changes, create a pull request, and have it reviewed and merged.
 
 Alternatively you can edit the file and create a pull request directly on GitHub
-[here](https://github.com/submariner-io/submariner-website/edit/master/src/content/releases/_index.en.md)
+[here](https://github.com/submariner-io/submariner-website/edit/master/src/content/community/releases/_index.en.md)
 
 ### Step 8: Verify the release
 
-You can follow any of the [quick start guides](../../quickstart).
+You can follow any of the [quickstart guides](../../getting_started/quickstart).
 
 ### Step 9: Update the Submariner Operator on OperatorHub.io
 
