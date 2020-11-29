@@ -5,7 +5,7 @@ weight = 5
 +++
 <!-- markdownlint-disable line-length -->
 Submariner connects multiple Kubernetes clusters in a way that is secure and performant. Submariner flattens the networks between the
-connected clusters, and enables IP reachability between Pods, Services, and HostNetworks. Submariner also provides, via Lighthosue,
+connected clusters, and enables IP reachability between Pods, Services, and HostNetworks. Submariner also provides, via Lighthouse,
 service discovery capabilities. The service discovery model is built using standard
 [Kubernetes Multi Cluster Services](https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api).
 <!-- markdownlint-enable line-length -->
