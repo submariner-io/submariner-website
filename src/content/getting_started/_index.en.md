@@ -31,6 +31,7 @@ Submariner has a few requirements to get started:
 
 * At least two Kubernetes clusters, one of which is designated to serve as the central Broker that is accessible by all of your connected
 clusters; this can be one of your connected clusters, or a dedicated cluster.
+* Minimum supported Kubernetes version is 1.17.
 * Non-overlapping Pod and Service CIDRs between clusters. This is to prevent routing conflicts. For cases where addresses **do
 overlap**, [Globalnet](./architecture/globalnet) can be set up.
 * IP reachability between the gateway nodes. When connecting two clusters, at least one of the clusters should have a publicly routable
