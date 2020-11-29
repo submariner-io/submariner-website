@@ -3,11 +3,12 @@ title = "Architecture"
 date = 2020-02-19T21:00:30+01:00
 weight = 5
 +++
-
-The diagram below illustrates the basic architecture of Submariner:
-
-![Submariner Architecture](/images/submariner/architecture.jpg)
-
+<!-- markdownlint-disable line-length -->
+Submariner connects multiple Kubernetes clusters in a way that is secure and performant. Submariner flattens the networks between the
+connected clusters, and enables IP reachability between Pods, Services, and HostNetworks. Submariner also provides, via Lighthosue,
+service discovery capabilities. The service discovery model is built using standard
+[Kubernetes Multi Cluster Services](https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api).
+<!-- markdownlint-enable line-length -->
 Submariner consists of several main components that work in conjunction to securely connect workloads across multiple Kubernetes clusters,
 both on-premises and on public clouds:
 
@@ -19,3 +20,25 @@ both on-premises and on public clouds:
 Submariner has optional components that provide additional functionality:
 
 * [Globalnet Controller](./globalnet/): handles interconnection of clusters with overlapping CIDRs.
+
+The diagram below illustrates the basic architecture of Submariner:
+
+![Submariner Architecture](/images/submariner/architecture.jpg)
+
+### Terminology and Concepts
+
+* Clusterset - a group of two or more clusters with a high degree of mutual trust that share Services among themselves.
+Within a clusterset, all namespaces with a given name are considered to be the same namespace.
+
+* `ServiceExport` (CRD) - used to specify which Services should be exposed across all clusters in the clusterset. If multiple clusters
+export a Service with the same name and from the same namespace, they will be recognized as a single combined Service.
+
+  * ServiceExports must be explicitly created by the user in each cluster and within the namespece that the underlying Service resides in,
+in order to signify that the Service should be visible and discoverable to other clusters in the clusterset. The `ServiceExport` object can
+be created manually or via the `subctl export` command.
+
+  * When a `ServiceExport` is created, this will cause a domain name of `<service>.<ns>.svc.clusterset.local` for the multi-cluster service
+to become accessible.
+
+* `ServiceImport` (CRD) - representation of a multi-cluster service in each cluster. Created and used internally by Lighthouse and does not
+require any user intervention.
