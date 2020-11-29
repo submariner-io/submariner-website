@@ -125,6 +125,7 @@ deployment.
 |:----------------------------------------|:----------------------------------------------------------------------------|
 | `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
 | `--version` `<string>`                  | Image version
+| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: --image-override=submariner=quay.io/myUser/submariner:latest)
 <!-- markdownlint-enable line-length -->
 
 ### `show`
