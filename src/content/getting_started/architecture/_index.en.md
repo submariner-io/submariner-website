@@ -6,7 +6,7 @@ weight = 5
 <!-- markdownlint-disable line-length -->
 Submariner connects multiple Kubernetes clusters in a way that is secure and performant. Submariner flattens the networks between the
 connected clusters, and enables IP reachability between Pods, Services, and HostNetworks. Submariner also provides, via Lighthouse,
-service discovery capabilities. The service discovery model is built using standard
+service discovery capabilities. The service discovery model is built using the proposed
 [Kubernetes Multi Cluster Services](https://github.com/kubernetes/enhancements/tree/master/keps/sig-multicluster/1645-multi-cluster-services-api).
 <!-- markdownlint-enable line-length -->
 Submariner consists of several main components that work in conjunction to securely connect workloads across multiple Kubernetes clusters,
@@ -37,8 +37,8 @@ export a Service with the same name and from the same namespace, they will be re
 in order to signify that the Service should be visible and discoverable to other clusters in the clusterset. The `ServiceExport` object can
 be created manually or via the `subctl export` command.
 
-  * When a `ServiceExport` is created, this will cause a domain name of `<service>.<ns>.svc.clusterset.local` for the multi-cluster service
-to become accessible.
+  * When a `ServiceExport` is created, this will cause the multi-cluster service to become accessible as
+`<service>.<ns>.svc.clusterset.local`.
 
 * `ServiceImport` (CRD) - representation of a multi-cluster service in each cluster. Created and used internally by Lighthouse and does not
 require any user intervention.
