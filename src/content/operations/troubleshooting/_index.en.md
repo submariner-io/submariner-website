@@ -44,7 +44,7 @@ be due to multiple factors outlined.
 
 If you are unable to connect to a remote cluster, check the connection statistics.
 
-`kubectl describe gateways.submariner.io -n submariner-operator`
+`kubectl describe Gateway -n submariner-operator`
 
 Sample output:
 
@@ -71,9 +71,9 @@ Sample output:
     Status Message:  Connected to 172.17.0.8:4500 - encryption alg=AES_GCM_16, keysize=128 rekey-time=12950
 ```
 
-The gateway pings the 'Health Check IP' of the endpoint,  the connection status will be marked as an error if it fails to reach the IP.
-If you are facing connectivity issues status message here should give you more information about the possible reason for failure.
-It also gives you the statistics of the connection.
+The Gateway uses the 'Health Check IP' of the endpoint to verify connectivity. The connection status will be marked as `error`
+if it fails to reach this IP. If you are facing connectivity issues status message here should give you more information about
+the possible reason for failure. It also gives you the statistics of the connection.
 
 <!---
 #### IPSec tunnel not created between clusters

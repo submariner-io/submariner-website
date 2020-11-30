@@ -66,8 +66,8 @@ following [spreadsheet](https://docs.google.com/spreadsheets/d/1JsXsyRDDXkp6t55G
 
 #### Gateway Healthcheck
 
-The gateway engine continuously monitors the health of other connected clusters. It collects the statistics
-of each connection such as the round trip time, the average latency and so on. The live statistics are updated
-in the 'Gateway' object. Whenever the gateway engine detects an unhealthy cluster, the connection status is marked
-as an error. Other components like Service Discovery uses this and avoid this cluster while it discovers a service.
-If at a later point of time the connection recovers the status will be updated back to connected.
+The Gateway Engine continuously monitors the health of connected clusters. It collects statistics, such as
+base connectivity, round trip time (RTT) and average latency of each connection, which are being updated
+in the 'Gateway' object. Whenever the Gateway Engine detects an unhealthy cluster, the connection status is marked
+with an `error` state so that Service Discovery avoids this cluster while it discovers a Service.
+If at a later point of time the connection recovers, the status will be updated back to `connected`.
