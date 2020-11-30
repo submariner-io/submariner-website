@@ -32,7 +32,7 @@ the Broker. See the [cluster-settings](https://github.com/submariner-io/submarin
 ### Deploy Manually
 
 If you wish to try out Submariner deployment manually, an easy option is to create kind clusters using our scripts and deploy Submariner
-with [`subctl`](/operations/deployment/subctl).
+with [`subctl`](../../../operations/deployment/subctl).
 
 #### Create kind Clusters
 
