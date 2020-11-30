@@ -28,6 +28,7 @@ $ kubectl get namespace submariner-k8s-broker
 NAME                    STATUS   AGE
 submariner-k8s-broker   Active   5m
 ```
+
 You can use this command to validate that the Submariner CRDs have been created in the Broker cluster:
 
 ```bash
@@ -98,15 +99,14 @@ cluster2-worker   Ready    <none>   6h59m   v1.17.0   172.17.0.7    <none>      
 ```
 
 You can use this command to quickly verify the connection between the participating clusters:
-
+<!-- markdownlint-disable no-trailing-spaces -->
 ```bash
 $ subctl show connections
 
 Showing information for cluster "cluster2":
-GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS          
-cluster3-worker                 cluster3                172.17.0.10     libreswan           100.3.0.0/16, 10.3.0.0/16             connected       
+GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS      
+cluster3-worker                 cluster3                172.17.0.10     libreswan           100.3.0.0/16, 10.3.0.0/16             connected      
 ```
-
 You can use this command to get detailed information about the inter-cluster connection:
 
 ```bash
@@ -162,7 +162,7 @@ Status:
   Version:         v0.8.0-pre0-1-g5d7f163
 Events:            <none>
 ```
-
+<!-- markdownlint-enable no-trailing-spaces -->
 To verify that service discovery is installed properly, check that the `submariner-lighthouse-coredns` service is ready:
 
 ```bash
@@ -211,7 +211,6 @@ clusterset.local:53 {
 ```
 
 Note that **100.2.177.123** is the ClusterIP address of the `submariner-lighthouse-coredns` service we verified earlier.
-
 
 ### 2. Export Services Across Clusters
 
@@ -308,7 +307,7 @@ Service exported successfully
 ```
 
 Verify that the `ServiceExport` object has been created for the `nginx` Service within the default namespace:
-
+<!-- markdownlint-disable no-trailing-spaces -->
 ```bash
 $ kubectl describe serviceexports
 Name:         nginx
@@ -337,7 +336,7 @@ Status:
     Type:                  Valid
 Events:                    <none>
 ```
-
+<!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the clusterset.
 
 ##### 4. Test Service Discovery on **cluster-2**
@@ -386,7 +385,7 @@ Commercial support is available at
 </body>
 </html>
 ```
-
+<!-- markdownlint-disable no-hard-tabs -->
 ```bash
 bash-5.0# dig nginx.default.svc.clusterset.local
 ; <<>> DiG 9.16.6 <<>> nginx.default.svc.clusterset.local
@@ -411,10 +410,8 @@ nginx.default.svc.clusterset.local. 5 IN A	100.3.220.176
 ;; SERVER: 100.2.0.10#53(100.2.0.10)
 ;; WHEN: Mon Nov 30 17:52:55 UTC 2020
 ;; MSG SIZE  rcvd: 125
-
-bash-5.0#
 ```
-
+<!-- markdownlint-enable no-hard-tabs -->
 Note that DNS resolution works across the clusters, and that the IP address **100.3.220.176** returned is the same ClusterIP associated with
 the `nginx` Service on **cluster-3**.
 
@@ -569,6 +566,7 @@ Status:
     Type:                  Valid
 Events:                    <none>
 ```
+
 When the Service is exported successfully, it can be discovered as `nginx-ss.default.svc.clusterset.local` across the clusterset.
 In addition, the individual Pods can be accessed as `web-0.cluster-3.nginx-ss.default.svc.clusterset.local` and
 `web-1.cluster-3.nginx-ss.default.svc.clusterset.local`.
@@ -591,7 +589,7 @@ Next, run a test Pod on **cluster-2** and try to access the `nginx-ss` Service f
 kubectl -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
-
+<!-- markdownlint-disable no-hard-tabs -->
 ```bash
 bash-5.0# dig nginx-ss.default.svc.clusterset.local
 
@@ -641,7 +639,7 @@ Address: 10.3.224.3
 
 bash-5.0#
 ```
-
+<!-- markdownlint-enable no-hard-tabs -->
 #### Clean the Created Resources
 
 To remove the previously created Kubernetes resources, use the following commands on **cluster-3**:
