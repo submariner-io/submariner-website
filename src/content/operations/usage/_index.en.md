@@ -104,9 +104,10 @@ You can use this command to quickly verify the connection between the participat
 $ subctl show connections
 
 Showing information for cluster "cluster2":
-GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS      
-cluster3-worker                 cluster3                172.17.0.10     libreswan           100.3.0.0/16, 10.3.0.0/16             connected      
+GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS
+cluster3-worker                 cluster3                172.17.0.10     libreswan           100.3.0.0/16, 10.3.0.0/16             connected
 ```
+
 You can use this command to get detailed information about the inter-cluster connection:
 
 ```bash
@@ -537,7 +538,7 @@ Service exported successfully
 ```
 
 Verify that the `ServiceExport` object has been created for the `nginx-ss` Service within the default namespace:
-
+<!-- markdownlint-disable no-trailing-spaces -->
 ```bash
 $ kubectl describe serviceexport nginx-ss
 Name:         nginx-ss
@@ -566,7 +567,7 @@ Status:
     Type:                  Valid
 Events:                    <none>
 ```
-
+<!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx-ss.default.svc.clusterset.local` across the clusterset.
 In addition, the individual Pods can be accessed as `web-0.cluster-3.nginx-ss.default.svc.clusterset.local` and
 `web-1.cluster-3.nginx-ss.default.svc.clusterset.local`.
