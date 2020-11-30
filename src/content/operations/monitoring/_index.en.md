@@ -20,6 +20,24 @@ The following metrics are exposed currently:
   * `remote_cluster`: the remote cluster name
   * `remote_hostname`: the remote hostname
   * `status`: the connection status (“connecting”, “connected”, or “error”)
+  
+Submariner exposed metrics - the following connectivity metrics shared the same set of labels:
+
+* `gateway_rx_bytes`: count of bytes received (by cable driver and cable)
+* `gateway_tx_bytes`: count of bytes transmitted (by cable driver and cable)
+* `connection_established_timestamp`: timestamp of last successful connection established (by cable driver and cable)
+* `connection_latency_seconds`: connection latency in seconds (average RTT, by cable driver and cable)
+
+  * `cable_driver`: the currentcable driver
+  * `local_cluster`: the local cluster name
+  * `local_hostname`: the local hostname
+  * `local_endpoint_ip`: the local endpoint ip
+  * `remote_cluster`: the remote cluster name
+  * `remote_hostname`: the remote hostname
+  * `remote_endpoint_ip`: the remote endpoint ip
+
+* `connections`: the number of connections and corresponding status (by cable driver and cable), with the additional label:
+  * `status`: the current status of the connection
 
 ### OpenShift setup
 
