@@ -29,6 +29,11 @@ The Broker consists of a set of Custom Resource Definitions (CRDs) only; there a
 You can use this command to validate that the Broker namespace has been created in the Broker cluster:
 
 ```bash
+$ kubectl config use-context cluster1
+Switched to context "cluster1".
+```
+
+```bash
 $ kubectl get namespace submariner-k8s-broker
 NAME                    STATUS   AGE
 submariner-k8s-broker   Active   5m
@@ -37,11 +42,12 @@ submariner-k8s-broker   Active   5m
 You can use this command to validate that the Submariner CRDs have been created in the Broker cluster:
 
 ```bash
-$ kubectl get crd | grep submariner
+$ kubectl get crds | grep -iE 'submariner|multicluster.x-k8s.io'
 clusters.submariner.io                    2020-11-30T13:49:16Z
 endpoints.submariner.io                   2020-11-30T13:49:16Z
 gateways.submariner.io                    2020-11-30T13:49:16Z
 serviceimports.lighthouse.submariner.io   2020-11-30T13:49:16Z
+serviceimports.multicluster.x-k8s.io      2020-11-30T13:52:39Z
 ```
 
 You can use this command to validate that the participating clusters have successfully joined the Broker:
@@ -59,6 +65,11 @@ The below commands can be used on either **cluster2** or **cluster3** to verify 
 and are properly connected to each other. In this example, the commands are being issued on **cluster2**.
 
 You can use this command to monitor as all required Submariner components are being installed:
+
+```bash
+$ kubectl config use-context cluster2
+Switched to context "cluster2".
+```
 
 ```bash
 $ kubectl -n submariner-operator get pods --watch
@@ -172,7 +183,22 @@ Status:
 Events:            <none>
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
-To verify that service discovery is installed properly, check that the `submariner-lighthouse-coredns` Service is ready:
+To verify that service discovery is installed properly, validate that the Submariner CRDs have been created in the cluster:
+
+```bash
+$ kubectl get crds | grep -iE 'submariner|multicluster.x-k8s.io'
+clusters.submariner.io                    2020-11-30T13:50:33Z
+endpoints.submariner.io                   2020-11-30T13:50:33Z
+gateways.submariner.io                    2020-11-30T13:50:33Z
+servicediscoveries.submariner.io          2020-11-30T13:50:34Z
+serviceexports.lighthouse.submariner.io   2020-11-30T13:50:33Z
+serviceexports.multicluster.x-k8s.io      2020-11-30T13:50:34Z
+serviceimports.lighthouse.submariner.io   2020-11-30T13:50:33Z
+serviceimports.multicluster.x-k8s.io      2020-11-30T13:50:33Z
+submariners.submariner.io                 2020-11-30T13:50:24Z
+```
+
+Check that the `submariner-lighthouse-coredns` Service is ready:
 
 ```bash
 $ kubectl -n submariner-operator get service submariner-lighthouse-coredns
@@ -180,7 +206,7 @@ NAME                            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S
 submariner-lighthouse-coredns   ClusterIP   100.2.177.123   <none>        53/UDP    126m
 ```
 
-Next, verify that CoreDNS was properly configured to forward requests sent to `clusterset.local` to Lighthouse CoreDNS Server in the
+Verify that CoreDNS was properly configured to forward requests sent to `clusterset.local` to Lighthouse CoreDNS Server in the
 cluster:
 
 ```bash
@@ -229,14 +255,14 @@ can be done by creating a `ServiceExport` object in each cluster within the name
 `ServiceExport` is created, this will cause the multi-cluster Service to become accessible as `<service>.<ns>.svc.clusterset.local`.
 Similarly, deleting the `ServiceExport` will stop exporting the Service.
 
-{{% notice info %}}
-Note that the namespace must be created in both clusters for service discovery to work properly. In the example below, we test with the
-default namespace which automatically exists, but if we were to test with a dedicated namespace it needs to be created in both clusters.
-{{% /notice %}}
-
 This guide uses a simple nginx server for demonstration purposes.
 
-#### Test ClusterIP Service
+{{% notice info %}}
+Note that the namespace must be created in both clusters for service discovery to work properly. In the example below, we test with the
+default namespace which automatically exists, but if we were to test with a dedicated namespace, it needs to be created in both clusters.
+{{% /notice %}}
+
+#### Test ClusterIP Services
 
 A Kubernetes Service is an abstraction which defines a logical set of Pods running in your cluster, that all provide the same functionality.
 When created, each Service is assigned a unique IP address. This address is tied to the lifespan of the Service.
@@ -244,90 +270,50 @@ Pods can be configured to talk to the Service, and know that communication to th
 Pod that is a member of the Service. ClusterIP is the default ServiceType in Kubernetes, and is only accessible from within the cluster.
 Submariner makes it possible for a ClusterIP Service to be accessible across cluster boundaries.
 
-##### 1. Create an `nginx` Pod on **cluster3**
-
-Create a Pod with the following Deployment specification:
+##### 1. Create an `nginx` Deployment on **cluster3**
 
 ```bash
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx
-spec:
-  selector:
-    matchLabels:
-      run: nginx
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        run: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
-```
-
-Apply the configuration and check that the Pod is running:
-
-```bash
-kubectl apply -f ./nginx-pod.yaml
+$ kubectl config use-context cluster3
+Switched to context "cluster3".
 ```
 
 ```bash
-$ kubectl get pods -l run=nginx -o wide
-NAME                     READY   STATUS    RESTARTS   AGE   IP         NODE               NOMINATED NODE   READINESS GATES
-nginx-86c57db685-twxz4   1/1     Running   0          3m    10.3.0.4   cluster3-worker2   <none>           <none>
+$ kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
+deployment.apps/nginx created
+
+$ kubectl -n default expose deployment nginx --port=8080
+service/nginx exposed
 ```
 
-##### 2. Create an `nginx` Service on **cluster3**
-
-`kubectl apply` the following yaml:
-
-```bash
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  labels:
-    run: nginx
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-  selector:
-    run: nginx
-```
-
-```bash
-kubectl apply -f ./nginx-service.yaml
-```
-
-This specification will create a Service on the default namespace which targets TCP port 80 on any Pod with the `run: nginx` label, and
+This will create an `nginx` Service on the default namespace which targets TCP port 8080 on any Pod with the `app: nginx` label, and
 expose it on an abstracted Service port. When created, the Service is assigned a unique IP address (also called ClusterIP):
 
 ```bash
-$ kubectl get service nginx
-NAME    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
-nginx   ClusterIP   100.3.220.176   <none>        80/TCP    103s
+$ kubectl -n default get service nginx
+NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+nginx   ClusterIP   100.3.220.176  <none>        8080/TCP   2m41s
 ```
 
-##### 3. Export the Service
+```bash
+$ kubectl -n default get pods -l app=nginx -o wide
+NAME                     READY   STATUS    RESTARTS   AGE   IP         NODE                NOMINATED NODE   READINESS GATES
+nginx-667744f849-t26s5   1/1     Running   0          3m    10.3.0.5   cluster3-worker2    <none>           <none>
+```
+
+##### 2. Export the Service
 
 In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
 
 ```bash
-subctl export service --namespace default nginx
+$ subctl export service --namespace default nginx
 Service exported successfully
 ```
 
 Verify that the `ServiceExport` object has been created for the `nginx` Service within the default namespace:
 <!-- markdownlint-disable no-trailing-spaces -->
 ```bash
-$ kubectl describe serviceexports
+$ kubectl -n default describe serviceexports
 Name:         nginx
 Namespace:    default
 Labels:       <none>
@@ -335,32 +321,38 @@ Annotations:  <none>
 API Version:  multicluster.x-k8s.io/v1alpha1
 Kind:         ServiceExport
 Metadata:
-  Creation Timestamp:  2020-11-30T17:18:44Z
+  Creation Timestamp:  2020-12-01T12:35:32Z
   Generation:          1
-  Resource Version:    48072
+  Resource Version:    302209
   Self Link:           /apis/multicluster.x-k8s.io/v1alpha1/namespaces/default/serviceexports/nginx
-  UID:                 00096bcb-6383-4345-875b-4050f7b1a3a1
+  UID:                 afe0533c-7cca-4443-9d8a-aee8e888e8bc
 Status:
   Conditions:
-    Last Transition Time:  2020-11-30T17:18:44Z
+    Last Transition Time:  2020-12-01T12:35:32Z
     Message:               Awaiting sync of the ServiceImport to the broker
     Reason:                AwaitingSync
     Status:                False
     Type:                  Valid
-    Last Transition Time:  2020-11-30T17:18:44Z
+    Last Transition Time:  2020-12-01T12:35:32Z
     Message:               Service was successfully synced to the broker
     Reason:                
     Status:                True
     Type:                  Valid
 Events:                    <none>
+
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the clusterset.
 
-##### 4. Test Service Discovery on **cluster2**
+##### 3. Consume the Service from **cluster2**
 
 First, verify that the exported `nginx` Service was imported to **cluster2** as expected. Submariner (via Lighthouse) automatically
 creates a corresponding `ServiceImport`:
+
+```bash
+$ kubectl config use-context cluster2
+Switched to context "cluster2".
+```
 
 ```bash
 $ kubectl get -n submariner-operator serviceimport
@@ -371,7 +363,7 @@ nginx-default-cluster3   ClusterSetIP   [100.3.220.176]   13m
 Next, run a test Pod on **cluster2** and try to access the `nginx` Service from within the Pod:
 
 ```bash
-kubectl -n default  run --generator=run-pod/v1 \
+$ kubectl -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
@@ -433,90 +425,53 @@ nginx.default.svc.clusterset.local. 5 IN A	100.3.220.176
 Note that DNS resolution works across the clusters, and that the IP address **100.3.220.176** returned is the same ClusterIP associated with
 the `nginx` Service on **cluster3**.
 
-##### 5. Create an `nginx` Service on **cluster2**
+##### 4. Create an `nginx` Deployment on **cluster2**
 
-If multiple clusters export a Service with the same name and from the same namespace, they will be recognized as a single combined Service.
+If multiple clusters export a Service with the same name and from the same namespace, it will be recognized as a single combined Service.
 To test this, let's deploy the same `nginx` Service, this time on **cluster2**:
 
-Create a Pod with the following Deployment specification:
-
 ```bash
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx
-spec:
-  selector:
-    matchLabels:
-      run: nginx
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        run: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
+$ kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
+deployment.apps/nginx created
+
+$ kubectl -n default expose deployment nginx --port=8080
+service/nginx exposed
 ```
 
-Apply the configuration and check that the Pod is running:
+This will create an `nginx` Service on the default namespace which targets TCP port 8080 on any Pod with the `app: nginx` label, and
+expose it on an abstracted Service port. When created, the Service is assigned a unique IP address (also called ClusterIP):
 
 ```bash
-kubectl apply -f ./nginx-pod.yaml
+$ kubectl -n default get service nginx
+NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+nginx   ClusterIP   100.2.29.136   <none>        8080/TCP   1m40s
 ```
 
 ```bash
-$ kubectl get pods -l run=nginx -o wide
+$ kubectl -n default get pods -l app=nginx -o wide
 NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE              NOMINATED NODE   READINESS GATES
 nginx-5578584966-d7sj7   1/1     Running   0          22s   10.2.224.3   cluster2-worker   <none>           <none>
 ```
 
-To create an `nginx` Service, `kubectl apply` the following yaml:
-
-```bash
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  labels:
-    run: nginx
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-  selector:
-    run: nginx
-```
-
-```bash
-kubectl apply -f ./nginx-service.yaml
-```
-
-When created, the Service is assigned a unique IP address (also called ClusterIP):
-
-```bash
-$ kubectl get service nginx
-NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-nginx   ClusterIP   100.2.29.136   <none>        80/TCP    13s
-```
-
-##### 6. Export the Service
+##### 5. Export the Service
 
 In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
 
 ```bash
-subctl export service --namespace default nginx
+$ subctl export service --namespace default nginx
 Service exported successfully
 ```
 
-##### 7. Test Service Discovery on **cluster3**
+##### 6. Consume the Service from **cluster3**
 
 First, verify that the exported `nginx` Service was imported to **cluster3** as expected. Submariner (via Lighthouse) automatically
 creates a corresponding `ServiceImport`:
+
+```bash
+$ kubectl config use-context cluster3
+Switched to context "cluster3".
+```
 
 ```bash
 $ kubectl get -n submariner-operator serviceimport
@@ -527,7 +482,7 @@ nginx-default-cluster2   ClusterSetIP   [100.2.29.136]   62s
 Next, run a test Pod on **cluster3** and try to access the `nginx` Service from within the Pod:
 
 ```bash
-kubectl -n default  run --generator=run-pod/v1 \
+$ kubectl -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
@@ -587,15 +542,33 @@ nginx.default.svc.clusterset.local. 5 IN A	100.2.29.136
 ;; MSG SIZE  rcvd: 125
 ```
 <!-- markdownlint-enable no-hard-tabs -->
-{{% notice note %}}
-Lighthouse DNS serves the local cluster first before routing the traffic to other remote clusters. In this case, if a Pod from **cluster2**
-tries to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.2.29.136** which
-is the local ClusterIP Service on **cluster2**. Similarly, if a Pod from **cluster3** tries to access the `nginx` Service as
-`nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.3.220.176** which is the local ClusterIP Service on
-**cluster3**. If, for example, a Pod from a third cluster that joined the clusterset tries to access the `nginx` Service as
+
+Note that DNS resolution works, and that the IP address 100.2.29.136 returned is the ClusterIP associated with the **local** nginx Service
+deployed on cluster3. This is expected, as Submariner prefers to handle the traffic locally.
+
+#### Service Discovery for Services Deployed to Multiple Clusters
+
+Submariner follows this logic for service discovery across the clusterset:
+
+* If an exported Service is not available in the local cluster, Lighthosue DNS returns the IP address of the ClusterIP Service from one of
+the remote clusters on which the Service was exported.
+
+* If an exported Service is available in the local cluster, Lighthosue DNS always returns the IP address of the local ClusterIP Service.
+In this example, if a Pod from **cluster2** tries to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthouse DNS
+resolves the Service as **100.2.29.136** which is the local ClusterIP Service on **cluster2**. Similarly, if a Pod from **cluster3** tries
+to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.3.220.176** which is the
+local ClusterIP Service on **cluster3**.
+
+* If multiple clusters export a Service with the same name and from the same namespace, Lighthosue DNS load balances between the clusters
+in a round-robin fashion. If, in our example, a Pod from a third cluster that joined the clusterset tries to access the `nginx` Service as
 `nginx.default.svc.clusterset.local`, Lighthouse will round-robin the DNS responses across **cluster2** and **cluster3**, causing
-requests to be served by both **cluster2** and **cluster3**.
-{{% /notice %}}
+requests to be served by both **cluster2** and **cluster3**. Note that Lighthouse returns IPs from *connected* clusters only. Clusters in
+*disconnected* state are ignored.
+
+* Applications can access a Service from a specific cluster by prefixing the DNS query with `cluster-id` as follows:
+`<cluster-id>.<svcname>.<namespace>.svc.clusterset.local`. In our example, querying for `cluster2.nginx.default.svc.clusterset.local`
+always returns the ClusterIP Service on **cluster2**. Similarly, `cluster3.nginx.default.svc.clusterset.local`
+always returns the ClusterIP Service on **cluster3**.
 
 #### Test StatefulSet and Headless Service
 
@@ -748,7 +721,7 @@ When the Service is exported successfully, it can be discovered as `nginx-ss.def
 In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.default.svc.clusterset.local` and
 `web-1.cluster3.nginx-ss.default.svc.clusterset.local`.
 
-##### 3. Test Service Discovery on **cluster2**
+##### 3. Consume the Service from **cluster2**
 
 Verify that the exported `nginx-ss` Service was imported to **cluster2**. Submariner (via Lighthouse) automatically creates a
 corresponding `ServiceImport`:
