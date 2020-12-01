@@ -11,8 +11,8 @@ use Submariner and the main capabilities it provides. This guide assumes that th
 **cluster2** and **cluster3**, forming a clusterset, and that the Broker is deployed into a separate cluster **cluster1**.
 
 {{% notice tip %}}
-Make sure you have `subctl` [set up](../deployment/subctl/#installation). Regardless of how Submariner was deployed, `subctl` can be used for various tasks such as verification
-and troubleshooting, and is going be used in this guide.
+Make sure you have `subctl` [set up](../deployment/subctl/#installation). Regardless of how Submariner was deployed, `subctl` can be used
+for various tasks such as verification and troubleshooting, and is going be used in this guide.
 {{% /notice %}}
 
 {{% notice note %}}
