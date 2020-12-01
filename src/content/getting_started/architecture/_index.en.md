@@ -37,8 +37,8 @@ export a Service with the same name and from the same namespace, they will be re
 in order to signify that the Service should be visible and discoverable to other clusters in the clusterset. The `ServiceExport` object can
 be created manually or via the `subctl export` command.
 
-  * When a `ServiceExport` is created, this will cause the multi-cluster service to become accessible as
+  * When a `ServiceExport` is created, this will cause the multi-cluster Service to become accessible as
 `<service>.<ns>.svc.clusterset.local`.
 
-* `ServiceImport` (CRD) - representation of a multi-cluster service in each cluster. Created and used internally by Lighthouse and does not
-require any user intervention.
+* `ServiceImport` (CRD) - representation of a multi-cluster Service in each cluster. Created and used internally by Lighthouse and does not
+require any user action.
