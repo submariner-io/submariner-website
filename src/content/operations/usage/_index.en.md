@@ -368,7 +368,7 @@ tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
 ```bash
-bash-5.0# curl nginx.default.svc.clusterset.local
+bash-5.0# curl nginx.default.svc.clusterset.local:8080
 <!DOCTYPE html>
 <html>
 <head>
@@ -487,7 +487,7 @@ tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
 ```bash
-bash-5.0# curl nginx.default.svc.clusterset.local
+bash-5.0# curl nginx.default.svc.clusterset.local:8080
 <!DOCTYPE html>
 <html>
 <head>
