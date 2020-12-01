@@ -8,7 +8,7 @@ weight = 15
 
 This guide is intended for users who have a Submariner environment set up and want to verify the installation and learn more about how to
 use Submariner and the main capabilities it provides. This guide assumes that there are two Kubernetes clusters,
-**cluster2** and **cluster3**, forming a clusterset, and that the Broker is deployed into a separate cluster **cluster1**.
+**cluster2** and **cluster3**, forming a cluster set, and that the Broker is deployed into a separate cluster **cluster1**.
 
 {{% notice tip %}}
 Make sure you have `subctl` [set up](../deployment/subctl/#installation). Regardless of how Submariner was deployed, `subctl` can be used
@@ -61,7 +61,7 @@ cluster3   2m9s
 
 #### On Connected Clusters
 
-The below commands can be used on either **cluster2** or **cluster3** to verify that the two clusters have successfully formed a clusterset
+The below commands can be used on either **cluster2** or **cluster3** to verify that the two clusters have successfully formed a cluster set
 and are properly connected to each other. In this example, the commands are being issued on **cluster2**.
 
 You can use this command to monitor as all required Submariner components are being installed:
@@ -249,8 +249,8 @@ Note that **100.2.177.123** is the ClusterIP address of the `submariner-lighthou
 
 ### 2. Export Services Across Clusters
 
-At this point, we have enabled secure IP communication between the connected clusters and formed the clusterset. However, further
-configuration is required in order to signify that a Service should be visible and discoverable to other clusters in the clusterset. This
+At this point, we have enabled secure IP communication between the connected clusters and formed the cluster set. However, further
+configuration is required in order to signify that a Service should be visible and discoverable to other clusters in the cluster set. This
 can be done by creating a `ServiceExport` object in each cluster within the namespace that the underlying Service resides in. When a
 `ServiceExport` is created, this will cause the multi-cluster Service to become accessible as `<service>.<ns>.svc.clusterset.local`.
 Similarly, deleting the `ServiceExport` will stop exporting the Service.
@@ -302,7 +302,7 @@ nginx-667744f849-t26s5   1/1     Running   0          3m    10.3.0.5   cluster3-
 
 ##### 2. Export the Service
 
-In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
+In order to signify that the Service should be visible and discoverable to other clusters in the cluster set, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
 
 ```bash
@@ -342,7 +342,7 @@ Events:                    <none>
 
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
-When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the clusterset.
+When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the cluster set.
 
 ##### 3. Consume the Service on **cluster2**
 
@@ -455,7 +455,7 @@ nginx-5578584966-d7sj7   1/1     Running   0          22s   10.2.224.3   cluster
 
 ##### 5. Export the Service on **cluster2**
 
-In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
+In order to signify that the Service should be visible and discoverable to other clusters in the cluster set, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
 
 ```bash
@@ -548,7 +548,7 @@ deployed on cluster3. This is expected, as Submariner prefers to handle the traf
 
 #### Service Discovery for Services Deployed to Multiple Clusters
 
-Submariner follows this logic for service discovery across the clusterset:
+Submariner follows this logic for service discovery across the cluster set:
 
 * If an exported Service is not available in the local cluster, Lighthosue DNS returns the IP address of the ClusterIP Service from one of
 the remote clusters on which the Service was exported.
@@ -560,7 +560,7 @@ to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthous
 local ClusterIP Service on **cluster3**.
 
 * If multiple clusters export a Service with the same name and from the same namespace, Lighthosue DNS load balances between the clusters
-in a round-robin fashion. If, in our example, a Pod from a third cluster that joined the clusterset tries to access the `nginx` Service as
+in a round-robin fashion. If, in our example, a Pod from a third cluster that joined the cluster set tries to access the `nginx` Service as
 `nginx.default.svc.clusterset.local`, Lighthouse will round-robin the DNS responses across **cluster2** and **cluster3**, causing
 requests to be served by both **cluster2** and **cluster3**. Note that Lighthouse returns IPs from *connected* clusters only. Clusters in
 *disconnected* state are ignored.
@@ -574,7 +574,7 @@ always returns the ClusterIP Service on **cluster3**.
 
 Submariner also supports Headless Services with StatefulSets, making it possible to access individual Pods via their stable DNS name.
 Kubernetes supports this by introducing stable Pod IDs composed of `<pod-name>.<svc-name>.<ns>.svc.cluster.local` within a single cluster,
-which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local` across the clusterset. The Headless Service in
+which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local` across the cluster set. The Headless Service in
 this case offers one single Service for all the underlying Pods.
 
 Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a
@@ -678,7 +678,7 @@ Events:
 
 ##### 2. Export the Service on **cluster-3**
 
-In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
+In order to signify that the Service should be visible and discoverable to other clusters in the cluster set, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
 
 ```bash
@@ -717,7 +717,7 @@ Status:
 Events:                    <none>
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
-When the Service is exported successfully, it can be discovered as `nginx-ss.default.svc.clusterset.local` across the clusterset.
+When the Service is exported successfully, it can be discovered as `nginx-ss.default.svc.clusterset.local` across the cluster set.
 In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.default.svc.clusterset.local` and
 `web-1.cluster3.nginx-ss.default.svc.clusterset.local`.
 
