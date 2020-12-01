@@ -36,16 +36,14 @@ Submariner exposed metrics
 `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
 * `connection_established_timestamp`: timestamp of last successful connection established by cable driver and cable
-(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`,
- `remote_endpoint_ip`)
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
-* `connection_latency_seconds`: connection latency in seconds; last RTT, by cable driver and cabel 
-(labels: `cable_driver`, `local_cluster`, `local_hostname`,
-`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+* `connection_latency_seconds`: connection latency in seconds; last RTT, by cable driver and cable
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
 * `connections`: the number of connections and corresponding status by cable driver and cable
- (labels: `cable_driver`, `local_cluster`, `local_hostname`,
- `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`, `status`)
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`,
+`status`)
 
 ### OpenShift setup
 
