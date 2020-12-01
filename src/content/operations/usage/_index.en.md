@@ -453,7 +453,7 @@ NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE   
 nginx-5578584966-d7sj7   1/1     Running   0          22s   10.2.224.3   cluster2-worker   <none>           <none>
 ```
 
-##### 5. Export the Service
+##### 5. Export the Service on **cluster2**
 
 In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
@@ -572,16 +572,16 @@ always returns the ClusterIP Service on **cluster3**.
 
 #### Test StatefulSet and Headless Service
 
-Submariner also supports headless Services with StatefulSets, making it possible to access individual Pods via their stable DNS name.
+Submariner also supports Headless Services with StatefulSets, making it possible to access individual Pods via their stable DNS name.
 Kubernetes supports this by introducing stable Pod IDs composed of `<pod-name>.<svc-name>.<ns>.svc.cluster.local` within a single cluster,
-which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local` across the clusterset. The headless Service in
+which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local` across the clusterset. The Headless Service in
 this case offers one single Service for all the underlying Pods.
 
 Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a
 sticky identity for each of its Pods. StatefulSets are typically used for applications that require stable unique network identifiers,
 persistent storage, and ordered deployment and scaling.
 
-##### 1. Create StatefulSet and headless Service on **cluster3**
+##### 1. Create StatefulSet and Headless Service on **cluster3**
 
 `kubectl apply` the following yaml:
 
@@ -628,7 +628,7 @@ spec:
 ```
 
 This specification will create a StatefulSet named `web` which indicates that two replicas of the `nginx` container will be launched in
-unique Pods. This also creates a headless Service called `nginx-ss` on the default namespace. Note that headless Service is requested by
+unique Pods. This also creates a Headless Service called `nginx-ss` on the default namespace. Note that Headless Service is requested by
 explicitly specifying "None" for the clusterIP (.spec.clusterIP).
 
 ```bash
@@ -676,7 +676,7 @@ Events:
   Normal  SuccessfulCreate  85s   statefulset-controller  create Pod web-1 in StatefulSet web successful
 ```
 
-##### 2. Export the Service
+##### 2. Export the Service on **cluster-3**
 
 In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
 created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
