@@ -8,15 +8,15 @@ weight = 15
 
 This guide is intended for users who have a Submariner environment set up and want to verify the installation and learn more about how to
 use Submariner and the main capabilities it provides. This guide assumes that there are two Kubernetes clusters,
-**cluster-2** and **cluster-3**, forming a clusterset, and that the Broker is deployed into a separate cluster **cluster-1**.
+**cluster2** and **cluster3**, forming a clusterset, and that the Broker is deployed into a separate cluster **cluster1**.
 
 {{% notice note %}}
-This guides focuses on a non-Globalnet Submariner deployment.
+This guide focuses on a non-Globalnet Submariner deployment.
 {{% /notice %}}
 
 ### 1. Validate the Installation
 
-#### Broker
+#### On the Broker
 
 The Broker facilitates the exchange of metadata information between the connected clusters, enabling them to discover one another.
 The Broker consists of a set of Custom Resource Definitions (CRDs) only; there are no Pods or Services deployed with it.
@@ -48,7 +48,7 @@ cluster2   5m9s
 cluster3   2m9s
 ```
 
-#### Connected Clusters
+#### On Connected Clusters
 
 You can use this command to monitor as all required Submariner components are being installed on the connected clusters:
 
@@ -164,7 +164,7 @@ Status:
 Events:            <none>
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
-To verify that service discovery is installed properly, check that the `submariner-lighthouse-coredns` service is ready:
+To verify that service discovery is installed properly, check that the `submariner-lighthouse-coredns` Service is ready:
 
 ```bash
 $ kubectl -n submariner-operator get service submariner-lighthouse-coredns
@@ -211,15 +211,15 @@ clusterset.local:53 {
 }
 ```
 
-Note that **100.2.177.123** is the ClusterIP address of the `submariner-lighthouse-coredns` service we verified earlier.
+Note that **100.2.177.123** is the ClusterIP address of the `submariner-lighthouse-coredns` Service we verified earlier.
 
 ### 2. Export Services Across Clusters
 
 At this point, we have enabled secure IP communication between the connected clusters. However, further configuration is required in order
-to signify that a Service should be visible and discoverable to other clusters in the clusterset. This is done by creating a `ServiceExport`
-object in each cluster within the namespace that the underlying Service resides in. When a `ServiceExport` is created, this will cause
-the multi-cluster service to become accessible as `<service>.<ns>.svc.clusterset.local`. Similarly, deleting the `ServiceExport` will stop
-exporting the Service.
+to signify that a Service should be visible and discoverable to other clusters in the clusterset. This can be done by creating a
+`ServiceExport` object in each cluster within the namespace that the underlying Service resides in. When a `ServiceExport` is created, this
+will cause the multi-cluster Service to become accessible as `<service>.<ns>.svc.clusterset.local`. Similarly, deleting the `ServiceExport`
+will stop exporting the Service.
 
 This guide uses a simple nginx server for demonstration purposes.
 
@@ -229,9 +229,9 @@ A Kubernetes Service is an abstraction which defines a logical set of Pods runni
 When created, each Service is assigned a unique IP address. This address is tied to the lifespan of the Service.
 Pods can be configured to talk to the Service, and know that communication to the Service will be automatically load-balanced out to some
 Pod that is a member of the Service. ClusterIP is the default ServiceType in Kubernetes, and is only accessible from within the cluster.
-Submariner makes it possible for a ClusterIP service to be accessible across cluster boundaries.
+Submariner makes it possible for a ClusterIP Service to be accessible across cluster boundaries.
 
-##### 1. Create an `nginx` Pod on **cluster-3**
+##### 1. Create an `nginx` Pod on **cluster3**
 
 Create a Pod with the following Deployment specification:
 
@@ -260,7 +260,7 @@ spec:
 Apply the configuration and check that the Pod is running:
 
 ```bash
-kubectl apply -f ./nginx.yaml
+kubectl apply -f ./nginx-pod.yaml
 ```
 
 ```bash
@@ -269,7 +269,7 @@ NAME                     READY   STATUS    RESTARTS   AGE   IP         NODE     
 nginx-86c57db685-twxz4   1/1     Running   0          3m    10.3.0.4   cluster3-worker2   <none>           <none>
 ```
 
-##### 2. Create an `nginx` Service on **cluster-3**
+##### 2. Create an `nginx` Service on **cluster3**
 
 `kubectl apply` the following yaml:
 
@@ -286,6 +286,10 @@ spec:
     protocol: TCP
   selector:
     run: nginx
+```
+
+```bash
+kubectl apply -f ./nginx-service.yaml
 ```
 
 This specification will create a Service on the default namespace which targets TCP port 80 on any Pod with the `run: nginx` label, and
@@ -340,10 +344,10 @@ Events:                    <none>
 <!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the clusterset.
 
-##### 4. Test Service Discovery on **cluster-2**
+##### 4. Test Service Discovery on **cluster2**
 
-First, verify that the exported `nginx` Service was imported to **cluster-2**. Submariner (via Lighthouse) automatically creates a
-corresponding `ServiceImport`:
+First, verify that the exported `nginx` Service was imported to **cluster2** as expected. Submariner (via Lighthouse) automatically
+creates a corresponding `ServiceImport`:
 
 ```bash
 $ kubectl get -n submariner-operator serviceimport
@@ -351,7 +355,7 @@ NAME                     TYPE           IP                AGE
 nginx-default-cluster3   ClusterSetIP   [100.3.220.176]   13m
 ```
 
-Next, run a test Pod on **cluster-2** and try to access the `nginx` Service from within the Pod:
+Next, run a test Pod on **cluster2** and try to access the `nginx` Service from within the Pod:
 
 ```bash
 kubectl -n default  run --generator=run-pod/v1 \
@@ -414,11 +418,170 @@ nginx.default.svc.clusterset.local. 5 IN A	100.3.220.176
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 Note that DNS resolution works across the clusters, and that the IP address **100.3.220.176** returned is the same ClusterIP associated with
-the `nginx` Service on **cluster-3**.
+the `nginx` Service on **cluster3**.
 
+##### 5. Create an `nginx` Service on **cluster2**
+
+If multiple clusters export a Service with the same name and from the same namespace, they will be recognized as a single combined Service.
+To test this, let's deploy the same `nginx` Service, this time on **cluster2**:
+
+Create a Pod with the following Deployment specification:
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      run: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+
+Apply the configuration and check that the Pod is running:
+
+```bash
+kubectl apply -f ./nginx-pod.yaml
+```
+
+```bash
+$ kubectl get pods -l run=nginx -o wide
+NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE              NOMINATED NODE   READINESS GATES
+nginx-5578584966-d7sj7   1/1     Running   0          22s   10.2.224.3   cluster2-worker   <none>           <none>
+```
+
+To create an `nginx` Service, `kubectl apply` the following yaml:
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    run: nginx
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+  selector:
+    run: nginx
+```
+
+```bash
+kubectl apply -f ./nginx-service.yaml
+```
+
+When created, the Service is assigned a unique IP address (also called ClusterIP):
+
+```bash
+$ kubectl get service nginx
+NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+nginx   ClusterIP   100.2.29.136   <none>        80/TCP    13s
+```
+
+##### 6. Export the Service
+
+In order to signify that the Service should be visible and discoverable to other clusters in the clusterset, a `ServiceExport` needs to be
+created. The `subctl export` command can be used to automatically create the required `ServiceExport` object:
+
+```bash
+subctl export service --namespace default nginx
+Service exported successfully
+```
+
+##### 7. Test Service Discovery on **cluster3**
+
+First, verify that the exported `nginx` Service was imported to **cluster3** as expected. Submariner (via Lighthouse) automatically
+creates a corresponding `ServiceImport`:
+
+```bash
+$ kubectl get -n submariner-operator serviceimport
+NAME                     TYPE           IP               AGE
+nginx-default-cluster2   ClusterSetIP   [100.2.29.136]   62s
+```
+
+Next, run a test Pod on **cluster3** and try to access the `nginx` Service from within the Pod:
+
+```bash
+kubectl -n default  run --generator=run-pod/v1 \
+tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+```
+
+```bash
+bash-5.0# curl nginx.default.svc.clusterset.local
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+```
+
+<!-- markdownlint-disable no-hard-tabs -->
+```bash
+bash-5.0# dig nginx.default.svc.clusterset.local
+; <<>> DiG 9.16.6 <<>> nginx.default.svc.clusterset.local
+;; global options: +cmd
+;; Got answer:
+;; WARNING: .local is reserved for Multicast DNS
+;; You are currently testing what happens when an mDNS query is leaked to DNS
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 55022
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 6f9db9800a9a9779 (echoed)
+;; QUESTION SECTION:
+;nginx.default.svc.clusterset.local. IN	A
+
+;; ANSWER SECTION:
+nginx.default.svc.clusterset.local. 5 IN A	100.2.29.136
+
+;; Query time: 5 msec
+;; SERVER: 100.3.0.10#53(100.3.0.10)
+;; WHEN: Tue Dec 01 07:45:48 UTC 2020
+;; MSG SIZE  rcvd: 125
+```
+<!-- markdownlint-enable no-hard-tabs -->
 {{% notice note %}}
-When a single ClusterIP Service is deployed and exported from multiple clusters, Lighthouse DNS serves the local cluster first before
-routing the traffic to other remote clusters.
+Lighthouse DNS serves the local cluster first before routing the traffic to other remote clusters. In this case, if a Pod from **cluster2**
+tries to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.2.29.136** which
+is the local ClusterIP Service on **cluster2**. Similarly, if a Pod from **cluster3** tries to access the `nginx` Service as
+`nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.3.220.176** which is the local ClusterIP Service on
+**cluster3**. If, for example, a Pod from a third cluster that joined the clusterset tries to access the `nginx` Service as
+`nginx.default.svc.clusterset.local`, Lighthouse will round-robin the DNS responses across **cluster2** and **cluster3**, causing
+requests to be served by both **cluster2** and **cluster3**.
 {{% /notice %}}
 
 #### Test StatefulSet and Headless Service
@@ -432,7 +595,7 @@ Like a Deployment, a StatefulSet manages Pods that are based on an identical con
 sticky identity for each of their Pods. StatefulSets are typically used for applications that require stable unique network identifiers,
 persistent storage, and ordered deployment and scaling.
 
-##### 1. Create StatefulSet and headless Service on **cluster-3**
+##### 1. Create StatefulSet and headless Service on **cluster3**
 
 `kubectl apply` the following yaml:
 
@@ -569,12 +732,12 @@ Events:                    <none>
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx-ss.default.svc.clusterset.local` across the clusterset.
-In addition, the individual Pods can be accessed as `web-0.cluster-3.nginx-ss.default.svc.clusterset.local` and
-`web-1.cluster-3.nginx-ss.default.svc.clusterset.local`.
+In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.default.svc.clusterset.local` and
+`web-1.cluster3.nginx-ss.default.svc.clusterset.local`.
 
-##### 3. Test Service Discovery on **cluster-2**
+##### 3. Test Service Discovery on **cluster2**
 
-Verify that the exported `nginx-ss` Service was imported to **cluster-2**. Submariner (via Lighthouse) automatically creates a
+Verify that the exported `nginx-ss` Service was imported to **cluster2**. Submariner (via Lighthouse) automatically creates a
 corresponding `ServiceImport`:
 
 ```bash
@@ -584,7 +747,7 @@ nginx-default-cluster3      ClusterSetIP   [100.3.220.176]   166m
 nginx-ss-default-cluster3   Headless                         5m48s
 ```
 
-Next, run a test Pod on **cluster-2** and try to access the `nginx-ss` Service from within the Pod:
+Next, run a test Pod on **cluster2** and try to access the `nginx-ss` Service from within the Pod:
 
 ```bash
 kubectl -n default  run --generator=run-pod/v1 \
@@ -643,7 +806,7 @@ bash-5.0#
 <!-- markdownlint-enable no-hard-tabs -->
 #### Clean the Created Resources
 
-To remove the previously created Kubernetes resources, use the following commands on **cluster-3**:
+To remove the previously created Kubernetes resources, use the following commands on **cluster3**:
 
 ```bash
 $ kubectl delete service nginx
@@ -664,3 +827,15 @@ statefulset.apps "web" deleted
 $ kubectl delete serviceexport nginx-ss
 serviceexport.multicluster.x-k8s.io "nginx-ss" deleted
 ```
+
+Use the following commands on **cluster2**:
+
+```bash
+$ kubectl delete service nginx
+service "nginx" deleted
+
+$ kubectl delete deployment nginx
+deployment.apps "nginx" deleted
+
+$ kubectl delete serviceexport nginx
+serviceexport.multicluster.x-k8s.io "nginx" deleted
