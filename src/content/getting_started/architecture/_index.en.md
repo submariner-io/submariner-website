@@ -27,14 +27,14 @@ The diagram below illustrates the basic architecture of Submariner:
 
 ### Terminology and Concepts
 
-* Clusterset - a group of two or more clusters with a high degree of mutual trust that share Services among themselves.
-Within a clusterset, all namespaces with a given name are considered to be the same namespace.
+* `ClusterSet` - a group of two or more clusters with a high degree of mutual trust that share Services among themselves.
+Within a cluster set, all namespaces with a given name are considered to be the same namespace.
 
-* `ServiceExport` (CRD) - used to specify which Services should be exposed across all clusters in the clusterset. If multiple clusters
+* `ServiceExport` (CRD) - used to specify which Services should be exposed across all clusters in the cluster set. If multiple clusters
 export a Service with the same name and from the same namespace, they will be recognized as a single combined Service.
 
   * ServiceExports must be explicitly created by the user in each cluster and within the namespace that the underlying Service resides in,
-in order to signify that the Service should be visible and discoverable to other clusters in the clusterset. The `ServiceExport` object can
+in order to signify that the Service should be visible and discoverable to other clusters in the cluster set. The `ServiceExport` object can
 be created manually or via the `subctl export` command.
 
   * When a `ServiceExport` is created, this will cause the multi-cluster Service to become accessible as
