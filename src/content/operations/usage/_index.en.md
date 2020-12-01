@@ -534,7 +534,7 @@ bash-5.0# dig nginx.default.svc.clusterset.local
 ;nginx.default.svc.clusterset.local. IN	A
 
 ;; ANSWER SECTION:
-nginx.default.svc.clusterset.local. 5 IN A	100.2.29.136
+nginx.default.svc.clusterset.local. 5 IN A	100.3.220.176
 
 ;; Query time: 5 msec
 ;; SERVER: 100.3.0.10#53(100.3.0.10)
@@ -543,8 +543,10 @@ nginx.default.svc.clusterset.local. 5 IN A	100.2.29.136
 ```
 <!-- markdownlint-enable no-hard-tabs -->
 
-Note that DNS resolution works, and that the IP address 100.2.29.136 returned is the ClusterIP associated with the **local** nginx Service
-deployed on cluster3. This is expected, as Submariner prefers to handle the traffic locally.
+{{% notice note %}}
+Note that DNS resolution works, and that the IP address **100.3.220.176** returned is the ClusterIP associated with the *local* nginx
+Service deployed on **cluster3**. This is expected, as Submariner prefers to handle the traffic locally whenever possible.
+{{% /notice %}}
 
 #### Service Discovery for Services Deployed to Multiple Clusters
 
@@ -559,13 +561,13 @@ resolves the Service as **100.2.29.136** which is the local ClusterIP Service on
 to access the `nginx` Service as `nginx.default.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.3.220.176** which is the
 local ClusterIP Service on **cluster3**.
 
-* If multiple clusters export a Service with the same name and from the same namespace, Lighthosue DNS load balances between the clusters
+* If multiple clusters export a Service with the same name and from the same namespace, Lighthosue DNS load-balances between the clusters
 in a round-robin fashion. If, in our example, a Pod from a third cluster that joined the cluster set tries to access the `nginx` Service as
 `nginx.default.svc.clusterset.local`, Lighthouse will round-robin the DNS responses across **cluster2** and **cluster3**, causing
 requests to be served by both **cluster2** and **cluster3**. Note that Lighthouse returns IPs from *connected* clusters only. Clusters in
 *disconnected* state are ignored.
 
-* Applications can access a Service from a specific cluster by prefixing the DNS query with `cluster-id` as follows:
+* Applications can always access a Service from a specific cluster by prefixing the DNS query with `cluster-id` as follows:
 `<cluster-id>.<svcname>.<namespace>.svc.clusterset.local`. In our example, querying for `cluster2.nginx.default.svc.clusterset.local`
 always returns the ClusterIP Service on **cluster2**. Similarly, `cluster3.nginx.default.svc.clusterset.local`
 always returns the ClusterIP Service on **cluster3**.
@@ -795,6 +797,11 @@ bash-5.0#
 To remove the previously created Kubernetes resources, use the following commands on **cluster3**:
 
 ```bash
+$ kubectl config use-context cluster3
+Switched to context "cluster3".
+```
+
+```bash
 $ kubectl delete service nginx
 service "nginx" deleted
 
@@ -815,6 +822,11 @@ serviceexport.multicluster.x-k8s.io "nginx-ss" deleted
 ```
 
 Use the following commands on **cluster2**:
+
+```bash
+$ kubectl config use-context cluster2
+Switched to context "cluster2".
+```
 
 ```bash
 $ kubectl delete service nginx
