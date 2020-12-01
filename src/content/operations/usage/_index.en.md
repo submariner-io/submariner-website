@@ -344,7 +344,7 @@ Events:                    <none>
 <!-- markdownlint-enable no-trailing-spaces -->
 When the Service is exported successfully, it can be discovered as `nginx.default.svc.clusterset.local` across the clusterset.
 
-##### 3. Consume the Service from **cluster2**
+##### 3. Consume the Service on **cluster2**
 
 First, verify that the exported `nginx` Service was imported to **cluster2** as expected. Submariner (via Lighthouse) automatically
 creates a corresponding `ServiceImport`:
