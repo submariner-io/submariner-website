@@ -16,6 +16,6 @@ weight = 50
 ## Globalnet
 
 * Globalnet only supports Pod to remote Service connectivity using Global IPs. Pod to Pod connectivity is not supported at this time.
-* Globalnet is not compatible with headless Services. Only ClusterIP Services are supported at this time.
+* Globalnet is not compatible with Headless Services. Only ClusterIP Services are supported at this time.
 * Globalnet annotates every Service in a cluster, whether or not it was exported.
 * The `subctl benchmark` command is not compatible with Globalnet deployments at this time.
