@@ -12,7 +12,7 @@ use Submariner and the main capabilities it provides. This guide assumes that th
 
 {{% notice tip %}}
 Make sure you have `subctl` [set up](../deployment/subctl/#installation). Regardless of how Submariner was deployed, `subctl` can be used
-for various tasks such as verification and troubleshooting, and is going be used in this guide.
+for various tasks such as verification and troubleshooting, as shown in this guide.
 {{% /notice %}}
 
 {{% notice note %}}
