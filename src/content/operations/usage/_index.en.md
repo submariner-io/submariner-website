@@ -562,13 +562,13 @@ Submariner follows this logic for service discovery across the cluster set:
 * If an exported Service is not available in the local cluster, Lighthosue DNS returns the IP address of the ClusterIP Service from one of
 the remote clusters on which the Service was exported.
 
-* If an exported Service is available in the local cluster, Lighthosue DNS always returns the IP address of the local ClusterIP Service.
+* If an exported Service is available in the local cluster, Lighthouse DNS always returns the IP address of the local ClusterIP Service.
 In this example, if a Pod from **cluster2** tries to access the `nginx` Service as `nginx.nginx-test.svc.clusterset.local` now, Lighthouse
 DNS resolves the Service as **100.2.29.136** which is the local ClusterIP Service on **cluster2**. Similarly, if a Pod from **cluster3**
 tries to access the `nginx` Service as `nginx.nginx-test.svc.clusterset.local`, Lighthouse DNS resolves the Service as **100.3.220.176**
 which is the local ClusterIP Service on **cluster3**.
 
-* If multiple clusters export a Service with the same name and from the same namespace, Lighthosue DNS load-balances between the clusters
+* If multiple clusters export a Service with the same name and from the same namespace, Lighthouse DNS load-balances between the clusters
 in a round-robin fashion. If, in our example, a Pod from a third cluster that joined the cluster set tries to access the `nginx` Service as
 `nginx.nginx-test.svc.clusterset.local`, Lighthouse will round-robin the DNS responses across **cluster2** and **cluster3**, causing
 requests to be served by both clusters. Note that Lighthouse returns IPs from *connected* clusters only. Clusters in *disconnected* state
