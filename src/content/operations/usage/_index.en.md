@@ -10,6 +10,11 @@ This guide is intended for users who have a Submariner environment set up and wa
 use Submariner and the main capabilities it provides. This guide assumes that there are two Kubernetes clusters,
 **cluster2** and **cluster3**, forming a clusterset, and that the Broker is deployed into a separate cluster **cluster1**.
 
+{{% notice tip %}}
+Make sure you have `subctl` [set up](../deployment/subctl/#installation). Regardless of how Submariner was deployed, `subctl` can be used for various tasks such as verification
+and troubleshooting, and is going be used in this guide.
+{{% /notice %}}
+
 {{% notice note %}}
 This guide focuses on a non-Globalnet Submariner deployment.
 {{% /notice %}}
@@ -50,7 +55,10 @@ cluster3   2m9s
 
 #### On Connected Clusters
 
-You can use this command to monitor as all required Submariner components are being installed on the connected clusters:
+The below commands can be used on either **cluster2** or **cluster3** to verify that the two clusters have successfully formed a clusterset
+and are properly connected to each other. In this example, the commands are being issued on **cluster2**.
+
+You can use this command to monitor as all required Submariner components are being installed:
 
 ```bash
 $ kubectl -n submariner-operator get pods --watch
@@ -215,11 +223,16 @@ Note that **100.2.177.123** is the ClusterIP address of the `submariner-lighthou
 
 ### 2. Export Services Across Clusters
 
-At this point, we have enabled secure IP communication between the connected clusters. However, further configuration is required in order
-to signify that a Service should be visible and discoverable to other clusters in the clusterset. This can be done by creating a
-`ServiceExport` object in each cluster within the namespace that the underlying Service resides in. When a `ServiceExport` is created, this
-will cause the multi-cluster Service to become accessible as `<service>.<ns>.svc.clusterset.local`. Similarly, deleting the `ServiceExport`
-will stop exporting the Service.
+At this point, we have enabled secure IP communication between the connected clusters and formed the clusterset. However, further
+configuration is required in order to signify that a Service should be visible and discoverable to other clusters in the clusterset. This
+can be done by creating a `ServiceExport` object in each cluster within the namespace that the underlying Service resides in. When a
+`ServiceExport` is created, this will cause the multi-cluster Service to become accessible as `<service>.<ns>.svc.clusterset.local`.
+Similarly, deleting the `ServiceExport` will stop exporting the Service.
+
+{{% notice info %}}
+Note that the namespace must be created in both clusters for service discovery to work properly. In the example below, we test with the
+default namespace which automatically exists, but if we were to test with a dedicated namespace it needs to be created in both clusters.
+{{% /notice %}}
 
 This guide uses a simple nginx server for demonstration purposes.
 
@@ -592,7 +605,7 @@ which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.cluster
 this case offers one single Service for all the underlying Pods.
 
 Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a
-sticky identity for each of their Pods. StatefulSets are typically used for applications that require stable unique network identifiers,
+sticky identity for each of its Pods. StatefulSets are typically used for applications that require stable unique network identifiers,
 persistent storage, and ordered deployment and scaling.
 
 ##### 1. Create StatefulSet and headless Service on **cluster3**
@@ -641,8 +654,8 @@ spec:
          name: web
 ```
 
-This specification will create a StatefulSet named `web` which indicates that 3 replicas of the `nginx` container will be launched in unique
-Pods. This also creates a headless Service called `nginx-ss` on the default namespace. Note that headless Service is requested by
+This specification will create a StatefulSet named `web` which indicates that two replicas of the `nginx` container will be launched in
+unique Pods. This also creates a headless Service called `nginx-ss` on the default namespace. Note that headless Service is requested by
 explicitly specifying "None" for the clusterIP (.spec.clusterIP).
 
 ```bash
