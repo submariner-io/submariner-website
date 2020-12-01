@@ -9,6 +9,10 @@ weight = 20
 Submariner provides a number of Prometheus metrics, and sets up `ServiceMonitor` instances which allow these metrics to be scraped by an
 in-cluster Prometheus instance.
 
+## Exposed Metrics
+
+### Submariner-operator
+
 The following metrics are exposed currently:
 
 * `submariner_gateways`: the number of gateways in the cluster;
@@ -21,23 +25,27 @@ The following metrics are exposed currently:
   * `remote_hostname`: the remote hostname
   * `status`: the connection status (“connecting”, “connected”, or “error”)
   
-Submariner exposed metrics - the following connectivity metrics shared the same set of labels:
+### Submariner
 
-* `gateway_rx_bytes`: count of bytes received (by cable driver and cable)
-* `gateway_tx_bytes`: count of bytes transmitted (by cable driver and cable)
-* `connection_established_timestamp`: timestamp of last successful connection established (by cable driver and cable)
-* `connection_latency_seconds`: connection latency in seconds (average RTT, by cable driver and cable)
+Submariner exposed metrics
 
-  * `cable_driver`: the currentcable driver
-  * `local_cluster`: the local cluster name
-  * `local_hostname`: the local hostname
-  * `local_endpoint_ip`: the local endpoint ip
-  * `remote_cluster`: the remote cluster name
-  * `remote_hostname`: the remote hostname
-  * `remote_endpoint_ip`: the remote endpoint ip
+* `gateway_rx_bytes`: count of bytes received by cable driver and cable (labels: `cable_driver`, `local_cluster`, `local_hostname`,
+`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
-* `connections`: the number of connections and corresponding status (by cable driver and cable), with the additional label:
-  * `status`: the current status of the connection
+* `gateway_tx_bytes`: count of bytes transmitted by cable driver and cable (labels: `cable_driver`, `local_cluster`, `local_hostname`,
+`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `connection_established_timestamp`: timestamp of last successful connection established by cable driver and cable
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`,
+ `remote_endpoint_ip`)
+
+* `connection_latency_seconds`: connection latency in seconds; last RTT, by cable driver and cabel 
+(labels: `cable_driver`, `local_cluster`, `local_hostname`,
+`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `connections`: the number of connections and corresponding status by cable driver and cable
+ (labels: `cable_driver`, `local_cluster`, `local_hostname`,
+ `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`, `status`)
 
 ### OpenShift setup
 
