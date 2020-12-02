@@ -1,7 +1,7 @@
 ---
 title: "Working With Shipyard"
 date: 2020-04-20T17:12:52+0300
-weight: 90
+weight: 70
 ---
 
 ## Overview

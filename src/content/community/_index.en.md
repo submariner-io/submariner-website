@@ -1,5 +1,5 @@
 +++
 title = "Community"
-weight = 15
+weight = 30
 pre = "<b>3. </b>"
 +++

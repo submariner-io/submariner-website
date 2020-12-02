@@ -1,5 +1,5 @@
 +++
 title = "Operations"
-weight = 10
+weight = 20
 pre = "<b>2. </b>"
 +++

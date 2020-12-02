@@ -1,6 +1,6 @@
 +++
 title =  "Broker"
-weight = 1
+weight = 10
 +++
 
 Submariner uses a central Broker component to facilitate the exchange of metadata

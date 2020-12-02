@@ -1,7 +1,7 @@
 +++
 title = "Architecture"
 date = 2020-02-19T21:00:30+01:00
-weight = 5
+weight = 10
 +++
 <!-- markdownlint-disable line-length -->
 Submariner connects multiple Kubernetes clusters in a way that is secure and performant. Submariner flattens the networks between the

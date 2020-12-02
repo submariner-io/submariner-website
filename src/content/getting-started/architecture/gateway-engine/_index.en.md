@@ -1,6 +1,6 @@
 +++
 title =  "Gateway Engine"
-weight = 2
+weight = 20
 +++
 
 The Gateway Engine component is deployed in each participating cluster and

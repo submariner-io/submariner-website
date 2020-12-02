@@ -1,7 +1,7 @@
 +++
 title = "Troubleshooting"
 date = 2020-05-04T19:01:14+05:30
-weight = 25
+weight = 30
 +++
 
 ## Overview
