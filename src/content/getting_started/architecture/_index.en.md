@@ -27,18 +27,17 @@ The diagram below illustrates the basic architecture of Submariner:
 
 ### Terminology and Concepts
 
-* `ClusterSet` - a group of two or more clusters with a high degree of mutual trust that share Services among themselves.
+* `ClusterSet` - a group of two or more clusters with a high degree of mutual trust that share Services amongst themselves.
 Within a cluster set, all namespaces with a given name are considered to be the same namespace.
 
 * `ServiceExport` (CRD) - used to specify which Services should be exposed across all clusters in the cluster set. If multiple clusters
-export a Service with the same name and from the same namespace, they will be recognized as a single combined Service.
+export a Service with the same name and from the same namespace, they will be recognized as a single logical Service.
 
-  * ServiceExports must be explicitly created by the user in each cluster and within the namespace that the underlying Service resides in,
+  * ServiceExports must be explicitly created by the user in each cluster and within the namespace in which the underlying Service resides,
 in order to signify that the Service should be visible and discoverable to other clusters in the cluster set. The `ServiceExport` object can
 be created manually or via the `subctl export` command.
 
-  * When a `ServiceExport` is created, this will cause the multi-cluster Service to become accessible as
-`<service>.<ns>.svc.clusterset.local`.
+  * When a Service is exported, it then becomes accessible as `<service>.<ns>.svc.clusterset.local`.
 
 * `ServiceImport` (CRD) - representation of a multi-cluster Service in each cluster. Created and used internally by Lighthouse and does not
 require any user action.
