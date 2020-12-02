@@ -64,7 +64,7 @@ are expected to remain active contributors to the community.
   * Contributing to community discussions (e.g. meetings, Slack, email
     discussion forums, Stack Overflow)
 * Subscribed to [submariner-dev@googlegroups.com]
-* Have read the [contributor guide]
+* Have read the [community] and [development] guides
 * Actively contributing
 * Sponsored by 2 committers. **Note the following requirements for sponsors**:
   * Sponsors must have close interactions with the prospective member - e.g.
@@ -193,15 +193,16 @@ The following apply to people who would be an owner:
   success holistically
 
 [parent process]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/community-membership.md
-[code reviews]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/collab.md
+[code reviews]: ../../development/code-review
 [community expectations]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/expectations.md
-[contributor guide]: https://submariner-io.github.io/contributing/
-[Submariner org]: https://github.com/submariner
+[development]: ../../development
+[community]: ..
+[Submariner org]: https://github.com/submariner-io
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
 [membership request issue]: https://github.com/submariner-io/submariner/issues/new?template=membership.md&title=REQUEST%3A%20New%20membership%20request%20for%20%3Cyour-GH-handle%3E
 [membership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/membership.md
 [committership request issue]: https://github.com/submariner-io/submariner/issues/new?template=committership.md&title=REQUEST%3A%20New%20committer%20rights%20request%20for%20%3Cyour-GH-handle%3E
 [committership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/committership.md
 [two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication
-[owners team]: https://github.com/orgs/submariner-io/teams/submariner-core
+[owners team]: https://github.com/orgs/submariner-io/teams/submariner-owners
 [org members]: https://github.com/orgs/submariner-io/people

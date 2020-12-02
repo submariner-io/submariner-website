@@ -15,7 +15,7 @@ highlights of the Kubernetes process and adds Submariner-specific extensions.
 
 Pull Requests to Submariner require two approvals from a Committer to the relevant part of the code base, as defined by the CODEOWNERS file
 at the root of each repository and the [Community
-Membership/Committers](../contributor-roles/#committers) process.
+Membership/Committers](../../community/contributor-roles/#committers) process.
 
 ### No merge commits
 
