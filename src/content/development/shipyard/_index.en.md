@@ -29,7 +29,7 @@ to test and validate itself. It also has some [specific Makefile targets](#speci
 
 ### Add Shipyard to a Project
 
-To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Project](first_time).
+To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Project](first-time).
 
 ### Use Shipyard in Your Project
 

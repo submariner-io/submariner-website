@@ -218,7 +218,7 @@ Alternatively you can edit the file and create a pull request directly on GitHub
 
 ### Step 8: Verify the release
 
-You can follow any of the [quickstart guides](../../getting_started/quickstart).
+You can follow any of the [quickstart guides](../../getting-started/quickstart).
 
 ### Step 9: Update the Submariner Operator on OperatorHub.io
 
