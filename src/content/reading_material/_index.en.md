@@ -37,4 +37,4 @@ There are multiple presentations and demo recordings about Submariner available 
 2. [SIG Multicluster demo of Submariner's multicluster networking deployed by Submariner's Operator and `subctl` (2019/12/17)](https://youtu.be/4C4kc9AOz4M?t=273)
 
 If you find additional material that isn't listed here, please feel free to add it to this page by editing it.
-The website contributing guide is [here](../for_developers/dev_guide/website).
+The website contributing guide is [here](../development/website).
