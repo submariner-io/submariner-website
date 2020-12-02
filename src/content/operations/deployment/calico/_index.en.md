@@ -19,7 +19,7 @@ Once the IPPools are configured in the clusters, Calico will not perform NAT for
 and allows Submariner to support cross-cluster connectivity.
 
 {{% notice note %}}
-When using [Submariner Globalnet](../../../getting_started/architecture/globalnet) with Calico, please avoid the default
+When using [Submariner Globalnet](../../../getting-started/architecture/globalnet) with Calico, please avoid the default
 globalnet-cidr (i.e., 169.254.0.0/16) as its used internally within Calico. You can explicitly specify
 a non-overlapping globalnet-cidr while deploying Submariner.
 {{% /notice %}}

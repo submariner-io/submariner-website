@@ -11,7 +11,7 @@ information to collect to raise an issue. Welcome to the Submariner troubleshoot
 again.
 
 Basic familiarity with the Submariner components and architecture will be helpful when troubleshooting so please review the
-[Architecture](../../getting_started/architecture) section.
+[Architecture](../../getting-started/architecture) section.
 
 The guide has been broken into different sections for easy navigation.
 
@@ -78,7 +78,7 @@ If you are able to connect to remote service by using ServiceIP or globalIp, but
 
 #### Service Discovery not working
 
-This is good time to familiarize yourself with [Service Discovery Architecture](../../getting_started/architecture/service-discovery/) if
+This is good time to familiarize yourself with [Service Discovery Architecture](../../getting-started/architecture/service-discovery/) if
 you haven't already.
 
 ##### Check ServiceExport for your Service
