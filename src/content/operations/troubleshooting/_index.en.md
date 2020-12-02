@@ -38,11 +38,11 @@ This section will contain information about common deployment issues you can run
 ### Connectivity Issues
 
 Submariner deployment completed successfully but Services/Pods on one cluster are unable to connect to Services on another cluster. This can
-be due to multiple factors outlined.
+be due to multiple factors outlined below.
 
 #### Check the connection statistics
 
-If you are unable to connect to a remote cluster, check the connection statistics.
+If you are unable to connect to a remote cluster, check its connection status in the Gateway resource.
 
 `kubectl describe Gateway -n submariner-operator`
 
@@ -71,9 +71,9 @@ Sample output:
     Status Message:  Connected to 172.17.0.8:4500 - encryption alg=AES_GCM_16, keysize=128 rekey-time=12950
 ```
 
-The Gateway uses the 'Health Check IP' of the endpoint to verify connectivity. The connection status will be marked as `error`
-if it fails to reach this IP. If you are facing connectivity issues status message here should give you more information about
-the possible reason for failure. It also gives you the statistics of the connection.
+The Gateway Engine uses the `Health Check IP` of the endpoint to verify connectivity. The connection `Status` will be marked as `error`
+if it cannot reach this IP  and the `Status Message` will provide more information about
+the possible reason for failure. It also provides the statistics for the connection.
 
 <!---
 #### IPSec tunnel not created between clusters
