@@ -1,5 +1,5 @@
 ---
-title: "Online Resources"
+title: "Other Resources"
 date: 2020-03-09T20:03:44+01:00
 weight: 50
 pre: "<b>5. </b>"
