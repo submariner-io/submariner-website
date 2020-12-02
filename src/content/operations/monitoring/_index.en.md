@@ -9,9 +9,11 @@ weight = 20
 Submariner provides a number of Prometheus metrics, and sets up `ServiceMonitor` instances which allow these metrics to be scraped by an
 in-cluster Prometheus instance.
 
+## Exposed Metrics
+
 The following metrics are exposed currently:
 
-* `submariner_gateways`: the number of gateways in the cluster;
+* `submariner_gateways`: the number of gateways in the cluster
 
 * `submariner_connections`: the number of connections to other clusters, with the following labels:
 
@@ -20,6 +22,22 @@ The following metrics are exposed currently:
   * `remote_cluster`: the remote cluster name
   * `remote_hostname`: the remote hostname
   * `status`: the connection status (“connecting”, “connected”, or “error”)
+
+* `gateway_rx_bytes`: count of bytes received by cable driver and cable (labels: `cable_driver`, `local_cluster`, `local_hostname`,
+`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `gateway_tx_bytes`: count of bytes transmitted by cable driver and cable (labels: `cable_driver`, `local_cluster`, `local_hostname`,
+`local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `connection_established_timestamp`: timestamp of last successful connection established by cable driver and cable
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `connection_latency_seconds`: connection latency in seconds; last RTT, by cable driver and cable
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
+
+* `connections`: the number of connections and corresponding status by cable driver and cable
+(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`,
+`status`)
 
 ### OpenShift setup
 
