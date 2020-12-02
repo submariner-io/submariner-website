@@ -11,11 +11,9 @@ in-cluster Prometheus instance.
 
 ## Exposed Metrics
 
-### Submariner-operator
-
 The following metrics are exposed currently:
 
-* `submariner_gateways`: the number of gateways in the cluster;
+* `submariner_gateways`: the number of gateways in the cluster
 
 * `submariner_connections`: the number of connections to other clusters, with the following labels:
 
@@ -24,10 +22,6 @@ The following metrics are exposed currently:
   * `remote_cluster`: the remote cluster name
   * `remote_hostname`: the remote hostname
   * `status`: the connection status (“connecting”, “connected”, or “error”)
-  
-### Submariner
-
-Submariner exposed metrics
 
 * `gateway_rx_bytes`: count of bytes received by cable driver and cable (labels: `cable_driver`, `local_cluster`, `local_hostname`,
 `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
