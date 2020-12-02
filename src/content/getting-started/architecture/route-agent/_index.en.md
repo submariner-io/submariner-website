@@ -1,6 +1,6 @@
 +++
 title =  "Route Agent"
-weight = 3
+weight = 30
 +++
 
 The Route Agent component runs on every node in each participating cluster. It is responsible for setting up VXLAN tunnels and routing the
