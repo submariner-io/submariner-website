@@ -1,6 +1,6 @@
 +++
 title = "Getting Help"
-weight = 20
+weight = 30
 +++
 
 ### Talk to Us

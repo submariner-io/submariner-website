@@ -1,7 +1,7 @@
 ---
 title: "Contributor Roles"
 date: 2020-02-19T21:43:46+01:00
-weight: 40
+weight: 20
 ---
 
 **This is a stripped-down version of the [Kubernetes Community Membership

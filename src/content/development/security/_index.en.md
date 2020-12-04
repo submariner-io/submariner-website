@@ -1,6 +1,6 @@
 ---
 title: "Security Reporting"
-weight: 60
+weight: 50
 ---
 
 Submariner welcomes and appreciates responsible disclosure of security vulnerabilities.

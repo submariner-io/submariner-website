@@ -1,7 +1,7 @@
 +++
 date = 2020-08-24T11:35:16+02:00
 title = "Releases"
-weight = 30
+weight = 40
 +++
 
 ## v0.7.0 StatefulSet support for service discovery and benchmark tooling
