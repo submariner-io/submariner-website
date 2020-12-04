@@ -39,5 +39,5 @@ Some high-level goals are summarized here, but the primary source for tracking f
 If we are missing something that would make Submariner more useful to you, please let us know. The best way is to file an Issue and include
 information on how you intend to use Submariner with that feature.
 
-[cal]: https://submariner.io/contributing/#community-calendarhttpscalendargooglecomcalendarrcidnhfuzgvoogy0bzz1ajlvznbsczh1nwnlz2taz3jvdxauy2fszw5kyxiuz29vz2xllmnvbq
+[cal]: https://submariner.io/community/getting_help/#community-calendarhttpscalendargooglecomcalendarrcidnhfuzgvoogy0bzz1ajlvznbsczh1nwnlz2taz3jvdxauy2fszw5kyxiuz29vz2xllmnvbq
 [projects]: https://github.com/orgs/submariner-io/projects
