@@ -4,6 +4,29 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.8.0
+
+* Added support for connecting clusters that use the OVNKubernetes CNI plugin in non-Globalnet deployments. Support for
+  Globalnet will be available in a future release.
+* The active Gateway now performs periodic health checks on the connections to remote clusters, updates the Gateway
+  connection status, and adds latency statistics.
+* Gateways now export the following connection metrics on TCP port 8080 which can be used with Prometheus. These are
+  currently only supported for the Libreswan cable driver:
+  * The count of bytes transmitted and received between Gateways.
+  * The number of connections between Gateways and their corresponding status.
+  * The timestamp of the last successful connection established between Gateways.
+  * The RTT latency between Gateways.
+* The Libreswan cable driver is now the default.
+* The strongSwan cable driver is deprecated and will be removed in a future release.
+* The Lighthouse DNS always returns the IP address of the local exported ClusterIP Service, if available, otherwise it
+  load-balances between the same Services exported from other clusters in a round-robin fashion.
+* Lighthouse has fully migrated to use the proposed [Kubernetes Multicluster Services API](https://github.com/kubernetes-sigs/mcs-api/)
+  (`ServiceExport` and `ServiceImport`).
+  The Lighthouse-specific API is deprecated and will be removed in a future release. On upgrade from v0.7.0, exported
+  Services will automatically be migrated to the new CRDs.
+* Broker resiliency has been improved. The dataplane is no longer affected in any way if the Broker is unavailable.
+* The `subctl` benchmark tests now accept a verbose flag to enable full logging. Otherwise only the results are presented.
+
 ## v0.7.0 StatefulSet support for service discovery and benchmark tooling
 
 > This release mainly focused on adding support for StatefulSets in Lighthouse for service discovery and adding new `subctl`
