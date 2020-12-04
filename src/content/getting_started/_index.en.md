@@ -41,6 +41,9 @@ IPsec are 4500/UDP and 500/UDP. For clusters behind corporate firewalls that blo
 * Submariner uses UDP port 4800 to encapsulate Pod traffic from worker and master nodes to the Gateway nodes. This is required in order to
 preserve the source IP addresses of the Pods. Ensure that firewall configuration allows 4800/UDP across all nodes in the cluster in both
 directions.
+* Submariner uses TCP port 8080 to export metrics on the Gateway nodes. Ensure that firewall configuration allows ingress 8080/TCP on
+the Gateway nodes so that other nodes in the cluster can access it. Also, no other workload on the Gateway nodes should be listening on TCP
+port 8080.
 * Worker node IPs on all connected clusters must be outside of the Pod/Service CIDR ranges.
 
 An example of three clusters configured to use with Submariner (without Globalnet) would look like the following:
