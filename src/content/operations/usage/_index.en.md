@@ -105,7 +105,7 @@ cluster3-worker                 cluster3                172.17.0.10     libreswa
 
 This command shows detailed information about the Gateway including the connections to other clusters. The section highlighted in bold shows
 the connection information for cluster3, including the connection status and latency statistics:
-
+<!-- markdownlint-disable no-inline-html -->
 <pre>
 $ kubectl -n submariner-operator describe Gateway
 Name:         cluster2-worker
@@ -160,6 +160,7 @@ Status:
 Events:            <none>
 </pre>
 <!-- markdownlint-enable no-trailing-spaces -->
+<!-- markdownlint-enable no-inline-html -->
 To validate that Service Discovery (Lighthouse) is installed properly, check that the `ServiceExport` and `ServiceImport` CRDs have been
 deployed in the cluster:
 
@@ -310,7 +311,6 @@ Status:
 Events:                    <none>
 
 ```
-<!-- markdownlint-enable no-trailing-spaces -->
 Once exported, the Service can be discovered as `nginx.nginx-test.svc.clusterset.local` across the cluster set.
 
 ##### 3. Consume the Service on **cluster2**
@@ -671,7 +671,6 @@ Status:
     Type:                  Valid
 Events:                    <none>
 ```
-<!-- markdownlint-enable no-trailing-spaces -->
 Once the Service is exported successfully, it can be discovered as `nginx-ss.nginx-test.svc.clusterset.local` across the cluster set.
 In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.nginx-test.svc.clusterset.local` and
 `web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local`.
