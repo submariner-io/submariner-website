@@ -309,8 +309,8 @@ Status:
     Status:                True
     Type:                  Valid
 Events:                    <none>
-
 ```
+
 Once exported, the Service can be discovered as `nginx.nginx-test.svc.clusterset.local` across the cluster set.
 
 ##### 3. Consume the Service on **cluster2**
@@ -671,6 +671,7 @@ Status:
     Type:                  Valid
 Events:                    <none>
 ```
+
 Once the Service is exported successfully, it can be discovered as `nginx-ss.nginx-test.svc.clusterset.local` across the cluster set.
 In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.nginx-test.svc.clusterset.local` and
 `web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local`.
