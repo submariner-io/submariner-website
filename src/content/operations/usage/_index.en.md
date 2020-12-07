@@ -85,7 +85,7 @@ submariner-routeagent-rl9nh                    1/1     Running   0          75s
 submariner-routeagent-wqmzs                    1/1     Running   0          75s
 ```
 
-This command verifies on which Kubernetes node the Gateway Engine is running on:
+This command verifies on which Kubernetes node the Gateway Engine is running:
 
 ```bash
 $ kubectl get node --selector=submariner.io/gateway=true -o wide
@@ -140,8 +140,8 @@ Status:
       Max:           1.470344ms
       Min:           1.110059ms
       Std Dev:       68.57µs
-    </b>Status:          connected
-    Status Message:  
+      Status:        connected
+    Status Message: </b>
   Ha Status:         active
   Local Endpoint:
     Backend:          libreswan
@@ -424,14 +424,50 @@ NAME                     READY   STATUS    RESTARTS   AGE   IP           NODE   
 nginx-5578584966-d7sj7   1/1     Running   0          22s   10.2.224.3   cluster2-worker   <none>           <none>
 ```
 
-##### 5. Consume the Service from **cluster3**
+##### 5. Export the Service
+
+As before, use the `subctl export` command to export the Service:
 
 ```bash
-$ kubectl config use-context cluster3
-Switched to context "cluster3".
+$ subctl export service --namespace nginx-test nginx
+Service exported successfully
 ```
 
-Run a test Pod on **cluster3** and try to access the `nginx` Service from within the Pod:
+After creation of the `ServiceExport`, the `nginx` Service will be exported to other clusters via the Broker. The Status information on the
+`ServiceExport` object will indicate this:
+
+```bash
+$ kubectl -n nginx-test describe serviceexports
+Name:         nginx
+Namespace:    nginx-test
+Labels:       <none>
+Annotations:  <none>
+API Version:  multicluster.x-k8s.io/v1alpha1
+Kind:         ServiceExport
+Metadata:
+  Creation Timestamp:  2020-12-07T17:37:59Z
+  Generation:          1
+  Resource Version:    3131
+  Self Link:           /apis/multicluster.x-k8s.io/v1alpha1/namespaces/nginx-test/serviceexports/nginx
+  UID:                 7348eb3c-9558-4dc7-be1d-b0255a2038fd
+Status:
+  Conditions:
+    Last Transition Time:  2020-12-07T17:37:59Z
+    Message:               Awaiting sync of the ServiceImport to the broker
+    Reason:                AwaitingSync
+    Status:                False
+    Type:                  Valid
+    Last Transition Time:  2020-12-07T17:37:59Z
+    Message:               Service was successfully synced to the broker
+    Reason:                
+    Status:                True
+    Type:                  Valid
+Events:                    <none>
+```
+
+##### 6. Consume the Service from **cluster2**
+
+Run a test Pod on **cluster2** and try to access the `nginx` Service from within the Pod:
 
 ```bash
 $ kubectl -n nginx-test  run --generator=run-pod/v1 \
@@ -486,7 +522,7 @@ bash-5.0# dig nginx.nginx-test.svc.clusterset.local
 ;nginx.nginx-test.svc.clusterset.local. IN	A
 
 ;; ANSWER SECTION:
-nginx.nginx-test.svc.clusterset.local. 5 IN A	100.3.220.176
+nginx.nginx-test.svc.clusterset.local. 5 IN A	100.2.29.136
 
 ;; Query time: 5 msec
 ;; SERVER: 100.3.0.10#53(100.3.0.10)
@@ -497,7 +533,7 @@ nginx.nginx-test.svc.clusterset.local. 5 IN A	100.3.220.176
 
 {{% notice note %}}
 At this point we have the same `nginx` Service deployed within the nginx-test namespace on both clusters. Note that DNS resolution works,
-and the IP address **100.3.220.176** returned is the ClusterIP associated with the *local* nginx Service deployed on **cluster3**. This is
+and the IP address **100.2.29.136** returned is the ClusterIP associated with the *local* nginx Service deployed on **cluster2**. This is
 expected, as Submariner prefers to handle the traffic locally whenever possible.
 {{% /notice %}}
 
@@ -726,8 +762,6 @@ nginx-ss.nginx-test.svc.clusterset.local. 5 IN A	10.3.224.3
 ;; SERVER: 100.2.0.10#53(100.2.0.10)
 ;; WHEN: Mon Nov 30 20:18:08 UTC 2020
 ;; MSG SIZE  rcvd: 184
-
-bash-5.0#
 ```
 
 You can also access the individual Pods:
@@ -746,9 +780,8 @@ Address:	100.2.0.10#53
 
 Name:	web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local
 Address: 10.3.224.3
-
-bash-5.0#
 ```
+
 <!-- markdownlint-enable no-hard-tabs -->
 #### Clean the Created Resources
 
