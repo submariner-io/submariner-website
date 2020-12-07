@@ -68,11 +68,10 @@ following [spreadsheet](https://docs.google.com/spreadsheets/d/1JsXsyRDDXkp6t55G
 
 The Gateway Engine continuously monitors the health of connected clusters.
 It periodically pings each cluster and collects statistics including basic connectivity,
-round trip time (RTT) and average latency. This information is updated in the 'Gateway'
-resource. Whenever the Gateway Engine detects that a ping to a particular cluster is failing,
+round trip time (RTT) and average latency. This information is updated in the `Gateway`
+resource. Whenever the Gateway Engine detects that a ping to a particular cluster has failed,
 its connection status is marked with an error state. Service Discovery uses this information
 to avoid unhealthy clusters during Service discovery.
 
-The HealthCheck can be enabled and disabled using the submariner operator
-or [`subctl`](../../../operations/deployment/subctl/#join-flags-healthcheck).
-The HealthCheck interval and max packet that can be lost is configurable as well.
+The health checking feature can be enabled/disabled via an option on the
+[`subctl`](../../../operations/deployment/subctl/#join-flags-healthcheck) join command.
