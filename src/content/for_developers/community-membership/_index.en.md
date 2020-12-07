@@ -195,7 +195,7 @@ The following apply to people who would be an owner:
 [parent process]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/community-membership.md
 [code reviews]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/collab.md
 [community expectations]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/expectations.md
-[contributor guide]: https://submariner-io.github.io/contributing/
+[contributor guide]: ../dev_guide
 [Submariner org]: https://github.com/submariner
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
 [membership request issue]: https://github.com/submariner-io/submariner/issues/new?template=membership.md&title=REQUEST%3A%20New%20membership%20request%20for%20%3Cyour-GH-handle%3E
