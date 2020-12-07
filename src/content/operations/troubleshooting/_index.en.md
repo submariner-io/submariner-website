@@ -50,7 +50,7 @@ Sample output:
 
 ```yaml
    - endpoint:
-        backend: strongswan
+        backend: libreswan
         cable_name: submariner-cable-cluster1-172-17-0-7
         cluster_id: cluster1
         healthCheckIP: 10.1.128.0
