@@ -12,6 +12,8 @@ weight = 40
 [GKE Quickstart Guide](../../getting-started/quickstart/managed-kubernetes/gke/#final-workaround-for-kubedns) for more information.
 * Clusters deployed with the Calico network plug-in require further configuration to be compatible with Submariner. Please refer to the
 [Calico-specific deployment instructions](../deployment/calico/).
+* Within a cluster set, all the member clusters should be using the same IPsec IKE and NAT-T UDP ports.
+Currently, Submariner does not support using [custom `ikeport` and `nattport`](../deployment/subctl/#join-flags-ipsec) on a per connection basis.
 
 ## Globalnet
 
