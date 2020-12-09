@@ -31,7 +31,7 @@ The Dapper base image that is provided by `shipyard` for building and E2E tests 
 The `vx.x.x` version format is used for the git projects while `x.x.x` is used for Docker images.
 
 The typical workflow is to first create release candidate(s) for testing before creating the final release. The suggested
-naming convention is to append `-rcN` to the final version, for example `v0.5.0-rc0`, `v0.5.0-rc1` etc.
+naming convention is to append `-rcN` to the final version, for example `v0.8.0-rc0`, `v0.8.0-rc1` etc.
 
 Sometimes you may want to create a specific project release for testing prior to creating a release candidate. In this
 case, the suggested naming convention is to append `-preN`.
@@ -39,171 +39,169 @@ case, the suggested naming convention is to append `-preN`.
 ## Create Submariner product release
 
 The following sections outline the steps to be taken in order to create a full Submariner product release. As an example,
-we'll use version `v0.5.0`.
+we'll use version `v0.8.0`.
 
-Project releases can either be created via the git CLI or the GitHub UI. This guide uses the GitHub UI as it is
-simpler. Here are general steps for creating a new release in a project:
+The release process is mostly automated and uses a YAML file created in the releases repository that describes the release.
+This file is updated for each step in the release process.
 
-1) Navigate to the project's main releases page.
+Once the changes for a step are reviewed and merged, a CI job will run to create the release(s) for the step and create the
+required pull requests in preparation for the next step to be reviewed and merged. Once all these pull requests have been
+merged, you can continue onto the next step.
 
-2) Click `Draft a new release`
-
-3) Fill in the `Tag version` field with the new version.
-
-4) Fill in the `Release title` field as appropriate. Typically this is just the version (sans the leading `v`) as a release
-   usually contains various changes. But if it's a targeted release then the `Release title` can reflect that.
-
-5) Enter information to describe the release. This is optional for pre-releases but should be filled in for
-   a final release.
-
-6) If this is not a final release, mark the checkbox `This is a pre-release`. This includes release candidates. This is
-   important so it is not labeled as the Latest release in GitHub.
-
-7) Click `Publish release`.
-
-For most projects a GitHub action job will be initiated to build release artifacts and publish to Quay. This will take
-several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down above the
-file listing heading, select the tag for the new version. A small yellow circle icon should be present to the right of the
-file listing heading which indicates a job is in progress. You can click it to see details. There may be several checks
+For most projects, after a release is created, another job will be initiated to build release artifacts and publish to Quay.
+This will take several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down
+above the file list heading, select the tag for the new version. A small yellow circle icon should be present to the right
+of the file list heading which indicates a job is in progress. You can click it to see details. There may be several checks
 for the job listed but the important one is `Release Images`. When complete, the indicator icon will change to either a
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
-### Step 0: Create a `subctl` pre-release, optional
-
-Since `subctl` is provided by `shipyard`'s Dapper base image, if there are specific changes to `subctl` which other
-projects require, you will need to create a pre-release (for example `v0.5.0-pre0`) of the `submariner-operator` project:
-
-1) Navigate to the [releases](https://github.com/submariner-io/submariner-operator/releases) page and create the release
-   with the new version.
-
-2) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
-
-3) Commit the change and create a pull request with the `e2e-projects` label so it runs the E2E tests on the consuming projects. After the
-   tests successfully complete, have it merged.
-
 ### Step 1: Create release for the `shipyard` project
 
-Navigate to the [releases](https://github.com/submariner-io/shipyard/releases) page and create the release with the new
-version. This will initiate a job to build the Dapper base image. Once successfully completed, the generated image
-version (`0.5.0`) should be available on Quay here:
+Navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
+
+1) Create a new branch for the intended release.
+
+2) Create a new file in the `releases` directory (you can copy the `example.yaml file`). For our example, we'll name it `v0.8.0.yaml`.
+
+3) Fill in the general fields for the release with the `status` field set to `shipyard`. Also add the `shipyard` component with
+   the hash of the desired or latest commit ID on which to base the release. To obtain the latest, first navigate to
+   the [shipyard project](https://github.com/submariner-io/shipyard). The heading above the file list shows the latest
+   commit on the master branch including the first 7 hex digits of the commit ID hash.
+
+   If this is not a final release, set the `pre-release` field to `true` (that is uncomment the `pre-release` line below).
+   This includes release candidates. This is important so it is not labeled as the Latest release in GitHub.
+
+   ```yaml
+   version: v0.8.0
+   name: 0.8.0
+   #pre-release: true
+   status: shipyard
+   components:
+     shipyard: <hash goes here>
+   ```
+
+4) Create a link for the file to make it the target release. This file is used by the CI jobs.
+
+   ```bash
+   ln -s v0.8.0.yaml target
+   ```
+
+5) Commit the new files, create a new pull request, and have it reviewed and merged.
+
+Once the pull request is merged, it will trigger a CI job to create a
+[shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
+it creates pull requests in the projects that consume `shipyard` to pin them to the new version in preparation for the
+subsequent steps.
+
+On successful completion, the generated image version (`0.8.0`) should be available on Quay here:
 
 > <https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags>
 
 ### Step 2: Create release for the `admiral` project
 
-1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
-   the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
+Once the pull request to pin the `admiral` project to the new `shipyard` version is merged, we can proceed to updating the
+release YAML file to create an `admiral` release.
 
-2) Update the _go.mod_ and _go.sum_ references for `shipyard` to the new version:
+1) On your releases repository fork, you can either reuse the previous branch or create a new one. For the former, be sure
+   to first rebase the branch on the latest upstream.
 
-   ```bash
-   make shell
-   go get github.com/submariner-io/shipyard@v0.5.0
-   go mod vendor
-   go mod tidy
-   exit
+2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `admiral` and add the `admiral` component with
+   the latest commit ID hash:
+
+   ```diff
+   -status: shipyard
+   +status: admiral
+    components:
+      shipyard: <hash goes here>
+   +  admiral: <hash goes here>
    ```
 
-3) Commit the changes, create a pull request, and have it merged.
+3) Commit the modified file, create a new pull request, and have it reviewed and merged.
 
-4) Navigate to [releases](https://github.com/submariner-io/admiral/releases) and create the release for the new version.
+Once the pull request is merged, it will trigger a CI job to create an
+[admiral release](https://github.com/submariner-io/admiral/releases) and pull requests in the consuming projects to pin them
+to the new version in preparation for the subsequent steps.
 
-### Step 3: Create releases for the `submariner` and `lighthouse` projects
+### Step 3: Create releases for the `lighthouse` and `submariner` projects
 
-These can be done in any order or in parallel and the process is the same.
+Once the pull requests to pin the `lighthouse` and `submariner` projects to the new `admiral` version are merged:
 
-1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
-   the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
+1) On your releases repository fork, either reuse the previous branch or create a new one.
 
-2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
+2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner` and
+   `lighthouse` components with their latest commit ID hashes:
 
-   ```bash
-   make shell
-   go get github.com/submariner-io/shipyard@v0.5.0
-   go get github.com/submariner-io/admiral@v0.5.0
-   go mod vendor
-   go mod tidy
+   ```diff
+   -status: admiral
+   +status: projects
+    components:
+      shipyard: <hash goes here>
+      admiral: <hash goes here>
+   +  lighthouse: <hash goes here>
+   +  submariner: <hash goes here>
    ```
 
-3) Commit the changes, create a pull request, and have it merged.
+3) Commit the modified file, create a new pull request, and have it reviewed and merged.
 
-4) Navigate to the project's releases page and create the release for the new version.
+Once the pull request is merged, it will trigger a CI job to create
+[lighthouse](https://github.com/submariner-io/lighthouse/releases) and
+[submariner](https://github.com/submariner-io/submariner/releases) releases and a pull request to pin the consuming
+`submariner-operator` project to the new version.
 
-Wait for the project's new images to be generated and published to Quay.
+On successful completion, the new image versions (`0.8.0`) should be available on Quay.
 
+<!-- markdownlint-disable no-inline-html -->
 For `submariner`:
 
-> <https://quay.io/repository/submariner/submariner?tab=tags>
-> <https://quay.io/repository/submariner/submariner-route-agent?tab=tags>
-> <https://quay.io/repository/submariner/submariner-globalnet?tab=tags>
+> <https://quay.io/repository/submariner/submariner?tab=tags> <br>
+> <https://quay.io/repository/submariner/submariner-route-agent?tab=tags> <br>
+> <https://quay.io/repository/submariner/submariner-globalnet?tab=tags> <br>
+> <https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags>
 
 For `lighthouse`:
 
-> <https://quay.io/repository/submariner/lighthouse-agent?tab=tags>
+> <https://quay.io/repository/submariner/lighthouse-agent?tab=tags> <br>
 > <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
+<!-- markdownlint-enable no-inline-html -->
 
-### Step 4: Create release for the `submariner-operator` project
+### Step 4: Create the product release
 
-1) Pin the `shipyard` Dapper base image to the new version. Edit `Dockerfile.dapper` and, on the first line, change
-   the `shipyard-dapper-base` image version from `devel` to the new version (`0.5.0`).
+Once the pull request to pin the `submariner-operator` has been merged, we can create the final product release:
 
-2) Update the _go.mod_ and _go.sum_ references for the dependent projects to the new version:
+1) On your releases repository fork, either reuse the previous branch or create a new one.
 
-   ```bash
-   make shell
-   go get github.com/submariner-io/shipyard@v0.5.0
-   go get github.com/submariner-io/submariner@v0.5.0
-   go get github.com/submariner-io/lighthouse@v0.5.0
-   go mod vendor
-   go mod tidy
+2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `released` and add the `submariner-operator`
+   and `submariner-charts` components with their latest commit ID hashes:
+
+   ```diff
+   -status: projects
+   +status: released
+    components:
+      shipyard: <hash goes here>
+      admiral: <hash goes here>
+      lighthouse: <hash goes here>
+      submariner: <hash goes here>
+   +  submariner-charts: <hash goes here>
+   +  submariner-operator: <hash goes here>
    ```
 
-3) Edit _pkg/versions/versions.go_ and update the *Version constants to the new version:
+3) Commit the modified file, create a new pull request, and have it reviewed and merged.
 
-   ```go
-   DefaultSubmarinerOperatorVersion = "0.5.0"
-   DefaultSubmarinerVersion         = "0.5.0"
-   DefaultLighthouseVersion         = "0.5.0"
-   ```
-
-4) Commit the changes, create a pull request, and have it merged.
-
-5) Navigate to [releases](https://github.com/submariner-io/submariner-operator/releases) and create the release for the
-   new version.
-
-Once the image release job successfully completes, the generated image version (`0.5.0`) should be available on Quay here:
+Once the pull request is merged, it will trigger a CI job to generate and tag the `submariner-operator` image which should be
+made available on Quay here:
 
 > <https://quay.io/repository/submariner/submariner-operator?tab=tags>
 
-There is a separate job to publish the `subctl` binaries for the various platforms. These should be listed under the `Assets`
-section for the new release on the main [releases](https://github.com/submariner-io/submariner-operator/releases) page.
-If not then the job failed so correct the issue and re-run the job.
+The final product release will be created on the [releases repository](https://github.com/submariner-io/releases/releases)
+with a job triggered to publish the `subctl` binaries for the various platforms. These should be listed under the `Assets`
+section for the new release. If not then the job failed so correct the issue and re-run the job.
 
-Note that either job could fail while the other succeeds so it is important to verify both.
+If the release wasn't marked as a `pre-release`, the release job will also create pull requests in each consuming project
+to unpin the `shipyard` Dapper base image version, that is set it back to `devel`. For ongoing development we want each
+project to automatically pick up the latest changes to the base image.
 
-### Step 5: Update `subctl` version in `shipyard`
-
-Update the Dapper base image to pull in the latest `subctl` binary:
-
-1) In the `shipyard` project, edit `package/Dockerfile.shipyard-dapper-base` and set `SUBCTL_VERSION` to the new version.
-
-2) Commit the change and create a pull request with the `e2e-projects` label so it runs the E2E tests on the consuming projects. After the
-   tests successfully complete, have it merged.
-
-### Step 6: Unpin the `shipyard` Dapper base image version
-
-At this point the new product release has been successfully created however we don't want to leave each downstream
-project pinned to the new `shipyard` Dapper base image version. For ongoing development we want each project to
-automatically pick up the latest changes to the base image.
-
-For each project, `admiral`, `lighthouse`, `submariner`, and `submariner-operator`:
-
-1) Edit `Dockerfile.dapper` and, on the first line, change the `shipyard-dapper-base` image version back to `devel`.
-
-2) Commit the changes, create a pull request, and have it merged.
-
-### Step 7: Add release notes
+### Step 5: Add release notes
 
 If this is a final release, add a section for it on this website's [release notes](../../community/releases/) page.
 
@@ -216,11 +214,11 @@ If this is a final release, add a section for it on this website's [release note
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/master/src/content/community/releases/_index.en.md)
 
-### Step 8: Verify the release
+### Step 6: Verify the release
 
-You can follow any of the [quickstart guides](../../getting-started/quickstart).
+You can follow any of the [quick start guides](../../getting-started/quickstart).
 
-### Step 9: Update the Submariner Operator on OperatorHub.io
+### Step 7: Update the Submariner Operator on OperatorHub.io
 
 The [community-operators](https://github.com/operator-framework/community-operators) Git repository
 is the source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
@@ -254,7 +252,7 @@ To publish the Submariner Operator to the community, perform the following steps
 6) Update the OpenShift Operator:
    * re-run step 5 on the `community-operators/submariner` directory.
 
-### Step 10: Announce the release
+### Step 8: Announce the release
 
 #### Via E-Mail
 
