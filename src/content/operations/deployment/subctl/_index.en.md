@@ -127,7 +127,7 @@ deployment.
 <!-- markdownlint-disable line-length -->
 | Flag                                            | Description
 |:------------------------------------------------|:----------------------------------------------------------------------------|
-| `--health-check-enable`                         | Enable/disable Gateway health check (default true)
+| `--health-check`                                | Enable/disable Gateway health check (default true)
 | `--health-check-interval` `<uint>`              | The interval in seconds at which health check packets will be sent (default 1)
 | `--health-check-max-packet-loss-count` `<uint>` | The maximum number of packets lost at which the health checker will mark the connection as down (default 5)
 <!-- markdownlint-enable line-length -->
