@@ -22,11 +22,13 @@ relevant to our structure or possible with our tooling:**
 This doc outlines the various responsibilities of contributor roles in
 Submariner.
 
+<!-- markdownlint-disable line-length -->
 | Role | Responsibilities | Requirements | Defined by |
 | ---- | ---------------- | ------------ | ---------- |
 | Member | Active contributor in the community | Sponsored by 2 committers, multiple contributions to the project | [Submariner GitHub org member][org members] |
 | Committer | Approve contributions from other members | History of review and authorship | CODEOWNERS file entry |
-| Owner | Set direction and priorities for the project | Demonstrated responsibility and excellent technical judgement for the project | [Submariner-owners GitHub team member][owners team] |
+| Owner | Set direction and priorities for the project | Demonstrated responsibility and excellent technical judgement for the project | [Submariner-owners GitHub team member][owners team] and [`*`entry in all CODEOWNERS files][codeowners file] |
+<!-- markdownlint-enable line-length -->
 
 ## New Contributors
 
@@ -158,7 +160,7 @@ health the project. Project owners *MUST* set technical direction and make or
 approve design decisions for the project - either directly or through
 delegation of these responsibilities.
 
-**Defined by:** Member of the [submariner-owners GitHub team][owners team].
+**Defined by:** Member of the [submariner-owners GitHub team][owners team] and [`*`entry in all CODEOWNERS files][codeowners file].
 
 ### Owner Requirements
 
@@ -205,4 +207,5 @@ The following apply to people who would be an owner:
 [committership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/committership.md
 [two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication
 [owners team]: https://github.com/orgs/submariner-io/teams/submariner-owners
+[codeowners file]: https://github.com/submariner-io/submariner/blob/master/CODEOWNERS.in
 [org members]: https://github.com/orgs/submariner-io/people
