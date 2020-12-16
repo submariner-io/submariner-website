@@ -21,4 +21,5 @@ Currently, Submariner does not support using [custom `ikeport` and `nattport`](.
 * Globalnet is not compatible with Headless Services. Only ClusterIP Services are supported at this time.
 * Globalnet annotates every Service in a cluster at the moment, whether or not it was exported.
 * Gateway Health Check is not available for Globalnet deployments at this time.
+* Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark` command is not compatible with Globalnet deployments at this time.
