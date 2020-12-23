@@ -20,6 +20,11 @@ The following metrics are exposed currently:
 
 * `submariner_gateways`: the number of gateways in the cluster
 
+* `submariner_gateway_creation_timestamp`: timestamp of gateway creation time, with the following labels:
+
+  * `local_cluster`: the local cluster name
+  * `local_hostname`: the local hostname
+
 * `submariner_connections`: the number of connections to other clusters, with the following labels:
 
   * `local_cluster`: the local cluster name
