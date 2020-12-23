@@ -82,6 +82,13 @@ exactly the reviewed code can be merged.
 If someone requests changes ("votes -1") for a PR, a best-effort should be made to address those concerns and achieve a neutral position or
 approval (0/+1 vote) before the PR is merged.
 
+### Update branch only after required reviews
+
+To avoid wasting resources by running unnecessary jobs, only use the **Update branch** button to add a merge commit once a PR is actually
+ready to merge (has [required reviews](#two-non-author-committer-approvals-required) and [no -1s](#address-all--1s-before-merging)). Unless
+other relevant code has changed, the new job results don't tell us anything new. Since changes are constantly being merged, it's likely
+another merge commit and set of jobs will be necessary right before merging anyway.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
