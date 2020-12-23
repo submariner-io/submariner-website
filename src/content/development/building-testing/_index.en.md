@@ -59,6 +59,12 @@ make images
 
 Note that Submariner will automatically rebuild binaries and images when they have been modified and are required by tests.
 
+To prune all Submariner-provided images, ensuring they will be rebuilt or pulled the next time they’re required:
+
+```shell
+make prune-images
+```
+
 ### End-to-End Tests
 
 To run functional end-to-end tests with a full multi-cluster deployment:
