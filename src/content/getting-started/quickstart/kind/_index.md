@@ -89,11 +89,11 @@ subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1 --serv
 #### Join cluster2 and cluster3 to the Broker
 
 ```bash
-subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2 --disable-nat
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2 --natt=false
 ```
 
 ```bash
-subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.subm --clusterid cluster3 --disable-nat
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.subm --clusterid cluster3 --natt=false
 ```
 
 You now have a Submariner environment that you can experiment with.
