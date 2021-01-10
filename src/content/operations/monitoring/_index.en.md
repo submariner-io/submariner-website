@@ -49,6 +49,10 @@ The following metrics are exposed currently:
 (labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`,
 `status`)
 
+* `global_IP_availability`: count of available global IPs per CIDR (labels: `cidr`)
+
+* `global_IP_allocated`: count of global IPs allocated for Pods/Services per CIDR (labels: `cidr`)
+
 ### Prometheus Operator
 
 To start monitoring Submariner using the Prometheus Operator, Prometheus needs to be configured to scrape the Submariner Operator’s
