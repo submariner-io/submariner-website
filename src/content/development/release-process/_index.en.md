@@ -227,6 +227,9 @@ is the source for sharing Kubernetes Operators with the broader community. This 
 These are shared with the Kubernetes community via [OperatorHub.io](https://operatorhub.io/).
 * Operators for deployment to OpenShift (community-operators)
 
+Here we are going to update the Submariner Operator on OperatorHub.io. OpenShift users will find the Operator in the
+official Red Hat catalog.
+
 To publish the Submariner Operator to the community, perform the following steps:
 
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
@@ -249,8 +252,6 @@ To publish the Submariner Operator to the community, perform the following steps
     * once everything is fine, review this
     [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
     and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
-6) Update the OpenShift Operator:
-   * re-run step 5 on the `community-operators/submariner` directory.
 
 ### Step 8: Announce the release
 
