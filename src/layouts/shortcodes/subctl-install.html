@@ -1,11 +1,24 @@
 Download the subctl binary and make it available on your PATH.
 
 <div class="highlight">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<code class="language-bash" data-lang="bash">
-curl -Ls https://get.submariner.io | bash
-export PATH=$PATH:~/.local/bin
-echo export PATH=\$PATH:~/.local/bin >> ~/.profile
-</code>
-</pre>
+  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <code class="language-bash" data-lang="bash">
+      curl -Ls https://get.submariner.io | bash
+      export PATH=$PATH:~/.local/bin
+      echo export PATH=\$PATH:~/.local/bin >> ~/.profile
+    </code>
+  </pre>
 </div>
+
+If you have Go installed, you can use that instead:
+
+<div class="highlight">
+  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <code class="language-bash" data-lang="bash">
+      go install github.com/submariner-io/submariner-operator/pkg/subctl
+    </code>
+  </pre>
+</div>
+
+(and ensure your <code>go/bin</code> directory is on
+your <code>PATH</code>).
