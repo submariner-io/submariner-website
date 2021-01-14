@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Build the website static files
-        run: make static
+        run: make static-all
 
       - name: Upload proposed static website for review
         uses: actions/upload-artifact@v1

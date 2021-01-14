@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - 'release-*'
 
 jobs:
   publish:
@@ -13,6 +14,8 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Create secret key to git push
         run: |
@@ -27,8 +30,8 @@ jobs:
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
 
-      - name: Build the website static files
-        run: make static
+      - name: Build the website static files for each release
+        run: make static-all
 
       - name: Push the updated static files
         run: ./scripts/publish
