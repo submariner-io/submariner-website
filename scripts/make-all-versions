@@ -4,7 +4,7 @@ set -ex
 
 git checkout master
 make static
-RELEASES=$(git for-each-ref --format='%(refname)' refs/heads/ | awk -F/ '/release/ { print $NF }' )
+RELEASES=$(git for-each-ref --format='%(refname)' refs/remotes/origin | awk -F/ '/release/ { print $NF }' )
 for release in $RELEASES; do
     VERSION=${release#release-}
     git checkout $release
