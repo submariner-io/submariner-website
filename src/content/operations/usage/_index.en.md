@@ -24,7 +24,7 @@ This guide focuses on a non-Globalnet Submariner deployment.
 #### On the Broker
 
 The Broker facilitates the exchange of metadata information between the connected clusters, enabling them to discover one another.
-The Broker consists of a set of Custom Resource Definitions (CRDs) only; there are no Pods or Services deployed with it.
+The Broker consists of only a set of Custom Resource Definitions (CRDs); there are no Pods or Services deployed with it.
 
 This command validates that the Broker namespace has been created in the Broker cluster:
 
