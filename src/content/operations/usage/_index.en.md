@@ -61,14 +61,14 @@ cluster3   2m9s
 #### On Connected Clusters
 
 The commands below can be used on either **cluster2** or **cluster3** to verify that the two clusters have successfully formed a cluster set
-and have properly connected to one another. In this example, the commands are being issued on **cluster2**.
+and are properly connected to one another. In this example, the commands are being issued on **cluster2**.
 
 ```bash
 $ kubectl config use-context cluster2
 Switched to context "cluster2".
 ```
 
-The command below lists all the Submariner component Pods. Ensure that the STATUS for each is *Running*, noting that some could have an
+The command below lists all the Submariner related Pods. Ensure that the STATUS for each is *Running*, noting that some could have an
 intermediate transient status, like *Pending* or *ContainerCreating*, indicating they are still starting up. To continuously monitor the
 Pods, you can specify the `--watch` flag with the command:
 
@@ -271,8 +271,8 @@ nginx-667744f849-t26s5   1/1     Running   0          3m    10.3.0.5   cluster3-
 
 ##### 2. Export the Service
 
-In order to signify that the Service should be visible and discoverable to other clusters in the cluster set, a `ServiceExport` needs to be
-created. This is done using the `subctl export` command:
+In order to signify that the Service should be visible and discoverable to other clusters in the cluster set, a `ServiceExport` object
+needs to be created. This is done using the `subctl export` command:
 
 ```bash
 $ subctl export service --namespace nginx-test nginx
