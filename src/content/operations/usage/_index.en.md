@@ -29,6 +29,7 @@ The Broker consists of only a set of Custom Resource Definitions (CRDs); there a
 This command validates that the Broker namespace has been created in the Broker cluster:
 
 ```bash
+$ export KUBECONFIG=cluster1/auth/kubeconfig
 $ kubectl config use-context cluster1
 Switched to context "cluster1".
 ```
@@ -64,6 +65,7 @@ The commands below can be used on either **cluster2** or **cluster3** to verify 
 and are properly connected to one another. In this example, the commands are being issued on **cluster2**.
 
 ```bash
+$ export KUBECONFIG=cluster2/auth/kubeconfig
 $ kubectl config use-context cluster2
 Switched to context "cluster2".
 ```
@@ -96,7 +98,7 @@ cluster2-worker   Ready    worker   6h59m   v1.17.0   172.17.0.7    3.81.125.62 
 This command verifies the connection between the participating clusters:
 <!-- markdownlint-disable no-trailing-spaces -->
 ```bash
-$ subctl show connections
+$ subctl show connections --kubecontext cluster2
 
 Showing information for cluster "cluster2":
 GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS
@@ -237,6 +239,7 @@ clusters for service discovery to work properly.
 ##### 1. Create an `nginx` Deployment on **cluster3**
 
 ```bash
+$ export KUBECONFIG=cluster3/auth/kubeconfig
 $ kubectl config use-context cluster3
 Switched to context "cluster3".
 ```
@@ -319,6 +322,7 @@ Verify that the exported `nginx` Service was imported to **cluster2** as expecte
 corresponding `ServiceImport`:
 
 ```bash
+$ export KUBECONFIG=cluster2/auth/kubeconfig
 $ kubectl config use-context cluster2
 Switched to context "cluster2".
 ```
@@ -718,6 +722,7 @@ Verify that the exported `nginx-ss` Service was imported to **cluster2**. Submar
 corresponding `ServiceImport`:
 
 ```bash
+$ export KUBECONFIG=cluster2/auth/kubeconfig
 $ kubectl config use-context cluster2
 Switched to context "cluster2".
 ```
@@ -788,6 +793,7 @@ Address: 10.3.224.3
 To remove the previously created Kubernetes resources, simply delete the nginx-test namespace from both clusters:
 
 ```bash
+$ export KUBECONFIG=cluster2/auth/kubeconfig
 $ kubectl config use-context cluster2
 Switched to context "cluster2".
 
@@ -796,6 +802,7 @@ namespace "nginx-test" deleted
 ```
 
 ```bash
+$ export KUBECONFIG=cluster3/auth/kubeconfig
 $ kubectl config use-context cluster3
 Switched to context "cluster3".
 
