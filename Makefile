@@ -14,7 +14,7 @@ server: hugo
 	./hugo server -w -s src
 
 static: hugo
-	./hugo -D -s src -b $(OUTPUT_DIR) -d ../output$(OUTPUT_DIR)
+	./hugo -D -s src -b $(OUTPUT_DIR) -d ../output/$(OUTPUT_DIR)
 
 static-all: hugo
 	./scripts/make-all-versions # we use a script because we expect that changes could happen on makefiles
