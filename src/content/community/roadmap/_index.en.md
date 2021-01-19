@@ -27,7 +27,6 @@ Some high-level goals are summarized here, but the primary source for tracking f
 * Support different IPsec ports for each cluster
 * Network Policy across clusters (Coastguard)
 * Support for finer-grained connectivity policies (<https://github.com/submariner-io/submariner/issues/533>)
-* Support for OVN-based clusters
 * Globalnet: annotating Global IPs per namespaces (<https://github.com/submariner-io/submariner/issues/528>)
 * Globalnet: only annotate Services for which a ServiceExport has been created (<https://github.com/submariner-io/submariner/issues/652>)
 * More tunnel encapsulation options
