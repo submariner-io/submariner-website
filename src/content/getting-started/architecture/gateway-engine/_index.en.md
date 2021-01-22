@@ -10,8 +10,6 @@ The Gateway Engine has a pluggable architecture for the cable engine component
 that maintains the tunnels. The following implementations are available:
 
 * an IPsec implementation using [Libreswan](https://libreswan.org/). This is currently the default.
-* an IPsec implementation using [strongSwan](https://www.strongswan.org/) (via the
-  [goStrongswanVici](https://github.com/bronze1man/goStrongswanVici) library).
 * an implementation for [WireGuard](https://www.wireguard.com/) (via the [wgctrl](https://github.com/WireGuard/wgctrl-go) library).
 
 The cable driver can be specified via the `--cable-driver` flag while joining a cluster using `subctl`. For more information, please refer
