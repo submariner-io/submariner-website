@@ -36,6 +36,14 @@ naming convention is to append `-rcN` to the final version, for example `v0.8.0-
 Sometimes you may want to create a specific project release for testing prior to creating a release candidate. In this
 case, the suggested naming convention is to append `-preN`.
 
+### Stable branches and versions
+
+Stable branches will be maintained for `vx.0` versions and any derived versions. For example, versions v0.8.0, v0.8.1 and
+any other minor release will all be maintained and released on the `release-0.8` branch.
+
+The automated release process, which is described henceforth, can also create these stable branches when necessary.
+The branch should be specified in the release YAML file. If a stable branch isn't specified, the development branch is used.
+
 ## Create Submariner product release
 
 The following sections outline the steps to be taken in order to create a full Submariner product release. As an example,
@@ -56,6 +64,34 @@ for the job listed but the important one is `Release Images`. When complete, the
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
+### Step 0: Create a stable branch (if necessary)
+
+In case you're creating a new stable release, the release automation process can create the stable branches. To do so,
+navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
+
+1) Create a new branch for the intended release.
+
+2) Create a new file in the `releases` directory (you can copy the `example.yaml file`). For our example, we'll name it `v0.8.0.yaml`.
+
+3) Fill in the general fields for the release with the `status` field set to `branch`.
+
+   ```yaml
+   version: v0.8.0
+   name: 0.8.0
+   status: branch
+   ```
+
+4) Create a link for the file to make it the target release. This file is used by the CI jobs.
+
+   ```bash
+   ln -s v0.8.0.yaml target
+   ```
+
+5) Commit the new file, create a new pull request, and have it reviewed and merged.
+
+Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
+branch.
+
 ### Step 1: Create release for the `shipyard` project
 
 Navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
@@ -72,10 +108,13 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
    If this is not a final release, set the `pre-release` field to `true` (that is uncomment the `pre-release` line below).
    This includes release candidates. This is important so it is not labeled as the Latest release in GitHub.
 
+   When releasing on a stable branch, make sure to specify the branch as outlined below.
+
    ```yaml
    version: v0.8.0
    name: 0.8.0
    #pre-release: true
+   branch: release-0.8
    status: shipyard
    components:
      shipyard: <hash goes here>
@@ -91,7 +130,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 Once the pull request is merged, it will trigger a CI job to create a
 [shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
-it creates pull requests in the projects that consume `shipyard` to pin them to the new version in preparation for the
+it creates pull requests in the projects that consume `shipyard` to update them to the new version in preparation for the
 subsequent steps.
 
 On successful completion, the generated image version (`0.8.0`) should be available on Quay here:
