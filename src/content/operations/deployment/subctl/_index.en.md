@@ -101,8 +101,9 @@ deployment.
 <!-- markdownlint-disable line-length -->
 | Flag                                 | Description
 |:-------------------------------------|:----------------------------------------------------------------------------|
-| `--globalnet-cluster-size` `<value>` | Cluster size for GlobalCIDR allocated to this cluster (amount of global IPs)
-| `--globalnet-cidr` `<string>`        | GlobalCIDR to be allocated to the cluster, this setting is exclusive with `--globalnet-cluster-size` and configures a specific Globalnet CIDR for this cluster
+| `--globalnet`                        | Enable/disable Globalnet for this cluster (default true). This has no effect if Globalnet is not enabled globally via the Broker
+| `--globalnet-cluster-size` `<value>` | If Globalnet is enabled, the cluster size for the GlobalCIDR allocated to this cluster (amount of global IPs)
+| `--globalnet-cidr` `<string>`        | If Globalnet is enabled, the specific Globalnet CIDR to use for this cluster. This setting is exclusive with `--globalnet-cluster-size`
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (IPsec)
