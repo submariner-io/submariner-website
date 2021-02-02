@@ -99,6 +99,14 @@ author can fix before asking for code review.
 Please do this when opening the PR: instead of clicking on the “Create pull request” button, click on the drop-down arrow next to it, and
 select “Create draft pull request”. This will avoid notifying code owners; they will be notified when the PR is marked as ready for review.
 
+### Use private forks for debugging PRs by running CI
+
+If a PR is not expected to pass CI but the author wants to see the results to enable development, use a personal fork to run CI. This avoids
+clogging the GitHub Actions job queue of the Submariner-io GitHub Organization. After the same `git push` to your personal fork you'd
+typically do for a PR, simply choose your fork as the "base repository" of the PR in GitHub's "Open a pull request" UI. Make sure your
+fork's main branch is up-to-date. After creating the PR, CI will trigger as usual but the jobs will count towards your personal queue. You
+will need to open a new PR against the main repository once your proposed change is ready for review.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
