@@ -89,6 +89,16 @@ ready to merge (has [required reviews](#two-non-author-committer-approvals-requi
 other relevant code has changed, the new job results don't tell us anything new. Since changes are constantly being merged, it's likely
 another merge commit and set of jobs will be necessary right before merging anyway.
 
+### Mark work-in-progress PRs as drafts
+
+To clearly indicate a PR is still under development and not yet ready for review, mark it as a draft. It is not necessary to modify PR
+summaries or commit messages (e.g. "WIP", "DO NOT MERGE"). Keeping the same PR summary keeps email notifications threaded, and using the
+commit message you plan to merge will allow gitlint to verify it. PRs should typically be marked as drafts if any CI is failing that the
+author can fix before asking for code review.
+
+Please do this when opening the PR: instead of clicking on the “Create pull request” button, click on the drop-down arrow next to it, and
+select “Create draft pull request”. This will avoid notifying code owners; they will be notified when the PR is marked as ready for review.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
