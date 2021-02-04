@@ -78,7 +78,7 @@ Connectivity is only part of the solution as pods still need to know the IPs of 
 
 This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
 controller adds the service's globalIp to the `ServiceImport` object that is distributed to all clusters. The [lighthouse
-plugin](https://github.com/submariner-io/lighthouse/tree/master/plugin/lighthouse) then uses the Service's globalIp when replying to DNS
+plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the Service's globalIp when replying to DNS
 queries for the Service.
 
 ## Building

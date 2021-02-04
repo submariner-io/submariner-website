@@ -202,10 +202,10 @@ The following apply to people who would be an owner:
 [Submariner org]: https://github.com/submariner-io
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
 [membership request issue]: https://github.com/submariner-io/submariner/issues/new?template=membership.md&title=REQUEST%3A%20New%20membership%20request%20for%20%3Cyour-GH-handle%3E
-[membership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/membership.md
+[membership template]: https://github.com/submariner-io/submariner/blob/devel/.github/ISSUE_TEMPLATE/membership.md
 [committership request issue]: https://github.com/submariner-io/submariner/issues/new?template=committership.md&title=REQUEST%3A%20New%20committer%20rights%20request%20for%20%3Cyour-GH-handle%3E
-[committership template]: https://github.com/submariner-io/submariner/blob/master/.github/ISSUE_TEMPLATE/committership.md
+[committership template]: https://github.com/submariner-io/submariner/blob/devel/.github/ISSUE_TEMPLATE/committership.md
 [two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication
 [owners team]: https://github.com/orgs/submariner-io/teams/submariner-owners
-[codeowners file]: https://github.com/submariner-io/submariner/blob/master/CODEOWNERS.in
+[codeowners file]: https://github.com/submariner-io/submariner/blob/devel/CODEOWNERS.in
 [org members]: https://github.com/orgs/submariner-io/people

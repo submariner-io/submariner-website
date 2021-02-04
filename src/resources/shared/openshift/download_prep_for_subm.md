@@ -10,6 +10,6 @@ handling the requirements specified above.
 * Download the `prep_for_subm.sh` script and set permissions:
 
 ```bash
-curl https://raw.githubusercontent.com/submariner-io/submariner/master/tools/openshift/ocp-ipi-aws/prep_for_subm.sh -L -O
+curl https://raw.githubusercontent.com/submariner-io/submariner/devel/tools/openshift/ocp-ipi-aws/prep_for_subm.sh -L -O
 chmod a+x ./prep_for_subm.sh
 ```

@@ -67,7 +67,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 3) Fill in the general fields for the release with the `status` field set to `shipyard`. Also add the `shipyard` component with
    the hash of the desired or latest commit ID on which to base the release. To obtain the latest, first navigate to
    the [shipyard project](https://github.com/submariner-io/shipyard). The heading above the file list shows the latest
-   commit on the master branch including the first 7 hex digits of the commit ID hash.
+   commit on the devel branch including the first 7 hex digits of the commit ID hash.
 
    If this is not a final release, set the `pre-release` field to `true` (that is uncomment the `pre-release` line below).
    This includes release candidates. This is important so it is not labeled as the Latest release in GitHub.
@@ -212,7 +212,7 @@ If this is a final release, add a section for it on this website's [release note
 3) Commit the changes, create a pull request, and have it reviewed and merged.
 
 Alternatively you can edit the file and create a pull request directly on GitHub
-[here](https://github.com/submariner-io/submariner-website/edit/master/src/content/community/releases/_index.en.md)
+[here](https://github.com/submariner-io/submariner-website/edit/devel/src/content/community/releases/_index.en.md)
 
 ### Step 6: Verify the release
 

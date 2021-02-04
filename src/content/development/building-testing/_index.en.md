@@ -79,7 +79,7 @@ Different types of deployments can be configured with `using` flags:
 make e2e using=helm,globalnet
 ```
 
-See [Shipyard's `Makefile.inc`](https://github.com/submariner-io/shipyard/blob/master/Makefile.inc) for the currently-supported `using` flags.
+See [Shipyard's `Makefile.inc`](https://github.com/submariner-io/shipyard/blob/devel/Makefile.inc) for the currently-supported `using` flags.
 
 A subset of tests can be selected with Ginkgo `focus` flags:
 
