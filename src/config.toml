@@ -11,7 +11,7 @@ defaultContentLanguageInSubdir= true
   unsafe = true
 
 [params]
-  editURL = "https://github.com/submariner-io/website/edit/master/src/content/"
+  editURL = "https://github.com/submariner-io/website/edit/devel/src/content/"
   description = "Documentation website for the Submariner project"
   author = "The Submariner community"
   showVisitedLinks = true

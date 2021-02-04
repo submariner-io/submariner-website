@@ -27,7 +27,7 @@ make deploy
 ```
 
 By default, the automation configuration in the main submariner-io/submariner repository deploys three clusters, with cluster1 configured as
-the Broker. See the [cluster-settings](https://github.com/submariner-io/submariner/blob/master/scripts/cluster_settings) file for details.
+the Broker. See the [cluster-settings](https://github.com/submariner-io/submariner/blob/devel/scripts/cluster_settings) file for details.
 
 ### Deploy Manually
 

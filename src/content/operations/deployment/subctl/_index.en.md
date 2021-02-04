@@ -22,7 +22,7 @@ Specific versions can be requested by using the VERSION environment variable.
 Avalailable options are:
 
 * `latest`: the latest stable release (default)
-* `devel`: the master branch code.
+* `devel`: the devel branch code.
 * `rc`: the latest release candidate.
 * `x.x.x` (like 0.6.1, 0.5.0, etc)
 
