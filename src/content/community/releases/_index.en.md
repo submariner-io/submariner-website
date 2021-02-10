@@ -4,6 +4,19 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.8.1
+
+* Submariner Gateway Health Check is now supported with Globalnet deployments.
+* Support deploying OVN in kind using `make clusters using=ovn` for E2E testing and development environments.
+* Support debugging the Libreswan cable driver.
+* Fix the cable driver label in the Prometheus latency metrics.
+* Support non-TLS connections for OVN databases.
+* Services can now be recreated without needing to recreate their associated `ServiceExport` objects.
+* Service Discovery no longer depends on Submariner-provided connectivity.
+* Improved Service Discovery verification suite.
+* The `ServiceImport` object now includes Port information from the original Service.
+* `subctl show` now indicates when the target cluster doesn't have Submariner installed.
+
 ## v0.8.0
 
 * Added support for connecting clusters that use the OVNKubernetes CNI plugin in non-Globalnet deployments. Support for
