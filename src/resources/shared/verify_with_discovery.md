@@ -35,7 +35,7 @@ curl nginx.default.svc.clusterset.local:8080
 To access a Service in a specific cluster, prefix the query with `<cluster-id>` as follows:
 
 ```bash
-curl cluster-a.nginx.default.svc.clusterset.local:8080
+curl cluster-b.nginx.default.svc.clusterset.local:8080
 ```
 
 #### Verify StatefulSets
