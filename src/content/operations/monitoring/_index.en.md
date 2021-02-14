@@ -22,6 +22,8 @@ The following metrics are exposed currently:
 
 * `submariner_gateway_creation_timestamp`: timestamp of gateway creation time (labels: `local_cluster`, `local_hostname`)
 
+* `submariner_gateway_sync_iterations`: gateway synchronization iterations
+
 * `submariner_gateway_rx_bytes`: count of bytes received by cable driver and cable (labels: `cable_driver`, `local_cluster`,
 `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
