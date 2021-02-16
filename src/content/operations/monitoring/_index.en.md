@@ -30,9 +30,12 @@ The following metrics are exposed currently:
 * `submariner_gateway_tx_bytes`: count of bytes transmitted by cable driver and cable (labels: `cable_driver`, `local_cluster`,
 `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
 
+* `submariner_requested_connections`: the number of connections by endpoint and status (labels: `local_cluster`, `local_hostname`,
+`remote_cluster`, `remote_hostname`, `status`: “connecting”, “connected”, or “error”)
+
 * `submariner_connections`: the number of connections and corresponding status by cable driver and cable
 (labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`,
-`status`)
+`status`: “connecting”, “connected”, or “error”)
 
 * `submariner_connection_established_timestamp`: timestamp of last successful connection established by cable driver and cable
 (labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
