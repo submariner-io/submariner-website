@@ -27,8 +27,9 @@ configurable at time of deployment. User can also manually specify GlobalCIDR fo
 ```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the Broker or if a GlobalCIDR is preconfigured in
 the cluster, the supplied globalnet-cidr will be ignored.
 
-Once configured, each Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`, from this `GlobalCIDR` that
-is annotated on the Pod/Service object. This globalIp is used for all cross-cluster communication to and from a Pod and the globalIp of a
+Once configured, each exported Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`,
+from this `GlobalCIDR` that is annotated on the Pod/Service object.
+This globalIp is used for allcross-cluster communication to and from a Pod and the globalIp of a
 remote Service. Routing and iptable rules are configured to use the globalIp for ingress and egress. All address translations occur on the
 Gateway node.
 
@@ -55,9 +56,9 @@ It mainly consists of two key components: the IP Address Manager and Globalnet.
 The IP Address Manager (IPAM) component does the following:
 
 * Creates a pool of IP addresses based on the `GlobalCIDR` configured on cluster.
-* On creation of a Pod/Service, allocates a globalIp from the GlobalIp pool.
-* Annotates the Pod/Service with `submariner.io/globalIp=<global-ip>`.
-* On deletion of a Pod/Service, releases its globalIp back to the pool.
+* On creation of a Pod, or export of a Service, allocates a globalIp from the GlobalIp pool.
+* Annotates the Pod or exported Service with `submariner.io/globalIp=<global-ip>`.
+* On deletion of a Pod, Service or ServiceExport, releases its globalIp back to the pool.
 
 #### Globalnet
 
