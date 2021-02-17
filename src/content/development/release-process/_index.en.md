@@ -39,9 +39,9 @@ case, the suggested naming convention is to append `-preN`.
 ### Stable branches and versions
 
 Stable branches will be maintained for `vx.0` versions and any derived versions. For example, versions v0.8.0, v0.8.1 and
-any other minor release will all be maintained and released on the `release-0.8` branch.
+any other minor releases will all be maintained and released on the `release-0.8` branch.
 
-The automated release process, which is described henceforth, can also create these stable branches when necessary.
+The automated release process described here can also create these stable branches when necessary.
 The branch should be specified in the release YAML file. If a stable branch isn't specified, the development branch is used.
 
 ## Create Submariner product release
@@ -66,7 +66,7 @@ which case select the failed check, inspect the logs, correct the issue and re-r
 
 ### Step 0: Create a stable branch (if necessary)
 
-In case you're creating a new stable release, the release automation process can create the stable branches. To do so,
+If you're creating a new stable release, the release automation process can create the stable branches. To do so,
 navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
 
 1) Create a new branch for the intended release.
