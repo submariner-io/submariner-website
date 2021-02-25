@@ -29,7 +29,7 @@ the cluster, the supplied globalnet-cidr will be ignored.
 
 Once configured, each exported Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`,
 from this `GlobalCIDR` that is annotated on the Pod/Service object.
-This globalIp is used for allcross-cluster communication to and from a Pod and the globalIp of a
+This globalIp is used for all cross-cluster communication to and from a Pod and the globalIp of a
 remote Service. Routing and iptable rules are configured to use the globalIp for ingress and egress. All address translations occur on the
 Gateway node.
 
@@ -69,7 +69,7 @@ This component is responsible for programming the routing entries, iptable rules
   on the Gateway Node.
 * Whenever a Service is annotated with a globalIp, creates an ingress rule to direct all traffic destined to the Service's globalIp to the
   Service's `kube-proxy` iptables chain which in turn directs traffic to Service's backend Pods.
-* On deletion of pod/service, clean up the rules from the gateway node.
+* On deletion of Pod, Service or ServiceExport, clean up the rules from the gateway node.
 
 Globalnet currently relies on `kube-proxy` and thus will only work with deployments that use `kube-proxy`.
 
