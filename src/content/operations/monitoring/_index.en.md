@@ -11,42 +11,6 @@ metrics to be scraped by an in-cluster Prometheus deployment. Prometheus is a pl
 a data source for [Grafana](https://grafana.com/), a metrics visualization frontend. Unlike some metrics collectors, Prometheus requires the
 collectors to pull metrics from each source.
 
-## Exposed Metrics
-
-Submariner metrics provide insights into both the state of Submariner itself, as well as the inter-cluster network behavior of your
-cluster set. All Submariner metrics are exported within the `submariner-operator` namespace by default.
-
-The following metrics are exposed currently:
-
-* `submariner_gateways`: the number of gateways in the cluster
-
-* `submariner_gateway_creation_timestamp`: timestamp of gateway creation time (labels: `local_cluster`, `local_hostname`)
-
-* `submariner_gateway_sync_iterations`: gateway synchronization iterations
-
-* `submariner_gateway_rx_bytes`: count of bytes received by cable driver and cable (labels: `cable_driver`, `local_cluster`,
-`local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
-
-* `submariner_gateway_tx_bytes`: count of bytes transmitted by cable driver and cable (labels: `cable_driver`, `local_cluster`,
-`local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
-
-* `submariner_requested_connections`: the number of connections by endpoint and status (labels: `local_cluster`, `local_hostname`,
-`remote_cluster`, `remote_hostname`, `status`: “connecting”, “connected”, or “error”)
-
-* `submariner_connections`: the number of connections and corresponding status by cable driver and cable
-(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`,
-`status`: “connecting”, “connected”, or “error”)
-
-* `submariner_connection_established_timestamp`: timestamp of last successful connection established by cable driver and cable
-(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
-
-* `submariner_connection_latency_seconds`: connection latency in seconds; last RTT, by cable driver and cable
-(labels: `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`)
-
-* `submariner_global_IP_availability`: count of available global IPs per CIDR (labels: `cidr`)
-
-* `submariner_global_IP_allocated`: count of global IPs allocated for Pods/Services per CIDR (labels: `cidr`)
-
 ### Prometheus Operator
 
 To start monitoring Submariner using the Prometheus Operator, Prometheus needs to be configured to scrape the Submariner Operator’s
@@ -83,3 +47,37 @@ This requires enabling user workload monitoring; see the
 or
 [OpenShift 4.6](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.6/html/monitoring/enabling-monitoring-for-user-defined-projects)
 documentation for details.
+
+## Metrics Reference
+
+Submariner metrics provide insights into both the state of Submariner itself, as well as the inter-cluster network behavior of your
+cluster set. All Submariner metrics are exported within the `submariner-operator` namespace by default.
+
+The following metrics are exposed currently:
+
+### Submariner Gateway
+<!-- markdownlint-disable line-length -->
+<!-- markdownlint-disable no-trailing-spaces -->
+| Name                                          | Label                                                               | Description                       
+|:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
+| `submariner_gateways`                         |                                                                     | The number of gateways in the cluster                         |
+| `submariner_gateway_creation_timestamp`       | `local_cluster`, `local_hostname`                                   | Timestamp of gateway creation time                            |
+| `submariner_gateway_sync_iterations`          |                                                                     | Gateway synchronization iterations                            |
+| `submariner_gateway_rx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes received by cable driver and cable
+| `submariner_gateway_tx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes transmitted by cable driver and cable
+
+### Submariner Connections
+
+| Name                                          | Label                                                               | Description
+|:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
+| `submariner_requested_connections`            | `local_cluster`, `local_hostname`, `remote_cluster`, `remote_hostname`, `status`: “connecting”, “connected”, or “error” | The number of connections by endpoint and status
+| `submariner_connections`                      | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`, `status`: “connecting”, “connected”, or “error” | The number of connections and corresponding status by cable driver and cable
+| `submariner_connection_established_timestamp` | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Timestamp of last successful connection established by cable driver and cable
+| `submariner_connection_latency_seconds`       | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Connection latency in seconds; last RTT, by cable driver and cable
+
+### Globalnet
+
+| Name                                          | Label                                                               | Description
+|:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
+| `submariner_global_IP_availability`           | `cidr`                                                              | Count of available global IPs per CIDR
+| `submariner_global_IP_allocated`              | `cidr`                                                              | Count of global IPs allocated for Pods/Services per CIDR
