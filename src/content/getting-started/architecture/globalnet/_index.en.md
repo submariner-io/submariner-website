@@ -56,9 +56,9 @@ It mainly consists of two key components: the IP Address Manager and Globalnet.
 The IP Address Manager (IPAM) component does the following:
 
 * Creates a pool of IP addresses based on the `GlobalCIDR` configured on cluster.
-* On creation of a Pod, or export of a Service, allocates a globalIp from the GlobalIp pool.
+* Allocates a globalIp from the GlobalIp pool on creation of a Pod, Service, or ServiceExport.
 * Annotates the Pod or exported Service with `submariner.io/globalIp=<global-ip>`.
-* On deletion of a Pod, Service or ServiceExport, releases its globalIp back to the pool.
+* On deletion of a Pod, Service, or ServiceExport, releases its globalIp back to the pool.
 
 #### Globalnet
 
@@ -69,7 +69,7 @@ This component is responsible for programming the routing entries, iptable rules
   on the Gateway Node.
 * Whenever a Service is annotated with a globalIp, creates an ingress rule to direct all traffic destined to the Service's globalIp to the
   Service's `kube-proxy` iptables chain which in turn directs traffic to Service's backend Pods.
-* On deletion of Pod, Service or ServiceExport, clean up the rules from the gateway node.
+* Clean up the rules from the gateway node on the deletion of a Pod, Service, or ServiceExport.
 
 Globalnet currently relies on `kube-proxy` and thus will only work with deployments that use `kube-proxy`.
 
