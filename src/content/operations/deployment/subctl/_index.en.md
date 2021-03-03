@@ -55,6 +55,8 @@ contains the following details:
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`            | kubeconfig context to use
+| `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
+| `--version` `<string>`                | Image version
 | `--service-discovery`                 | Enable Multi Cluster Service Discovery (default true)
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
