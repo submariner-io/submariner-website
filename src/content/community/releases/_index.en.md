@@ -4,6 +4,37 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.9.0
+
+* The gateway Pod has been renamed from `submariner` to `submariner-gateway`.
+* The Helm charts now use Submariner's Operator to deploy and manage Submariner.
+* Broker creation is now managed by the Operator instead of `subctl`.
+* Each Submariner Pod now has its own service account with appropriate privileges.
+* The Lighthouse CoreDNS server metrics are now exposed.
+* The `submariner_connections` metric is renamed to `submariner_requested_connections`.
+* The `service-discovery` flag of `subctl deploy-broker` has been deprecated in favor of the `components` flag.
+* For cases in which cross-cluster connectivity is provided without Submariner, `subctl` can now just deploy
+  Service Discovery.
+* Improved Service CIDR discovery for K3s deployments.
+* All Submariner Prometheus metrics are now prefixed with `submariner_`.
+* With Globalnet deployments, Global IPs are now assigned to exported Services only. Previously, Globalnet annotated
+  every Service in the cluster, whether or not it was exported.
+* The name of the CoreDNS custom ConfigMap for service discovery can now be specified on `subctl join`.
+* The `strongswan` cable driver that was deprecated in the v0.8.0 release is now removed.
+* The Lighthouse-specific API is now removed in favor of [Kubernetes Multicluster Services API](https://github.com/kubernetes-sigs/mcs-api/).
+* A new tool, [subctl diagnose](https://submariner.io/operations/deployment/subctl/#diagnose), was added that detects issues with the
+  Submariner deployment that may prevent it from working properly.
+* `subctl` commands now check if the `subctl` version is compatible with the deployed Submariner version.
+* New flags, `repository` and `version`, were added to the `subctl deploy-broker` command.
+* New Lighthouse metrics were added that track the number of services imported from and exported to other clusters.
+* `subctl show connections` now also shows `average rtt` values.
+* A new tool, [subctl gather](https://submariner.io/operations/deployment/subctl/#gather), was added that collects various information
+  from clusters to aid in troubleshooting a Submariner deployment.
+* Each gateway can now use a different port for IPsec/WireGuard communication via the `gateway.submariner.io/udp-port` node label.
+* Gateways now implement a NAT-Traversal (NAT-T) discovery protocol that can be enabled via the `gateway.submariner.io/natt-discovery-port`
+  node label.
+* A cluster can now be configured in IPsec server mode via the `preferred-server` flag on `subctl join`.
+
 ## v0.8.1
 
 * Submariner Gateway Health Check is now supported with Globalnet deployments.
