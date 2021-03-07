@@ -81,3 +81,10 @@ The following metrics are exposed currently:
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
 | `submariner_global_IP_availability`           | `cidr`                                                              | Count of available global IPs per CIDR
 | `submariner_global_IP_allocated`              | `cidr`                                                              | Count of global IPs allocated for Pods/Services per CIDR
+
+### Service Discovery
+
+| Name                                          | Label                                                               | Description
+|:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
+| `submariner_service_import`                   | `direction`, `operation`, `syncer_name`                             | Count of imported services
+| `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                             | Count of exported services
