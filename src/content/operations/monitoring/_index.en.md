@@ -86,5 +86,5 @@ The following metrics are exposed currently:
 
 | Name                                          | Label                                                               | Description
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
-| `submariner_service_import`                   | `direction`, `operation`, `syncer_name`                             | Count of imported services
-| `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                             | Count of exported services
+| `submariner_service_import`                   | `direction`, `operation`, `syncer_name`                             | Count of imported Services
+| `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                             | Count of exported Services
