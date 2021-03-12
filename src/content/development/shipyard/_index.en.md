@@ -67,7 +67,9 @@ Shipyard ships a [Makefile.inc] file which defines these basic targets:
 
 * **[clusters](#clusters):** Creates the kind-based cluster environment.
 * **[deploy](#deploy)** : Deploys submariner components in the cluster environment (depends on clusters).
-* **[cleanup](#cleanup):** Deletes the kind environment (if it exists) and any residual resources.
+* **[clean-clusters](#cleanclusters):** Deletes the kind environment (if it exists) and any residual resources.
+* **[clean-generated](#cleangenerated):** Deletes all generated files.
+* **[clean](#clean):** Cleans everything up (running clusters and generated files).
 * **[release](#release):** Uploads the requested image(s) to Quay.io.
 * **vendor/modules.txt:** Populates go modules (in case go.mod exists in the root directory).
 
@@ -104,16 +106,36 @@ Respected variables:
 * **DEPLOY_ARGS:** Any arguments (flags and/or values) to be sent to the `deploy.sh` script. To get a list of available arguments, run:
   `scripts/shared/deploy.sh --help`
 
-### Cleanup {#cleanup}
+### Clean-clusters {#cleanclusters}
 
 To clean up all the kind clusters deployed in any of the previous steps, use:
 
 ```shell
-make cleanup
+make clean-clusters
 ```
 
 This command will remove the clusters and any resources that might've been left in docker that are not needed any more (images, volumes,
 etc).
+
+### Clean-generated {#cleangenerated}
+
+To clean up all generated files, use:
+
+```shell
+make clean-generated
+```
+
+This will remove any file which can be re-generated and doesn’t need to be tracked.
+
+### Clean {#clean}
+
+To clean everything up, use:
+
+```shell
+make clean
+```
+
+This removes any running clusters and all generated files.
 
 ### Release {#release}
 
