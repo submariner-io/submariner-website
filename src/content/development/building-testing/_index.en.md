@@ -102,7 +102,7 @@ make clusters
 To clean up a multi-cluster deployment from one of the previous commands:
 
 ```shell
-make cleanup
+make clean-clusters
 ```
 
 ### Shell Session in Development Environment
