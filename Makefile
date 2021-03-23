@@ -1,6 +1,6 @@
 URL := http://localhost:1313
 OPEN_CMD := $(shell command -v open || command -v xdg-open || echo : 2>/dev/null)
-HUGO_VERSION := v0.82.0
+HUGO_VERSION := v0.72.0
 OUTPUT_DIR:=/
 
 hugo:
