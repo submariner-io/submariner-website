@@ -250,6 +250,32 @@ When running `benchmark latency`, two types of tests will be executed:
 | `--verbose`                         | Produce verbose logs during benchmark tests
 <!-- markdownlint-enable line-length -->
 
+### `validate`
+
+The `subctl validate` is a diagnostic tool that can be used to validate the Submariner deployment.
+
+This tool can be helpful to detect a specific problem when `subctl verify` failed.
+
+Below is a list of available validate commands:
+
+<!-- markdownlint-disable line-length -->
+| Validate command                    | Description                                                                 | Flags     | Falgs Description
+|:------------------------------------|:----------------------------------------------------------------------------|:----------|:------
+| `validate deployment`               | validate that the Submariner components are properly deployed and running with no overlapping CIDRs
+| `validate connections`              | validate that the gateway connections are all established
+| `validate k8s-version`              | checks whether or not Submariner can be deployed on the Kubernetes version
+| `validate kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner                    | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If no `namespace` flag is specified, it uses `default` namespace.
+| `validate cni`                      | checks whether or not the detected CNI network plugin is supported by Submariner
+| `validate firewall intra-cluster [flags]`  | checks whether the firewall configuration allows traffic via the Submariner VxLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+<!-- markdownlint-enable line-length -->
+
+#### `validate` flags
+
+| Flag                         | Description
+|:-----------------------------|:----------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
+| `--kubecontext` `<string>`   | Kubeconfig context to use
+
 ### `version`
 
 `subctl version`
