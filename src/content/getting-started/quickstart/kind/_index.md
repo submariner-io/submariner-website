@@ -149,5 +149,5 @@ curl nginx.default.svc.clusterset.local
 When you are done experimenting and you want to delete the clusters deployed in any of the previous steps, use the following command:
 
 ```bash
-make cleanup
+make clean-clusters
 ```
