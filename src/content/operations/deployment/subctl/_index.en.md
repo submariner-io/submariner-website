@@ -254,7 +254,8 @@ When running `benchmark latency`, two types of tests will be executed:
 
 The `subctl validate` is a diagnostic tool that can be used to validate the Submariner deployment.
 
-This tool can be helpful to detect issues with the Submariner deployment or some configurations in the cluster that may prevent Submariner from working properly.
+This tool can be helpful to detect issues with the Submariner deployment or some configurations in the cluster that may prevent
+Submariner from working properly.
 
 Below is a list of available validate commands:
 
