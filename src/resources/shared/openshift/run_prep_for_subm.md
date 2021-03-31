@@ -13,3 +13,10 @@ export IPSEC_NATT_PORT=4501
 export IPSEC_IKE_PORT=501
 export GW_INSTANCE_TYPE=m4.xlarge
 ```
+
+Submariner gateway can deployed in HA mode by setting the ENABLE_HA flag.
+
+```bash
+export ENABLE_HA=true
+```
+

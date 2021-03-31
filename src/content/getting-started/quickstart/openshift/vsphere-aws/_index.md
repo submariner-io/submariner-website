@@ -118,6 +118,12 @@ export IPSEC_NATT_PORT=4501
 export IPSEC_IKE_PORT=501
 ```
 
+* To deploy the gateway in HA mode set the ENABLE_HA flag
+
+```bash
+export ENABLE_HA=true
+```
+
 ```bash
 ./prep_for_subm.sh cluster-b # respond "yes" when Terraform asks for approval, or otherwise add the -auto-approve flag
 ```
