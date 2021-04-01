@@ -23,11 +23,9 @@ Current and near-future work is tracked by [Submariner's open Projects][projects
 
 Some high-level goals are summarized here, but the primary source for tracking future work are Submariner's GitHub Issues.
 
-* Auto detecting NAT vs non-NAT scenarios (<https://github.com/submariner-io/submariner/issues/300>)
-* Support different IPsec ports for each cluster
 * Network Policy across clusters (Coastguard)
-* Support for finer-grained connectivity policies (<https://github.com/submariner-io/submariner/issues/533>)
-* Globalnet: annotating Global IPs per namespaces (<https://github.com/submariner-io/submariner/issues/528>)
+* Support for finer-grained connectivity policies (<https://github.com/submariner-io/enhancements/pull/4/files>)
+* Globalnet v2 (<https://github.com/submariner-io/enhancements/pull/22/files>)
 * More tunnel encapsulation options
 * Dynamic routing with BGP to support multi-path forwarding across gateways
 * Testing with multi-cluster Istio
