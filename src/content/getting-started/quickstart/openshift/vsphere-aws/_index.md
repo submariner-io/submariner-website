@@ -118,7 +118,7 @@ export IPSEC_NATT_PORT=4501
 export IPSEC_IKE_PORT=501
 ```
 
-* To deploy the gateway in HA mode set the ENABLE_HA flag
+* To deploy the gateway in HA mode set the ENABLE_HA flag:
 
 ```bash
 export ENABLE_HA=true
