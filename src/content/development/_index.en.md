@@ -8,7 +8,7 @@ pre = "<b>4. </b>"
 * [Building and Testing](building-testing)
 * [Code Review Guide](code-review)
 * [Contributing to the Website](website)
-  * [Docs Style Guide](website/style_guide.md)
+  * [Docs Style Guide](website/style-guide)
 * [Release Process](release-process)
 * [Security Reporting](security)
 * [Working with Shipyard](shipyard)
