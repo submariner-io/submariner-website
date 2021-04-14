@@ -107,6 +107,13 @@ typically do for a PR, simply choose your fork as the "base repository" of the P
 fork's main branch is up-to-date. After creating the PR, CI will trigger as usual but the jobs will count towards your personal queue. You
 will need to open a new PR against the main repository once your proposed change is ready for review.
 
+### Manage dependency among pull requests
+
+If a PR (child) is dependent on another PR (parent), irrespective of the project, comment on the child PR with the parent PR's number with
+`Depends on <Parent PR number>` or `depends on <Parent PR number>`. This will trigger a `PR Dependencies/Check Dependencies` workflow. The
+workflow will add a `dependent` label to the child PR. The workflow will fail until the parent PR is merged and will pass once the parent
+PR is merged. This will prevent merging the child PR until the parent PR is merged.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
