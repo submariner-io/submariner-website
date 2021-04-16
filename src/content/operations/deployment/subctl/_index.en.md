@@ -269,6 +269,8 @@ Below is a list of available validate commands:
 | `cni`                      | checks whether or not the detected CNI network plugin is supported by Submariner
 | `firewall vxlan [flags]`   | checks whether the firewall configuration allows traffic via the Submariner VxLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
 | `firewall metrics [flags]` | checks whether firewall configuration allows metrics to be read from the Gateway nodes      | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `firewall tunnel <localkubeconfig> <remotekubeconfig> [flags]`  | checks whether firewall configuration allows tunnels on Gateway node    | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
+| `all`                      | Executes all the validation sub-commands and reports any issues from the deployment. |  |
 <!-- markdownlint-enable line-length -->
 
 #### `validate` flags
