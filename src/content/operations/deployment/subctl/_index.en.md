@@ -280,6 +280,77 @@ Below is a list of available validate commands:
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 
+### `gather`
+
+The `subctl gather` is a data collection tool that gathers Submariner/Kubernetes resources from all clusters in a cluster set by iterating
+over all kubeconfigs. The resources collected are:
+
+* pod logs for
+  * Gateway pods
+  * RouteAgent pods
+  * Globalnet pods
+  * NetworkPluginSyncer pods
+  * ServiceDiscovery pods
+  * CoreDNS pods
+  * Submariner Operator pods
+* ServiceExports
+* ServiceImports
+* EndpointSlices
+* ConfigMaps
+  * submariner-lighthouse-coredns
+  * coredns
+* Endpoints
+* Clusters
+* Submariners
+* ServiceDiscoveries
+* DaemonSet
+  * submariner-gateway
+  * submariner-routeagent
+  * submariner-gateway
+* Deployment
+  * NetworkPluginSyncer Deployment
+  * submariner-lighthouse-agent
+  * submariner-lighthouse-coredns
+  * submariner-operator
+* Below information from `generic`, `canal-flannel`, `weave-net` and `OpenShiftSDN` CNIs. OVN is not supported.
+  * `ip route show`
+  * `ip rule list`
+  * `ip rule show table 150`
+  * `ip route show table 150` for Gateway nodes
+* Libreswan related information from below commands
+  * `ip xfrm policy`
+  * `ip xfrm state`
+  * `ipsec status`
+  * `ipsec --trafficstatus`
+* Below OVN commands output
+  * `ovn-nbctl list Logical_Router`
+  * `ovn-nbctl list Logical_Router_Port`
+  * `ovn-nbctl list Logical_Switch`
+  * `ovn-nbctl list Logical_Switch_Port`
+  * `ovn-nbctl list Logical_Router_Static_Route`
+  * `ovn-nbctl list Logical_Router_Policy`
+  * `ovn-nbctl list ACL`
+  * `ovn-nbctl show`
+
+The tool creates a directory `submariner-YYYYMMDDHHMMSS` (in UTC) and writes each resource to a file
+`<clustername>_<resourcetype>_<namespace>_<resourcename>.yaml` and logs to `<clustername>_<podname>.log`
+
+The data (resources and logs) gathered depends on the module specified.
+
+{{% notice note %}}
+Broker cluster is accessed by parsing data cluster's kubeconfig thus limiting access to Broker cluster. Hence information for only
+`Endpoints, Clusters, ServiceImports, EndpointSlices` can be gathered for Broker cluster.
+{{% /notice %}}
+
+### `gather` flags
+
+| Flag                       | Description
+|:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`  | Absolute path(s) to the kubeconfig file(s). By default, it iterates over all kubeconfigs
+| `--kubecontext` `<string>` | Kubeconfig context to use
+| `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is "operator,connectivity,service-discovery,broker"
+| `--type` `<string>`        | Comma-separated list of data types to gather. Default is "logs,resources"
+
 ### `version`
 
 `subctl version`
