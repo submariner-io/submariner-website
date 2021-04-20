@@ -281,6 +281,52 @@ Below is a list of available validate commands:
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
 
+### `gather`
+
+The `subctl gather` command is a tool that collects various information from clusters to aid in troubleshooting a
+Submariner deployment, including Kubernetes resources and Pod logs. Clusters from which information is gathered are provided
+via the `--kubeconfig` flag (or the `KUBECONFIG` environment variable). By default it will gather information from all the cluster contexts contained
+in the kubeconfig. To gather information from specific clusters, contexts can be passed using `kubecontexts` flag.
+
+The tool creates a UTC timestamped directory of the format `submariner-YYYYMMDDHHMMSS` containing various files.
+Kubernetes resources are written to YAML files with the naming format `<cluster-name>_<resource-type>_<namespace>_<resource-name>.yaml`.
+Pod logs are written to files with the format `<cluster-name>_<pod-name>.log`
+
+The specific information collected is configurable. As part of gathering `connectivity` resources, it also collects information specific
+to the CNI and Submariner cable driver in use from each node using file format `<cluster-name>_<node-name>_<command>.yaml`
+
+#### `gather` flags
+
+| Flag                       | Description
+|:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`  | Absolute path(s) to the kubeconfig file(s)
+| `--kubecontexts` `<string>`| comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
+| `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is `operator,connectivity,service-discovery,broker`
+| `--type` `<string>`        | Comma-separated list of data types to gather. Default is `logs,resources`
+
+#### `gather` examples
+
+These examples assume that kubeconfigs have been passed using the `KUBECONFIG` environment variable. Alternately,
+add the `--kubeconfig` flag if the environment variable is not set.
+
+##### `gather` all from all clusters
+
+It is recommended to use this when reporting any issue.
+
+`subctl gather`
+
+##### `gather` all from specific clusters
+
+`subctl gather --kubecontexts cluster-east`
+
+##### `gather` operator and connectivity logs from specific clusters
+
+`subctl gather --kubecontexts cluster-east,cluster-west --module operator,connectivity --type logs`
+
+##### `gather` broker and service-discovery resources from all clusters
+
+`subctl gather --module broker,service-discovery --type resources`
+
 ### `version`
 
 `subctl version`
