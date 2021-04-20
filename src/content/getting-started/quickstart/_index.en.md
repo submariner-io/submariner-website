@@ -5,6 +5,7 @@ weight = 20
 +++
 
 * [Sandbox Environment (kind)](kind)
+* [K3s](k3s)
 * [Managed Kubernetes](managed-kubernetes)
   * [Google (GKE)](managed-kubernetes/gke)
   * [Rancher](managed-kubernetes/rancher)
