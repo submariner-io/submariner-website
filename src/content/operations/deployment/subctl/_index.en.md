@@ -282,74 +282,48 @@ Below is a list of available validate commands:
 
 ### `gather`
 
-The `subctl gather` is a data collection tool that gathers Submariner/Kubernetes resources from all clusters in a cluster set by iterating
-over all kubeconfigs. The resources collected are:
+The `subctl gather` command is tool that collects various information from clusters to aid in troubleshooting a Submariner deployment, including Kubernetes resources and Pod logs.
+Clusters from which information is gathered are provided through `--kubeconfig` flag (or `KUBECONFIG` env var). By default it will gather information from
+all clusters contexts provided in kubeconfig. To gather information from sepecific clusters, contexts can be passed using `kubecontexts` flag. 
 
-* pod logs for
-  * Gateway pods
-  * RouteAgent pods
-  * Globalnet pods
-  * NetworkPluginSyncer pods
-  * ServiceDiscovery pods
-  * CoreDNS pods
-  * Submariner Operator pods
-* ServiceExports
-* ServiceImports
-* EndpointSlices
-* ConfigMaps
-  * submariner-lighthouse-coredns
-  * coredns
-* Endpoints
-* Clusters
-* Submariners
-* ServiceDiscoveries
-* DaemonSet
-  * submariner-gateway
-  * submariner-routeagent
-  * submariner-gateway
-* Deployment
-  * NetworkPluginSyncer Deployment
-  * submariner-lighthouse-agent
-  * submariner-lighthouse-coredns
-  * submariner-operator
-* Below information from `generic`, `canal-flannel`, `weave-net` and `OpenShiftSDN` CNIs. OVN is not supported.
-  * `ip route show`
-  * `ip rule list`
-  * `ip rule show table 150`
-  * `ip route show table 150` for Gateway nodes
-* Libreswan related information from below commands
-  * `ip xfrm policy`
-  * `ip xfrm state`
-  * `ipsec status`
-  * `ipsec --trafficstatus`
-* Below OVN commands output
-  * `ovn-nbctl list Logical_Router`
-  * `ovn-nbctl list Logical_Router_Port`
-  * `ovn-nbctl list Logical_Switch`
-  * `ovn-nbctl list Logical_Switch_Port`
-  * `ovn-nbctl list Logical_Router_Static_Route`
-  * `ovn-nbctl list Logical_Router_Policy`
-  * `ovn-nbctl list ACL`
-  * `ovn-nbctl show`
+The tool creates a UTC timestamped directory of the format `submariner-YYYYMMDDHHMMSS` containing various files. Kubernetes resources are written to YAML files with the naming format
+`<cluster-name>_<resource-type>_<namespace>_<resource-name>.yaml`. Pod logs are written to files naming format `<cluster-name>_<pod-name>.log`
 
-The tool creates a directory `submariner-YYYYMMDDHHMMSS` (in UTC) and writes each resource to a file
-`<clustername>_<resourcetype>_<namespace>_<resourcename>.yaml` and logs to `<clustername>_<podname>.log`
-
-The data (resources and logs) gathered depends on the module specified.
-
-{{% notice note %}}
-Broker cluster is accessed by parsing data cluster's kubeconfig thus limiting access to Broker cluster. Hence information for only
-`Endpoints, Clusters, ServiceImports, EndpointSlices` can be gathered for Broker cluster.
-{{% /notice %}}
+The specific information collected is configurable. As part of `resources` for `connectivity` module it also gathers troubleshooting data specific for the CNI and CableDriver from respective nodes
+using file format `<cluster-name>_<node-name>_<command>.yaml`
 
 ### `gather` flags
 
 | Flag                       | Description
 |:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`  | Absolute path(s) to the kubeconfig file(s). By default, it iterates over all kubeconfigs
-| `--kubecontext` `<string>` | Kubeconfig context to use
+| `--kubecontexts` `<string>`| comma separated list of kubeconfig contexts to use. If none specified, all contexts referenced by kubeconfig are used
 | `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is "operator,connectivity,service-discovery,broker"
 | `--type` `<string>`        | Comma-separated list of data types to gather. Default is "logs,resources"
+
+
+### `gather` examples
+
+These examples assume that kubeconfigs have been passed using `KUBECONFIG` env var. Alternately, add `--kubeconfig` flag to these if
+env var is not set.
+
+#### `gather` all from all clusters
+
+Users are recommended to use this when reporting any issue.
+
+`subctl gather`
+
+#### `gather` all from specific clusters
+
+`subctl gather --kubecontexts cluster-east`
+
+#### `gather` operator and connectivity logs from specific clusters
+
+`subctl gather --kubecontexts cluster-east,cluster-west --module operator,connectivity --type logs`
+
+#### `gather` broker and service-discovery resources from all clusters
+
+`subctl gather --module broker,service-discovery --type resources`
 
 ### `version`
 
