@@ -81,13 +81,7 @@ navigate to the [releases](https://github.com/submariner-io/releases) repository
    status: branch
    ```
 
-4) Create a link for the file to make it the target release. This file is used by the CI jobs.
-
-   ```bash
-   ln -s v0.8.0.yaml target
-   ```
-
-5) Commit the new file, create a new pull request, and have it reviewed and merged.
+4) Commit the new file, create a new pull request, and have it reviewed and merged.
 
 Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
 branch.
@@ -120,13 +114,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
      shipyard: <hash goes here>
    ```
 
-4) Create a link for the file to make it the target release. This file is used by the CI jobs.
-
-   ```bash
-   ln -s v0.8.0.yaml target
-   ```
-
-5) Commit the new files, create a new pull request, and have it reviewed and merged.
+4) Commit the new files, create a new pull request, and have it reviewed and merged.
 
 Once the pull request is merged, it will trigger a CI job to create a
 [shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
