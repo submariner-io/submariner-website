@@ -57,9 +57,10 @@ contains the following details:
 | `--kubecontext` `<string>`            | kubeconfig context to use
 | `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
 | `--version` `<string>`                | Image version
-| `--service-discovery`                 | Enable Multi Cluster Service Discovery (default true)
+| `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
+| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 8192)
 | `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
 <!-- markdownlint-enable line-length -->
 
