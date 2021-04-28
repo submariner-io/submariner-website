@@ -266,7 +266,7 @@ This will perform automated verifications between the clusters.
 ```bash
 KUBECONFIG=cluster-a.yml gcloud container clusters get-credentials cluster-a --zone="europe-west3-a"
 KUBECONFIG=cluster-b.yml gcloud container clusters get-credentials cluster-b --zone="europe-west3-a"
-subctl verify cluster-a.yml cluster-b.yml --only service-discovery,connectivity --verbose
+KUBECONFIG=cluster-a.yml:cluster-b.yml subctl verify --kubecontexts cluster-a,cluster-b --only service-discovery,connectivity --verbose
 ```
 
 ## Reconfig after Node Restart

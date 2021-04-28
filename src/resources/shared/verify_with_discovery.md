@@ -110,5 +110,6 @@ curl web-0.cluster-a.nginx-ss.default.svc.clusterset.local:8080
 This will perform automated verifications between the clusters.
 
 ```bash
-subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only service-discovery,connectivity --verbose
+export KUBECONFIG=cluster-a/auth/kubeconfig:cluster-b/auth/kubeconfig
+subctl verify --kubecontexts cluster-a,cluster-b --only service-discovery,connectivity --verbose
 ```
