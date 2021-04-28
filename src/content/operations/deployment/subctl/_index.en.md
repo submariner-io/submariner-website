@@ -183,10 +183,10 @@ Shows the aggregated information from all the other show commands.
 
 ### `verify`
 
-`subctl verify <kubeConfig1> <kubeConfig2> [flags]`
+`subctl verify --kubecontexts <context1>,<context2> [flags]`
 
-The `verify` command verifies a Submariner deployment between two clusters is functioning properly. The `kubeConfig1` file will be
-`ClusterA` in the reports, while `kubeConfig2` will be `ClusterB` in the reports. The `--verbose` flag is recommended to see what's
+The `verify` command verifies a Submariner deployment between two clusters is functioning properly. `<context1>` will be
+`ClusterA` in the reports, while `<context2>` will be `ClusterB` in the reports. The `--verbose` flag is recommended to see what's
 happening during the tests.
 
 There are several suites of verifications that can be performed. By default all verifications are performed.  Some verifications are deemed

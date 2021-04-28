@@ -113,6 +113,9 @@ tests embedded in the `subctl` command line tool via the `subctl verify` command
 
 ### Run the verification
 
+Ensure your kubeconfigs have different context names for each cluster, _e.g._ “cluster-a” and “cluster-b”;
+then run
+
 ```bash
-subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --verbose
+KUBECONFIG=cluster-a/auth/kubeconfig:cluster-b/auth/kubeconfig subctl verify --kubecontexts cluster-a,cluster-b --verbose
 ```

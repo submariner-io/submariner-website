@@ -41,12 +41,15 @@ For more information on interacting with K3s, please refer to the [k3s documenta
 {{% /notice %}}
 
 The kubeconfig file needs to be modified to set the Kubernetes API endpoint to the public IP of node-a,
-which is obtained from the first field yielded by `hostname -I`.
+which is obtained from the first field yielded by `hostname -I`, and to give the context a name other
+than “default”. (This uses [yq](https://github.com/mikefarah/yq/) v4.7.0 or later.)
 
 ```bash
 cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-a
-IP=$(hostname -I | awk '{print $1}')
-sed -i 's/127.0.0.1/'$IP'/' kubeconfig.cluster-a
+export IP=$(hostname -I | awk '{print $1}')
+yq -i eval \
+'.clusters[].cluster.server |= sub("127.0.0.1", env(IP)) | .contexts[].name = "cluster-a" | .current-context = "cluster-a"' \
+kubeconfig.cluster-a
 ```
 
 #### Deploy cluster-b on node-b
@@ -60,12 +63,15 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--cluster-cidr $POD_CIDR --serv
 ```
 
 The kubeconfig file needs to be modified to set the Kubernetes API endpoint to the public IP of node-b,
-which is obtained from the first field yielded by `hostname -I`.
+which is obtained from the first field yielded by `hostname -I`, and to give the context a name other
+than “default”.
 
 ```bash
 cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-b
-IP=$(hostname -I | awk '{print $1}')
-sed -i 's/127.0.0.1/'$IP'/' kubeconfig.cluster-b
+export IP=$(hostname -I | awk '{print $1}')
+yq -i eval \
+'.clusters[].cluster.server |= sub("127.0.0.1", env(IP)) | .contexts[].name = "cluster-b" | .current-context = "cluster-b"' \
+kubeconfig.cluster-b
 ```
 
 Next, copy kubeconfig.cluster-b to node-a.
@@ -102,7 +108,7 @@ This will perform automated verifications between the clusters.
 
 <!-- markdownlint-disable line-length -->
 ```bash
-subctl verify kubeconfig.cluster-a kubeconfig.cluster-b --only service-discovery,connectivity --verbose
+KUBECONFIG=kubeconfig.cluster-a:kubeconfig.cluster-b subctl verify --kubecontexts cluster-a,cluster-b --only service-discovery,connectivity --verbose
 ```
 <!-- markdownlint-enable line-length -->
 

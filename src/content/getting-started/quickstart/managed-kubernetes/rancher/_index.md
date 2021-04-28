@@ -18,6 +18,8 @@ Obtain the kubeconfig files from the Rancher UI for each of your clusters, placi
 |Cluster A|kubeconfig-cluster-a|
 |Cluster B|kubeconfig-cluster-b|
 
+Edit the kubeconfig files so they use the context names “cluster-a” and “cluster-b”.
+
 ### Use cluster-a as Broker
 
 ```bash
@@ -39,5 +41,6 @@ subctl join --kubeconfig kubeconfig-cluster-b broker-info.subm --clusterid clust
 This will run a series of E2E tests to verify proper connectivity between the cluster Pods and Services
 
 ```bash
-subctl verify cluster-a/auth/kubeconfig cluster-b/auth/kubeconfig --only connectivity --verbose
+export KUBECONFIG=kubeconfig-cluster-a:kubeconfig-cluster-b
+subctl verify --kubecontexts cluster-a,cluster-b --only connectivity --verbose
 ```
