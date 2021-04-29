@@ -251,30 +251,28 @@ When running `benchmark latency`, two types of tests will be executed:
 | `--verbose`                         | Produce verbose logs during benchmark tests
 <!-- markdownlint-enable line-length -->
 
-### `validate`
+### `diagnose`
 
-The `subctl validate` is a diagnostic tool that can be used to validate the Submariner deployment.
+The `subctl diagnose` command is a tool that runs various checks to help diagnose issues in a Submariner deployment or some configurations
+in the cluster that may prevent Submariner from working properly.
 
-This tool can be helpful to detect issues with the Submariner deployment or some configurations in the cluster that may prevent
-Submariner from working properly.
-
-Below is a list of available validate commands:
+Below is a list of available sub-commands:
 
 <!-- markdownlint-disable line-length -->
-| Validate command           | Description                                                                 | Flags     | Flags Description
+| Diagnose command           | Description                                                                 | Flags     | Flags Description
 |:---------------------------|:----------------------------------------------------------------------------|:----------|:------
 | `deployment`               | checks that the Submariner components are properly deployed and running with no overlapping CIDRs
-| `connections`              | checks that the gateway connections are all established
-| `k8s-version`              | checks whether or not Submariner can be deployed on the Kubernetes version
-| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner                                    | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
-| `cni`                      | checks whether or not the detected CNI network plugin is supported by Submariner
-| `firewall vxlan [flags]`   | checks whether the firewall configuration allows traffic via the Submariner VxLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall metrics [flags]` | checks whether firewall configuration allows metrics to be read from the Gateway nodes      | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall tunnel <localkubeconfig> <remotekubeconfig> [flags]`  | checks whether firewall configuration allows tunnels on Gateway node    | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
-| `all`                      | Executes all the validation sub-commands (except for `firewall tunnel` as it requires two kubeconfigs) and reports any issues from the deployment |  |
+| `connections`              | checks that the Gateway connections to other clusters are all established
+| `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
+| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
+| `cni`                      | checks if the detected CNI network plugin is supported by Submariner
+| `firewall vxlan [flags]`   | checks if the firewall configuration allows traffic via the Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `firewall tunnel <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
+| `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  |
 <!-- markdownlint-enable line-length -->
 
-#### `validate` flags
+#### `diagnose` flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
