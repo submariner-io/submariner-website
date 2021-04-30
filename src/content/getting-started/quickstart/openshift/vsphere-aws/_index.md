@@ -139,7 +139,7 @@ To install Submariner with multi-cluster service discovery, follow the steps bel
 ##### Use cluster-b (AWS) as Broker with Service Discovery enabled
 
 ```bash
-subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig --service-discovery
+subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig
 ```
 
 ##### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker

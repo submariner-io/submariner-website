@@ -85,7 +85,7 @@ To install Submariner with multi-cluster service discovery and support for overl
 #### Use cluster-a as Broker with service discovery and globalnet enabled
 
 ```bash
-subctl deploy-broker  --kubeconfig cluster-a/auth/kubeconfig --service-discovery --globalnet
+subctl deploy-broker  --kubeconfig cluster-a/auth/kubeconfig --globalnet
 ```
 
 #### Join cluster-a and cluster-b to the Broker
