@@ -83,7 +83,7 @@ For more information on interacting with kind, please refer to the [kind documen
 #### Use cluster1 as Broker
 
 ```bash
-subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1 --service-discovery
+subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1
 ```
 
 #### Join cluster2 and cluster3 to the Broker

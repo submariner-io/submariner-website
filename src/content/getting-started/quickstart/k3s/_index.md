@@ -85,7 +85,7 @@ Next, copy kubeconfig.cluster-b to node-a.
 On node-a, run:
 
 ```bash
-subctl deploy-broker --kubeconfig kubeconfig.cluster-a --service-discovery
+subctl deploy-broker --kubeconfig kubeconfig.cluster-a
 ```
 
 #### Join cluster-a to the Broker
