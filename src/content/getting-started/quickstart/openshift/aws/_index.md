@@ -22,21 +22,8 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 
 ### Prepare AWS Clusters for Submariner
 
-{{< include "/resources/shared/openshift/download_prep_for_subm.md" >}}
-
-{{% notice info %}}
-Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
-Also note that the script is known to be working with [Terraform](https://releases.hashicorp.com/terraform/) version 0.12.
-Maximum compatible version is 0.12.12.
-{{% /notice %}}
-
-{{% notice note %}}
-The script deploys an `m5n.large` EC2 instance type by default, optimized for improved network throughput and packet rate performance,
-for the Submariner gateway node. Please ensure that the AWS Region you deploy to supports this instance type. Alternatively, you can
-customize the AWS instance type as shown below.
-{{% /notice %}}
-
-{{< include "/resources/shared/openshift/run_prep_for_subm.md" >}}
+{{% cloud-prepare/intro %}}
+{{% cloud-prepare/aws clusters="cluster-a,cluster-b" %}}
 
 ### Install `subctl`
 
