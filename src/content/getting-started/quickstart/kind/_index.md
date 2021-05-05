@@ -78,7 +78,7 @@ For more information on interacting with kind, please refer to the [kind documen
 
 #### Install `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 #### Use cluster1 as Broker
 
