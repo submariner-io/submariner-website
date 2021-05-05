@@ -13,7 +13,7 @@ In addition to Operator and `subctl`, Submariner also provides [Helm Charts](hel
 
 ## Installing `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ## Deployment of the Broker
 

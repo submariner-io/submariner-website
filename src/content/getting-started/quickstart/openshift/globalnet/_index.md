@@ -76,7 +76,7 @@ customize the AWS instance type as shown below.
 
 ### Install `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ### Install Submariner with Service Discovery and Globalnet
 

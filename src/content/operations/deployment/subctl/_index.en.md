@@ -12,7 +12,7 @@ Operator](https://github.com/submariner-io/submariner-operator)
 
 ## Installation
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ### Installing specific versions
 

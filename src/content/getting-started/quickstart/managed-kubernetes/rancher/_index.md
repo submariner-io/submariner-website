@@ -9,7 +9,7 @@ weight: 20
 
 ### Install subctl
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 Obtain the kubeconfig files from the Rancher UI for each of your clusters, placing them in the respective kubeconfigs.
 

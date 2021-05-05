@@ -130,7 +130,7 @@ export ENABLE_HA=true
 
 ### Submariner Installation
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 #### Install Submariner with Service Discovery
 

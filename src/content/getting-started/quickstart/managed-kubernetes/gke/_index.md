@@ -110,7 +110,7 @@ After this, the clusters are finally ready for Submariner!
 
 ## Deploy Submariner
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 Deploy the [Broker](https://submariner.io/getting-started/architecture/broker/) on cluster-a.
 
