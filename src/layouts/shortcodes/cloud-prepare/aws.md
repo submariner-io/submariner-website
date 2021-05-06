@@ -40,7 +40,7 @@ subctl cloud prepare aws --infra-id $infra_id --region $region {{ with $.Get "na
 
 {{- end }}
 
-Note that certain parameters, such as the IPsec UDP ports and AWS instance type for the gateway,
+Note that certain parameters, such as the tunnel UDP port and AWS instance type for the gateway,
 can be customized. For example:
 
 ```bash
