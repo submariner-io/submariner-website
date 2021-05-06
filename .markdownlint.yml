@@ -6,7 +6,11 @@ first-line-heading: false
 line-length:
   line_length: 140
 
-# Allow HTML span elements to set font sizes
+# Allow HTML span elements to set font sizes and for shortcodes
 no-inline-html:
   allowed_elements:
+    - div
+    - li
+    - p
     - span
+    - ul
