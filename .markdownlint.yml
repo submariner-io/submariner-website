@@ -9,6 +9,7 @@ line-length:
 # Allow HTML span elements to set font sizes and for shortcodes
 no-inline-html:
   allowed_elements:
+    - code
     - div
     - li
     - p
