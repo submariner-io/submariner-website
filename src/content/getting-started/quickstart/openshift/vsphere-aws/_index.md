@@ -62,7 +62,7 @@ Default output format [None]: text
 
 In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address conflicts with **cluster-a**. You can change
 the IP addresses block and prefix based on your requirements. For more information on IPv4 CIDR conversion,
-please check [this page](https://www.ipaddressguide.com/cidr).
+please check [this page](https://account.arin.net/public/cidrCalculator).
 
 In this example, we will use the following IP ranges:
 
@@ -102,7 +102,7 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 ### Submariner Installation
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 #### Install Submariner with Service Discovery
 

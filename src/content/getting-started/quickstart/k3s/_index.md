@@ -78,7 +78,7 @@ Next, copy kubeconfig.cluster-b to node-a.
 
 #### Install `subctl` on node-a
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 #### Use cluster-a as the Broker
 

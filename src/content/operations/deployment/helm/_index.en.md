@@ -109,7 +109,7 @@ tests embedded in the `subctl` command line tool via the `subctl verify` command
 
 ### Install `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ### Run the verification
 

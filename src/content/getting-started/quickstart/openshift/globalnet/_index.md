@@ -63,7 +63,7 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 ### Install `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ### Install Submariner with Service Discovery and Globalnet
 

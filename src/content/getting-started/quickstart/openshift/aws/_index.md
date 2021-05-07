@@ -27,7 +27,7 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 
 ### Install `subctl`
 
-{{< subctl-install >}}
+{{% subctl-install %}}
 
 ### Install Submariner with Service Discovery
 
