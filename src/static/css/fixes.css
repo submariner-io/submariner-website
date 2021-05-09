@@ -1,0 +1,13 @@
+/* Fixes notices to encompass all content */
+div.notices.info {
+    background: #FFF2DB;
+}
+div.notices.warning {
+    background: #FAE2E2;
+}
+div.notices.note {
+    background: #E7F2FA;
+}
+div.notices.tip {
+    background: #E6F9E6;
+}

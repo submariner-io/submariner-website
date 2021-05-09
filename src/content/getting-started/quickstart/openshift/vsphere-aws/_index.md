@@ -97,36 +97,8 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 #### Prepare AWS Cluster for Submariner
 
-{{< include "/resources/shared/openshift/download_prep_for_subm.md" >}}
-
-{{% notice info %}}
-Please note that  `oc`, `aws-cli`, `terraform`, and `wget` need to be installed before the `prep_for_subm.sh` script can be run.
-Also note that the script is known to be working with [Terraform](https://releases.hashicorp.com/terraform/) version 0.12.
-Maximum compatible version is 0.12.12.
-{{% /notice %}}
-
-{{% notice note %}}
-The script deploys an `m5n.large` EC2 instance type by default, optimized for improved network throughput and packet rate performance,
-for the Submariner gateway node. Please ensure that the AWS Region you deploy to support this instance type. Alternatively, you can
-customize the AWS instance type as shown below.
-{{% /notice %}}
-
-* Modify the IPsec UDP ports and run the `prep_for_subm.sh` script for **cluster-b**:
-
-```bash
-export IPSEC_NATT_PORT=4501
-export IPSEC_IKE_PORT=501
-```
-
-* To deploy the gateway in HA mode set the ENABLE_HA flag:
-
-```bash
-export ENABLE_HA=true
-```
-
-```bash
-./prep_for_subm.sh cluster-b # respond "yes" when Terraform asks for approval, or otherwise add the -auto-approve flag
-```
+{{% cloud-prepare/intro %}}
+{{% cloud-prepare/aws clusters="cluster-b" nattPort=4501 %}}
 
 ### Submariner Installation
 
