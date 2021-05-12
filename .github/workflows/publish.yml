@@ -10,6 +10,7 @@ on:
 jobs:
   publish:
     name: Build and Publish
+    if: github.repository_owner == 'submariner-io'
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
