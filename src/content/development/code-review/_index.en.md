@@ -114,6 +114,11 @@ If a PR (child) is dependent on another PR (parent), irrespective of the project
 workflow will add a `dependent` label to the child PR. The workflow will fail until the parent PR is merged and will pass once the parent
 PR is merged. This will prevent merging the child PR until the parent PR is merged.
 
+### Test new functionality
+
+As new functionality is added, tests of that functionality should be added to automated test suites.
+As far as possible, such tests should be added in the same PR that adds the feature.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
