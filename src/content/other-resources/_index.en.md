@@ -9,12 +9,15 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Conference Presentations
 
-1. DevConf.CZ 2021 [video recording](https://www.youtube.com/watch?v=-HE9iq34Zj8)
-2. Computing on the Edge with Kubernetes 2020 [video recording](https://www.youtube.com/watch?v=x7PbyTVEXFg)
-3. KubeCon China 2019
+1. *ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU 2021
+[video recording](https://youtu.be/BnbMpCbqyBk)
+2. *Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU 2021 [video recording](https://youtu.be/mWQetXFVrao)
+3. *Connecting Kubernetes Clusters with Submariner*, DevConf.CZ 2021 [video recording](https://www.youtube.com/watch?v=-HE9iq34Zj8)
+4. *Multicluster Network Connectivity Submariner*, Computing on the Edge with Kubernetes 2020 [video recording](https://www.youtube.com/watch?v=x7PbyTVEXFg)
+5. *Hybrid Cloud and Multicluster Service Discovery*, KubeCon China 2019
    [slides](https://static.sched.com/hosted_files/kccncosschn19eng/6b/Hybrid%20Cloud%20and%20Multi-Cluster%20Service%20Connectivity.pdf) and
 [video recording](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d)
-4. KubeCon North America 2019 [slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf)
+6. *Solving Multicluster Network Connectivty with Submariner*, KubeCon North America 2019 [slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf)
    and [video recording](https://www.youtube.com/watch?v=jMvuchSMCKU&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien)
 
 ## Demo Recordings
