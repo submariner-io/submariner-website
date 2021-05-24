@@ -99,6 +99,8 @@ are expected to remain active contributors to the community.
 **Note:** Members who frequently contribute code are expected to proactively
 perform code reviews and work towards becoming a committer.
 
+Members can be removed by stepping down or by two thirds vote of Project Owners.
+
 ## Committers
 
 Committers are able to review code for quality and correctness on some part of
@@ -154,6 +156,8 @@ in an CODEOWNERS file:
 * Demonstrate sound technical judgement
 * Mentor contributors and reviewers
 
+Committers can be removed by stepping down or by two thirds vote of Project Owners.
+
 ## Project Owner
 
 Project owners are the technical authority for the Submariner project. They
@@ -180,6 +184,23 @@ The following apply to people who would be an owner:
     meetings)
   * Identifying subtle or complex issues in designs and implementation PRs
 * Directly contributed to the project through implementation and / or review
+
+### Owner Removal and Future Elected Governance
+
+Removal of Project Owners is currently frozen except for stepping down or violations of the Code of Conduct. This is a temporary governance
+step to define a removal process for extreme cases while protecting the project from dominance by a company. Once the Submariner community
+is diverse enough to replace Project Owners with an elected governance system, the project should do so. If the project hasn't replaced
+Project Owners with elected governance by June 1st 2023, and if there are committers from at least three different companies, the project
+defaults to replacing Project Owners with a Technical Steering Committee elected by [OpenDaylight's TSC Election
+System](https://wiki.opendaylight.org/display/ODL/TSC+Election+Process) with a single Committer at Large Represented Group (defined below)
+and a 49% company cap.
+
+```text
+Min Seats: 5
+Max Seats: 5
+Voters: Submariner Committers
+Duplicate Voter Strategy: Vote-per-Person
+```
 
 ### Owner Responsibilities and Privileges
 
