@@ -16,6 +16,8 @@ relevant to our structure or possible with our tooling:**
 * **We hope to eventually move to Kubernetes OWNERS and Prow, but until we do so we
   can't support advanced role-based automation (reviewers vs approvers;
   PR workflow commands like /okay-to-test, /lgtm, /approved).**
+* **Project Owners are given responsibility for some tasks that are handled by dedicated teams in Kubernetes (security responses, Code of
+  Conduct violations, and managing project funds). Submariner aspires to create dedicated teams for these tasks as the community grows.**
 
 ---
 
@@ -193,6 +195,9 @@ The following apply to people who would be an owner:
 * Ensure a healthy process for discussion and decision making is in place
 * Work with other project owners to maintain the project's overall health and
   success holistically
+* Receive security disclosures and ensure an adequate response.
+* Receive reports of Code of Conduct violations and ensure an adequate response.
+* Decide how funds raised by the project are spent.
 
 [parent process]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/community-membership.md
 [code reviews]: ../../development/code-review
