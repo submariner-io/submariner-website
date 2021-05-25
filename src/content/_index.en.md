@@ -11,8 +11,6 @@ centers, and regions.
 
 Submariner is completely open source, and designed to be network plugin (CNI) agnostic.
 
-Submariner is a Cloud Native Computing Foundation sandbox project.
-
 ## What Submariner Provides
 
 * Cross-cluster L3 connectivity using encrypted VPN tunnels
