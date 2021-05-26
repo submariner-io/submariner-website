@@ -9,44 +9,43 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Conference Presentations
 
-1. *ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU 2021
-[video recording](https://youtu.be/BnbMpCbqyBk)
-2. *Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU 2021 [video recording](https://youtu.be/mWQetXFVrao)
-3. *Connecting Kubernetes Clusters with Submariner*, DevConf.CZ 2021 [video recording](https://www.youtube.com/watch?v=-HE9iq34Zj8)
-4. *Multicluster Network Connectivity Submariner*, Computing on the Edge with Kubernetes 2020 [video recording](https://www.youtube.com/watch?v=x7PbyTVEXFg)
-5. *Hybrid Cloud and Multicluster Service Discovery*, KubeCon China 2019
-   [slides](https://static.sched.com/hosted_files/kccncosschn19eng/6b/Hybrid%20Cloud%20and%20Multi-Cluster%20Service%20Connectivity.pdf) and
-[video recording](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d)
-6. *Solving Multicluster Network Connectivty with Submariner*, KubeCon North America 2019 [slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf)
-   and [video recording](https://www.youtube.com/watch?v=jMvuchSMCKU&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien)
+<!-- markdownlint-disable line-length -->
+* [*Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU (05/2021)](https://youtu.be/mWQetXFVrao)
+* [*ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU (05/2021)
+](https://youtu.be/BnbMpCbqyBk)
+* [*Connecting Kubernetes Clusters with Submariner*, DevConf.CZ (03/2021)](https://www.youtube.com/watch?v=-HE9iq34Zj8)
+* [*Multicluster Network Connectivity Submariner*, Computing on the Edge with Kubernetes (10/2020)](https://www.youtube.com/watch?v=x7PbyTVEXFg)
+* [*Hybrid Cloud and Multicluster Service Discovery*, KubeCon China (07/2019)](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d) ([slides](https://static.sched.com/hosted_files/kccncosschn19eng/6b/Hybrid%20Cloud%20and%20Multi-Cluster%20Service%20Connectivity.pdf))
+* [*Solving Multicluster Network Connectivty with Submariner*, KubeCon North America (11/2019)](https://www.youtube.com/watch?v=jMvuchSMCKU&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien) ([slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf))
+<!-- markdownlint-enable line-length -->
 
 ## Demo Recordings
 
-1. [Submariner in 60s](https://www.youtube.com/watch?v=pQgUWiGtKqM)
-2. [Deploying Submariner with `subctl`](https://www.youtube.com/watch?v=cInmBXuZsU8)
-3. [Connecting hybrid Kubernetes clusters using Submariner](https://www.youtube.com/watch?v=fMhZRNn0fxQ)
-4. [Cross-cluster service discovery in Submariner using Lighthouse](https://www.youtube.com/watch?v=tXsemQPNhyQ)
+* [Submariner in 60s (05/2020)](https://www.youtube.com/watch?v=pQgUWiGtKqM)
+* [Connecting hybrid Kubernetes clusters using Submariner (03/2020)](https://www.youtube.com/watch?v=fMhZRNn0fxQ)
+* [Cross-cluster service discovery in Submariner using Lighthouse (03/2020)](https://www.youtube.com/watch?v=tXsemQPNhyQ)
+* [Deploying Submariner with `subctl` (12/2019)](https://www.youtube.com/watch?v=cInmBXuZsU8)
 
 ## Blogs
-<!-- markdownlint-disable line-length -->
-1. [Geographically Distributed Stateful Workloads Part One: Cluster Preparation](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-one-cluster-preparation)
-2. [Geographically Distributed Stateful Workloads Part Two: CockroachDB](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb)
-3. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
-4. [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
-5. [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
-6. [Connecting managed clusters with Submariner in Red Hat Advanced Cluster Management for Kubernetes](https://www.openshift.com/blog/connecting-managed-clusters-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
-7. [Deep Dive with RHACM and Submariner - Connecting multicluster overlay networks](https://rcarrata.com/openshift/rhacm-submariner/)
-8. [Connecting stateful applications in multicluster environments with RHACM and Submariner](https://rcarrata.com/openshift/rhacm-submariner-2/)
+
+* [Connecting stateful applications in multicluster environments with RHACM and Submariner (04/2021)](https://rcarrata.com/openshift/rhacm-submariner-2/)
+* [Deep Dive with RHACM and Submariner - Connecting multicluster overlay networks (04/2021)](https://rcarrata.com/openshift/rhacm-submariner/)
+* [Connecting managed clusters with Submariner in Red Hat Advanced Cluster Management for Kubernetes (04/2021)](https://www.openshift.com/blog/connecting-managed-clusters-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
+* [Geographically Distributed Stateful Workloads Part One: Cluster Preparation (11/2020)](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-one-cluster-preparation)
+* [Geographically Distributed Stateful Workloads Part Two: CockroachDB (11/2020)](https://www.openshift.com/blog/geographically-distributed-stateful-workloads-part-two-cockroachdb)
+* [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1) (08/2020)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
+* [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2) (08/2020)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
+* [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner (02/2020)](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
 
 ## SIG Presentations
 
-1. [CNCF SIG-Network introduction to Submariner and consideration for CNCF Sandbox donation (2021/03/18)](https://youtu.be/R5F8l9ursBk?t=878)
-2. [K8s SIG-Multicluster demo of Submariner's KEP1645 Multicluster Services implementation (2020/09/22)](https://youtu.be/bx4z9sMX8FM?t=1350)
-3. [K8s SIG-Multicluster demo of Submariner's multicluster networking deployed by Submariner's Operator and `subctl` (2019/12/17)](https://youtu.be/4C4kc9AOz4M?t=273)
+* [CNCF SIG-Network introduction to Submariner and consideration for CNCF Sandbox donation (2021/03/18)](https://youtu.be/R5F8l9ursBk?t=878)
+* [K8s SIG-Multicluster demo of Submariner's KEP1645 Multicluster Services implementation (2020/09/22)](https://youtu.be/bx4z9sMX8FM?t=1350)
+* [K8s SIG-Multicluster demo of Submariner's multicluster networking deployed by Submariner's Operator and `subctl` (2019/12/17)](https://youtu.be/4C4kc9AOz4M?t=273)
 
 ## Academic Papers
 
-1. [Kubernetes and the Edge?](https://hal.inria.fr/hal-02972686/document)
+* [Kubernetes and the Edge? (10/2020)](https://hal.inria.fr/hal-02972686/document)
 
 If you find additional material that isn't listed here, please feel free to add it to this page by editing it.
 The website contributing guide is [here](../development/website).
