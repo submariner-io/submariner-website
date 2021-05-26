@@ -78,6 +78,7 @@ navigate to the [releases](https://github.com/submariner-io/releases) repository
    ```yaml
    version: v0.8.0
    name: 0.8.0
+   branch: release-0.8
    status: branch
    ```
 
