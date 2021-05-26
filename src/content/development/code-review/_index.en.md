@@ -121,7 +121,7 @@ As far as possible, such tests should be added in the same PR that adds the feat
 
 ### Full end-to-end testing of new pull requests
 
-On some repositories, full E2E testing of pull requests will be done once a label `ready-to-test` has benn assigned to the request.
+On some repositories, full E2E testing of pull requests will be done once a label `ready-to-test` has been assigned to the request.
 The label will be automatically assigned once the PR reaches the necessary number of approvals.
 
 You can assign this label manually to the PR in order to trigger the full E2E test suite.
