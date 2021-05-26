@@ -14,14 +14,15 @@ Therefore the releases for each individual project must be created in a specific
 
 The Go dependency hierarchy flow is as follows:
 
-`shipyard` <- `admiral` <- `[submariner, lighthouse]` <- `submariner-operator`
+`shipyard` <- `admiral` <- `[submariner, lighthouse, cloud-prepare]` <- `submariner-operator`
 
 Note that the `submariner` and `lighthouse` projects are siblings and thus do not depend on one another. Also the
 `submariner-operator` components expect that `lighthouse` and `submariner` are aligned on the same exact version.
+The cloud-prepare library is consumed by the operator as well.
 
 The Docker image dependency hierarchy flow is as follows:
 
-`subctl binary` <- `shipyard dapper base image` <- `[admiral, submariner, lighthouse, submariner-operator]`
+`subctl binary` <- `shipyard dapper base image` <- `[admiral, cloud-prepare, submariner, lighthouse, submariner-operator]`
 
 The Dapper base image that is provided by `shipyard` for building and E2E tests in all of the other projects pulls in the
 `subctl` binary.
@@ -151,13 +152,13 @@ Once the pull request is merged, it will trigger a CI job to create an
 [admiral release](https://github.com/submariner-io/admiral/releases) and pull requests in the consuming projects to pin them
 to the new version in preparation for the subsequent steps.
 
-### Step 3: Create releases for the `lighthouse` and `submariner` projects
+### Step 3: Create releases for the `cloud-prepare`, `lighthouse` and `submariner` projects
 
-Once the pull requests to pin the `lighthouse` and `submariner` projects to the new `admiral` version are merged:
+Once the pull requests to pin the `cloud-prepare`, `lighthouse` and `submariner` projects to the new `admiral` version are merged:
 
 1) On your releases repository fork, either reuse the previous branch or create a new one.
 
-2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner` and
+2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner`, `cloud-prepare` and
    `lighthouse` components with their latest commit ID hashes:
 
    ```diff
@@ -166,6 +167,7 @@ Once the pull requests to pin the `lighthouse` and `submariner` projects to the 
     components:
       shipyard: <hash goes here>
       admiral: <hash goes here>
+   +  cloud-prepare: <hash goes here>
    +  lighthouse: <hash goes here>
    +  submariner: <hash goes here>
    ```
@@ -173,6 +175,7 @@ Once the pull requests to pin the `lighthouse` and `submariner` projects to the 
 3) Commit the modified file, create a new pull request, and have it reviewed and merged.
 
 Once the pull request is merged, it will trigger a CI job to create
+[cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
 [lighthouse](https://github.com/submariner-io/lighthouse/releases) and
 [submariner](https://github.com/submariner-io/submariner/releases) releases and a pull request to pin the consuming
 `submariner-operator` project to the new version.
@@ -208,6 +211,7 @@ Once the pull request to pin the `submariner-operator` has been merged, we can c
     components:
       shipyard: <hash goes here>
       admiral: <hash goes here>
+      cloud-prepare: <hash goes here>
       lighthouse: <hash goes here>
       submariner: <hash goes here>
    +  submariner-charts: <hash goes here>
