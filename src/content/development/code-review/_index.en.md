@@ -119,6 +119,13 @@ PR is merged. This will prevent merging the child PR until the parent PR is merg
 As new functionality is added, tests of that functionality should be added to automated test suites.
 As far as possible, such tests should be added in the same PR that adds the feature.
 
+### Full end-to-end testing of new pull requests
+
+On some repositories, full E2E testing of pull requests will be done once a label `ready-to-test` has benn assigned to the request.
+The label will be automatically assigned once the PR reaches the necessary number of approvals.
+
+You can assign this label manually to the PR in order to trigger the full E2E test suite.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
