@@ -95,26 +95,26 @@ openshift-install create cluster --dir cluster-b
 When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
 `kubeadmin` user, display in your terminal.
 
-#### Prepare AWS Cluster for Submariner
+### Install `subctl`
+
+{{% subctl-install %}}
+
+### Prepare AWS Cluster for Submariner
 
 {{% cloud-prepare/intro %}}
 {{% cloud-prepare/aws clusters="cluster-b" nattPort=4501 %}}
 
-### Submariner Installation
-
-{{% subctl-install %}}
-
-#### Install Submariner with Service Discovery
+### Install Submariner with Service Discovery
 
 To install Submariner with multi-cluster service discovery, follow the steps below:
 
-##### Use cluster-b (AWS) as Broker with Service Discovery enabled
+#### Use cluster-b (AWS) as Broker with Service Discovery enabled
 
 ```bash
 subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig
 ```
 
-##### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker
+#### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker
 
 ```bash
 subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --ikeport 501 --nattport 4501
