@@ -20,14 +20,14 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 {{< include "/resources/shared/openshift/setup_aws.md" >}}
 {{< include "/resources/shared/openshift/create_clusters.md" >}}
 
+### Install `subctl`
+
+{{% subctl-install %}}
+
 ### Prepare AWS Clusters for Submariner
 
 {{% cloud-prepare/intro %}}
 {{% cloud-prepare/aws clusters="cluster-a,cluster-b" %}}
-
-### Install `subctl`
-
-{{% subctl-install %}}
 
 ### Install Submariner with Service Discovery
 

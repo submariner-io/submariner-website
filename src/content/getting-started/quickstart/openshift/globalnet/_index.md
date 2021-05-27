@@ -56,14 +56,14 @@ openshift-install create cluster --dir cluster-b
 When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
 `kubeadmin` user, display in your terminal.
 
+### Install `subctl`
+
+{{% subctl-install %}}
+
 ### Prepare AWS Clusters for Submariner
 
 {{% cloud-prepare/intro %}}
 {{% cloud-prepare/aws clusters="cluster-a,cluster-b" %}}
-
-### Install `subctl`
-
-{{% subctl-install %}}
 
 ### Install Submariner with Service Discovery and Globalnet
 
