@@ -6,20 +6,6 @@ Please ensure that the AWS Region you deploy to supports this instance type.
 Alternatively, you can choose to deploy using a different instance type.</p>
 </div>
 
-<!-- Hugo doesn't allow shortcodes in shortcodes, so use HTML -->
-<div class="notices warning">
-<p>The following permissions need to be enabled in IAM on the <code>openshift-machine-api</code> user for your cluster:</p>
-<ul>
-<li>CreateTags</li>
-<li>DeleteTags</li>
-<li>CreateSecurityGroup</li>
-<li>DeleteSecurityGroup</li>
-<li>AuthorizeSecurityGroupIngress</li>
-<li>RevokeSecurityGroupIngress</li>
-<li>DescribeInstanceTypeOfferings</li>
-</ul>
-</div>
-
 You need to extract your infra ID and region in order to use the command.
 Its possible to extract them from the `metadata.json` file that the OpenShift Installer created:
 
