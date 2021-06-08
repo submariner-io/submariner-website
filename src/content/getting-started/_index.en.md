@@ -70,11 +70,8 @@ tested with the following network (CNI) Plugins:
 
 ## Deployment
 
-The available methods for deployment are:
+Submariner is deployed and managed using its Operator. [Submariner's Operator](https://github.com/submariner-io/submariner-operator) can be
+deployed using [subctl](../operations/deployment), [Helm](../operations/deployment/helm), or directly.
 
-* [subctl](../operations/deployment)
-* [Operator](https://github.com/submariner-io/submariner-operator)
-* [Helm](../operations/deployment/helm)
-
-`subctl` greatly simplifies the deployment of Submariner, and is therefore the recommended deployment
-method.
+`subctl` is the recommended deployment method because it has the most refined deployment user experience and additionally provides testing
+and bug-diagnosing capabilities.
