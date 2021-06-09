@@ -9,6 +9,7 @@ pre = "<b>4. </b>"
 * [Code Review Guide](code-review)
 * [Contributing to the Website](website)
   * [Docs Style Guide](website/style-guide)
+* [Licenses](licenses)
 * [Release Process](release-process)
 * [Security](security)
   * [Security Reporting](security/reporting)
