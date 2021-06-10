@@ -22,7 +22,7 @@ can [request an invite to Kubernetes' Slack instance](https://slack.k8s.io/).
 
 Submariner's meetings are open to everyone. All meetings are documented on [Submariner's Community
 Calendar](https://calendar.google.com/calendar/r?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ).
-The weekly [Submariner Community Meeting](https://tinyurl.com/wfbx37q) (Tuesdays at 5:00pm CET) is a good place to start.
+The bi-weekly [Submariner Users & Community Meeting](https://tinyurl.com/54mcwfbe) (Tuesdays at 5:00pm CET) is a good place to start.
 
 #### Mailing List
 
