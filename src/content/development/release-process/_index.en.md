@@ -65,16 +65,15 @@ for the job listed but the important one is `Release Images`. When complete, the
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
-### Step 0: Create a stable branch (if necessary)
+### Sometimes: Create stable branches for stable releases
 
-If you're creating a new stable release, the release automation process can create the stable branches. To do so,
-navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
+If you're creating release that will receive backports, a stable release not a milestone release, you need to create stable branches for
+each repository. The release automation process can do this for you. To do so, navigate to the
+[releases](https://github.com/submariner-io/releases) repository.
 
-1) Create a new branch for the intended release.
+1) Create a new file in the `releases` directory (you can copy the `example.yaml` file). For our example, we'll name it `v0.8.0.yaml`.
 
-2) Create a new file in the `releases` directory (you can copy the `example.yaml` file). For our example, we'll name it `v0.8.0.yaml`.
-
-3) Fill in the general fields for the release with the `status` field set to `branch`.
+2) Fill in the `version`/`name`/`branch` fields for the release. The `status` field must set to `branch` for this phase.
 
    ```yaml
    version: v0.8.0
@@ -83,20 +82,18 @@ navigate to the [releases](https://github.com/submariner-io/releases) repository
    status: branch
    ```
 
-4) Commit the new file, create a new pull request, and have it reviewed and merged.
+3) Commit the new file, create a new pull request, and have it reviewed and merged.
 
 Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
 branch.
 
 ### Step 1: Create release for the `shipyard` project
 
-Navigate to the [releases](https://github.com/submariner-io/releases) repository and fork it.
+Navigate to the [releases](https://github.com/submariner-io/releases) repository.
 
-1) Create a new branch for the intended release.
+1) Create a new file in the `releases` directory (you can copy the `example.yaml file`). For our example, we'll name it `v0.8.0.yaml`.
 
-2) Create a new file in the `releases` directory (you can copy the `example.yaml file`). For our example, we'll name it `v0.8.0.yaml`.
-
-3) Fill in the general fields for the release with the `status` field set to `shipyard`. Also add the `shipyard` component with
+2) Fill in the general fields for the release with the `status` field set to `shipyard`. Also add the `shipyard` component with
    the hash of the desired or latest commit ID on which to base the release. To obtain the latest, first navigate to
    the [shipyard project](https://github.com/submariner-io/shipyard). The heading above the file list shows the latest
    commit on the devel branch including the first 7 hex digits of the commit ID hash.
@@ -104,7 +101,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
    If this is not a final release, set the `pre-release` field to `true` (that is uncomment the `pre-release` line below).
    This includes release candidates. This is important so it is not labeled as the Latest release in GitHub.
 
-   When releasing on a stable branch, make sure to specify the branch as outlined below.
+   When releasing on a stable branch, make sure to specify the branch as outlined below. Otherwise, omit it.
 
    ```yaml
    version: v0.8.0
@@ -116,7 +113,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
      shipyard: <hash goes here>
    ```
 
-4) Commit the new files, create a new pull request, and have it reviewed and merged.
+3) Commit the new files, create a new pull request, and have it reviewed and merged.
 
 Once the pull request is merged, it will trigger a CI job to create a
 [shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
