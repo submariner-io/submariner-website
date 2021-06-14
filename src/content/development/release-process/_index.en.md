@@ -82,7 +82,7 @@ each repository. The release automation process can do this for you. To do so, n
    status: branch
    ```
 
-3) Commit the new file, create a new pull request, and have it reviewed and merged.
+3) Commit your changes, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
 branch.
@@ -113,7 +113,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
      shipyard: <hash goes here>
    ```
 
-3) Commit the new files, create a new pull request, and have it reviewed and merged.
+3) Commit your changes, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to create a
 [shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
@@ -129,10 +129,7 @@ On successful completion, the generated image version (`0.8.0`) should be availa
 Once the pull request to pin the `admiral` project to the new `shipyard` version is merged, we can proceed to updating the
 release YAML file to create an `admiral` release.
 
-1) On your releases repository fork, you can either reuse the previous branch or create a new one. For the former, be sure
-   to first rebase the branch on the latest upstream.
-
-2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `admiral` and add the `admiral` component with
+1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `admiral` and add the `admiral` component with
    the latest commit ID hash:
 
    ```diff
@@ -143,7 +140,7 @@ release YAML file to create an `admiral` release.
    +  admiral: <hash goes here>
    ```
 
-3) Commit the modified file, create a new pull request, and have it reviewed and merged.
+2) Commit your changes, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to create an
 [admiral release](https://github.com/submariner-io/admiral/releases) and pull requests in the consuming projects to pin them
@@ -153,9 +150,7 @@ to the new version in preparation for the subsequent steps.
 
 Once the pull requests to pin the `cloud-prepare`, `lighthouse` and `submariner` projects to the new `admiral` version are merged:
 
-1) On your releases repository fork, either reuse the previous branch or create a new one.
-
-2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner`, `cloud-prepare` and
+1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner`, `cloud-prepare` and
    `lighthouse` components with their latest commit ID hashes:
 
    ```diff
@@ -169,7 +164,7 @@ Once the pull requests to pin the `cloud-prepare`, `lighthouse` and `submariner`
    +  submariner: <hash goes here>
    ```
 
-3) Commit the modified file, create a new pull request, and have it reviewed and merged.
+2) Commit your changes, make sure your branch is rebased properly, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to create
 [cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
@@ -197,9 +192,7 @@ For `lighthouse`:
 
 Once the pull request to pin the `submariner-operator` has been merged, we can create the final product release:
 
-1) On your releases repository fork, either reuse the previous branch or create a new one.
-
-2) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `released` and add the `submariner-operator`
+1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `released` and add the `submariner-operator`
    and `submariner-charts` components with their latest commit ID hashes:
 
    ```diff
@@ -215,7 +208,7 @@ Once the pull request to pin the `submariner-operator` has been merged, we can c
    +  submariner-operator: <hash goes here>
    ```
 
-3) Commit the modified file, create a new pull request, and have it reviewed and merged.
+2) Commit your changes, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to generate and tag the `submariner-operator` image which should be
 made available on Quay here:
@@ -238,7 +231,7 @@ If this is a final release, add a section for it on this website's [release note
 
 2) Open `src/content/releases/_index.en.md` and make changes.
 
-3) Commit the changes, create a pull request, and have it reviewed and merged.
+3) Commit your changes, create a pull request, and have it reviewed.
 
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/devel/src/content/community/releases/_index.en.md)
