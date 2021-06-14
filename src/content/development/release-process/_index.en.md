@@ -74,7 +74,8 @@ navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 2) Create a new file in the `releases` directory (you can copy the `example.yaml` file). For our example, we'll name it `v0.8.0.yaml`.
 
-3) Fill in the general fields for the release with the `status` field set to `branch`.
+3) Fill in the `version`/`name` fields for the release. The `branch` field is optional for releases targeting the default `devel` branch.
+   The `status` field must set to `branch` for this phase.
 
    ```yaml
    version: v0.8.0
