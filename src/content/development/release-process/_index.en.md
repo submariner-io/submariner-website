@@ -118,14 +118,12 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 3) Commit your changes, create a pull request, and have it reviewed.
 
-Once the pull request is merged, it will trigger a CI job to create a
-[shipyard release](https://github.com/submariner-io/submariner-operator/releases) and build the Dapper base image. In addition,
-it creates pull requests in the projects that consume `shipyard` to update them to the new version in preparation for the
-subsequent steps.
+4) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed, a
+   [Shipyard release](https://github.com/submariner-io/shipyard/releases) was created and the
+   [tagged Dapper base image is on Quay](https://quay.io/repository/submariner/shipyard-dapper-base?tab=tag).
 
-On successful completion, the generated image version (`0.8.0`) should be available on Quay here:
-
-> <https://quay.io/repository/submariner/shipyard-dapper-base?tab=tags>
+5) Pull requests will be created for projects that consume `shipyard` to update them to the new version in preparation for the subsequent
+   steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
 
 ### Step 2: Create release for the `admiral` project
 
