@@ -20,23 +20,17 @@ The container image dependency hierarchy is:
 
 Projects in brackets are siblings and do not depend on each other. Dependencies of siblings require all siblings to have aligned versions.
 
-## Release versions
+## Versions
 
-The `vx.x.x` version format is used for the git projects while `x.x.x` is used for Docker images.
+Version numbers are required to be formatted following the schema norms where they are used.
 
-The typical workflow is to first create release candidate(s) for testing before creating the final release. The suggested
-naming convention is to append `-rcN` to the final version, for example `v0.8.0-rc0`, `v0.8.0-rc1` etc.
-
-Sometimes you may want to create a specific project release for testing prior to creating a release candidate. In this
-case, the suggested naming convention is to append `-preN`.
-
-### Stable branches and versions
-
-Stable branches will be maintained for major and minor versions. For example, versions v0.8.0, v0.8.1 and
-any other 0.8.x releases will all be maintained and released on the `release-0.8` branch.
-
-The automated release process described here can also create these stable branches when necessary.
-The branch should be specified in the release YAML file. If a stable branch isn't specified, the development branch is used.
+* Git: `vx.y.z` (example: `v0.8.0`)
+* Containers: `x.y.z` (example: `0.8.0`)
+* Stable branches: `release-x.y` (example: `release-0.8`)
+* Milestone releases: Append `-mN` starting at 1 (example: `v0.8.0-m1`)
+* Release candidates: Append `-rcN` starting at 0 (example: `v0.8.0-rc0`)
+* Single-project testing release: Append `-preN` starting at 0 (example: `v0.8.0-pre0`)
+* Release errors: Append `.N` starting at 1 (example: `v0.8.0-m1.1`)
 
 ## Create Submariner product release
 
