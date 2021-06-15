@@ -4,28 +4,21 @@ date: 2020-03-18T16:03:26+01:00
 weight: 40
 ---
 
-This section describes how to create a Submariner product release. It is assumed that you are familiar with the various
-Submariner projects and their repositories and are familiar with Git and GitHub.
+These docs describe how to create a Submariner release.
 
-## Project dependencies
+## Ordering
 
-The Submariner projects have a dependency hierarchy with respect to their Go libraries and Docker images.
-Therefore the releases for each individual project must be created in a specific order.
+Submariner's projects have a dependency hierarchy among their Go libraries and container images, which drives their release order.
 
-The Go dependency hierarchy flow is as follows:
+The Go dependency hierarchy is:
 
 `shipyard` <- `admiral` <- `[submariner, lighthouse, cloud-prepare]` <- `submariner-operator`
 
-Note that the `submariner` and `lighthouse` projects are siblings and thus do not depend on one another. Also the
-`submariner-operator` components expect that `lighthouse` and `submariner` are aligned on the same exact version.
-The cloud-prepare library is consumed by the operator as well.
-
-The Docker image dependency hierarchy flow is as follows:
+The container image dependency hierarchy is:
 
 `subctl binary` <- `shipyard dapper base image` <- `[admiral, cloud-prepare, submariner, lighthouse, submariner-operator]`
 
-The Dapper base image that is provided by `shipyard` for building and E2E tests in all of the other projects pulls in the
-`subctl` binary.
+Projects in brackets are siblings and do not depend on each other. Dependencies of siblings require all siblings to have aligned versions.
 
 ## Release versions
 
