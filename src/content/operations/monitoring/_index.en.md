@@ -41,12 +41,8 @@ spec:
 
 ### OpenShift Setup
 
-OpenShift 4.5 or later can automatically discover the Submariner metrics.
-This requires enabling user workload monitoring; see the
-[OpenShift 4.5](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html/monitoring/monitoring-your-own-services)
-or
-[OpenShift 4.6](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.6/html/monitoring/enabling-monitoring-for-user-defined-projects)
-documentation for details.
+OpenShift 4.5 or later will automatically discover the Submariner metrics with service monitors in the
+`openshift-monitoring` namespace.
 
 ## Metrics Reference
 
