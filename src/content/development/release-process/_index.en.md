@@ -139,8 +139,8 @@ release YAML file to create an Admiral release.
 
 Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner projects to the new Admiral version are merged:
 
-1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner`, `cloud-prepare` and
-   `lighthouse` components with their latest commit ID hashes:
+1) Update the release YAML file `status` field to `projects` and add the `submariner`, `cloud-prepare` and `lighthouse` components with
+   their latest commit ID hashes:
 
    ```diff
    -status: admiral
@@ -153,29 +153,23 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
    +  submariner: <hash goes here>
    ```
 
-2) Commit your changes, make sure your branch is rebased properly, create a pull request, and have it reviewed.
+2) Commit your changes, create a pull request, and have it reviewed.
 
-Once the pull request is merged, it will trigger a CI job to create
-[cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
-[lighthouse](https://github.com/submariner-io/lighthouse/releases) and
-[submariner](https://github.com/submariner-io/submariner/releases) releases and a pull request to pin the consuming
-submariner-operator project to the new version.
+3) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed and the [cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
+[Lighthouse](https://github.com/submariner-io/lighthouse/releases), and
+[Submariner](https://github.com/submariner-io/submariner/releases) releases were created.
 
-On successful completion, the new image versions (`0.8.0`) should be available on Quay.
+4) Automation will create a pull request to pin submariner-operator to the released versions. Make sure that PRs is merged and the release
+   job passes.
 
-<!-- markdownlint-disable no-inline-html -->
-For Submariner:
+5) Verify images are available on Quay for the new version.
 
-> <https://quay.io/repository/submariner/submariner?tab=tags> <br>
-> <https://quay.io/repository/submariner/submariner-route-agent?tab=tags> <br>
-> <https://quay.io/repository/submariner/submariner-globalnet?tab=tags> <br>
-> <https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags>
-
-For Lighthouse:
-
-> <https://quay.io/repository/submariner/lighthouse-agent?tab=tags> <br>
-> <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
-<!-- markdownlint-enable no-inline-html -->
+   * [submariner/submariner](https://quay.io/repository/submariner/submariner?tab=tags)
+   * [submariner/submariner-route-agent](https://quay.io/repository/submariner/submariner-route-agent?tab=tags)
+   * [submariner/submariner-globalnet](https://quay.io/repository/submariner/submariner-globalnet?tab=tags)
+   * [submariner/submariner-networkplugin-syncer](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
+   * [submariner/lighthouse-agent](https://quay.io/repository/submariner/lighthouse-agent?tab=tags)
+   * [submariner/lighthouse-coredns](https://quay.io/repository/submariner/lighthouse-coredns?tab=tags)
 
 ### Step 4: Create Operator and Charts Releases
 
