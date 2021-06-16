@@ -173,10 +173,10 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
 
 ### Step 4: Create Operator and Charts Releases
 
-Once the pull request to pin submariner-operator has been merged, we can create the final product release:
+Once the pull request to pin submariner-operator has been merged, we can create the final release:
 
-1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `released` and add the `submariner-operator`
-   and `submariner-charts` components with their latest commit ID hashes:
+1) Update the release YAML file `status` field to `released`. Add the `submariner-operator` and `submariner-charts` components with their
+   latest commit ID hashes.
 
    ```diff
    -status: projects
@@ -193,18 +193,19 @@ Once the pull request to pin submariner-operator has been merged, we can create 
 
 2) Commit your changes, create a pull request, and have it reviewed.
 
-Once the pull request is merged, it will trigger a CI job to generate and tag the `submariner-operator` image which should be
-made available on Quay here:
+3) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed and the
+   [submariner-operator](https://github.com/submariner-io/submariner-operator/releases) release was created.
 
-> <https://quay.io/repository/submariner/submariner-operator?tab=tags>
+4) Verify images are available on Quay for the new version.
 
-The final product release will be created on the [releases repository](https://github.com/submariner-io/releases/releases)
-with a job triggered to publish the `subctl` binaries for the various platforms. These should be listed under the "Assets"
-section for the new release. If not then the job failed so correct the issue and re-run the job.
+   * [submariner/submariner-operator](https://quay.io/repository/submariner/submariner-operator?tab=tags)
 
-If the release wasn't marked as a `pre-release`, the release job will also create pull requests in each consuming project
-to unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each
-project to automatically pick up the latest changes to the base image.
+5) Verify `subctl` artifacts are avilable on the [releases repository](https://github.com/submariner-io/releases/releases) for the new
+   version.
+
+6) If the release wasn't marked as a `pre-release`, the releases/release job will also create pull requests in each consuming project to
+   unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
+   automatically pick up the latest changes to the base image.
 
 ### Step 5: Add Release Notes
 
