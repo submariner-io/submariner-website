@@ -34,8 +34,7 @@ Version numbers are required to be formatted following the schema norms where th
 
 ## Create Release
 
-The following sections outline the steps to be taken in order to create a full Submariner product release. As an example,
-we'll use version `v0.8.0`.
+The following sections are an ordered series of steps to create a Submariner relese.
 
 The release process is mostly automated and uses a YAML file created in the releases repository that describes the release.
 This file is updated for each step in the release process.
