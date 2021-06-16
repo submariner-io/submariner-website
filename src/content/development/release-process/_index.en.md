@@ -260,9 +260,17 @@ catalog.
 
 #### E-Mail
 
-* <https://bit.ly/submariner-dev>
-* <https://bit.ly/submariner-users>
+Once the release and release notes are published, make an announcement to both Submariner mailing lists.
+
+* [submariner-dev](https://groups.google.com/g/submariner-dev)
+* [submariner-users](https://groups.google.com/g/submariner-users)
+
+See the [v0.8.0 email example](https://groups.google.com/g/submariner-users/c/2F8Fzvi4mS4).
 
 #### Twitter
 
-* <https://twitter.com/submarinerio>
+Synthesize the release notes and summarize the key points in a Tweet. Link to the release notes for details.
+
+* [@submarinerio](https://twitter.com/submarinerio)
+
+See the [v0.8.0 Tweet example](https://twitter.com/submarinerio/status/1341347551396687872).
