@@ -26,7 +26,7 @@ cd submariner
 make deploy
 ```
 
-By default, the automation configuration in the main submariner-io/submariner repository deploys three clusters, with cluster1 configured as
+By default, the automation configuration in the main submariner-io/submariner repository deploys two clusters, with cluster1 configured as
 the Broker. See the [cluster-settings](https://github.com/submariner-io/submariner/blob/devel/scripts/cluster_settings) file for details.
 
 ### Deploy Manually
@@ -44,13 +44,12 @@ cd submariner
 make clusters
 ```
 
-This creates three Kubernetes clusters: cluster1, cluster2 and cluster3. To see the list of kind clusters, use the following command:
+This creates three Kubernetes clusters: cluster1 and cluster2. To see the list of kind clusters, use the following command:
 
 ```bash
 $ kind get clusters
 cluster1
 cluster2
-cluster3
 ```
 <!-- markdownlint-disable no-trailing-spaces -->
 To list the local Kubernetes contexts, use the following command:
@@ -58,9 +57,8 @@ To list the local Kubernetes contexts, use the following command:
 ```bash
 $ kubectl config get-contexts
 CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
-          cluster1   cluster1   cluster1   
-          cluster2   cluster2   cluster2   
-*         cluster3   cluster3   cluster3
+          cluster1   cluster1   cluster1      
+*         cluster2   cluster2   cluster2
 ```
 <!-- markdownlint-enable no-trailing-spaces -->
 
@@ -86,14 +84,14 @@ For more information on interacting with kind, please refer to the [kind documen
 subctl deploy-broker --kubeconfig output/kubeconfigs/kind-config-cluster1
 ```
 
-#### Join cluster2 and cluster3 to the Broker
+#### Join cluster1 and cluster2 to the Broker
 
 ```bash
-subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2 --natt=false
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster1 broker-info.subm --clusterid cluster1 --natt=false
 ```
 
 ```bash
-subctl join --kubeconfig output/kubeconfigs/kind-config-cluster3 broker-info.subm --clusterid cluster3 --natt=false
+subctl join --kubeconfig output/kubeconfigs/kind-config-cluster2 broker-info.subm --clusterid cluster2 --natt=false
 ```
 
 You now have a Submariner environment that you can experiment with.
@@ -106,21 +104,21 @@ This will perform automated verifications between the clusters.
 
 <!-- markdownlint-disable line-length -->
 ```bash
-export KUBECONFIG=output/kubeconfigs/kind-config-cluster1:output/kubeconfigs/kind-config-cluster2:output/kubeconfigs/kind-config-cluster3
-subctl verify --kubecontexts cluster2,cluster3 --only service-discovery,connectivity --verbose
+export KUBECONFIG=output/kubeconfigs/kind-config-cluster1:output/kubeconfigs/kind-config-cluster2
+subctl verify --kubecontexts cluster1,cluster2 --only service-discovery,connectivity --verbose
 ```
 <!-- markdownlint-enable line-length -->
 
 #### Verify Manually
 
-To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster3`.
+To manually verify the deployment, follow the steps below using either a headless or ClusterIP `nginx` service deployed in `cluster2`.
 
 ##### Deploy ClusterIP Service
 
 ```bash
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80
-subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 create deployment nginx --image=nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 expose deployment nginx --port=80
+subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster2 --namespace default nginx
 ```
 
 ##### Deploy Headless Service
@@ -130,17 +128,17 @@ Headless Services can only be exported on non-Globalnet deployments.
 {{% /notice %}}
 
 ```bash
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 create deployment nginx --image=nginx
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster3 expose deployment nginx --port=80 --cluster-ip=None
-subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster3 --namespace default nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 create deployment nginx --image=nginx
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 expose deployment nginx --port=80 --cluster-ip=None
+subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster2 --namespace default nginx
 ```
 
 ##### Verify
 
-Run `nettest` from `cluster2` to access the `nginx` service:
+Run `nettest` from `cluster1` to access the `nginx` service:
 
 ```bash
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster2 -n default  run --generator=run-pod/v1 \
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster1 -n default  run --generator=run-pod/v1 \
 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.clusterset.local
 ```
