@@ -12,11 +12,11 @@ Submariner's projects have a dependency hierarchy among their Go libraries and c
 
 The Go dependency hierarchy is:
 
-`shipyard` <- `admiral` <- `[submariner, lighthouse, cloud-prepare]` <- `submariner-operator`
+`shipyard` <- `admiral` <- [`submariner`, `lighthouse`, `cloud-prepare`] <- `submariner-operator`
 
 The container image dependency hierarchy is:
 
-`subctl binary` <- `shipyard dapper base image` <- `[admiral, cloud-prepare, submariner, lighthouse, submariner-operator]`
+`subctl` binary <- `shipyard-dapper-base` image <- [`admiral`, `cloud-prepare`, `submariner`, `lighthouse`, `submariner-operator`]
 
 Projects in brackets are siblings and do not depend on each other. Dependencies of siblings require all siblings to have aligned versions.
 
@@ -47,7 +47,7 @@ For most projects, after a release is created, another job will be initiated to 
 This will take several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down
 above the file list heading, select the tag for the new version. A small yellow circle icon should be present to the right
 of the file list heading which indicates a job is in progress. You can click it to see details. There may be several checks
-for the job listed but the important one is `Release Images`. When complete, the indicator icon will change to either a
+for the job listed but the important one is "Release Images". When complete, the indicator icon will change to either a
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
@@ -108,13 +108,13 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
    [Shipyard release](https://github.com/submariner-io/shipyard/releases) was created and the
    [tagged Dapper base image is on Quay](https://quay.io/repository/submariner/shipyard-dapper-base?tab=tag).
 
-5) Pull requests will be created for projects that consume `shipyard` to update them to the new version in preparation for the subsequent
+5) Pull requests will be created for projects that consume Shipyard to update them to the new version in preparation for the subsequent
    steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
 
 ### Step 2: Create Admiral Release
 
-Once the pull request to pin the `admiral` project to the new `shipyard` version is merged, we can proceed to updating the
-release YAML file to create an `admiral` release.
+Once the pull request to pin Admiral to the new Shipyard version is merged, we can proceed to updating the
+release YAML file to create an Admiral release.
 
 1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `admiral` and add the `admiral` component with
    the latest commit ID hash:
@@ -137,7 +137,7 @@ release YAML file to create an `admiral` release.
 
 ### Step 3: Create cloud-prepare, Lighthouse, and Submariner Releases
 
-Once the pull requests to pin the `cloud-prepare`, `lighthouse` and `submariner` projects to the new `admiral` version are merged:
+Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner projects to the new Admiral version are merged:
 
 1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `projects` and add the `submariner`, `cloud-prepare` and
    `lighthouse` components with their latest commit ID hashes:
@@ -159,19 +159,19 @@ Once the pull request is merged, it will trigger a CI job to create
 [cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
 [lighthouse](https://github.com/submariner-io/lighthouse/releases) and
 [submariner](https://github.com/submariner-io/submariner/releases) releases and a pull request to pin the consuming
-`submariner-operator` project to the new version.
+submariner-operator project to the new version.
 
 On successful completion, the new image versions (`0.8.0`) should be available on Quay.
 
 <!-- markdownlint-disable no-inline-html -->
-For `submariner`:
+For Submariner:
 
 > <https://quay.io/repository/submariner/submariner?tab=tags> <br>
 > <https://quay.io/repository/submariner/submariner-route-agent?tab=tags> <br>
 > <https://quay.io/repository/submariner/submariner-globalnet?tab=tags> <br>
 > <https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags>
 
-For `lighthouse`:
+For Lighthouse:
 
 > <https://quay.io/repository/submariner/lighthouse-agent?tab=tags> <br>
 > <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
@@ -179,7 +179,7 @@ For `lighthouse`:
 
 ### Step 4: Create Operator and Charts Releases
 
-Once the pull request to pin the `submariner-operator` has been merged, we can create the final product release:
+Once the pull request to pin submariner-operator has been merged, we can create the final product release:
 
 1) Edit the release yaml file (`v0.8.0.yaml`). Update the `status` field to `released` and add the `submariner-operator`
    and `submariner-charts` components with their latest commit ID hashes:
@@ -205,11 +205,11 @@ made available on Quay here:
 > <https://quay.io/repository/submariner/submariner-operator?tab=tags>
 
 The final product release will be created on the [releases repository](https://github.com/submariner-io/releases/releases)
-with a job triggered to publish the `subctl` binaries for the various platforms. These should be listed under the `Assets`
+with a job triggered to publish the `subctl` binaries for the various platforms. These should be listed under the "Assets"
 section for the new release. If not then the job failed so correct the issue and re-run the job.
 
 If the release wasn't marked as a `pre-release`, the release job will also create pull requests in each consuming project
-to unpin the `shipyard` Dapper base image version, that is set it back to `devel`. For ongoing development we want each
+to unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each
 project to automatically pick up the latest changes to the base image.
 
 ### Step 5: Add Release Notes
