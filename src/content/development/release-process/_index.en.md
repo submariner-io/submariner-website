@@ -32,7 +32,7 @@ Version numbers are required to be formatted following the schema norms where th
 * Single-project testing release: Append `-preN` starting at 0 (example: `v0.8.0-pre0`)
 * Release errors: Append `.N` starting at 1 (example: `v0.8.0-m1.1`)
 
-## Create Submariner product release
+## Create Release
 
 The following sections outline the steps to be taken in order to create a full Submariner product release. As an example,
 we'll use version `v0.8.0`.
@@ -52,7 +52,7 @@ for the job listed but the important one is `Release Images`. When complete, the
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
-### Sometimes: Create stable branches for stable releases
+### Stable Releases: Create Stable Branches
 
 If you're creating a stable release, you need to create a stable branch for backports in each repository. Milestone releases don't receive
 backports and therefore don't need branches.
@@ -77,7 +77,7 @@ The release automation process can create stable branches for you. To do so, nav
 Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
 branch.
 
-### Step 1: Create release for the `shipyard` project
+### Step 1: Create Shipyard Release
 
 Navigate to the [releases](https://github.com/submariner-io/releases) repository.
 
@@ -112,7 +112,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 5) Pull requests will be created for projects that consume `shipyard` to update them to the new version in preparation for the subsequent
    steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
 
-### Step 2: Create release for the `admiral` project
+### Step 2: Create Admiral Release
 
 Once the pull request to pin the `admiral` project to the new `shipyard` version is merged, we can proceed to updating the
 release YAML file to create an `admiral` release.
@@ -134,7 +134,7 @@ Once the pull request is merged, it will trigger a CI job to create an
 [admiral release](https://github.com/submariner-io/admiral/releases) and pull requests in the consuming projects to pin them
 to the new version in preparation for the subsequent steps.
 
-### Step 3: Create releases for the `cloud-prepare`, `lighthouse` and `submariner` projects
+### Step 3: Create cloud-prepare, Lighthouse, and Submariner Releases
 
 Once the pull requests to pin the `cloud-prepare`, `lighthouse` and `submariner` projects to the new `admiral` version are merged:
 
@@ -176,7 +176,7 @@ For `lighthouse`:
 > <https://quay.io/repository/submariner/lighthouse-coredns?tab=tags>
 <!-- markdownlint-enable no-inline-html -->
 
-### Step 4: Create the product release
+### Step 4: Create Operator and Charts Releases
 
 Once the pull request to pin the `submariner-operator` has been merged, we can create the final product release:
 
@@ -211,7 +211,7 @@ If the release wasn't marked as a `pre-release`, the release job will also creat
 to unpin the `shipyard` Dapper base image version, that is set it back to `devel`. For ongoing development we want each
 project to automatically pick up the latest changes to the base image.
 
-### Step 5: Add release notes
+### Step 5: Add Release Notes
 
 If this is a final release, add a section for it on this website's [release notes](../../community/releases/) page.
 
@@ -224,11 +224,11 @@ If this is a final release, add a section for it on this website's [release note
 Alternatively you can edit the file and create a pull request directly on GitHub
 [here](https://github.com/submariner-io/submariner-website/edit/devel/src/content/community/releases/_index.en.md)
 
-### Step 6: Verify the release
+### Step 6: Verify Release
 
 You can follow any of the [quick start guides](../../getting-started/quickstart).
 
-### Step 7: Update the Submariner Operator on OperatorHub.io
+### Step 7: Update OperatorHub.io
 
 The [community-operators](https://github.com/operator-framework/community-operators) Git repository
 is the source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
@@ -263,13 +263,13 @@ To publish the Submariner Operator to the community, perform the following steps
     [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
     and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
 
-### Step 8: Announce the release
+### Step 8: Announce Release
 
-#### Via E-Mail
+#### E-Mail
 
 * <https://bit.ly/submariner-dev>
 * <https://bit.ly/submariner-users>
 
-#### Via Twitter
+#### Twitter
 
 * <https://twitter.com/submarinerio>
