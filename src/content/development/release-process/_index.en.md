@@ -51,6 +51,14 @@ for the job listed but the important one is "Release Images". When complete, the
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
+### Final Releases: Add Release Notes
+
+If you're creating a release meant for general consumption, not a milestone or release candidate, [release notes](../../community/releases/)
+must also be created.
+
+It's best to start working with the broader community to create release notes well before the release. Create a PR to start the process, and
+work with contributors to get everything added and reviewed.
+
 ### Stable Releases: Create Stable Branches
 
 If you're creating a stable release, you need to create a stable branch for backports in each repository. Milestone releases don't receive
@@ -207,24 +215,11 @@ Once the pull request to pin submariner-operator has been merged, we can create 
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
    automatically pick up the latest changes to the base image.
 
-### Step 5: Add Release Notes
-
-If this is a final release, add a section for it on this website's [release notes](../../community/releases/) page.
-
-1) Clone the [submariner-website](https://github.com/submariner-io/submariner-website) project.
-
-2) Open `src/content/releases/_index.en.md` and make changes.
-
-3) Commit your changes, create a pull request, and have it reviewed.
-
-Alternatively you can edit the file and create a pull request directly on GitHub
-[here](https://github.com/submariner-io/submariner-website/edit/devel/src/content/community/releases/_index.en.md)
-
-### Step 6: Verify Release
+### Step 5: Verify Release
 
 You can follow any of the [quick start guides](../../getting-started/quickstart).
 
-### Step 7: Update OperatorHub.io
+### Step 6: Update OperatorHub.io
 
 The [community-operators](https://github.com/operator-framework/community-operators) Git repository
 is the source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
@@ -259,7 +254,7 @@ To publish the Submariner Operator to the community, perform the following steps
     [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
     and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
 
-### Step 8: Announce Release
+### Step 7: Announce Release
 
 #### E-Mail
 
