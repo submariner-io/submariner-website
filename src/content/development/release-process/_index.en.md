@@ -221,38 +221,40 @@ You can follow any of the [quick start guides](../../getting-started/quickstart)
 
 ### Step 6: Update OperatorHub.io
 
-The [community-operators](https://github.com/operator-framework/community-operators) Git repository
-is the source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
+The [operator-framework/community-operators](https://github.com/operator-framework/community-operators) Git repository
+is a source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
 
-* Operators for deployment to a vanilla Kubernetes environment (upstream-community-operators).
-These are shared with the Kubernetes community via [OperatorHub.io](https://operatorhub.io/).
-* Operators for deployment to OpenShift (community-operators)
+* Operators for deployment to a vanilla Kubernetes environment (`upstream-community-operators`).
+  These are shared with the Kubernetes community via [OperatorHub.io](https://operatorhub.io/).
+* Operators for deployment to OpenShift (`community-operators`)
 
-Here we are going to update the Submariner Operator on OperatorHub.io. OpenShift users will find the Operator in the
-official Red Hat catalog.
+We only need to update Submariner's Operator on OperatorHub.io. OpenShift users will find Submariner's Operator in the official Red Hat
+catalog.
 
-To publish the Submariner Operator to the community, perform the following steps:
+1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) repository.
 
-1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) project
-2) Make sure you have operator-sdk v1 installed on your machine
-   otherwise follow [this guide](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/)
-3) Generate new package manifests by running the command:
+2) Make sure you have [`operator-sdk` v1 installed](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/).
+
+3) Generate new package manifests:
 
    ```bash
    make packagemanifests VERSION=${new_version} FROM_VERSION=${previous_version} CHANNEL=${channel}
    ```
 
-   the generated package output should be located in `/packagemanifests/${VERSION}/`
-4) Fork and clone [community-operators](https://github.com/operator-framework/community-operators) project.
+   Generated package manifests should be in `/packagemanifests/${VERSION}/`.
+
+4) Fork and clone the [operator-framework/community-operators](https://github.com/operator-framework/community-operators) repository.
+
 5) Update the Kubernetes Operator:
-    * copy the generated package from step 3 into `upstream-community-operators/submariner`
-    * copy the generated package definition `/packagemanifests/submariner.package.yaml`
+
+    * Copy the generated package from Step 3 into `upstream-community-operators/submariner`
+    * Copy the generated package definition `/packagemanifests/submariner.package.yaml`
     into `upstream-community-operators/submariner/`
-    * test the Operator by running the command: `make operator.test OP_PATH=upstream-community-operators/submariner`
-    * preview the Operator on [OperatorHub.io](https://operatorhub.io/preview)
-    * once everything is fine, review this
+    * Test the Operator by running: `make operator.test OP_PATH=upstream-community-operators/submariner`
+    * Preview the Operator on [OperatorHub.io](https://operatorhub.io/preview)
+    * Once everything is fine, review this
     [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
-    and create a new PR on [community-operators](https://github.com/operator-framework/community-operators)
+    and create a new PR on [operator-framework/community-operators](https://github.com/operator-framework/community-operators)
 
 ### Step 7: Announce Release
 
