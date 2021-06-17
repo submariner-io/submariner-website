@@ -112,9 +112,11 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 3) Commit your changes, create a pull request, and have it reviewed.
 
-4) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed, a
-   [Shipyard release](https://github.com/submariner-io/shipyard/releases) was created and the
-   [tagged Dapper base image is on Quay](https://quay.io/repository/submariner/shipyard-dapper-base?tab=tag).
+4) **Verify**:
+
+   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [Shipyard release](https://github.com/submariner-io/shipyard/releases) was created.
+   * The [submariner/shipyard-dapper-base image](https://github.com/submariner-io/shipyard/releases) is on Quay.
 
 5) Pull requests will be created for projects that consume Shipyard to update them to the new version in preparation for the subsequent
    steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
@@ -137,8 +139,10 @@ release YAML file to create an Admiral release.
 
 2) Commit your changes, create a pull request, and have it reviewed.
 
-3) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed and a
-   [admiral release](https://github.com/submariner-io/admiral/releases) was created.
+3) **Verify**:
+
+   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [Admiral release](https://github.com/submariner-io/admiral/releases) was created.
 
 4) Pull requests will be created for projects that consume Admiral to update them to the new version in preparation for the subsequent
    steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
@@ -163,21 +167,22 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
 
 2) Commit your changes, create a pull request, and have it reviewed.
 
-3) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed and the [cloud-prepare](https://github.com/submariner-io/cloud-prepare/releases),
-[Lighthouse](https://github.com/submariner-io/lighthouse/releases), and
-[Submariner](https://github.com/submariner-io/submariner/releases) releases were created.
+3) **Verify**:
+
+   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [cloud-prepare release](https://github.com/submariner-io/cloud-prepare/releases) was created.
+   * The [Lighthouse release](https://github.com/submariner-io/lighthouse/releases) was created.
+   * The [Submariner release](https://github.com/submariner-io/submariner/releases) was created.
+   * The [submariner/submariner image](https://quay.io/repository/submariner/submariner?tab=tags) is on Quay.
+   * The [submariner/submariner-route-agent image](https://quay.io/repository/submariner/submariner-route-agent?tab=tags) is on Quay.
+   * The [submariner/submariner-globalnet image](https://quay.io/repository/submariner/submariner-globalnet?tab=tags) is on Quay.
+   * The [submariner/submariner-networkplugin-syncer image](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
+     is on Quay.
+   * The [submariner/lighthouse-agent image](https://quay.io/repository/submariner/lighthouse-agent?tab=tags) is on Quay.
+   * The [submariner/lighthouse-coredns image](https://quay.io/repository/submariner/lighthouse-coredns?tab=tags) is on Quay.
 
 4) Automation will create a pull request to pin submariner-operator to the released versions. Make sure that PRs is merged and the release
    job passes.
-
-5) Verify images are available on Quay for the new version.
-
-   * [submariner/submariner](https://quay.io/repository/submariner/submariner?tab=tags)
-   * [submariner/submariner-route-agent](https://quay.io/repository/submariner/submariner-route-agent?tab=tags)
-   * [submariner/submariner-globalnet](https://quay.io/repository/submariner/submariner-globalnet?tab=tags)
-   * [submariner/submariner-networkplugin-syncer](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
-   * [submariner/lighthouse-agent](https://quay.io/repository/submariner/lighthouse-agent?tab=tags)
-   * [submariner/lighthouse-coredns](https://quay.io/repository/submariner/lighthouse-coredns?tab=tags)
 
 ### Step 4: Create Operator and Charts Releases
 
@@ -201,17 +206,14 @@ Once the pull request to pin submariner-operator has been merged, we can create 
 
 2) Commit your changes, create a pull request, and have it reviewed.
 
-3) Make sure the [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed and the
-   [submariner-operator](https://github.com/submariner-io/submariner-operator/releases) release was created.
+3) **Verify**:
 
-4) Verify images are available on Quay for the new version.
+   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [`subctl` artifacts](https://github.com/submariner-io/releases/releases) were released
+   * The [submariner-operator release](https://github.com/submariner-io/submariner-operator/releases) was created.
+   * The [submariner/submariner-operator image](https://quay.io/repository/submariner/submariner-operator?tab=tags) is on Quay.
 
-   * [submariner/submariner-operator](https://quay.io/repository/submariner/submariner-operator?tab=tags)
-
-5) Verify `subctl` artifacts are avilable on the [releases repository](https://github.com/submariner-io/releases/releases) for the new
-   version.
-
-6) If the release wasn't marked as a `pre-release`, the releases/release job will also create pull requests in each consuming project to
+4) If the release wasn't marked as a `pre-release`, the releases/release job will also create pull requests in each consuming project to
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
    automatically pick up the latest changes to the base image.
 
