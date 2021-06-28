@@ -98,6 +98,9 @@ deployment.
 | `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user
 | `--label-gateway`                  | Label getways (enabled by default). `--label-gateway=false` disables the prompt for a Worker node to use as gateway
 | `--pod-debug`                      | Enable Submariner pod debugging (verbose logging in the deployed pods)
+| `--load-balancer`                  | Enable a cloud loadbalancer in front of the gateways. This removes the need for dedicated nodes with a public IP address
+| `--preferred-server`               | Enable this cluster as a preferred IPsec server for dataplane connections (only available with libreswan cable driver)
+
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (Globalnet)
