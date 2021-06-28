@@ -74,3 +74,44 @@ to avoid unhealthy clusters during Service discovery.
 
 The health checking feature can be enabled/disabled via an option on the
 [`subctl`](../../../operations/deployment/subctl/#join-flags-healthcheck) join command.
+
+### Load Balancer mode
+
+{{% notice info %}}
+The load balancer mode is still experimental, and is yet to be tested in all cloud providers nor in different failover scenarios.
+{{% /notice %}}
+
+The load balancer mode is designed to simplify the deployment of Submariner in cloud environments
+where worker nodes don't have a dedicated public IP available.
+
+When enabled for a cluster during [`subctl join`](../../../operations/deployment/subctl/#join-flags-general),
+the operator will create a LoadBalancer type Service exposing both the encapsulation dataplane port
+as well as the NAT-T discovery port. This load balancer targets Pods labeled with
+`gateway.submariner.io/status=active` and `app=submariner-gateway`.
+
+When the LoadBalancer mode is enabled, the `preferred-server` mode is enabled automatically for
+the cluster, as IPsec is incompatible with the bi-directional connection mode and the
+load balancers and client/server connectivity is necessary.
+
+![Figure 3 - Gateway behind load balancer](/images/high-availability/HA_Cluster_LB1.png)
+
+If a failover occurred, the load balancer would update to the new available and active
+gateway endpoints.
+
+![Figure 4 - Gateway behind load balancer failover](/images/high-availability/HA_Cluster_LB2.png)
+
+### Preferred-server mode
+
+This mode is specific to the libreswan cable-driver which is based on IPsec. Other cable drivers ignore
+this setting.
+
+When enabled for a cluster during [`subctl join`](../../../operations/deployment/subctl/#join-flags-general),
+the gateway will try to establish connection with other clusters by configuring the IPsec connection
+in server mode, and waiting for remote connections.
+
+Remote clusters will identify the `preferred-server` mode of this cluster, and attempt the connection.
+This is useful in environments where on-premises clusters don't have access to port mapping.
+
+When both sides of a connection are in `preferred-server` mode, they will compare the endpoint cable
+names to decide which one will be server and which one will be client. When cable names are ordered
+alphabetically, the first one will be the client, the second one will be the server.
