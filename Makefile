@@ -19,6 +19,8 @@ static: hugo
 static-all: hugo
 	./scripts/make-all-versions # we use a script because we expect that changes could happen on makefiles
 
+CODEOWNERS: CODEOWNERS.in
+	$(CURDIR)/scripts/gen-codeowners
 
 .DEFAULT_GOAL := static 
 

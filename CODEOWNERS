@@ -1,4 +1,5 @@
-* @mangelajo @tpantelis @Oats87 @skitt
-Makefile @mkolesnik
-scripts/* @mkolesnik
-src/content/development/* @mkolesnik
+# Auto-generated, do not edit; see CODEOWNERS.in
+* @mangelajo @Oats87 @skitt @tpantelis
+/scripts/ @mangelajo @mkolesnik @Oats87 @skitt @tpantelis
+/src/content/development/ @mangelajo @mkolesnik @Oats87 @skitt @tpantelis
+Makefile @mangelajo @mkolesnik @Oats87 @skitt @tpantelis
