@@ -94,7 +94,7 @@ port of packets, but **this will happen as soon as two connections collide
 over the same source port**.
 {{% /notice %}}
 
-## UDP Dataplane Protocol (IPsec & WireGuard)
+## UDP Dataplane Protocol (IPsec, WireGuard or VXLAN)
 
 By default, Submariner uses the `4500/UDP` port for the dataplane. This can be changed
 cluster-wide via the `--nattport` flag on join although it's possible to specify
