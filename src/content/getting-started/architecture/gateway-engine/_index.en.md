@@ -11,6 +11,7 @@ that maintains the tunnels. The following implementations are available:
 
 * an IPsec implementation using [Libreswan](https://libreswan.org/). This is currently the default.
 * an implementation for [WireGuard](https://www.wireguard.com/) (via the [wgctrl](https://github.com/WireGuard/wgctrl-go) library).
+* an un-encrypted tunnel implementation using VXLAN.
 
 The cable driver can be specified via the `--cable-driver` flag while joining a cluster using `subctl`. For more information, please refer
 to the [`subctl` guide](../../../operations/deployment/subctl/).
