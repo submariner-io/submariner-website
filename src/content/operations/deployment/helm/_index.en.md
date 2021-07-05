@@ -74,7 +74,7 @@ helm install submariner-operator submariner-latest/submariner-operator \
         --set broker.token="${SUBMARINER_BROKER_TOKEN}" \
         --set broker.namespace="${BROKER_NS}" \
         --set broker.ca="${SUBMARINER_BROKER_CA}" \
-        --set submariner.cableDriver=libreswan \ # or wireguard
+        --set submariner.cableDriver=libreswan \ # or wireguard or vxlan
         --set submariner.clusterId="${CLUSTER_ID}" \
         --set submariner.clusterCidr="${CLUSTER_CIDR}" \
         --set submariner.serviceCidr="${SERVICE_CIDR}" \
