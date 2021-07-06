@@ -20,3 +20,7 @@ weight = 40
 * Globalnet is not compatible with Headless Services. Only ClusterIP Services are supported at this time.
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
+
+## VXLAN
+
+* Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using cable-driver VXLAN.
