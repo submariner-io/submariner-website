@@ -112,3 +112,30 @@ To jump into a shell in Submariner's standard development environment:
 ```shell
 make shell
 ```
+
+## Known issues
+
+### OSX getopt and sed are incompatible with our scripts
+
+symptoms:
+```
+  flags:ERROR short flag required for (tag) on this platform and "docker buildx build" requires exactly 1 argument
+```
+
+or
+
+```
+sed: 1: "/"DAPPER_RUN_ARGS=/{s/[ ...": extra characters at the end of q command
+docker: invalid reference format: repository name must be lowercase.
+```
+
+This problem is seen in OSX while running make because the OSX shipped `getopt` tool is very limited.
+To fix this issue you need to install gnu-getopt:
+
+`brew install gnu-getopt`
+`brew install gnu-sed`
+
+And then make it available in your shell:
+
+`echo 'export PATH="/usr/local/opt/gnu-getopt/bin:$PATH' >> ~/.bash_profile`
+`echo 'export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH' >> ~/.bash_profile`"
