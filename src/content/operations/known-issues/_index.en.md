@@ -13,6 +13,8 @@ weight = 40
 * Clusters deployed with the Calico network plug-in require further configuration to be compatible with Submariner. Please refer to the
 [Calico-specific deployment instructions](../deployment/calico/).
 * The [Gateway load balancer support](../../getting-started/quickstart/openshift/aws-lb/) is still experimental and needs more testing.
+* Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using the
+VXLAN cable driver.
 
 ## Globalnet
 
@@ -20,7 +22,3 @@ weight = 40
 * Globalnet is not compatible with Headless Services. Only ClusterIP Services are supported at this time.
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
-
-## VXLAN
-
-* Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using cable-driver VXLAN.
