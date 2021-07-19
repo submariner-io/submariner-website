@@ -59,8 +59,8 @@ contains the following details:
 | `--version` `<string>`                | Image version
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
-| `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
-| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 8192)
+| `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
+| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
 | `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
 <!-- markdownlint-enable line-length -->
 

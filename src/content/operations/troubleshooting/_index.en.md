@@ -23,7 +23,7 @@ Run `kubectl get services -n <service-namespace> | grep <service-name>` to get i
 will provide you with the Service *Name*, *Namespace* and *ServiceIP*. If **Globalnet** is enabled, you will also need the *globalIp* of the
 service by running
 
-`kubectl get service <service-name> -o jsonpath='{.metadata.annotations.submariner\.io/globalIp}'`
+`kubectl get globalingressip <service-name>'`
 
 <!---
 
@@ -71,10 +71,6 @@ Sample output:
       statusMessage: Connected to 172.17.0.7:4500 - encryption alg=AES_GCM_16, keysize=128
         rekey-time=13444
 ```
-
-{{% notice note %}}
-This feature is only available for non-Globalnet deployments at the moment.
-{{% /notice %}}
 
 The Gateway Engine uses the `Health Check IP` of the endpoint to verify connectivity.
 The connection `Status` will be marked as `error`, if it cannot reach this IP,

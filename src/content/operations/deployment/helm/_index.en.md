@@ -59,7 +59,7 @@ If your clusters have overlapping IPs (Cluster/Service CIDRs), please set:
 
 ```bash
 export GLOBALNET=true
-export GLOBAL_CIDR=169.254.x.x/x # using an individual non-overlapping
+export GLOBAL_CIDR=242.x.x.x/x # using an individual non-overlapping
                                  # range for each cluster you join.
 ```
 
