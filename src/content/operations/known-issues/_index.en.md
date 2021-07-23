@@ -12,6 +12,9 @@ weight = 40
 [GKE Quickstart Guide](../../getting-started/quickstart/managed-kubernetes/gke/#final-workaround-for-kubedns) for more information.
 * Clusters deployed with the Calico network plug-in require further configuration to be compatible with Submariner. Please refer to the
 [Calico-specific deployment instructions](../deployment/calico/).
+* The [Gateway load balancer support](../../getting-started/quickstart/openshift/aws-lb/) is still experimental and needs more testing.
+* Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using the
+VXLAN cable driver.
 
 ## Globalnet
 
