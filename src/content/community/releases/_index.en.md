@@ -4,6 +4,12 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.9.1
+
+* The `--kubecontext` flag in `subctl` commands now works properly.
+* Simplified `subctl cloud prepare aws` to extract the credentials, infrastructure ID, and region from a local configuration file (if available).
+* The `natt-discovery-port` and `udp-port` options can now be set via node annotations.
+
 ## v0.9.0
 
 * The gateway Pod has been renamed from `submariner` to `submariner-gateway`.
