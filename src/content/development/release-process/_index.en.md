@@ -216,7 +216,7 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
    * The [cloud-prepare release](https://github.com/submariner-io/cloud-prepare/releases) was created.
    * The [Lighthouse release](https://github.com/submariner-io/lighthouse/releases) was created.
    * The [Submariner release](https://github.com/submariner-io/submariner/releases) was created.
-   * The [submariner/submariner image](https://quay.io/repository/submariner/submariner?tab=tags) is on Quay.
+   * The [submariner/submariner-gateway image](https://quay.io/repository/submariner/submariner-gateway?tab=tags) is on Quay.
    * The [submariner/submariner-route-agent image](https://quay.io/repository/submariner/submariner-route-agent?tab=tags) is on Quay.
    * The [submariner/submariner-globalnet image](https://quay.io/repository/submariner/submariner-globalnet?tab=tags) is on Quay.
    * The [submariner/submariner-networkplugin-syncer image](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
