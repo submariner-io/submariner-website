@@ -156,3 +156,15 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    ```bash
    ip link delete vx-submariner
    ```
+
+8. If Globalnet release 0.9 (or earlier) is enabled in the setup, issue the following commands to remove the
+   annotations from all the Pods and Services.
+
+   For each participating cluster, issue the following command:
+
+   ```bash
+   for ns in `kubectl get ns -o jsonpath="{.items[*].metadata.name}"`; do
+       kubectl annotate pods -n $ns --all submariner.io/globalIp-
+       kubectl annotate services -n $ns --all submariner.io/globalIp-
+   done
+   ```
