@@ -37,7 +37,8 @@ it creates a copy of it in the local cluster.
 
 The Lighthouse DNS server runs as an external DNS server which owns the domain `clusterset.local`.
 CoreDNS is configured to forward any request sent to `clusterset.local` to the Lighthouse DNS server,
-which uses the ServiceImport resources that are distributed by the controller for DNS resolution.
+which uses the ServiceImport resources that are distributed by the controller for DNS resolution. The
+Lighthouse DNS server supports queries using an A record and an SRV record.
 
 {{% notice note %}}
 When a single Service is deployed to multiple clusters, Lighthouse DNS server prefers the local cluster first before routing the traffic to

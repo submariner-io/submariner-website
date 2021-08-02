@@ -126,6 +126,13 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    iptables -t nat --flush SUBMARINER-POSTROUTING
    iptables -t nat -D POSTROUTING $(iptables -t nat -L POSTROUTING --line-numbers | grep SUBMARINER-POSTROUTING | awk '{print $1}')
    iptables -t nat --delete-chain SUBMARINER-POSTROUTING
+
+   iptables -t mangle --flush SUBMARINER-POSTROUTING
+   iptables -t mangle -D POSTROUTING $(iptables -t mangle -L POSTROUTING --line-numbers | grep SUBMARINER-POSTROUTING | awk '{print $1}')
+   iptables -t mangle --delete-chain SUBMARINER-POSTROUTING
+
+   ipset destroy SUBMARINER-LOCALCIDRS
+   ipset destroy SUBMARINER-REMOTECIDRS
    ```
 
    If Globalnet is enabled in the setup, additionally issue the following commands on gateway nodes:

@@ -30,11 +30,11 @@ Note that certain parameters, such as the tunnel UDP port and AWS instance type 
 can be customized. For example:
 
 ```bash
-subctl cloud prepare aws --infraid $infra_id --region $region --natt-port 4501 --gateway-instance m4.xlarge
+subctl cloud prepare aws --infra-id $infra_id --region $region --natt-port 4501 --gateway-instance m4.xlarge
 ```
 
 Submariner can be deployed in HA mode by setting the `gateways` flag:
 
 ```bash
-subctl cloud prepare aws --infraid $infra_id --region $region --gateways 3
+subctl cloud prepare aws --infra-id $infra_id --region $region --gateways 3
 ```
