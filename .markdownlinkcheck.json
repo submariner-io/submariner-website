@@ -7,6 +7,9 @@
       "pattern": "^https://github.com/pulls"
     },
     {
+      "pattern": "^https://github.com/\\S+/\\S+/actions"
+    },
+    {
       "pattern": "^http://localhost:"
     },
     {
