@@ -252,7 +252,6 @@ When running `benchmark latency`, two types of tests will be executed:
 |:------------------------------------|:----------------------------------------------------------------------------|
 | `--intra-cluster`                   | Performs the benchmark test within a single cluster between Pods from a Non-Gateway node to a Gateway node
 | `--verbose`                         | Produce verbose logs during benchmark tests
-| `--kubeconfig` `<string>`           | Absolute path(s) to the kubeconfig file(s)
 <!-- markdownlint-enable line-length -->
 
 ### `diagnose`
