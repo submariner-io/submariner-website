@@ -30,7 +30,7 @@ the cluster, the supplied globalnet-cidr will be ignored.
 ### Cluster-scope global egress IPs
 
 By default, every cluster is assigned a configurable number of global IPs, represented by a `ClusterGlobalEgressIP` resource, which are
-used as egress IPs for cross cluster communication. Multiple IPs are supported to avoid ephemeral port exhaustion issues. The default is 8.
+used as egress IPs for cross-cluster communication. Multiple IPs are supported to avoid ephemeral port exhaustion issues. The default is 8.
 The IPs are allocated from a configurable global CIDR.
 Applications running on the host network that access remote clusters also use the cluster-level global egress IPs.
 
@@ -44,7 +44,7 @@ over the global IPs allocated for a `GlobalEgressIP` that just targets the names
 ### Service global ingress IPs
 
 Exported `ClusterIP` type services are automatically allocated a global IP from the global CIDR for ingress. For headless services, each
-backing pod is allocated a global IP that is used for both ingress and egress. However if a backing pod matches a `GlobalEgressIP` then
+backing pod is allocated a global IP that is used for both ingress and egress. However, if a backing pod matches a `GlobalEgressIP` then
 its allocated IPs are used for egress.
 
 Routing and iptable rules are configured to use the corresponding global IPs for ingress and egress. All address translations occur on the active
@@ -85,9 +85,9 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
 This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
-controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For  headless services,
+controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For headless services,
 backing pod's global IP is used when creating the `EndpointSlice` resources to be distributed to other clusters.
-The [lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the global IPs when
+The [Lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the global IPs when
 replying to DNS queries.
 
 ## Building
@@ -97,11 +97,12 @@ Nothing extra needs to be done to build `submariner-globalnet` as it is built wi
 ## Usage
 
 Refer to the [Quickstart Guides](../../quickstart/) on how to deploy Submariner with Globalnet enabled. For most deployments users will not
-need to do anything else once deployed. But users can create `GlobalEgressIP`s or edit the `ClusterGlobalEgressIP` for specific use cases.
+need to do anything else once deployed. However, users can create `GlobalEgressIP`s or edit the `ClusterGlobalEgressIP` for specific
+use cases.
 
 ### Ephemeral Port Exhaustion
 
-By default, 8 cluster-scoped global IPs are allocated which allows for `~8x64k` active ephemeral ports. If those are still
+By default, 8 cluster-scoped global IPs are allocated which allows for ~8x64k active ephemeral ports. If those are still
 not enough for a cluster, this number can be increased by setting the `NumberOfIPs` field in the `ClusterGlobalEgressIP` with the
 well-known name `cluster-egress.submariner.io`:
 
@@ -134,7 +135,7 @@ If it's desired for all pods in a namespace to use a unique global IP instead of
      NumberOfIPs: 1
 ```
 
-The example above will allocate 1 global IP which will be used as egress IP for all pods in namespace `ns1`
+The example above will allocate 1 global IP which will be used as egress IP for all pods in namespace `ns1`.
 
 {{% notice note %}}
 `NumberOfIPs` can have minimum value of `0` and maximum of `20`
