@@ -4,6 +4,32 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.10.1
+
+* Inter-connecting clusters with overlapping CIDRs (Globalnet):
+  * The initial Globanet implementation is deprecated in favor of a new implementation which is more performant and scalable.
+    Globalnet now allows users to explicitly request global IPs at the cluster level, for specific namespaces, or for specific
+    Pods. The new Globalnet implementation is not backward-compatible with the initial Globalnet solution and there is no
+    upgrade path.
+  * Globalnet now supports headless Services.
+  * The default `globalnetCIDR` range is changed from 169.254.0.0/16 to 242.0.0.0/8 and each cluster is allocated 64K Global IPs.
+  * Globalnet no longer annotates Pods and Services with global IPs but stores this information in `ClusterGlobalEgressIP`,
+    `GlobalEgressIP`, and `GlobalIngressIP` resources.
+* A new experimental load balancer mode was introduced which is designed to simplify the deployment of Submariner in cloud
+  environments where worker nodes do not have access to a dedicated public IP. In this mode, the Submariner Operator creates a
+  LoadBalancer Service that exposes both the encapsulation dataplane port as well as the NAT-T discovery port. This mode can be
+  enabled by using `subctl join --load-balancer`.
+* Submariner now supports inter-cluster connections based on the VXLAN protocol. This is useful in cases where encryption,
+  such as with IPsec or WireGuard, is not desired, for example on connections that are already encrypted where the overhead
+  of double encryption is not necesssary or performant. This can be enabled by setting the `--cable-driver vxlan` option
+  during `subctl join`.
+* Submariner now supports SRV DNS queries for both ClusterIP and Headless Services. This facilitates Service discovery using
+  port name and protocol. For a ClusterIP Service, this resolves to the port number and the domain name. For a Headless Service,
+  the name resolves to multiple answers, one for each Pod backing the Service.
+* Improved the Submariner integration with the Calico CNI.
+* `subctl benchmark latency` and `subctl benchmark throughput` now take a new flag `--kubecontexts` as input instead of
+  two kubeconfig files.
+
 ## v0.9.1
 
 * The `--kubecontext` flag in `subctl` commands now works properly.
