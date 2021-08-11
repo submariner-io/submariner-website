@@ -6,7 +6,9 @@ weight: 40
 
 These docs describe how to create a Submariner release.
 
-## Ordering
+## Release Concepts
+
+### Project Release Order
 
 Submariner's projects have a dependency hierarchy among their Go libraries and container images, which drives their release order.
 
@@ -20,7 +22,7 @@ The container image dependency hierarchy is:
 
 Projects in brackets are siblings and do not depend on each other. Dependencies of siblings require all siblings to have aligned versions.
 
-## Versions
+### Choosing Versions
 
 Version numbers are required to be formatted following the schema norms where they are used.
 
@@ -32,7 +34,7 @@ Version numbers are required to be formatted following the schema norms where th
 * Single-project testing release: Append `-preN` starting at 0 (example: `v0.8.0-pre0`)
 * Release errors: Append `.N` starting at 1 (example: `v0.8.0-m1.1`)
 
-## Create Release
+### Creating Releases
 
 The following sections are an ordered series of steps to create a Submariner relese.
 
@@ -51,13 +53,54 @@ for the job listed but the important one is "Release Images". When complete, the
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
 
-### Final Releases: Add Release Notes
+### Release Notes (Final Releases)
 
 If you're creating a release meant for general consumption, not a milestone or release candidate, [release notes](../../community/releases/)
 must also be created.
 
 It's best to start working with the broader community to create release notes well before the release. Create a PR to start the process, and
 work with contributors to get everything added and reviewed.
+
+## Automated Release Creation Process
+
+Most of the release can be done in a series of mostly-automated steps. After each step, a Pull Request is sent with the correct YAML
+content for the release, this needs to be reviewed. Once the pull request is merged, the release process will continue automatically
+and the next step can be initiated shortly after making sure the release jobs on the `releases` and any participating repositories are done.
+
+{{% notice info %}}
+You need to set `GITHUB_TOKEN` environment variable to a [Personal Access Token](https://github.com/settings/tokens) you create.
+The token needs at least `public_repo` scope for the automated release to work.
+{{% /notice %}}
+
+To run the automated release, simply clone the [releases](https://github.com/submariner-io/releases) repository and execute:
+
+```bash
+make release VERSION="0.8.0"
+```
+
+Make sure to specify the proper version you're intending to release (e.g. for rc0 specify `VERSION="0.8.0-rc0"`).
+
+By default, the action will try to push to the GitHub account used in the `origin` remote.
+If you want to use a specific GitHub account, set `GITHUB_ACTOR` to the desired account, e.g.
+
+```bash
+make release VERSION="0.8.0" GITHUB_ACTOR="octocat"
+```
+
+{{% notice tip %}}
+You can run the process without pushing the PR automatically (obviating the need to set `GITHUB_TOKEN`).
+To do so, run the `make` command with `dryrun=true`.
+{{% /notice %}}
+
+The command runs, gathers the data for the release, updates the release YAML and pushes it for review. Once the review process is done,
+and the automated release steps on the CI have finished successfully, simply **run the same command again to advance to the next stage**.
+
+Once there isn't anything else to do, the command will inform you. At this point, continue manually with any steps not automated yet,
+starting with [Verify Release](#verify).
+
+## Manual Release Creation Process
+
+These instructions are here as a backup in case the automated creation process has problems, and to serve as a guide.
 
 ### Stable Releases: Create Stable Branches
 
@@ -173,7 +216,7 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
    * The [cloud-prepare release](https://github.com/submariner-io/cloud-prepare/releases) was created.
    * The [Lighthouse release](https://github.com/submariner-io/lighthouse/releases) was created.
    * The [Submariner release](https://github.com/submariner-io/submariner/releases) was created.
-   * The [submariner/submariner image](https://quay.io/repository/submariner/submariner?tab=tags) is on Quay.
+   * The [submariner/submariner-gateway image](https://quay.io/repository/submariner/submariner-gateway?tab=tags) is on Quay.
    * The [submariner/submariner-route-agent image](https://quay.io/repository/submariner/submariner-route-agent?tab=tags) is on Quay.
    * The [submariner/submariner-globalnet image](https://quay.io/repository/submariner/submariner-globalnet?tab=tags) is on Quay.
    * The [submariner/submariner-networkplugin-syncer image](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
@@ -217,7 +260,7 @@ Once the pull request to pin submariner-operator has been merged, we can create 
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
    automatically pick up the latest changes to the base image.
 
-### Step 5: Verify Release
+### Step 5: Verify Release {id="verify"}
 
 You can follow any of the [quick start guides](../../getting-started/quickstart).
 
