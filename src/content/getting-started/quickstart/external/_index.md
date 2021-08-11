@@ -5,7 +5,8 @@ weight: 15
 ---
 
 This guide covers the minimum steps to try external network use case.
-In this use case, users can access between pods in clusters and applications outside clusters by using DNS names that lighthouse provides or globalnet ingress IPs.
+In this use case, users can access between pods in clusters and applications outside clusters
+by using DNS names that lighthouse provides or globalnet ingress IPs.
 In addition, source IPs of these communications can be preserved.
 
 This feature is still experimental, so the behaviors and configurations may be changed in the future.
@@ -33,12 +34,15 @@ This feature is still experimental, so the behaviors and configurations may be c
 
     In above case, all of them are deployed inside 192.168.122.0/24 segment.
     However, it is only required that cluster-a and test-vm are in the same segment.
-    Other clusters, cluster-b and any additional clusters, can be deployed in different segments or even in any other networks in the internet. Also, these clusters can be multi-node cluster.
+    Other clusters, cluster-b and any additional clusters, can be deployed in different segments or even in any other networks in the internet.
+    Also, these clusters can be multi-node cluster.
 
-    On the other hand, subnets of non-cluster hosts should be distinguished from those of all the clusters to easily specify the external network CIDR.
+    On the other hand, subnets of non-cluster hosts should be distinguished from those of all the clusters
+    to easily specify the external network CIDR.
     In above case, cluster-a and cluster-b belongs to 192.168.122.0/25 network and test-vm belongs to 192.168.122.128/25 network.
     Therefore, the external network CIDR for this configuration is 192.168.122.128/25.
-    In test environment for just one host, we will be able to specify external network CIDR, like 192.168.122.142/32, however design of the subnet needs to be considered when more hosts are added.
+    In test environment for just one host, we will be able to specify external network CIDR, like 192.168.122.142/32.
+    However design of the subnet needs to be considered when more hosts are added.
 
 2. Choose the Pod CIDR and the Service CIDR for k8s clusters and deply them.
 
@@ -50,13 +54,17 @@ This feature is still experimental, so the behaviors and configurations may be c
     | cluster-b |10.42.0.0/24  |10.43.0.0/16  |
 
     Note that we will use globalnet in this guide, therefore overlapping CIDR is allowed.
-    One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b", with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
+    One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described
+    [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b",
+    with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
 
 ### Set up submariner
 
 #### Ensure kubeconfig files
 
-Ensure that kubeconfig file for cluster-a exists as kubeconfig.cluster-a and kubeconfig file for cluster-b exists as kubeconfig.cluster-b on node of cluster-a. File names can be different, but rest of this guide assumes these files are named as such.
+Ensure that kubeconfig file for cluster-a exists as kubeconfig.cluster-a and
+kubeconfig file for cluster-b exists as kubeconfig.cluster-b on node of cluster-a.
+File names can be different, but rest of this guide assumes these files are named as such.
 
 #### Install `subctl` on node of cluster-a
 
@@ -103,6 +111,7 @@ EOF
 ```
 
 Create configmap of the list:
+
 ```bash
 export KUBECONFIG=kubeconfig.cluster-a
 kubectl create configmap external-dnsmasq -n submariner-operator --from-file=upstreamservers
@@ -110,7 +119,7 @@ kubectl create configmap external-dnsmasq -n submariner-operator --from-file=ups
 
 Create a `dns.yaml` as follows:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -186,6 +195,7 @@ ip r add 242.0.0.0/8 via ${subm_gw_ip}
 
 To persist above configuration across reboot, check the document for each Linux distribution.
 For example, on Centos 7, to set presistent route for eth0, below command is required:
+
 ```bash
 echo "242.0.0.0/8 via ${subm_gw_ip} dev eth0" >> /etc/sysconfig/network-scripts/route-eth0
 ```
@@ -195,12 +205,14 @@ Modify `/etc/resolv.conf` to change DNS server for the host on test-vm:
 For example)
 
 - Before:
-```
+
+```bash
 nameserver 192.168.122.1
 ```
 
 - After:
-```
+
+```bash
 nameserver 242.0.255.251
 ```
 
@@ -224,10 +236,13 @@ Address: 10.43.162.46
 Run on test-vm:
 
 - python 2.x case:
+
 ```bash
 python -m SimpleHTTPServer 80
 ```
+
 - python 3.x case:
+
 ```bash
 python -m http.server 80
 ```
@@ -268,6 +283,7 @@ subctl export service -n default test-vm
 ```
 
 Check global ingress IP for test-vm, on cluster-a:
+
 ```bash
 kubectl get globalingressip test-vm
 NAME      IP
@@ -293,6 +309,7 @@ On test-vm, check the console log of HTTP server that there are accesses from po
 ##### Verify access to Deployment from non-cluster hosts
 
 Create Deployment in cluster-b:
+
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
 kubectl -n default create deployment nginx --image=k8s.gcr.io/nginx-slim:0.8
@@ -301,11 +318,13 @@ subctl export service --namespace default nginx
 ```
 
 From test-vm, verify access:
+
 ```bash
 curl nginx.default.svc.clusterset.local
 ```
 
 Check the console log of HTTP server that there is access from test-vm:
+
 ```bash
 kubectl logs -l app=nginx
 ```
@@ -314,7 +333,7 @@ kubectl logs -l app=nginx
 
 A StatefulSet uses a headless Service. Create a `web.yaml` as follows:
 
-```
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -365,6 +384,7 @@ subctl export service -n default nginx-ss
 ```
 
 From test-vm, verify access:
+
 ```bash
 curl nginx-ss.default.svc.clusterset.local
 curl cluster-b.nginx-ss.default.svc.clusterset.local
@@ -373,6 +393,7 @@ curl web-1.cluster-b.nginx-ss.default.svc.clusterset.local
 ```
 
 Check the console log of HTTP server that there are accesses from test-vm:
+
 ```bash
 kubectl logs web-0
 kubectl logs web-1
@@ -383,6 +404,7 @@ kubectl logs web-1
 Confirm the global egress IPs for each pod managed by Statefulset:
 
 - From Cluster:
+
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
 kubectl get globalingressip | grep web
@@ -391,6 +413,7 @@ pod-web-1     242.1.255.250
 ```
 
 - From Hosts:
+
 ```bash
 nslookup web-0.cluster-b.nginx-ss.default.svc.clusterset.local
 Server:         242.0.255.251
@@ -410,6 +433,7 @@ Address: 242.1.255.250
 Verify the source IP of each access from each pod to test-vm is the same to its global egress IP:
 
 - Access from web-0
+
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
 kubectl exec -it web-0 -- bash
@@ -418,6 +442,7 @@ exit
 ```
 
 - Access from web-1
+
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
 kubectl exec -it web-1 -- bash
@@ -426,4 +451,3 @@ exit
 ```
 
 - Check the console log in test-vm
-
