@@ -226,7 +226,7 @@ that this verification is disruptive.
 
 #### `benchmark throughput`
 
-`subctl benchmark throughput <kubeconfig1> [<kubeconfig2>] [flags]`
+`subctl benchmark throughput --kubecontexts <context1>[,<context2>] [flags]`
 
 The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [iperf](https://iperf.fr/) tool and logs the output to the console.
@@ -237,7 +237,7 @@ When running `benchmark throughput`, two types of tests will be executed:
 
 #### `benchmark latency`
 
-`subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
+`subctl benchmark latency --kubecontexts <context1>[,<context2>] [flags]`
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) tool and logs the output to the console.
