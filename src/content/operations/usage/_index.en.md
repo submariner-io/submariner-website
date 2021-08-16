@@ -244,8 +244,9 @@ $ kubectl config use-context cluster3
 Switched to context "cluster3".
 ```
 
-The following commands create an `nginx` Service in the nginx-test namespace which targets TCP port 8080 on any Pod with the `app: nginx`
-label and exposes it on an abstracted Service port. When created, the Service is assigned a unique IP address (also called ClusterIP):
+The following commands create an `nginx` Service in the `nginx-test` namespace which targets TCP port 8080, with name http,
+on any Pod with the `app: nginx` label and exposes it on an abstracted Service port. When created, the Service is assigned
+a unique IP address (also called `ClusterIP`):
 
 ```bash
 $ kubectl create namespace nginx-test
@@ -253,8 +254,34 @@ namespace/nginx-test created
 
 $ kubectl -n nginx-test create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
 deployment.apps/nginx created
+```
 
-$ kubectl -n nginx-test expose deployment nginx --port=8080
+`kubectl apply` the following YAML within the  `nginx-test` namespace to create the service:
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: nginx-test
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+```
+
+```bash
+$ kubectl -n nginx-test apply -f nginx-svc.yaml
 service/nginx exposed
 ```
 
@@ -397,6 +424,31 @@ nginx.nginx-test.svc.clusterset.local. 5 IN A	100.3.220.176
 ;; WHEN: Mon Nov 30 17:52:55 UTC 2020
 ;; MSG SIZE  rcvd: 125
 ```
+<!-- markdownlint-disable no-hard-tabs -->
+```bash
+; <<>> DiG 9.16.6 <<>> SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
+;; global options: +cmd
+;; Got answer:
+;; WARNING: .local is reserved for Multicast DNS
+;; You are currently testing what happens when an mDNS query is leaked to DNS
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21993
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 3f6018af2626ebd2 (echoed)
+;; QUESTION SECTION:
+;_http._tcp.nginx.nginx-test.svc.clusterset.local. IN SRV
+
+;; ANSWER SECTION:
+_http._tcp.nginx.nginx-test.svc.clusterset.local. 5 IN SRV 0 50 8080 nginx.nginx-test.svc.clusterset.local.
+
+;; Query time: 3 msec
+;; SERVER: 100.2.0.10#53(100.2.0.10)
+;; WHEN: Fri Jul 23 07:35:51 UTC 2021
+;; MSG SIZE  rcvd: 194
+```
 <!-- markdownlint-enable no-hard-tabs -->
 Note that DNS resolution works across the clusters, and that the IP address **100.3.220.176** returned is the same ClusterIP associated with
 the `nginx` Service on **cluster3**.
@@ -409,8 +461,34 @@ To test this, we will deploy the same `nginx` Service in the same namespace on *
 ```bash
 $ kubectl -n nginx-test create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
 deployment.apps/nginx created
+```
 
-$ kubectl -n nginx-test expose deployment nginx --port=8080
+`kubectl apply` the following YAML within the `nginx-test` namespace to create the service:
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: nginx-test
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+```
+
+```bash
+$ kubectl -n nginx-test apply -f nginx-svc.yaml
 service/nginx exposed
 ```
 
@@ -534,6 +612,33 @@ nginx.nginx-test.svc.clusterset.local. 5 IN A	100.2.29.136
 ;; MSG SIZE  rcvd: 125
 ```
 <!-- markdownlint-enable no-hard-tabs -->
+```bash
+bash-5.0# dig SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
+
+; <<>> DiG 9.16.6 <<>> SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
+;; global options: +cmd
+;; Got answer:
+;; WARNING: .local is reserved for Multicast DNS
+;; You are currently testing what happens when an mDNS query is leaked to DNS
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 19656
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: 8fe1ebfcf9165a8d (echoed)
+;; QUESTION SECTION:
+;_http._tcp.nginx.nginx-test.svc.clusterset.local. IN SRV
+
+;; ANSWER SECTION:
+_http._tcp.nginx.nginx-test.svc.clusterset.local. 5 IN SRV 0 50 8080 nginx.nginx-test.svc.clusterset.local.
+
+;; Query time: 16 msec
+;; SERVER: 100.2.0.10#53(100.2.0.10)
+;; WHEN: Fri Jul 23 09:11:21 UTC 2021
+;; MSG SIZE  rcvd: 194
+```
+<!-- markdownlint-enable no-hard-tabs -->
 
 {{% notice note %}}
 At this point we have the same `nginx` Service deployed within the nginx-test namespace on both clusters. Note that DNS resolution works,
@@ -546,7 +651,8 @@ expected, as Submariner prefers to handle the traffic locally whenever possible.
 Submariner follows this logic for service discovery across the cluster set:
 
 * If an exported Service is not available in the local cluster, Lighthouse DNS returns the IP address of the ClusterIP Service from one of
-the remote clusters on which the Service was exported.
+the remote clusters on which the Service was exported. If it is an SRV query, an SRV record with port and domain name corresponding to
+the ClusterIP will be returned.
 
 * If an exported Service is available in the local cluster, Lighthouse DNS always returns the IP address of the local ClusterIP Service.
 In this example, if a Pod from **cluster2** tries to access the `nginx` Service as `nginx.nginx-test.svc.clusterset.local` now, Lighthouse
@@ -769,6 +875,34 @@ nginx-ss.nginx-test.svc.clusterset.local. 5 IN A	10.3.224.3
 ;; MSG SIZE  rcvd: 184
 ```
 
+```bash
+bash-5.0# dig SRV _web._tcp.nginx-ss.nginx-test.svc.clusterset.local
+
+; <<>> DiG 9.16.6 <<>> SRV _web._tcp.nginx-ss.nginx-test.svc.clusterset.local
+;; global options: +cmd
+;; Got answer:
+;; WARNING: .local is reserved for Multicast DNS
+;; You are currently testing what happens when an mDNS query is leaked to DNS
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16402
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+; COOKIE: cf1e04578842eb5b (echoed)
+;; QUESTION SECTION:
+;_web._tcp.nginx-ss.nginx-test.svc.clusterset.local. IN SRV
+
+;; ANSWER SECTION:
+_web._tcp.nginx-ss.nginx-test.svc.clusterset.local. 5 IN SRV 0 50 80 web-0.cluster3.nginx-ss.nginx-test.svc.clusterset.local.
+_web._tcp.nginx-ss.nginx-test.svc.clusterset.local. 5 IN SRV 0 50 80 web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local.
+
+;; Query time: 2 msec
+;; SERVER: 100.2.0.10#53(100.2.0.10)
+;; WHEN: Fri Jul 23 07:38:03 UTC 2021
+;; MSG SIZE  rcvd: 341
+```
+
 You can also access the individual Pods:
 
 ```bash
@@ -785,6 +919,17 @@ Address:	100.2.0.10#53
 
 Name:	web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local
 Address: 10.3.224.3
+```
+
+In case of SRV you can access pod from individual clusters but not the pods direcly:
+
+```bash
+bash-5.0# nslookup -q=SRV  _web._tcp.cluster3.nginx-ss.nginx-test.svc.clusterset.local
+Server:		100.2.0.10
+Address:	100.2.0.10#53
+
+_web._tcp.cluster3.nginx-ss.nginx-test.svc.clusterset.local	service = 0 50 80 web-0.cluster3.nginx-ss.nginx-test.svc.clusterset.local.
+_web._tcp.cluster3.nginx-ss.nginx-test.svc.clusterset.local	service = 0 50 80 web-1.cluster3.nginx-ss.nginx-test.svc.clusterset.local.
 ```
 
 <!-- markdownlint-enable no-hard-tabs -->
