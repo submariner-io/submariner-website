@@ -21,7 +21,7 @@ weight = 40
   enabled by using `subctl join --load-balancer`.
 * Submariner now supports inter-cluster connections based on the VXLAN protocol. This is useful in cases where encryption,
   such as with IPsec or WireGuard, is not desired, for example on connections that are already encrypted where the overhead
-  of double encryption is not necesssary or performant. This can be enabled by setting the `--cable-driver vxlan` option
+  of double encryption is not necessary or performant. This can be enabled by setting the `--cable-driver vxlan` option
   during `subctl join`.
 * Submariner now supports SRV DNS queries for both ClusterIP and Headless Services. This facilitates Service discovery using
   port name and protocol. For a ClusterIP Service, this resolves to the port number and the domain name. For a Headless Service,
