@@ -105,6 +105,14 @@ curl web-0.cluster-a.nginx-ss.default.svc.clusterset.local:8080
 
 #### Perform automated verification
 
+The contexts on both config files are named `admin` and need to be modified before running the `verify` command.
+Here is how this can be done:
+
+```bash
+yq e -i '.contexts[0].name = "cluster-a" | .current-context = "cluster-a"' cluster-a/auth/kubeconfig
+yq e -i '.contexts[0].name = "cluster-b" | .current-context = "cluster-a"' cluster-b/auth/kubeconfig
+```
+
 This will perform automated verifications between the clusters.
 
 ```bash
