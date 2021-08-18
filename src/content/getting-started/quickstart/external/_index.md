@@ -5,17 +5,17 @@ weight: 15
 ---
 
 This guide covers the minimum steps to try external network use case.
-In this use case, users can access between pods in clusters and applications outside clusters
-by using DNS names that lighthouse provides or globalnet ingress IPs.
-In addition, source IPs of these communications can be preserved.
+In this use case, pods running in the K8s cluster can access external applications outside of the cluster and vice-versa
+by using DNS resolution supported by lighthouse or manually using the globalnet ingress IPs.
+Along with connectivity, the source IP of the traffic will also be preserved.
 
-This feature is still experimental, so the behaviors and configurations may be changed in the future.
+This feature is still experimental, so the configuration mechanism and observed behavior may be changed in the future.
 
 ### Prerequisites
 
 1. Prepare below:
     - Two or more k8s clusters
-    - One or more non-cluster hosts, that exist in the same network segment to the one of the k8s clusters
+    - One or more non-cluster hosts, that exist in the same network segment to one of the k8s clusters
 
     In this guide, we will use the following k8s clusters and a non-cluster host.
 
@@ -35,7 +35,7 @@ This feature is still experimental, so the behaviors and configurations may be c
     In above case, all of them are deployed inside 192.168.122.0/24 segment.
     However, it is only required that cluster-a and test-vm are in the same segment.
     Other clusters, cluster-b and any additional clusters, can be deployed in different segments or even in any other networks in the internet.
-    Also, these clusters can be multi-node cluster.
+    Also, these clusters can be multi-node clusters.
 
     On the other hand, subnets of non-cluster hosts should be distinguished from those of all the clusters
     to easily specify the external network CIDR.
@@ -53,12 +53,12 @@ This feature is still experimental, so the behaviors and configurations may be c
     | cluster-a |10.42.0.0/24  |10.43.0.0/16  |
     | cluster-b |10.42.0.0/24  |10.43.0.0/16  |
 
-    Note that we will use globalnet in this guide, therefore overlapping CIDR is allowed.
+    Note that we will use globalnet in this guide, therefore overlapping CIDRs are supported.
     One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described
     [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b",
     with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
 
-### Set up submariner
+### Setup Submariner
 
 #### Ensure kubeconfig files
 
@@ -187,6 +187,7 @@ Modify routing for global CIDR on test-vm:
 
 Note that `subm_gw_ip` is the gateway node IP of the cluster in the same network segment of the hosts.
 In the case of the example of this guide, it is the node IP of cluster-a.
+Also, 242.0.0.0/8 is the default globalCIDR.
 
 ```bash
 subm_gw_ip=192.168.122.26
@@ -247,9 +248,9 @@ python -m SimpleHTTPServer 80
 python -m http.server 80
 ```
 
-##### Verify access to hosts from clusters
+##### Verify access to External hosts from clusters
 
-Create Service, Endpoints, ServiceExport to access to test-vm, on cluster-a:
+Create Service, Endpoints, ServiceExport to access the test-vm from cluster-a:
 
 Note that `Endpoints.subsets.addresses` needs to be modified to IP of test-vm.
 
