@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
         with:
           fetch-depth: 0
 
@@ -18,7 +18,7 @@ jobs:
         run: make static-all
 
       - name: Upload proposed static website for review
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@3446296876d12d4e3a0f3145a3c87e67bf0a16b5
         with:
           name: Proposed static website
           path: output
