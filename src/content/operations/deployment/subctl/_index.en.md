@@ -269,9 +269,9 @@ Below is a list of available sub-commands:
 | `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
 | `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
 | `cni`                      | checks if the detected CNI network plugin is supported by Submariner
-| `firewall vxlan [flags]`   | checks if the firewall configuration allows traffic via the Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
 | `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall tunnel <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
+| `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
 | `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  |
 <!-- markdownlint-enable line-length -->
 
