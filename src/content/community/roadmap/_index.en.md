@@ -25,10 +25,9 @@ Some high-level goals are summarized here, but the primary source for tracking f
 
 * Network Policy across clusters (Coastguard)
 * Support for finer-grained connectivity policies (<https://github.com/submariner-io/enhancements/pull/4/files>)
-* Globalnet v2 (<https://github.com/submariner-io/enhancements/pull/22/files>)
-* More tunnel encapsulation options
 * Dynamic routing with BGP to support multi-path forwarding across gateways
 * Testing with multi-cluster Istio
+* Scale improvements
 
 ## Suggesting Work
 

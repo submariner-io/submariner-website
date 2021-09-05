@@ -22,33 +22,42 @@ clusters with overlapping CIDRs to connect together.
 
 To support overlapping CIDRs in connected clusters, Submariner has a component called Global Private Network, Globalnet (`globalnet`). This
 Globalnet is a virtual network specifically to support Submariner's multi-cluster solution with a global CIDR. Each cluster is given a
-subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 169.254.0.0/16) which is
+subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 242.0.0.0/8) which is
 configurable at time of deployment. User can also manually specify GlobalCIDR for each cluster that is joined to the Broker using the flag
 ```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the Broker or if a GlobalCIDR is preconfigured in
 the cluster, the supplied globalnet-cidr will be ignored.
 
-Once configured, each exported Service and Pod that requires cross-cluster access is allocated an IP, named `globalIp`,
-from this `GlobalCIDR` that is annotated on the Pod/Service object.
-This globalIp is used for all cross-cluster communication to and from a Pod and the globalIp of a
-remote Service. Routing and iptable rules are configured to use the globalIp for ingress and egress. All address translations occur on the
-Gateway node.
+### Cluster-scope global egress IPs
+
+By default, every cluster is assigned a configurable number of global IPs, represented by a `ClusterGlobalEgressIP` resource, which are
+used as egress IPs for cross-cluster communication. Multiple IPs are supported to avoid ephemeral port exhaustion issues. The default is 8.
+The IPs are allocated from a configurable global CIDR.
+Applications running on the host network that access remote clusters also use the cluster-level global egress IPs.
+
+### Namespace-scope global egress IPs
+
+A user can assign a configurable number of global IPs per namespace by creating a `GlobalEgressIP` resource. These IPs are also allocated
+from the global CIDR and are used as egress IPs for all or selected pods in the namespace and take precedence over the cluster-level
+global IPs. In addition, the global IPs allocated for a `GlobalEgressIP` that targets specific pods in a namespace take precedence
+over the global IPs allocated for a `GlobalEgressIP` that just targets the namespace.
+
+### Service global ingress IPs
+
+Exported `ClusterIP` type services are automatically allocated a global IP from the global CIDR for ingress. For headless services, each
+backing pod is allocated a global IP that is used for both ingress and egress. However, if a backing pod matches a `GlobalEgressIP` then
+its allocated IPs are used for egress.
+
+Routing and iptable rules are configured to use the corresponding global IPs for ingress and egress. All address translations occur on the active
+Gateway node of the cluster.
 
 ![Figure 1 - Proposed solution](/images/globalnet/overlappingcidr-solution.png)
 
-{{% notice info %}}
-
-Unlike vanilla Submariner, where Pod to Pod connectivity is also supported, Globalnet only supports Pod to remote Service connectivity using
-globalIps.
-
-{{% /notice %}}
-
 ### submariner-globalnet
 
-Submariner Globalnet is a component that provides cross-cluster connectivity from Pods to remote Services using their globalIps. Compiled as
-binary `submariner-globalnet`, it is responsible for maintaining a pool of global IPs, allocating IPs from the GlobalIp pool to pods and
-services, annotating Services and Pods with their globalIp, and configuring the required rules on the gateway node to provide cross-cluster
-connectivity using globalIps.
-Globalnet also supports connectivity from the Nodes (including Pods that use HostNetworking) to globalIp of remote Services.
+Submariner Globalnet is a component that provides cross-cluster connectivity from pods to remote services using their global IPs. Compiled as
+binary `submariner-globalnet`, it is responsible for maintaining a pool of global IPs, allocating IPs from the global IP pool to pods and
+services, and configuring the required rules on the gateway node to provide cross-cluster connectivity using global IPs.
+Globalnet also supports connectivity from the nodes (including pods that use host networking) to the global IP of remote services.
 It mainly consists of two key components: the IP Address Manager and Globalnet.
 
 #### IP Address Manager (IPAM)
@@ -56,20 +65,18 @@ It mainly consists of two key components: the IP Address Manager and Globalnet.
 The IP Address Manager (IPAM) component does the following:
 
 * Creates a pool of IP addresses based on the `GlobalCIDR` configured on cluster.
-* Allocates a globalIp from the GlobalIp pool on creation of a Pod, Service, or ServiceExport.
-* Annotates the Pod or exported Service with `submariner.io/globalIp=<global-ip>`.
-* On deletion of a Pod, Service, or ServiceExport, releases its globalIp back to the pool.
+* Allocates IPs from the global pool for all ingress and egress, and releases them when no longer needed.
 
 #### Globalnet
 
 This component is responsible for programming the routing entries, iptable rules and does the following:
 
 * Creates initial iptables chains for Globalnet rules.
-* Whenever a Pod is annotated with a globalIp, creates an egress SNAT rule to convert the source Ip from the Pod's Ip to the Pod's globalIp
-  on the Gateway Node.
-* Whenever a Service is annotated with a globalIp, creates an ingress rule to direct all traffic destined to the Service's globalIp to the
-  Service's `kube-proxy` iptables chain which in turn directs traffic to Service's backend Pods.
-* Clean up the rules from the gateway node on the deletion of a Pod, Service, or ServiceExport.
+* For each `GlobalEgressIP`, creates corresponding SNAT rules to convert the source IPs for all the matching pods to the corresponding
+  global IP(s) allocated to the `GlobalEgressIP` object.
+* For each exported service, creates an ingress rule to direct all traffic destined to the Service's global IP to the service's
+  `kube-proxy` iptables chain which in turn directs traffic to service's backend pods.
+* Clean up the rules from the gateway node on the deletion of a `Pod`, `Service`, or ServiceExport`.
 
 Globalnet currently relies on `kube-proxy` and thus will only work with deployments that use `kube-proxy`.
 
@@ -78,10 +85,78 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
 This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
-controller adds the service's globalIp to the `ServiceImport` object that is distributed to all clusters. The [lighthouse
-plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the Service's globalIp when replying to DNS
-queries for the Service.
+controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For headless services,
+backing pod's global IP is used when creating the `EndpointSlice` resources to be distributed to other clusters.
+The [Lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the global IPs when
+replying to DNS queries.
 
 ## Building
 
 Nothing extra needs to be done to build `submariner-globalnet` as it is built with the standard Submariner build.
+
+## Usage
+
+Refer to the [Quickstart Guides](../../quickstart/) on how to deploy Submariner with Globalnet enabled. For most deployments users will not
+need to do anything else once deployed. However, users can create `GlobalEgressIP`s or edit the `ClusterGlobalEgressIP` for specific
+use cases.
+
+### Ephemeral Port Exhaustion
+
+By default, 8 cluster-scoped global IPs are allocated which allows for ~8x64k active ephemeral ports. If those are still
+not enough for a cluster, this number can be increased by setting the `NumberOfIPs` field in the `ClusterGlobalEgressIP` with the
+well-known name `cluster-egress.submariner.io`:
+
+```yaml
+   apiVersion: submariner.io/v1alpha1
+   kind: ClusterGlobalEgressIP
+   metadata:
+     name: cluster-egress.submariner.io
+   spec:
+     NumberOfIPs: 9
+```
+
+{{% notice note %}}
+Only the `ClusterGlobalEgressIP` resource with the name `cluster-egress.submariner.io` is recognized by Globalnet. This resource is automatically
+created with the default number of IPs.
+{{% /notice %}}
+
+### Global IPs for a Namespace
+
+If it's desired for all pods in a namespace to use a unique global IP instead of one of the cluster-scoped IPs, a user can create a
+`GlobalEgressIP` resource in that namespace:
+
+```yaml
+   apiVersion: submariner.io/v1alpha1
+   kind: GlobalEgressIP
+   metadata:
+     name: ns-egressip
+     namespace: ns1
+   spec:
+     NumberOfIPs: 1
+```
+
+The example above will allocate 1 global IP which will be used as egress IP for all pods in namespace `ns1`.
+
+{{% notice note %}}
+`NumberOfIPs` can have minimum value of `0` and maximum of `20`
+{{% /notice %}}
+
+### Global IPs for a set of pods
+
+If it's desired for a set of pods in a namespace to use unique global IP(s), a user can create a `GlobalEgressIP` resource in that
+namespace with the `podSelector` field set:
+
+```yaml
+   apiVersion: submariner.io/v1alpha1
+   kind: GlobalEgressIP
+   metadata:
+     name: db-pods
+     namespace: ns1
+   spec:
+     podSelector:
+         matchLabels:
+           role: db
+     NumberOfIPs: 1
+```
+
+The example above will allocate 1 global IP which will be used as egress IP for all pods matching label `role=db` in namespace `ns1`.

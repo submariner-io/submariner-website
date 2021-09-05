@@ -13,8 +13,6 @@ subctl export service --namespace default nginx
 
 ##### Deploy Headless Service
 
-Note that headless Services can only be exported on non-globalnet deployments.
-
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
 kubectl -n default create deployment nginx --image=nginxinc/nginx-unprivileged:stable-alpine
@@ -106,6 +104,14 @@ curl web-0.cluster-a.nginx-ss.default.svc.clusterset.local:8080
 ```
 
 #### Perform automated verification
+
+The contexts on both config files are named `admin` and need to be modified before running the `verify` command.
+Here is how this can be done using [yq](http://mikefarah.github.io/yq/):
+
+```bash
+yq e -i '.contexts[0].name = "cluster-a" | .current-context = "cluster-a"' cluster-a/auth/kubeconfig
+yq e -i '.contexts[0].name = "cluster-b" | .current-context = "cluster-a"' cluster-b/auth/kubeconfig
+```
 
 This will perform automated verifications between the clusters.
 

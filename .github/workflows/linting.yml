@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Get PR commits
         id: 'get-pr-commits'
-        uses: tim-actions/get-pr-commits@v1.1.0
+        uses: tim-actions/get-pr-commits@55b867b9b28954e6f5c1a0fe2f729dc926c306d0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Verify no "Apply suggestions from code review" commits'
-        uses: tim-actions/commit-message-checker-with-regex@v0.3.1
+        uses: tim-actions/commit-message-checker-with-regex@d6d9770051dd6460679d1cab1dcaa8cffc5c2bbd
         with:
           commits: ${{ steps.get-pr-commits.outputs.commits }}
           pattern: '^(?!.*(apply suggestions from code review))'
@@ -28,10 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
 
       - name: Run markdown-link-check
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        uses: gaurav-nelson/github-action-markdown-link-check@9710f0fec812ce0a3b98bef4c9d842fc1f39d976
         with:
           config-file: ".markdownlinkcheck.json"
           check-modified-files-only: "yes"
@@ -43,9 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Run markdownlint
-        uses: nosborn/github-action-markdown-cli@v1.1.1
+        uses: nosborn/github-action-markdown-cli@9fc95163471d6460c35cccad13645912aaa25d5f
         with:
           files: .
           config_file: ".markdownlint.yml"
@@ -56,9 +56,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
       - name: Run yamllint
-        uses: ibiqlik/action-yamllint@v1
+        uses: ibiqlik/action-yamllint@ed2b6e911569708ed121c14b87d513860a7e36a7
         with:
           file_or_dir: .
           config_file: .yamllint.yml

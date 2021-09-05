@@ -59,8 +59,8 @@ contains the following details:
 | `--version` `<string>`                | Image version
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
-| `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "169.254.0.0/16")
-| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 8192)
+| `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
+| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
 | `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
 <!-- markdownlint-enable line-length -->
 
@@ -226,7 +226,7 @@ that this verification is disruptive.
 
 #### `benchmark throughput`
 
-`subctl benchmark throughput <kubeconfig1> [<kubeconfig2>] [flags]`
+`subctl benchmark throughput --kubecontexts <context1>[,<context2>] [flags]`
 
 The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [iperf](https://iperf.fr/) tool and logs the output to the console.
@@ -237,7 +237,7 @@ When running `benchmark throughput`, two types of tests will be executed:
 
 #### `benchmark latency`
 
-`subctl benchmark latency <kubeconfig1> [<kubeconfig2>] [flags]`
+`subctl benchmark latency --kubecontexts <context1>[,<context2>] [flags]`
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) tool and logs the output to the console.
@@ -269,9 +269,9 @@ Below is a list of available sub-commands:
 | `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
 | `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
 | `cni`                      | checks if the detected CNI network plugin is supported by Submariner
-| `firewall vxlan [flags]`   | checks if the firewall configuration allows traffic via the Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
 | `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall tunnel <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
+| `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
 | `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  |
 <!-- markdownlint-enable line-length -->
 
