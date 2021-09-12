@@ -22,7 +22,7 @@ pre = "<b>4. </b>"
 ### Research notice
 
 Please note that this repository is participating in a study into sustainability
- of open source projects. Data will be gathered about this project's github repositories for
+ of open source projects. Data will be gathered about this project's GitHub repositories for
  approximately the next 12 months, starting from September 2020.
 
 Data collected will include number of contributors, number of PRs, time taken to
