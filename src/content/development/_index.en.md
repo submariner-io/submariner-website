@@ -20,6 +20,7 @@ pre = "<b>4. </b>"
   * [Advanced Features](shipyard/advanced)
 
 ### Research notice
+
 Please note that this repository is participating in a study into sustainability
  of open source projects. Data will be gathered about this project's github repositories for
  approximately the next 12 months, starting from September 2020.
