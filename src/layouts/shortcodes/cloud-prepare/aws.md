@@ -1,7 +1,7 @@
 <!-- Hugo doesn't allow shortcodes in shortcodes, so use HTML -->
 <div class="notices note">
-<p>The default EC2 instance type for the Submariner gateway node is <code>m5n.large</code>,
-optimized for improved network throughput and packet rate performance.
+<p>The default EC2 instance type for the Submariner gateway node is <code>c5d.large</code>,
+optimized for better CPU which is found to be a bottleneck for IPsec and Wireguard drivers.
 Please ensure that the AWS Region you deploy to supports this instance type.
 Alternatively, you can choose to deploy using a different instance type.</p>
 </div>
