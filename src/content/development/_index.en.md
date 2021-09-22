@@ -18,3 +18,15 @@ pre = "<b>4. </b>"
 * [Working with Shipyard](shipyard)
   * [Adding Shipyard to a Project](shipyard/first-time)
   * [Advanced Features](shipyard/advanced)
+
+### Research notice
+
+Please note that this repository is participating in a study into sustainability
+ of open source projects. Data will be gathered about this project's GitHub repositories for
+ approximately the next 12 months, starting from September 2021.
+
+Data collected will include number of contributors, number of PRs, time taken to
+ close/merge these PRs, and issues closed.
+
+For more information, please visit
+[the study informational page](https://sustainable-open-science-and-software.github.io/) or download the [participant information sheet](https://sustainable-open-science-and-software.github.io/assets/PIS_sustainable_software.pdf).
