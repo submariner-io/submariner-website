@@ -1,7 +1,7 @@
 ---
 date: 2021-08-11T12:33:18+01:00
 title: "External Network (Experimental)"
-weight: 15
+weight: 50
 ---
 
 This guide covers the minimum steps to try external network use case.
@@ -57,6 +57,12 @@ This feature is still experimental, so the configuration mechanism and observed 
     One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described
     [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b",
     with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
+
+{{% notice note %}}
+In this configuration, global IPs are used to access between the gateway node and non-cluster hosts,
+which means packets are sent to IP addresses that are not part of the actual network segment.
+To make such packets not to be dropped, anti-sppofing rules need to be disabled for the hosts and the gateway node.
+{{% /notice %}}
 
 ### Setup Submariner
 
@@ -306,6 +312,19 @@ curl 242.0.255.253
 ```
 
 On test-vm, check the console log of HTTP server that there are accesses from pods
+
+{{% notice note %}}
+Currently, __headless__ service without selector is not supported for globalnet,
+therefore service without selector needs to be used.
+This feature is under discussion in [submariner-io/submariner#1537](https://github.com/submariner-io/submariner/issues/1537).
+{{% /notice %}}
+
+{{% notice note %}}
+Currently, DNS resolution for service without selector is not supported,
+therefore global IPs need to be used to access to the external hosts.
+This feature is under discussion in [submariner-io/lighthouse#603](https://github.com/submariner-io/lighthouse/issues/603).
+Note that there is a workaround to make it resolvable by manually creating endpointslice, as described [here](https://github.com/submariner-io/lighthouse/issues/603#issuecomment-901944297).
+{{% /notice %}}
 
 ##### Verify access to Deployment from non-cluster hosts
 
