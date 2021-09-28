@@ -10,6 +10,7 @@ pre = "<b>2. </b>"
   * [Calico CNI](deployment/calico)
 * [User Guide](usage)
 * [Monitoring](monitoring)
+  * [Prometheus Deployment Example](monitoring/prometheus-guide)
 * [Troubleshooting](troubleshooting)
 * [Known Issues](known-issues)
 * [Uninstalling Submariner](cleanup)
