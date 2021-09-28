@@ -44,6 +44,11 @@ spec:
 OpenShift 4.5 or later will automatically discover the Submariner metrics with service monitors in the
 `openshift-monitoring` namespace.
 
+### External guides
+
+Some external guides that will help you with experimenting with Submariner Monitoring
+- [Multi-Cluster monitoring with Prometheus and Submariner](https://medium.com/@danielbachar/multi-cluster-monitoring-with-prometheus-and-submariner-f89ff733e7ec)
+
 ## Metrics Reference
 
 Submariner metrics provide insights into both the state of Submariner itself, as well as the inter-cluster network behavior of your
