@@ -28,6 +28,7 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Blogs
 
+* [Multi-Cluster monitoring with Prometheus and Submariner (9/2021)](https://medium.com/@danielbachar/multi-cluster-monitoring-with-prometheus-and-submariner-f89ff733e7ec)
 * [Connecting stateful applications in multicluster environments with RHACM and Submariner (04/2021)](https://rcarrata.com/openshift/rhacm-submariner-2/)
 * [Deep Dive with RHACM and Submariner - Connecting multicluster overlay networks (04/2021)](https://rcarrata.com/openshift/rhacm-submariner/)
 * [Connecting managed clusters with Submariner in Red Hat Advanced Cluster Management for Kubernetes (04/2021)](https://www.openshift.com/blog/connecting-managed-clusters-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
