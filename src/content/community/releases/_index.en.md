@@ -4,6 +4,13 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.11.0
+
+This release mainly focused on stability, bug fixes, and improving the integration between Submariner and Open Cluster Management via the [submariner-addon](https://github.com/open-cluster-management/submariner-addon).
+
+* `subctl cloud prepare` command now supports Google Cloud Platform as well as generic Kubernetes clusters.
+* `--ignore-requirements` flag was added to `subctl join` command which ignores Submariner requirements checks.
+
 ## v0.10.1
 
 * Inter-connecting clusters with overlapping CIDRs (Globalnet):
