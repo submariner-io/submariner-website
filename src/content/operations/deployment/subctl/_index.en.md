@@ -328,6 +328,116 @@ It is recommended to use this when reporting any issue.
 
 `subctl gather --module broker,service-discovery --type resources`
 
+### `cloud`
+
+#### `cloud prepare`
+
+`subctl cloud prepare [flags]`
+
+This command prepares the underlying cloud infrastructure for Submariner installation.
+
+#### `prepare aws`
+
+`subctl cloud prepare aws [flags]`
+
+This command prepares an OpenShift installer-provisioned infrastructure (IPI) on AWS cloud for Submariner installation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`)
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `c5d.large`)
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--infra-id` `<string>`          | AWS infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
+| `--profile` `<string>`           | AWS profile to use for credentials
+| `--region` `<string>`            | AWS region
+| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
+| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+
+#### `prepare gcp`
+
+`subctl cloud prepare gcp [flags]`
+
+This command prepares an OpenShift installer-provisioned infrastructure (IPI) on GCP cloud for Submariner installation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--credentials` `<string>`       | GCP credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
+| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default false)
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `n1-standard-4`)
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--infra-id` `<string>`          | GCP infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
+| `--project-id` `<string>`        | GCP project ID
+| `--region` `<string>`            | GCP region
+| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
+| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+
+#### `prepare generic` flags
+
+This command prepares a generic cluster for Submariner installation. It assumes that the cloud already has the necessary
+firewall ports opened and will only label the required number of gateway nodes for Submariner installation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+
+#### `prepare` global flags
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
+| `--kubecontexts` `<string>`      | Comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
+
+#### `cloud cleanup`
+
+This command cleans up the cloud after Submariner uninstallation.
+
+#### `cleanup aws`
+
+`subctl cloud cleanup aws [flags]`
+
+This command cleans up an OpenShift installer-provisioned infrastructure (IPI) on AWS-based cloud after Submariner uninstallation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`)
+| `--infra-id` `<string>`          | AWS infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
+| `--profile` `<string>`           | AWS profile to use for credentials
+| `--region` `<string>`            | AWS region
+
+#### `cleanup gcp`
+
+`subctl cloud cleanup gcp [flags]`
+
+This command cleans up an installer-provisioned infrastructure (IPI) on GCP-based cloud after Submariner uninstallation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--credentials` `<string>`       | GCP Credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
+| `--infra-id` `<string>`          | GCP infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
+| `--project-id` `<string>`        | GCP project ID
+| `--region` `<string>`            | GCP region
+
+#### `cleanup generic`
+
+`subctl cloud cleanup generic [flags]`
+
+This command removes the labels from gateway nodes after Submariner uninstallation.
+
+#### `cleanup` flags
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
+| `--kubecontexts` `<string>`      | kubeconfig context to use
+
 ### `version`
 
 `subctl version`
