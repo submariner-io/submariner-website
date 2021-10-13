@@ -6,22 +6,14 @@ Please ensure that the AWS Region you deploy to supports this instance type.
 Alternatively, you can choose to deploy using a different instance type.</p>
 </div>
 
-You need to extract your infra ID and region in order to use the command.
-Its possible to extract them from the `metadata.json` file that the OpenShift Installer created:
-
-```bash
-metadata_file=<path/to>/metadata.json
-infra_id=$(jq -r .infraID $metadata_file)
-region=$(jq -r .aws.region $metadata_file)
-```
-
 {{- $clusters := $.Get "clusters" }}
 {{- range $cluster := split $clusters "," }}
-Run the command for **{{ $cluster }}**:
+
+Prepare OpenShift-on-AWS **{{ $cluster }}** for Submariner:
 
 ```bash
 export KUBECONFIG={{ $cluster }}/auth/kubeconfig
-subctl cloud prepare aws --infra-id $infra_id --region $region {{ with $.Get "nattPort" }}--natt-port {{.}}{{ end }}
+subctl cloud prepare aws --ocp-metadata path/to/{{ $cluster }}/metadata.json {{ with $.Get "nattPort" }}--natt-port {{.}}{{ end }}
 ```
 
 {{- end }}
@@ -30,11 +22,11 @@ Note that certain parameters, such as the tunnel UDP port and AWS instance type 
 can be customized. For example:
 
 ```bash
-subctl cloud prepare aws --infra-id $infra_id --region $region --natt-port 4501 --gateway-instance m4.xlarge
+subctl cloud prepare aws --ocp-metadata path/to/metadata.json --natt-port 4501 --gateway-instance m4.xlarge
 ```
 
 Submariner can be deployed in HA mode by setting the `gateways` flag:
 
 ```bash
-subctl cloud prepare aws --infra-id $infra_id --region $region --gateways 3
+subctl cloud prepare aws --ocp-metadata path/to/metadata.json --gateways 3
 ```
