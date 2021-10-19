@@ -4,5 +4,5 @@ retrieve metrics from the Gateway nodes.
 Additionally, the default OpenShift deployment does not allow assigning an elastic public IP to existing worker nodes, which may be
 necessary on one end of the tunnel connection.
 
-`subctl cloud prepare` is a command designed to update your OpenShift installer provisioned AWS infrastructure for Submariner deployments,
+`subctl cloud prepare` is a command designed to update your OpenShift installer provisioned infrastructure for Submariner deployments,
 handling the requirements specified above.
