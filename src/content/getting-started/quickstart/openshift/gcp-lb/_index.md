@@ -1,11 +1,11 @@
 ---
 date: 2020-02-21T13:36:18+01:00
-title: "On AWS (LoadBalancer mode)"
+title: "On GCP (LoadBalancer mode)"
 weight: 20
 ---
 
 This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP)
-clusters on AWS leveraging a cloud network load balancer service in front of the Submariner gateways.
+clusters on GCP leveraging a cloud network load balancer service in front of the Submariner gateways.
 
 The main benefit of this mode is that there is no need to dedicate specialized nodes with a public IP
 address to act as gateways. The administrator only needs to manually label any existing
@@ -17,24 +17,24 @@ Please note that this mode is still experimental and may need more testing. For 
 measured the impact on HA failover times.
 {{% /notice %}}
 
-{{< include "/resources/shared/openshift/setup_openshift.md" >}}
+{{< include "/resources/shared/openshift/setup_openshift_gcp.md" >}}
 
 {{% notice info %}}
 Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
 please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
 
-{{< include "/resources/shared/openshift/setup_aws.md" >}}
+{{< include "/resources/shared/openshift/setup_gcp.md" >}}
 {{< include "/resources/shared/openshift/create_clusters.md" >}}
 
 ### Install `subctl`
 
 {{% subctl-install %}}
 
-### Prepare AWS Clusters for Submariner
+### Prepare GCP Clusters for Submariner
 
 {{% cloud-prepare/intro %}}
-{{% cloud-prepare/aws-lb clusters="cluster-a,cluster-b" %}}
+{{% cloud-prepare/gcp-lb clusters="cluster-a,cluster-b" %}}
 
 ### Install Submariner with Service Discovery
 
