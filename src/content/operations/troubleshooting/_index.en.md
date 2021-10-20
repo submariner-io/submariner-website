@@ -15,6 +15,41 @@ Basic familiarity with the Submariner components and architecture will be helpfu
 
 The guide has been broken into different sections for easy navigation.
 
+## Automated Troubleshooting
+
+Use the `subctl` utility to automate troubleshooting and collecting debugging information.
+
+Install subctl:
+
+```shell
+curl -Ls https://get.submariner.io | VERSION=<your Submariner version> bash
+```
+
+Make sure `KUBECONFIG` is set to point at your connected clusters:
+
+```shell
+export KUBECONFIG=<paths>
+```
+
+Get an idea of what's failing:
+
+```shell
+subctl diagnose all
+subctl diagnose firewall inter-cluster
+```
+
+Collect details about an issue you'd like help with:
+
+```shell
+subctl gather
+tar cfz submariner-<timestamp>.tar.gz submariner-<timestamp>
+```
+
+When reporting an issue, it may also help to include the information in the
+[`bug-report.md` template](https://github.com/submariner-io/submariner/issues/new?assignees=&labels=bug&template=bug-report.md).
+
+## Manual Troubleshooting
+
 ### Pre-requisite
 
 Before we begin troubleshooting, run `subctl version` to obtain which version of the Submariner components you are running.
