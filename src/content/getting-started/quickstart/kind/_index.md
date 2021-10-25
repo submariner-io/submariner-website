@@ -44,7 +44,7 @@ cd submariner
 make clusters
 ```
 
-This creates three Kubernetes clusters: cluster1 and cluster2. To see the list of kind clusters, use the following command:
+This creates two Kubernetes clusters: cluster1 and cluster2. To see the list of kind clusters, use the following command:
 
 ```bash
 $ kind get clusters
