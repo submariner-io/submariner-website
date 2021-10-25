@@ -266,15 +266,9 @@ You can follow any of the [quick start guides](../../getting-started/quickstart)
 
 ### Step 6: Update OperatorHub.io
 
-The [operator-framework/community-operators](https://github.com/operator-framework/community-operators) Git repository
-is a source for sharing Kubernetes Operators with the broader community. This repository is split into two sections:
-
-* Operators for deployment to a vanilla Kubernetes environment (`upstream-community-operators`).
-  These are shared with the Kubernetes community via [OperatorHub.io](https://operatorhub.io/).
-* Operators for deployment to OpenShift (`community-operators`)
-
-We only need to update Submariner's Operator on OperatorHub.io. OpenShift users will find Submariner's Operator in the official Red Hat
-catalog.
+The [k8s-operatorhub/community-operators](https://github.com/k8s-operatorhub/community-operators) Git repository
+is a source for sharing Kubernetes Operators with the broader community via [OperatorHub.io](https://operatorhub.io/).
+OpenShift users will find Submariner's Operator in the official [Red Hat catalog](https://catalog.redhat.com/software/operators/explore).
 
 1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) repository.
 
@@ -286,20 +280,33 @@ catalog.
    make packagemanifests VERSION=${new_version} FROM_VERSION=${previous_version} CHANNEL=${channel}
    ```
 
+   For example:
+
+   ```bash
+   make packagemanifests VERSION=0.11.1 FROM_VERSION=0.11.0 CHANNEL=alpha-0.11
+   ```
+
    Generated package manifests should be in `/packagemanifests/${VERSION}/`.
 
-4) Fork and clone the [operator-framework/community-operators](https://github.com/operator-framework/community-operators) repository.
+4) Fork and clone the [k8s-operatorhub/community-operators](https://github.com/k8s-operatorhub/community-operators) repository.
 
 5) Update the Kubernetes Operator:
 
-    * Copy the generated package from Step 3 into `upstream-community-operators/submariner`
-    * Copy the generated package definition `/packagemanifests/submariner.package.yaml`
-    into `upstream-community-operators/submariner/`
-    * Test the Operator by running: `make operator.test OP_PATH=upstream-community-operators/submariner`
+    * Copy the generated package from Step 3 into `operators/submariner`.
+    * Copy the generated package definition `/packagemanifests/submariner.package.yaml` into `operators/submariner/`.
+    * Test the Operator by running:
+
+      ```bash
+      OPP_AUTO_PACKAGEMANIFEST_CLUSTER_VERSION_LABEL=1 OPP_PRODUCTION_TYPE=k8s \
+      curl -sL https://raw.githubusercontent.com/redhat-openshift-ecosystem/community-operators-pipeline/ci/latest/ci/scripts/opp.sh | bash \
+      -s -- all operators/submariner/${VERSION}
+      ```
+
     * Preview the Operator on [OperatorHub.io](https://operatorhub.io/preview)
     * Once everything is fine, review this
-    [checklist](https://github.com/operator-framework/community-operators/blob/master/docs/pull_request_template.md)
-    and create a new PR on [operator-framework/community-operators](https://github.com/operator-framework/community-operators)
+    [checklist](https://github.com/k8s-operatorhub/community-operators/blob/main/docs/pull_request_template.md)
+    and create a new PR on [k8s-operatorhub/community-operators](https://github.com/k8s-operatorhub/community-operators).
+    * For more details check the [full documentation](https://k8s-operatorhub.github.io/community-operators).
 
 ### Step 7: Announce Release
 
