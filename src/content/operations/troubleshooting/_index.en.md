@@ -35,7 +35,7 @@ Get an idea of what's failing:
 
 ```shell
 subctl diagnose all
-subctl diagnose firewall inter-cluster
+subctl diagnose firewall inter-cluster <kubeconfig0 path> <kubeconfig1 path>
 ```
 
 Collect details about an issue you'd like help with:
