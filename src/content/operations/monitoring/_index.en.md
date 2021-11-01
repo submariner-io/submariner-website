@@ -84,4 +84,4 @@ The following metrics are exposed currently:
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
 | `submariner_service_import`                   | `direction`, `operation`, `syncer_name` | Count of imported Services
 | `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                                                                                        | Count of exported Services
-| `submariner_service_discovery_query_counter`  | `source_cluster`, `destination_cluster`, `destination_service_name`, `destination_service_ip`, `destination_service_namespace` | Count DNS queries that the Lighthouse plugin handles
+| `submariner_service_discovery_query`  | `source_cluster`, `destination_cluster`, `destination_service_name`, `destination_service_ip`, `destination_service_namespace` | Count DNS queries handled by Lighthouse plugin
