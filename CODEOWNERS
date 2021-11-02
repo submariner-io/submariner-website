@@ -1,5 +1,5 @@
 # Auto-generated, do not edit; see CODEOWNERS.in
-* @mangelajo @Oats87 @skitt @sridhargaddam @tpantelis
-/scripts/ @mangelajo @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
-/src/content/development/ @mangelajo @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
-Makefile @mangelajo @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
+* @Oats87 @skitt @sridhargaddam @tpantelis
+/scripts/ @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
+/src/content/development/ @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
+Makefile @mkolesnik @Oats87 @skitt @sridhargaddam @tpantelis
