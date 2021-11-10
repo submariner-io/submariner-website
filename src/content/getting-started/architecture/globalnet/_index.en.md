@@ -52,6 +52,9 @@ Gateway node of the cluster.
 
 ![Figure 1 - Proposed solution](/images/globalnet/overlappingcidr-solution.png)
 
+![Figure 2 - Globalnet priority](/images/globalnet/globalnet-priority.png)
+<!-- Image Source: https://docs.google.com/presentation/d/180CtHZnr9PP5Rh98VEmkQz3ovc5AGXG9wosoHMLhgaY/edit -->
+
 ### submariner-globalnet
 
 Submariner Globalnet is a component that provides cross-cluster connectivity from pods to remote services using their global IPs. Compiled as
