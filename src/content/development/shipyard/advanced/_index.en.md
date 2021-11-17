@@ -32,55 +32,47 @@ ${SCRIPTS_DIR}/build_image.sh -i submariner -f package/Dockerfile
 
 ### Per Cluster Settings
 
-Shipyard supports specifying different settings for each deployed cluster. A default `cluster_settings` is supplied in the image, so any
-custom settings override those. The settings are sent to supporting scripts using a `--cluster_settings` flag.
+Shipyard supports specifying different settings for each deployed cluster. The settings are sent to supporting scripts using a
+`--settings` flag.
 
-Currently, the following settings are supported:
+The settings are specified in a YAML file, where default and per cluster settings can be provided. All clusters are listed under the
+`clusters` key, and each cluster can have specific deployment settings. All cluster specific settings (except `broker`) can be specified
+on the root of the settings file to determine defaults.
 
-* **clusters:** An array of the clusters to deploy.
+The possible settings are:
 
-  ```bash
-  clusters=(cluster1,cluster2)
-  ```
+* **broker**: Special key to mark the broker, set to anything to select a broker. By default, the first cluster is selected.
+* **cni**: Which CNI to deploy on the cluster, currently supports `weave` and `ovn` (leave empty or unset for `kindnet`).
+* **nodes**: A space separated list of nodes to deploy, supported types are `control-plane` and `worker`.
+* **submariner**: If Submariner should be deployed, set to `true`. Otherwise, leave unset (or set to `false` explicitly).
 
-* **cluster_nodes:** A map of cluster names to a space separated string, representing a list of nodes to deploy. Supported values are
-  `control-plane` and `worker`.
+For example, a basic settings file that deploys a couple of clusters with weave CNI:
 
-  ```bash
-  cluster_nodes[cluster1]="control-plane worker"
-  cluster_nodes[cluster2]="control-plane worker worker"
-  ```
-
-* **cluster_subm:** A map of cluster names to values specifying if Submariner should be installed. Set to `true` to have Submariner
-  installed, or to `false` to skip the installation.
-
-  ```bash
-  cluster_subm[cluster1]="false"
-  cluster_subm[cluster2]="true"
-  ```
-
-#### Example: Custom Per Cluster Settings
-
-As an example, in order to customize the clusters to have two workers, and no submariner on the 1st cluster, create a `cluster_settings`
-file in the project:
-
-```bash
-cluster_nodes['cluster1']="control-plane"
-cluster_nodes['cluster2']="control-plane worker worker"
-cluster_nodes['cluster3']="control-plane worker worker"
-cluster_subm['cluster1']="false"
+```yaml
+cni: weave
+submariner: true
+nodes: control-plane worker worker
+clusters:
+  cluster1:
+  cluster2:
 ```
 
-Then, to apply these settings, add this snippet to the Makefile:
+The following settings file deploys two clusters with one control node and two workers, with weave and Submariner. The third cluster
+will host the broker and as such needs no CNI, only a worker node, and no Submariner deployment:
 
-```Makefile
-CLUSTER_SETTINGS_FLAG = --cluster_settings $(DAPPER_SOURCE)/path/to/cluster_settings
-CLUSTERS_ARGS += $(CLUSTER_SETTINGS_FLAG)
-DEPLOY_ARGS += $(CLUSTER_SETTINGS_FLAG)
+```yaml
+cni: weave
+submariner: true
+nodes: control-plane worker worker
+clusters:
+  cluster1:
+  cluster2:
+  cluster3:
+    broker: true
+    cni:
+    submariner: false
+    nodes: control-plane
 ```
-
-The path to `cluster_settings` should be specified relative to the project root; this ends up available in the build container in the
-directory referenced by `$DAPPER_SOURCE`.
 
 ### Clusters Deployment Customization
 

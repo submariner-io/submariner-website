@@ -262,20 +262,30 @@ in the cluster that may prevent Submariner from working properly.
 Below is a list of available sub-commands:
 
 <!-- markdownlint-disable line-length -->
-| Diagnose command           | Description                                                                 | Flags     | Flags Description
-|:---------------------------|:----------------------------------------------------------------------------|:----------|:------
+| Diagnose command           | Description                                                                 | Flags
+|:---------------------------|:----------------------------------------------------------------------------|:----------
 | `deployment`               | checks that the Submariner components are properly deployed and running with no overlapping CIDRs
 | `connections`              | checks that the Gateway connections to other clusters are all established
 | `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
-| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>` | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
+| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>`
 | `cni`                      | checks if the detected CNI network plugin is supported by Submariner
-| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose` | Timeout in seconds while validating the connection attempt. Produce verbose logs during validation
-| `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  |
+| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` , `--verbose`, `--namespace` `<string>`
+| `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` , `--verbose`, `--namespace` `<string>`
+| `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
+| `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  
 <!-- markdownlint-enable line-length -->
 
-#### `diagnose` flags
+#### `diagnose` flags descriptions
+
+<!-- markdownlint-disable line-length -->
+| Flag                             | Description
+|:---------------------------------|:----------------------------------------------------------------------------|
+| `--namespace` `<string>`         | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
+| `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
+| `--verbose`                      | Produce verbose logs during validation
+<!-- markdownlint-enable line-length -->
+
+#### `diagnose` global flags
 
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
