@@ -28,8 +28,7 @@ export SUBMARINER_PSK=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 6
 ```bash
 helm install "${BROKER_NS}" submariner-latest/submariner-k8s-broker \
              --create-namespace \
-             --namespace "${BROKER_NS}" \
-             --set submariner.serviceDiscovery=true
+             --namespace "${BROKER_NS}"
 ```
 
 Setup more environment variables we will need later for joining clusters.
