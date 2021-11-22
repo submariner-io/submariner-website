@@ -73,16 +73,17 @@ helm install submariner-operator submariner-latest/submariner-operator \
         --set broker.token="${SUBMARINER_BROKER_TOKEN}" \
         --set broker.namespace="${BROKER_NS}" \
         --set broker.ca="${SUBMARINER_BROKER_CA}" \
+        --set broker.globalnet="${GLOBALNET}" \
+        --set submariner.serviceDiscovery=true \
         --set submariner.cableDriver=libreswan \ # or wireguard or vxlan
         --set submariner.clusterId="${CLUSTER_ID}" \
         --set submariner.clusterCidr="${CLUSTER_CIDR}" \
         --set submariner.serviceCidr="${SERVICE_CIDR}" \
         --set submariner.globalCidr="${GLOBAL_CIDR}" \
+        --set submariner.natEnabled="true" \ # disable this if no NAT will happen between gateways
         --set serviceAccounts.globalnet.create="${GLOBALNET}" \
-        --set submariner.natEnabled="true" \  # disable this if no NAT will happen between gateways
-        --set brokercrd.create=false \
-        --set submariner.serviceDiscovery=true \
-        --set serviceAccounts.lighthouse.create=true
+        --set serviceAccounts.lighthouseAgent.create=true \
+        --set serviceAccounts.lighthouseCoreDns.create=true
 ```
 
 Some image override settings you could use
