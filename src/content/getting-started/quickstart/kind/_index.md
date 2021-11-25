@@ -21,13 +21,13 @@ Submariner provides automation to deploy clusters using kind and connect them us
 To create kind clusters and deploy Submariner, run:
 
 ```bash
-git clone https://github.com/submariner-io/submariner
-cd submariner
+git clone https://github.com/submariner-io/submariner-operator
+cd submariner-operator
 make deploy
 ```
 
-By default, the automation configuration in the main submariner-io/submariner repository deploys two clusters, with cluster1 configured as
-the Broker. See the [settings](https://github.com/submariner-io/submariner/blob/devel/.shipyard.e2e.yml) file for details.
+By default, the automation configuration in the submariner-io/submariner-operator repository deploys two clusters, with cluster1 configured as
+the Broker. See the [settings](https://github.com/submariner-io/submariner-operator/blob/devel/.shipyard.e2e.yml) file for details.
 
 ### Deploy Manually
 
@@ -39,8 +39,8 @@ with [`subctl`](../../../operations/deployment/subctl).
 To create kind clusters, run:
 
 ```bash
-git clone https://github.com/submariner-io/submariner
-cd submariner
+git clone https://github.com/submariner-io/submariner-operator
+cd submariner-operator
 make clusters
 ```
 
