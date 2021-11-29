@@ -28,6 +28,7 @@ Version numbers are required to be formatted following the schema norms where th
 
 * Git: `vx.y.z` (example: `v0.8.0`)
 * Containers: `x.y.z` (example: `0.8.0`)
+* Bundle: `x.y.z` (example: `0.8.0`)
 * Stable branches: `release-x.y` (example: `release-0.8`)
 * Milestone releases: Append `-mN` starting at 1 (example: `v0.8.0-m1`)
 * Release candidates: Append `-rcN` starting at 0 (example: `v0.8.0-rc0`)
@@ -60,6 +61,12 @@ must also be created.
 
 It's best to start working with the broader community to create release notes well before the release. Create a PR to start the process, and
 work with contributors to get everything added and reviewed.
+
+### Bundle (Final Releases)
+
+If you're creating a release meant for general consumption, i.e. not an internal milestone release or a release candidate, you may want
+to publish the bundle to OperatorHub.io. The release process will create a Pull Request against the
+[community-operators](https://github.com/k8s-operatorhub/community-operators) repo.
 
 ## Automated Release Creation Process
 
@@ -122,7 +129,22 @@ The release automation process can create stable branches for you. To do so, nav
    status: branch
    ```
 
-3) Commit your changes, create a pull request, and have it reviewed.
+3) For final releases please add the bundle fields as follows:
+
+   ```diff
+   version: v0.8.0
+   name: 0.8.0
+   branch: release-0.8
+   status: branch
+   +bundle:
+   + from_version: 0.0.0
+   + channel: alpha-0.8
+   ```
+
+   When releasing a patch the `from_version` should be the previous version which we intend to replace.
+   Otherwise, no need to specify the `from_version` field, or it may be set to `0.0.0`.
+
+4) Commit your changes, create a pull request, and have it reviewed.
 
 Once the pull request is merged, it will trigger a CI job to create the stable branches and pin them to Shipyard on that stable
 branch.
