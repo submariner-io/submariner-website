@@ -51,6 +51,12 @@ $ kind get clusters
 cluster1
 cluster2
 ```
+
+To use kubectl on the created clusters, first set the KUBECONFIG environment variable as follows:
+```bash
+export KUBECONFIG=output/kubeconfigs/kind-config-cluster1:output/kubeconfigs/kind-config-cluster2
+```
+
 <!-- markdownlint-disable no-trailing-spaces -->
 To list the local Kubernetes contexts, use the following command:
 
