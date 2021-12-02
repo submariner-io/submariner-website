@@ -44,7 +44,21 @@ cd submariner-operator
 make clusters
 ```
 
-This creates two Kubernetes clusters: cluster1 and cluster2. To see the list of kind clusters, use the following command:
+Once the clusters are deployed, `make clusters` will indicate how to access them:
+
+```text
+Your virtual cluster(s) are deployed and working properly and can be accessed with:
+
+export KUBECONFIG=$(find $(git rev-parse --show-toplevel)/output/kubeconfigs/ -type f -printf %p:)
+
+$ kubectl config use-context cluster1 # or cluster2, cluster3..
+
+To clean everthing up, just run: make clean-clusters
+```
+
+The `export KUBECONFIG` command has to be run before `kubectl` can be used.
+
+`make clusters` creates two Kubernetes clusters: cluster1 and cluster2. To see the list of kind clusters, use the following command:
 
 ```bash
 $ kind get clusters
