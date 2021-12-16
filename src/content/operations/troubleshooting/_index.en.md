@@ -25,18 +25,28 @@ Install subctl:
 curl -Ls https://get.submariner.io | VERSION=<your Submariner version> bash
 ```
 
-Make sure `KUBECONFIG` is set to point at your connected clusters:
+Set `KUBECONFIG` to point at your clusters:
 
 ```shell
-export KUBECONFIG=<paths>
+export KUBECONFIG=<kubeconfig0 path>:<kubeconfig1 path>
 ```
 
-Get an idea of what's failing:
+Show overview of, and diagnose issues with, each cluster:
 
 ```shell
+subctl show all
 subctl diagnose all
+```
+
+Diagnose common firewall issues between a pair of clusters:
+
+```shell
 subctl diagnose firewall inter-cluster <kubeconfig0 path> <kubeconfig1 path>
 ```
+
+{{% notice info %}}
+[Merged KUBECONFIGs are currently not supported by `subctl diagnose firewall`](https://github.com/open-cluster-management/backlog/issues/17196).
+{{% /notice %}}
 
 Collect details about an issue you'd like help with:
 
