@@ -79,6 +79,12 @@ Different types of deployments can be configured with `using` flags:
 make e2e using=helm,globalnet
 ```
 
+The [cable driver](../../getting-started/architecture/gateway-engine) used to connect clusters can also be selected with `using` flags:
+
+```shell
+make e2e using=ovn
+```
+
 See [Shipyard's `Makefile.inc`](https://github.com/submariner-io/shipyard/blob/devel/Makefile.inc) for the currently-supported `using` flags.
 
 A subset of tests can be selected with Ginkgo `focus` flags:
