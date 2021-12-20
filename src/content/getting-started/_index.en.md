@@ -58,8 +58,8 @@ An example of three clusters configured to use with Submariner (without Globalne
 
 ## Support Matrix
 
-Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Presently, Submariner has been
-tested with the following network (CNI) Plugins:
+Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner has been tested with the
+following network (CNI) Plugins:
 
 * [OpenShift-SDN](https://github.com/openshift/sdn)
 * [Weave](https://github.com/weaveworks/weave)
@@ -67,6 +67,8 @@ tested with the following network (CNI) Plugins:
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
 * [Calico](https://www.projectcalico.org/) (see the [Calico-specific deployment instructions](../operations/deployment/calico/))
 * [OVN](https://github.com/ovn-org/ovn-kubernetes)
+
+Submariner supports all currently-supported Kubernetes versions, as determined by [the Kubernetes release policy](https://kubernetes.io/releases/).
 
 ## Deployment
 
