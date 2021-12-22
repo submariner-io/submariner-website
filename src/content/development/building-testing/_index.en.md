@@ -82,6 +82,13 @@ make e2e using=helm,globalnet
 The [cable driver](../../getting-started/architecture/gateway-engine) used to connect clusters can also be selected with `using` flags:
 
 ```shell
+make e2e using=vxlan
+```
+
+In order to deploy clusters with [OVN Kubernetes](../../getting-started/architecture/networkplugin-syncer/ovn-kubernetes/), the
+following command can be used:
+
+```shell
 make e2e using=ovn
 ```
 
