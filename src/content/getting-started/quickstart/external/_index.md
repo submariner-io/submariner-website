@@ -4,47 +4,41 @@ title: "External Network (Experimental)"
 weight: 50
 ---
 
-This guide covers the minimum steps to try external network use case.
-In this use case, pods running in the K8s cluster can access external applications outside of the cluster and vice-versa
-by using DNS resolution supported by lighthouse or manually using the globalnet ingress IPs.
-Along with connectivity, the source IP of the traffic will also be preserved.
+This guide covers experimenting with the external network use case.
+In this use case, pods running in a Kubernetes cluster can access external applications outside of the cluster and vice versa
+by using DNS resolution supported by Lighthouse or manually using the Globalnet ingress IPs.
+In addition to providing connectivity, the source IP of traffic is also preserved.
 
-This feature is still experimental, so the configuration mechanism and observed behavior may be changed in the future.
+{{% notice warning %}}
+**This feature is experimental.** The configuration mechanism and observed behavior may change.
+{{% /notice %}}
 
 ### Prerequisites
 
-1. Prepare below:
-    - Two or more k8s clusters
-    - One or more non-cluster hosts, that exist in the same network segment to one of the k8s clusters
+1. Prepare:
+    - Two or more Kubernetes clusters
+    - One or more non-cluster hosts that exist in the same network segment to one of the Kubernetes clusters
 
-    In this guide, we will use the following k8s clusters and a non-cluster host.
+    In this guide, we will use the following Kubernetes clusters and non-cluster host.
 
-    - K8s clusters:
+    | Name      | IP              | Description         |
+    |-----------|-----------------|---------------------|
+    | cluster-a | 192.168.122.26  | Single-node cluster |
+    | cluster-b | 192.168.122.27  | Single-node cluster |
+    | test-vm   | 192.168.122.142 | Linux host          |
 
-    | Cluster   | Node IP(s)     | Remarks             |
-    |-----------|----------------|---------------------|
-    | cluster-a | 192.168.122.26 | Single-node cluster |
-    | cluster-b | 192.168.122.27 | Single-node cluster |
-
-    - non-cluster host:
-
-    | Host      | IP              | Remarks            |
-    |-----------|-----------------|--------------------|
-    | test-vm   | 192.168.122.142 | Linux is installed |
-
-    In above case, all of them are deployed inside 192.168.122.0/24 segment.
+    In this example, everything is deployed in the 192.168.122.0/24 segment.
     However, it is only required that cluster-a and test-vm are in the same segment.
     Other clusters, cluster-b and any additional clusters, can be deployed in different segments or even in any other networks in the internet.
-    Also, these clusters can be multi-node clusters.
+    Also, clusters can be multi-node clusters.
 
-    On the other hand, subnets of non-cluster hosts should be distinguished from those of all the clusters
-    to easily specify the external network CIDR.
-    In above case, cluster-a and cluster-b belongs to 192.168.122.0/25 network and test-vm belongs to 192.168.122.128/25 network.
+    Subnets of non-cluster hosts should be distinguished from those of the clusters to easily specify the external network CIDR.
+    In this example, cluster-a and cluster-b belong to 192.168.122.0/25 and test-vm belongs to 192.168.122.128/25.
     Therefore, the external network CIDR for this configuration is 192.168.122.128/25.
-    In test environment for just one host, we will be able to specify external network CIDR, like 192.168.122.142/32.
-    However design of the subnet needs to be considered when more hosts are added.
+    In test environments with just one host, an external network CIDR like 192.168.122.142/32 can be specified.
+    However, design of the subnets need to be considered when more hosts are used.
 
-2. Choose the Pod CIDR and the Service CIDR for k8s clusters and deply them.
+2. Choose the Pod CIDR and the Service CIDR for Kubernetes clusters and deply them.
 
     In this guide, we will use the following CIDRs:
 
@@ -53,7 +47,7 @@ This feature is still experimental, so the configuration mechanism and observed 
     | cluster-a |10.42.0.0/24  |10.43.0.0/16  |
     | cluster-b |10.42.0.0/24  |10.43.0.0/16  |
 
-    Note that we will use globalnet in this guide, therefore overlapping CIDRs are supported.
+    Note that we will use Globalnet in this guide, therefore overlapping CIDRs are supported.
     One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described
     [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b",
     with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
@@ -61,30 +55,27 @@ This feature is still experimental, so the configuration mechanism and observed 
 {{% notice note %}}
 In this configuration, global IPs are used to access between the gateway node and non-cluster hosts,
 which means packets are sent to IP addresses that are not part of the actual network segment.
-To make such packets not to be dropped, anti-sppofing rules need to be disabled for the hosts and the gateway node.
+To make such packets not to be dropped, anti-spoofing rules need to be disabled for the hosts and the gateway node.
 {{% /notice %}}
 
 ### Setup Submariner
 
 #### Ensure kubeconfig files
 
-Ensure that kubeconfig file for cluster-a exists as kubeconfig.cluster-a and
-kubeconfig file for cluster-b exists as kubeconfig.cluster-b on node of cluster-a.
-File names can be different, but rest of this guide assumes these files are named as such.
+Ensure that kubeconfig files for both clusters are available.
+This guide assumes cluster-a's kubeconfig file is named `kubeconfig.cluster-a` and cluster-b's is named `kubeconfig.cluster-b`.
 
-#### Install `subctl` on node of cluster-a
+#### Install `subctl`
 
 {{% subctl-install %}}
 
-#### Use cluster-a as the Broker with globalnet enabled
-
-On node of cluster-a, run:
+#### Use cluster-a as the Broker with Globalnet enabled
 
 ```bash
-subctl deploy-broker --kubeconfig kubeconfig.cluster-a  --globalnet
+subctl deploy-broker --kubeconfig kubeconfig.cluster-a --globalnet
 ```
 
-#### Join cluster-a to the Broker with external CIDR added as clustercidr
+#### Join cluster-a to the Broker with external CIDR added as cluster CIDR
 
 Carefully review the `CLUSTER_CIDR` and `EXTERNAL_CIDR` and run:
 
@@ -100,11 +91,11 @@ subctl join --kubeconfig kubeconfig.cluster-a broker-info.subm --clusterid clust
 subctl join --kubeconfig kubeconfig.cluster-b broker-info.subm --clusterid cluster-b --natt=false
 ```
 
-#### Deploy dns server on cluster-a for non-cluster hosts
+#### Deploy DNS server on cluster-a for non-cluster hosts
 
 Create a list of upstream DNS servers as `upstreamservers`:
 
-Note that `dnsip` is the IP of DNS server for the test-vm, which is defined as `nameserver` in /etc/resolve.conf.
+Note that `dnsip` is the IP of DNS server for the test-vm, which is defined as `nameserver` in `/etc/resolve.conf`.
 
 ```bash
 dnsip=192.168.122.1
@@ -172,7 +163,7 @@ spec:
     app: external-dns-cluster-a
 ```
 
-Use this yaml to create DNS server, and assign global ingress IP:
+Use this YAML to create DNS server, and assign global ingress IP:
 
 ```bash
 kubectl apply -f dns.yaml
@@ -242,15 +233,10 @@ Address: 10.43.162.46
 
 Run on test-vm:
 
-- python 2.x case:
-
 ```bash
+# Python 2.x:
 python -m SimpleHTTPServer 80
-```
-
-- python 3.x case:
-
-```bash
+# Python 3.x:
 python -m http.server 80
 ```
 
@@ -314,7 +300,7 @@ curl 242.0.255.253
 On test-vm, check the console log of HTTP server that there are accesses from pods
 
 {{% notice note %}}
-Currently, __headless__ service without selector is not supported for globalnet,
+Currently, __headless__ service without selector is not supported for Globalnet,
 therefore service without selector needs to be used.
 This feature is under discussion in [submariner-io/submariner#1537](https://github.com/submariner-io/submariner/issues/1537).
 {{% /notice %}}
@@ -351,7 +337,7 @@ kubectl logs -l app=nginx
 
 ##### Verify access to Statefulset from non-cluster hosts
 
-A StatefulSet uses a headless Service. Create a `web.yaml` as follows:
+A `StatefulSet` uses a headless `Service`. Create a `web.yaml` file as follows:
 
 ```yaml
 apiVersion: v1
@@ -395,7 +381,7 @@ spec:
           name: web
 ```
 
-Use this yaml to create a StatefulSet web with nginx-ss as the Headless Service:
+Apply the above YAML to create a web `StatefulSet` with nginx-ss as the headless service:
 
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
@@ -412,7 +398,7 @@ curl web-0.cluster-b.nginx-ss.default.svc.clusterset.local
 curl web-1.cluster-b.nginx-ss.default.svc.clusterset.local
 ```
 
-Check the console log of HTTP server that there are accesses from test-vm:
+Check the console log of the HTTP server to verify there are accesses from test-vm:
 
 ```bash
 kubectl logs web-0
