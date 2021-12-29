@@ -13,3 +13,4 @@ weight = 20
   * [On AWS](openshift/aws)
   * [On AWS with Globalnet](openshift/globalnet)
   * [Hybrid vSphere and AWS](openshift/vsphere-aws)
+* [External Network (Experimental)](external)
