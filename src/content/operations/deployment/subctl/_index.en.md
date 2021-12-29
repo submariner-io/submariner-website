@@ -4,7 +4,7 @@ weight: 10
 ---
 
 The `subctl` command-line utility simplifies the deployment and maintenance of Submariner by automating interactions with the [Submariner
-Operator](https://github.com/submariner-io/submariner-operator)
+Operator](https://github.com/submariner-io/submariner-operator).
 
 ## Synopsis
 
