@@ -20,6 +20,14 @@ to the [`subctl` guide](../../../operations/deployment/subctl/).
 WireGuard needs to be installed on Gateway nodes. See the [WireGuard installation instructions](https://www.wireguard.com/install/).
 {{% /notice %}}
 
+{{% notice note %}}
+VXLAN connections are unencrypted by design. This is typically useful for environments in which all of the participating clusters run
+on-premises, the underlying inter-network fabric is controlled, and in many cases already encrypted by other means. Other common use case is
+to leverage the VXLAN cable engine over a virtual network peering on public clouds (for e.g, VPC Peering on AWS). In this case, the VXLAN
+connection will be established on top of a peering link which is provided by the underlying cloud infrastructure and is already secured.
+In both cases, the expectation is that connected clusters should be directly reachable without NAT.
+{{% /notice %}}
+
 Instances of the Gateway Engine run on specifically designated nodes in a
 cluster of which there may be more than one for fault tolerance. Submariner
 supports active/passive High Availability for the Gateway Engine component,
