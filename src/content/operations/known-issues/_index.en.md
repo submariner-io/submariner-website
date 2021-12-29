@@ -18,6 +18,5 @@ VXLAN cable driver.
 
 ## Globalnet
 
-* Globalnet only supports Pod to remote Service connectivity using Global IPs. Pod to Pod connectivity is not supported at this time.
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
