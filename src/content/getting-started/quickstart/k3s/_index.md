@@ -45,7 +45,8 @@ which is obtained from the first field yielded by `hostname -I`, and to give the
 than “default”. (This uses [yq](https://github.com/mikefarah/yq/) v4.7.0 or later.)
 
 ```bash
-cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-a
+sudo cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-a
+sudo chown $(id -u):$(id -g) kubeconfig.cluster-a
 export IP=$(hostname -I | awk '{print $1}')
 yq -i eval \
 '.clusters[].cluster.server |= sub("127.0.0.1", env(IP)) | .contexts[].name = "cluster-a" | .current-context = "cluster-a"' \
@@ -67,7 +68,8 @@ which is obtained from the first field yielded by `hostname -I`, and to give the
 than “default”.
 
 ```bash
-cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-b
+sudo cp /etc/rancher/k3s/k3s.yaml kubeconfig.cluster-b
+sudo chown $(id -u):$(id -g) kubeconfig.cluster-b
 export IP=$(hostname -I | awk '{print $1}')
 yq -i eval \
 '.clusters[].cluster.server |= sub("127.0.0.1", env(IP)) | .contexts[].name = "cluster-b" | .current-context = "cluster-b"' \
