@@ -20,3 +20,15 @@ VXLAN cable driver.
 
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
+
+## Deploying with Helm on OpenShift
+
+When deploying Submariner using Helm on OpenShift, Submariner needs to be granted the appropriate security context for its service accounts:
+
+```shell
+oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submariner-routeagent
+oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submariner-gateway
+oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submariner-globalnet
+```
+
+This is handled automatically in `subctl` and submariner-addon.
