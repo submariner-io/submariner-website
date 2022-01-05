@@ -131,7 +131,6 @@ subctl export service --kubeconfig kubeconfig.cluster-b --namespace default ngin
 Run `nettest` from `cluster-a` to access the `nginx` service:
 
 ```bash
-kubectl --kubeconfig kubeconfig.cluster-a -n default  run --generator=run-pod/v1 \
-tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+kubectl --kubeconfig kubeconfig.cluster-a -n default run tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.clusterset.local
 ```
