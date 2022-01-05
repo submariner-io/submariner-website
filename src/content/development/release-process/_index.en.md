@@ -68,8 +68,14 @@ content for the release, this needs to be reviewed. Once the pull request is mer
 and the next step can be initiated shortly after making sure the release jobs on the `releases` and any participating repositories are done.
 
 {{% notice info %}}
-You need to set `GITHUB_TOKEN` environment variable to a [Personal Access Token](https://github.com/settings/tokens) you create.
+The `GITHUB_TOKEN` environment variable in the shell you're using for the automation must be set to a
+[Personal Access Token](https://github.com/settings/tokens) you create.
 The token needs at least `public_repo` scope for the automated release to work.
+
+```shell
+export GITHUB_TOKEN=<token>
+```
+
 {{% /notice %}}
 
 To run the automated release, simply clone the [releases](https://github.com/submariner-io/releases) repository and execute:
