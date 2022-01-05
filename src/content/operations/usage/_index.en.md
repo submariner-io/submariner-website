@@ -366,8 +366,7 @@ Next, run a test Pod on **cluster2** and try to access the `nginx` Service from 
 $ kubectl create namespace nginx-test
 namespace/nginx-test created
 
-$ kubectl -n nginx-test  run --generator=run-pod/v1 \
-tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+$ kubectl run -n nginx-test tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
 ```bash
@@ -552,8 +551,7 @@ Events:                    <none>
 Run a test Pod on **cluster2** and try to access the `nginx` Service from within the Pod:
 
 ```bash
-$ kubectl -n nginx-test  run --generator=run-pod/v1 \
-tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+kubectl run -n nginx-test tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 
 ```bash
@@ -843,8 +841,7 @@ nginx-ss-nginx-test-cluster3   Headless                         5m48s
 Next, run a test Pod on **cluster2** and try to access the `nginx-ss` Service from within the Pod:
 
 ```bash
-kubectl -n nginx-test  run --generator=run-pod/v1 \
-tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+kubectl run -n nginx-test tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 ```
 <!-- markdownlint-disable no-hard-tabs -->
 ```bash
