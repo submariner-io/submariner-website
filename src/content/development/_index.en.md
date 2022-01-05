@@ -7,6 +7,7 @@ pre = "<b>4. </b>"
 
 * [Backports](backports)
 * [Building and Testing](building-testing)
+  * [CI/CD Maintenance](building-testing/ci-maintenance)
 * [Code Review Guide](code-review)
 * [Contributing to the Website](website)
   * [Docs Style Guide](website/style-guide)
