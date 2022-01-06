@@ -148,8 +148,8 @@ subctl export service --kubeconfig output/kubeconfigs/kind-config-cluster2 --nam
 Run `nettest` from `cluster1` to access the `nginx` service:
 
 ```bash
-kubectl --kubeconfig output/kubeconfigs/kind-config-cluster1 -n default  run --generator=run-pod/v1 \
-tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+kubectl --kubeconfig output/kubeconfigs/kind-config-cluster1 -n default run tmp-shell --rm -i --tty --image quay.io/submariner/nettest \
+-- /bin/bash
 curl nginx.default.svc.clusterset.local
 ```
 

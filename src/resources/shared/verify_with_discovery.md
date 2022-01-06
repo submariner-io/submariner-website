@@ -26,7 +26,7 @@ Run `nettest` from `cluster-a` to access the `nginx` service:
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
-kubectl -n default  run --generator=run-pod/v1 tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
+kubectl -n default run tmp-shell --rm -i --tty --image quay.io/submariner/nettest -- /bin/bash
 curl nginx.default.svc.clusterset.local:8080
 ```
 
