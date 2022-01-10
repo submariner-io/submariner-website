@@ -4,6 +4,14 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.11.1
+
+This is a bugfix release:
+
+* All exported headless Services are now given a Globalnet ingress IP when Globalnet is enabled ([#1634](https://github.com/submariner-io/submariner/issues/1634)).
+* Deployments without Globalnet no longer fail because of an invalid `GlobalCIDR` range ([#1668](https://github.com/submariner-io/submariner-operator/issues/1668)).
+* `subctl gather` no longer panics when retrieving some Pod container status information ([#1684](https://github.com/submariner-io/submariner-operator/issues/1684)).
+
 ## v0.11.0
 
 This release mainly focused on stability, bug fixes, and improving the integration between Submariner and Open Cluster Management via the [submariner-addon](https://github.com/open-cluster-management/submariner-addon).
