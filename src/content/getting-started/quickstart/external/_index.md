@@ -140,6 +140,9 @@ spec:
         ports:
         - containerPort: 53
         command: [ "/bin/sh", "-c", "microdnf install -y dnsmasq; ln -s /upstreamservers /etc/dnsmasq.d/upstreamservers; dnsmasq -k" ]
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
         volumeMounts:
         - name: upstreamservers
           mountPath: /upstreamservers
