@@ -46,10 +46,10 @@ Once the changes for a step are reviewed and merged, a CI job will run to create
 required pull requests in preparation for the next step to be reviewed and merged. Once all these pull requests have been
 merged, you can continue onto the next step.
 
-For most projects, after a release is created, another job will be initiated to build release artifacts and publish it to Quay.
+For most projects, after a release is created, another job will be initiated to build release artifacts and publish to Quay.
 This will take several minutes. You can monitor the progress from the project's main page. In the branches/tags pull-down
 above the file list heading, select the tag for the new version. A small yellow circle icon should be present to the right
-of the file list heading which indicates a job is in progress. You can click on it to see details. There may be several checks
+of the file list heading which indicates a job is in progress. You can click it to see details. There may be several checks
 for the job listed but the important one is "Release Images". When complete, the indicator icon will change to either a
 green check mark on success or a red X on failure. A failure likely means the artifacts were not published to Quay, in
 which case select the failed check, inspect the logs, correct the issue and re-run the job.
@@ -100,10 +100,10 @@ To do so, run the `make` command with `dryrun=true`.
 {{% /notice %}}
 
 The command runs, gathers the data for the release, updates the release YAML and pushes it for review. Once the review process is done,
-and the automated release steps on the CI have finished successfully, the PR is merged. Pull requests will be created for all dependent
-projects to update them to the new version in preparation for the subsequent  steps. The automation will leave a comment with a list of
-them. Make sure all those PRs are merged and their release jobs pass. Then proceed with the next step, by simply **running the same
-command again to advance to the next stage**.
+merge the PR. Pull requests will then be created for all dependent projects to update them to the new version. The automation
+will leave a comment with a list of the version-bump PRs for dependent project in the release PR that was just merged. Make sure all those
+PRs are merged and their release jobs pass (see the Actions tab of the repository on GitHub) then **proceed to the next release phase by
+running the same command again**.
 
 Once there isn't anything else to do, the command will inform you. At this point, continue manually with any steps not automated yet,
 starting with [Verify Release](#verify).
