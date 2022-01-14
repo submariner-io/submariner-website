@@ -16,6 +16,10 @@ Submariner provides automation to deploy clusters using kind and connect them us
 1. Install [Docker](https://docs.docker.com/get-docker/) and ensure it is running properly on your computer.
 2. Install and set up [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
+{{% notice note %}}
+You may need to [increase your inotify resource limits](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files).
+{{% /notice %}}
+
 ### Deploy Automatically
 
 To create kind clusters and deploy Submariner, run:
