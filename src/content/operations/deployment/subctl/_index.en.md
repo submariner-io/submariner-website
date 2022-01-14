@@ -62,6 +62,7 @@ contains the following details:
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
 | `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
 | `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
+| `--broker-namespace` `<string>`       | Namespace on the Broker used for synchronizing resources between clusters (default `submariner-k8s-broker`)
 <!-- markdownlint-enable line-length -->
 
 ### `export`
