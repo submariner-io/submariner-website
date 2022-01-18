@@ -43,6 +43,15 @@ The cluster in which the Broker is deployed can also participate in the dataplan
 joined (see following step).
 {{% /notice %}}
 
+You can customize the Broker namespace using the `--broker-namespace` flag, allowing you to use
+a namespace of your choice on the Broker for synchronising resources between clusters.
+
+```bash
+subctl deploy-broker --broker-namespace <CUSTOM-NAMESPACE> ...
+```
+
+Reference the [`subctl deploy-broker` flag docs](subctl/#deploy-broker-flags) for additional details.
+
 ## Joining clusters
 
 For each cluster you want to join, issue the following command:

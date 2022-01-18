@@ -102,9 +102,10 @@ name). These flags affect how Submariner is deployed on the clusters.
 Since `deploy` relies on `clusters` then effectively you could also specify `CLUSTERS_ARGS` to control the cluster deployment (provided the
 cluster hasn't been deployed yet).
 
-Flags of note:
+Flags of note (see the flags defined in [deploy.sh](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/deploy.sh)
+for the full list):
 
-* **deploytool:** Specifies the deployment tool to use: `operator` (default) or `helm`.
+* **deploytool:** Specifies the deployment tool to use: `operator` (default), `helm`, `bundle` or `ocm`.
 
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator'
@@ -113,7 +114,7 @@ Flags of note:
 * **deploytool_broker_args:** Any extra arguments to pass to the deploy tool when deploying the broker.
 
   ```bash
-  make deploy DEPLOY_ARGS='--deploytool operator --deploytool_broker_args "--service-discovery"'
+  make deploy DEPLOY_ARGS='--deploytool operator --deploytool_broker_args "--components service-discovery,connectivity"'
   ```
 
 * **deploytool_submariner_args:** Any extra arguments to pass to the deploy tool when deploying Submariner.
@@ -122,10 +123,21 @@ Flags of note:
   make deploy DEPLOY_ARGS='--deploytool operator --deploytool_submariner_args "--cable-driver wireguard"'
   ```
 
+As shown above, arguments can be passed directly to the Broker and Submariner.
+The deploy script also has flags that group common options together for easier user experience.
+For example, the [`service_discovery` flag in `deploy.sh`](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/deploy.sh)
+will handle the `--components service-discovery,connectivity` flags mentioned above. Other examples:
+
 * **globalnet:** When set, deploys Submariner with the globalnet controller, and assigns a unique Global CIDR to each cluster.
 
   ```bash
   make deploy DEPLOY_ARGS='--globalnet'
+  ```
+
+* **cable_driver:** Override the default cable driver to configure the tunneling method for connections between clusters.
+
+  ```bash
+  make deploy DEPLOY_ARGS='--cable_driver wireguard'
   ```
 
 #### Example: Passing Deployment Variables
@@ -134,7 +146,7 @@ As an example, in order to deploy with Lighthouse and support both Operator and 
 
 ```Makefile
 ifeq ($(deploytool),operator)
-DEPLOY_ARGS += --deploytool operator --deploytool_broker_args '--service-discovery'
+DEPLOY_ARGS += --deploytool operator --deploytool_broker_args '--components service-discovery,connectivity'
 else
 DEPLOY_ARGS += --deploytool helm --deploytool_broker_args '--set submariner.serviceDiscovery=true' --deploytool_submariner_args '--set submariner.serviceDiscovery=true,lighthouse.image.repository=localhost:5000/lighthouse-agent,serviceAccounts.lighthouse.create=true'
 endif
