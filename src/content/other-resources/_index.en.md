@@ -22,6 +22,8 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Demo Recordings
 
+* [Automated Disaster Recovery failover and failback with Red Hat OpenShift (01/2021)](https://www.youtube.com/watch?v=OPKVKPfJrRA), or with
+  more discussion on [Ask an OpenShift Admin (Ep 55): Disaster recovery with ODF and ACM (01/2021)](https://youtu.be/Tlmuvkq_OPo?t=1177)
 * [Submariner in 60s (05/2020)](https://www.youtube.com/watch?v=pQgUWiGtKqM)
 * [Connecting hybrid Kubernetes clusters using Submariner (03/2020)](https://www.youtube.com/watch?v=fMhZRNn0fxQ)
 * [Cross-cluster service discovery in Submariner using Lighthouse (03/2020)](https://www.youtube.com/watch?v=tXsemQPNhyQ)
