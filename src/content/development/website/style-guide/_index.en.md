@@ -43,4 +43,8 @@ Both the "Sub-mariner" ("Sub-MARE-en-er", like the watch) and "Submarine-er" ("S
 The second option, "Submarine-er", has historically been more common as Chris Kim (the initial creator) imagined the iconography of the
 project as related to submarine cables.
 
+### Date Format
+
+Submariner follows ISO 8601 for date formats (YYYY-MM-DD or YYYY-MM).
+
 [kube docs guide]: https://kubernetes.io/docs/contribute/style/style-guide
