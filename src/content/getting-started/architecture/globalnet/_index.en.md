@@ -79,7 +79,7 @@ This component is responsible for programming the routing entries, iptable rules
   global IP(s) allocated to the `GlobalEgressIP` object.
 * For each exported service, creates an ingress rule to direct all traffic destined to the Service's global IP to the service's
   `kube-proxy` iptables chain which in turn directs traffic to service's backend pods.
-* Clean up the rules from the gateway node on the deletion of a `Pod`, `Service`, or ServiceExport`.
+* Clean up the rules from the gateway node on the deletion of a `Pod`, `Service`, or `ServiceExport`.
 
 Globalnet currently relies on `kube-proxy` and thus will only work with deployments that use `kube-proxy`.
 
