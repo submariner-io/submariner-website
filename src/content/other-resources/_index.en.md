@@ -22,8 +22,7 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Demo Recordings
 
-* [Automated Disaster Recovery failover and failback with Red Hat OpenShift (01/2021)](https://www.youtube.com/watch?v=OPKVKPfJrRA), or with
-  more discussion on [Ask an OpenShift Admin (Ep 55): Disaster recovery with ODF and ACM (01/2021)](https://youtu.be/Tlmuvkq_OPo?t=1177)
+* [Automated Disaster Recovery failover and failback with Red Hat OpenShift (01/2022)](https://www.youtube.com/watch?v=OPKVKPfJrRA)
 * [Submariner in 60s (05/2020)](https://www.youtube.com/watch?v=pQgUWiGtKqM)
 * [Connecting hybrid Kubernetes clusters using Submariner (03/2020)](https://www.youtube.com/watch?v=fMhZRNn0fxQ)
 * [Cross-cluster service discovery in Submariner using Lighthouse (03/2020)](https://www.youtube.com/watch?v=tXsemQPNhyQ)
@@ -44,6 +43,12 @@ There are multiple presentations and demo recordings about Submariner available 
 * [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 1) (08/2020)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift)
 * [Multicluster Service Discovery in OpenShift with Submariner and Lighthouse (Part 2) (08/2020)](https://www.openshift.com/blog/multicluster-service-discovery-in-openshift-part-2)
 * [Kubernetes Multi-Cloud and Multi-Cluster Connectivity with Submariner (02/2020)](https://www.linkedin.com/pulse/kubernetes-multi-cloud-multi-cluster-connectivity-gokul-chandra/?trk=related_artice_Kubernetes%20Multi-Cloud%20and%20Multi-Cluster%20Connectivity%20with%20Submariner_article-card_title)
+
+## Podcasts/Streams
+
+* [Ask an OpenShift Admin (Ep 55): Disaster recovery with ODF and ACM (01/2022)](https://youtu.be/Tlmuvkq_OPo?t=1177)
+* [Kubelist Podcast Ep. #18, Submariner (08/2021)](https://www.heavybit.com/library/podcasts/the-kubelist-podcast/ep-18-submariner-with-miguel-angel-ajo-and-stephen-kitt-of-red-hat/)
+* [The Cockroach Hour: Distributed Databases | Red Hat OpenShift & Kubernetes (03/2021)](https://www.youtube.com/watch?v=_FIW2dYKsuk)
 
 ## SIG Presentations
 
