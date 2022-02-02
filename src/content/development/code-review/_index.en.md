@@ -126,6 +126,13 @@ The label will be automatically assigned once the PR reaches the necessary numbe
 
 You can assign this label manually to the PR in order to trigger the full E2E test suite.
 
+### Document "why" in commit messages
+
+Commit messages should document the "why" of a change. Why is this change being made? Why is this change helpful? The diff is the ultimate
+documentation of the "what" of a change, and although it may need explaining, the commit message is the only opportunity to record the "why"
+of a change in the git history for future developers. See this [example of good "why" in a commit
+message](https://github.com/submariner-io/submariner-operator/commit/a85aaae0c223f831a9288a2dc15cb469f387209e).
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits

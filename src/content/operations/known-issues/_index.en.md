@@ -15,7 +15,8 @@ weight = 40
 * The [Gateway load balancer support](../../getting-started/quickstart/openshift/gcp-lb/) is still experimental and needs more testing.
 * Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using the
 VXLAN cable driver.
-
+* Submariner currently only supports IPv4. IPv6 and dual-stack are not supported at this time.
+  
 ## Globalnet
 
 * Currently, Globalnet is not supported with the OVN network plug-in.

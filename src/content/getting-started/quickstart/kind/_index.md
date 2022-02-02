@@ -16,18 +16,27 @@ Submariner provides automation to deploy clusters using kind and connect them us
 1. Install [Docker](https://docs.docker.com/get-docker/) and ensure it is running properly on your computer.
 2. Install and set up [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
+{{% notice note %}}
+You may need to [increase your inotify resource limits](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files).
+{{% /notice %}}
+
 ### Deploy Automatically
 
-To create kind clusters and deploy Submariner, run:
+To create kind clusters and deploy Submariner with service discovery enabled, run:
 
 ```bash
 git clone https://github.com/submariner-io/submariner-operator
 cd submariner-operator
-make deploy
+make deploy using=lighthouse
 ```
 
 By default, the automation configuration in the submariner-io/submariner-operator repository deploys two clusters, with cluster1 configured as
 the Broker. See the [settings](https://github.com/submariner-io/submariner-operator/blob/devel/.shipyard.e2e.yml) file for details.
+
+Once you become familiar with Submariner's basics, you may want to visit the
+[Building and Testing page](../../../development/building-testing/) to learn more about customizing your Submariner development deployment.
+To understand how Submariner's development deployment infrastructure works under the hood, see
+[Submariner Deployment Customization in the Shipyard Advanced Options](../../../development/shipyard/advanced/).
 
 ### Deploy Manually
 

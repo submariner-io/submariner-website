@@ -75,6 +75,26 @@ This guide assumes cluster-a's kubeconfig file is named `kubeconfig.cluster-a` a
 subctl deploy-broker --kubeconfig kubeconfig.cluster-a --globalnet
 ```
 
+#### Label gateway nodes
+
+When Submariner joins a cluster to the broker via the `subctl join` command, it chooses a node on which to install the
+gateway by labeling it appropriately. By default, Submariner uses a worker node for the gateway; if there are no worker
+nodes, then no gateway is installed unless a node is manually labeled as a gateway. Since we are deploying k3s all-in-one
+nodes, there are no worker nodes, so it is necessary to label the single node as a gateway. By default, the node name is
+the hostname. In this example, the hostnames are "cluster-a" and "cluster-b", respectively.
+
+Execute the following on cluster-a:
+
+```bash
+kubectl label node cluster-a submariner.io/gateway=true
+```
+
+Execute the following on cluster-b:
+
+```bash
+kubectl label node cluster-b submariner.io/gateway=true
+```
+
 #### Join cluster-a to the Broker with external CIDR added as cluster CIDR
 
 Carefully review the `CLUSTER_CIDR` and `EXTERNAL_CIDR` and run:
@@ -140,6 +160,9 @@ spec:
         ports:
         - containerPort: 53
         command: [ "/bin/sh", "-c", "microdnf install -y dnsmasq; ln -s /upstreamservers /etc/dnsmasq.d/upstreamservers; dnsmasq -k" ]
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN"]
         volumeMounts:
         - name: upstreamservers
           mountPath: /upstreamservers
