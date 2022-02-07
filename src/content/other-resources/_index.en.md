@@ -30,6 +30,7 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Blogs
 
+* [Set up an Istio Multicluster Service Mesh with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2022-02)](https://cloud.redhat.com/blog/set-up-an-istio-multicluster-service-mesh-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Set up Istio Multicluster with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2021-10)](https://cloud.redhat.com/blog/set-up-istio-multicluster-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Multi-Cluster monitoring with Prometheus and Submariner (2021-09)](https://medium.com/@danielbachar/multi-cluster-monitoring-with-prometheus-and-submariner-f89ff733e7ec)
 * [Connecting stateful applications in multicluster environments with RHACM and Submariner (2021-04)](https://rcarrata.com/openshift/rhacm-submariner-2/)
