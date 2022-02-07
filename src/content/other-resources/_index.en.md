@@ -5,7 +5,7 @@ weight: 50
 pre: "<b>5. </b>"
 ---
 
-There are multiple presentations and demo recordings about Submariner available online.
+This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Conference Presentations
 
@@ -50,8 +50,9 @@ There are multiple presentations and demo recordings about Submariner available 
 * [Kubelist Podcast Ep. #18, Submariner (2021-08)](https://www.heavybit.com/library/podcasts/the-kubelist-podcast/ep-18-submariner-with-miguel-angel-ajo-and-stephen-kitt-of-red-hat/)
 * [The Cockroach Hour: Distributed Databases | Red Hat OpenShift & Kubernetes (2021-03)](https://www.youtube.com/watch?v=_FIW2dYKsuk)
 
-## SIG Presentations
+## SIG Discussions
 
+* [Spotlight on SIG Multicluster (2022-02)](https://www.kubernetes.dev/blog/2022/02/04/sig-multicluster-spotlight-2022/)
 * [CNCF SIG-Network introduction to Submariner and consideration for CNCF Sandbox donation (2021-03-18)](https://youtu.be/R5F8l9ursBk?t=878)
 * [K8s SIG-Multicluster demo of Submariner's KEP1645 Multicluster Services implementation (2020-09-22)](https://youtu.be/bx4z9sMX8FM?t=1350)
 * [K8s SIG-Multicluster demo of Submariner's multicluster networking deployed by Submariner's Operator and `subctl` (2019-12-17)](https://youtu.be/4C4kc9AOz4M?t=273)
