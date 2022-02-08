@@ -56,7 +56,7 @@ contains the following details:
 | `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`            | kubeconfig context to use
 | `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
-| `--version` `<string>`                | Image version
+| `--version` `<string>`                | Image version (default image tag "devel")
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
@@ -127,7 +127,7 @@ deployment.
 | Flag                                    | Description
 |:----------------------------------------|:----------------------------------------------------------------------------|
 | `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
-| `--version` `<string>`                  | Image version
+| `--version` `<string>`                  | Image version (default image tag "devel")
 | `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: --image-override=submariner=quay.io/myUser/submariner:latest)
 <!-- markdownlint-enable line-length -->
 
