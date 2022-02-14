@@ -4,6 +4,10 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.11.2
+
+This release doesn’t contain any user-facing changes; it fixes internal release issues.
+
 ## v0.11.1
 
 This is a bugfix release:
