@@ -26,6 +26,7 @@ Broker | The design pattern component *Broker* should always be capitalized.
 Cluster set | The words "cluster set" should be used as a term for a group of clusters, but not the proposed Kubernetes object.
 Coastguard | The project name *Coastguard* should always be capitalized.
 Globalnet | The feature name *Globalnet* is one word, and so should always be capitalized and should have a lowercase "n".
+IPsec | The protocol *IPsec* should follow the capitalization used by [RFCs](https://datatracker.ietf.org/doc/html/rfc6071) and [popular sources](https://en.wikipedia.org/wiki/IPsec).
 iptables | The application *iptables* consistently uses all-lowercase. Follow their convention, but avoid starting a sentence with "iptables".
 K8s | The project nickname *K8s* should typically be expanded to "Kubernetes".
 kind | The tool *kind* consistently uses all-lowercase. Follow their convention, but avoid starting a sentence with "kind".
