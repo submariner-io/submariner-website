@@ -133,6 +133,13 @@ documentation of the "what" of a change, and although it may need explaining, th
 of a change in the git history for future developers. See this [example of good "why" in a commit
 message](https://github.com/submariner-io/submariner-operator/commit/a85aaae0c223f831a9288a2dc15cb469f387209e).
 
+### Rename and edit in separate commits
+
+When submitting a PR that modifies the contents of a file and also renames/moves it (`git mv`),
+use separate commits for the rename/move (with any required supporting changes so that the commit still builds) on the one hand,
+and the modifications on the other hand.
+This makes the git history and GitHub diffs more clear.
+
 [kube code review guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/contributing.md#code-review
 [merge commits]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#4-keep-your-branch-in-sync
 [squashing]: https://github.com/kubernetes/community/blob/master/contributors/guide/github-workflow.md#squash-commits
