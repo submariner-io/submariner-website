@@ -5,11 +5,12 @@ weight: 50
 pre: "<b>5. </b>"
 ---
 
-There are multiple presentations and demo recordings about Submariner available online.
+This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Conference Presentations
 
 <!-- markdownlint-disable line-length -->
+* [*Hybrid K8s Environments with Submariner*, Kubernetes Community Days Washington DC (2022-02)](https://community.cncf.io/events/details/cncf-washington-dc-presents-submariner-and-inter-k8s-connectivity/)
 * [*Here Be Services: Beyond the Cluster Boundary with Multicluster Services*, KubeCon NA (2021-10)](https://youtu.be/_UJrSfmvlMA)
 * [*Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU (2021-05)](https://youtu.be/mWQetXFVrao)
 * [*ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU (2021-05)
@@ -30,6 +31,7 @@ There are multiple presentations and demo recordings about Submariner available 
 
 ## Blogs
 
+* [Set up an Istio Multicluster Service Mesh with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2022-02)](https://cloud.redhat.com/blog/set-up-an-istio-multicluster-service-mesh-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Set up Istio Multicluster with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2021-10)](https://cloud.redhat.com/blog/set-up-istio-multicluster-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Multi-Cluster monitoring with Prometheus and Submariner (2021-09)](https://medium.com/@danielbachar/multi-cluster-monitoring-with-prometheus-and-submariner-f89ff733e7ec)
 * [Connecting stateful applications in multicluster environments with RHACM and Submariner (2021-04)](https://rcarrata.com/openshift/rhacm-submariner-2/)
@@ -50,8 +52,9 @@ There are multiple presentations and demo recordings about Submariner available 
 * [Kubelist Podcast Ep. #18, Submariner (2021-08)](https://www.heavybit.com/library/podcasts/the-kubelist-podcast/ep-18-submariner-with-miguel-angel-ajo-and-stephen-kitt-of-red-hat/)
 * [The Cockroach Hour: Distributed Databases | Red Hat OpenShift & Kubernetes (2021-03)](https://www.youtube.com/watch?v=_FIW2dYKsuk)
 
-## SIG Presentations
+## SIG Discussions
 
+* [Spotlight on SIG Multicluster (2022-02)](https://www.kubernetes.dev/blog/2022/02/04/sig-multicluster-spotlight-2022/)
 * [CNCF SIG-Network introduction to Submariner and consideration for CNCF Sandbox donation (2021-03-18)](https://youtu.be/R5F8l9ursBk?t=878)
 * [K8s SIG-Multicluster demo of Submariner's KEP1645 Multicluster Services implementation (2020-09-22)](https://youtu.be/bx4z9sMX8FM?t=1350)
 * [K8s SIG-Multicluster demo of Submariner's multicluster networking deployed by Submariner's Operator and `subctl` (2019-12-17)](https://youtu.be/4C4kc9AOz4M?t=273)

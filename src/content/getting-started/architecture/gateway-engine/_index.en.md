@@ -55,7 +55,42 @@ which traffic can be routed.
 ![Figure 1 - High Availability in stable cluster](/images/high-availability/HA_Cluster1.png)
 <!-- Image Source: https://docs.google.com/presentation/d/180CtHZnr9PP5Rh98VEmkQz3ovc5AGXG9wosoHMLhgaY/edit -->
 
-#### Gateway Failover
+### Cable Drivers Topology Overview
+
+#### Libreswan
+
+The following diagram shows a high level topology for a Submariner deployment created with:
+
+```bash
+make deploy using=lighthouse
+```
+
+In this case, Libreswan is configured to create 4 IPsec tunnels to allow for:
+
+* Pod subnet to Pod subnet connectivity
+* Pod subnet to Service subnet connectivity
+* Service subnet to Pod subnet connectivity
+* Service subnet to Service subnet connectivity
+
+![Figure 2 - Clusters inter-connected using IPsec tunnel mode](/images/cable-drivers/ipsec_cable.png)
+
+#### VXLAN
+
+The following diagram shows a high level topology for a Submariner deployment created with:
+
+```bash
+make deploy using=lighthouse, vxlan
+```
+
+With the VXLAN cable driver routes in table 100 are used on the source Gateway to steer the traffic
+into the vxlan-tunnel interface.
+
+The figure shows a simple interaction (a ping from one pod in one cluster to another pod in
+a second cluster) when Submariner is used.
+
+![Figure 3 - Clusters inter-connected using VXLAN tunnels](/images/cable-drivers/vxlan_cable.png)
+
+### Gateway Failover
 
 If the active Gateway Engine fails, another Gateway Engine on one of the
 other designated nodes will gain leadership and perform reconciliation to
@@ -65,13 +100,13 @@ a new tunnel. Similarly, the Route Agent Pods running in the local cluster
 automatically update the route tables on each node to point to the new active
 Gateway node in the cluster.
 
-![Figure 2 - Gateway Failover Scenario](/images/high-availability/HA_Cluster2.png)
+![Figure 4 - Gateway Failover Scenario](/images/high-availability/HA_Cluster2.png)
 <!-- Image Source: https://docs.google.com/presentation/d/180CtHZnr9PP5Rh98VEmkQz3ovc5AGXG9wosoHMLhgaY/edit -->
 
 The impact on datapath for various scenarios in a kind setup are captured in the
 following [spreadsheet](https://docs.google.com/spreadsheets/d/1JsXsyRDDXkp6t55Gm-NP5EggWTyYi2yo27pyuDYwlpc/edit#gid=0).
 
-#### Gateway Health Check
+### Gateway Health Check
 
 The Gateway Engine continuously monitors the health of connected clusters.
 It periodically pings each cluster and collects statistics including basic connectivity,
@@ -101,12 +136,12 @@ When the LoadBalancer mode is enabled, the `preferred-server` mode is enabled au
 the cluster, as IPsec is incompatible with the bi-directional connection mode and the
 load balancers and client/server connectivity is necessary.
 
-![Figure 3 - Gateway behind load balancer](/images/high-availability/HA_Cluster_LB1.png)
+![Figure 5 - Gateway behind load balancer](/images/high-availability/HA_Cluster_LB1.png)
 
 If a failover occurred, the load balancer would update to the new available and active
 gateway endpoints.
 
-![Figure 4 - Gateway behind load balancer failover](/images/high-availability/HA_Cluster_LB2.png)
+![Figure 6 - Gateway behind load balancer failover](/images/high-availability/HA_Cluster_LB2.png)
 
 ### Preferred-server mode
 
