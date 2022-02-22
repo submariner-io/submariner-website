@@ -20,6 +20,13 @@ pre = "<b>4. </b>"
   * [Adding Shipyard to a Project](shipyard/first-time)
   * [Advanced Features](shipyard/advanced)
 
+### Help Wanted
+
+If you'd like to get involved and haven't already found something to work on, check the [GitHub Issues tagged "help
+wanted"](https://github.com/pulls?q=is%3Aopen+user%3Asubmariner-io+label%3A%22help+wanted%22+sort%3Aupdated-desc).
+
+Submariner's success depends on growing the set of contributors to the project. Welcoming new contributors is a top priority of the project.
+
 ### Research notice
 
 Please note that this repository is participating in a study into sustainability
