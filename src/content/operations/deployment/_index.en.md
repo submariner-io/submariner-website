@@ -4,12 +4,10 @@ date: 2020-02-19T21:25:11+01:00
 weight: 10
 ---
 
-Submariner provides a Go-based Kubernetes custom controller, called an [Operator](https://github.com/submariner-io/submariner-operator),
-that provides easy API-based installation and management. A command line utility, *`subctl`*, wraps the Operator to aid users with manual
-deployments and easy experimentation. `subctl` greatly simplifies the deployment of Submariner, and is therefore the recommended deployment
-method. For complete information about `subctl`, please refer to [this page](subctl).
-
-In addition to Operator and `subctl`, Submariner also provides [Helm Charts](helm).
+Submariner is always deployed using a Go-based Kubernetes custom controller, called an
+[Operator](https://github.com/submariner-io/submariner-operator), that provides API-based installation and management. Deployment tools like
+the [*`subctl`* command line utility](subctl) and [Helm charts](helm) wrap the Operator. The recommended deployment method is `subctl`, as
+it is currently the default in CI and provides diagnostic features.
 
 ## Installing `subctl`
 
