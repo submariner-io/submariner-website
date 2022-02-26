@@ -37,3 +37,14 @@ ENV LINT_VERSION=<version> \
 ```
 
 [submariner-io/shipyard/package/Dockerfile.shipyard-dapper-base](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-dapper-base)
+
+## Shflags Library Version
+
+Shipyard uses the shflags library. Because it must be downloaded (if missing) and sourced at the start of Shipyard's shared scripts, the
+version is maintained in a special place and must be manually updated.
+
+```shell
+SHFLAGS_VERSION=${SHFLAGS_VERSION:=<version>}
+```
+
+[submariner-io/shipyard/scripts/shared/lib/shflags](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/lib/shflags)
