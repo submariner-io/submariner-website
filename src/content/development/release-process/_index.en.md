@@ -62,6 +62,11 @@ must also be created.
 It's best to start working with the broader community to create release notes well before the release. Create a PR to start the process, and
 work with contributors to get everything added and reviewed.
 
+### Updating Dependencies
+
+Verify that all dependencies are up to date before branch cutting at the first release candidate.
+See the [CI Maintenance docs](../building-testing/ci-maintenance) for details about versions that must be manually maintained.
+
 ## Automated Release Creation Process
 
 Most of the release can be done in a series of mostly-automated steps. After each step, a Pull Request is sent with the correct YAML
