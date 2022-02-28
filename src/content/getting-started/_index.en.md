@@ -12,7 +12,7 @@ For more information about Submariner's architecture, please refer to the [Archi
 
 ### The Broker
 
-The Broker is an API to which all participating clusters are given access to, and where two objects are exchanged via CRDs:
+The Broker is an API that all participating clusters are given access to, and where two objects are exchanged via CRDs:
 
 * Cluster(.submariner.io): defines a participating cluster and its IP CIDRs.
 * Endpoint(.submariner.io): defines a connection endpoint to a cluster, and the reachable cluster IPs from the endpoint.
@@ -73,7 +73,6 @@ Submariner supports all currently-supported Kubernetes versions, as determined b
 ## Deployment
 
 Submariner is deployed and managed using its Operator. [Submariner's Operator](https://github.com/submariner-io/submariner-operator) can be
-deployed using [subctl](../operations/deployment), [Helm](../operations/deployment/helm), or directly.
+deployed using [subctl](../operations/deployment) or [Helm](../operations/deployment/helm).
 
-`subctl` is the recommended deployment method because it has the most refined deployment user experience and additionally provides testing
-and bug-diagnosing capabilities.
+The recommended deployment method is `subctl`, as it is currently the default in CI and provides diagnostic features.
