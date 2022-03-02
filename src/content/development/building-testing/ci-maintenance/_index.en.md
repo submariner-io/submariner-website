@@ -48,3 +48,21 @@ SHFLAGS_VERSION=${SHFLAGS_VERSION:=<version>}
 ```
 
 [submariner-io/shipyard/scripts/shared/lib/shflags](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/lib/shflags)
+
+## GitHub actions
+
+All our projects use GitHub actions.
+These include dependencies which should be regularly checked for updates;
+because we specify them using hashes, dependabot and other such tools don't identify available updates for us.
+
+For example, in the website repository,
+
+```yaml
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+        with:
+          fetch-depth: 0
+```
+
+should be checked by looking at the `checkout` [releases](https://github.com/actions/checkout/releases).
