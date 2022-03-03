@@ -78,7 +78,24 @@ discoverable from other clusters in the Submariner deployment.
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
-| `--namespace` `<string>`     | Namespace in which the Service to be exported belongs
+| `--namespace` `<string>`     | Namespace to use
+
+If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
+
+### `unexport`
+
+#### `unexport service`
+
+`subctl unexport service [flags] <name>` removes the `ServiceExport` resource with the given name which in turn stops the Service of the
+same name from being exported to other clusters.
+
+#### `unexport service` flags
+
+| Flag                         | Description
+|:-----------------------------|:----------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
+| `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--namespace` `<string>`     | Namespace to use
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
