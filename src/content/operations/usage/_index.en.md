@@ -644,6 +644,17 @@ and the IP address **100.2.29.136** returned is the ClusterIP associated with th
 expected, as Submariner prefers to handle the traffic locally whenever possible.
 {{% /notice %}}
 
+##### 7. Stopping the service from being exported
+
+If you don't want to have the service exported to other clusters in the cluster set anymore, you can do so with `subctl unexport`:
+
+```bash
+$ subctl unexport service --namespace nginx-test nginx
+Service unexported successfully
+```
+
+Now, the service is no longer discoverable outside its cluster.
+
 #### Service Discovery for Services Deployed to Multiple Clusters
 
 Submariner follows this logic for service discovery across the cluster set:
