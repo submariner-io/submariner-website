@@ -65,6 +65,25 @@ To prune all Submariner-provided images, ensuring they will be rebuilt or pulled
 make prune-images
 ```
 
+If you're using [kind](../../getting-started/quickstart/kind) to test your changes, you can rebuild the images and reload them using
+a single command:
+
+```shell
+make reload-images
+```
+
+The command can restart the pods in order for the new images to take effect. To restart all pods:
+
+```shell
+make reload-images restart=all
+```
+
+To restart a specific pod, use the image name without the `submariner-` prefix, e.g.
+
+```shell
+make reload-images restart=gateway
+```
+
 ### End-to-End Tests
 
 To run functional end-to-end tests with a full multi-cluster deployment:
