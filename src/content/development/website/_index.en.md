@@ -21,6 +21,9 @@ submitting you can:
     ```
 
 3. An instance of the website is now running locally on your machine and is accessible at <http://localhost:1313>.
+
+    (Instead of running just `make server` above,
+`make server URL=http://192.0.2.100:8080 PORT=8080` will allow remote access at <http://192.0.2.100:8080>.)
 4. Edit files in src. The browser should automatically reload so you can view your changes.
 5. Eventually commit, push, and pull-request your changes. You can find a good guide about the GitHub workflow
    [here](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
