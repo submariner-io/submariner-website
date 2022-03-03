@@ -471,3 +471,27 @@ This command removes the labels from gateway nodes after Submariner uninstallati
 `subctl version`
 
 Prints the version details for the `subctl` binary.
+
+### `uninstall`
+
+`subctl uninstall [flags]`
+
+This command uninstalls Submariner and its components.
+
+The following steps are performed:
+
+* Delete Submariner ClusterRoles and ClusterRoleBindings.
+* Delete the submariner.io CRDs.
+* Delete the routing entries (iptables/routes/ipsets) programmed on the nodes.
+* Delete the tunnel interfaces created for internal/external communication.
+* Delete the Submariner namespace.
+* Delete the Broker namespace, if present.
+* Unlabel the gateway nodes.
+
+#### `uninstall` flags
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
+| `--namespace` `<string>`         | Namespace in which Submariner is installed (default "submariner-operator")
+| `--yes`                          | Automatically answer yes to confirmation prompt
