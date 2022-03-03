@@ -97,6 +97,24 @@ replying to DNS queries.
 
 Nothing extra needs to be done to build `submariner-globalnet` as it is built with the standard Submariner build.
 
+## Prerequisites
+
+In submariner 0.12 or later, Globalnet controller internally uses Kubernetes externalIPs feature,
+therefore [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips)
+admission webhook, which rejects all net-new usage of the Service field externalIPs, needs to be disabled.
+Cluster admins should consider restricting use of externalIPs by using another admission webhook.
+
+* OpenShift: By default,
+[network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
+admission webhook is used to restrict the use of externalIPs.
+It only allows to use externalIPs for users that is granted to handle `service/externalips` resource in the `network.openshift.io` group,
+and `submariner-globalnet` ServiceAccount is configured to have such RBAC rules.
+Therefore, no extra configuration is needed.
+* Other Kubernetes distributions: [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) can be used to restrict
+the use of externalIPs.
+To allow Globalnet controller to set IPs in `GlobalCIDR` to externalIPs, `allowed-external-ip-cidrs` needs to include `GlobalCIDR` and
+`allowed-usernames` needs to include `system:serviceaccount:submariner-operator:submariner-globalnet`.
+
 ## Usage
 
 Refer to the [Quickstart Guides](../../quickstart/) on how to deploy Submariner with Globalnet enabled. For most deployments users will not
