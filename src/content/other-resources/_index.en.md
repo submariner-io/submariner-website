@@ -11,6 +11,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 <!-- markdownlint-disable line-length -->
 * [*Hybrid K8s Environments with Submariner*, Kubernetes Community Days Washington DC (2022-02)](https://community.cncf.io/events/details/cncf-washington-dc-presents-submariner-and-inter-k8s-connectivity/)
+* [*Connectivity Between Legacy Systems and Kubernetes: Identifying Senders By Using Source IPs*, Open Source Summit Japan (2021-12)](https://www.youtube.com/watch?v=bpJTof7UQpA) ([slides](https://static.sched.com/hosted_files/ossalsjp21/47/Connectivity%20Between%20Legacy.pdf))
 * [*Here Be Services: Beyond the Cluster Boundary with Multicluster Services*, KubeCon NA (2021-10)](https://youtu.be/_UJrSfmvlMA)
 * [*Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU (2021-05)](https://youtu.be/mWQetXFVrao)
 * [*ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU (2021-05)
