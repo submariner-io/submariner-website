@@ -13,9 +13,9 @@ Submariner is completely open source, and designed to be network plugin (CNI) ag
 
 ## What Submariner Provides
 
-* Cross-cluster L3 connectivity using encrypted VPN tunnels
+* Cross-cluster L3 connectivity using encrypted or unencrypted connections
 * [Service Discovery](./getting-started/architecture/service-discovery/) across clusters
-* [`subctl`](./operations/deployment/), a friendly deployment tool
+* [`subctl`](./operations/deployment/), a command-line utility that simplifies deployment and management
 * Support for interconnecting clusters with [overlapping CIDRs](./getting-started/architecture/globalnet/)
 
 {{% notice note %}}
