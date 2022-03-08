@@ -393,7 +393,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--credentials` `<string>`       | GCP credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
-| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default false)
+| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true)
 | `--gateway-instance` `<string>`  | Type of gateway instance machine (default `n1-standard-4`)
 | `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
 | `--infra-id` `<string>`          | GCP infra ID
