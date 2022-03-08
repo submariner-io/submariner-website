@@ -4,7 +4,49 @@ date: 2020-12-23T21:25:11+01:00
 weight: 50
 ---
 
-To properly uninstall Submariner from a cluster, follow the steps below:
+Starting with Submariner 0.12, the recommended way to uninstall Submariner is via the [`subctl uninstall`](#automated-uninstall) command.
+This will automatically remove Submariner and its components from a given cluster. For previous versions, Submariner would need to be
+[uninstalled manually](#manual-uninstall).
+
+## Automated Uninstall
+
+Issue the [`subctl uninstall`](../deployment/subctl/#uninstall) command against the cluster you want to uninstall Submariner from. Example
+output:
+<!-- markdownlint-disable no-trailing-spaces -->
+```bash
+$ subctl uninstall --kubeconfig output/kubeconfigs/cluster1
+
+? This will completely uninstall Submariner from the cluster cluster1. Are you sure you want to continue? Yes
+ ✓ Checking if the connectivity component is installed
+ ✓ The connectivity component is installed
+ ✓ Deleting the Submariner resource - this may take some time
+ ✓ Deleting the Submariner cluster roles and bindings
+ ✓ Deleted the "submariner-diagnose" cluster role and binding
+ ✓ Deleted the "submariner-gateway" cluster role and binding
+ ✓ Deleted the "submariner-globalnet" cluster role and binding
+ ✓ Deleted the "submariner-lighthouse-agent" cluster role and binding
+ ✓ Deleted the "submariner-lighthouse-coredns" cluster role and binding
+ ✓ Deleted the "submariner-networkplugin-syncer" cluster role and binding
+ ✓ Deleted the "submariner-operator" cluster role and binding
+ ✓ Deleted the "submariner-routeagent" cluster role and binding
+ ✓ Deleting the Submariner namespace "submariner-operator"
+ ✓ Deleting the broker namespace "submariner-k8s-broker"
+ ✓ Deleting the Submariner custom resource definitions
+ ✓ Deleted the "brokers.submariner.io" custom resource definition
+ ✓ Deleted the "clusterglobalegressips.submariner.io" custom resource definition
+ ✓ Deleted the "clusters.submariner.io" custom resource definition
+ ✓ Deleted the "endpoints.submariner.io" custom resource definition
+ ✓ Deleted the "gateways.submariner.io" custom resource definition
+ ✓ Deleted the "globalegressips.submariner.io" custom resource definition
+ ✓ Deleted the "globalingressips.submariner.io" custom resource definition
+ ✓ Deleted the "servicediscoveries.submariner.io" custom resource definition
+ ✓ Deleted the "submariners.submariner.io" custom resource definition
+ ✓ Unlabeling gateway nodes
+```
+
+## Manual Uninstall
+
+To manually uninstall Submariner from a cluster, follow the steps below:
 
 {{% notice note %}}
 Make sure KUBECONFIG for all participating clusters is exported and all participating clusters are accessible via kubectl.
