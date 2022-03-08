@@ -309,6 +309,7 @@ Below is a list of available sub-commands:
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--in-cluster`              | Use the in-cluster configuration to connect to Kubernetes. Use when running `diagnose` from a Pod in cluster
 
 ### `gather`
 
@@ -530,3 +531,32 @@ The following steps are performed:
 | `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
 | `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`)
 | `--yes`                          | Automatically answer yes to confirmation prompt
+
+### Running `subctl diagnose` from a Pod in cluster
+
+As of release 0.12.0, a new `subctl` image containing the subctl binary is now available in submariner repos. This can be
+used to run subctl from a Pod within the cluster. `subctl diagnose` command output can be accessed from the Pod's logs.
+A new flag, `--in-cluster` has been added to support this use case.
+
+#### Example running `subctl diagnose` using a Job
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: submariner-diagnose
+  namespace: submariner-operator
+spec:
+  template:
+    spec:
+      containers:
+      - name: submariner-diagnose
+        image: quay.io/submariner/subctl:latest
+        command: ["subctl",  "diagnose", "all", "--in-cluster"]
+      restartPolicy: Never
+      serviceAccount: submariner-diagnose
+      serviceAccountName: submariner-diagnose
+  backoffLimit: 0
+```
+
+A similar template can also be used to create a CronJob that runs `subctl diagnose` periodically.
