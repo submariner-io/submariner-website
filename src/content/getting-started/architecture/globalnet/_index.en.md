@@ -99,21 +99,18 @@ Nothing extra needs to be done to build `submariner-globalnet` as it is built wi
 
 ## Prerequisites
 
-In submariner 0.12 or later, Globalnet controller internally uses Kubernetes externalIPs feature,
-therefore [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips)
-admission webhook, which rejects all net-new usage of the Service field externalIPs, needs to be disabled.
-Cluster admins should consider restricting use of externalIPs by using another admission webhook.
+Allow Globalnet controller to create/update/delete the Service with externalIPs field by below ways:
 
-* OpenShift: By default,
-[network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
-admission webhook is used to restrict the use of externalIPs.
-It only allows to use externalIPs for users that is granted to handle `service/externalips` resource in the `network.openshift.io` group,
-and `submariner-globalnet` ServiceAccount is configured to have such RBAC rules.
-Therefore, no extra configuration is needed.
-* Other Kubernetes distributions: [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) can be used to restrict
-the use of externalIPs.
-To allow Globalnet controller to set IPs in `GlobalCIDR` to externalIPs, `allowed-external-ip-cidrs` needs to include `GlobalCIDR` and
-`allowed-usernames` needs to include `system:serviceaccount:submariner-operator:submariner-globalnet`.
+* Disable [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips),
+if enabled
+* Restrict the use of the Service field externalIPs:
+  * OpenShift: No extra configuration is needed.
+  Default [network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
+  allows the use of Service with externalIPs field only for users that are granted to handle `service/externalips` resource in the
+  `network.openshift.io` group. And default `submariner-globalnet` ServiceAccount has such an RBAC rule.
+  * Other Kubernetes distributions:
+  Enable [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) with specifying `allowed-external-ip-cidrs` to
+  include `GlobalCIDR` and `allowed-usernames` to include `system:serviceaccount:submariner-operator:submariner-globalnet`.
 
 ## Usage
 
