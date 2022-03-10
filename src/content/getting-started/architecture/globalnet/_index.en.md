@@ -99,18 +99,27 @@ Nothing extra needs to be done to build `submariner-globalnet` as it is built wi
 
 ## Prerequisites
 
-Allow Globalnet controller to create/update/delete the Service with externalIPs field by below ways:
+Allow Globalnet controller to create/update/delete the Service with externalIPs field by below steps:
 
-* Disable [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips),
+1. Disable [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips),
 if enabled
-* Restrict the use of the Service field externalIPs:
-  * OpenShift: No extra configuration is needed.
-  Default [network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
-  allows the use of Service with externalIPs field only for users that are granted to handle `service/externalips` resource in the
-  `network.openshift.io` group. And default `submariner-globalnet` ServiceAccount has such an RBAC rule.
-  * Other Kubernetes distributions:
-  Enable [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) with specifying `allowed-external-ip-cidrs` to
-  include `GlobalCIDR` and `allowed-usernames` to include `system:serviceaccount:submariner-operator:submariner-globalnet`.
+2. Restrict the use of the Service field externalIPs:
+    * OpenShift: No extra configuration is needed.
+    Default [network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
+    allows the use of Service with externalIPs field only for users that are granted to handle `service/externalips` resource in the
+    `network.openshift.io` group. And default `submariner-globalnet` ServiceAccount has such an RBAC rule.
+    * Other Kubernetes distributions:
+    Enable [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) while specifying `allowed-external-ip-cidrs` to
+    include `GlobalCIDR` allocated to the Cluster and `allowed-usernames` to include
+    `system:serviceaccount:submariner-operator:submariner-globalnet`.
+
+{{% notice note %}}
+For every exported Service, Submariner Globalnet internally creates a Service with externalIP and the externalIP will be set to the globalIP
+assigned to the respective service.
+Some deployments of Kubernetes do not allow Services to be created with externalIPs
+for [security reasons](https://github.com/kubernetes/kubernetes/issues/97076).
+So, in order for Globalnet functionality to work fine, it should be allowed for Globalnet controller.
+{{% /notice %}}
 
 ## Usage
 
