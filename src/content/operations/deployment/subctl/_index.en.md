@@ -534,9 +534,8 @@ The following steps are performed:
 
 ### Running `subctl diagnose` from a Pod in cluster
 
-As of release 0.12.0, a new `subctl` image containing the subctl binary is now available in submariner repos. This can be
-used to run subctl from a Pod within the cluster. `subctl diagnose` command output can be accessed from the Pod's logs.
-A new flag, `--in-cluster` has been added to support this use case.
+`subctl` image containing the subctl binary can be used to run subctl from a Pod within the cluster. `subctl diagnose`
+command output can be accessed from the Pod's logs. `--in-cluster` has been added to `subctl diagnose` to support this use case.
 
 #### Example running `subctl diagnose` using a Job
 
@@ -559,4 +558,5 @@ spec:
   backoffLimit: 0
 ```
 
-A similar template can also be used to create a CronJob that runs `subctl diagnose` periodically.
+Created Pod can be accessed with label `job-name=submariner-diagnose`. A similar template can also be used to
+create a `CronJob` that runs `subctl diagnose` periodically.
