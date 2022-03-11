@@ -18,7 +18,8 @@ This is a bugfix release:
 
 ## v0.11.0
 
-This release mainly focused on stability, bug fixes, and improving the integration between Submariner and Open Cluster Management via the [submariner-addon](https://github.com/open-cluster-management/submariner-addon).
+This release mainly focused on stability, bug fixes, and improving the integration between Submariner and Open Cluster Management
+via the [Submariner addon](https://github.com/open-cluster-management/submariner-addon).
 
 * `subctl cloud prepare` command now supports Google Cloud Platform as well as generic Kubernetes clusters.
 * `--ignore-requirements` flag was added to `subctl join` command which ignores Submariner requirements checks.
@@ -240,15 +241,15 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 
 > This release is focused on stability for Lighthouse.
 
-* Cleaner logging for submariner-engine.
-* Cleaner logging for submariner-route-agent.
-* Fixed issue with wrong token stored in `.subm` file ([submariner-operator#244](https://github.com/submariner-io/submariner-operator/issues/244)).
-* Added flag to disable the OpenShift CVO ([submariner-operator#235](https://github.com/submariner-io/submariner-operator/issues/235)).
-* Fixed several service discovery bugs ([submariner-operator#194](https://github.com/submariner-io/submariner-operator/issues/194), [submariner-operator#167](https://github.com/submariner-io/submariner-operator/issues/167)).
+* Cleaner logging for `submariner-engine`.
+* Cleaner logging for `submariner-route-agent`.
+* Fixed issue with wrong token stored in `.subm` file ([#244](https://github.com/submariner-io/submariner-operator/issues/244)).
+* Added flag to disable the OpenShift CVO ([#235](https://github.com/submariner-io/submariner-operator/issues/235)).
+* Fixed several service discovery bugs ([#194](https://github.com/submariner-io/submariner-operator/issues/194), [#167](https://github.com/submariner-io/submariner-operator/issues/167)).
 * Fixed several panics on nil network discovery.
 * Added checks to ensure the CIDRs for joining cluster don't overlap with existing ones.
 * Fix context handling related to service discovery/KubeFed
-  ([submariner-operator#180](https://github.com/submariner-io/submariner-operator/issues/180)).
+  ([#180](https://github.com/submariner-io/submariner-operator/issues/180)).
 * Use the correct CoreDNS image for OpenShift.
 
 ## v0.1.0 Submariner with some light
@@ -256,15 +257,15 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 > This release has focused on stability, bugfixes and making [Lighthouse](https://github.com/submariner-io/lighthouse) available as a
 > developer preview via `subctl` deployments.
 
-* Several bugfixes and enhancements around HA failover ([submariner#346](https://github.com/submariner-io/submariner/issues/346),
-  [submariner#348](https://github.com/submariner-io/submariner/pull/348),
-  [submariner#332](https://github.com/submariner-io/submariner/pull/332)).
+* Several bugfixes and enhancements around HA failover ([#346](https://github.com/submariner-io/submariner/issues/346),
+  [#348](https://github.com/submariner-io/submariner/pull/348),
+  [#332](https://github.com/submariner-io/submariner/pull/332)).
 * Migrated to DaemonSets for Submariner gateway deployment.
-* Added support for hostNetwork to remote Pod/Service connectivity ([submariner#298](https://github.com/submariner-io/submariner/issues/298)).
-* Auto detection and configuration of MTU for vx-submariner, jumbo frames support
-  ([submariner#301](https://github.com/submariner-io/submariner/issues/301)).
-* Support for updated strongSwan ([submariner#288](https://github.com/submariner-io/submariner/issues/288)).
-* Better iptables detection for some hosts ([submariner#227](https://github.com/submariner-io/submariner/pull/227)).
+* Added support for hostNetwork to remote Pod/Service connectivity ([#298](https://github.com/submariner-io/submariner/issues/298)).
+* Auto detection and configuration of MTU for `vx-submariner`, jumbo frames support
+  ([#301](https://github.com/submariner-io/submariner/issues/301)).
+* Support for updated strongSwan ([#288](https://github.com/submariner-io/submariner/issues/288)).
+* Better iptables detection for some hosts ([#227](https://github.com/submariner-io/submariner/pull/227)).
 
 > `subctl` and the Submariner Operator have the following improvements:
 

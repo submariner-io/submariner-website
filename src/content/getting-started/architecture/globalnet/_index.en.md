@@ -25,7 +25,7 @@ Globalnet is a virtual network specifically to support Submariner's multi-cluste
 subnet from this virtual Global Private Network, configured as new cluster parameter `GlobalCIDR` (e.g. 242.0.0.0/8) which is
 configurable at time of deployment. User can also manually specify GlobalCIDR for each cluster that is joined to the Broker using the flag
 ```globalnet-cidr``` passed to ```subctl join``` command. If Globalnet is not enabled in the Broker or if a GlobalCIDR is preconfigured in
-the cluster, the supplied globalnet-cidr will be ignored.
+the cluster, the supplied Globalnet CIDR will be ignored.
 
 ### Cluster-scope global egress IPs
 
@@ -55,7 +55,7 @@ Gateway node of the cluster.
 ![Figure 2 - Globalnet priority](/images/globalnet/globalnet-priority.png)
 <!-- Image Source: https://docs.google.com/presentation/d/180CtHZnr9PP5Rh98VEmkQz3ovc5AGXG9wosoHMLhgaY/edit -->
 
-### submariner-globalnet
+### `submariner-globalnet`
 
 Submariner Globalnet is a component that provides cross-cluster connectivity from pods to remote services using their global IPs. Compiled as
 binary `submariner-globalnet`, it is responsible for maintaining a pool of global IPs, allocating IPs from the global IP pool to pods and
@@ -87,7 +87,7 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
-This is achieved by enhancing [lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
+This is achieved by enhancing [Lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
 controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For headless services,
 backing pod's global IP is used when creating the `EndpointSlice` resources to be distributed to other clusters.
 The [Lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the global IPs when

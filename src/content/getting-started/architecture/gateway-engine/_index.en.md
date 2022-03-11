@@ -38,7 +38,7 @@ active instance fail.
 
 {{% notice info %}}
 The Gateway Engine is deployed as a DaemonSet that is configured to only run
-on nodes labelled with "submariner.io/gateway=true".
+on nodes labelled with `submariner.io/gateway=true`.
 {{% /notice %}}
 
 The active Gateway Engine communicates with the central Broker to advertise

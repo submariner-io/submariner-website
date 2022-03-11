@@ -15,3 +15,20 @@ no-inline-html:
     - p
     - span
     - ul
+
+# Enforce our capitalisation rules (where they're unambiguous)
+spelling:
+  names:
+    - Admiral
+    - ClusterSet
+    - Coastguard
+    - Globalnet
+    - IPsec
+    - iptables
+    - kind
+    - Kubernetes
+    - Lighthouse
+    - Shipyard
+    - subctl
+    - Submariner
+  code_blocks: false

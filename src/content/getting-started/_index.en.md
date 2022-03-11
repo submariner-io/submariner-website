@@ -12,10 +12,10 @@ For more information about Submariner's architecture, please refer to the [Archi
 
 ### The Broker
 
-The Broker is an API that all participating clusters are given access to, and where two objects are exchanged via CRDs:
+The Broker is an API that all participating clusters are given access to, and where two objects are exchanged via CRDs in `.submariner.io`:
 
-* Cluster(.submariner.io): defines a participating cluster and its IP CIDRs.
-* Endpoint(.submariner.io): defines a connection endpoint to a cluster, and the reachable cluster IPs from the endpoint.
+* Cluster: defines a participating cluster and its IP CIDRs.
+* Endpoint: defines a connection endpoint to a cluster, and the reachable cluster IPs from the endpoint.
 
 The Broker must be deployed on a single Kubernetes cluster. This cluster’s API server must be reachable by all Kubernetes clusters connected
 by Submariner. It can be a dedicated cluster, or one of the connected clusters.

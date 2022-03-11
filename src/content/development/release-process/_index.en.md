@@ -150,7 +150,7 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 2) Fill in the general fields for the release with the `status` field set to `shipyard`. Also add the `shipyard` component with
    the hash of the desired or latest commit ID on which to base the release. To obtain the latest, first navigate to
-   the [shipyard project](https://github.com/submariner-io/shipyard). The heading above the file list shows the latest
+   the [Shipyard project](https://github.com/submariner-io/shipyard). The heading above the file list shows the latest
    commit on the devel branch including the first 7 hex digits of the commit ID hash.
 
    If this is not a final release, set the `pre-release` field to `true` (that is uncomment the `pre-release` line below).
@@ -172,9 +172,9 @@ Navigate to the [releases](https://github.com/submariner-io/releases) repository
 
 4) **Verify**:
 
-   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [`releases/release` job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
    * The [Shipyard release](https://github.com/submariner-io/shipyard/releases) was created.
-   * The [submariner/shipyard-dapper-base image](https://github.com/submariner-io/shipyard/releases) is on Quay.
+   * The [`submariner/shipyard-dapper-base` image](https://github.com/submariner-io/shipyard/releases) is on Quay.
 
 5) Pull requests will be created for projects that consume Shipyard to update them to the new version in preparation for the subsequent
    steps. The automation will leave a comment with a list of them. Make sure all those PRs are merged and their release jobs pass.
@@ -227,24 +227,24 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
 
 3) **Verify**:
 
-   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
-   * The [cloud-prepare release](https://github.com/submariner-io/cloud-prepare/releases) was created.
+   * The [`releases/release` job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [`cloud-prepare` release](https://github.com/submariner-io/cloud-prepare/releases) was created.
    * The [Lighthouse release](https://github.com/submariner-io/lighthouse/releases) was created.
    * The [Submariner release](https://github.com/submariner-io/submariner/releases) was created.
-   * The [submariner/submariner-gateway image](https://quay.io/repository/submariner/submariner-gateway?tab=tags) is on Quay.
-   * The [submariner/submariner-route-agent image](https://quay.io/repository/submariner/submariner-route-agent?tab=tags) is on Quay.
-   * The [submariner/submariner-globalnet image](https://quay.io/repository/submariner/submariner-globalnet?tab=tags) is on Quay.
-   * The [submariner/submariner-networkplugin-syncer image](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
+   * The [`submariner/submariner-gateway` image](https://quay.io/repository/submariner/submariner-gateway?tab=tags) is on Quay.
+   * The [`submariner/submariner-route-agent` image](https://quay.io/repository/submariner/submariner-route-agent?tab=tags) is on Quay.
+   * The [`submariner/submariner-globalnet` image](https://quay.io/repository/submariner/submariner-globalnet?tab=tags) is on Quay.
+   * The [`submariner/submariner-networkplugin-syncer` image](https://quay.io/repository/submariner/submariner-networkplugin-syncer?tab=tags)
      is on Quay.
-   * The [submariner/lighthouse-agent image](https://quay.io/repository/submariner/lighthouse-agent?tab=tags) is on Quay.
-   * The [submariner/lighthouse-coredns image](https://quay.io/repository/submariner/lighthouse-coredns?tab=tags) is on Quay.
+   * The [`submariner/lighthouse-agent` image](https://quay.io/repository/submariner/lighthouse-agent?tab=tags) is on Quay.
+   * The [`submariner/lighthouse-coredns` image](https://quay.io/repository/submariner/lighthouse-coredns?tab=tags) is on Quay.
 
-4) Automation will create a pull request to pin submariner-operator to the released versions. Make sure that PRs is merged and the release
+4) Automation will create a pull request to pin `submariner-operator` to the released versions. Make sure that the PR is merged and the release
    job passes.
 
 ### Step 4: Create Operator and Charts Releases
 
-Once the pull request to pin submariner-operator has been merged, we can create the final release:
+Once the pull request to pin `submariner-operator` has been merged, we can create the final release:
 
 1) Update the release YAML file `status` field to `released`. Add the `submariner-operator` and `submariner-charts` components with their
    latest commit ID hashes.
@@ -266,12 +266,12 @@ Once the pull request to pin submariner-operator has been merged, we can create 
 
 3) **Verify**:
 
-   * The [releases/release job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [`releases/release` job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
    * The [`subctl` artifacts](https://github.com/submariner-io/releases/releases) were released
-   * The [submariner-operator release](https://github.com/submariner-io/submariner-operator/releases) was created.
-   * The [submariner/submariner-operator image](https://quay.io/repository/submariner/submariner-operator?tab=tags) is on Quay.
+   * The [`submariner-operator` release](https://github.com/submariner-io/submariner-operator/releases) was created.
+   * The [`submariner/submariner-operator` image](https://quay.io/repository/submariner/submariner-operator?tab=tags) is on Quay.
 
-4) If the release wasn't marked as a `pre-release`, the releases/release job will also create pull requests in each consuming project to
+4) If the release wasn't marked as a `pre-release`, the `releases/release` job will also create pull requests in each consuming project to
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
    automatically pick up the latest changes to the base image.
 
@@ -285,7 +285,7 @@ The [k8s-operatorhub/community-operators](https://github.com/k8s-operatorhub/com
 is a source for sharing Kubernetes Operators with the broader community via [OperatorHub.io](https://operatorhub.io/).
 OpenShift users will find Submariner's Operator in the official [Red Hat catalog](https://catalog.redhat.com/software/operators/explore).
 
-1) Clone the [submariner-operator](https://github.com/submariner-io/submariner-operator) repository.
+1) Clone the [`submariner-operator`](https://github.com/submariner-io/submariner-operator) repository.
 
 2) Make sure you have [`operator-sdk` v1 installed](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/).
 
@@ -329,8 +329,8 @@ OpenShift users will find Submariner's Operator in the official [Red Hat catalog
 
 Once the release and release notes are published, make an announcement to both Submariner mailing lists.
 
-* [submariner-dev](https://groups.google.com/g/submariner-dev)
-* [submariner-users](https://groups.google.com/g/submariner-users)
+* [`submariner-dev`](https://groups.google.com/g/submariner-dev)
+* [`submariner-users`](https://groups.google.com/g/submariner-users)
 
 See the [v0.8.0 email example](https://groups.google.com/g/submariner-users/c/2F8Fzvi4mS4).
 

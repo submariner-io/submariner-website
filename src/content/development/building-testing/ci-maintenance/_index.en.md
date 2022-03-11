@@ -36,7 +36,7 @@ ENV LINT_VERSION=<version> \
     YQ_VERSION=<version>
 ```
 
-[submariner-io/shipyard/package/Dockerfile.shipyard-dapper-base](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-dapper-base)
+[`submariner-io/shipyard/package/Dockerfile.shipyard-dapper-base`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-dapper-base)
 
 ## Shflags Library Version
 
@@ -47,7 +47,7 @@ version is maintained in a special place and must be manually updated.
 SHFLAGS_VERSION=${SHFLAGS_VERSION:=<version>}
 ```
 
-[submariner-io/shipyard/scripts/shared/lib/shflags](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/lib/shflags)
+[`submariner-io/shipyard/scripts/shared/lib/shflags`](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/lib/shflags)
 
 ## GitHub actions
 
