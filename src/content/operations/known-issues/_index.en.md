@@ -32,4 +32,4 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submar
 oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submariner-globalnet
 ```
 
-This is handled automatically in `subctl` and submariner-addon.
+This is handled automatically in `subctl` and the Submariner addon.

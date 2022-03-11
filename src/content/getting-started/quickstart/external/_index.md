@@ -325,13 +325,13 @@ On test-vm, check the console log of HTTP server that there are accesses from po
 {{% notice note %}}
 Currently, __headless__ service without selector is not supported for Globalnet,
 therefore service without selector needs to be used.
-This feature is under discussion in [submariner-io/submariner#1537](https://github.com/submariner-io/submariner/issues/1537).
+This feature is under discussion in [#1537](https://github.com/submariner-io/submariner/issues/1537).
 {{% /notice %}}
 
 {{% notice note %}}
 Currently, DNS resolution for service without selector is not supported,
 therefore global IPs need to be used to access to the external hosts.
-This feature is under discussion in [submariner-io/lighthouse#603](https://github.com/submariner-io/lighthouse/issues/603).
+This feature is under discussion in [#603](https://github.com/submariner-io/lighthouse/issues/603).
 Note that there is a workaround to make it resolvable by manually creating endpointslice, as described [here](https://github.com/submariner-io/lighthouse/issues/603#issuecomment-901944297).
 {{% /notice %}}
 

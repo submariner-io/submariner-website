@@ -15,7 +15,7 @@ about the GitHub workflow [here](https://git-scm.com/book/en/v2/GitHub-Contribut
 
 #### Slack
 
-Share your ideas in the [#submariner channel](https://kubernetes.slack.com/archives/C010RJV694M) in Kubernetes' Slack. If you need it, you
+Share your ideas in the [`#submariner` channel](https://kubernetes.slack.com/archives/C010RJV694M) in Kubernetes' Slack. If you need it, you
 can [request an invite to Kubernetes' Slack instance](https://slack.k8s.io/).
 
 #### Community Calendar
@@ -26,5 +26,5 @@ The bi-weekly [Submariner Users & Community Meeting](https://tinyurl.com/54mcwfb
 
 #### Mailing List
 
-Join the [submariner-dev](https://groups.google.com/forum/#!forum/submariner-dev) or
-[submariner-users](https://groups.google.com/forum/#!forum/submariner-users) mailing lists.
+Join the [`submariner-dev`](https://groups.google.com/forum/#!forum/submariner-dev) or
+[`submariner-users`](https://groups.google.com/forum/#!forum/submariner-users) mailing lists.

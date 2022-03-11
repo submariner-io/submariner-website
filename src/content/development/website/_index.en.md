@@ -11,7 +11,7 @@ The Submariner documentation website is based on Hugo, Grav,
 You can always click the **Edit this page** link at the top right of each page, but if you want to test your changes locally before
 submitting you can:
 
-1. Fork the [submariner-io/submariner-website](https://github.com/submariner-io/submariner-website/fork) on GitHub.
+1. Fork the [`submariner-io/submariner-website`](https://github.com/submariner-io/submariner-website/fork) project on GitHub.
 2. Check out your copy locally:
 
     ```bash

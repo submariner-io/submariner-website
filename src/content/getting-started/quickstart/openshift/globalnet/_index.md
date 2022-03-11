@@ -69,7 +69,7 @@ When the cluster deployment completes, directions for accessing your cluster, in
 
 To install Submariner with multi-cluster service discovery and support for overlapping CIDRs follow the steps below.
 
-#### Use cluster-a as Broker with service discovery and globalnet enabled
+#### Use cluster-a as Broker with service discovery and Globalnet enabled
 
 ```bash
 subctl deploy-broker  --kubeconfig cluster-a/auth/kubeconfig --globalnet

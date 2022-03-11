@@ -28,12 +28,12 @@ Resolvers are evaluated one by one, using the result of the first one to succeed
 `<resolver>` should be written in the following form: `method:parameter`, and the
 following methods are implemented:
 
-| Method   | Parameter                                                     | Notes                                                  |
-|:---------|:--------------------------------------------------------------|:-------------------------------------------------------|
-|   api    | HTTPS endpoint to contact, for example api.ipify.org          | The result body is inspected looking for the IP address|
-|   lb     | LoadBalancer Service name in the submariner-operator namespace| A network load balancer should be used                 |
-|   ipv4   | Fixed IPv4 address used as public IP                          |                                                        |
-|   dns    | FQDN DNS entry to be resolved                                 | The A entry of the FQDN will be resolved and used      |
+| Method   | Parameter                                                        | Notes                                                  |
+|:---------|:-----------------------------------------------------------------|:-------------------------------------------------------|
+|   api    | HTTPS endpoint to contact, for example api.ipify.org             | The result body is inspected looking for the IP address|
+|   lb     | LoadBalancer Service name in the `submariner-operator` namespace | A network load balancer should be used                 |
+|   ipv4   | Fixed IPv4 address used as public IP                             |                                                        |
+|   dns    | FQDN DNS entry to be resolved                                    | The A entry of the FQDN will be resolved and used      |
 
 For example, when using a fixed public IPv4 address for a gateway, this can be used:
 

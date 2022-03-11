@@ -9,7 +9,7 @@ clusters on GCP leveraging a cloud network load balancer service in front of the
 
 The main benefit of this mode is that there is no need to dedicate specialized nodes with a public IP
 address to act as gateways. The administrator only needs to manually label any existing
-node or nodes in each cluster as Submariner gateways, and the submariner-operator will take care of creating a LoadBalancer
+node or nodes in each cluster as Submariner gateways, and the Submariner Operator will take care of creating a LoadBalancer
 type Service pointing to the active Submariner gateway.
 
 {{% notice warning %}}

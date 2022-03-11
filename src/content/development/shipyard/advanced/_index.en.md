@@ -16,13 +16,13 @@ caching capabilities to speed up local and pull request CI builds, by utilizing 
 
 The script accepts several flags:
 
-* **tag:** The tag to set for the local image (defaults to *dev*).
-* **repo:** The repo portion to use for the image name.
-* **image (-i):** The image name itself.
-* **dockerfile (-f):** The Dockerfile to build the image from.
-* **[no]cache:** Turns the caching on (or off).
+* **`tag`**: The tag to set for the local image (defaults to *dev*).
+* **`repo`**: The repo portion to use for the image name.
+* **`image` (`-i`)**: The image name itself.
+* **`dockerfile` (`-f`)**: The Dockerfile to build the image from.
+* **`[no]cache`**: Turns the caching on (or off).
 
-For example, to build the submariner image use:
+For example, to build the `submariner` image use:
 
 ```bash
 ${SCRIPTS_DIR}/build_image.sh -i submariner -f package/Dockerfile
@@ -41,10 +41,10 @@ on the root of the settings file to determine defaults.
 
 The possible settings are:
 
-* **broker**: Special key to mark the broker, set to anything to select a broker. By default, the first cluster is selected.
-* **cni**: Which CNI to deploy on the cluster, currently supports `weave` and `ovn` (leave empty or unset for `kindnet`).
-* **nodes**: A space separated list of nodes to deploy, supported types are `control-plane` and `worker`.
-* **submariner**: If Submariner should be deployed, set to `true`. Otherwise, leave unset (or set to `false` explicitly).
+* **`broker`**: Special key to mark the broker, set to anything to select a broker. By default, the first cluster is selected.
+* **`cni`**: Which CNI to deploy on the cluster, currently supports `weave` and `ovn` (leave empty or unset for `kindnet`).
+* **`nodes`**: A space separated list of nodes to deploy, supported types are `control-plane` and `worker`.
+* **`submariner`**: If Submariner should be deployed, set to `true`. Otherwise, leave unset (or set to `false` explicitly).
 
 For example, a basic settings file that deploys a couple of clusters with weave CNI:
 
@@ -81,14 +81,14 @@ same name). These flags affect how the clusters are deployed (and possibly influ
 
 Flags of note:
 
-* **k8s_version:** Allows to specify the Kubernetes version that [kind](https://kind.sigs.k8s.io/) will deploy. Available versions can be
+* **`k8s_version`**: Allows to specify the Kubernetes version that [kind](https://kind.sigs.k8s.io/) will deploy. Available versions can be
 found [here](https://hub.docker.com/r/kindest/node/tags).
 
   ```bash
   make clusters CLUSTERS_ARGS='--k8s_version 1.18.0'
   ```
 
-* **globalnet:** When set, deploys the clusters with overlapping Pod & Service CIDRs to simulate this scenario.
+* **`globalnet`**: When set, deploys the clusters with overlapping Pod & Service CIDRs to simulate this scenario.
 
   ```bash
   make clusters CLUSTERS_ARGS='--globalnet'
@@ -105,19 +105,19 @@ cluster hasn't been deployed yet).
 Flags of note (see the flags defined in [deploy.sh](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/deploy.sh)
 for the full list):
 
-* **deploytool:** Specifies the deployment tool to use: `operator` (default), `helm`, `bundle` or `ocm`.
+* **`deploytool`**: Specifies the deployment tool to use: `operator` (default), `helm`, `bundle` or `ocm`.
 
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator'
   ```
 
-* **deploytool_broker_args:** Any extra arguments to pass to the deploy tool when deploying the broker.
+* **`deploytool_broker_args`**: Any extra arguments to pass to the deploy tool when deploying the broker.
 
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator --deploytool_broker_args "--components service-discovery,connectivity"'
   ```
 
-* **deploytool_submariner_args:** Any extra arguments to pass to the deploy tool when deploying Submariner.
+* **`deploytool_submariner_args`**: Any extra arguments to pass to the deploy tool when deploying Submariner.
 
   ```bash
   make deploy DEPLOY_ARGS='--deploytool operator --deploytool_submariner_args "--cable-driver wireguard"'
@@ -128,13 +128,13 @@ The deploy script also has flags that group common options together for easier u
 For example, the [`service_discovery` flag in `deploy.sh`](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/deploy.sh)
 will handle the `--components service-discovery,connectivity` flags mentioned above. Other examples:
 
-* **globalnet:** When set, deploys Submariner with the globalnet controller, and assigns a unique Global CIDR to each cluster.
+* **`globalnet`**: When set, deploys Submariner with the Globalnet controller, and assigns a unique Global CIDR to each cluster.
 
   ```bash
   make deploy DEPLOY_ARGS='--globalnet'
   ```
 
-* **cable_driver:** Override the default cable driver to configure the tunneling method for connections between clusters.
+* **`cable_driver`**: Override the default cable driver to configure the tunneling method for connections between clusters.
 
   ```bash
   make deploy DEPLOY_ARGS='--cable_driver wireguard'

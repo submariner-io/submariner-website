@@ -115,7 +115,7 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    EOF
    ```
 
-   This deletes the lighthouse entry from the `Data` section in `Corefile` of the configmap.
+   This deletes the Lighthouse entry from the `Data` section in `Corefile` of the configmap.
 
    ```bash
    #lighthouse-start AUTO-GENERATED SECTION. DO NOT EDIT
@@ -125,7 +125,7 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    #lighthouse-end
    ```
 
-   Verify that the lighthouse entry is deleted from `Corefile` of `dns-default` configmap by running
+   Verify that the Lighthouse entry is deleted from `Corefile` of `dns-default` configmap by running
    following command on an OpenShift cluster
 
    ```bash
@@ -133,7 +133,7 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    ```
 
    For Kubernetes deployments, manually edit the `Corefile` of `coredns` configmap and delete the
-   lighthouse entry by issuing below commands
+   Lighthouse entry by issuing below commands
 
    ```bash
    kubectl edit cm coredns -n kube-system
@@ -145,7 +145,7 @@ Make sure KUBECONFIG for all participating clusters is exported and all particip
    kubectl rollout restart -n kube-system deployment/coredns
    ```
 
-   Verify that the lighthouse entry is deleted from `Data` section in `Corefile` of `dns-default`
+   Verify that the Lighthouse entry is deleted from `Data` section in `Corefile` of `dns-default`
    config map by running following command on a Kubernetes cluster
 
    ```bash

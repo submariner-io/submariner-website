@@ -67,7 +67,7 @@ are expected to remain active contributors to the community.
   * Filing or commenting on issues on GitHub
   * Contributing to community discussions (e.g. meetings, Slack, email
     discussion forums, Stack Overflow)
-* Subscribed to [submariner-dev@googlegroups.com]
+* Subscribed to [`submariner-dev@googlegroups.com`]
 * Have read the [community] and [development] guides
 * Actively contributing
 * Sponsored by 2 committers. **Note the following requirements for sponsors**:
@@ -75,7 +75,7 @@ are expected to remain active contributors to the community.
     code/design/proposal review, coordinating on issues, etc.
   * Sponsors must be committers in at least 1 CODEOWNERS file either in any
     repo in the [Submariner org]
-* [Open an issue][membership request issue] against the submariner-io/submariner repo
+* [Open an issue][membership request issue] against the `submariner-io/submariner` repo
   * Ensure your sponsors are @mentioned on the issue
   * Complete every item on the checklist ([preview the current version of the member template][membership template])
   * Make sure that the list of contributions included is representative of
@@ -129,7 +129,7 @@ in an CODEOWNERS file:
 * Sponsored by two committers or project owners
   * With no objections from other committers or project owners
 * May either self-nominate or be nominated by a committer/owner
-* [Open an issue][committership request issue] against the submariner-io/submariner repo
+* [Open an issue][committership request issue] against the `submariner-io/submariner` repo
   * Ensure your sponsors are @mentioned on the issue
   * Complete every item on the checklist ([preview the current version of the committer template][committership template])
   * Make sure that the list of contributions included is representative of
@@ -141,7 +141,7 @@ in an CODEOWNERS file:
 ### Committer Responsibilities and Privileges
 
 The following apply to the part of codebase for which one would be a committer
-in an CODEOWNERS file:
+in a CODEOWNERS file:
 
 * Responsible for project quality control via [code reviews]
   * Focus on code quality and correctness, including testing and factoring
@@ -151,7 +151,7 @@ in an CODEOWNERS file:
 * Expected to be responsive to review requests as per [community expectations]
 * Assigned PRs to review related to project of expertise
 * Assigned test bugs related to project of expertise
-* Granted "read access" to submariner repo
+* Granted "read access" to the corresponding repository
 * May get a badge on PR and issue comments
 * Demonstrate sound technical judgement
 * Mentor contributors and reviewers
@@ -166,7 +166,7 @@ health the project. Project owners *MUST* set technical direction and make or
 approve design decisions for the project - either directly or through
 delegation of these responsibilities.
 
-**Defined by:** Member of the [submariner-owners GitHub team][owners team] and [`*`entry in all CODEOWNERS files][codeowners file].
+**Defined by:** Member of the [`submariner-owners` GitHub team][owners team] and [`*` entry in all CODEOWNERS files][codeowners file].
 
 ### Owner Requirements
 
@@ -226,7 +226,7 @@ The following apply to people who would be an owner:
 [development]: ../../development
 [community]: ..
 [Submariner org]: https://github.com/submariner-io
-[submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
+[`submariner-dev@googlegroups.com`]: https://groups.google.com/forum/#!forum/submariner-dev
 [membership request issue]: https://github.com/submariner-io/submariner/issues/new?template=membership.md&title=REQUEST%3A%20New%20membership%20request%20for%20%3Cyour-GH-handle%3E
 [membership template]: https://github.com/submariner-io/submariner/blob/devel/.github/ISSUE_TEMPLATE/membership.md
 [committership request issue]: https://github.com/submariner-io/submariner/issues/new?template=committership.md&title=REQUEST%3A%20New%20committer%20rights%20request%20for%20%3Cyour-GH-handle%3E

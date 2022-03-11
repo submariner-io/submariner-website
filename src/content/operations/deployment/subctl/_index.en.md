@@ -55,7 +55,7 @@ contains the following details:
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`            | kubeconfig context to use
-| `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
+| `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
 | `--version` `<string>`                | Image version (default image tag "devel")
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
@@ -143,9 +143,9 @@ deployment.
 <!-- markdownlint-disable line-length -->
 | Flag                                    | Description
 |:----------------------------------------|:----------------------------------------------------------------------------|
-| `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default "quay.io/submariner")
+| `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
 | `--version` `<string>`                  | Image version (default image tag "devel")
-| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: --image-override=submariner=quay.io/myUser/submariner:latest)
+| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner=quay.io/myUser/submariner:latest`)
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (health check)
@@ -481,7 +481,7 @@ This command uninstalls Submariner and its components.
 The following steps are performed:
 
 * Delete Submariner ClusterRoles and ClusterRoleBindings.
-* Delete the submariner.io CRDs.
+* Delete the `submariner.io` CRDs.
 * Delete the routing entries (iptables/routes/ipsets) programmed on the nodes.
 * Delete the tunnel interfaces created for internal/external communication.
 * Delete the Submariner namespace.
@@ -493,5 +493,5 @@ The following steps are performed:
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
-| `--namespace` `<string>`         | Namespace in which Submariner is installed (default "submariner-operator")
+| `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`)
 | `--yes`                          | Automatically answer yes to confirmation prompt

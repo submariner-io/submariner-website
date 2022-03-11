@@ -20,8 +20,8 @@ and allows Submariner to support cross-cluster connectivity.
 
 {{% notice note %}}
 When using [Submariner Globalnet](../../../getting-started/architecture/globalnet) with Calico, please avoid the default
-globalnet-cidr (i.e., 242.0.0.0/8) as its used internally within Calico. You can explicitly specify
-a non-overlapping globalnet-cidr while deploying Submariner.
+Globalnet CIDR (i.e., 242.0.0.0/8) as it is used internally within Calico. You can explicitly specify
+a non-overlapping Globalnet CIDR while deploying Submariner.
 {{% /notice %}}
 
 As an example, consider two clusters, East and West, deployed with the Calico network plugin

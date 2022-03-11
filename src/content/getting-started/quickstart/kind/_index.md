@@ -30,8 +30,9 @@ cd submariner-operator
 make deploy using=lighthouse
 ```
 
-By default, the automation configuration in the submariner-io/submariner-operator repository deploys two clusters, with cluster1 configured as
-the Broker. See the [settings](https://github.com/submariner-io/submariner-operator/blob/devel/.shipyard.e2e.yml) file for details.
+By default, the automation configuration in the `submariner-io/submariner-operator` repository deploys two clusters, with cluster1
+configured as the Broker.
+See the [settings](https://github.com/submariner-io/submariner-operator/blob/devel/.shipyard.e2e.yml) file for details.
 
 Once you become familiar with Submariner's basics, you may want to visit the
 [Building and Testing page](../../../development/building-testing/) to learn more about customizing your Submariner development deployment.

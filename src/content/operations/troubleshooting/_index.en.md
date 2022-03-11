@@ -253,7 +253,7 @@ In the output look for something like this:
 If the entries highlighted above are missing or `ServiceIp` is incorrect, it means CoreDNS wasn't configured correctly. It can be fixed by
 running `kubectl edit configmap coredns` and making the changes manually. You may need to repeat this step on every cluster.
 
-##### Check submariner-lighthouse-agent
+##### Check `submariner-lighthouse-agent`
 
 Next we check if the `submariner-lighthouse-agent` is properly running. Run `kubectl -n submariner-operator get pods
 submariner-lighthouse-agent` and check the status of Pods.
