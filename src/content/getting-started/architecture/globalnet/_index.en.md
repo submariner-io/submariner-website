@@ -116,11 +116,11 @@ if enabled.
     `system:serviceaccount:submariner-operator:submariner-globalnet`.
 
 {{% notice note %}}
-For every exported `Service`, Submariner Globalnet internally creates a `Service` with `externalIPs` and the `externalIPs` will be set
+The steps above are necessary because for every exported `Service`, Submariner
+Globalnet internally creates a `Service` with `externalIPs` and sets the `externalIPs`
 to the globalIP assigned to the respective `Service`.
 Some deployments of Kubernetes do not allow the `Service` with `externalIPs` to be created
 for [security reasons](https://github.com/kubernetes/kubernetes/issues/97076).
-So, in order for Globalnet functionality to work fine, it should be allowed for Globalnet controller by above steps.
 {{% /notice %}}
 
 ## Usage
