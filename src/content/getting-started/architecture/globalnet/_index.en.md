@@ -97,6 +97,32 @@ replying to DNS queries.
 
 Nothing extra needs to be done to build `submariner-globalnet` as it is built with the standard Submariner build.
 
+## Prerequisites
+
+Allow Globalnet controller to create/update/delete the `Service` with `externalIPs` by below steps:
+
+1. Disable [DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips),
+if enabled.
+2. Restrict the use of the `Service` with `externalIPs`:
+    * OpenShift: No extra configuration is needed.
+    The default
+    [network.openshift.io/ExternalIPRanger](https://docs.openshift.com/container-platform/4.9/architecture/admission-plug-ins.html)
+    validating admission plug-in allows the use of the `Service` with `externalIPs` only for users with permission to handle
+    the `service/externalips` resource in the `network.openshift.io` group.
+    By default, `submariner-globalnet`'s `ServiceAccount` has such an RBAC rule.
+    * Other Kubernetes distributions:
+    Enable [externalip-webhook](https://github.com/kubernetes-sigs/externalip-webhook) while specifying `allowed-external-ip-cidrs` to
+    include the `GlobalCIDR` allocated to the cluster and `allowed-usernames` to include
+    `system:serviceaccount:submariner-operator:submariner-globalnet`.
+
+{{% notice note %}}
+The steps above are necessary because for every exported `Service`, Submariner
+Globalnet internally creates a `Service` with `externalIPs` and sets the `externalIPs`
+to the globalIP assigned to the respective `Service`.
+Some deployments of Kubernetes do not allow the `Service` with `externalIPs` to be created
+for [security reasons](https://github.com/kubernetes/kubernetes/issues/97076).
+{{% /notice %}}
+
 ## Usage
 
 Refer to the [Quickstart Guides](../../quickstart/) on how to deploy Submariner with Globalnet enabled. For most deployments users will not
