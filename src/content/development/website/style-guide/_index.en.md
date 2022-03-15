@@ -49,3 +49,10 @@ project as related to submarine cables.
 Submariner follows ISO 8601 for date formats (YYYY-MM-DD or YYYY-MM).
 
 [kube docs guide]: https://kubernetes.io/docs/contribute/style/style-guide
+
+### Use Versions, not "New"
+
+Avoid referring to things as "new", as this will become out of date and require maintenance.
+Instead, document the versions that introduce or remove features:
+
+> As of 0.12.0, a `subctl` image is provided ...
