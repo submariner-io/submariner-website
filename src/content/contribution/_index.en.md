@@ -5,6 +5,7 @@ weight = 40
 pre = "<b>4. </b>"
 +++
 
+* [Guidelines](guidelines)
 * [Code Review Guide](code-review)
 * [Contributing to the Website](website)
   * [Docs Style Guide](website/style-guide)
