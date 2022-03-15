@@ -110,8 +110,15 @@ Here is how this can be done using [yq](http://mikefarah.github.io/yq/):
 
 ```bash
 yq e -i '.contexts[0].name = "cluster-a" | .current-context = "cluster-a"' cluster-a/auth/kubeconfig
+yq e -i '.contexts[0].context.user = "admin-a" | .users[0].name = "admin-a"' cluster-a/auth/kubeconfig
 yq e -i '.contexts[0].name = "cluster-b" | .current-context = "cluster-a"' cluster-b/auth/kubeconfig
+yq e -i '.contexts[0].context.user = "admin-b" | .users[0].name = "admin-b"' cluster-b/auth/kubeconfig
 ```
+
+(if you’re using `yq` 4.18.1 or later, you can use `yq -i` instead of `yq e -i`).
+
+More generally, see
+[the Kubernetes documentation on accessing multiple clusters using configuration files](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
 
 This will perform automated verifications between the clusters.
 
