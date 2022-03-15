@@ -1,8 +1,8 @@
 ---
 title: "Other Resources"
 date: 2020-03-09T20:03:44+01:00
-weight: 50
-pre: "<b>5. </b>"
+weight: 60
+pre: "<b>6. </b>"
 ---
 
 This page catalogs content documenting Submariner elsewhere on the web.
@@ -65,4 +65,4 @@ This page catalogs content documenting Submariner elsewhere on the web.
 * [Kubernetes and the Edge? (2020-10)](https://hal.inria.fr/hal-02972686/document)
 
 If you find additional material that isn't listed here, please feel free to add it to this page by editing it.
-The website contributing guide is [here](../development/website).
+The website contributing guide is [here](../contribution/website).

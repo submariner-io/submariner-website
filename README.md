@@ -1,1 +1,1 @@
-src/content/development/website/_index.en.md
+src/content/contribution/website/_index.en.md

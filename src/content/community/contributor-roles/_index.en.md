@@ -68,7 +68,7 @@ are expected to remain active contributors to the community.
   * Contributing to community discussions (e.g. meetings, Slack, email
     discussion forums, Stack Overflow)
 * Subscribed to [submariner-dev@googlegroups.com]
-* Have read the [community] and [development] guides
+* Have read the [community], [contribution] and [development] guides
 * Actively contributing
 * Sponsored by 2 committers. **Note the following requirements for sponsors**:
   * Sponsors must have close interactions with the prospective member - e.g.
@@ -221,9 +221,10 @@ The following apply to people who would be an owner:
 * Decide how funds raised by the project are spent.
 
 [parent process]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/community-membership.md
-[code reviews]: ../../development/code-review
+[code reviews]: ../../contribution/code-review
 [community expectations]: https://github.com/kubernetes/community/blob/7d2ebad43cde06607cde3d55e9eed4bb08a286a9/contributors/guide/expectations.md
 [development]: ../../development
+[contribution]: ../../contribution
 [community]: ..
 [Submariner org]: https://github.com/submariner-io
 [submariner-dev@googlegroups.com]: https://groups.google.com/forum/#!forum/submariner-dev
