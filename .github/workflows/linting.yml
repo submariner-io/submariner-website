@@ -53,7 +53,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@a12a3943b4bdde767164f792f33f40b04645d846
       - name: Run markdownlint
-        uses: nosborn/github-action-markdown-cli@9fc95163471d6460c35cccad13645912aaa25d5f
+        uses: nosborn/github-action-markdown-cli@018fc8b964d4d364519e7cbcda29b6b9bf3f0ba3
         with:
           files: .
           config_file: ".markdownlint.yml"
