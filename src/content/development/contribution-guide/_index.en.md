@@ -30,19 +30,40 @@ To be expanded
 
 ## Bugs, Tasks and Epics
 
-To be expanded
+In order to have more structure and clarity, we expand upon the standard GitHub issue and define 3 types of issues:
+Bugs, Tasks and Epics.
 
 ### Bugs
 
-To be expanded
+A bug is an issue which captures an error or fault in the project.
+If a bug meets the criteria of a blocker, it is considered a blocker bug.
+
+#### Blocker Criteria
+
+If an issue prevents a feature (either new or existing) from operating correctly and there's no sufficient workaround, it may be deemed as
+a blocker for a release such that the release cannot proceed until it is addressed.
 
 ### Tasks
 
-To be expanded
+A task defines a specific unit of work that can be stand-alone or part of an epic. Work on a bug is not a task. A task should be relatively
+small and fit within the scope of a single sprint otherwise it should be broken down into smaller tasks or perhaps be defined as an epic.
 
 ### Epics
 
-To be expanded
+An epic is a collection of tasks which are required to accomplish a feature.
+
+#### Epic Guidelines
+
+* Epics should be issues in the [enhancements] repository and created using the [epic template].
+* Only include work that is a part of the [Submariner project].
+* The design should be completed before starting working on an epic.
+* An epic should not be added to a release after the planning is complete.
+* Provide clear and agreed-upon acceptance criteria.
+* An epic should be split into smaller tasks (implementation, testing, documentation etc) using the design, acceptance criteria and
+epic template checklist as guidelines:
+  * Open a GitHub issue for each task in the appropriate repository.
+  * Each task should be listed under the Work Items section in the epic template.
+  * Tasks should be small to medium in size and fit within the scope of a single sprint.
 
 ## Release Cycles
 
@@ -244,3 +265,4 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [pull requests to the enhancements repository]: https://github.com/submariner-io/enhancements/pulls
 [release process]: ../release-process
 [test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
+[Submariner project]: https://github.com/submariner-io
