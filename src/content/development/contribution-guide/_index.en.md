@@ -93,9 +93,45 @@ The version will be released one week after the last sprint, and the planning wo
 
 The following sections explain the activities of each sprint.
 
-#### Pre-Planning
+#### Planning
 
-To be expanded
+The week before a new release cycle starts is dedicated to planning the release.
+Planning covers the [epics](#epics), [tasks](#tasks) and [bugs](#bugs) which are targeted for the next release version.
+Planning meetings will be held, focusing on the [Backlog board].
+
+##### Inclusion Criteria
+
+In order for a task or an epic to be eligible for the next version, it needs to fulfill these requirements:
+
+* Be part of the [Backlog board].
+* Have a `next-version-candidate` label.
+* Have a description detailing **what** the issue is and optionally **how** it's going to be solved.
+* Have an appropriate sizing label, according to the amount of work expected for a single person to completely deliver the task:
+  * *Small*: Work is contained in one sprint and is expected to take less than half the sprint.
+  * *Medium*: Work is contained in one sprint and is expected to take most of the sprint.
+  * *Large*: Work is contained within a release (two-three sprints).
+  * *Extra-Large*: Work can't be contained within a release and would span multiple releases.
+* Any *Large* or *Extra-Large* task must be converted to an epic.
+* In case of an epic, it should:
+  * Have a corresponding issue in the [enhancements] project.
+  * Adhere to the [epic template].
+  * Have a high-level break down of the expected work, corresponding to the "Definition of Done".
+
+##### Planning Meetings
+
+The project team will hold planning meetings, led by the project's "scrum lead".
+During these meetings, the project team will:
+
+* Prioritize and assign epics for the next version.
+  * Only epics adhering to the described requirements will be considered.
+  * Transfer assigned epics to the [release board](#current-release-board) according to the capacity of the team to deliver them.
+  * Remove the `next-version-candidate` label from transferred epics.
+* Re-evaluate the priorities of any *Small* and *Medium* tasks in the backlog.
+* Optionally assign important bugs and tasks and move them to the release board.
+
+By the end of the planning week, the project team will have a backlog of epics and tasks and can commence working on the design phase.
+All epics for the next version will be on the release board, while all *Small* and *Medium* tasks will be left on the backlog board and
+worked on based on their priority.
 
 #### Feature Design
 
@@ -154,4 +190,7 @@ To be expanded
 
 To be expanded
 
+[Backlog board]: #backlog-board
+[enhancements]: https://github.com/submariner-io/enhancements/issues
+[epic template]: https://github.com/submariner-io/enhancements/blob/devel/.github/ISSUE_TEMPLATE/epic.md
 [release process]: ../release-process
