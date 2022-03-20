@@ -66,7 +66,17 @@ To be expanded
 
 #### Development Milestones
 
-To be expanded
+The milestone sprints are focused on development, encapsulating work on various [tasks](#tasks) and [bugs](#bugs).
+Project members will work on any planned tasks and bugs, and will also work on unplanned bugs should they arise.
+Any [unplanned work](#unplanned-work) will have to follow the defined guidelines.
+
+Each sprint will end with a milestone release which allows the project community to test newly added features and fixed bugs.
+In total, three milestone sprints are planned:
+
+* Two milestones ending with releases of milestone `m1` and milestone `m2`.
+* The last sprint will end with the release of the [release candidate](#release-candidates) `rc0`.
+
+As detailed in the [sprints](#sprints) section, each milestone releases will be followed by a test day and the sprint meetings.
 
 #### Release Candidates
 
