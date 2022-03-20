@@ -135,7 +135,32 @@ worked on based on their priority.
 
 #### Feature Design
 
-To be expanded
+Project members are expected to work on the design for any [epic](#epics) features assigned to them.
+During this sprint, project members will update their respective epics with any work identified during the design phase.
+Project members are encouraged to perform proof of concept investigations in order to validate the design and clarify specific work items.
+
+In case additional work items are identified during the design, they should be opened as [tasks](#tasks) and tracked under the respective epic.
+Such tasks are expected to follow the sizing guidelines from the [Planning](#planning) stage.
+Specifically, tasks that are themselves epics due to their size should be identified and treated as such.
+
+Design proposals for epics should be submitted as [pull requests to the enhancements repository], detailing the proposed design, any
+alternatives, and any changes necessary to the Submariner projects and APIs.
+
+The [pull requests to the enhancements repository] will be reviewed during the sprint, discussing any necessary changes or reservations.
+Any pull request will need approval from at least 50% of the [code owners of the enhancements repository].
+The code owners list is an aggregate list of the code owners of all Sumbariner repositories.
+As soon as the pull request is reviewed and merged, work on the epic can begin.
+
+Project members are expected to review proposals from other members in addition to drafting their own proposals.
+If a project member has finished work on their proposal, they're encouraged to help with the other ongoing proposals.
+
+Only epics which were planned for the release will be reviewed at this stage.
+Any epic that was unplanned but seeks inclusion in the release should follow the [exception process](#exception-process).
+The same process will have to be followed for any epic that was planned but has not been agreed upon by the end of this sprint.
+Any such epics will be moved back to the [Backlog board](#backlog-board) and reconsidered for the next release.
+
+In lieu of demos, the project will host a design review at the end of the sprint.
+All the approved epics and their designs will be presented.
 
 #### Development Milestones
 
@@ -191,6 +216,8 @@ To be expanded
 To be expanded
 
 [Backlog board]: #backlog-board
+[code owners of the enhancements repository]: https://github.com/submariner-io/enhancements/blob/devel/CODEOWNERS
 [enhancements]: https://github.com/submariner-io/enhancements/issues
 [epic template]: https://github.com/submariner-io/enhancements/blob/devel/.github/ISSUE_TEMPLATE/epic.md
+[pull requests to the enhancements repository]: https://github.com/submariner-io/enhancements/pulls
 [release process]: ../release-process
