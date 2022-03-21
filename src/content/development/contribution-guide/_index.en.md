@@ -10,23 +10,38 @@ in order for their contributions to the project to be addressed in a timely mann
 
 ## Project Resources
 
-To be expanded
+Submariner uses [GitHub Projects] to manage releases. Read [Tracking Progress on your Project Board] to learn more on how to work with
+projects.
 
 ### Backlog Board
 
-To be expanded
+[The backlog board] hosts issues or features that are intended to be worked upon. While each issue is opened in
+its corresponding repository, this board gives an aggregated view of all open issues across all repositories. The board has total of seven
+columns. Any issue or epic opened should be assigned to `Backlog` Projects in `Backlog` column. Issues intenteded to be
+worked on for the next release are moved to `Next Version Candidate` column. During [pre-planning](#Pre-Planning), issues from the `Next
+Version Candidate` column are triaged. Issues or epics properly triaged, with assignees and priority labels addeded, are moved to [current
+release board](#Current Release Board). The next 3 columns are of priority. All unassigned issues are sorted into these three columns
+based on the priority discussed in the team meeting. Issues from these columns should be worked on if the current release work is
+finished. Any leftover work from the previous release goes to the `Work in Progess column`. `Close?` column holds any issue/epic that
+could probably be closed for various reasons.
 
 ### Current Release Board
 
-To be expanded
+Current release work is tracked in [the latest board]. The board has 5 columns. The first one, `Schedule and Epics`, hosts all properly
+triaged epics targeted for the current release and the schedule for the current release. Triaged issues are under the `To do` column. When
+an issue is being worked on, it is moved to `In Progress` column. When a PR for the issue is pushed, the issue is moved to `In Review`
+column. The PR has the corresponding issue linked from the GitHub UI and is not tracked on the board. Once the PR is merged, the issue
+is moved to `Done` column.
 
 ### Enhancements Repository
 
-To be expanded
+All enhancement proposals need to be submitted to the [enhancements repository]. To submit a new enhancement proposal, raise an
+[Enhancement Request issue] on the repository.
 
 ### Releases Repository
 
-To be expanded
+Submariner's release is automated to a great extent. [The release process documentation] explains the details of a release. The release
+automation is maintained in the [releases repository]. It also hosts `subctl` binaries for all released versions.
 
 ## Bugs, Tasks and Epics
 
@@ -279,3 +294,12 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [release process]: ../release-process
 [test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
 [Submariner project]: https://github.com/submariner-io
+[GitHub Projects]: https://docs.github.com/en/issues/organizing-your-work-with-project-boards
+[Tracking Progress on your Project Board]:
+https://docs.github.com/en/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards
+[The backlog board]: https://github.com/orgs/submariner-io/projects/15
+[the latest board]: https://github.com/orgs/submariner-io/projects
+[enhancements repository]: https://github.com/submariner-io/enhancements
+[Enhancement Request issue]: https://github.com/submariner-io/enhancements/issues/new?assignees=&labels=enhancement&template=enhancement.md
+[The release process documentation]: https://submariner.io/development/release-process/
+[releases repository]: https://github.com/submariner-io/releases
