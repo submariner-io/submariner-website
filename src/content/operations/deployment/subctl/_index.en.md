@@ -235,7 +235,7 @@ that this verification is disruptive.
 | `--connection-attempts` `<value>`   | The maximum number of connection attempts (default 2)
 | `--connection-timeout` `<value>`    | The timeout in seconds per connection attempt  (default 60)
 | `--operation-timeout` `<value>`     | Operation timeout for Kubernetes API calls (default 240)
-| `--report-dir` `<string>`           | XML report directory (default ".")
+| `--junit-report` `<string>`         | XML report path and name (default "")
 | `--verbose`                         | Produce verbose logs during connectivity verification
 | `--only`                            | Comma separated list of specific verifications to perform
 | `--disruptive-tests`                | Enable verifications which are potentially disruptive to your deployment
