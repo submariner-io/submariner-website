@@ -74,9 +74,9 @@ Each sprint will end with a milestone release which allows the project community
 In total, three milestone sprints are planned:
 
 * Two milestones ending with releases of milestone `m1` and milestone `m2`.
-* The last sprint will end with the release of the [release candidate](#release-candidates) `rc0`.
+* The last sprint ending with the release of the [release candidate](#release-candidates) `rc0`.
 
-As detailed in the [sprints](#sprints) section, each milestone releases will be followed by a test day and the sprint meetings.
+As detailed in the [sprints](#sprints) section, each milestone release will be followed by a test day and the sprint meetings.
 
 #### Release Candidates
 
