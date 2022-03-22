@@ -46,10 +46,10 @@ To be expanded
 
 ## Release Cycles
 
-The Submariner project follows time based release cycles, each cycle is 16 weeks long.
-Blocking bugs might cause a delay in the final release date, while new features will never be a cause fo delaying the release.
+The Submariner project follows time based release cycles where each cycle is 16 weeks long.
+While blocking bugs may delay the [general availability](#general-availability) release date, new features won't be a reason to delay it.
 
-Features that were partially implemented in a given release will be considered "experimental" and will not have any support commitment.
+Features that were partially implemented in a given release will be considered "experimental" and won't have any support commitment.
 
 Each cycle will result in either a minor version bump or a major version bump in case backwards compatibility can't be maintained.
 
