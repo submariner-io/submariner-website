@@ -687,6 +687,11 @@ Kubernetes supports this by introducing stable Pod IDs composed of `<pod-name>.<
 which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local` across the cluster set. The Headless Service in
 this case offers one single Service for all the underlying Pods.
 
+{{% notice note %}}
+Since we need to use `<cluster-id>` in DNS query for individual pods, cluster ID must be a valid
+[DNS-1123 Label](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
+{{% /notice %}}
+
 Like a Deployment, a StatefulSet manages Pods that are based on an identical container spec. Unlike a Deployment, a StatefulSet maintains a
 sticky identity for each of its Pods. StatefulSets are typically used for applications that require stable unique network identifiers,
 persistent storage, and ordered deployment and scaling.
