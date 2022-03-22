@@ -52,14 +52,19 @@ To be expanded
 
 Sprints are 3 week periods which encapsulate work on the release.
 Most sprints focus on active development of the current version, while some focus on additional aspects such as design and stabilization.
-Specific sprints and their contents are details in the following sections.
+Specific sprints and their contents are detailed in the following sections.
 
-Each sprint starts and ends on a boundry day, when one sprint ends another one begins.
-The boundry day is **Monday**.
+Most sprints will end with a milestone pre-release, the designation of which is detailed in the following sections.
+This allows the community and project members to verify the project is stable and test any fixes or features that were added during the
+sprint.
+For most sprints a [test day](#test-days) to test the pre-release will be held after its creation.
 
-On the sprint boundry day we will:
+Each sprint starts and ends on a boundary day, when one sprint ends another one begins.
+The boundary day is **Monday**.
 
-* Perform a milestone release (When applicable).
+On the sprint boundary day we will:
+
+* Perform a milestone pre-release (when applicable).
 * Have release related meetings, instead of any usually recurring meetings:
   * Grooming (30 minutes):
     * Making sure epics are on track.
