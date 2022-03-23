@@ -80,7 +80,13 @@ On the sprint boundary day we will:
 
 ### Release Timeline
 
-To be expanded
+<!-- Source: https://docs.google.com/drawings/d/1wZCogcChCkX2PqoIuTx9I_iOgJuwsYjChVopq1nfqeM -->
+![Timeline Diagram](/images/timeline.png)
+
+Each release follows a fixed timeline, with 4 development sprints and one final sprint for stabilization.
+The version will be released one week after the last sprint, and the planning work for the next release will begin.
+
+The following sections explain the activities of each sprint.
 
 #### Pre-Planning
 

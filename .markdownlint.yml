@@ -28,6 +28,7 @@ spelling:
     - kind
     - Kubernetes
     - Lighthouse
+    - OpenStack
     - Shipyard
     - subctl
     - Submariner
