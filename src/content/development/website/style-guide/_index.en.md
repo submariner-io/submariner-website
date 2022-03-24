@@ -18,6 +18,7 @@ A list of Submariner-specific terms and words to be used consistently across
 the site.
 
 <!-- markdownlint-disable line-length -->
+<!-- Terms listed here should be listed in .markdownlint.yml if their use is unambiguous -->
 Term | Usage
 :--- | :----
 Admiral | The project name *Admiral* should always be capitalized.
@@ -32,6 +33,7 @@ K8s | The project nickname *K8s* should typically be expanded to "Kubernetes".
 kind | The tool *kind* consistently uses all-lowercase. Follow their convention, but avoid starting a sentence with "kind".
 Lighthouse | The project name *Lighthouse* should always be capitalized.
 Operator | The design pattern *Operator* should always be capitalized.
+OpenStack | The project name *OpenStack* should always be capitalized and camel-cased.
 Shipyard | The project name *Shipyard* should always be capitalized.
 `subctl` | The artifact `subctl` should not be capitalized and should be formatted in code style.
 Submariner | The project name *Submariner* should always be capitalized.
