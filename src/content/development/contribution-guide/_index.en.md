@@ -218,7 +218,19 @@ Releasing `rc2` and beyond will delay the general availability release.
 
 #### General Availability
 
-To be expanded
+Once a release candidate is deemed stable and has no blocker bugs it will be released for general availability.
+Prior to releasing, the release manager will verify that there were no changes on the stable branches since the last release candidate.
+This ensures that no bugs could have been introduced to possibly affect the stability of the released version.
+
+The new version will be announced per the [announcement guidelines] in the release process documentation.
+
+The [current release board](#current-release-board) will be closed, and all remaining items will be moved back to the
+[backlog board](#backlog-board).
+The items can then be considered for the next version, based on the [planning](#pre-planning) guidelines.
+
+During the week when the general availability release is performed, the next version will be planned.
+Additionally, a retrospective meeting for the last release cycle will be held.
+There will be no dedicated [test day](#test-days), as the release candidate has been tested and no changes have occurred since.
 
 ### Unplanned Work
 
@@ -258,6 +270,7 @@ Test days will be led by one of the project members, who will be responsible for
 Should a bug be identified during a test day, it should be labeled with an appropriate `testday` label.
 {{% /notice %}}
 
+[announcement guidelines]: ../release-process/#step-7-announce-release
 [Backlog board]: #backlog-board
 [code owners of the enhancements repository]: https://github.com/submariner-io/enhancements/blob/devel/CODEOWNERS
 [enhancements]: https://github.com/submariner-io/enhancements/issues
