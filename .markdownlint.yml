@@ -32,4 +32,5 @@ spelling:
     - Shipyard
     - subctl
     - Submariner
+    - VXLAN
   code_blocks: false
