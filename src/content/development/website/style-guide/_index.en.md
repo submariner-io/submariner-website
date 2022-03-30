@@ -35,6 +35,7 @@ Operator | The design pattern *Operator* should always be capitalized.
 Shipyard | The project name *Shipyard* should always be capitalized.
 `subctl` | The artifact `subctl` should not be capitalized and should be formatted in code style.
 Submariner | The project name *Submariner* should always be capitalized.
+VXLAN | The protocol *VXLAN* should always be all-capitalized.
 <!-- markdownlint-enable line-length -->
 
 ### Pronunciation of "Submariner"
