@@ -152,6 +152,30 @@ To be expanded
 
 ### Test Days
 
-To be expanded
+Test days are held in order to validate pre-released versions by the project members and the wider community.
+Any bugs opened on a test day will be triaged soon after.
+
+The goals of these days are:
+
+* Verify any new features that were introduced during the last [sprint](#sprints).
+* Validate any [bugs](#bugs) that were fixed were actually fixed.
+* Find any regressions in existing functionality.
+
+Test days will be led by one of the project members, who will be responsible for:
+
+* Creating a test day document, if one doesn't exist yet.
+  * Using the [test day template].
+  * The first sheet of the document is a template for the test days.
+    * Updated with the correct infrastructure versions.
+    * Add columns for planned new features.
+    * Add rows to planned new infrastructure support.
+* Adding a sheet for the test day with the milestone as the sheet name.
+* Announcing the test day (meetings, slack, email, social media).
+* Hosting the test day itself.
+
+{{% notice note %}}
+Should a bug be identified during a test day, it should be labeled with an appropriate `testday` label.
+{{% /notice %}}
 
 [release process]: ../release-process
+[test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
