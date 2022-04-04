@@ -83,7 +83,7 @@ make deploy using=lighthouse, vxlan
 ```
 
 With the VXLAN cable driver routes in table 100 are used on the source Gateway to steer the traffic
-into the vxlan-tunnel interface.
+into the `vxlan-tunnel` interface.
 
 The figure shows a simple interaction (a ping from one pod in one cluster to another pod in
 a second cluster) when Submariner is used.
