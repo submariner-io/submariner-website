@@ -46,7 +46,12 @@ To be expanded
 
 ## Release Cycles
 
-To be expanded
+The Submariner project follows time based release cycles where each cycle is 16 weeks long.
+While blocking bugs may delay the [general availability](#general-availability) release date, new features will not.
+
+Features that were partially implemented in a given release will be considered "experimental" and won't have any support commitment.
+
+Each cycle will result in either a minor version bump or a major version bump in case backwards compatibility can't be maintained.
 
 ### Sprints
 
