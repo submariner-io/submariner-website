@@ -17,6 +17,8 @@ no-inline-html:
     - ul
 
 # Enforce our capitalisation rules (where they're unambiguous)
+# Terms listed here should also be listed in the style guide in
+# src/content/development/website/style-guide/_index.en.md
 spelling:
   names:
     - Admiral
@@ -28,7 +30,9 @@ spelling:
     - kind
     - Kubernetes
     - Lighthouse
+    - OpenStack
     - Shipyard
     - subctl
     - Submariner
+    - VXLAN
   code_blocks: false
