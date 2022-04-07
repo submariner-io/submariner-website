@@ -405,6 +405,27 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
 
+#### `prepare rhos`
+
+`subctl cloud prepare rhos [flags]`
+
+This command prepares an OpenShift installer-provisioned infrastructure (IPI) on OpenStack cloud for Submariner installation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--cloud-entry` `<string>`       | the specific cloud configuration to use from the clouds.yaml (default `openstack`)
+| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true)
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `PnTAE.CPU_4_Memory_8192_Disk_50`)
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--infra-id` `<string>`          | OpenStack infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
+| `--project-id` `<string>`        | OpenStack project ID
+| `--region` `<string>`            | OpenStack region
+| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
+| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+
 #### `prepare generic` flags
 
 This command prepares a generic cluster for Submariner installation. It assumes that the cloud already has the necessary
@@ -452,6 +473,20 @@ This command cleans up an installer-provisioned infrastructure (IPI) on GCP-base
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
 | `--project-id` `<string>`        | GCP project ID
 | `--region` `<string>`            | GCP region
+
+#### `cleanup rhos`
+
+`subctl cloud cleanup rhos [flags]`
+
+This command cleans up an installer-provisioned infrastructure (IPI) on OpenStack-based cloud after Submariner uninstallation.
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--cloud-entry` `<string>`       | the cloud entry to use (default `openstack`)
+| `--infra-id` `<string>`          | OpenStack infra ID
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
+| `--project-id` `<string>`        | OpenStack project ID
+| `--region` `<string>`            | OpenStack region
 
 #### `cleanup generic`
 
