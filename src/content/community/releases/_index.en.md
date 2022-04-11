@@ -16,10 +16,10 @@ table entries, from a cluster.
   * Globalnet: Count of global Egress IPs allocated at Cluster scope, namespace scope, and for selected pods per CIDR.
   * Globalnet: Count of global Ingress IPs allocated for Pods/Services per CIDR.
   * Service Discovery: Count of DNS queries handled by Lighthouse.
-* Added support for Globalnet objects verification using subctl diagnose command.
+* Added support for Globalnet objects verification using the `subctl diagnose` command.
 * Added support for `--broker-namespace` flag while deploying the Broker.
 * Added support for running `subctl diagnose` on single node clusters.
-* Added support for running `subctl diagnose` from a pod in cluster.
+* Added support for running `subctl diagnose` from a pod in a cluster.
 * `subctl cloud prepare` now deploys a dedicated gateway node as a default option on GCP and OpenStack platforms.
 * `subctl show` now shows information about the Broker CR in the cluster.
 * `subctl gather` now collects Globalnet information.
