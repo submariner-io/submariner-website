@@ -309,7 +309,7 @@ Below is a list of available sub-commands:
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
 | `--kubecontext` `<string>`   | Kubeconfig context to use
-| `--in-cluster`              | Use the in-cluster configuration to connect to Kubernetes. Use when running `diagnose` from a Pod in cluster
+| `--in-cluster`              | Use the in-cluster configuration to connect to Kubernetes.
 
 ### `gather`
 
@@ -534,8 +534,9 @@ The following steps are performed:
 
 ### Running `subctl diagnose` from a Pod in cluster
 
-`subctl` image containing the subctl binary can be used to run subctl from a Pod within the cluster. `subctl diagnose`
-command output can be accessed from the Pod's logs. `--in-cluster` has been added to `subctl diagnose` to support this use case.
+As of 0.12.0, a `subctl` image is provided for running the `subctl` binary from a Pod within a cluster. The output of
+`subctl diagnose` command output can be accessed from the Pod's logs. `--in-cluster` has been added to `subctl diagnose`
+to support this use case.
 
 #### Example running `subctl diagnose` using a Job
 
@@ -558,5 +559,5 @@ spec:
   backoffLimit: 0
 ```
 
-Created Pod can be accessed with label `job-name=submariner-diagnose`. A similar template can also be used to
-create a `CronJob` that runs `subctl diagnose` periodically.
+The resulting Pod with `subctl diagnose all --in-cluster` logs can be accessed with the label `job-name=submariner-diagnose`.
+A similar template can also be used to create a `CronJob` that runs `subctl diagnose` periodically.
