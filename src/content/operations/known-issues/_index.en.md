@@ -21,7 +21,10 @@ VXLAN cable driver.
 
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
-* On OpenShift, Globalnet metrics do not show up. This can be done manually by opening the Globalnet metrics port, TCP/8081.
+* Submariner uses TCP port 8081 to export metrics on the Globalnet controller. While other metrics will show up on OpenShift with no
+additional action from the user, this is not the case for Globalnet metrics at this time. User needs to ensure that firewall
+configuration allows ingress 8081/TCP on the Gateway nodes so that other nodes in the cluster can access it. Also, no other workload on
+those nodes should be listening on TCP port 8081.
 
 ## Deploying with Helm on OpenShift
 
