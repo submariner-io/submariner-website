@@ -158,13 +158,12 @@ Any bugs opened on a test day will be triaged soon after.
 The goals of these days are:
 
 * Verify any new features that were introduced during the last [sprint](#sprints).
-* Validate any [bugs](#bugs) that were fixed were actually fixed.
+* Validate any [bugs](#bugs) that were closed were actually fixed.
 * Find any regressions in existing functionality.
 
 Test days will be led by one of the project members, who will be responsible for:
 
-* Creating a test day document, if one doesn't exist yet.
-  * Using the [test day template].
+* Creating a test day spreadsheet, if one doesn't exist yet, using the [test day template].
   * The first sheet of the document is a template for the test days.
     * Updated with the correct infrastructure versions.
     * Add columns for planned new features.
