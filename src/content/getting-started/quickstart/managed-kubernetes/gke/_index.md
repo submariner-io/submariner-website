@@ -106,6 +106,22 @@ gcloud compute firewall-rules create "udp-out-4500" --allow=udp:4500 --direction
 gcloud compute firewall-rules create "udp-out-4800" --allow=udp:4800 --direction=OUT
 ```
 
+### Preparation: Globalnet
+
+Submariner Globalnet internally creates a Service with externalIPs for every exported service and sets the
+externalIPs to the globalIP assigned to the respective Service. By default, GKE clusters do not allow services
+to be created with ExternalIPs as it deploys the
+[DenyServiceExternalIPs](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#denyserviceexternalips)
+admission controller. If you are planning to install Submariner Globalnet on the clusters, please make sure that you
+disable the admission controller by running the following command.
+
+``` bash
+gcloud container clusters update <cluster-name> --enable-service-externalips
+```
+
+You can further restrict the usage of Service with externalIPs to selected service-accounts by following the step-2
+captured in the Prerequisite section of [Globalnet](https://submariner.io/getting-started/architecture/globalnet/) page.
+
 After this, the clusters are finally ready for Submariner!
 
 ## Deploy Submariner
