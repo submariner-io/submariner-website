@@ -535,8 +535,8 @@ The following steps are performed:
 ### Running `subctl diagnose` from a Pod in cluster
 
 As of 0.12.0, a `subctl` image is provided for running the `subctl` binary from a Pod within a cluster. The output of
-`subctl diagnose` command output can be accessed from the Pod's logs. `--in-cluster` has been added to `subctl diagnose`
-to support this use case.
+the `subctl diagnose` command output can be accessed from the Pod's logs. The `--in-cluster` flag was added to
+`subctl diagnose` to support this use case.
 
 #### Example running `subctl diagnose` using a Job
 
