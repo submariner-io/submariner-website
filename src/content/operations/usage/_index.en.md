@@ -688,7 +688,7 @@ which Submariner extends to `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.cluster
 this case offers one single Service for all the underlying Pods.
 
 {{% notice note %}}
-Since we need to use `<cluster-id>` in DNS query for individual pods, cluster ID must be a valid
+Since we need to use `<cluster-id>` in DNS queries for individual pods, cluster ID must be a valid
 [DNS-1123 Label](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
 {{% /notice %}}
 
