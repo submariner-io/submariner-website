@@ -39,7 +39,7 @@ be created manually or via the `subctl export` command.
 
   * When a Service is exported, it then becomes accessible as `<service>.<ns>.svc.clusterset.local`.
 
-  * For Headless Services, individual Pods can be accessed as `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local`
+  * For Headless Services, individual Pods can be accessed as `<pod-name>.<cluster-id>.<svc-name>.<ns>.svc.clusterset.local`.
 `<cluster-id>` must be a valid [DNS-1123 Label](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names)
 
 * `ServiceImport` (CRD) - representation of a multi-cluster Service in each cluster. Created and used internally by Lighthouse and does not
