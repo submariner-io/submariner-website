@@ -4,6 +4,53 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.12.0
+
+### New features
+
+* Added a new `subctl uninstall` command that removes all Submariner components and dataplane artifacts, such as iptables rules and routing
+table entries, from a cluster.
+* Added a new `subctl unexport` command that stops exporting a previously exported service.
+* Added new `subctl cloud prepare` and `subctl cloud cleanup` commands for the Red Hat OpenStack Platform (RHOS).
+* Added new metrics:
+  * Globalnet: Count of global Egress IPs allocated at Cluster scope, namespace scope, and for selected pods per CIDR.
+  * Globalnet: Count of global Ingress IPs allocated for Pods/Services per CIDR.
+  * Service Discovery: Count of DNS queries handled by Lighthouse.
+* Added support for Globalnet objects verification using the `subctl diagnose` command.
+* Added support for `--broker-namespace` flag while deploying the Broker.
+* Added support for running `subctl diagnose` on single node clusters.
+* Added support for running `subctl diagnose` from a pod in a cluster.
+* `subctl cloud prepare` now deploys a dedicated gateway node as a default option on GCP and OpenStack platforms.
+* `subctl show` now shows information about the Broker CR in the cluster.
+* `subctl gather` now collects Globalnet information.
+* `subctl diagnose` displays a warning when a generic CNI network plugin is detected.
+
+### Bug fixes
+
+* Calico is now correctly detected when used as a network plugin in OpenShift.
+* Services without selectors can now be resolved across the ClusterSet.
+* `subctl diagnose firewall inter-cluster` now works correctly for the VXLAN cable driver.
+
+### Other changes
+
+* The broker token and IPsec PSK are now stored in secrets which are used in preference to the corresponding fields in the Submariner CR,
+which are now deprecated. For backwards compatibility and to simplify upgrades, the deprecated fields are still populated but will be
+removed in 0.13.
+* Globalnet no longer uses `kube-proxy` chains in support of exported services. Instead, it now creates an internal `ClusterIP` Service with
+the `ExternalIPs` set to the global IP assigned to the corresponding Service. Some Kubernetes distributions don't allow Services with
+`ExternalIPs` by default for security reasons. Users must follow the
+[Globalnet prerequisites](https://submariner.io/getting-started/architecture/globalnet/) to allow the Globalnet controller to
+create/update/delete Services with `ExternalIPs`.
+
+### Known Issues
+
+* When using the dot character in the cluster name, service discovery doesn’t work
+([#707](https://github.com/submariner-io/lighthouse/issues/707)).
+* On OpenShift, Globalnet metrics do not appear automatically. This can be fixed by manually opening the Globalnet metrics port, TCP/8081.
+* When using `subctl cloud prepare` on Red Hat OpenStack Platform (RHOS), if a dedicated gateway is used, the Submariner gateway security
+group and Submariner internal security group are associated with the wrong node. This can be resolved by manually adding the security
+groups using OpenStack CLI or Web UI ([#227](https://github.com/submariner-io/cloud-prepare/issues/227)).
+
 ## v0.11.2
 
 This release doesn’t contain any user-facing changes; it fixes internal release issues.

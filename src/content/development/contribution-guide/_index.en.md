@@ -93,13 +93,74 @@ The version will be released one week after the last sprint, and the planning wo
 
 The following sections explain the activities of each sprint.
 
-#### Pre-Planning
+#### Planning
 
-To be expanded
+The week before a new release cycle starts is dedicated to planning the release.
+Planning covers the [epics](#epics), [tasks](#tasks) and [bugs](#bugs) which are targeted for the next release version.
+Planning meetings will be held, focusing on the [Backlog board].
+
+##### Inclusion Criteria
+
+In order for a task or an epic to be eligible for the next version, it needs to fulfill these requirements:
+
+* Be part of the [Backlog board].
+* Have a `next-version-candidate` label.
+* Have a description detailing **what** the issue is and optionally **how** it's going to be solved.
+* Have an appropriate sizing label, according to the amount of work expected for a single person to completely deliver the task:
+  * *Small*: Work is contained in one sprint and is expected to take less than half the sprint.
+  * *Medium*: Work is contained in one sprint and is expected to take most of the sprint.
+  * *Large*: Work is contained within a release (two-three sprints).
+  * *Extra-Large*: Work can't be contained within a release and would span multiple releases.
+* Any *Large* or *Extra-Large* task must be converted to an epic.
+* In case of an epic, it should:
+  * Have a corresponding issue in the [enhancements] project.
+  * Adhere to the [epic template].
+  * Have a high-level break down of the expected work, corresponding to the "Definition of Done".
+
+##### Planning Meetings
+
+The project team will hold planning meetings, led by the project's "scrum lead".
+During these meetings, the project team will:
+
+* Prioritize and assign epics for the next version.
+  * Only epics adhering to the described requirements will be considered.
+  * Transfer assigned epics to the [release board](#current-release-board) according to the capacity of the team to deliver them.
+  * Remove the `next-version-candidate` label from transferred epics.
+* Re-evaluate the priorities of any *Small* and *Medium* tasks in the backlog.
+* Optionally assign important bugs and tasks and move them to the release board.
+
+By the end of the planning week, the project team will have a backlog of epics and tasks and can commence working on the design phase.
+All epics for the next version will be on the release board, while all *Small* and *Medium* tasks will be left on the backlog board and
+worked on based on their priority.
 
 #### Feature Design
 
-To be expanded
+Project members are expected to work on the design for any [epic](#epics) features assigned to them.
+During this sprint, project members will update their respective epics with any work identified during the design phase.
+Project members are encouraged to perform proof of concept investigations in order to validate the design and clarify specific work items.
+
+In case additional work items are identified during the design, they should be opened as [tasks](#tasks) and tracked under the respective epic.
+Such tasks are expected to follow the sizing guidelines from the [Planning](#planning) stage.
+Specifically, tasks that are themselves epics due to their size should be identified and treated as such.
+
+Design proposals for epics should be submitted as [pull requests to the enhancements repository], detailing the proposed design, any
+alternatives, and any changes necessary to the Submariner projects and APIs.
+
+The [pull requests to the enhancements repository] will be reviewed during the sprint, discussing any necessary changes or reservations.
+Any pull request will need approval from at least 50% of the [code owners of the enhancements repository].
+The code owners list is an aggregate list of the code owners of all Sumbariner repositories.
+As soon as the pull request is reviewed and merged, work on the epic can begin.
+
+Project members are expected to review proposals from other members in addition to drafting their own proposals.
+If a project member has finished work on their proposal, they're encouraged to help with the other ongoing proposals.
+
+Only epics which were planned for the release will be reviewed at this stage.
+Any epic that was unplanned but seeks inclusion in the release should follow the [exception process](#exception-process).
+The same process will have to be followed for any epic that was planned but has not been agreed upon by the end of this sprint.
+Any such epics will be moved back to the [Backlog board](#backlog-board) and reconsidered for the next release.
+
+In lieu of demos, the project will host a design review at the end of the sprint.
+All the approved epics and their designs will be presented.
 
 #### Development Milestones
 
@@ -176,5 +237,10 @@ Test days will be led by one of the project members, who will be responsible for
 Should a bug be identified during a test day, it should be labeled with an appropriate `testday` label.
 {{% /notice %}}
 
+[Backlog board]: #backlog-board
+[code owners of the enhancements repository]: https://github.com/submariner-io/enhancements/blob/devel/CODEOWNERS
+[enhancements]: https://github.com/submariner-io/enhancements/issues
+[epic template]: https://github.com/submariner-io/enhancements/blob/devel/.github/ISSUE_TEMPLATE/epic.md
+[pull requests to the enhancements repository]: https://github.com/submariner-io/enhancements/pulls
 [release process]: ../release-process
 [test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
