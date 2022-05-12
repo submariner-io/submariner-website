@@ -88,10 +88,9 @@ Globalnet currently relies on `kube-proxy` and thus will only work with deployme
 Connectivity is only part of the solution as pods still need to know the IPs of services on remote clusters.
 
 This is achieved by enhancing [Lighthouse](https://github.com/submariner-io/lighthouse) with support for Globalnet. The Lighthouse
-controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For headless services,
-backing pod's global IP is used when creating the `EndpointSlice` resources to be distributed to other clusters.
-The [Lighthouse plugin](https://github.com/submariner-io/lighthouse/tree/devel/plugin/lighthouse) then uses the global IPs when
-replying to DNS queries.
+controller uses a service's global IP when creating the `ServiceImport` for services of type `ClusterIP`. For headless services, backing
+pod's global IP is used when creating the `EndpointSlice` resources to be distributed to other clusters. The [Lighthouse
+plugin](https://github.com/submariner-io/lighthouse/tree/devel/coredns/plugin) then uses the global IPs when replying to DNS queries.
 
 ## Building
 
