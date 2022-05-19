@@ -49,13 +49,14 @@ SHFLAGS_VERSION=${SHFLAGS_VERSION:=<version>}
 
 [`submariner-io/shipyard/scripts/shared/lib/shflags`](https://github.com/submariner-io/shipyard/blob/devel/scripts/shared/lib/shflags)
 
-## GitHub actions
+## GitHub Actions
 
 All our projects use GitHub actions.
-These include dependencies which should be regularly checked for updates;
-because we specify them using hashes, dependabot and other such tools don't identify available updates for us.
+These include dependencies which should be regularly checked for updates.
+Dependabot should be used to submit PRs to keep all GitHub Actions up-to-date.
+Hash-based versions should always be used to ensure there are no changes without an update on our side.
 
-For example, in the website repository,
+For example, this GitHub Action dependency:
 
 ```yaml
     steps:
@@ -65,4 +66,20 @@ For example, in the website repository,
           fetch-depth: 0
 ```
 
-should be checked by looking at the `checkout` [releases](https://github.com/actions/checkout/releases).
+Would be updated by this Dependabot configuration:
+
+```yaml
+---
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+```
+
+Dependabot will only submit updates when projects make releases. That may leave CI broken waiting on a release while a fix is available.
+If a project has a fix but has not made a release that includes it, we should manually update the SHA we consume to include the fix.
+In particular, some projects "release" fixes by moving a tag to a point in git history that includes the fix.
+They assume versioning like `gaurav-nelson/github-action-markdown-link-check@v1`.
+Again, we should always use SHA-based versions, not moveable references like tags, to help mitigate supply-chain attacks.

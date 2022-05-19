@@ -534,9 +534,9 @@ The following steps are performed:
 
 ### Running `subctl diagnose` from a Pod in cluster
 
-As of 0.12.0, a [subctl](quay.io/submariner/subctl) image is provided for running the `subctl` binary from a Pod within a cluster.
-The output of the `subctl diagnose` command output can be accessed from the Pod's logs. The `--in-cluster` flag was added to
-`subctl diagnose` to support this use case.
+As of 0.12.0, a [subctl](https://quay.io/repository/submariner/subctl?tab=tags&tag=latest) image is provided for running the `subctl` binary
+from a Pod within a cluster.  The output of the `subctl diagnose` command output can be accessed from the Pod's logs. The `--in-cluster`
+flag was added to `subctl diagnose` to support this use case.
 
 #### Example running `subctl diagnose` using a Job
 

@@ -231,7 +231,7 @@ The following apply to people who would be an owner:
 [membership template]: https://github.com/submariner-io/submariner/blob/devel/.github/ISSUE_TEMPLATE/membership.md
 [committership request issue]: https://github.com/submariner-io/submariner/issues/new?template=committership.md&title=REQUEST%3A%20New%20committer%20rights%20request%20for%20%3Cyour-GH-handle%3E
 [committership template]: https://github.com/submariner-io/submariner/blob/devel/.github/ISSUE_TEMPLATE/committership.md
-[two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication
+[two-factor authentication]: https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/about-two-factor-authentication
 [owners team]: https://github.com/orgs/submariner-io/teams/submariner-owners
 [codeowners file]: https://github.com/submariner-io/submariner/blob/devel/CODEOWNERS.in
 [org members]: https://github.com/orgs/submariner-io/people
