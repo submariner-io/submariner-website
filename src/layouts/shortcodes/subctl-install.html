@@ -6,11 +6,11 @@ export PATH=$PATH:~/.local/bin
 echo export PATH=\$PATH:~/.local/bin >> ~/.profile
 ```
 
-If you have Go and the [source code](https://github.com/submariner-io/submariner-operator), you can build and install subctl instead:
+If you have Go and the [source code](https://github.com/submariner-io/subctl), you can build and install subctl instead:
 
 ```bash
-cd go/src/submariner-io/submariner-operator
-go install github.com/submariner-io/submariner-operator/pkg/subctl
+cd go/src/submariner-io/subctl
+go build -o $GOBIN/subctl github.com/submariner-io/subctl/cmd
 ```
 
 (and ensure your `go/bin` directory is on your `PATH`).
