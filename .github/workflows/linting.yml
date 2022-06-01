@@ -43,7 +43,7 @@ jobs:
         with:
           config-file: ".markdownlinkcheck.json"
           check-modified-files-only: "yes"
-          folder-path: "src/content"
+          folder-path: "src/content, src/resources"
           base-branch: ${{ github.base_ref }}
 
   markdownlint:
