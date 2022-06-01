@@ -6,4 +6,5 @@ weight: 30
 
 * [On AWS](aws)
 * [On AWS with Globalnet](globalnet)
+* [On Azure](azure)
 * [Hybrid vSphere and AWS](vsphere-aws)
