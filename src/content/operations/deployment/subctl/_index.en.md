@@ -189,6 +189,12 @@ Shows information about the Submariner endpoint connections with other clusters.
 
 Shows information about the Submariner endpoints in the cluster.
 
+### `show brokers`
+
+`subctl show brokers [flags]`
+
+Shows information about the Broker in the cluster.
+
 #### `show all`
 
 `subctl show all [flags]`
