@@ -14,7 +14,7 @@ Submariner's projects have a dependency hierarchy among their Go libraries and c
 
 The Go dependency hierarchy is:
 
-`shipyard` <- `admiral` <- [`submariner`, `lighthouse`, `cloud-prepare`] <- `submariner-operator`
+`shipyard` <- `admiral` <- [`submariner`, `lighthouse`, `cloud-prepare`] <- `submariner-operator` <- `subctl`
 
 The container image dependency hierarchy is:
 
@@ -244,14 +244,14 @@ Once the pull requests to pin the cloud-prepare, Lighthouse and Submariner proje
 
 ### Step 4: Create Operator and Charts Releases
 
-Once the pull request to pin `submariner-operator` has been merged, we can create the final release:
+Once the pull request to pin `submariner-operator` has been merged, we can create the `submariner-operator` and `submariner-charts` releases:
 
-1) Update the release YAML file `status` field to `released`. Add the `submariner-operator` and `submariner-charts` components with their
+1) Update the release YAML file `status` field to `installers`. Add the `submariner-operator` and `submariner-charts` components with their
    latest commit ID hashes.
 
    ```diff
    -status: projects
-   +status: released
+   +status: installers
     components:
       shipyard: <hash goes here>
       admiral: <hash goes here>
@@ -266,10 +266,35 @@ Once the pull request to pin `submariner-operator` has been merged, we can creat
 
 3) **Verify**:
 
-   * The [`releases/release` job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
-   * The [`subctl` artifacts](https://github.com/submariner-io/releases/releases) were released
    * The [`submariner-operator` release](https://github.com/submariner-io/submariner-operator/releases) was created.
    * The [`submariner/submariner-operator` image](https://quay.io/repository/submariner/submariner-operator?tab=tags) is on Quay.
+
+### Step 5: Create subctl Release
+
+Once the `submariner-operator` and `submariner-charts` releases are complete, we can create the final release:
+
+1) Update the release YAML file `status` field to `released`. Add the `subctl` component with its latest commit ID hash.
+
+   ```diff
+   -status: installers
+   +status: released
+    components:
+      shipyard: <hash goes here>
+      admiral: <hash goes here>
+      cloud-prepare: <hash goes here>
+      lighthouse: <hash goes here>
+      submariner: <hash goes here>
+      submariner-charts: <hash goes here>
+      submariner-operator: <hash goes here>
+   +  subctl: <hash goes here>
+   ```
+
+2) Commit your changes, create a pull request, and have it reviewed.
+
+3) **Verify**:
+
+   * The [`releases/release` job](https://github.com/submariner-io/releases/actions/workflows/release.yml) passed.
+   * The [`subctl` artifacts](https://github.com/submariner-io/releases/releases) were released
 
 4) If the release wasn't marked as a `pre-release`, the `releases/release` job will also create pull requests in each consuming project to
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
