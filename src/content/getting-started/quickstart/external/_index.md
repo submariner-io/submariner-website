@@ -323,7 +323,7 @@ curl 242.0.255.253
 On test-vm, check the console log of HTTP server that there are accesses from pods
 
 {{% notice note %}}
-Currently, __headless__ service without selector is not supported for Globalnet,
+Currently, **headless** service without selector is not supported for Globalnet,
 therefore service without selector needs to be used.
 This feature is under discussion in [#1537](https://github.com/submariner-io/submariner/issues/1537).
 {{% /notice %}}
