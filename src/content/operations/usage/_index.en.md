@@ -425,6 +425,8 @@ nginx.nginx-test.svc.clusterset.local. 5 IN A	100.3.220.176
 ```
 <!-- markdownlint-disable no-hard-tabs -->
 ```bash
+bash-5.0# dig SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
+
 ; <<>> DiG 9.16.6 <<>> SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
 ;; global options: +cmd
 ;; Got answer:
