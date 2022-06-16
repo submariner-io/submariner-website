@@ -107,7 +107,7 @@ cluster3-worker                 cluster3                172.17.0.10     libreswa
 
 This command shows detailed information about the Gateway including the connections to other clusters. The section highlighted in bold shows
 the connection information for cluster3, including the connection status and latency statistics:
-<!-- markdownlint-disable no-inline-html -->
+<!-- markdownlint-disable no-inline-html spelling -->
 <pre>
 $ kubectl -n submariner-operator describe Gateway
 Name:         cluster2-worker
@@ -162,7 +162,7 @@ Status:
 Events:            <none>
 </pre>
 <!-- markdownlint-enable no-trailing-spaces -->
-<!-- markdownlint-enable no-inline-html -->
+<!-- markdownlint-enable no-inline-html spelling -->
 To validate that Service Discovery (Lighthouse) is installed properly, check that the `ServiceExport` and `ServiceImport` CRDs have been
 deployed in the cluster:
 
@@ -425,6 +425,8 @@ nginx.nginx-test.svc.clusterset.local. 5 IN A	100.3.220.176
 ```
 <!-- markdownlint-disable no-hard-tabs -->
 ```bash
+bash-5.0# dig SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
+
 ; <<>> DiG 9.16.6 <<>> SRV _http._tcp.nginx.nginx-test.svc.clusterset.local
 ;; global options: +cmd
 ;; Got answer:
