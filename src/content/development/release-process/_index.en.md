@@ -73,6 +73,9 @@ Most of the release can be done in a series of mostly-automated steps. After eac
 content for the release, this needs to be reviewed. Once the pull request is merged, the release process will continue automatically
 and the next step can be initiated shortly after making sure the release jobs on the `releases` and any participating repositories are done.
 
+Starting with 0.13, when creating a release for a stable version (`release-<major>.<minor>`),
+the `make release` commands must be run on a branch based off the associated stable release branch.
+
 {{% notice info %}}
 The `GITHUB_TOKEN` environment variable in the shell you're using for the automation must be set to a
 [Personal Access Token](https://github.com/settings/tokens) you create.
@@ -109,6 +112,11 @@ merge the PR. Pull requests will then be created for all dependent projects to u
 will leave a comment with a list of the version-bump PRs for dependent project in the release PR that was just merged. Make sure all those
 PRs are merged and their release jobs pass (see the Actions tab of the repository on GitHub) then **proceed to the next release phase by
 running the same command again**.
+
+{{% notice info %}}
+On an `rc0` release, stable branches are created for the release across all repositories (including `releases`).
+After the first invocation, the command needs to be run on branches based on the correct stable branch (`release-<major>.<minor>`).
+{{% /notice %}}
 
 Once there isn't anything else to do, the command will inform you. At this point, continue manually with any steps not automated yet,
 starting with [Verify Release](#verify).
