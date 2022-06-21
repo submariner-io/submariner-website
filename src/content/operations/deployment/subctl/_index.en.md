@@ -389,7 +389,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--metrics-port` `<int>`         | Metrics port (default 8080)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare gcp`
 
@@ -410,7 +410,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--metrics-port` `<int>`         | Metrics port (default 8080)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare rhos`
 
@@ -431,7 +431,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--metrics-port` `<int>`         | Metrics port (default 8080)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800)
+| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare generic` flags
 
