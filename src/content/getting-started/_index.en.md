@@ -43,7 +43,7 @@ For clusters behind corporate firewalls that block the default ports, Submariner
 (NAT-T) with the option to set custom non-standard ports like 4501/UDP.
 * Submariner uses UDP port 4800 to encapsulate Pod traffic from worker and master nodes to the Gateway nodes. This is required in order to
 preserve the source IP addresses of the Pods. Ensure that firewall configuration allows 4800/UDP across all nodes in the cluster in both
-directions.
+directions. This is not a requirement when using OVN-Kubernetes CNI.
 * Submariner uses TCP port 8080 to export metrics on the Gateway nodes. Ensure that firewall configuration allows ingress 8080/TCP on
 the Gateway nodes so that other nodes in the cluster can access it. Also, no other workload on the Gateway nodes should be listening on TCP
 port 8080.
