@@ -304,10 +304,25 @@ Below is a list of available sub-commands:
 <!-- markdownlint-disable line-length -->
 | Flag                             | Description
 |:---------------------------------|:----------------------------------------------------------------------------|
-| `--namespace` `<string>`         | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
+| `--namespace` `<string>`         | Namespace in which validation pods should be deployed. If not specified, the `submariner-operator` namespace is used
 | `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
 | `--verbose`                      | Produce verbose logs during validation
 <!-- markdownlint-enable line-length -->
+
+{{% notice warning %}}
+In Kubernetes 1.23 and above, the Pod Security admission controller expects namespaces to have security labels. Without these, you will see
+warnings in `subctl`'s output. This will not actually impact `subctl`, but you can avoid the warnings and ensure correct behavior by
+adding these labels to the user specified `namespace`:
+
+```bash
+"pod-security.kubernetes.io/enforce": "privileged"
+"pod-security.kubernetes.io/audit": "privileged"
+"pod-security.kubernetes.io/warn": "privileged"
+```
+
+The default `submariner-operator` namespace already has these labels added.
+
+{{% /notice %}}
 
 #### `diagnose` global flags
 
