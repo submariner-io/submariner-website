@@ -558,7 +558,7 @@ spec:
     spec:
       containers:
       - name: submariner-diagnose
-        image: quay.io/submariner/subctl:latest
+        image: quay.io/submariner/subctl:devel
         command: ["subctl",  "diagnose", "all", "--in-cluster"]
       restartPolicy: Never
       serviceAccount: submariner-diagnose
