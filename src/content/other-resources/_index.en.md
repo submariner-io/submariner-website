@@ -49,6 +49,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Podcasts/Streams
 
+* [The Cloud Multiplier Ep. 3: Connecting Your Cloud with Submariner (2022-06)](https://youtu.be/2asdtJXSRY4)
 * [Ask an OpenShift Admin (Ep 55): Disaster recovery with ODF and ACM (2022-01)](https://youtu.be/Tlmuvkq_OPo?t=1177)
 * [Kubelist Podcast Ep. #18, Submariner (2021-08)](https://www.heavybit.com/library/podcasts/the-kubelist-podcast/ep-18-submariner-with-miguel-angel-ajo-and-stephen-kitt-of-red-hat/)
 * [The Cockroach Hour: Distributed Databases | Red Hat OpenShift & Kubernetes (2021-03)](https://www.youtube.com/watch?v=_FIW2dYKsuk)
