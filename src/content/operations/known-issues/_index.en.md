@@ -16,15 +16,11 @@ weight = 40
 * Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using the
 VXLAN cable driver.
 * Submariner currently only supports IPv4. IPv6 and dual-stack are not supported at this time.
-  
+
 ## Globalnet
 
 * Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
-* Submariner uses TCP port 8081 to export metrics on the Globalnet controller. While other metrics will show up on OpenShift with no
-additional action from the user, this is not the case for Globalnet metrics at this time. User needs to ensure that firewall
-configuration allows ingress 8081/TCP on the Gateway nodes so that other nodes in the cluster can access it. Also, no other workload on
-those nodes should be listening on TCP port 8081.
 
 ## Deploying with Helm on OpenShift
 
