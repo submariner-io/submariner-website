@@ -1,13 +1,14 @@
 ---
 date: 2020-02-21T13:36:18+01:00
-title: "On OpenStack"
-weight: 20
+title: "Hybrid OpenStack and AWS"
+weight: 50
 ---
 
-This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters one deployed on OpenStack
-and one on aws with full stack automation, also known as installer-provisioned infrastructure (IPI). Once the OpenShift clusters are
-deployed, we deploy Submariner with Service Discovery to interconnect the two clusters. Note that this guide focuses on Submariner
-deployment on clusters with non-overlapping Pod and Service CIDRs. For connecting clusters with overlapping CIDRs, please refer to the
+This quickstart guide covers the necessary steps to deploy two OpenShift Container Platform (OCP) clusters: one on AWS
+and the other one on OpeStack, both with full stack automation, also known as installer-provisioned infrastructure (IPI).
+Once the OpenShift clusters are deployed, we deploy Submariner with Service Discovery to interconnect the two clusters.
+Note that this guide focuses on Submariner deployment on clusters with non-overlapping Pod and Service CIDRs.
+For connecting clusters with overlapping CIDRs, please refer to the
 [Submariner with Globalnet guide](../globalnet/).
 
 {{< include "/resources/shared/openshift/setup_openshift_openstack.md" >}}
@@ -17,7 +18,6 @@ Please ensure that the tools you downloaded above are compatible with your OpenS
 please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
 
-{{< include "/resources/shared/openshift/setup_openstack.md" >}}
 {{< include "/resources/shared/openshift/create_clusters_aws_openstack.md" >}}
 
 ### Install `subctl`

@@ -1,4 +1,19 @@
-### Create and Deploy cluster-a
+### cluster-a on AWS
+
+#### Setup Your AWS Profile
+
+Configure the AWS CLI with the settings required to interact with AWS. These include your security credentials, the default AWS Region,
+and the default output format:
+
+```bash
+$ aws configure
+AWS Access Key ID [None]: ....
+AWS Secret Access Key [None]: ....
+Default region name [None]: ....
+Default output format [None]: text
+```
+
+#### Create and Deploy cluster-a
 
 In this step you will deploy **cluster-a** in **aws** (or any other public cloud can be used) using the default IP CIDR ranges:
 
@@ -17,9 +32,18 @@ openshift-install create cluster --dir cluster-a
 When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
 `kubeadmin` user, display in your terminal.
 
-### Create and Deploy cluster-b
+### cluster-b on OpenStack (On-Prem)
 
-In this step you will deploy **cluster-b** in **OpenStack**, modifying the default IP CIDRs to avoid IP address
+#### Setup Your OpenStack Profile
+
+Configure the OpenStack credentials for the command line client.
+Please refer to the official
+[OpenStack documentation](https://docs.openstack.org/newton/user-guide/common/cli-set-environment-variables-using-openstack-rc.html)
+for detailed instructions.
+
+#### Create and Deploy cluster-b
+
+In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address
 conflicts with **cluster-a**. You can change the IP addresses block and prefix based on your requirements. For
 more information on IPv4 CIDR conversion, please check [this page](https://account.arin.net/public/cidrCalculator).
 
@@ -52,4 +76,4 @@ openshift-install create cluster --dir cluster-b
 ```
 
 When the cluster deployment completes, directions for accessing your cluster, including a link to its web console and credentials for the
-`kubeadmin` user, display in your terminal.
+`kubeadmin` user, will be displayed in your terminal.
