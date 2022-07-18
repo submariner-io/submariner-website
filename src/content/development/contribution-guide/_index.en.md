@@ -47,6 +47,8 @@ a blocker for a release such that the release cannot proceed until it is address
 
 A task defines a specific unit of work that can be stand-alone or part of an epic. Work on a bug is not a task. A task should be relatively
 small and fit within the scope of a single sprint otherwise it should be broken down into smaller tasks or perhaps be defined as an epic.
+Tasks that relate to ongoing maintenance (version bumps, image trimmings, CI and automation) will usually be small, unplanned tasks that
+typically occur throughout each release cycle. The associated GitHub issue / PR should be labeled as `maintenance`.
 
 ### Epics
 
@@ -234,15 +236,33 @@ There will be no dedicated [test day](#test-days), as the release candidate has 
 
 ### Unplanned Work
 
-To be expanded
+During a release, new work that was unknown during the planning phase will emerge.
+This work is typically one of three types:
 
-#### Ongoing Maintenance
+* [Bugs](#bugs).
+* Ongoing maintenance [tasks](#tasks).
+* New [epics](#epics) or independent [tasks](#tasks).
 
-To be expanded
+The team [triages tasks and bugs as part of a weekly meeting].
+The bugs can be worked on immediately, while other types of issues are described below.
 
 #### Exception Process
 
-To be expanded
+In some cases, a task or an epic will be reported in the middle of a release cycle.
+Small and medium sized tasks will be triaged and prioritized in the same manner as other issues.
+Once triaged and prioritized, small and medium tasks can be worked on according to their priority.
+
+Epics would need to undergo an exception process.
+The epic's proponent would need to bring it up to discussion in the weekly community meeting.
+It's up to the proponent to show why the new issue should take precedence over other pre-planned and triaged issues.
+A 50% approval from the [Project Members] in attendance at the meeting or having voted before the meeting is required for an epic to be
+accepted in the middle of the release.
+If the epic is approved during the exception process:
+
+* The team might de-scope other tasks or epics.
+* A label `unplanned` should be added to it.
+* It would require an enhancement proposal to be drafted and reviewed in the same manner as all other epics.
+* If the enhancement proposal is accepted and merged, work on the epic can begin.
 
 ### Test Days
 
@@ -279,3 +299,5 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [release process]: ../release-process
 [test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
 [Submariner project]: https://github.com/submariner-io
+[triages tasks and bugs as part of a weekly meeting]: https://docs.google.com/document/d/1ICvOBOUpIEI45Yqcjf26Z1e5mZNzYsEN-H7_3xx54jI
+[Project Members]: https://submariner.io/community/contributor-roles/#member
