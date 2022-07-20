@@ -8,7 +8,7 @@ Alternatively, you can choose to deploy using a different instance type.</p>
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig
-subctl cloud prepare aws --ocp-metadata path/to/cluster-a/metadata.json {{ with $.Get "nattPort" }}--natt-port {{.}}{{ end }}
+subctl cloud prepare aws --ocp-metadata path/to/cluster-a/metadata.json --natt-port 4747
 ```
 
 #### Prepare OpenShift-on-OpenStack **cluster-b** for Submariner
@@ -22,5 +22,5 @@ Make sure you use the appropriate cloud name from clouds.yaml, here it uses Open
 ```bash
 export KUBECONFIG=cluster-b/auth/kubeconfig
 subctl cloud prepare rhos --ocp-metadata path/to/cluster-b/metadata.json --cloud-entry\
-openstack {{ with $.Get "nattPort" }}--natt-port {{.}}{{ end }}
+openstack --natt-port 4747
 ```

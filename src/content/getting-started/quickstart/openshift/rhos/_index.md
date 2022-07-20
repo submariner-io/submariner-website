@@ -27,7 +27,7 @@ please refer to the official [OpenShift documentation](https://docs.openshift.co
 ### Prepare OpenStack and AWS Clusters for Submariner
 
 {{% cloud-prepare/intro %}}
-{{% cloud-prepare/openstack %}}
+{{% cloud-prepare/OpenStack %}}
 
 ### Install Submariner with Service Discovery
 
@@ -42,11 +42,11 @@ subctl deploy-broker --kubeconfig cluster-a/auth/kubeconfig
 #### Join cluster-a and cluster-b to the Broker
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --clusterid cluster-a --nattport 4747
 ```
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --clusterid cluster-b --nattport 4747
 ```
 
 {{< include "/resources/shared/verify_with_discovery.md" >}}

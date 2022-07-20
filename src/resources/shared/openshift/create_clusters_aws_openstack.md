@@ -15,7 +15,7 @@ Default output format [None]: text
 
 #### Create and Deploy cluster-a
 
-In this step you will deploy **cluster-a** in **aws** (or any other public cloud can be used) using the default IP CIDR ranges:
+In this step you will deploy **cluster-a** in AWS (or any other public cloud can be used) using the default IP CIDR ranges:
 
 | Pod CIDR     | Service CIDR |
 |--------------|--------------|
@@ -44,8 +44,8 @@ for detailed instructions.
 #### Create and Deploy cluster-b
 
 In this step you will deploy **cluster-b**, modifying the default IP CIDRs to avoid IP address
-conflicts with **cluster-a**. You can change the IP addresses block and prefix based on your requirements. For
-more information on IPv4 CIDR conversion, please check [this page](https://account.arin.net/public/cidrCalculator).
+conflicts with **cluster-a**. You can change the IP addresses block and prefix based on your requirements. You may want to check your IP
+ranges with a [CIDR calculator](https://account.arin.net/public/cidrCalculator).
 
 In this example, we will use the following IP ranges:
 
