@@ -70,7 +70,7 @@ following network (CNI) Plugins:
 * [Flannel](https://github.com/coreos/flannel)
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
 * [Calico](https://www.projectcalico.org/) (see the [Calico-specific deployment instructions](../operations/deployment/calico/))
-* [OVN](https://github.com/ovn-org/ovn-kubernetes)
+* [OVN](https://github.com/ovn-org/ovn-kubernetes) - Requires OVN NorthBound DB version 6.1.0+
 
 Submariner supports all currently-supported Kubernetes versions, as determined by [the Kubernetes release policy](https://kubernetes.io/releases/).
 
