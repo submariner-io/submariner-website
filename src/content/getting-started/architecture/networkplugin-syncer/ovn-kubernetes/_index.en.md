@@ -34,6 +34,10 @@ create OVN resources necessary for Submariner, including:
 * A `submariner_join` logical switch that connects the `submariner_router`
   with the `ovn_cluster_router`.
 
+{{% notice info %}}
+Requires OVN NorthBound DB version 6.1.0+, available with OCP 4.11.0+
+{{% /notice %}}
+
 ## The handler architecture
 
 The following diagram illustrates the required Submariner OVN architecture transposed

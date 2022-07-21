@@ -48,6 +48,9 @@ directions. This is not a requirement when using OVN-Kubernetes CNI.
 the Gateway nodes so that other nodes in the cluster can access it. Also, no other workload on the Gateway nodes should be listening on TCP
 port 8080.
 * Worker node IPs on all connected clusters must be outside of the Pod/Service CIDR ranges.
+* Submariner can be deployed on x86-64 and ARM64 nodes.
+  (Submariner components are deployed on _all_ nodes in the cluster,
+  so all nodes must be x86-64 or ARM64.)
 
 An example of three clusters configured to use with Submariner (without Globalnet) would look like the following:
 
@@ -67,7 +70,7 @@ following network (CNI) Plugins:
 * [Flannel](https://github.com/coreos/flannel)
 * [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
 * [Calico](https://www.projectcalico.org/) (see the [Calico-specific deployment instructions](../operations/deployment/calico/))
-* [OVN](https://github.com/ovn-org/ovn-kubernetes)
+* [OVN](https://github.com/ovn-org/ovn-kubernetes) - Requires OVN NorthBound DB version 6.1.0+
 
 Submariner supports all currently-supported Kubernetes versions, as determined by [the Kubernetes release policy](https://kubernetes.io/releases/).
 

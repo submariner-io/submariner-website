@@ -4,6 +4,23 @@ title = "Releases"
 weight = 40
 +++
 
+## v0.12.2
+
+This is a bugfix release:
+
+* The Globalnet metrics port will now be opened by default when Globalnet is deployed using `subctl cloud prepare`.
+* Submariner ServiceExport now has unique condition types to simplify waiting for readiness.
+* The `subctl diagnose` command now supports NAT-discovery port validation.
+* The `subctl cloud prepare rhos` command will now work properly for nodes to which security groups were added manually.
+* The `submariner-operator` namespace is labeled in accordance with _KEP-2579: Pod Security Admission Control_ (default in Kubernetes 1.24)
+to allow the Pods to be privileged.
+* The default namespace for the `subctl diagnose` command is changed to `submariner-operator`.
+* Submariner pod images are now based on Fedora 36.
+* Fix issues related to Globalnet and Route-agent pods due to missing grep in the container image.
+* Make secrets for ServiceAccounts compatible with Kubernetes 1.24 onwards.
+* Restart health check pinger if it fails.
+* Fix intermittent failure when running `subctl diagnose firewall metrics`.
+
 ## v0.12.1
 
 This is a bugfix release:
