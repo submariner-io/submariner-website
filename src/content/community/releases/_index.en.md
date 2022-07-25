@@ -3,7 +3,7 @@ date = 2020-08-24T11:35:16+02:00
 title = "Releases"
 weight = 40
 +++
-<!-- markdownlint-disable no-duplicate-heading/no-duplicate-header -->
+<!-- markdownlint-disable no-duplicate-header -->
 ## v0.13.0
 
 ### New features
@@ -11,7 +11,7 @@ weight = 40
 * All Submariner container images are now available for x86-64 and ARM64 architectures.
 * Support was added in `subctl cloud prepare` to deploy Submariner on OpenShift on Microsoft Azure. This automatically configures the
 underlying Azure cloud infrastructure to meet Submariner's prerequisites.
-* Added a new, more robust, support for connecting clusters that use the OVNKubernetes CNI plugin in non-Globalnet deployments. Note that
+* Added more robust support for connecting clusters that use the OVNKubernetes CNI plugin in non-Globalnet deployments. Note that
 OVNKubernetes requires the OVN NorthBound DB version to be 6.1.0 or above and older versions are not supported. Also note that the minimum
 supported OpenShift Container Platform (OCP) version is 4.11.
 * Added support for connecting to Kubernetes headless Services without Pod label selectors in Globalnet deployments. This is useful when you
@@ -23,12 +23,11 @@ Submariner automatically routes the traffic and provides DNS resolution.
 ### Other changes
 
 * The `submariner-operator` namespace is labeled in accordance with _KEP-2579: Pod Security Admission Control_ (default in Kubernetes 1.24)
-to allow the privileged Pods required for Submariner's interactions with iptables.
+to allow the Pods to be privileged.
 * The default namespace in which `subctl diagnose kubeproxy` and `subctl diagnose firewall` (and subcommands) spawn a Pod has been changed
 from `default` to `submariner-operator` as the latter has all necessary labels needed by the Pod Security Admission Controller. If the
 user-specified namespace is missing any of these labels, `subctl` will inform the user about the warnings in the `subctl diagnose` logs.
-* The `subctl cloud prepare` command now takes care of opening up the Globalnet metrics port (TCP/8081) on Gateway nodes. On OpenShift,
-Globalnet metrics should now show up automatically.
+* The Globalnet metrics port will now be opened by default when Globalnet is deployed using `subctl cloud prepare`.
 * It is now possible to customize the default TCP MSS clamping value set by Submariner in Globalnet deployments. This could be useful in
 network topologies where MTU issues are seen. To force a particular MSS clamping value use the `submariner.io/tcp-clamp-mss` node annotation
 on Gateway nodes, for e.g `kubectl annotate node <node_name> submariner.io/tcp-clamp-mss=<value>`.
