@@ -356,9 +356,29 @@ NAT, or if other applications on the internal network were already using the 450
 ports, the remote ends would not be able to contact gateway C or D over the expected ports.
 {{% /notice %}}
 
-### Double NAT Traversal
+### Double NAT Traversal (scenario 1)
 
-In this case case, A & B cluster gateways have direct reachability over their private
+In this case, clusters C & D are neither reachable on their private IPs (192.168.0.4 and 192.168.0.4) nor
+on the public IP. However, they are reachable over the private floating IPs (10.2.0.1 and 10.2.0.2).
+Submariner cannot detect these private floating IPs. To get the connectivity working, you can annotate
+the Gateway node with the private floating IP as shown below.
+
+![on-premises](/images/natt/double_nat_scenario1.png)
+
+```bash
+kubectl annotate node $GWC gateway.submariner.io/public-ip=ipv4:10.2.0.1
+kubectl annotate node $GWD gateway.submariner.io/public-ip=ipv4:10.2.0.2
+
+# restart the gateways to pick up the new setting
+for cluster in C D;
+do
+  kubectl delete pod -n submariner-operator -l app=submariner-gateway --kubeconfig $cluster
+done
+```
+
+### Double NAT Traversal (scenario 2)
+
+In this case, A & B cluster gateways have direct reachability over their private
 IPs (10.0.0.1 and 10.1.0.1) possibly with large MTU capabilities, while between cluster
 C and D (192.168.0.4 and 192.168.0.4 too), reachability over the private IPs is not possible
 but it would be possible over the private floating IPs 10.2.0.1 and 10.2.0.2. However Submariner
