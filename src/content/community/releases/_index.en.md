@@ -3,7 +3,7 @@ date = 2020-08-24T11:35:16+02:00
 title = "Releases"
 weight = 40
 +++
-
+<!-- markdownlint-disable no-duplicate-heading/no-duplicate-header -->
 ## v0.13.0
 
 ### New features
@@ -15,7 +15,7 @@ underlying Azure cloud infrastructure to meet Submariner's prerequisites.
 OVNKubernetes requires the OVN NorthBound DB version to be 6.1.0 or above and older versions are not supported. Also note that the minimum
 supported OpenShift Container Platform (OCP) version is 4.11.
 * Added support for connecting to Kubernetes headless Services without Pod label selectors in Globalnet deployments. This is useful when you
-want to point a Service to another Service in a different namespace or external cluster. When endpoints are manually defined by the user,
+want to point a Service to another Service in a different namespace or external network. When endpoints are manually defined by the user,
 Submariner automatically routes the traffic and provides DNS resolution.
 * Added a new `subctl show brokers` command that displays information about the Submariner Brokers installed.
 * The `subctl diagnose` command was extended to verify inter-cluster connectivity when Submariner is deployed using a LoadBalancer Service.
