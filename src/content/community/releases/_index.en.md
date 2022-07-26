@@ -30,7 +30,7 @@ user-specified namespace is missing any of these labels, `subctl` will inform th
 * The Globalnet metrics port will now be opened by default when Globalnet is deployed using `subctl cloud prepare`.
 * It is now possible to customize the default TCP MSS clamping value set by Submariner in Globalnet deployments. This could be useful in
 network topologies where MTU issues are seen. To force a particular MSS clamping value use the `submariner.io/tcp-clamp-mss` node annotation
-on Gateway nodes, for e.g `kubectl annotate node <node_name> submariner.io/tcp-clamp-mss=<value>`.
+on Gateway nodes, e.g. `kubectl annotate node <node_name> submariner.io/tcp-clamp-mss=<value>`.
 
 ## v0.12.2
 
