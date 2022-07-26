@@ -118,6 +118,7 @@ deployment.
 | `--pod-debug`                      | Enable Submariner pod debugging (verbose logging in the deployed pods)
 | `--load-balancer`                  | Enable a cloud loadbalancer in front of the gateways. This removes the need for dedicated nodes with a public IP address
 | `--preferred-server`               | Enable this cluster as a preferred IPsec server for dataplane connections (only available with libreswan cable driver)
+| `--check-broker-certificate`       | Verify the broker certificate (enabled by default). `--check-broker-certificate=false` disables certificate checks; communications are still secured with TLS
 
 <!-- markdownlint-enable line-length -->
 
@@ -571,7 +572,7 @@ spec:
     spec:
       containers:
       - name: submariner-diagnose
-        image: quay.io/submariner/subctl:latest
+        image: quay.io/submariner/subctl:devel
         command: ["subctl",  "diagnose", "all", "--in-cluster"]
       restartPolicy: Never
       serviceAccount: submariner-diagnose
