@@ -19,6 +19,9 @@ want to point a Service to another Service in a different namespace or external 
 Submariner automatically routes the traffic and provides DNS resolution.
 * Added a new `subctl show brokers` command that displays information about the Submariner Brokers installed.
 * The `subctl diagnose` command was extended to verify inter-cluster connectivity when Submariner is deployed using a LoadBalancer Service.
+* Certificate validation can be disabled when connecting to the broker,
+  using `subctl join`’s `--check-broker-certificate` option.
+  This doesn’t disable TLS entirely, only certificate validation.
 
 ### Other changes
 
