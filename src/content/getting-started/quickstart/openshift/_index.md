@@ -9,3 +9,4 @@ weight: 30
 * [On Azure](azure)
 * [On GCP](gcp-lb)
 * [Hybrid vSphere and AWS](vsphere-aws)
+* [Hybrid OpenStack and AWS](rhos)
