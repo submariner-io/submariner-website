@@ -135,12 +135,12 @@ not enough for a cluster, this number can be increased by setting the `NumberOfI
 well-known name `cluster-egress.submariner.io`:
 
 ```yaml
-   apiVersion: submariner.io/v1alpha1
+   apiVersion: submariner.io/v1
    kind: ClusterGlobalEgressIP
    metadata:
      name: cluster-egress.submariner.io
    spec:
-     NumberOfIPs: 9
+     numberOfIPs: 9
 ```
 
 {{% notice note %}}
@@ -154,13 +154,13 @@ If it's desired for all pods in a namespace to use a unique global IP instead of
 `GlobalEgressIP` resource in that namespace:
 
 ```yaml
-   apiVersion: submariner.io/v1alpha1
+   apiVersion: submariner.io/v1
    kind: GlobalEgressIP
    metadata:
      name: ns-egressip
      namespace: ns1
    spec:
-     NumberOfIPs: 1
+     numberOfIPs: 1
 ```
 
 The example above will allocate 1 global IP which will be used as egress IP for all pods in namespace `ns1`.
@@ -175,7 +175,7 @@ If it's desired for a set of pods in a namespace to use unique global IP(s), a u
 namespace with the `podSelector` field set:
 
 ```yaml
-   apiVersion: submariner.io/v1alpha1
+   apiVersion: submariner.io/v1
    kind: GlobalEgressIP
    metadata:
      name: db-pods
@@ -184,7 +184,7 @@ namespace with the `podSelector` field set:
      podSelector:
          matchLabels:
            role: db
-     NumberOfIPs: 1
+     numberOfIPs: 1
 ```
 
 The example above will allocate 1 global IP which will be used as egress IP for all pods matching label `role=db` in namespace `ns1`.
