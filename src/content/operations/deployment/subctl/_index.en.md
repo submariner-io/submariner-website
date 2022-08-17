@@ -387,7 +387,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
 | `--profile` `<string>`           | AWS profile to use for credentials
 | `--region` `<string>`            | AWS region
-| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
@@ -408,7 +408,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
 | `--project-id` `<string>`        | GCP project ID
 | `--region` `<string>`            | GCP region
-| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
@@ -429,7 +429,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
 | `--project-id` `<string>`        | OpenStack project ID
 | `--region` `<string>`            | OpenStack region
-| `--metrics-port` `<int>`         | Metrics port (default 8080)
+| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
