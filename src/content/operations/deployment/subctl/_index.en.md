@@ -136,7 +136,6 @@ deployment.
 | Flag                    | Description
 |:------------------------|:-----------------------------------------------|
 | `--natt`                | Enable NAT for IPsec (default enabled)
-| `--ikeport` `<value>`   | IPsec IKE port (default 500)
 | `--ipsec-debug`         | Enable IPsec debugging (verbose logging)
 | `--nattport` `<value>`  | IPsec NAT-T port (default 4500)
 

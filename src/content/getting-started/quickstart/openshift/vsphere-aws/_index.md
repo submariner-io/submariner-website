@@ -117,11 +117,11 @@ subctl deploy-broker --kubeconfig cluster-b/auth/kubeconfig
 #### Join cluster-b (AWS) and cluster-a (vSphere) to the Broker
 
 ```bash
-subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --ikeport 501 --nattport 4501
+subctl join --kubeconfig cluster-b/auth/kubeconfig broker-info.subm --nattport 4501
 ```
 
 ```bash
-subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --ikeport 501 --nattport 4501
+subctl join --kubeconfig cluster-a/auth/kubeconfig broker-info.subm --nattport 4501
 ```
 
 {{< include "/resources/shared/verify_with_discovery.md" >}}
