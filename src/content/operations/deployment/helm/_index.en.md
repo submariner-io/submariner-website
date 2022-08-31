@@ -86,13 +86,32 @@ helm install submariner-operator submariner-latest/submariner-operator \
         --set serviceAccounts.lighthouseCoreDns.create=true
 ```
 
-Some image override settings you could use
+#### Overriding Submariner Images
+
+The examples below demonstrate how to use images from a local registry. It's also possible to use an online registry.
+
+To override the operator image:
 
 ```bash
         --set operator.image.repository="localhost:5000/submariner-operator" \
         --set operator.image.tag="local" \
         --set operator.image.pullPolicy="IfNotPresent"
 ```
+
+To override all Submariner images:
+
+```bash
+        --set submariner.images.repository="localhost:5000" \
+        --set submariner.image.tag="local"
+```
+
+To override a specific image, set `images.<image-name>` to the full URL, e.g.:
+
+```bash
+        --set images.submariner-gateway="localhost:5000/submariner-gateway:local"
+```
+
+#### OpenShift Requirements
 
 If installing on OpenShift, please also add the Submariner service accounts (SAs) to the
 privileged Security Context Constraint.
