@@ -15,32 +15,92 @@ tests in a consistent environment.
 
 Shipyard has several folders at the root of the project:
 
-* **package:** Contains the ingredients to build the base image.
+* **package:** Contains the ingredients to build the base images.
 * **scripts:** Contains general scripts for Shipyard make targets.
   * **shared:** Contains all the shared scripts that projects can consume. These are copied into the base image under `$SCRIPTS_DIR`.
     * **lib:** Library functions that shared scripts, or consuming projects, can use.
     * **resources:** Resource files to be used by the shared scripts.
 * **test:** Test library to be used by other projects.
 
-Shipyard ships with some [Makefile targets](#shared-makefile-targets) which can be used by consuming projects and are used by Shipyard's CI
-to test and validate itself. It also has some [specific Makefile targets](#specific-makefile-targets) which are used by the project itself.
+Shipyard ships with some [shared](targets) and [image related](images) Make targets which can be used by developers in
+consuming projects.
 
 ## Usage
 
-### Add Shipyard to a Project
+A developer can use the `make` command to interact with a project (which in turn uses Shipyard).
 
-To enable usage of Shipyard's functionality, please see [Adding Shipyard to a Project](first-time).
+To see all targets defined in a project, run:
+
+```shell
+make targets
+```
+
+The most common targets would be `clusters`, `deploy` and `e2e` which are built as a "dependency graph" -
+`e2e` will `deploy` Submariner if its not deployed, which in turn calls `clusters` to create the deployment environment.
+Therefore, variables used in any "dependent" target will be propagated to it's dependencies.
+
+### Simplified Usage Options
+
+For ease of use and convenience, many of the shared targets support a simplified usage model using the special **`USING`** variable.
+The value is a space separated string of usage options.
+Specifying conflicting options (e.g. **`wireguard`** and **`libreswan`**) will work, but the outcome should not be considered predictable.
+Any non-existing options will be silently ignored.
+
+For example, to deploy an environment that uses Globalnet, Lighthouse and a WireGuard cable driver use:
+
+```shell
+make deploy USING='globalnet lighthouse wireguard'
+```
+
+#### Highlighted **`USING`** Options
+
+* General deployment:
+  * **`aws-ocp`**: Deploy on top of AWS using OCP (OpenShift Container Platform).
+  * **`globalnet`**: Deploy clusters with overlapping CIDRs, and Submariner in *Globalnet* mode.
+  * **`lighthouse`**: Deploy service discovery (Lighthouse) in addition to the basic deployment.
+  * **`ovn`**: Deploy the clusters with the OVN CNI.
+* Deployment tools.
+  * **`helm`**: Deploy clusters using Helm.
+  * **`operator`**: Deploy clusters using the Submariner Operator.
+* Cable drivers:
+  * **`libreswan`**: Use the Libreswan cable driver when deploying the clusters.
+  * **`vxlan`**: Use the VXLAN cable driver when deploying the clusters.
+  * **`wireguard`**: Use the WireGuard cable driver when deploying the clusters.
+* Testing:
+  * **`subctl-verify`**: Force [end to end tests](#e2e) to run with `subctl verify`, irrespective of any possible project specific tests.
+
+### How to Add Shipyard to a Project
+
+The project should have a **`Makefile`** that contains all the projects targets, and imports all the Shipyard targets.
+
+In case you're adding Shipyard to a project that doesn't have it yet, use the following skeleton:
+
+```makefile
+BASE_BRANCH ?= devel
+
+# Running in Dapper
+ifneq (,$(DAPPER_HOST_ARCH))
+include $(SHIPYARD_DIR)/Makefile.inc
+
+### All your specific targets and settings go here. ###
+
+# Not running in Dapper
+else
+
+Makefile.dapper:
+        @echo Downloading $@
+        @curl -sfLO https://raw.githubusercontent.com/submariner-io/shipyard/$(BASE_BRANCH)/$@
+
+include Makefile.dapper
+
+endif
+```
+
+You can also refer to the project's own [Makefile] as an example.
 
 ### Use Shipyard in Your Project
 
-Once Shipyard has been added to a project, you can use any of the [Makefile targets](#shared-makefile-targets) that it provides.
-
-Any variables that you need to pass to these targets should be specified in your Dockerfile.dapper so they're available in the Dapper
-environment. For example:
-
-```Dockerfile
-ENV DAPPER_ENV="REPO TAG QUAY_USERNAME QUAY_PASSWORD TRAVIS_COMMIT CLUSTERS_ARGS DEPLOY_ARGS"
-```
+Once Shipyard has been added to a project, you can use any of the [shared targets](targets) that it provides.
 
 ### Have Shipyard Targets Depend on Your Project's Targets
 
@@ -48,127 +108,37 @@ Having any of the Shipyard Makefile targets rely on your project's specific targ
 project's Makefile. For example:
 
 ```Makefile
-clusters: build images
+clusters: <pre-cluster-target>
 ```
 
-### Use an Updated Shipyard Image in Your Project
+### Use an Updated Images in Your Project
 
-If you've made changes to Shipyard's [base image](#dapper-image) and need to test them in your project, run:
+#### Test an Updated Shipyard Image
+
+If you've made changes to Shipyard's targets and need to test them in your project, run this command in the Shipyard directory:
 
 ```shell
-make dapper-image
+make images
 ```
 
-in the Shipyard directory. This creates a local image with your changes available for consumption in other projects.
+This creates a local image with your changes available for consumption in other projects.
 
-## Shared Makefile Targets
+#### Test Updated Images from Sibling Project(s)
 
-Shipyard ships a [Makefile.inc] file which defines these basic targets:
-
-* **[clusters](#clusters):** Creates the kind-based cluster environment.
-* **[deploy](#deploy)** : Deploys Submariner components in the cluster environment (depends on clusters).
-* **[clean-clusters](#cleanclusters):** Deletes the kind environment (if it exists) and any residual resources.
-* **[clean-generated](#cleangenerated):** Deletes all generated files.
-* **[clean](#clean):** Cleans everything up (running clusters and generated files).
-* **[release](#release):** Uploads the requested image(s) to Quay.io.
-* **vendor/modules.txt:** Populates go modules (in case go.mod exists in the root directory).
-
-If your project uses Shipyard then it has all these targets and supports all the variables these targets support.
-
-Any variables supported by these targets can be either declared as environment variables or assigned on the `make` command line (takes
-precedence over environment variables).
-
-### Clusters {#clusters}
-
-A Make target that creates a kind-based multi-cluster environment with just the default Kubernetes deployment:
+In case you made changes in a sibling project and wish to test with that project's images, first rebuild the images:
 
 ```shell
-make clusters
+cd <path/to/sibling project>
+make images
 ```
 
-Respected variables:
+These images will be available in the local docker image cache, but not necessarily used by the project when deploying.
+To use these images, set the `PRELOAD_IMAGES` variable to the projects images and any sibling images.
 
-* **CLUSTERS_ARGS:** Any arguments (flags and/or values) to be sent to the `clusters.sh` script. To get a list of available arguments, run:
-  `scripts/shared/clusters.sh --help`
-
-### Deploy {#deploy}
-
-A Make target that deploys Submariner components in a kind-based cluster environment (if one isn't created yet, this target will first
-invoke the clusters target to do so):
+For example, to use updated gateway images when deploying on the operator repository:
 
 ```shell
-make deploy
+make deploy PRELOAD_IMAGES='submariner-operator submariner-gateway'
 ```
 
-Respected variables:
-
-* Any variable from [clusters](#clusters) target (only if it wasn't created).
-* **DEPLOY_ARGS:** Any arguments (flags and/or values) to be sent to the `deploy.sh` script. To get a list of available arguments, run:
-  `scripts/shared/deploy.sh --help`
-
-### Clean-clusters {#cleanclusters}
-
-To clean up all the kind clusters deployed in any of the previous steps, use:
-
-```shell
-make clean-clusters
-```
-
-This command will remove the clusters and any resources that might've been left in docker that are not needed any more (images, volumes,
-etc).
-
-### Clean-generated {#cleangenerated}
-
-To clean up all generated files, use:
-
-```shell
-make clean-generated
-```
-
-This will remove any file which can be re-generated and doesn’t need to be tracked.
-
-### Clean {#clean}
-
-To clean everything up, use:
-
-```shell
-make clean
-```
-
-This removes any running clusters and all generated files.
-
-### Release {#release}
-
-Uploads the built images to Quay.io:
-
-```shell
-make release release_images="<image name>"
-```
-
-Respected variables:
-
-* **QUAY_USERNAME, QUAY_PASSWORD:** Needed in order to log in to Quay.
-* **release_images:** One or more image names to release separated by spaces.
-* **release_tag:** A tag to use for the release (default is *latest*).
-* **repo:** The Quay repo to use (default is *`quay.io/submariner`*).
-
-## Specific Makefile Targets
-
-Shipyard has some project-specific targets which are used to build parts of the projects:
-
-* **[dapper-image](#dapper-image):** Builds the base image that can be used by other projects.
-* **validate:** Validates the go code that Shipyard provides, and the shared shell scripts.
-
-### Dapper-Image
-
-Builds the basic image which is then used by other projects to build the code and run tests:
-
-```shell
-make dapper-image
-```
-
-Respected variables:
-
-* **dapper_image_flags:** Any additional flags and values to be sent to the `build_image.sh` script.
-
-[Makefile.inc]: https://github.com/submariner-io/shipyard/blob/devel/Makefile.inc
+[Makefile]: https://github.com/submariner-io/shipyard/blob/devel/Makefile
