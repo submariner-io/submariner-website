@@ -224,7 +224,8 @@ Once a release candidate is deemed stable and has no blocker bugs it will be rel
 Prior to releasing, the release manager will verify that there were no changes on the stable branches since the last release candidate.
 This ensures that no bugs could have been introduced to possibly affect the stability of the released version.
 
-The new version will be announced per the [announcement guidelines] in the release process documentation.
+The new version will be announced per the [announcement guidelines] in the release process documentation, and
+[release notes](#release-notes) for the new release will need to be published.
 
 The [current release board](#current-release-board) will be closed, and all remaining items will be moved back to the
 [backlog board](#backlog-board).
@@ -233,6 +234,24 @@ The items can then be considered for the next version, based on the [planning](#
 During the week when the general availability release is performed, the next version will be planned.
 Additionally, a retrospective meeting for the last release cycle will be held.
 There will be no dedicated [test day](#test-days), as the release candidate has been tested and no changes have occurred since.
+
+##### Release Notes
+
+[Release notes] should be published for each GA version.
+All new features and bug fixes of the release should be labeled with `release-note-needed` and have a relevant release note
+documented as part of the PR. Release notes submitted with PRs should be written in individual files in the `/release-notes` directory
+of the relevant repository.
+
+The release note file name should contain a short description about the release note subject, prefixed with a date in the format
+`YYYYMMDD` and end with a `.md` suffix. The date part is the date the PR was first pushed.
+The content of the file should be Markdown snippets, starting with `<!-- markdownlint-disable MD041 -->` in the first line
+to avoid failing over missing main header by the `markdownlint`.
+
+Once a week, as part of the tasks and bugs triage meeting, the team will make sure that new bugs / tasks / PRs are properly
+labeled and have the release notes documentation. When the version is ready for GA, all the notes can then be gathered
+from issues / PRs using the `release-note-needed` label and a [pull request to the website repository] should be opened.
+After that point, the `release-note-handled` label should be added to the issues / PRs. The [following query] can be use to identify
+pending issues / PRs.
 
 ### Unplanned Work
 
@@ -301,3 +320,6 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [Submariner project]: https://github.com/submariner-io
 [triages tasks and bugs as part of a weekly meeting]: https://docs.google.com/document/d/1ICvOBOUpIEI45Yqcjf26Z1e5mZNzYsEN-H7_3xx54jI
 [Project Members]: https://submariner.io/community/contributor-roles/#member
+[Release notes]: ../../community/releases/
+[pull request to the website repository]: https://github.com/submariner-io/submariner-website/pulls
+[following query]: https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-label%3Arelease-note-handled
