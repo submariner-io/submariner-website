@@ -554,6 +554,9 @@ metadata:
   namespace: submariner-operator
 spec:
   template:
+    metadata:
+      labels:
+        submariner.io/transient: "true"
     spec:
       containers:
       - name: submariner-diagnose
