@@ -28,16 +28,17 @@ The possible settings are:
   * **`cluster_count`**: Can be used to quickly deploy multiple clusters with an identical topology.
   * **`clusters`**: Map of clusters to deploy. Each key is the cluster name and the values are cluster specific settings.
 * Global and/or cluster specific:
-  * **`cni`**: Which CNI to deploy on the cluster, currently supports **`weave`** and **`ovn`**.
+  * **`cni`**: Which CNI to deploy on the cluster,
+    currently supports the default kind CNI (kindnet, used if no value is specified)
+    and **`ovn`**.
   * **`nodes`**: A space separated list of nodes to deploy, supported types are **`control-plane`** and **`worker`**.
   * **`submariner`**: If Submariner should be deployed, set to **`true`**. Otherwise, leave unset (or set to **`false`** explicitly).
 
 ## Settings File Examples
 
-For example, a basic settings file that deploys a couple of clusters with weave CNI:
+For example, a basic settings file that deploys a couple of clusters with the kind CNI:
 
 ```yaml
-cni: weave
 submariner: true
 nodes: control-plane worker worker
 clusters:
@@ -45,11 +46,11 @@ clusters:
   cluster2:
 ```
 
-The following settings file deploys two clusters with one control node and two workers, with weave and Submariner.
+The following settings file deploys two clusters with one control node and two workers, with OVN and Submariner.
 The third cluster will host the broker and as such needs no CNI, only a worker node, and no Submariner deployment:
 
 ```yaml
-cni: weave
+cni: ovn
 submariner: true
 nodes: control-plane worker worker
 clusters:
