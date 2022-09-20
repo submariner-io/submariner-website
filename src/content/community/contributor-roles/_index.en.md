@@ -73,7 +73,7 @@ are expected to remain active contributors to the community.
 * Sponsored by 2 committers. **Note the following requirements for sponsors**:
   * Sponsors must have close interactions with the prospective member - e.g.
     code/design/proposal review, coordinating on issues, etc.
-  * Sponsors must be committers in at least 1 CODEOWNERS file either in any
+  * Sponsors must be committers in at least 1 CODEOWNERS file in any
     repo in the [Submariner org]
 * [Open an issue][membership request issue] against the `submariner-io/submariner` repo
   * Ensure your sponsors are @mentioned on the issue
