@@ -4,6 +4,24 @@ title = "Releases"
 weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
+## v0.13.1
+
+This is a bugfix release:
+
+* Allow broker certificate checks to be disabled for insecure connections, using `subctl join --check-broker-certificate=false`.
+* Return local cluster IP for headless services.
+* Display proper output message on `subctl show brokers` when broker is not installed on the cluster.
+* Allow passing `DEFAULT_REPO` while building subctl.
+* Cleanup the host routes programmed by OVN RA plugin during uninstall.
+* Address overrides by component. This avoid any problems downstream, in case that the image names are
+getting rewritten.
+* Limit Azure machine name lengths to 40 characters.
+* Mention default cable driver in join help msg.
+* Set DNSPolicy to ClusterFirstWithHostNet - for pods that run with `HostNetworking: true`.
+* Remove hardcoded workerNodeList while querying image for GCP and RHOS cloud preparation steps.
+* Collect the output of `ovn-sbctl` show in `subctl gather`.
+* Bump x/text to address CVE-2021-38561.
+
 ## v0.13.0
 
 ### New features
