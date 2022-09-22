@@ -20,6 +20,7 @@ This is a bugfix release:
 * Remove hardcoded `workerNodeList` while querying image for GCP and RHOS cloud preparation steps.
 * Collect the output of `ovn-sbctl show` in `subctl gather`.
 * Bump x/text to address CVE-2021-38561.
+* Set `ReadHeaderTimeout` (new in Go 1.18) to mitigate potential Slowloris attacks.
 
 ## v0.13.0
 
