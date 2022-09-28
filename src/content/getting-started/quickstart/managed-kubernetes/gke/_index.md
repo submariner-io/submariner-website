@@ -144,7 +144,6 @@ $ kubectl get crds | grep submariner
 clusters.submariner.io
 endpoints.submariner.io
 gateways.submariner.io
-serviceimports.lighthouse.submariner.io
 
 kubectl get crds --context cluster-a | grep multicluster
 serviceexports.multicluster.x-k8s.io
