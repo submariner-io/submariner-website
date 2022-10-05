@@ -229,7 +229,7 @@ The new version will be announced per the [announcement guidelines] in the relea
 
 The [current release board](#current-release-board) will be closed, and all remaining items will be moved back to the
 [backlog board](#backlog-board).
-The items can then be considered for the next version, based on the [planning](#pre-planning) guidelines.
+The items can then be considered for the next version, based on the [planning](#planning) guidelines.
 
 During the week when the general availability release is performed, the next version will be planned.
 Additionally, a retrospective meeting for the last release cycle will be held.
