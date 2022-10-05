@@ -58,7 +58,7 @@ make deploy
 * **`DEPLOYTOOL`**: The tool used to deploy Submariner itself (defaults to `operator`).
 * **`LIGHTHOUSE`**: Deploys Lighthouse in addition to the basic Submariner deployment (defaults to `false`).
 
-### E2E (End to End) {#e2e}
+### E2E (End to End) <a id="e2e"></a>
 
 Runs end to end testing on the deployed environment (if one isn't created yet, this target will first invoke the `deploy` target to do so).
 The tests are taken from the project, unless it has no specific end to end tests, in which case generic testing using `subctl verify` is
