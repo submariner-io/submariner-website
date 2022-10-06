@@ -67,7 +67,8 @@ make deploy USING='globalnet lighthouse wireguard'
   * **`vxlan`**: Use the VXLAN cable driver when deploying the clusters.
   * **`wireguard`**: Use the WireGuard cable driver when deploying the clusters.
 * Testing:
-  * **`subctl-verify`**: Force [end to end tests](#e2e) to run with `subctl verify`, irrespective of any possible project specific tests.
+  * **`subctl-verify`**: Force [end-to-end tests](../building-testing#e2e) to run with `subctl verify`, irrespective of any possible
+    project-specific tests.
 
 ### How to Add Shipyard to a Project
 
