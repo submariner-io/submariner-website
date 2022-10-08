@@ -47,6 +47,7 @@ $ kubectl get crds | grep -iE 'submariner|multicluster.x-k8s.io'
 clusters.submariner.io                    2020-11-30T13:49:16Z
 endpoints.submariner.io                   2020-11-30T13:49:16Z
 gateways.submariner.io                    2020-11-30T13:49:16Z
+serviceexports.multicluster.x-k8s.io      2020-11-30T13:52:39Z
 serviceimports.multicluster.x-k8s.io      2020-11-30T13:52:39Z
 ```
 
@@ -132,7 +133,7 @@ Status:
       Hostname:         cluster3-worker
       nat_enabled:      false
       private_ip:       172.17.0.10
-      public_ip:        
+      public_ip:
       Subnets:
         100.3.0.0/16
         10.3.0.0/16
@@ -153,11 +154,11 @@ Status:
     Hostname:         cluster2-worker
     nat_enabled:      false
     private_ip:       172.17.0.7
-    public_ip:        
+    public_ip:
     Subnets:
       100.2.0.0/16
       10.2.0.0/16
-  Status Failure:  
+  Status Failure:
   Version:         v0.8.0-pre0-1-g5d7f163
 Events:            <none>
 </pre>
@@ -335,7 +336,7 @@ Status:
     Type:                  Valid
     Last Transition Time:  2020-12-01T12:35:32Z
     Message:               Service was successfully synced to the broker
-    Reason:                
+    Reason:
     Status:                True
     Type:                  Valid
 Events:                    <none>
@@ -542,7 +543,7 @@ Status:
     Type:                  Valid
     Last Transition Time:  2020-12-07T17:37:59Z
     Message:               Service was successfully synced to the broker
-    Reason:                
+    Reason:
     Status:                True
     Type:                  Valid
 Events:                    <none>
@@ -828,7 +829,7 @@ Status:
     Type:                  Valid
     Last Transition Time:  2020-11-30T19:59:44Z
     Message:               Service was successfully synced to the broker
-    Reason:                
+    Reason:
     Status:                True
     Type:                  Valid
 Events:                    <none>
