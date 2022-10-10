@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
 
       - name: Run markdown-link-check
         uses: gaurav-nelson/github-action-markdown-link-check@228fbf4ffb2a86a65314866e9b2322b519fd885f
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       - name: Run markdownlint
         uses: nosborn/github-action-markdown-cli@55c885e91c3f2602f966095b30ee2a5284e63fca
         with:
@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
       - name: Run yamllint
         uses: ibiqlik/action-yamllint@81e214fd484713882ce4237cb7cd264d550856cf
         with:
