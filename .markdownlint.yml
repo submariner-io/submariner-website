@@ -7,8 +7,10 @@ line-length:
   line_length: 140
 
 # Allow HTML span elements to set font sizes and for shortcodes
+# Allow <a id="short-heading"></a> to support [Link](#short-heading)
 no-inline-html:
   allowed_elements:
+    - a
     - code
     - div
     - li
