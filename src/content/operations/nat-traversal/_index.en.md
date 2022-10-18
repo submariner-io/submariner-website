@@ -41,6 +41,12 @@ For example, when using a fixed public IPv4 address for a gateway, this can be u
 kubectl annotate node $GW gateway.submariner.io/public-ip=ipv4:1.2.3.4
 ```
 
+{{% notice note %}}
+While joining the cluster, if `--air-gapped` flag is specified in the `subctl join ...` command, Submariner will
+avoid making any calls to external servers and an empty `PublicIP` is configured in the local `Endpoint`.
+However, if required, an explicit public IP can still be configured by adding the above annotation even in such environments.
+{{% /notice %}}
+
 ### Reachability
 
 For two gateway `Endpoints` to connect to one another, at least one of them should be reachable
