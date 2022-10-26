@@ -77,11 +77,9 @@ This component is responsible for programming the routing entries, iptable rules
 * Creates initial iptables chains for Globalnet rules.
 * For each `GlobalEgressIP`, creates corresponding SNAT rules to convert the source IPs for all the matching pods to the corresponding
   global IP(s) allocated to the `GlobalEgressIP` object.
-* For each exported service, creates an ingress rule to direct all traffic destined to the Service's global IP to the service's
-  `kube-proxy` iptables chain which in turn directs traffic to service's backend pods.
+* For each exported Service, it internally creates an additional Service with `externalIPs`, in the same namespace as
+the exported Service, and sets the `externalIPs` to the globalIP assigned to the respective Service.
 * Clean up the rules from the gateway node on the deletion of a `Pod`, `Service`, or `ServiceExport`.
-
-Globalnet currently relies on `kube-proxy` and thus will only work with deployments that use `kube-proxy`.
 
 ### Service Discovery - Lighthouse
 
