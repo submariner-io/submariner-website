@@ -19,7 +19,6 @@ VXLAN cable driver.
 
 ## Globalnet
 
-* Currently, Globalnet is not supported with the OVN network plug-in.
 * The `subctl benchmark latency` command is not compatible with Globalnet deployments at this time.
 
 ## Deploying with Helm on OpenShift
