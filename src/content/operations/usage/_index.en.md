@@ -79,6 +79,7 @@ Pods, you can specify the `--watch` flag with the command:
 $ kubectl -n submariner-operator get pods
 NAME                                           READY   STATUS    RESTARTS   AGE
 submariner-gateway-btzrq                       1/1     Running   0          76s
+submariner-metrics-proxy-sznnc                 1/1     Running   0          76s
 submariner-lighthouse-agent-586cf4899-wn747    1/1     Running   0          75s
 submariner-lighthouse-coredns-c88f64f5-h77kw   1/1     Running   0          73s
 submariner-lighthouse-coredns-c88f64f5-qlw4x   1/1     Running   0          73s

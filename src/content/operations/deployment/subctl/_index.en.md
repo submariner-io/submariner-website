@@ -295,7 +295,6 @@ Below is a list of available sub-commands:
 | `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>`
 | `cni`                      | checks if the detected CNI network plugin is supported by Submariner
 | `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` , `--verbose`, `--namespace` `<string>`
-| `firewall metrics [flags]` | checks if the firewall configuration allows metrics to be accessed from the Gateway nodes | `--validation-timeout` `<value>` , `--verbose`, `--namespace` `<string>`
 | `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
 | `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  
 <!-- markdownlint-enable line-length -->
@@ -387,7 +386,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
 | `--profile` `<string>`           | AWS profile to use for credentials
 | `--region` `<string>`            | AWS region
-| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
@@ -408,7 +406,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
 | `--project-id` `<string>`        | GCP project ID
 | `--region` `<string>`            | GCP region
-| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
@@ -429,7 +426,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
 | `--project-id` `<string>`        | OpenStack project ID
 | `--region` `<string>`            | OpenStack region
-| `--metrics-ports` `<ints>`       | Metrics ports, comma-separated (default 8080,8081)
 | `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
 | `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
 | `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
