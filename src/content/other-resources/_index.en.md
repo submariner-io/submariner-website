@@ -20,7 +20,6 @@ This page catalogs content documenting Submariner elsewhere on the web.
 * [*Multicluster Network Connectivity Submariner*, Computing on the Edge with Kubernetes (2020-10)](https://www.youtube.com/watch?v=x7PbyTVEXFg)
 * [*Hybrid Cloud and Multicluster Service Discovery*, KubeCon China (2019-07)](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d) ([slides](https://static.sched.com/hosted_files/kccncosschn19eng/6b/Hybrid%20Cloud%20and%20Multi-Cluster%20Service%20Connectivity.pdf))
 * [*Solving Multicluster Network Connectivty with Submariner*, KubeCon North America (2019-11)](https://www.youtube.com/watch?v=jMvuchSMCKU&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien) ([slides](https://static.sched.com/hosted_files/kccncna19/7d/Submariner%20Kubecon%20NA%202019%20%281%29.pdf))
-<!-- markdownlint-enable line-length -->
 
 ## Demo Recordings
 
@@ -32,6 +31,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Blogs
 
+* [Orchestrating Multi-Region Apps with Red Hat Advanced Cluster Management and Submariner (2022-08)](https://aws.amazon.com/blogs/apn/orchestrating-multi-region-apps-with-red-hat-advanced-cluster-management-and-submariner/)
 * [Set up an Istio Multicluster Service Mesh with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2022-02)](https://cloud.redhat.com/blog/set-up-an-istio-multicluster-service-mesh-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Set up Istio Multicluster with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2021-10)](https://cloud.redhat.com/blog/set-up-istio-multicluster-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Multi-Cluster monitoring with Prometheus and Submariner (2021-09)](https://medium.com/@danielbachar/multi-cluster-monitoring-with-prometheus-and-submariner-f89ff733e7ec)
