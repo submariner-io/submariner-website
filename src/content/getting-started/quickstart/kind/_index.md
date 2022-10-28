@@ -129,7 +129,7 @@ This will perform automated verifications between the clusters.
 <!-- markdownlint-disable line-length -->
 ```bash
 export KUBECONFIG=output/kubeconfigs/kind-config-cluster1:output/kubeconfigs/kind-config-cluster2
-subctl verify --kubecontexts cluster1,cluster2 --only service-discovery,connectivity --verbose
+subctl verify --context cluster1 --tocontext cluster2 --only service-discovery,connectivity --verbose
 ```
 <!-- markdownlint-enable line-length -->
 

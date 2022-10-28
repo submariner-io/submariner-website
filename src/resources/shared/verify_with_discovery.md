@@ -124,5 +124,5 @@ This will perform automated verifications between the clusters.
 
 ```bash
 export KUBECONFIG=cluster-a/auth/kubeconfig:cluster-b/auth/kubeconfig
-subctl verify --kubecontexts cluster-a,cluster-b --only service-discovery,connectivity --verbose
+subctl verify --context cluster-a --tocontext cluster-b --only service-discovery,connectivity --verbose
 ```
