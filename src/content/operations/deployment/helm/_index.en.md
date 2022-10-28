@@ -136,5 +136,5 @@ Ensure your kubeconfigs have different context names for each cluster, _e.g._ â€
 then run
 
 ```bash
-KUBECONFIG=cluster-a/auth/kubeconfig:cluster-b/auth/kubeconfig subctl verify --kubecontexts cluster-a,cluster-b --verbose
+KUBECONFIG=cluster-a/auth/kubeconfig:cluster-b/auth/kubeconfig subctl verify --context cluster-a --tocontext cluster-b --verbose
 ```
