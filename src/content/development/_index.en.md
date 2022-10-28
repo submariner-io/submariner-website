@@ -18,8 +18,9 @@ pre = "<b>4. </b>"
   * [Security Reporting](security/reporting)
   * [Container Requirements](security/containers)
 * [Working with Shipyard](shipyard)
-  * [Adding Shipyard to a Project](shipyard/first-time)
-  * [Advanced Features](shipyard/advanced)
+  * [Customizing Deployments](shipyard/settings)
+  * [Shared Targets](shipyard/targets)
+  * [Image Related Targets](shipyard/images)
 
 ### Help Wanted
 

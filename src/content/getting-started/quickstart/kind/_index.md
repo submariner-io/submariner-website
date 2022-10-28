@@ -37,7 +37,7 @@ See the [settings](https://github.com/submariner-io/submariner-operator/blob/dev
 Once you become familiar with Submariner's basics, you may want to visit the
 [Building and Testing page](../../../development/building-testing/) to learn more about customizing your Submariner development deployment.
 To understand how Submariner's development deployment infrastructure works under the hood, see
-[Submariner Deployment Customization in the Shipyard Advanced Options](../../../development/shipyard/advanced/).
+[Deployment Customization in the Shipyard documentation](../../../development/shipyard/settings/).
 
 ### Deploy Manually
 
