@@ -394,6 +394,7 @@ This command prepares the underlying cloud infrastructure for Submariner install
 
 #### `prepare` global flags
 
+<!-- markdownlint-disable line-length -->
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--as` `<string>`                       | Username to impersonate for the operation
@@ -403,20 +404,21 @@ This command prepares the underlying cloud infrastructure for Submariner install
 | `--client-certificate` `<string>`       | Path to a client certificate file for TLS
 | `--client-key` `<string>`               | Path to a client key file for TLS
 | `--cluster` `<string>`                  | The name of the kubeconfig cluster to use
-| `--context ` `<string>`                 | The name of the kubeconfig context to use
+| `--context` `<string>`                  | The name of the kubeconfig context to use
 | `--insecure-skip-tls-verify` `<string>` | If true, the server's certificate will not be checked for validity. This will make your HTTPS connections insecure
 | `--kubeconfig` `<string>`               | Absolute path(s) to the kubeconfig file(s)
 | `--nat-discovery-port` `<uint16>`       | NAT discovery port (default 4490)
 | `--natt-port` `<uint16>`                | IPSec NAT traversal port (default 4500)
-| `--password ` `<string>`                | Password for basic authentication to the API server
+| `--password` `<string>`                 | Password for basic authentication to the API server
 | `--proxy-url` `<string>`                | If provided, this URL will be used to connect via proxy
 | `--request-timeout` `<string>`          | The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don't timeout requests. (default "0")
-| `--server ` `<string>`                  | The address and port of the Kubernetes API server
+| `--server` `<string>`                   | The address and port of the Kubernetes API server
 | `--tls-server-name` `<string>`          | If provided, this name will be used to validate server certificate. If this is not provided, hostname used to contact the server is used.
-| `--token ` `<string>`                   | Bearer token for authentication to the API server
-| `--user ` `<string>`                    | The name of the kubeconfig user to use
-| `--username ` `<string>`                | Username for basic authentication to the API server
+| `--token` `<string>`                    | Bearer token for authentication to the API server
+| `--user` `<string>`                     | The name of the kubeconfig user to use
+| `--username` `<string>`                 | Username for basic authentication to the API server
 | `--vxlan-port` `<uint16>`               | Internal VXLAN port (default 4800)
+<!-- markdownlint-enable line-length -->
 
 #### `prepare aws`
 
@@ -459,12 +461,12 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--cloud-entry` `<string>`       | the specific cloud configuration to use from the clouds.yaml (default `openstack`)
+| `--cloud-entry` `<string>`       | Specific cloud configuration to use from the clouds.yaml
 | `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true)
 | `--gateway-instance` `<string>`  | Type of gateway instance machine (default `PnTAE.CPU_4_Memory_8192_Disk_50`)
-| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--gateways` `<int>`             | Number of gateways to deploy (default 1)
 | `--infra-id` `<string>`          | OpenStack infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from (takes precedence over the specific flags)
 | `--project-id` `<string>`        | OpenStack project ID
 | `--region` `<string>`            | OpenStack region
 
