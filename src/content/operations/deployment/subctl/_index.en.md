@@ -406,6 +406,8 @@ This command prepares the underlying cloud infrastructure for Submariner install
 | `--context ` `<string>`                 | The name of the kubeconfig context to use
 | `--insecure-skip-tls-verify` `<string>` | If true, the server's certificate will not be checked for validity. This will make your HTTPS connections insecure
 | `--kubeconfig` `<string>`               | Absolute path(s) to the kubeconfig file(s)
+| `--nat-discovery-port` `<uint16>`       | NAT discovery port (default 4490)
+| `--natt-port` `<uint16>`                | IPSec NAT traversal port (default 4500)
 | `--password ` `<string>`                | Password for basic authentication to the API server
 | `--proxy-url` `<string>`                | If provided, this URL will be used to connect via proxy
 | `--request-timeout` `<string>`          | The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit (e.g. 1s, 2m, 3h). A value of zero means don't timeout requests. (default "0")
@@ -414,6 +416,7 @@ This command prepares the underlying cloud infrastructure for Submariner install
 | `--token ` `<string>`                   | Bearer token for authentication to the API server
 | `--user ` `<string>`                    | The name of the kubeconfig user to use
 | `--username ` `<string>`                | Username for basic authentication to the API server
+| `--vxlan-port` `<uint16>`               | Internal VXLAN port (default 4800)
 
 #### `prepare aws`
 
@@ -430,9 +433,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
 | `--profile` `<string>`           | AWS profile to use for credentials
 | `--region` `<string>`            | AWS region
-| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
-| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare gcp`
 
@@ -450,9 +450,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
 | `--project-id` `<string>`        | GCP project ID
 | `--region` `<string>`            | GCP region
-| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
-| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare rhos`
 
@@ -470,9 +467,6 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
 | `--project-id` `<string>`        | OpenStack project ID
 | `--region` `<string>`            | OpenStack region
-| `--nat-discovery-port` `<int>`   | NAT discovery port (default 4490)
-| `--natt-port` `<int>`            | IPsec NAT Traversal port (default 4500)
-| `--vxlan-port` `<int>`           | Internal VXLAN port (default 4800). Not required when using OVN-Kubernetes CNI
 
 #### `prepare generic` flags
 
