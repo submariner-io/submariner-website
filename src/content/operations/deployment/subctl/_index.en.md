@@ -426,15 +426,17 @@ This command prepares the underlying cloud infrastructure for Submariner install
 
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on AWS cloud for Submariner installation.
 
+<!-- markdownlint-disable line-length -->
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`)
 | `--gateway-instance` `<string>`  | Type of gateway instance machine (default `c5d.large`)
-| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (Set to 0 when using --load-balancer mode) (default 1)
 | `--infra-id` `<string>`          | AWS infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
-| `--profile` `<string>`           | AWS profile to use for credentials
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from (takes precedence over the specific flags)
+| `--profile` `<string>`           | AWS profile to use for credentials  (default "default")
 | `--region` `<string>`            | AWS region
+<!-- markdownlint-enable line-length -->
 
 #### `prepare gcp`
 
@@ -442,6 +444,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on GCP cloud for Submariner installation.
 
+<!-- markdownlint-disable line-length -->
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--credentials` `<string>`       | GCP credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
@@ -449,9 +452,10 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--gateway-instance` `<string>`  | Type of gateway instance machine (default `n1-standard-4`)
 | `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
 | `--infra-id` `<string>`          | GCP infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from (takes precedence over the specific flags)
 | `--project-id` `<string>`        | GCP project ID
 | `--region` `<string>`            | GCP region
+<!-- markdownlint-enable line-length -->
 
 #### `prepare rhos`
 
@@ -459,6 +463,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on OpenStack cloud for Submariner installation.
 
+<!-- markdownlint-disable line-length -->
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--cloud-entry` `<string>`       | Specific cloud configuration to use from the clouds.yaml
@@ -469,6 +474,7 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 | `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from (takes precedence over the specific flags)
 | `--project-id` `<string>`        | OpenStack project ID
 | `--region` `<string>`            | OpenStack region
+<!-- markdownlint-enable line-length -->
 
 #### `prepare generic` flags
 
@@ -477,7 +483,7 @@ firewall ports opened and will only label the required number of gateway nodes f
 
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
+| `--gateways` `<int>`             | Number of gateways to deploy (default 1)
 
 #### `cloud cleanup`
 
