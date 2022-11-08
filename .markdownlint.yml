@@ -26,7 +26,9 @@ spelling:
     - Admiral
     - ClusterSet
     - Coastguard
+    - Flannel
     - Globalnet
+    - HTTP
     - IPsec
     - iptables
     - kind
