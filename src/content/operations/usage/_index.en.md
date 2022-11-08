@@ -246,9 +246,9 @@ $ kubectl config use-context cluster3
 Switched to context "cluster3".
 ```
 
-The following commands create an `nginx` Service in the `nginx-test` namespace which targets TCP port 8080, with name http,
-on any Pod with the `app: nginx` label and exposes it on an abstracted Service port. When created, the Service is assigned
-a unique IP address (also called `ClusterIP`):
+The following commands create an `nginx` Service in the `nginx-test` namespace which targets TCP port 8080, with name `http`, on any Pod
+with the `app: nginx` label and exposes it on an abstracted Service port. When created, the Service is assigned a unique IP address (also
+called `ClusterIP`):
 
 ```bash
 $ kubectl create namespace nginx-test
