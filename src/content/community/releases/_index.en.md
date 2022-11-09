@@ -9,16 +9,15 @@ weight = 40
 ### New features
 
 * Users no longer need to open ports 8080 and 8081 on the host for querying metrics. A new `submariner-metrics-proxy` DaemonSet
-runs pods on gateway nodes and forwards http requests for metrics services to gateway and Globalnet pods running on the nodes.
-Gateway and Globalnet pods now listen on ports 32780 and 32781 instead of well known ports 8080 and 8081 to avoid conflict with
+runs pods on gateway nodes and forwards HTTP requests for metrics services to gateway and Globalnet pods running on the nodes.
+Gateway and Globalnet pods now listen on ports 32780 and 32781 instead of well-known ports 8080 and 8081 to avoid conflict with
 any other services that might be using those ports. Users will continue to query existing `submariner-gateway-metrics` and
 `submariner-globalnet-metrics` services to query the metrics.
 * Added `subctl diagnose service-discovery` verifications for Service Discovery objects.
-* Support for simulated "air-gapped" environments has been added to kind clusters.
-The air-gap is simulated by blocking outgoing traffic to any public subnet on the cluster nodes, effectively isolating the host network.
-To use, deploy with `USING=air-gap` or `AIR_GAPPED=true`.
 * The `subctl join` command now supports an `--air-gapped` option that instructs Submariner not to access any external servers for
 `public-ip` resolution.
+  * Support for simulated "air-gapped" environments has been added to kind clusters.
+  To use, deploy with `USING=air-gap` or `AIR_GAPPED=true`.
 * Support was added in the Shipyard project to easily deploy Submariner with a LoadBalancer type Service in front.
 To use, simply specify the target (e.g. `deploy`) with `USING=load-balancer` or `LOAD_BALANCER=true`.
 For kind-based deployments, [MetalLB](https://metallb.universe.tf/) is deployed to provide the capability.
@@ -27,14 +26,6 @@ The MetalLB version can be specified using `METALLB_VERSION=x.y.z`.
 To use this feature, run `make e2e using=subctl-verify`.
 Verifications can be now specified using the `SUBCTL_VERIFICATIONS` flag, instead of relying on the default behavior.
 e.g.: `make e2e using=subctl-verify SUBCTL_VERIFICATIONS=connectivity,service-discovery`.
-* Support was added in Shipyard to easily create test clusters using OCP on top of AWS.
-This allows developers and users to easily stand up a test/PoC environment with Submariner using AWS+OCP.
-The deployed environment will use the latest published Submariner images, it's currently not possible to use locally built images.
-The following commands are supported:
-  * `make clusters using=aws-ocp`
-  * `make deploy using=aws-ocp`
-  * `make e2e using=aws-ocp`
-  * `make cleanup using=aws-ocp`
 * kubeconfig handling has been revamped to be consistent across all
   `subctl` commands and to match `kubectl`’s behaviour.
   * The single-context commands, `cloud-prepare`, `deploy-broker`, `export`,
@@ -69,34 +60,24 @@ The following commands are supported:
 
 ### Other changes
 
-* The flannel CNI is now properly identified during join.
+* The Flannel CNI is now properly identified during join.
 * A new ServiceExport status condition type named Synced was added that indicates whether or not the ServiceImport
 was successfully synced to the broker.
 * Service Discovery now handles updates to an exported service and updates/deletes the corresponding ServiceImport accordingly.
-* Deploying using Shipyard now uses specific image overrides determined by the `PRELOAD_IMAGES` variable.
-For developers using `make deploy` (or `make e2e`) there won't be a noticeable change in behavior, but only those images
-specified by the `PRELOAD_IMAGES` will be preloaded and used. Developers can also specify the variable explicitly to further
-control which images get preloaded and used.
-* Added a centralized script for getting `subctl`. It now impersonates `subctl` so that users who run `make shell` will have it
-downloaded the first time they try to use it. To influence the version being installed, the `SUBCTL_VERSION` variable can be set.
-* All `shflags` usage has been removed from Shipyard and consuming projects.
-Users/Developers running commands with `using=` are not affected.
-Users/Developers running commands with `*_ARGS=--flag` should switch to using environment variables instead.
-For example, if you used to run `make deploy DEPLOY_ARGS='--settings ...'`, please run `make deploy SETTINGS='...'` instead.
-* If it’s not given a custom directory, `subctl gather` stores all its output in a directory
-named `submariner-` followed by the current date and time (in UTC) in "YYYYMMDDHHmmss" format.
 * Service Discovery now returns a DNS error message in the response body when no matching records are found for the query to
 `clusterset.local`. This prevents unnecessary retries.
-* Cloud cleanup for OpenStack now identifies and deletes failed machinesets.
-* Privileges of the Route Agent and Gateway pods were reduced as they don’t need to access persistentvolumeclaims and secrets.
-be used to verify if `submariner_router` is pinned to the proper Gateway node.
+* Cloud cleanup for OpenStack now identifies and deletes failed MachineSets.
+* Privileges of the Route Agent and Gateway pods were reduced as they don’t need to access PersistentVolumeClaims and Secrets.
 * The privileged SCC permission for Submariner components in OCP is set now by creating separate `ClusterRole` and `ClusterRoleBinding`
 resources instead of manipulating the system privileged SCC resource.
 * It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
 * The `subctl show` command now correctly reports component image versions when image overrides were specified on `join`.
-* The `subctl gather` command now creates one subdirectory per cluster instead of embedding the cluster name in each file name.
-* The `subctl gather` command now includes the output from `ovn-sbctl show` which has the chassis-id to hostname mapping that can
-be used to verify if `submariner_router` is pinned to the proper Gateway node.
+* Updates to the `subctl gather` command:
+  * The `subctl gather` command now creates one subdirectory per cluster instead of embedding the cluster name in each file name.
+  * If it’s not given a custom directory, `subctl gather` stores all its output in a directory
+  named `submariner-` followed by the current date and time (in UTC) in "YYYYMMDDHHmmss" format.
+  * The `subctl gather` command now includes the output from `ovn-sbctl show` which has the `chassis-id` to `hostname` mapping that can
+  be used to verify if `submariner_router` is pinned to the proper Gateway node.
 
 ## v0.13.1
 
