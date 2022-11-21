@@ -110,7 +110,7 @@ This will perform automated verifications between the clusters.
 
 <!-- markdownlint-disable line-length -->
 ```bash
-KUBECONFIG=kubeconfig.cluster-a:kubeconfig.cluster-b subctl verify --kubecontexts cluster-a,cluster-b --only service-discovery,connectivity --verbose
+KUBECONFIG=kubeconfig.cluster-a:kubeconfig.cluster-b subctl verify --context cluster-a --tocontext cluster-b --only service-discovery,connectivity --verbose
 ```
 <!-- markdownlint-enable line-length -->
 

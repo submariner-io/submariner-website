@@ -100,7 +100,7 @@ cluster2-worker   Ready    worker   6h59m   v1.17.0   172.17.0.7    3.81.125.62 
 This command verifies the connection between the participating clusters:
 <!-- markdownlint-disable no-trailing-spaces -->
 ```bash
-$ subctl show connections --kubecontext cluster2
+$ subctl show connections --context cluster2
 
 Showing information for cluster "cluster2":
 GATEWAY                         CLUSTER                 REMOTE IP       CABLE DRIVER        SUBNETS                               STATUS

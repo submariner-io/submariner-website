@@ -42,5 +42,5 @@ This will run a series of E2E tests to verify proper connectivity between the cl
 
 ```bash
 export KUBECONFIG=kubeconfig-cluster-a:kubeconfig-cluster-b
-subctl verify --kubecontexts cluster-a,cluster-b --only connectivity --verbose
+subctl verify --context cluster-a --tocontext cluster-b --only connectivity --verbose
 ```

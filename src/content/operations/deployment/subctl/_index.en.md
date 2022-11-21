@@ -32,14 +32,36 @@ For example
 curl https://get.submariner.io | VERSION=devel bash
 ```
 
+## Common options
+
+`subctl` commands which need access to a Kubernetes cluster handle the same access mechanisms as `kubectl` (see `kubectl options`).
+One or more `kubeconfig` files can be listed in the `KUBECONFIG` environment variable, or using the `--kubeconfig` option.
+A specific context can be chosen using the `--context` option;
+by default, `subctl` commands use the chosen `kubeconfig`’s current context.
+
+Where appropriate, a namespace can be chosen using the `--namespace` (`-n`) option;
+by default, `subctl` commands use either the appropriate Submariner namespace, or the chosen context’s current namespace.
+
+Some commands support multiple contexts.
+The “reference” context is the context specified by `--context`;
+the “other” context is identified by a prefix, _e.g._ `--tocontext` or `--remotecontext`.
+All the options providing access to a cluster are available with the corresponding prefix:
+`--toconfig` (the `kubeconfig`), `--tousername` etc.
+It is possible to use mutually conflicting `kubeconfig` files (_e.g._ files using the same names for different values)
+by specifiying them using `--kubeconfig` and the prefixed `--…config`;
+corresponding settings will only use the information from the matching `kubeconfig`.
+
+References to the “selected context” and “selected namespace” in the documentation below refer to the context and namespace
+specified using the options described above.
+
 ## Commands
 
 ### `deploy-broker`
 
 `subctl deploy-broker [flags]`
 
-The `deploy-broker` command configures the cluster specified by the `--kubeconfig` flag (or `KUBECONFIG` env var) and the `--kubecontext`
-flag as the Broker. It installs the necessary CRDs and the `submariner-k8s-broker` namespace.
+The `deploy-broker` command configures the cluster specified by the selected context as the Broker.
+It installs the necessary CRDs and the `submariner-k8s-broker` namespace.
 
 In addition, it generates a `broker-info.subm` file which can be used with the `join` command to connect clusters to the Broker. This file
 contains the following details:
@@ -54,7 +76,7 @@ contains the following details:
 | Flag                                  | Description
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--kubecontext` `<string>`            | kubeconfig context to use
+| `--context` `<string>`                | kubeconfig context to use
 | `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
 | `--version` `<string>`                | Image version (default image tag "devel")
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
@@ -77,7 +99,7 @@ discoverable from other clusters in the Submariner deployment.
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--context` `<string>`       | Kubeconfig context to use
 | `--namespace` `<string>`     | Namespace to use
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
@@ -94,7 +116,7 @@ same name from being exported to other clusters.
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--context` `<string>`       | Kubeconfig context to use
 | `--namespace` `<string>`     | Namespace to use
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
@@ -207,11 +229,11 @@ Shows the aggregated information from all the other show commands.
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--kubecontext` `<string>`   | Kubeconfig context to use
+| `--context` `<string>`       | Kubeconfig context to use
 
 ### `verify`
 
-`subctl verify --kubecontexts <context1>,<context2> [flags]`
+`subctl verify --context <context1> --tocontext <context2> [flags]`
 
 The `verify` command verifies a Submariner deployment between two clusters is functioning properly. `<context1>` will be
 `ClusterA` in the reports, while `<context2>` will be `ClusterB` in the reports. The `--verbose` flag is recommended to see what's
@@ -251,7 +273,7 @@ that this verification is disruptive.
 
 #### `benchmark throughput`
 
-`subctl benchmark throughput --kubecontexts <context1>[,<context2>] [flags]`
+`subctl benchmark throughput --context <context1> [--tocontext <context2>] [flags]`
 
 The `benchmark throughput` command runs a throughput benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [iperf](https://iperf.fr/) tool and logs the output to the console.
@@ -262,7 +284,7 @@ When running `benchmark throughput`, two types of tests will be executed:
 
 #### `benchmark latency`
 
-`subctl benchmark latency --kubecontexts <context1>[,<context2>] [flags]`
+`subctl benchmark latency --context <context1> [--tocontext <context2>] [flags]`
 
 The `benchmark latency` command runs a latency benchmark test between two specified clusters or within a single cluster.
 It deploys a Pod to run the [netperf](https://hewlettpackard.github.io/netperf/doc/netperf.html) tool and logs the output to the console.
@@ -275,7 +297,6 @@ When running `benchmark latency`, two types of tests will be executed:
 <!-- markdownlint-disable line-length -->
 | Flag                                | Description
 |:------------------------------------|:----------------------------------------------------------------------------|
-| `--intra-cluster`                   | Performs the benchmark test within a single cluster between Pods from a Non-Gateway node to a Gateway node
 | `--verbose`                         | Produce verbose logs during benchmark tests
 <!-- markdownlint-enable line-length -->
 
@@ -294,8 +315,8 @@ Below is a list of available sub-commands:
 | `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
 | `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>`
 | `cni`                      | checks if the detected CNI network plugin is supported by Submariner
-| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>` , `--verbose`, `--namespace` `<string>`
-| `firewall inter-cluster <localkubeconfig> <remotekubeconfig> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
+| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
+| `firewall inter-cluster --context <localcontext> --remotecontext <remotecontext> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
 | `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  
 <!-- markdownlint-enable line-length -->
 
@@ -314,15 +335,15 @@ Below is a list of available sub-commands:
 | Flag                         | Description
 |:-----------------------------|:----------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--kubecontext` `<string>`   | Kubeconfig context to use
-| `--in-cluster`              | Use the in-cluster configuration to connect to Kubernetes.
+| `--context` `<string>`       | Kubeconfig context to use
+| `--in-cluster`               | Use the in-cluster configuration to connect to Kubernetes.
 
 ### `gather`
 
 The `subctl gather` command is a tool that collects various information from clusters to aid in troubleshooting a
 Submariner deployment, including Kubernetes resources and Pod logs. Clusters from which information is gathered are provided
 via the `--kubeconfig` flag (or the `KUBECONFIG` environment variable). By default it will gather information from all the cluster contexts contained
-in the kubeconfig. To gather information from specific clusters, contexts can be passed using `kubecontexts` flag.
+in the kubeconfig. To gather information from specific clusters, contexts can be passed using `--contexts` flag.
 
 The tool creates a UTC timestamped directory of the format `submariner-YYYYMMDDHHMMSS` containing various files.
 Kubernetes resources are written to YAML files with the naming format `<cluster-name>_<resource-type>_<namespace>_<resource-name>.yaml`.
@@ -336,7 +357,7 @@ to the CNI and Submariner cable driver in use from each node using file format `
 | Flag                       | Description
 |:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`  | Absolute path(s) to the kubeconfig file(s)
-| `--kubecontexts` `<string>`| comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
+| `--contexts` `<string>`    | comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
 | `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is `operator,connectivity,service-discovery,broker`
 | `--type` `<string>`        | Comma-separated list of data types to gather. Default is `logs,resources`
 
@@ -353,11 +374,11 @@ It is recommended to use this when reporting any issue.
 
 ##### `gather` all from specific clusters
 
-`subctl gather --kubecontexts cluster-east`
+`subctl gather --contexts cluster-east`
 
 ##### `gather` operator and connectivity logs from specific clusters
 
-`subctl gather --kubecontexts cluster-east,cluster-west --module operator,connectivity --type logs`
+`subctl gather --contexts cluster-east,cluster-west --module operator,connectivity --type logs`
 
 ##### `gather` broker and service-discovery resources from all clusters
 
@@ -444,7 +465,7 @@ firewall ports opened and will only label the required number of gateway nodes f
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
-| `--kubecontexts` `<string>`      | Comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
+| `--context` `<string>`           | Kubernetes context to use
 
 #### `cloud cleanup`
 
@@ -503,7 +524,7 @@ This command removes the labels from gateway nodes after Submariner uninstallati
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
-| `--kubecontexts` `<string>`      | kubeconfig context to use
+| `--context` `<string>`           | Kubernetes context to use
 
 ### `version`
 
