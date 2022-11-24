@@ -50,6 +50,7 @@ The script uses the following environment variables. Please change them accordin
 * `UPSTREAM_REMOTE`: the remote for the upstream repository. Defaults to `origin`.
 * `FORK_REMOTE`: the remote for your forked repository. Defaults to `GITHUB_USER`.
 * `GITHUB_USER`: needs to be set to your GitHub username.
+* `GITHUB_TOKEN`: a personal GitHub token, with at least “read:org” and “repo” scopes.
 
 ### Pull requests requiring dependent backports
 
