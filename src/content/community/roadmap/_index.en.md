@@ -35,4 +35,4 @@ If we are missing something that would make Submariner more useful to you, pleas
 information on how you intend to use Submariner with that feature.
 
 [cal]: https://calendar.google.com/calendar/r?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
-[projects]: https://github.com/orgs/submariner-io/projects
+[projects]: https://github.com/orgs/submariner-io/projects?type=classic
