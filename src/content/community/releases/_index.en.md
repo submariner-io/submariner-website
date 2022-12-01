@@ -4,6 +4,15 @@ title = "Releases"
 weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
+## v0.13.2
+
+* Added support for OpenShift 4.12.
+* Service Discovery now returns a DNS error message in the response body when no matching records are found when queried about
+  `clusterset.local`. This prevents unnecessary retries.
+* Stop using cluster-owned tag for AWS Security Group lookup.
+* Avoid using api.ipify.org as the first resolver for public IPs.
+* It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
+
 ## v0.14.0
 
 ### New features
@@ -64,7 +73,7 @@ e.g.: `make e2e using=subctl-verify SUBCTL_VERIFICATIONS=connectivity,service-di
 * A new ServiceExport status condition type named Synced was added that indicates whether or not the ServiceImport
 was successfully synced to the broker.
 * Service Discovery now handles updates to an exported service and updates/deletes the corresponding ServiceImport accordingly.
-* Service Discovery now returns a DNS error message in the response body when no matching records are found for the query to
+* Service Discovery now returns a DNS error message in the response body when no matching records are found when queried about
 `clusterset.local`. This prevents unnecessary retries.
 * Cloud cleanup for OpenStack now identifies and deletes failed MachineSets.
 * Privileges of the Route Agent and Gateway pods were reduced as they don’t need to access PersistentVolumeClaims and Secrets.
