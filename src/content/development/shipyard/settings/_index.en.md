@@ -33,6 +33,7 @@ The possible settings are:
     and **`ovn`**.
   * **`nodes`**: A space separated list of nodes to deploy, supported types are **`control-plane`** and **`worker`**.
   * **`submariner`**: If Submariner should be deployed, set to **`true`**. Otherwise, leave unset (or set to **`false`** explicitly).
+  * **`gateways`**: Number of gateway nodes to deploy.
 
 ## Settings File Examples
 
@@ -61,4 +62,19 @@ clusters:
     cni:
     submariner: false
     nodes: control-plane
+```
+
+The following settings file deploys two clusters.
+As no **`gateways`** setting is specified either globally or for the first cluster specifically,
+the first cluster will get have a single gateway node by default.
+The second cluster will be deployed with one control node and three worker nodes, with two of the nodes labeled as gateway nodes.
+
+```yaml
+submariner: true
+nodes: control-plane worker
+clusters:
+  cluster1:
+  cluster2:
+    nodes: control-plane worker worker worker
+    gateways: 2
 ```
