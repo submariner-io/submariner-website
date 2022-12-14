@@ -147,6 +147,19 @@ user-specified namespace is missing any of these labels, `subctl` will inform th
 network topologies where MTU issues are seen. To force a particular MSS clamping value use the `submariner.io/tcp-clamp-mss` node annotation
 on Gateway nodes, e.g. `kubectl annotate node <node_name> submariner.io/tcp-clamp-mss=<value>`.
 
+## v0.12.3
+
+This is a bugfix release:
+
+* Image version hashes are now 12 character long, avoiding possible collisions between images.
+* Stop using cluster-owned tag for AWS cloud prepare, fixing problems with Submariner security groups left over after uninstallation.
+* Support overriding the MTU value used in TCP MSS clamping, allowing fine tuning of MTU when necessary.
+* CNI interface annotations created by Submariner are now removed during uninstallation.
+* Bump x/text to address CVE-2021-38561 and CVE-2022-32149.
+* Diagnose now validates if the `OVNKubernetes` CNI is supported by the deployed Submariner.
+* Set `DNSPolicy` to `ClusterFirstWithHostNet` for pods that run with host networking.
+* Service Discovery now writes the DNS message response body when it is not a `ServerFailure` to avoid unnecessary client retries.
+
 ## v0.12.2
 
 This is a bugfix release:
