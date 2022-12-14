@@ -145,7 +145,7 @@ This is a bugfix release:
 * Bump x/text to address CVE-2021-38561 and CVE-2022-32149.
 * Diagnose now validates if the `OVNKubernetes` CNI is supported by the deployed Submariner.
 * Set `DNSPolicy` to `ClusterFirstWithHostNet` for pods that run with host networking.
-* Write the DNS message response body when it is not a `ServerFailure` to avoid unnecessary client retries.
+* Service Discovery now writes the DNS message response body when it is not a `ServerFailure` to avoid unnecessary client retries.
 
 ## v0.12.2
 
