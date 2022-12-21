@@ -4,6 +4,15 @@ title = "Releases"
 weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
+## v0.13.3
+
+This is a bugfix release:
+
+* The `subctl diagnose kube-proxy-mode` command now works with different versions of iproute packages.
+* The following changes were made to pods running `subctl diagnose` commands in order to allow them to run commands like `tcpdump`:
+  * Make the `diagnose` pod privileged.
+  * Run the `diagnose` pod with user ID 0.
+
 ## v0.12.3
 
 This is a bugfix release:
