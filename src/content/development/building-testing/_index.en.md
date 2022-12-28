@@ -113,10 +113,18 @@ make e2e using=ovn
 
 See [Shipyard's `Makefile.inc`](https://github.com/submariner-io/shipyard/blob/devel/Makefile.inc) for the currently-supported `using` flags.
 
-A subset of tests can be selected with Ginkgo `focus` flags:
+Additional Ginkgo flags can be passed using the `TEST_ARGS` flag.
+
+For example, a subset of tests can be selected with Ginkgo's `focus` flags:
 
 ```shell
-make e2e focus=dataplane
+make e2e TEST_ARGS='-ginkgo.focus=dataplane'
+```
+
+Alternatively, it's possible to skip test(s) using Ginkgo's `skip` flag:
+
+```shell
+make e2e TEST_ARGS='-ginkgo.skip=dataplane'
 ```
 
 To create a multi-cluster deployment and install Submariner but not run tests:
