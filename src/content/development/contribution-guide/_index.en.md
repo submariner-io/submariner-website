@@ -10,20 +10,20 @@ in order for their contributions to the project to be addressed in a timely mann
 
 ## Project Resources
 
-Submariner uses [GitHub Projects] to manage releases. Read [Tracking Progress on your Project Board] to learn more on how to work with
+Submariner uses [GitHub Projects] to manage releases. Read [Tracking Progress on your Project Board] to learn more about how to work with
 projects.
 
 ### Backlog Board
 
-[The backlog board] hosts issues or features that are intended to be worked upon. While each issue is opened in
+[The backlog board] hosts issues, bugs and features which are not a part of a particular release board. While each issue is opened in
 its corresponding repository, this board gives an aggregated view of all open issues across all repositories. The board has total of seven
-columns. Any issue or epic opened should be assigned to `Backlog` Projects in `Backlog` column. Issues intenteded to be
-worked on for the next release are moved to `Next Version Candidate` column. During [pre-planning](#Pre-Planning), issues from the `Next
-Version Candidate` column are triaged. Issues or epics properly triaged, with assignees and priority labels addeded, are moved to [current
-release board](#Current Release Board). The next 3 columns are of priority. All unassigned issues are sorted into these three columns
-based on the priority discussed in the team meeting. Issues from these columns should be worked on if the current release work is
-finished. Any leftover work from the previous release goes to the `Work in Progess column`. `Close?` column holds any issue/epic that
-could probably be closed for various reasons.
+columns. Any new issues or epics should typically be assigned to the `Backlog` column. Epics which are candidates to be included in
+the next release are moved to the `Next Version Candidate` column. During [planning](#planning), all epics from the `Next
+Version Candidate` column are reviewed and triaged. Epics which are selected to be in the next release are moved to
+the [current release board](#current-release-board). The next 3 columns sort issues by priority. All unassigned issues are sorted into these
+three columns based on the priority discussed in the team meeting. Issues from these columns are ready to be worked on. Any leftover work
+from the previous release goes to the `Work in Progress column`. The `Close?` column holds any issues/epics that can probably be closed for
+various reasons.
 
 ### Current Release Board
 
@@ -35,8 +35,9 @@ is moved to `Done` column.
 
 ### Enhancements Repository
 
-All enhancement proposals need to be submitted to the [enhancements repository]. To submit a new enhancement proposal, raise an
-[Enhancement Request issue] on the repository.
+The [Enhancements repository] is used for tracking [epics](#epics) as issues, and their corresponding enhancement proposals (the epics design)
+as [pull requests to the enhancements repository]. Any medium or small enhancement should be opened as an issue in the relevant repository,
+or as a general [Enhancement Request issue].
 
 ### Releases Repository
 
