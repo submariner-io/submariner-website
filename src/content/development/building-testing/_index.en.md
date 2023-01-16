@@ -118,13 +118,13 @@ Additional Ginkgo flags can be passed using the `TEST_ARGS` flag.
 For example, a subset of tests can be selected with Ginkgo's `focus` flags:
 
 ```shell
-make e2e TEST_ARGS='-ginkgo.focus=dataplane'
+make e2e TEST_ARGS='--ginkgo.focus=dataplane'
 ```
 
 Alternatively, it's possible to skip test(s) using Ginkgo's `skip` flag:
 
 ```shell
-make e2e TEST_ARGS='-ginkgo.skip=dataplane'
+make e2e TEST_ARGS='--ginkgo.skip=dataplane'
 ```
 
 To create a multi-cluster deployment and install Submariner but not run tests:
