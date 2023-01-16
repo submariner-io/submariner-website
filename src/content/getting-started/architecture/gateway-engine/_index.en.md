@@ -73,6 +73,7 @@ In this case, Libreswan is configured to create 4 IPsec tunnels to allow for:
 * Service subnet to Service subnet connectivity
 
 ![Figure 2 - Clusters inter-connected using IPsec tunnel mode](/images/cable-drivers/ipsec_cable.png)
+<!-- Image Source (draw.io): src/static/images/cable-drivers/cable_driver_networking.drawio -->
 
 #### VXLAN
 
@@ -89,6 +90,7 @@ The figure shows a simple interaction (a ping from one pod in one cluster to ano
 a second cluster) when Submariner is used.
 
 ![Figure 3 - Clusters inter-connected using VXLAN tunnels](/images/cable-drivers/vxlan_cable.png)
+<!-- Image Source (draw.io): src/static/images/cable-drivers/cable_driver_networking.drawio -->
 
 ### Gateway Failover
 
