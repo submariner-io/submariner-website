@@ -119,7 +119,7 @@ After the first invocation, the command needs to be run on branches based on the
 {{% /notice %}}
 
 Once there isn't anything else to do, the command will inform you. At this point, continue manually with any steps not automated yet,
-starting with [Verify Release](#verify).
+starting with [Verify Release](#step-5-verify-release).
 
 ## Manual Release Creation Process
 
@@ -308,7 +308,7 @@ Once the `submariner-operator` and `submariner-charts` releases are complete, we
    unpin the Shipyard Dapper base image version, that is set it back to `devel`. For ongoing development we want each project to
    automatically pick up the latest changes to the base image.
 
-### Step 5: Verify Release <a id="verify"></a>
+### Step 5: Verify Release
 
 You can follow any of the [quick start guides](../../getting-started/quickstart).
 
