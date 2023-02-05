@@ -31,6 +31,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Blogs
 
+* [Connect AWS EKS Clusters with Submariner (2023-02)](https://blog-v1-hugo--pr243-submariner-r4qcuaz0.web.app/post/connect-eks-clusters-with-submariner/)
 * [Orchestrating Multi-Region Apps with Red Hat Advanced Cluster Management and Submariner (2022-08)](https://aws.amazon.com/blogs/apn/orchestrating-multi-region-apps-with-red-hat-advanced-cluster-management-and-submariner/)
 * [Set up an Istio Multicluster Service Mesh with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2022-02)](https://cloud.redhat.com/blog/set-up-an-istio-multicluster-service-mesh-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
 * [Set up Istio Multicluster with Submariner in Red Hat Advanced Cluster Management for Kubernetes (2021-10)](https://cloud.redhat.com/blog/set-up-istio-multicluster-with-submariner-in-red-hat-advanced-cluster-management-for-kubernetes)
