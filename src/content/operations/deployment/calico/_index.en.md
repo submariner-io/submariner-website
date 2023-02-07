@@ -11,6 +11,11 @@ requires these rules to be applied prior to the ones programmed by the network p
 Submariner tries to preserve the source IP of the Pods for cross-cluster communication for visibility,
 ease of debugging, and security purposes.
 
+{{% notice note %}}
+Calico supports different types of overlay networking. Currently, Submariner is validated only
+when Calico is deployed with VXLAN encapsulation.
+{{% /notice %}}
+
 On clusters deployed with Calico as the network plugin, the rules inserted by Calico take
 precedence over Submariner, causing issues with cross-cluster communication.
 To make Calico compatible with Submariner, it needs to be configured, via IPPools,
