@@ -341,7 +341,7 @@ Create Deployment in cluster-b:
 
 ```bash
 export KUBECONFIG=kubeconfig.cluster-b
-kubectl -n default create deployment nginx --image=k8s.gcr.io/nginx-slim:0.8
+kubectl -n default create deployment nginx --image=registry.k8s.io/nginx-slim:0.8
 kubectl -n default expose deployment nginx --port=80
 subctl export service --namespace default nginx
 ```
@@ -398,7 +398,7 @@ spec:
     spec:
       containers:
       - name: nginx-ss
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: registry.k8s.io/nginx-slim:0.8
         ports:
         - containerPort: 80
           name: web
