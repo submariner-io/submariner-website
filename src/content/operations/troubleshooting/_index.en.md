@@ -228,6 +228,8 @@ configmap submariner-lighthouse-coredns` and make sure it has following configur
     }
 ```
 
+In order to enable debug logs in Lighthouse CoreDNS pods, you can replace `errors` with `debug` in the above configmap.
+
 ##### Check CoreDNS Configuration
 
 Submariner requires the CoreDNS deployment to forward requests for the domain `clusterset.local` to the Lighthouse CoreDNS server in the
