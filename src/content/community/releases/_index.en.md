@@ -9,20 +9,20 @@ weight = 40
 This is a bugfix release:
 
 * Fix issues in Azure cloud prepare:
-  * Machine set name now changed to region + uuid and limited to 20 characters to prevent issues long cluster name.
-  * Machine set creation and deletion logic was updated to prevent creation of multiple g/w nodes.
-  * Image name is now obtain from existing Machine set.
-* Fix e2e ext-net socket permission denied error.
+  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
+  * Image names are now retrieved from existing machine sets.
+* Fix a socket permission denied error in external network end-to-end tests.
 * The `subctl gather` command will now gather iptables logs for Calico and kindnet CNIs.
-* Stop calling cloud prepare with empty ports list to avoid errors.
-* Fix issue when `subctl cloud` commands was not always return status.
-* The `subctl` operations which deploys images are now able to override those images. The overrides are specified using `--image-override`:
+* The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
+* `subctl cloud` commands now always return the appropriate status.
+* `subctl` operations which deploy images now allow those images to be overridden. The overrides are specified using `--image-override`:
   * `subctl benchmark`.
   * `subctl verify`.
-  * `subctl diagnose` sub-commands which deploy images.
+  * `subctl diagnose` sub-commands.
 * Fix issues in Service Discovery:
   * Namespace is now included in EndpointSlice name.
-  * Look up service EndpointSlice is now done by labels.
+  * EndpointSlice service lookup is now done using labels.
 * Bump go-restful to 2.16.0 to address CVE-2022-1996.
 
 ## v0.13.3
