@@ -4,6 +4,23 @@ title = "Releases"
 weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
+
+## v0.13.4
+
+This is a bugfix release:
+
+* Fix issues in Azure cloud prepare:
+  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
+  * Image names are now retrieved from existing machine sets.
+* The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
+* The `subctl gather` command will now gather iptables logs for Calico and kindnet CNIs.
+* The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
+* Cloud cleanup for OpenStack now identifies and deletes failed MachineSets.
+* Bump k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
+* Bump golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
+* Bump golang.org/x/net to 0.7.0 to fix a number of security issues.
+
 ## v0.14.2
 
 This is a bugfix release:
@@ -15,14 +32,11 @@ This is a bugfix release:
 * Fix a socket permission denied error in external network end-to-end tests.
 * The `subctl gather` command will now gather iptables logs for Calico and kindnet CNIs.
 * The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
-* `subctl cloud` commands now always return the appropriate status.
 * `subctl` operations which deploy images now allow those images to be overridden. The overrides are specified using `--image-override`:
   * `subctl benchmark`.
   * `subctl verify`.
   * `subctl diagnose` sub-commands.
-* Fix issues in Service Discovery:
-  * Namespace is now included in EndpointSlice name.
-  * EndpointSlice service lookup is now done using labels.
+* The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
 * Bump go-restful to 2.16.0 to address CVE-2022-1996.
 
 ## v0.13.3
