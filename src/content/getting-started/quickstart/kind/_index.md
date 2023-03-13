@@ -30,6 +30,8 @@ cd submariner-operator
 make deploy using=lighthouse
 ```
 
+To deploy IPv4/IPv6 dual-stack Kubernetes clusters, set `using=dual-stack`.
+
 By default, the automation configuration in the `submariner-io/submariner-operator` repository deploys two clusters, with cluster1
 configured as the Broker.
 See the [settings](https://github.com/submariner-io/submariner-operator/blob/devel/.shipyard.e2e.yml) file for details.
