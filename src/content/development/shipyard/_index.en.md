@@ -59,6 +59,7 @@ make deploy USING='globalnet lighthouse wireguard'
   * **`globalnet`**: Deploy clusters with overlapping CIDRs, and Submariner in *Globalnet* mode.
   * **`lighthouse`**: Deploy service discovery (Lighthouse) in addition to the basic deployment.
   * **`ovn`**: Deploy the clusters with the OVN CNI.
+  * **`air-gap`**: Deploy clusters in a simulated air-gapped (disconnected) environment. 
 * Deployment tools.
   * **`helm`**: Deploy clusters using Helm.
   * **`operator`**: Deploy clusters using the Submariner Operator.
