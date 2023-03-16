@@ -38,6 +38,9 @@ This is a bugfix release:
   * `subctl diagnose` sub-commands.
 * The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
 * Bump go-restful to 2.16.0 to address CVE-2022-1996.
+* Bump k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
+* Bump golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
+* Bump golang.org/x/net to 0.7.0 to fix a number of security issues.
 
 ## v0.13.3
 
