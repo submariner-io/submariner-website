@@ -5,6 +5,14 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.3
+
+This is a bugfix release:
+
+* Fix issue with Service addresses being resolved before the service is ready.
+* Varous fixes for the `--image-overrides` flag when used with the `subctl diagnose` command.
+* Fix overriding the metrics proxy component in `subctl join`.
+
 ## v0.13.4
 
 This is a bugfix release:
