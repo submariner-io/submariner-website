@@ -10,7 +10,7 @@ weight = 40
 This is a bugfix release:
 
 * Fix issue with Service addresses being resolved before the service is ready.
-* Varous fixes for the `--image-overrides` flag when used with the `subctl diagnose` command.
+* Various fixes for the `--image-overrides` flag when used with the `subctl diagnose` command.
 * Fix overriding the metrics proxy component in `subctl join`.
 
 ## v0.13.4
