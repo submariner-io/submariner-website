@@ -168,7 +168,7 @@ deployment.
 |:----------------------------------------|:----------------------------------------------------------------------------|
 | `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
 | `--version` `<string>`                  | Image version (default image tag "devel")
-| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner=quay.io/myUser/submariner:latest`)
+| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (health check)
@@ -259,15 +259,16 @@ that this verification is disruptive.
 
 #### `verify` flags
 
-| Flag                                | Description
-|:------------------------------------|:----------------------------------------------------------------------------|
-| `--connection-attempts` `<value>`   | The maximum number of connection attempts (default 2)
-| `--connection-timeout` `<value>`    | The timeout in seconds per connection attempt  (default 60)
-| `--operation-timeout` `<value>`     | Operation timeout for Kubernetes API calls (default 240)
-| `--junit-report` `<string>`         | XML report path and name (default "")
-| `--verbose`                         | Produce verbose logs during connectivity verification
-| `--only`                            | Comma separated list of specific verifications to perform
-| `--disruptive-tests`                | Enable verifications which are potentially disruptive to your deployment
+| Flag                                   | Description
+|:---------------------------------------|:----------------------------------------------------------------------------|
+| `--connection-attempts` `<value>`      | The maximum number of connection attempts (default 2)
+| `--connection-timeout` `<value>`       | The timeout in seconds per connection attempt  (default 60)
+| `--operation-timeout` `<value>`        | Operation timeout for Kubernetes API calls (default 240)
+| `--junit-report` `<string>`            | XML report path and name (default "")
+| `--verbose`                            | Produce verbose logs during connectivity verification
+| `--only`                               | Comma separated list of specific verifications to perform
+| `--disruptive-tests`                   | Enable verifications which are potentially disruptive to your deployment
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
 
 ### `benchmark`
 
@@ -295,9 +296,10 @@ When running `benchmark latency`, two types of tests will be executed:
 
 #### `benchmark` flags
 <!-- markdownlint-disable line-length -->
-| Flag                                | Description
-|:------------------------------------|:----------------------------------------------------------------------------|
-| `--verbose`                         | Produce verbose logs during benchmark tests
+| Flag                                   | Description
+|:---------------------------------------|:----------------------------------------------------------------------------|
+| `--verbose`                            | Produce verbose logs during benchmark tests
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
 <!-- markdownlint-enable line-length -->
 
 ### `diagnose`
@@ -323,11 +325,12 @@ Below is a list of available sub-commands:
 #### `diagnose` flags descriptions
 
 <!-- markdownlint-disable line-length -->
-| Flag                             | Description
-|:---------------------------------|:----------------------------------------------------------------------------|
-| `--namespace` `<string>`         | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
-| `--validation-timeout` `<value>` | Timeout in seconds while validating the connection attempt
-| `--verbose`                      | Produce verbose logs during validation
+| Flag                                   | Description
+|:---------------------------------------|:----------------------------------------------------------------------------|
+| `--namespace` `<string>`               | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
+| `--validation-timeout` `<value>`       | Timeout in seconds while validating the connection attempt
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
+| `--verbose`                            | Produce verbose logs during validation
 <!-- markdownlint-enable line-length -->
 
 #### `diagnose` global flags
