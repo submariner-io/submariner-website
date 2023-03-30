@@ -559,6 +559,19 @@ The following steps are performed:
 | `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`)
 | `--yes`                          | Automatically answer yes to confirmation prompt
 
+### `recover-broker-info`
+
+`subctl recover-broker-info [flags]`
+
+This command recovers a lost `broker-info.subm` file.
+
+#### `recover-broker-info` flags
+
+| Flag                             | Description
+|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
+| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
+| `--context` `<string>`           | kubeconfig context of a cluster where Submariner is installed
+
 ### Running `subctl diagnose` from a Pod in cluster
 
 As of 0.12.0, a [subctl](https://quay.io/repository/submariner/subctl?tab=tags&tag=latest) image is provided for running the `subctl` binary
