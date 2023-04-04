@@ -65,7 +65,7 @@ following network (CNI) Plugins:
 * [OpenShift-SDN](https://github.com/openshift/sdn)
 * [Weave](https://github.com/weaveworks/weave)
 * [Flannel](https://github.com/coreos/flannel)
-* [Canal](https://docs.projectcalico.org/getting-started/kubernetes/flannel/flannel)
+* [Canal](https://docs.tigera.io/calico/latest/getting-started/kubernetes/flannel/install-for-flannel)
 * [Calico](https://www.projectcalico.org/) (see the [Calico-specific deployment instructions](../operations/deployment/calico/))
 * [OVN](https://github.com/ovn-org/ovn-kubernetes) - Requires OVN NorthBound DB version 6.1.0+
 
