@@ -44,6 +44,8 @@ For clusters behind corporate firewalls that block the default ports, Submariner
 * Submariner uses UDP port 4800 to encapsulate Pod traffic from worker and master nodes to the Gateway nodes. This is required in order to
 preserve the source IP addresses of the Pods. Ensure that firewall configuration allows 4800/UDP across all nodes in the cluster in both
 directions. This is not a requirement when using OVN-Kubernetes CNI.
+* If the gateway nodes are directly reachable over their private IPs without any NAT in between, ensure that firewall configuration allows
+ESP protocol on the gateway nodes.
 * Worker node IPs on all connected clusters must be outside of the Pod/Service CIDR ranges.
 * Submariner can be deployed on x86-64 and ARM64 nodes.
   (Submariner components are deployed on _all_ nodes in the cluster,
