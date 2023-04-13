@@ -75,8 +75,6 @@ contains the following details:
 <!-- markdownlint-disable line-length -->
 | Flag                                  | Description
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`             | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--context` `<string>`                | kubeconfig context to use
 | `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
 | `--version` `<string>`                | Image version (default image tag "devel")
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
@@ -96,11 +94,9 @@ discoverable from other clusters in the Submariner deployment.
 
 #### `export service` flags
 
-| Flag                         | Description
-|:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--context` `<string>`       | Kubeconfig context to use
-| `--namespace` `<string>`     | Namespace to use
+| Flag                     | Description
+|:-------------------------|:-------------------|
+| `--namespace` `<string>` | Namespace to use
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
@@ -113,11 +109,9 @@ same name from being exported to other clusters.
 
 #### `unexport service` flags
 
-| Flag                         | Description
-|:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--context` `<string>`       | Kubeconfig context to use
-| `--namespace` `<string>`     | Namespace to use
+| Flag                     | Description
+|:-------------------------|:-------------------|
+| `--namespace` `<string>` | Namespace to use
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
@@ -224,13 +218,6 @@ Shows information about the Broker in the cluster.
 
 Shows the aggregated information from all the other show commands.
 
-#### `show` flags
-
-| Flag                         | Description
-|:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--context` `<string>`       | Kubeconfig context to use
-
 ### `verify`
 
 `subctl verify --context <context1> --tocontext <context2> [flags]`
@@ -336,9 +323,6 @@ Below is a list of available sub-commands:
 #### `diagnose` global flags
 
 | Flag                         | Description
-|:-----------------------------|:----------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`    | Absolute path(s) to the kubeconfig file(s) (default `$HOME/.kube/config`)
-| `--context` `<string>`       | Kubeconfig context to use
 | `--in-cluster`               | Use the in-cluster configuration to connect to Kubernetes.
 
 ### `gather`
@@ -359,8 +343,6 @@ to the CNI and Submariner cable driver in use from each node using file format `
 
 | Flag                       | Description
 |:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`  | Absolute path(s) to the kubeconfig file(s)
-| `--contexts` `<string>`    | comma separated list of kube contexts to use. By default all contexts referenced by kubeconfig are used
 | `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is `operator,connectivity,service-discovery,broker`
 | `--type` `<string>`        | Comma-separated list of data types to gather. Default is `logs,resources`
 
@@ -522,13 +504,6 @@ This command cleans up an installer-provisioned infrastructure (IPI) on OpenStac
 
 This command removes the labels from gateway nodes after Submariner uninstallation.
 
-#### `cleanup` flags
-
-| Flag                             | Description
-|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
-| `--context` `<string>`           | Kubernetes context to use
-
 ### `version`
 
 `subctl version`
@@ -555,7 +530,6 @@ The following steps are performed:
 
 | Flag                             | Description
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
 | `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`)
 | `--yes`                          | Automatically answer yes to confirmation prompt
 
@@ -564,13 +538,6 @@ The following steps are performed:
 `subctl recover-broker-info [flags]`
 
 This command recovers a lost `broker-info.subm` file.
-
-#### `recover-broker-info` flags
-
-| Flag                             | Description
-|:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--kubeconfig` `<string>`        | Absolute path(s) to the kubeconfig file(s)
-| `--context` `<string>`           | kubeconfig context of a cluster where Submariner is installed
 
 ### Running `subctl diagnose` from a Pod in cluster
 
