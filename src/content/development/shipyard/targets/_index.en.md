@@ -12,7 +12,6 @@ Shipyard ships a [Makefile.inc] file which defines these basic targets:
 * **[clean-clusters](#clean-clusters):** Deletes the kind environment (if it exists) and any residual resources.
 * **[clean-generated](#clean-generated):** Deletes all generated files.
 * **[clean](#clean):** Cleans everything up (running clusters and generated files).
-* **vendor/modules.txt:** Populates go modules (in case go.mod exists in the root directory).
 
 If your project uses Shipyard then it has all these targets and supports all the variables these targets support.
 Any variables supported by these targets can be assigned on the `make` command line.
