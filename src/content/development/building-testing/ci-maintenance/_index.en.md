@@ -38,6 +38,18 @@ ENV LINT_VERSION=<version> \
 
 [`submariner-io/shipyard/package/Dockerfile.shipyard-dapper-base`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-dapper-base)
 
+## Shipyard Linting Image Software
+
+Some software used by Shipyard's linting image are pinned to avoid unplanned changes in linting requirements, which can cause disruption.
+These versions should be periodically updated.
+
+```shell
+ENV MARKDOWNLINT_VERSION=0.33.0 \
+    GITLINT_VERSION=0.19.1
+```
+
+[`submariner-io/shipyard/package/Dockerfile.shipyard-linting`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-linting)
+
 ## GitHub Actions
 
 All our projects use GitHub actions.
