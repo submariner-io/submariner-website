@@ -6,6 +6,41 @@ weight: 10
 
 This page documents the maintenance of Submariner's CI/CD for developers.
 
+## GitHub Actions
+
+All our projects use GitHub actions.
+These include dependencies which should be regularly checked for updates.
+Dependabot should be used to submit PRs to keep all GitHub Actions up-to-date.
+Hash-based versions should always be used to ensure there are no changes without an update on our side.
+
+For example, this GitHub Action dependency:
+
+```yaml
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+        with:
+          fetch-depth: 0
+```
+
+Would be updated by this Dependabot configuration:
+
+```yaml
+---
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: daily
+```
+
+Dependabot will only submit updates when projects make releases. That may leave CI broken waiting on a release while a fix is available.
+If a project has a fix but has not made a release that includes it, we should manually update the SHA we consume to include the fix.
+In particular, some projects "release" fixes by moving a tag to a point in git history that includes the fix.
+They assume versioning like `gaurav-nelson/github-action-markdown-link-check@v1`.
+Again, we should always use SHA-based versions, not moveable references like tags, to help mitigate supply-chain attacks.
+
 ## Kubernetes Versions
 
 The versions of Kubernetes tested in Submariner's CI need to be updated for new [Kubernetes releases](https://kubernetes.io/releases/).
@@ -49,38 +84,3 @@ ENV MARKDOWNLINT_VERSION=0.33.0 \
 ```
 
 [`submariner-io/shipyard/package/Dockerfile.shipyard-linting`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-linting)
-
-## GitHub Actions
-
-All our projects use GitHub actions.
-These include dependencies which should be regularly checked for updates.
-Dependabot should be used to submit PRs to keep all GitHub Actions up-to-date.
-Hash-based versions should always be used to ensure there are no changes without an update on our side.
-
-For example, this GitHub Action dependency:
-
-```yaml
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
-        with:
-          fetch-depth: 0
-```
-
-Would be updated by this Dependabot configuration:
-
-```yaml
----
-version: 2
-updates:
-  - package-ecosystem: github-actions
-    directory: '/'
-    schedule:
-      interval: daily
-```
-
-Dependabot will only submit updates when projects make releases. That may leave CI broken waiting on a release while a fix is available.
-If a project has a fix but has not made a release that includes it, we should manually update the SHA we consume to include the fix.
-In particular, some projects "release" fixes by moving a tag to a point in git history that includes the fix.
-They assume versioning like `gaurav-nelson/github-action-markdown-link-check@v1`.
-Again, we should always use SHA-based versions, not moveable references like tags, to help mitigate supply-chain attacks.
