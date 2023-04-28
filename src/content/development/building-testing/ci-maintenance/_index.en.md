@@ -6,9 +6,25 @@ weight: 10
 
 This page documents the maintenance of Submariner's CI/CD for developers.
 
+## Custom GitHub Actions
+
+We have built some custom GitHub Actions in Shipyard for project-internal use.
+They have dependencies on public GitHub Actions that need to be periodically updated.
+
+```text
+[~/go/src/submariner-io/shipyard/gh-actions]$ grep -rni uses
+e2e/action.yaml:77:      uses: submariner-io/shipyard/gh-actions/restore-images@devel
+release-images/action.yaml:17:      uses: docker/setup-qemu-action@e81a89b1732b9c48d79cd809d8d81d79c4647a18
+release-images/action.yaml:19:      uses: docker/setup-buildx-action@4b4e9c3e2d4531116a6f8ba8e71fc6e2cb6e6c8c
+cache-images/action.yaml:14:      uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+restore-images/action.yaml:18:      uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+```
+
+[`submariner-io/shipyard/gh-actions`](https://github.com/submariner-io/shipyard/tree/devel/gh-actions)
+
 ## GitHub Actions
 
-All our projects use GitHub actions.
+All our projects use GitHub Actions.
 These include dependencies which should be regularly checked for updates.
 Dependabot should be used to submit PRs to keep all GitHub Actions up-to-date.
 Hash-based versions should always be used to ensure there are no changes without an update on our side.
