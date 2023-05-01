@@ -5,7 +5,7 @@ weight: 30
 ---
 
 The Submariner documentation website is based on Hugo, Grav,
-[the Hugo Learn theme](https://themes.gohugo.io/themes/hugo-theme-learn/), and is written in
+[the Hugo Learn theme](https://github.com/matcornic/hugo-theme-learn), and is written in
 [Markdown](https://www.markdownguide.org/getting-started/) format.
 
 You can always click the **Edit this page** link at the top right of each page, but if you want to test your changes locally before
