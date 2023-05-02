@@ -332,7 +332,7 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [epic template]: https://github.com/submariner-io/enhancements/blob/devel/.github/ISSUE_TEMPLATE/epic.md
 [pull requests to the enhancements repository]: https://github.com/submariner-io/enhancements/pulls
 [release process]: ../release-process
-[test day template]: https://docs.google.com/spreadsheets/d/1-vvm8k4soCGhIDCECIbMXEEle5Xu1_JkI1VWrfCWk7o
+[test day template]: https://docs.google.com/spreadsheets/d/14wNJAbR2CC3wWdHtxnvnNlft8kSWp-SIFMWJ-hRISao
 [Submariner project]: https://github.com/submariner-io
 [triages tasks and bugs as part of a weekly meeting]: https://docs.google.com/document/d/1ICvOBOUpIEI45Yqcjf26Z1e5mZNzYsEN-H7_3xx54jI
 [Project Members]: https://submariner.io/community/contributor-roles/#member
