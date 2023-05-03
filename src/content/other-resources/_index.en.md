@@ -31,6 +31,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Blogs
 
+* [Embracing the Open Hybrid Multi-Cloud connecting overlay networking from ARO and ROSA clusters (2023-05)](https://rcarrata.com/aro/aro-submariner/)
 * [Connecting overlay networks of ROSA clusters with Submariner (2023-04)](https://rcarrata.com/rosa/rosa-submariner/)
 * [Connect AWS EKS Clusters with Submariner (2023-02)](https://blog.byte.builders/post/connect-eks-clusters-with-submariner/)
 * [Orchestrating Multi-Region Apps with Red Hat Advanced Cluster Management and Submariner (2022-08)](https://aws.amazon.com/blogs/apn/orchestrating-multi-region-apps-with-red-hat-advanced-cluster-management-and-submariner/)
