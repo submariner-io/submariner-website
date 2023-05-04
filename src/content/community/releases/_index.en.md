@@ -5,14 +5,63 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.0
+
+### New features
+
+* To be compliant with the [Kubernetes Multicluster Services specification][MCS KEP], service discovery now distributes a single aggregated
+  ServiceImport to each cluster in the exported service's namespace. Previously each cluster distributed its own ServiceImport copy that was
+  placed in the `submariner-operator` namespace.
+* Submariner can now be installed on a dual-stack Kubernetes cluster although, currently, only IPv4 addresses are supported.
+* Add a `subctl recover-broker-info` command to recover lost a `broker-info.subm` file.
+* It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
+* The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
+* The `subctl gather` command now collects the `ipset` information from all cluster nodes.
+* The `subctl diagnose` command now validates that the Calico IPPool configuration matches Submariner's requirements.
+* The `subctl verify` E2E tests now support setting the packet size used in TCP connectivity tests to troubleshoot MTU issues.
+* The `subctl verify` command now runs FIPS verification tests.
+* Allow overriding the image name of the metrics proxy component.
+* Add endpoints to access profiling information for the gateway and Globalnet binaries.
+* The following deprecated commands and variants have been removed:
+  * `subctl benchmark`’s `--kubecontexts` option (use `--context` and `--tocontext` instead)
+  * `subctl benchmark`’s `--intra-cluster` option (specify a single context to run intra-cluster benchmarks)
+  * `subctl benchmark` with two `kubeconfigs` as command-line arguments
+  * `subctl cloud`’s `--metrics-ports` option
+  * `subctl deploy-broker`’s `--broker-namespace` option (use `--namespace` instead)
+  * `subctl diagnose firewall metrics` (this is checked during deployment)
+  * `subctl diagnose firewall intra-cluster` with two `kubeconfigs` as command-line arguments
+  * `subctl diagnose firewall inter-cluster` with two `kubeconfigs` as command-line arguments
+  * `subctl gather`’s `--kubecontexts` option (use `--contexts` instead)
+* Deprecate the `subctl cloud prepare ... --dedicated-gateway` flag, as it's not actually used.
+* Deprecate the `subctl cloud prepare generic` command, as it's not actually used.
+
+### Other changes
+
+* Service Discovery-only deployments now works properly without the connectivity component deployed.
+* The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
+* Changes in Azure cloud prepare:
+  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
+  * Image names are now retrieved from existing machine sets.
+* Fix stale iptables rules and a global IP leak which can sometimes happen when a `GlobalEgressIP` is created and immediately deleted as
+  part of stress testing.
+* Label gateway nodes as infrastructure with `node-role.kubernetes.io/infra=""` to prevent them from counting against OpenShift subscriptions.
+* Submariner now handles out of order remote endpoint notifications properly in various handlers associated with the Route Agent component.
+* Submariner now ensures that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after
+  they are created. This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
+* Fix intermittent failure where gateway connections sometimes don't get established.
+* Fix an issue whereby the flags for `subctl unexport service` were not recognized.
+* The `subctl diagnose cni` command no longer fails for the Calico CNI when the `natOutgoing` IPPool status is missing.
+* Fix CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't affect Submariner but were flagged in deliverables.
+
 ## v0.14.4
 
 This is a bugfix release:
 
-* Fixed stale IPtable rules along with globalIP leak which can sometimes happen as part of stress testing.
+* Fixed stale IPtable rules along with global IP leak which can sometimes happen as part of stress testing.
 * Handle out of order remote endpoint notifications properly in various Route Agent handlers.
 * Ensure that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after they are created.
-  This fix was necessary for RHEL9 nodes where the setting was sometimes getting overwritten.
+  This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
 * Fixed issues while spawning Gateway nodes during cloud prepare for clusters deployed on OpenStack environment running OVN-Kubernetes CNI.
 * The `subctl gather` command now collects the `ipset` information from all cluster nodes.
 
@@ -28,12 +77,12 @@ This is a bugfix release:
 
 This is a bugfix release:
 
-* Fix issues in Azure cloud prepare:
+* Changes in Azure cloud prepare:
   * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
 * The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
-* The `subctl gather` command will now gather iptables logs for Calico and kindnet CNIs.
+* The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
 * Cloud cleanup for OpenStack now identifies and deletes failed MachineSets.
 * Bump k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
@@ -44,12 +93,12 @@ This is a bugfix release:
 
 This is a bugfix release:
 
-* Fix issues in Azure cloud prepare:
+* Changes in Azure cloud prepare:
   * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
 * Fix a socket permission denied error in external network end-to-end tests.
-* The `subctl gather` command will now gather iptables logs for Calico and kindnet CNIs.
+* The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
 * `subctl` operations which deploy images now allow those images to be overridden. The overrides are specified using `--image-override`:
   * `subctl benchmark`.
