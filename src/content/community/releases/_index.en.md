@@ -5,6 +5,17 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.4
+
+This is a bugfix release:
+
+* Fixed stale IPtable rules along with globalIP leak which can sometimes happen as part of stress testing.
+* Handle out of order remote endpoint notifications properly in various Route Agent handlers.
+* Ensure that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after they are created.
+  This fix was necessary for RHEL9 nodes where the setting was sometimes getting overwritten.
+* Fixed issues while spawning Gateway nodes during cloud prepare for clusters deployed on OpenStack environment running OVN-Kubernetes CNI.
+* The `subctl gather` command now collects the `ipset` information from all cluster nodes.
+
 ## v0.14.3
 
 This is a bugfix release:
