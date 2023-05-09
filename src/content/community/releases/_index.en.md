@@ -77,7 +77,7 @@ This is a bugfix release:
 
 This is a bugfix release:
 
-* Fixed stale IPtable rules along with global IP leak which can sometimes happen as part of stress testing.
+* Fixed stale iptables rules along with global IP leak which can sometimes happen as part of stress testing.
 * Handle out-of-order remote endpoint notifications properly in various Route Agent handlers.
 * Ensure that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after they are created.
   This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.

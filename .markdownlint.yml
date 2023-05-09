@@ -31,6 +31,8 @@ spelling:
     - HTTP
     - IPsec
     - iptables
+    # Use iptables instead of iptable, but this lints to avoid IPtable
+    - iptable
     - kind
     - Kubernetes
     - Lighthouse
