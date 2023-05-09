@@ -59,3 +59,9 @@ Avoid referring to things as "new", as this will become out of date and require 
 Instead, document the versions that introduce or remove features:
 
 > As of 0.12.0, a `subctl` image is provided ...
+
+### Release Notes Formatting
+
+Follow the [Kubernetes guidelines for writing good release notes](https://www.k8s.dev/docs/guide/release-notes/#writing-good-release-notes).
+
+In particular, note that release notes should be written in past tense.
