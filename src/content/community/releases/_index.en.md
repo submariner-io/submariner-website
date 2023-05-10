@@ -9,12 +9,12 @@ weight = 40
 
 ### New features
 
-* To be compliant with the [Kubernetes Multicluster Services specification][MCS KEP], service discovery now distributes a single aggregated
-  ServiceImport to each cluster in the exported service's namespace. Previously each cluster distributed its own ServiceImport copy that was
-  placed in the `submariner-operator` namespace.
-* Submariner can now be installed on a dual-stack Kubernetes cluster although, currently, only IPv4 addresses are supported.
+* To be compliant with the [Kubernetes Multicluster Services specification][MCS KEP], Service Discovery now distributes a single aggregated
+  ServiceImport to each cluster in the exported service's namespace. Previously, each cluster distributed its own ServiceImport copy that
+was placed in the `submariner-operator` namespace.
+* Submariner can now be installed on IPv4/IPv6 dual-stack Kubernetes clusters. Currently, only IPv4 addresses are supported.
 * Add a `subctl recover-broker-info` command to recover lost a `broker-info.subm` file.
-* It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
+* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 * The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl gather` command now collects the `ipset` information from all cluster nodes.
 * The `subctl diagnose` command now validates that the Calico IPPool configuration matches Submariner's requirements.
@@ -37,29 +37,29 @@ weight = 40
 
 ### Other changes
 
-* Service Discovery-only deployments now works properly without the connectivity component deployed.
-* The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
+* Service Discovery-only deployments now work properly without the connectivity component deployed.
+* Names of `EndpointSlice` objects now include their namespace to avoid conflicts between services with the same name in multiple namespaces.
 * Changes in Azure cloud prepare:
-  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set names are now based on region + UUID and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
 * Fix stale iptables rules and a global IP leak which can sometimes happen when a `GlobalEgressIP` is created and immediately deleted as
   part of stress testing.
 * Label gateway nodes as infrastructure with `node-role.kubernetes.io/infra=""` to prevent them from counting against OpenShift subscriptions.
-* Submariner now handles out of order remote endpoint notifications properly in various handlers associated with the Route Agent component.
+* Submariner now handles out-of-order remote endpoint notifications properly in various handlers associated with the Route Agent component.
 * Submariner now ensures that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after
   they are created. This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
 * Fix intermittent failure where gateway connections sometimes don't get established.
 * Fix an issue whereby the flags for `subctl unexport service` were not recognized.
 * The `subctl diagnose cni` command no longer fails for the Calico CNI when the `natOutgoing` IPPool status is missing.
-* Fix CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't affect Submariner but were flagged in deliverables.
+* Fix CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't effect Submariner but were flagged in deliverables.
 
 ## v0.14.4
 
 This is a bugfix release:
 
 * Fixed stale IPtable rules along with global IP leak which can sometimes happen as part of stress testing.
-* Handle out of order remote endpoint notifications properly in various Route Agent handlers.
+* Handle out-of-order remote endpoint notifications properly in various Route Agent handlers.
 * Ensure that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after they are created.
   This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
 * Fixed issues while spawning Gateway nodes during cloud prepare for clusters deployed on OpenStack environment running OVN-Kubernetes CNI.
@@ -78,7 +78,7 @@ This is a bugfix release:
 This is a bugfix release:
 
 * Changes in Azure cloud prepare:
-  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set names are now based on region + UUID and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
 * The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
@@ -94,7 +94,7 @@ This is a bugfix release:
 This is a bugfix release:
 
 * Changes in Azure cloud prepare:
-  * Machine set names are now based on region + uuid and limited to 20 characters to prevent issues with long cluster names.
+  * Machine set names are now based on region + UUID and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
 * Fix a socket permission denied error in external network end-to-end tests.
@@ -152,7 +152,7 @@ to avoid pod security errors.
   `clusterset.local`. This prevents unnecessary retries.
 * Stop using cluster-owned tag for AWS Security Group lookup.
 * Avoid using api.ipify.org as the first resolver for public IPs.
-* It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
+* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 
 ## v0.14.0
 
@@ -220,7 +220,7 @@ was successfully synced to the broker.
 * Privileges of the Route Agent and Gateway pods were reduced as they don’t need to access PersistentVolumeClaims and Secrets.
 * The privileged SCC permission for Submariner components in OCP is set now by creating separate `ClusterRole` and `ClusterRoleBinding`
 resources instead of manipulating the system privileged SCC resource.
-* It is now possible to customize the default TCP MSS clamping value set by Submariner also for non-Globalnet deployments.
+* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 * The `subctl show` command now correctly reports component image versions when image overrides were specified on `join`.
 * Updates to the `subctl gather` command:
   * The `subctl gather` command now creates one subdirectory per cluster instead of embedding the cluster name in each file name.
