@@ -138,7 +138,7 @@ will try to avoid using NAT.
 
 ### All Public Cloud, with Some Private Reachability
 
-In this case case, the gateways for clusters A and B have direct reachability
+In this case, the gateways for clusters A and B have direct reachability
 over their private IPs (10.0.0.1 and 10.1.0.1) possibly with large MTU capabilities.  The
 same is true for clusters C and D (192.168.0.4 and 192.168.128.4).
 
@@ -175,7 +175,7 @@ sure that the gateways have port 4490/udp open, as well as the encapsulation por
 
 ### Public Cloud vs On-Premises
 
-In this case case, A & B cluster gateways have direct reachability over their private
+In this case, A & B cluster gateways have direct reachability over their private
 IPs (10.0.0.1 and 10.1.0.1) possibly with large MTU capabilities. The
 same is true for the C & D cluster gateways (192.168.0.4 and 192.168.128.4).
 
@@ -272,7 +272,7 @@ Clusters C and D will connect normally.
 
 ### Multiple on-premise sites
 
-In this case case, A & B cluster gateways have direct reachability over their private
+In this case, A & B cluster gateways have direct reachability over their private
 IPs (10.0.0.1 and 10.1.0.1) possibly with large MTU capabilities. The
 same is true for the C & D cluster gateways (192.168.0.4 and 192.168.128.4).
 
