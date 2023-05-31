@@ -5,6 +5,20 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.13.5
+
+This is a bugfix release:
+
+* Submariner now ensures that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after
+  they are created. This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
+* Fixed intermittent failure where gateway connections sometimes don't get established.
+* Submariner now handles out-of-order remote endpoint notifications properly in various handlers associated with the Route Agent component.
+* Fixed stale iptables rules and a global IP leak which can sometimes happen when a `GlobalEgressIP` is created and immediately deleted as
+  part of stress testing.
+* Fixed issues while spawning Gateway nodes during cloud prepare for clusters deployed on OpenStack environment running OVN-Kubernetes CNI.
+* Fixed issue with Service addresses being resolved before the service is ready.
+* The `subctl gather` command now collects the `ipset` information from all cluster nodes.
+
 ## v0.15.0
 
 ### New features
