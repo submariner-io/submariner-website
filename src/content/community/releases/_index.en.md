@@ -5,6 +5,15 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.5
+
+This is a bugfix release:
+
+* The `subctl gather` command now collects iptables information for OVN-Kubernetes CNI.
+* Fixed issue while running `subctl gather` command for OVN-Kubernetes CNI.
+* Fixed issue where a Gateway pod restart due to SIGINT or SIGTERM signals caused data path disruption.
+* Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
+
 ## v0.15.1
 
 This is a bugfix release:
