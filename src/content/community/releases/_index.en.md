@@ -27,15 +27,15 @@ This is a bugfix release:
   ServiceImport to each cluster in the exported service's namespace. Previously, each cluster distributed its own ServiceImport copy that
 was placed in the `submariner-operator` namespace.
 * Submariner can now be installed on IPv4/IPv6 dual-stack Kubernetes clusters. Currently, only IPv4 addresses are supported.
-* Add a `subctl recover-broker-info` command to recover lost a `broker-info.subm` file.
-* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
+* Added a `subctl recover-broker-info` command to recover lost a `broker-info.subm` file.
+* Extended the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 * The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl gather` command now collects the `ipset` information from all cluster nodes.
 * The `subctl diagnose` command now validates that the Calico IPPool configuration matches Submariner's requirements.
 * The `subctl verify` E2E tests now support setting the packet size used in TCP connectivity tests to troubleshoot MTU issues.
 * The `subctl verify` command now runs FIPS verification tests.
 * Allow overriding the image name of the metrics proxy component.
-* Add endpoints to access profiling information for the gateway and Globalnet binaries.
+* Added endpoints to access profiling information for the gateway and Globalnet binaries.
 * The following deprecated commands and variants have been removed:
   * `subctl benchmark`’s `--kubecontexts` option (use `--context` and `--tocontext` instead)
   * `subctl benchmark`’s `--intra-cluster` option (specify a single context to run intra-cluster benchmarks)
@@ -46,8 +46,8 @@ was placed in the `submariner-operator` namespace.
   * `subctl diagnose firewall intra-cluster` with two `kubeconfigs` as command-line arguments
   * `subctl diagnose firewall inter-cluster` with two `kubeconfigs` as command-line arguments
   * `subctl gather`’s `--kubecontexts` option (use `--contexts` instead)
-* Deprecate the `subctl cloud prepare ... --dedicated-gateway` flag, as it's not actually used.
-* Deprecate the `subctl cloud prepare generic` command, as it's not actually used.
+* Deprecated the `subctl cloud prepare ... --dedicated-gateway` flag, as it's not actually used.
+* Deprecated the `subctl cloud prepare generic` command, as it's not actually used.
 
 ### Other changes
 
@@ -57,16 +57,16 @@ was placed in the `submariner-operator` namespace.
   * Machine set names are now based on region + UUID and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
-* Fix stale iptables rules and a global IP leak which can sometimes happen when a `GlobalEgressIP` is created and immediately deleted as
+* Fixed stale iptables rules and a global IP leak which can sometimes happen when a `GlobalEgressIP` is created and immediately deleted as
   part of stress testing.
 * Label gateway nodes as infrastructure with `node-role.kubernetes.io/infra=""` to prevent them from counting against OpenShift subscriptions.
 * Submariner now handles out-of-order remote endpoint notifications properly in various handlers associated with the Route Agent component.
 * Submariner now ensures that reverse path filtering setting is properly applied on the `vx-submariner` and `vxlan-tunnel` interfaces after
   they are created. This fix was necessary for RHEL 9 nodes where the setting was sometimes getting overwritten.
-* Fix intermittent failure where gateway connections sometimes don't get established.
-* Fix an issue whereby the flags for `subctl unexport service` were not recognized.
+* Fixed intermittent failure where gateway connections sometimes don't get established.
+* Fixed an issue whereby the flags for `subctl unexport service` were not recognized.
 * The `subctl diagnose cni` command no longer fails for the Calico CNI when the `natOutgoing` IPPool status is missing.
-* Fix CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't effect Submariner but were flagged in deliverables.
+* Fixed CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't effect Submariner but were flagged in deliverables.
 
 ## v0.14.4
 
@@ -83,9 +83,9 @@ This is a bugfix release:
 
 This is a bugfix release:
 
-* Fix issue with Service addresses being resolved before the service is ready.
+* Fixed issue with Service addresses being resolved before the service is ready.
 * Various fixes for the `--image-overrides` flag when used with the `subctl diagnose` command.
-* Fix overriding the metrics proxy component in `subctl join`.
+* Fixed overriding the metrics proxy component in `subctl join`.
 
 ## v0.13.4
 
@@ -99,9 +99,9 @@ This is a bugfix release:
 * The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
 * Cloud cleanup for OpenStack now identifies and deletes failed MachineSets.
-* Bump k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
-* Bump golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
-* Bump golang.org/x/net to 0.7.0 to fix a number of security issues.
+* Bumped k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
+* Bumped golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
+* Bumped golang.org/x/net to 0.7.0 to fix a number of security issues.
 
 ## v0.14.2
 
@@ -111,7 +111,7 @@ This is a bugfix release:
   * Machine set names are now based on region + UUID and limited to 20 characters to prevent issues with long cluster names.
   * Machine set creation and deletion logic was updated to prevent creation of multiple gateway nodes.
   * Image names are now retrieved from existing machine sets.
-* Fix a socket permission denied error in external network end-to-end tests.
+* Fixed a socket permission denied error in external network end-to-end tests.
 * The `subctl gather` command now gathers iptables logs for Calico and kindnet CNIs.
 * The `subctl cloud prepare` command no longer causes errors if the list of ports is empty.
 * `subctl` operations which deploy images now allow those images to be overridden. The overrides are specified using `--image-override`:
@@ -119,10 +119,10 @@ This is a bugfix release:
   * `subctl verify`.
   * `subctl diagnose` sub-commands.
 * The namespace is now included in `EndpointSlice` names to avoid conflicts between services with the same name in multiple namespaces.
-* Bump go-restful to 2.16.0 to address CVE-2022-1996.
-* Bump k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
-* Bump golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
-* Bump golang.org/x/net to 0.7.0 to fix a number of security issues.
+* Bumped go-restful to 2.16.0 to address CVE-2022-1996.
+* Bumped k8s.io/client-go to 0.20.15 to fix CVE-2020-8565.
+* Bumped golang.org/x/crypto to 0.6.0 to fix CVE-2022-27191.
+* Bumped golang.org/x/net to 0.7.0 to fix a number of security issues.
 
 ## v0.13.3
 
@@ -130,7 +130,7 @@ This is a bugfix release:
 
 * The `subctl diagnose kube-proxy-mode` command now works with different versions of iproute packages.
 * The following changes were made to pods running `subctl diagnose` commands in order to allow them to run commands like `tcpdump`:
-  * Make the `diagnose` pod privileged.
+  * Made the `diagnose` pod privileged.
   * Run the `diagnose` pod with user ID 0.
 
 ## v0.12.3
@@ -138,10 +138,10 @@ This is a bugfix release:
 This is a bugfix release:
 
 * Image version hashes are now 12 character long, avoiding possible collisions between images.
-* Stop using cluster-owned tag for AWS cloud prepare, fixing problems with Submariner security groups left over after uninstallation.
+* Stopped using cluster-owned tag for AWS cloud prepare, fixing problems with Submariner security groups left over after uninstallation.
 * Support overriding the MTU value used in TCP MSS clamping, allowing fine tuning of MTU when necessary.
 * CNI interface annotations created by Submariner are now removed during uninstallation.
-* Bump x/text to address CVE-2021-38561 and CVE-2022-32149.
+* Bumped x/text to address CVE-2021-38561 and CVE-2022-32149.
 * Diagnose now validates if the `OVNKubernetes` CNI is supported by the deployed Submariner.
 * Set `DNSPolicy` to `ClusterFirstWithHostNet` for pods that run with host networking.
 * Service Discovery now writes the DNS message response body when it is not a `ServerFailure` to avoid unnecessary client retries.
@@ -150,13 +150,13 @@ This is a bugfix release:
 
 This is a bugfix release:
 
-* Stop using cluster-owned tag for AWS Security Group lookup.
+* Stopped using cluster-owned tag for AWS Security Group lookup.
 * Running the `subctl diagnose firewall` command with individual kubeconfigs will now deploy diagnose pods in the `submariner-operator` namespace
 to avoid pod security errors.
 * The periodic public IP watcher is enhanced to use random external servers to resolve the public IP associated with Gateway nodes.
 * The `subctl diagnose kube-proxy-mode` command now works with different versions of iproute packages.
 * The following changes were made to pods running `subctl diagnose` commands in order to allow them to run commands like `tcpdump`:
-  * Make the `diagnose` pod privileged.
+  * Made the `diagnose` pod privileged.
   * Run the `diagnose` pod with user ID 0.
 
 ## v0.13.2
@@ -164,9 +164,9 @@ to avoid pod security errors.
 * Added support for OpenShift 4.12.
 * Service Discovery now returns a DNS error message in the response body when no matching records are found when queried about
   `clusterset.local`. This prevents unnecessary retries.
-* Stop using cluster-owned tag for AWS Security Group lookup.
-* Avoid using api.ipify.org as the first resolver for public IPs.
-* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
+* Stopped using cluster-owned tag for AWS Security Group lookup.
+* Stopped using api.ipify.org as the first resolver for public IPs.
+* Extended the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 
 ## v0.14.0
 
@@ -234,7 +234,7 @@ was successfully synced to the broker.
 * Privileges of the Route Agent and Gateway pods were reduced as they don’t need to access PersistentVolumeClaims and Secrets.
 * The privileged SCC permission for Submariner components in OCP is set now by creating separate `ClusterRole` and `ClusterRoleBinding`
 resources instead of manipulating the system privileged SCC resource.
-* Extend the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
+* Extended the ability to customize the default TCP MSS clamping value set by Submariner to non-Globalnet deployments.
 * The `subctl show` command now correctly reports component image versions when image overrides were specified on `join`.
 * Updates to the `subctl gather` command:
   * The `subctl gather` command now creates one subdirectory per cluster instead of embedding the cluster name in each file name.
@@ -251,14 +251,14 @@ This is a bugfix release:
 * Return local cluster IP for headless services.
 * Display proper output message from `subctl show brokers` when broker is not installed on the cluster.
 * Allow passing `DEFAULT_REPO` while building subctl.
-* Clean up the host routes programmed by OVN RA plugin during uninstall.
+* Cleaned up the host routes programmed by OVN RA plugin during uninstall.
 * Support overriding image names per-component to better support downstream builds.
-* Limit Azure machine name lengths to 40 characters.
-* Document the default cable driver in the `subctl join` help message.
+* Limited Azure machine name lengths to 40 characters.
+* Documented the default cable driver in the `subctl join` help message.
 * Set `DNSPolicy` to `ClusterFirstWithHostNet` for pods that run with `HostNetworking: true`.
-* Remove hardcoded `workerNodeList` while querying image for GCP and RHOS cloud preparation steps.
+* Removed hardcoded `workerNodeList` while querying image for GCP and RHOS cloud preparation steps.
 * Collect the output of `ovn-sbctl show` in `subctl gather`.
-* Bump x/text to address CVE-2021-38561.
+* Bumped x/text to address CVE-2021-38561.
 * Set `ReadHeaderTimeout` (new in Go 1.18) to mitigate potential Slowloris attacks.
 
 ## v0.13.0
@@ -299,12 +299,12 @@ This is a bugfix release:
 * The `subctl cloud prepare rhos` command will now work properly for nodes to which security groups were added manually.
 * The `submariner-operator` namespace is labeled in accordance with _KEP-2579: Pod Security Admission Control_ (default in Kubernetes 1.24)
 to allow the Pods to be privileged.
-* The default namespace for the `subctl diagnose` command is changed to `submariner-operator`.
+* The default namespace for the `subctl diagnose` command was changed to `submariner-operator`.
 * Submariner pod images are now based on Fedora 36.
-* Fix issues related to Globalnet and Route-agent pods due to missing grep in the container image.
-* Make secrets for ServiceAccounts compatible with Kubernetes 1.24 onwards.
+* Fixed issues related to Globalnet and Route-agent pods due to missing grep in the container image.
+* Made secrets for ServiceAccounts compatible with Kubernetes 1.24 onwards.
 * Restart health check pinger if it fails.
-* Fix intermittent failure when running `subctl diagnose firewall metrics`.
+* Fixed intermittent failure when running `subctl diagnose firewall metrics`.
 
 ## v0.12.1
 
@@ -451,10 +451,10 @@ via the [Submariner addon](https://github.com/open-cluster-management/submariner
 ## v0.8.1
 
 * Submariner Gateway Health Check is now supported with Globalnet deployments.
-* Support deploying OVN in kind using `make clusters using=ovn` for E2E testing and development environments.
-* Support debugging the Libreswan cable driver.
-* Fix the cable driver label in the Prometheus latency metrics.
-* Support non-TLS connections for OVN databases.
+* Added support for deploying OVN in kind using `make clusters using=ovn` for E2E testing and development environments.
+* Added support for debugging the Libreswan cable driver.
+* Fixed the cable driver label in the Prometheus latency metrics.
+* Added support for non-TLS connections for OVN databases.
 * Services can now be recreated without needing to recreate their associated `ServiceExport` objects.
 * Service Discovery no longer depends on Submariner-provided connectivity.
 * Improved Service Discovery verification suite.
@@ -609,7 +609,7 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 * Fixed several service discovery bugs ([#194](https://github.com/submariner-io/submariner-operator/issues/194), [#167](https://github.com/submariner-io/submariner-operator/issues/167)).
 * Fixed several panics on nil network discovery.
 * Added checks to ensure the CIDRs for joining cluster don't overlap with existing ones.
-* Fix context handling related to service discovery/KubeFed
+* Fixed context handling related to service discovery/KubeFed
   ([#180](https://github.com/submariner-io/submariner-operator/issues/180)).
 * Use the correct CoreDNS image for OpenShift.
 
@@ -632,9 +632,9 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 
 * Support for `verify-connectivity` checks between two connected clusters.
 * Deployment of Submariner gateways based on `DaemonSet` instead of `Deployment`.
-* Rename `submariner` Pods to `submariner-gateway` Pods for clarity.
+* Renamed `submariner` Pods to `submariner-gateway` Pods for clarity.
 * Print version details on crash (`subctl`).
-* Stop storing IPsec key on Broker during `deploy-broker`, now it's only contained into the `.subm` file.
+* Stopped storing IPsec key on Broker during `deploy-broker`, now it's only contained into the `.subm` file.
 * Version command for `subctl`.
 * Nicer spinners during deployment (thanks to kind).
 
