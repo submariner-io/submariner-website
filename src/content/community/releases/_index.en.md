@@ -5,6 +5,15 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.1
+
+This is a bugfix release:
+
+* Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
+* Fixed issue where a Gateway pod restart due to SIGINT or SIGTERM signals caused data path disruption.
+* Service Discovery now publishes DNS records for pods that are not ready for headless services based on the setting of
+  the `publishNotReadyAddresses` flag on the Service.
+
 ## v0.13.5
 
 This is a bugfix release:
