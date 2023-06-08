@@ -5,6 +5,8 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.0
+
 ## v0.14.5
 
 This is a bugfix release:
