@@ -11,6 +11,6 @@ jobs:
     name: PR targets branch
     runs-on: ubuntu-latest
     steps:
-      - name: Check that the PR targets devel
-        if: ${{ github.base_ref != 'devel' }}
+      - name: Check that the PR targets devel or a release note branch
+        if: ${{ github.base_ref != 'devel' && !startsWith(github.base_ref, 'release-notes-') }}
         run: exit 1
