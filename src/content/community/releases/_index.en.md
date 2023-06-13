@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.2
+
+* The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
+  environment which may forbid certain configurations in a disconnected Azure installation.
+
 ## v0.13.6 (June 7, 2023)
 
 This is a bugfix release:
