@@ -5,6 +5,13 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.13.5
+
+This is a bugfix release:
+
+* Fixed issue where a Gateway pod restart due to SIGINT or SIGTERM signals caused data path disruption.
+* Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
+
 ## v0.14.5
 
 This is a bugfix release:
