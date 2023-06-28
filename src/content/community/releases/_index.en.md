@@ -30,6 +30,10 @@ This is a bugfix release:
 * Fixed issue where a Gateway pod restart due to SIGINT or SIGTERM signals caused data path disruption.
 * Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
 
+## v0.12.4 (May 24, 2023)
+
+There are no user-facing changes in this release.
+
 ## v0.13.5 (May 23, 2023)
 
 This is a bugfix release:
