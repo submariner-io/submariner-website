@@ -13,7 +13,7 @@
       "pattern": "^http://localhost:"
     },
     {
-      "pattern": "^https://twitter.com/submarinerio/status/[0-9]+"
+      "pattern": "^https://twitter.com/submarinerio"
     },
     {
       "pattern": "^/images/"
