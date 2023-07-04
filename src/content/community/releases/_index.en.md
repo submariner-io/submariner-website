@@ -11,6 +11,7 @@ weight = 40
   environment which may forbid certain configurations in a disconnected Azure installation.
 * Submariner now uses case-insensitive comparison while parsing CNI names.
 * `subctl` is now built for ARM Macs (Darwin arm64).
+* `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
 
 ## v0.13.6 (June 7, 2023)
 
