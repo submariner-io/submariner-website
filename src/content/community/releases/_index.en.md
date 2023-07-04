@@ -106,7 +106,7 @@ was placed in the `submariner-operator` namespace.
 * Fixed intermittent failure where gateway connections sometimes don't get established.
 * Fixed an issue whereby the flags for `subctl unexport service` were not recognized.
 * The `subctl diagnose cni` command no longer fails for the Calico CNI when the `natOutgoing` IPPool status is missing.
-* Fixed CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't effect Submariner but were flagged in deliverables.
+* Fixed CVE-2023-28840, CVE-2023-28841, and CVE-2023-28842, which don't affect Submariner but were flagged in deliverables.
 
 ## v0.14.3 (March 16, 2023)
 
