@@ -14,6 +14,12 @@ weight = 40
 * Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 * Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
   upgrade scenarios.
+* Submariner now uses case-insensitive comparison while parsing CNI names.
+* The `subctl gather` command now collects metrics proxy pod logs in Globalnet deployments.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
+* Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
 
 ## v0.14.6 (July 5, 2023)
 
