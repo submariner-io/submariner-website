@@ -9,6 +9,7 @@ weight = 40
 
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
   environment which may forbid certain configurations in a disconnected Azure installation.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 
 ## v0.14.5
