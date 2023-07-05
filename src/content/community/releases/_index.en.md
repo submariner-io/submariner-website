@@ -10,6 +10,8 @@ weight = 40
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
   environment which may forbid certain configurations in a disconnected Azure installation.
 * `subctl` is now built for ARM Macs (Darwin arm64).
+* Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
+  upgrade scenarios.
 
 ## v0.14.5
 
