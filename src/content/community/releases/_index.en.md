@@ -12,6 +12,7 @@ weight = 40
 * Submariner now uses case-insensitive comparison while parsing CNI names.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
 
 ## v0.14.5
 
