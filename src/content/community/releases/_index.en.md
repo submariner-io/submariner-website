@@ -36,6 +36,8 @@ This is a bugfix release:
 * Fixed issues while spawning Gateway nodes during cloud prepare for clusters deployed on OpenStack environment running OVN-Kubernetes CNI.
 * Fixed issue with Service addresses being resolved before the service is ready.
 * The `subctl gather` command now collects the `ipset` information from all cluster nodes.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
 
 ## v0.15.0
 
