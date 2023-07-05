@@ -16,6 +16,8 @@ weight = 40
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
 * Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+* Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
+  upgrade scenarios.
 
 ## v0.14.5
 
