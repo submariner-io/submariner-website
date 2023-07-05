@@ -5,4 +5,5 @@ weight = 20
 +++
 
 * [Google (GKE)](gke)
+* [IBM Cloud (IKS)](iks)
 * [Rancher](rancher)
