@@ -9,6 +9,7 @@ weight = 40
 
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
   environment which may forbid certain configurations in a disconnected Azure installation.
+* Includes fix for Libreswan pluto crash when the remote endpoint is unstable.
 * Submariner now uses case-insensitive comparison while parsing CNI names.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
