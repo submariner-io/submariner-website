@@ -13,6 +13,8 @@ weight = 40
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
   upgrade scenarios.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
 
 ## v0.15.2 (July 4, 2023)
 
