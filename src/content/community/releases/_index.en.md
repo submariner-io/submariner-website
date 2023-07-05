@@ -10,6 +10,8 @@ weight = 40
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
   environment which may forbid certain configurations in a disconnected Azure installation.
 * Submariner now uses case-insensitive comparison while parsing CNI names.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
 
