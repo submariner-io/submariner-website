@@ -11,6 +11,8 @@ weight = 40
   environment which may forbid certain configurations in a disconnected Azure installation.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
 * `subctl` is now built for ARM Macs (Darwin arm64).
+* Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
+  upgrade scenarios.
 
 ## v0.14.5
 
