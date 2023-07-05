@@ -14,6 +14,7 @@ weight = 40
   during gateway migration.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
 
 ## v0.13.6 (June 7, 2023)
 
