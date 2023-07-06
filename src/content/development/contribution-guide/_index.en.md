@@ -254,20 +254,20 @@ There will be no dedicated [test day](#test-days), as the release candidate has 
 ##### Release Notes
 
 [Release notes] should be published for each GA version.
-All new features and bug fixes of the release should be labeled with `release-note-needed` and have a relevant release note
-documented as part of the PR. Release notes submitted with PRs should be written in individual files in the `/release-notes` directory
-of the relevant repository.
+All new features and bug fixes of the release should be labeled with `release-note-needed` and have a corresponding release note
+PR in [the website repository].
 
-The release note file name should contain a short description about the release note subject, prefixed with a date in the format
-`YYYYMMDD` and end with a `.md` suffix. The date part is the date the PR was first pushed.
-The content of the file should be Markdown snippets, starting with `<!-- markdownlint-disable MD041 -->` in the first line
-to avoid failing over missing main header by the `markdownlint`.
+Pending release notes should be prepared as pull requests adding to the pending release notes on the appropriate branch in
+[the website repository], *i.e.* `release-notes-0.16` etc. Release notes should follow the practices described in
+[writing good release notes]. Each release note pull request, if it's written alongside the PR it describes, should depend on
+the main PR (so that it can't be merged before the PR it documents). A PR with a release note PR should be labeled with the
+`release-note-handled` label.
 
 Once a week, as part of the tasks and bugs triage meeting, the team will make sure that new bugs / tasks / PRs are properly
-labeled and have the release notes documentation. When the version is ready for GA, all the notes can then be gathered
-from issues / PRs using the `release-note-needed` label and a [pull request to the website repository] should be opened.
-After that point, the `release-note-handled` label should be added to the issues / PRs. The [following query] can be use to identify
-pending issues / PRs.
+labeled and have corresponding release notes. When the version is ready for GA, the pending release note branch can then be
+merged to the main branch of [the website repository].
+
+The [following query] can be use to identify PRs whose release notes still need to be written.
 
 ### Unplanned Work
 
@@ -337,7 +337,7 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [triages tasks and bugs as part of a weekly meeting]: https://docs.google.com/document/d/1ICvOBOUpIEI45Yqcjf26Z1e5mZNzYsEN-H7_3xx54jI
 [Project Members]: https://submariner.io/community/contributor-roles/#member
 [Release notes]: ../../community/releases/
-[pull request to the website repository]: https://github.com/submariner-io/submariner-website/pulls
+[the website repository]: https://github.com/submariner-io/submariner-website/
 [following query]: https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-label%3Arelease-note-handled
 [GitHub Projects]: https://docs.github.com/en/issues/organizing-your-work-with-project-boards
 [Tracking Progress on your Project Board]:
@@ -348,3 +348,4 @@ https://docs.github.com/en/issues/organizing-your-work-with-project-boards/track
 [Enhancement Request issue]: https://github.com/submariner-io/enhancements/issues/new?assignees=&labels=enhancement&template=enhancement.md
 [The release process documentation]: https://submariner.io/development/release-process/
 [releases repository]: https://github.com/submariner-io/releases
+[writing good release notes]: https://www.k8s.dev/docs/guide/release-notes/#writing-good-release-notes
