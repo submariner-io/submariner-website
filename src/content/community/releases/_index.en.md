@@ -11,6 +11,7 @@ weight = 40
   environment which may forbid certain configurations in a disconnected Azure installation.
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 
 ## v0.14.6 (July 5, 2023)
 
