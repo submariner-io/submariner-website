@@ -7,6 +7,8 @@ weight = 40
 
 ## v0.13.7
 
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+
 ## v0.14.6 (July 5, 2023)
 
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
