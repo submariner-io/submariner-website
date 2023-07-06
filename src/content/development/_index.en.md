@@ -28,15 +28,3 @@ If you'd like to get involved and haven't already found something to work on, ch
 wanted"](https://github.com/pulls?q=is%3Aopen+user%3Asubmariner-io+label%3A%22help+wanted%22+sort%3Aupdated-desc).
 
 Submariner's success depends on growing the set of contributors to the project. Welcoming new contributors is a top priority of the project.
-
-### Research notice
-
-Please note that this repository is participating in a study into sustainability
- of open source projects. Data will be gathered about this project's GitHub repositories for
- approximately the next 12 months, starting from September 2021.
-
-Data collected will include number of contributors, number of PRs, time taken to
- close/merge these PRs, and issues closed.
-
-For more information, please visit
-[the study informational page](https://sustainable-open-science-and-software.github.io/) or download the [participant information sheet](https://sustainable-open-science-and-software.github.io/assets/PIS_sustainable_software.pdf).
