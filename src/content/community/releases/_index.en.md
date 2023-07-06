@@ -15,6 +15,7 @@ weight = 40
 * `subctl` is now built for ARM Macs (Darwin arm64).
 * `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 
 ## v0.14.5
 
