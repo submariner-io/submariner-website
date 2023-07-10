@@ -5,6 +5,8 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.3
+
 ## v0.14.7 (October 17, 2023)
 
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
