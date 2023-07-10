@@ -67,6 +67,8 @@ weight = 40
   In some scenarios however, an invalid directory is created before OVN is upgraded, which prevents OVN from starting up correctly.
   This will be fixed fully in v0.16.1.
 
+## v0.14.7
+
 ## v0.14.6 (July 5, 2023)
 
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
