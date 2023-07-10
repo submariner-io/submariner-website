@@ -267,7 +267,8 @@ Once a week, as part of the tasks and bugs triage meeting, the team will make su
 labeled and have corresponding release notes. When the version is ready for GA, the pending release note branch can then be
 merged to the main branch of [the website repository].
 
-The [following query] can be use to identify PRs whose release notes still need to be written.
+[Searching the Submariner GitHub Org with `label:release-note-needed -label:release-note-handled`] can help identify PRs that still need
+release notes.
 
 ### Unplanned Work
 
@@ -338,7 +339,8 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [Project Members]: https://submariner.io/community/contributor-roles/#member
 [Release notes]: ../../community/releases/
 [the website repository]: https://github.com/submariner-io/submariner-website/
-[following query]: https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-label%3Arelease-note-handled
+[Searching the Submariner GitHub Org with `label:release-note-needed -label:release-note-handled`]:
+https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-label%3Arelease-note-handled
 [GitHub Projects]: https://docs.github.com/en/issues/organizing-your-work-with-project-boards
 [Tracking Progress on your Project Board]:
 https://docs.github.com/en/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards
