@@ -13,21 +13,22 @@ The guide assumes clusters have non-overlapping Pod and Service CIDRs.
 [Globalnet](https://submariner.io/getting-started/architecture/globalnet/) can be used if overlapping CIDRs can't be avoided.
 {{% /notice %}}
 
-# Automated example
+## Automated example
 
-The following repo's [submariner-quickstart folder](https://github.com/IBM-Cloud/kube-samples/tree/master/submariner-quickstart)
+The following repo's `submariner-quickstart` [folder](https://github.com/IBM-Cloud/kube-samples/tree/master/submariner-quickstart)
 contains an automated installer that:
+
 - creates two IKS clusters with Terraform
 - installs Submariner on them
 - verifies the setup
 
 For more details, see the repo.
 
-# Manual guide
+## Manual guide
 
 A step-by-step walkthrough about using Submariner on IBM Cloud.
 
-## Clusters
+### Clusters
 
 The exact process of cluster creation is not covered here.
 One can use the [web UI](https://cloud.ibm.com/docs/containers?topic=containers-getting-started&interface=ui),
@@ -36,7 +37,7 @@ the [CLI](https://cloud.ibm.com/docs/containers?topic=containers-getting-started
 ([example](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/container_cluster#vpc-generation-2-ibm-cloud-kubernetes-service-cluster))
 to create IBM Cloud Kubernetes Clusters.
 
-### Example topology
+#### Example topology
 
 The guide the following example parameters:
 
@@ -45,13 +46,13 @@ The guide the following example parameters:
 | primary      | 172.17.0.0/18  | 172.21.0.0/16 |
 | secondary    | 172.17.64.0/18 | 172.22.0.0/16 |
 
-## Submariner deployment
+### Submariner deployment
 
-### Subctl binary 
+#### subctl binary
 
 {{% subctl-install %}}
 
-### Access
+#### Access
 
 At the time of writing, `subctl` does not support OIDC-based authentication,
 so accessing the clusters can be done through [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/).
@@ -64,13 +65,14 @@ ibmcloud ks cluster config --admin --cluster CLUSTER_NAME
 
 The example uses `$primary_ctx` and `$secondary_ctx` environment variables.
 Their values can be obtained using `kubectl` like:
+
 ```shell
 kubectl config get-contexts -o name
 export primary_ctx=CLUSTER1_NAME
 export secondary_ctx=CLUSTER2_NAME
 ```
 
-### Calico CNI
+#### Calico CNI
 
 Due to [active-passive gateway model](https://submariner.io/getting-started/architecture/gateway-engine/)
 of Submariner, "external" (cross-cluster) traffic will appear on the nodes.
@@ -88,6 +90,7 @@ Calico should be also configured to avoid unnecessary NAT on cross-cluster traff
 Please read the [Calico specific](https://submariner.io/operations/deployment/calico/) guide on how to set it up.
 
 Every Submariner cluster should have something like this:
+
 ```yaml
 # see: https://submariner.io/operations/deployment/calico/
 # applicable on the first cluster
@@ -122,7 +125,7 @@ subctl deploy-broker --context $primary_ctx
 The command will output a file named `broker-info.subm` to the directory it is run from, which will be used to set up the
 IPsec tunnel between clusters.
 
-### Join clusters 
+#### Join clusters
 
 Now it is time to register every cluster in the ClusterSet of the Broker.
 
@@ -136,20 +139,23 @@ First, join the Broker-hosting cluster itself to the Broker:
   --clustercidr "172.17.0.0/18"
 ```
 
-Submariner will figure out most of the required information on its own. The `--clusterid` and `--servicecidr` flags should be used to pass the same
-values as during the cluster creation steps above. You will also see a dialogue on the terminal that asks you to decide which of the three
-nodes will be the Gateway. Any node will work. It will be annotated with `submariner.io/gateway: true`.
+Submariner will figure out most of the required information on its own.
+The `--clusterid` and `--servicecidr` flags should be used to pass the same
+values as during the cluster creation steps above.
+You will also see a dialogue on the terminal that asks you to decide which of the three
+nodes will be the Gateway.
+Any node will work. It will be annotated with `submariner.io/gateway: true`.
 
-When a cluster is joined, the Submariner Operator is installed. It creates several components in the `submariner-operator` namespace:
+When a cluster is joined, the Submariner Operator is installed.
+It creates several components in the `submariner-operator` namespace:
 
-* `submariner-gateway` DaemonSet, to open a gateway for the IPsec tunnel on one node
-* `submariner-routeagent` DaemonSet, which runs on every worker node in order to route the internal traffic to the local gateway
+- `submariner-gateway` DaemonSet, to open a gateway for the IPsec tunnel on one node
+- `submariner-routeagent` DaemonSet, which runs on every worker node in order to route the internal traffic to the local gateway
 via VXLAN tunnels
-* `submariner-lighthouse-agent` Deployment, which accesses the Kubernetes API server in the Broker cluster to exchange Service
+- `submariner-lighthouse-agent` Deployment, which accesses the Kubernetes API server in the Broker cluster to exchange Service
 information with the Broker
-* `submariner-lighthouse-coredns` Deployment, which - as an external DNS server - gets forwarded requests to the
+- `submariner-lighthouse-coredns` Deployment, which - as an external DNS server - gets forwarded requests to the
 `*.clusterset.local` domain for cross-cluster communication by Kubernetes' internal DNS server
-
 
 The `--load-balancer` flag creates a `LoadBalancer` service for the Gateway.
 It should be annotated to achieve correct behaviour
@@ -189,7 +195,7 @@ Now join the second cluster to the Broker:
 
 For more subctl flags, see [subctl manual](https://submariner.io/operations/deployment/subctl/).
 
-## Verification 
+### Verification
 
 After the LoadBalancer has been created and the tunnels are established,
 we can verify the new setup.
@@ -208,7 +214,7 @@ subctl verify \
 subctl diagnose --context $primary_ctx
 ```
 
-## See also
+### See also
 
 - [Prerequisites of Submariner](https://submariner.io/getting-started/#prerequisites)
 - [subctl manual](https://submariner.io/operations/deployment/subctl/)
