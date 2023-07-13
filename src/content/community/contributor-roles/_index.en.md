@@ -112,7 +112,7 @@ holistic acceptance of a contribution including: backwards / forwards
 compatibility, adhering to API and flag conventions, subtle performance and
 correctness issues, interactions with other parts of the system, etc.
 
-**Defined by:** Entry in an CODEOWNERS file in a repo owned by the Submariner
+**Defined by:** Entry in a CODEOWNERS file in a repo owned by the Submariner
 project.
 
 **Committer status is scoped to a part of the codebase.**
@@ -120,7 +120,7 @@ project.
 ### Committer Requirements
 
 The following apply to the part of codebase for which one would be a committer
-in an CODEOWNERS file:
+in a CODEOWNERS file:
 
 * Member for at least 3 months
 * Primary reviewer for at least 5 PRs to the codebase

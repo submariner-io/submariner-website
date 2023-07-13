@@ -69,9 +69,11 @@ In summary:
 
 GitLint will automatically be run against all commits to try to validate these conventions.
 
-### Dismiss reviews after substantial changes
+### Request new reviews after substantial changes
 
-If a PR is substantially changed after a code review, the author should dismiss the stale reviews.
+If a PR is substantially changed after a code review, the author should request new reviews from all existing reviewers, including
+approvals, using the double-arrow icons in the list of reviewers. This will notify the reviewer and add the PR to their list of
+requested reviews.
 
 With the current GitHub configuration, reviews are not automatically dismissed when PRs are updated. This is to cause less drag for the
 typical cases, like minor merge conflicts. As Submariner grows, it might make sense to trade this low-drag solution for one where only
