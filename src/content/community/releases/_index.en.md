@@ -5,6 +5,31 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.6 (July 5, 2023)
+
+* The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
+  environment which may forbid certain configurations in a disconnected Azure installation.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
+* `subctl` is now built for ARM Macs (Darwin arm64).
+* Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
+  upgrade scenarios.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
+
+## v0.15.2 (July 4, 2023)
+
+* The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
+  environment which may forbid certain configurations in a disconnected Azure installation.
+* Submariner now uses case-insensitive comparison while parsing CNI names.
+* Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
+  during gateway migration.
+* `subctl` is now built for ARM Macs (Darwin arm64).
+* `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
+* The Globalnet component now handles out-of-order remote endpoint notifications properly.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+* Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
+  upgrade scenarios.
+
 ## v0.13.6 (June 7, 2023)
 
 This is a bugfix release:
