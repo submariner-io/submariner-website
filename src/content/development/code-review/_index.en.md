@@ -11,10 +11,10 @@ This guide is meant to facilitate Submariner code review by sharing norms, best 
 Submariner follows the [Kubernetes Code Review Guide][kube code review guide] wherever relevant. This guide collects the most important
 highlights of the Kubernetes process and adds Submariner-specific extensions.
 
-### Two non-author Committer approvals required
+### Two non-author approvals required
 
-Pull Requests to Submariner require two approvals from a Committer to the relevant part of the code base, as defined by the CODEOWNERS file
-at the root of each repository and the [Community
+Pull Requests to Submariner require two approvals, including at least one from a Committer to the relevant part of the code base,
+as defined by the CODEOWNERS file at the root of each repository and the [Community
 Membership/Committers](../../community/contributor-roles/#committers) process.
 
 ### No merge commits
@@ -69,9 +69,11 @@ In summary:
 
 GitLint will automatically be run against all commits to try to validate these conventions.
 
-### Dismiss reviews after substantial changes
+### Request new reviews after substantial changes
 
-If a PR is substantially changed after a code review, the author should dismiss the stale reviews.
+If a PR is substantially changed after a code review, the author should request new reviews from all existing reviewers, including
+approvals, using the double-arrow icons in the list of reviewers. This will notify the reviewer and add the PR to their list of
+requested reviews.
 
 With the current GitHub configuration, reviews are not automatically dismissed when PRs are updated. This is to cause less drag for the
 typical cases, like minor merge conflicts. As Submariner grows, it might make sense to trade this low-drag solution for one where only
@@ -85,7 +87,7 @@ approval (0/+1 vote) before the PR is merged.
 ### Update branch only after required reviews
 
 To avoid wasting resources by running unnecessary jobs, only use the **Update branch** button to add a merge commit once a PR is actually
-ready to merge (has [required reviews](#two-non-author-committer-approvals-required) and [no -1s](#address-all--1s-before-merging)). Unless
+ready to merge (has [required reviews](#two-non-author-approvals-required) and [no -1s](#address-all--1s-before-merging)). Unless
 other relevant code has changed, the new job results don't tell us anything new. Since changes are constantly being merged, it's likely
 another merge commit and set of jobs will be necessary right before merging anyway.
 
