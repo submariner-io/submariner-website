@@ -25,9 +25,9 @@ information is exported to the Broker and Service information from other cluster
 The workflow is as follows:
 
 - Lighthouse Agent connects to the Broker's Kubernetes API server.
-- For every Service in the local cluster for which a ServiceExport has been created, the Agent creates a corresponding
-ServiceImport resource and exports it to the Broker to be consumed by other clusters.
-- For every ServiceImport resource in the Broker exported from another cluster,
+- For every Service in the local cluster for which a ServiceExport has been created, the Agent creates
+ServiceImport and EndpointSlice resources and exports them to the Broker to be consumed by other clusters.
+- For every resource in the Broker exported from another cluster,
 it creates a copy of it in the local cluster.
 
 ![Lighthouse Agent WorkFlow](/images/lighthouse/controllerWorkFlow.png)
@@ -37,8 +37,8 @@ it creates a copy of it in the local cluster.
 
 The Lighthouse DNS server runs as an external DNS server which owns the domain `clusterset.local`.
 CoreDNS is configured to forward any request sent to `clusterset.local` to the Lighthouse DNS server,
-which uses the ServiceImport resources that are distributed by the controller for DNS resolution. The
-Lighthouse DNS server supports queries using an A record and an SRV record.
+which uses the ServiceImport and EndpointSlice resources that are distributed by the controller to build an address cache
+for DNS resolution. The Lighthouse DNS server supports queries using an A record and an SRV record.
 
 {{% notice note %}}
 When a single Service is deployed to multiple clusters, Lighthouse DNS server prefers the local cluster first before routing the traffic to
@@ -51,7 +51,7 @@ The workflow is as follows:
 
 - A Pod tries to resolve a Service name using the domain name `clusterset.local`.
 - CoreDNS forwards the request to the Lighthouse DNS server.
-- The Lighthouse DNS server will use its ServiceImport cache to try to resolve the request.
+- The Lighthouse DNS server will use its address cache to try to resolve the request.
 - If a record exists it will be returned, else an NXDomain error will be returned.
 
 ![Lighthouse CoreDNS WorkFlow](/images/lighthouse/coreDNSWorkFlow.png)
