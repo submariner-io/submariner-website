@@ -331,15 +331,15 @@ Metadata:
 Status:
   Conditions:
     Last Transition Time:  2020-12-01T12:35:32Z
-    Message:               Awaiting sync of the ServiceImport to the broker
-    Reason:                AwaitingSync
-    Status:                False
+    Message:
+    Reason:
+    Status:                True
     Type:                  Valid
     Last Transition Time:  2020-12-01T12:35:32Z
     Message:               Service was successfully synced to the broker
     Reason:
     Status:                True
-    Type:                  Valid
+    Type:                  Synced
 Events:                    <none>
 ```
 
@@ -348,7 +348,7 @@ Once exported, the Service can be discovered as `nginx.nginx-test.svc.clusterset
 ##### 3. Consume the Service on **cluster2**
 
 Verify that the exported `nginx` Service was imported to **cluster2** as expected. Submariner (via Lighthouse) automatically creates a
-corresponding `ServiceImport`:
+corresponding `ServiceImport` in the service namespace:
 
 ```bash
 $ export KUBECONFIG=cluster2/auth/kubeconfig
@@ -357,9 +357,9 @@ Switched to context "cluster2".
 ```
 
 ```bash
-$ kubectl get -n submariner-operator serviceimport
+$ kubectl get -n nginx-test serviceimport
 NAME                        TYPE           IP                AGE
-nginx-nginx-test-cluster3   ClusterSetIP   [100.3.220.176]   13m
+nginx                       ClusterSetIP                     13m
 ```
 
 Next, run a test Pod on **cluster2** and try to access the `nginx` Service from within the Pod:
@@ -538,15 +538,15 @@ Metadata:
 Status:
   Conditions:
     Last Transition Time:  2020-12-07T17:37:59Z
-    Message:               Awaiting sync of the ServiceImport to the broker
-    Reason:                AwaitingSync
-    Status:                False
+    Message:
+    Reason:
+    Status:                True
     Type:                  Valid
     Last Transition Time:  2020-12-07T17:37:59Z
     Message:               Service was successfully synced to the broker
     Reason:
     Status:                True
-    Type:                  Valid
+    Type:                  Synced
 Events:                    <none>
 ```
 
@@ -824,15 +824,15 @@ Metadata:
 Status:
   Conditions:
     Last Transition Time:  2020-11-30T19:59:44Z
-    Message:               Awaiting sync of the ServiceImport to the broker
-    Reason:                AwaitingSync
-    Status:                False
+    Message:
+    Reason:
+    Status:                True
     Type:                  Valid
     Last Transition Time:  2020-11-30T19:59:44Z
     Message:               Service was successfully synced to the broker
     Reason:
     Status:                True
-    Type:                  Valid
+    Type:                  Synced
 Events:                    <none>
 ```
 
@@ -843,7 +843,7 @@ In addition, the individual Pods can be accessed as `web-0.cluster3.nginx-ss.ngi
 ##### 3. Consume the Service from **cluster2**
 
 Verify that the exported `nginx-ss` Service was imported to **cluster2**. Submariner (via Lighthouse) automatically creates a
-corresponding `ServiceImport`:
+corresponding `ServiceImport` in the service namespace:
 
 ```bash
 $ export KUBECONFIG=cluster2/auth/kubeconfig
@@ -852,10 +852,9 @@ Switched to context "cluster2".
 ```
 
 ```bash
-$ kubectl get -n submariner-operator serviceimport
+$ kubectl get -n nginx-test serviceimport
 NAME                           TYPE           IP                AGE
-nginx-nginx-test-cluster3      ClusterSetIP   [100.3.220.176]   166m
-nginx-ss-nginx-test-cluster3   Headless                         5m48s
+nginx-ss                       Headless                         5m48s
 ```
 
 Next, run a test Pod on **cluster2** and try to access the `nginx-ss` Service from within the Pod:

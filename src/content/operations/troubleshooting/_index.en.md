@@ -190,15 +190,15 @@ Metadata:
 Status:
   Conditions:
     Last Transition Time:  2020-11-25T06:21:01Z
-    Message:               Awaiting sync of the ServiceImport to the broker
-    Reason:                AwaitingSync
-    Status:                False
+    Message:
+    Reason:
+    Status:                True
     Type:                  Valid
     Last Transition Time:  2020-11-25T06:21:01Z
     Message:               Service was successfully synced to the broker
     Reason:
     Status:                True
-    Type:                  Valid
+    Type:                  Synced
 Events:                    <none>
 ```
 
@@ -271,86 +271,42 @@ issue.
 ##### Check ServiceImport resources
 
 If the steps above did not indicate an issue, next we check if the ServiceImport resources were properly created for the service you're
-trying to access. The format of a ServiceImport resources's name is as follows:
-
-`<service-name>-<service-namespace>-<cluster-id>`
+trying to access.
 
 Run `kubectl get serviceimports --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
-your service. If not, then check the Lighthouse Agent logs on the cluster where service was created and look for any error or warning
+your service. If not, then check the Lighthouse Agent logs on the cluster where the service was created and look for any error or warning
 messages indicating a failure to create the ServiceImport resource for your service. The most common error is `Forbidden` if the RBAC wasn't
 configured correctly. Depending on the deployment method used, 'subctl' or 'helm', it should've been done for you. Create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
 If the ServiceImport resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
-you're trying to access the service. Follow the same steps as earlier to get the list of the ServiceImport resources and check if the
-ServiceImport for your service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
+you're trying to access the service. The ServiceImport should exist in the service's namespace with the same name as the service. If it doesn't
+exist, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
 service. As described earlier, it will most commonly be an issue with RBAC otherwise create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
-If the ServiceImport resource was created properly on the cluster, run
-`kubectl -n submariner-operator describe serviceimport <your-serviceimport-name>`
-and check if it has the correct `ClusterID` and `ServiceIP`:
-
-```text
-Name:         nginx-demo-default-cluster2
-Namespace:    submariner-operator
-Labels:       lighthouse.submariner.io/sourceCluster=cluster2
-              lighthouse.submariner.io/sourceName=nginx-demo
-              lighthouse.submariner.io/sourceNamespace=default
-              submariner-io/clusterID=cluster2
-Annotations:  cluster-ip: 100.2.33.171
-              origin-name: nginx-demo
-              origin-namespace: default
-API Version:  multicluster.x-k8s.io/v1alpha1
-Kind:         ServiceImport
-Metadata:
-  Creation Timestamp:  2020-11-25T06:21:02Z
-  Generation:          1
-  Resource Version:    5312
-  Self Link:           /apis/multicluster.x-k8s.io/v1alpha1/namespaces/submariner-operator/serviceimports/nginx-demo-default-cluster2
-  UID:                 a4c4abe0-1c84-4118-ae09-760b26f7fe3c
-Spec:
-  Ips:
-    100.2.33.171
-  Ports:
-  Session Affinity Config:
-  Type:  ClusterSetIP
-Events:  <none>
-
-```
-
-For headless Service, you need to check `EndpointSlice` resource.
-
-If the data is not correct, you can manually edit the ServiceImport resource to set the correct IP as a workaround and create an
-[issue](https://github.com/submariner-io/lighthouse/issues) with relevant information.
-
-If the ServiceImport `Ips` are correct but still not being returned from DNS queries, check the connectivity to the cluster
-using [`subctl show endpoint`](../deployment/subctl/_index.en.md#show-endpoints). The Lighthouse CoreDNS Server only returns IPs
-from connected clusters.
-
 ##### Check EndpointSlice resources
 
-For a headless Service, next we check if the EndpointSlice resources were properly created for the service you're
-trying to access. EndpointSlice resources are created in the same namespace as the source Service. The format of a EndpointSlice
-resource's name is as follows:
+If the ServiceImport resources are correct, next we check if the EndpointSlice resources were properly created for the service you're
+trying to access.  The format of a EndpointSlice resource's name is as follows:
 
-`<service-name>--<cluster-id>`
+`<service-name>-<service-namespace>-<cluster-id>`
 
 Run `kubectl get endpointslices --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
 your Service. If not, then check the Lighthouse Agent logs on the cluster where the Service was created and look for any error or warning
-messages indicating a failure to create the ServiceImport resource for your Service. The most common error is `Forbidden` if the RBAC wasn't
+messages indicating a failure to create the EndpointSlice resource for your Service. The most common error is `Forbidden` if the RBAC wasn't
 configured correctly. This is supposed to be done automatically during deployment so please file an
 [issue](https://github.com/submariner-io/lighthouse/issues) with the relevant log entries.
 
 If the EndpointSlice resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
-you're trying to access the Service. Follow the same steps as earlier to get the list of the EndpointSlice resources and check if the
-EndpointSlice for the Service exists. If not, check the logs of the Lighthouse Agent on the cluster where you are trying to access the
+you're trying to access the Service. The EndpointSlice should exist in the service's namespace. If it doesn't
+exist check the logs of the Lighthouse Agent on the cluster where you are trying to access the
 Service. As described earlier, it will most commonly be an issue with RBAC so create an
 [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
 
 If the EndpointSlice resource was created properly on the cluster, run
 `kubectl -n <your-service-namespace> describe endpointslice <your-endpointslice-name>`
-and check if it has the correct endpoint addresses:
+and check if it has the correct endpoint addresses, and they indicate the Ready condition is true:
 
 ```text
 Name:         nginx-ss-cluster2
@@ -379,6 +335,8 @@ Endpoints:
     Topology:  kubernetes.io/hostname=cluster2-worker
 Events:        <none>
 ```
+
+For a non-headless service, the EndpointSlice will contain a single endpoint referencing the service's cluster IP address.
 
 If the `Addresses` are correct but still not being returned from DNS queries, try querying IPs in a specific cluster
 by prefixing the query with `<cluster-id>.` If that returns the IPs correctly, then check the connectivity to the cluster
