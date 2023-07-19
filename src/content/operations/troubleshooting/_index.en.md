@@ -41,7 +41,7 @@ subctl diagnose all
 Diagnose common firewall issues between a pair of clusters:
 
 ```shell
-subctl diagnose firewall inter-cluster <kubeconfig0 path> <kubeconfig1 path>
+subctl diagnose firewall inter-cluster --context <localcontext> --remotecontext <remotecontext>
 ```
 
 Collect details about an issue you'd like help with:
