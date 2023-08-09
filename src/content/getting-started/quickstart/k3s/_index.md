@@ -93,13 +93,13 @@ subctl deploy-broker --kubeconfig kubeconfig.cluster-a
 #### Join cluster-a to the Broker
 
 ```bash
-subctl join --kubeconfig kubeconfig.cluster-a broker-info.subm --clusterid cluster-a --natt=false
+subctl join --kubeconfig kubeconfig.cluster-a broker-info.subm --clusterid cluster-a --natt=false --clustercidr 10.44.0.0/16
 ```
 
 #### Join cluster-b to the Broker
 
 ```bash
-subctl join --kubeconfig kubeconfig.cluster-b broker-info.subm --clusterid cluster-b --natt=false
+subctl join --kubeconfig kubeconfig.cluster-b broker-info.subm --clusterid cluster-b --natt=false --clustercidr 10.144.0.0/16
 ```
 
 ### Verify Deployment
