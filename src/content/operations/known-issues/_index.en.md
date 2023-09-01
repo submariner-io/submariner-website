@@ -6,7 +6,7 @@ weight = 40
 
 ## General
 
-* Minimum supported Kubernetes version is 1.17.
+* Minimum supported Kubernetes version is 1.19 (1.21 for service discovery).
 * Submariner only supports kube-proxy in iptables mode. IPVS is not supported at this time.
 * CoreDNS is supported out of the box for `*.clusterset.local` service discovery. KubeDNS needs manual configuration. Please refer to the
 [GKE Quickstart Guide](../../getting-started/quickstart/managed-kubernetes/gke/#final-workaround-for-kubedns) for more information.
