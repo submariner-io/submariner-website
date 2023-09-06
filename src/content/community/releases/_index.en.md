@@ -28,6 +28,8 @@ weight = 40
   Endpoints for all conditions are now included - prior releases only published ready endpoints.
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
+* The new `subctl upgrade` command can upgrade `subctl` itself in-place, and upgrade Submariner deployments on brokers
+  and joined clusters to the corresponding version of Submariner.
 
 ## v0.14.5
 
