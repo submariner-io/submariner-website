@@ -174,6 +174,19 @@ deployment.
 | `--health-check-max-packet-loss-count` `<uint>` | The maximum number of packets lost at which the health checker will mark the connection as down (default 5)
 <!-- markdownlint-enable line-length -->
 
+### `upgrade`
+
+`subctl upgrade [flags]`
+
+Upgrades `subctl` to the latest released version and upgrades Submariner components in any accessible clusters to match.
+
+#### `upgrade` flags
+<!-- markdownlint-disable line-length -->
+| Flag                       | Description
+|:---------------------------|:----------------------------------------------------------------------------|
+| `--to-version` `<string>`  | The version of subctl and Submariner to which to upgrade
+<!-- markdownlint-enable line-length -->
+
 ### `show`
 
 #### `show networks`
