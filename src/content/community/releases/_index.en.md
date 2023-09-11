@@ -30,6 +30,8 @@ weight = 40
   global forwarding on the node is turned off.
 * The new `subctl upgrade` command can upgrade `subctl` itself in-place, and upgrade Submariner deployments on brokers
   and joined clusters to the corresponding version of Submariner.
+* The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
+  and will provide an appropriate error message.
 
 ## v0.14.6 (July 5, 2023)
 
