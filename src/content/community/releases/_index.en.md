@@ -7,6 +7,9 @@ weight = 40
 
 ## v0.14.7
 
+* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
+  when global forwarding on the node is turned off.
+
 ## v0.14.6 (July 5, 2023)
 
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
