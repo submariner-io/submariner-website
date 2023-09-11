@@ -28,6 +28,7 @@ weight = 40
   Endpoints for all conditions are now included - prior releases only published ready endpoints.
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
+* Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is not detected.
 * The new `subctl upgrade` command can upgrade `subctl` itself in-place, and upgrade Submariner deployments on brokers
   and joined clusters to the corresponding version of Submariner.
 * The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
