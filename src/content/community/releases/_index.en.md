@@ -7,6 +7,9 @@ weight = 40
 
 ## v0.15.3
 
+* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
+  global forwarding on the node is turned off.
+
 ## v0.14.7 (October 17, 2023)
 
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
