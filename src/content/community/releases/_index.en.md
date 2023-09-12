@@ -7,10 +7,14 @@ weight = 40
 
 ## v0.15.3
 
+* The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
+  and will provide an appropriate error message.
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
 * Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
   liveness probes.
+* Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is
+  not detected.
 
 ## v0.14.6 (July 5, 2023)
 
