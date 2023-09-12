@@ -13,6 +13,8 @@ weight = 40
   global forwarding on the node is turned off.
 * Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is
   not detected.
+* Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
+  liveness probes.
 
 ## v0.14.7 (October 17, 2023)
 
