@@ -9,6 +9,8 @@ weight = 40
 
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
+* Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is
+  not detected.
 
 ## v0.14.7 (October 17, 2023)
 
