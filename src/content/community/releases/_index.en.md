@@ -19,6 +19,8 @@ weight = 40
 * Submariner gateway pods now skip invoking cable engine cleanup during termination, as this is handled by the route agent
   during gateway migration.
 * Fixed issue which caused the IPsec pluto process to crash when the remote endpoint was unstable.
+* Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
+  liveness probes.
 * The status condition type "Allocated" for Globalnet resources now adheres to the intended design of status conditions in
   Kubernetes by reflecting only the latest observed status.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
