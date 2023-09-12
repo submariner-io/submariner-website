@@ -7,6 +7,8 @@ weight = 40
 
 ## v0.15.3
 
+* The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
+  and will provide an appropriate error message.
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
 
