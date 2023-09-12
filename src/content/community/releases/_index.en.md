@@ -9,6 +9,8 @@ weight = 40
 
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
+* Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
+  liveness probes.
 
 ## v0.14.6 (July 5, 2023)
 
