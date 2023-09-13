@@ -35,6 +35,7 @@ weight = 40
   and joined clusters to the corresponding version of Submariner.
 * The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
   and will provide an appropriate error message.
+* Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
 
 ## v0.14.5
 
