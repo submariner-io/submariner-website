@@ -10,7 +10,7 @@ weight = 40
 * The `subctl cloud prepare azure` command has a new flag, `air-gapped`, to indicate the cluster is in an air-gapped
   environment which may forbid certain configurations in a disconnected Azure installation.
 * `subctl` is now built for ARM Macs (Darwin arm64).
-* `subctl show versions` now shows the versions of the metrics proxy and plugin syncer components.
+* `subctl show versions` now shows the version of the metrics proxy component.
 * Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 * Fixed an issue with OVNKubernetes CNI where routes could be accidentally deleted during cluster restart, or
   upgrade scenarios.
