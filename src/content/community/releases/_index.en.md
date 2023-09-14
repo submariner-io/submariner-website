@@ -492,6 +492,8 @@ via the [Submariner addon](https://github.com/open-cluster-management/submariner
 * Submariner now supports SRV DNS queries for both ClusterIP and Headless Services. This facilitates Service discovery using
   port name and protocol. For a ClusterIP Service, this resolves to the port number and the domain name. For a Headless Service,
   the name resolves to multiple answers, one for each Pod backing the Service.
+* The CNI detection method in Submariner Operator is now improved to detect the Flannel CNI, even when the Flannel configMap
+  is missing from the cluster.
 * Improved the Submariner integration with the Calico CNI.
 * `subctl benchmark latency` and `subctl benchmark throughput` now take a new flag `--kubecontexts` as input instead of
   two kubeconfig files.
