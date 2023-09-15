@@ -39,6 +39,7 @@ weight = 40
 * The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
   and will provide an appropriate error message.
 * Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
+* `subctl verify` no longer requires the KUBECONFIG environment variable to be set.
 
 ## v0.14.5
 
