@@ -30,6 +30,7 @@ weight = 40
   Endpoints for all conditions are now included - prior releases only published ready endpoints.
 * Service Discovery will now publish DNS records for pods that are not ready based on the setting of the `publishNotReadyAddresses`
   flag on the service.
+* Service Discovery now propagates labels from an exported `Service` to its generated `EndpointSlices`.
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
   global forwarding on the node is turned off.
 * Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is not detected.
