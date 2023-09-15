@@ -15,6 +15,8 @@ weight = 40
   not detected.
 * Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
   liveness probes.
+* Service Discovery will now publish DNS records for pods that are not ready based on the setting of the `publishNotReadyAddresses`
+  flag on the service.
 
 ## v0.14.7 (October 17, 2023)
 
