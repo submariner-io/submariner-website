@@ -20,6 +20,9 @@
     },
     {
       "pattern": "^https://opensource.org/licenses/Apache-2.0$"
+    },
+    {
+      "pattern": "^https://web.archive.org/web/"
     }
   ]
 }
