@@ -48,9 +48,6 @@ In addition to providing connectivity, the source IP of traffic is also preserve
     | cluster-b |10.42.0.0/24  |10.43.0.0/16  |
 
     Note that we will use Globalnet in this guide, therefore overlapping CIDRs are supported.
-    One of the easiest way to create this environment will be to deploy two K3s clusters by the steps described
-    [here](https://submariner.io/getting-started/quickstart/k3s/) until "Deploy cluster-b on node-b",
-    with modifying deploy commands to just `curl -sfL https://get.k3s.io | sh -` to use default CIDR.
 
 {{% notice note %}}
 In this configuration, global IPs are used to access between the gateway node and non-cluster hosts,
@@ -79,7 +76,7 @@ subctl deploy-broker --kubeconfig kubeconfig.cluster-a --globalnet
 
 When Submariner joins a cluster to the broker via the `subctl join` command, it chooses a node on which to install the
 gateway by labeling it appropriately. By default, Submariner uses a worker node for the gateway; if there are no worker
-nodes, then no gateway is installed unless a node is manually labeled as a gateway. Since we are deploying k3s all-in-one
+nodes, then no gateway is installed unless a node is manually labeled as a gateway. Since we are deploying all-in-one
 nodes, there are no worker nodes, so it is necessary to label the single node as a gateway. By default, the node name is
 the hostname. In this example, the hostnames are "cluster-a" and "cluster-b", respectively.
 
