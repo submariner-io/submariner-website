@@ -21,6 +21,7 @@ weight = 40
   is missing from the cluster.
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
+* The pod CIDR detection logic now ensures that the node's `podCIDR` is exclusively used for single-node deployments.
 
 ## v0.14.7 (October 17, 2023)
 
