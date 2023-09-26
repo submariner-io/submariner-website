@@ -46,6 +46,7 @@ weight = 40
 * Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
 * The pod CIDR detection logic now ensures that the node's `podCIDR` is exclusively used for single-node deployments.
 * `subctl verify` no longer requires the KUBECONFIG environment variable to be set.
+* The `submariner_service_export` metric is now properly exposed after being inadvertently removed.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
