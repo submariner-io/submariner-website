@@ -19,6 +19,8 @@ weight = 40
   flag on the service.
 * The CNI detection method in Submariner Operator is now improved to detect the Flannel CNI, even when the Flannel configMap
   is missing from the cluster.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
 
 ## v0.14.7 (October 17, 2023)
 
