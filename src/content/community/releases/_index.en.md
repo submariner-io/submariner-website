@@ -8,6 +8,8 @@ weight = 40
 ## v0.13.7
 
 * Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
 
 ## v0.14.6 (July 5, 2023)
 
