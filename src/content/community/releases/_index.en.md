@@ -17,6 +17,8 @@ weight = 40
   liveness probes.
 * Service Discovery will now publish DNS records for pods that are not ready based on the setting of the `publishNotReadyAddresses`
   flag on the service.
+* The CNI detection method in Submariner Operator is now improved to detect the Flannel CNI, even when the Flannel configMap
+  is missing from the cluster.
 
 ## v0.14.6 (July 5, 2023)
 
