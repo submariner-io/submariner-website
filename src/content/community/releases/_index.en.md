@@ -71,6 +71,8 @@ weight = 40
 
 * Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
   when global forwarding on the node is turned off.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
 
 ## v0.14.6 (July 5, 2023)
 
