@@ -45,6 +45,7 @@ weight = 40
 * Fixed an issue with Service Discovery with Globalnet enabled where a service was inaccessible after recreating it.
 * Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
 * `subctl verify` no longer requires the KUBECONFIG environment variable to be set.
+* The `submariner_service_export` metric is now properly exposed after being inadvertently removed.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
 
 ## v0.14.5
