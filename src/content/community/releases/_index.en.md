@@ -44,6 +44,7 @@ weight = 40
 * Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is not detected.
 * Fixed an issue with Service Discovery with Globalnet enabled where a service was inaccessible after recreating it.
 * Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
+* The pod CIDR detection logic now ensures that the node's `podCIDR` is exclusively used for single-node deployments.
 * `subctl verify` no longer requires the KUBECONFIG environment variable to be set.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
 
