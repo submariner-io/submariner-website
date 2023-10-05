@@ -2,6 +2,13 @@
 title: "Network Plugin Syncer"
 ---
 
+{{% notice info %}}
+The information provided in the following section regarding network-plugin-syncer
+is relevant only for Submariner releases prior to version 0.16. Starting from
+Submariner 0.16, this functionality has been incorporated into
+the [route-agent](../route-agent/).
+{{% /notice %}}
+
 The Network Plugin Syncer provides a framework for components to interface
 with the configured Kubernetes Container Network Interface (CNI) plugin to
 perform any API/database tasks necessary to facilitate routing cross-cluster
