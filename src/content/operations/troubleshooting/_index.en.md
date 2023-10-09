@@ -288,15 +288,11 @@ service. As described earlier, it will most commonly be an issue with RBAC other
 ##### Check EndpointSlice resources
 
 If the ServiceImport resources are correct, next we check if the EndpointSlice resources were properly created for the service you're
-trying to access.  The format of a EndpointSlice resource's name is as follows:
-
-`<service-name>-<service-namespace>-<cluster-id>`
-
-Run `kubectl get endpointslices --all-namespaces |grep <your-service-name>` on the Broker cluster to check if a resource was created for
-your Service. If not, then check the Lighthouse Agent logs on the cluster where the Service was created and look for any error or warning
-messages indicating a failure to create the EndpointSlice resource for your Service. The most common error is `Forbidden` if the RBAC wasn't
-configured correctly. This is supposed to be done automatically during deployment so please file an
-[issue](https://github.com/submariner-io/lighthouse/issues) with the relevant log entries.
+trying to access.  Run `kubectl get endpointslices --all-namespaces -l multicluster.kubernetes.io/service-name=<your-service-name>` on the
+Broker cluster to check if a resource was created for your Service. If not, then check the Lighthouse Agent logs on the cluster where the
+Service was created and look for any error or warning messages indicating a failure to create the EndpointSlice resource for your Service.
+The most common error is `Forbidden` if the RBAC wasn't configured correctly. This is supposed to be done automatically during deployment
+so please file an [issue](https://github.com/submariner-io/lighthouse/issues) with the relevant log entries.
 
 If the EndpointSlice resource was created correctly on the Broker cluster, the next step is to check if it exists on the cluster where
 you're trying to access the Service. The EndpointSlice should exist in the service's namespace. If it doesn't
