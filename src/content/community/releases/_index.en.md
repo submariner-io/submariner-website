@@ -49,6 +49,8 @@ weight = 40
 * `subctl verify` no longer requires the KUBECONFIG environment variable to be set.
 * The `submariner_service_export` metric is now properly exposed after being inadvertently removed.
 * The Globalnet component now handles out-of-order remote endpoint notifications properly.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
 
