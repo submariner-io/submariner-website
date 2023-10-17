@@ -51,6 +51,15 @@ weight = 40
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
 
+### Known issues
+
+* Upgrades involving OVN can fail because one of the OVN sockets is replaced by a directory.
+  To bring affected nodes up successfully, all invalid sockets on each node must be removed: `find /run -type d -name '*.sock' -delete`.
+  v0.16.0 includes a partial fix for this: route agents wait for node readiness before starting,
+  which allows OVN to finish initializing.
+  In some scenarios however, an invalid directory is created before OVN is upgraded, which prevents OVN from starting up correctly.
+  This will be fixed fully in v0.16.1.
+
 ## v0.14.5
 
 This is a bugfix release:
