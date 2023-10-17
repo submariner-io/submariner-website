@@ -330,7 +330,7 @@ OpenShift users will find Submariner's Operator in the official [Red Hat catalog
 
 1) Clone the [`submariner-operator`](https://github.com/submariner-io/submariner-operator) repository.
 
-2) Make sure you have [`operator-sdk` v1 installed](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/).
+2) Make sure you have [`operator-sdk` v1 installed](https://sdk.operatorframework.io/docs/installation/).
 
 3) Generate new package manifests:
 
