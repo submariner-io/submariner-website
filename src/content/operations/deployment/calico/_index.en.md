@@ -29,6 +29,12 @@ Globalnet CIDR (i.e., 242.0.0.0/8) as it is used internally within Calico. You c
 a non-overlapping Globalnet CIDR while deploying Submariner.
 {{% /notice %}}
 
+Submariner automatically creates the necessary Calico IPPools for cross-cluster communication when the [Calico API Server](https://docs.tigera.io/calico/latest/operations/install-apiserver#install-the-api-server)
+is installed within the cluster.
+
+If the Calico API Server is not installed, the IPPools needed for
+cross-cluster communication must be manually created as outlined below.
+
 As an example, consider two clusters, East and West, deployed with the Calico network plugin
 and connected via Submariner. For cluster East, the Service CIDR is 100.93.0.0/16 and the Pod CIDR is
 10.243.0.0/16. For cluster West, they are 100.92.0.0/16 and 10.242.0.0/16. The following IPPools
