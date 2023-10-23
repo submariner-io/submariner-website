@@ -43,7 +43,7 @@ weight = 40
 * Submariner now uses case-insensitive comparison while parsing CNI names.
 * Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is not detected.
 * Submariner now automatically creates the necessary Calico IPPools for remote cluster connectivity when the Calico API Server is
-  installed within in the cluster.
+  installed in the cluster.
 * Fixed an issue with Service Discovery with Globalnet enabled where a service was inaccessible after recreating it.
 * Fixed an issue with Service Discovery where a remote cluster's service was inaccessible after recreating its local namespace.
 * Service Discovery with Globalnet enabled now correctly handles headless services without a selector.
