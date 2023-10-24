@@ -7,6 +7,9 @@ weight = 40
 
 ## v0.17.0
 
+* The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
+  conditions.
+
 ## v0.16.0 (October 2, 2023)
 
 ### New features
