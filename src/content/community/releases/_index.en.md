@@ -7,6 +7,9 @@ weight = 40
 
 ## v0.17.0
 
+* The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
+  conditions.
+
 ## v0.16.3 (January 11, 2024)
 
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
