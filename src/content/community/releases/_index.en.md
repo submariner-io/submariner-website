@@ -5,6 +5,8 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.0
+
 ## v0.16.3 (January 11, 2024)
 
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
