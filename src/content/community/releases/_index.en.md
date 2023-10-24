@@ -5,6 +5,8 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.0
+
 ## v0.16.0 (October 2, 2023)
 
 ### New features
