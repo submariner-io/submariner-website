@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.1
+
+* The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
+  conditions.
+
 ## v0.15.3 (November 3, 2023)
 
 * The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
