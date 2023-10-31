@@ -5,6 +5,15 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.7 (October 17, 2023)
+
+* Fixed an issue with iptables, where xtables.lock will be created as directory and subsequent invocations of iptables on the host
+  will fail.
+* IPsec connection will be now retried if there are any `whack` errors.
+* The Pluto process now waits for 1 minute before returning the error code `33`.
+* IP forwarding will be now enabled in Submariner interfaces if not enabled by default.
+* Submariner gateway now starts pluto process only when `libreswan` connects to first remote endpoint
+
 ## v0.16.0 (October 2, 2023)
 
 ### New features
