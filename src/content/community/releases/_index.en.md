@@ -22,6 +22,9 @@ weight = 40
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
 * The pod CIDR detection logic now ensures that the node's `podCIDR` is exclusively used for single-node deployments.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 
 ## v0.14.7 (October 17, 2023)
 
