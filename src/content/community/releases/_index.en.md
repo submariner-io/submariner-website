@@ -13,6 +13,8 @@ weight = 40
   gateways, use the Load Balancer mode instead.
 * Removed the `generic` option from `subctl cloud prepare` that was previously deprecated in v0.15.0. To label gateway nodes, use
   `subctl join` instead.
+* Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
+  queries.
 
 ## v0.16.3 (January 11, 2024)
 
