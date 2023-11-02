@@ -9,6 +9,7 @@ weight = 40
 
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
   conditions.
+* The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruption.
 
 ## v0.16.0
 
