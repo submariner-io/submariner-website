@@ -8,6 +8,7 @@ pre = "<b>2. </b>"
   * [subctl](deployment/subctl)
   * [Helm](deployment/helm)
   * [Calico CNI](deployment/calico)
+* [Upgrading](upgrading)
 * [User Guide](usage)
 * [Monitoring](monitoring)
 * [Troubleshooting](troubleshooting)

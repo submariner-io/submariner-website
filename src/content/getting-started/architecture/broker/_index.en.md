@@ -7,8 +7,10 @@ Submariner uses a central Broker component to facilitate the exchange of metadat
 information between Gateway Engines deployed in participating clusters. The Broker is
 basically a set of Custom Resource Definitions (CRDs) backed by the Kubernetes datastore.
 The Broker also defines a ServiceAccount and RBAC components to enable other Submariner
-components to securely access the Broker's API. There are no Pods or Services deployed
-with the Broker.
+components to securely access the Broker's API.
+
+While there no Services associated with the Broker, if using ```subctl``` to deploy the Broker, an
+operator Pod is also deployed that installs the CRDs and the Globalnet configuration.
 
 Submariner defines two CRDs that are exchanged via the Broker: `Endpoint` and `Cluster`.
 The `Endpoint` CRD contains the information about the active Gateway Engine in a cluster,

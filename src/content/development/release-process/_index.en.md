@@ -66,11 +66,10 @@ resolved before the branch can be merged.
 
 The release notes are maintained in reverse chronological order. Each version should have its release date added in the release note merge PR.
 
-See [the 0.15.2 merge PR](https://github.com/submariner-io/submariner-website/pull/991) for an example of a release note merge PR: it
-contains all the commits which built up the release notes, and a final merge commit from `devel` to resolve conflicts. The result only
-contains changes to the release notes `_index.en.md` file, with the changes for the released version. If additional changes need to be
-added to a pending merge branch, they should be merged to the release notes branch and that branch then merged to the pending merge branch
-(which will result in a fast-forward merge). The updated pending merge branch can then be force-pushed to GitHub to update the PR.
+Our GitHub configuration requires a rebase before merging PRs, which means we need to use `git rebase` instead of `git merge`.
+See [the 0.16.0 PR](https://github.com/submariner-io/submariner-website/pull/1056) for an example. If additional changes need to be added,
+they should be added to the release notes branch first. If the initial PR is still pending, they can then be rebased onto the PR's branch.
+If the initial PR has been merged, they can be rebased onto devel and submitted with an additional PR.
 
 ### Updating Dependencies
 
@@ -330,7 +329,7 @@ OpenShift users will find Submariner's Operator in the official [Red Hat catalog
 
 1) Clone the [`submariner-operator`](https://github.com/submariner-io/submariner-operator) repository.
 
-2) Make sure you have [`operator-sdk` v1 installed](https://v1-0-x.sdk.operatorframework.io/docs/installation/install-operator-sdk/).
+2) Make sure you have [`operator-sdk` v1 installed](https://sdk.operatorframework.io/docs/installation/).
 
 3) Generate new package manifests:
 
