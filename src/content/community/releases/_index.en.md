@@ -5,6 +5,16 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.7 (October 17, 2023)
+
+* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
+  when global forwarding on the node is turned off.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+
 ## v0.16.0 (October 2, 2023)
 
 ### New features
@@ -66,16 +76,6 @@ weight = 40
   which allows OVN to finish initializing.
   In some scenarios however, an invalid directory is created before OVN is upgraded, which prevents OVN from starting up correctly.
   This will be fixed fully in v0.16.1.
-
-## v0.14.7
-
-* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
-  when global forwarding on the node is turned off.
-* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
-  automatically retries connections in response to errors reported by the 'whack' command.
-* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
-  temporarily unavailable.
-* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 
 ## v0.14.6 (July 5, 2023)
 
