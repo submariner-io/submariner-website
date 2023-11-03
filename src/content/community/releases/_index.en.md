@@ -10,6 +10,8 @@ weight = 40
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
   conditions.
 * The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruption.
+* Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
+  queries.
 
 ## v0.16.0
 
