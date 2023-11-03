@@ -7,6 +7,13 @@ weight = 40
 
 ## v0.17.0
 
+### New features
+
+* The new `--only basic-connectivity` option on `subctl verify` runs a smaller set of connectivity tests as a quick sanity check when
+  time is a constraint.
+
+### Other changes
+
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
   conditions.
 * Removed the `dedicated-gateway` flag from `subctl cloud prepare` that was previously deprecated in v0.15.0. To deploy without dedicated
