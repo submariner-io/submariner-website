@@ -15,6 +15,7 @@ weight = 40
   `subctl join` instead.
 * Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
   queries.
+* The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruptions.
 
 ## v0.16.3 (January 11, 2024)
 
