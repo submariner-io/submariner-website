@@ -73,6 +73,9 @@ weight = 40
   when global forwarding on the node is turned off.
 * Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
   automatically retries connections in response to errors reported by the 'whack' command.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
 
 ## v0.14.6 (July 5, 2023)
 
