@@ -16,6 +16,11 @@ weight = 40
   (which prevents OVN components from starting). Additionally, stray directories are cleaned up at startup. This fixes the known issue with
   upgrades involving OVN, [documented in the known issues in v0.16.0](#v0160).
 
+### Known issues
+
+* Globalnet will not work properly if deployed using the Helm charts due to missing RBAC permissions needed to utilize Kubernetes leader
+  election. This will be fixed in v0.16.2.
+
 ## v0.16.0
 
 ### New features
