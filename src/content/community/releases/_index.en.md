@@ -12,6 +12,9 @@ weight = 40
 * The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruption.
 * Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
   queries.
+* Sockets from the host are mounted through their parent directory, which ensures that the sockets themselves aren't replaced by directories
+  (which prevents OVN components from starting). Additionally, stray directories are cleaned up at startup. This fixes the known issue with
+  upgrades involving OVN, as documented in the known issues section for v0.16.0.
 
 ## v0.15.3 (November 3, 2023)
 
