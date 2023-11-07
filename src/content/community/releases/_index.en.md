@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.2
+
+* Fixed known issue in v0.16.1 where Globalnet did not work properly if deployed using the Helm charts.
+* Fixed known issue in v0.16.1 where `subctl verify` with Globalnet installed may fail with a panic.
+
 ## v0.16.1
 
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
