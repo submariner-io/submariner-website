@@ -20,6 +20,7 @@ weight = 40
 
 * Globalnet will not work properly if deployed using the Helm charts due to missing RBAC permissions needed to utilize Kubernetes leader
   election. This will be fixed in v0.16.2.
+* `subctl verify` with Globalnet installed may fail with a panic. This will be fixed in v0.16.2.
 
 ## v0.16.0
 
