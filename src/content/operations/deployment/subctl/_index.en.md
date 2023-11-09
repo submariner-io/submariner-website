@@ -76,7 +76,7 @@ contains the following details:
 | Flag                                  | Description
 |:--------------------------------------|:---------------------------------------------------------------------------------------------------|
 | `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
-| `--version` `<string>`                | Image version (default image tag "devel")
+| `--version` `<string>`                | Image version (defaults to the subctl version)
 | `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
 | `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
 | `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
@@ -161,7 +161,7 @@ deployment.
 | Flag                                    | Description
 |:----------------------------------------|:----------------------------------------------------------------------------|
 | `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
-| `--version` `<string>`                  | Image version (default image tag "devel")
+| `--version` `<string>`                  | Image version (defaults to the subctl version)
 | `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
 <!-- markdownlint-enable line-length -->
 
