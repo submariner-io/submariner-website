@@ -5,6 +5,48 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.1/v0.16.2 (November 7, 2023)
+
+* The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
+  conditions.
+* The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruption.
+* Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
+  queries.
+* Sockets from the host are mounted through their parent directory, which ensures that the sockets themselves aren't replaced by directories
+  (which prevents OVN components from starting). Additionally, stray directories are cleaned up at startup. This fixes the known issue with
+  upgrades involving OVN, as documented in the known issues section for v0.16.0.
+
+## v0.15.3 (November 3, 2023)
+
+* The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
+  and will provide an appropriate error message.
+* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even when
+  global forwarding on the node is turned off.
+* Enhanced Calico CNI detection now includes searching for calico-node CNI pods when the calico-config map is
+  not detected.
+* Submariner now explicitly configures dpddelay when initiating IPsec connections to prevent excessively frequent
+  liveness probes.
+* Service Discovery will now publish DNS records for pods that are not ready based on the setting of the `publishNotReadyAddresses`
+  flag on the service.
+* The CNI detection method in Submariner Operator is now improved to detect the Flannel CNI, even when the Flannel configMap
+  is missing from the cluster.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
+* The pod CIDR detection logic now ensures that the node's `podCIDR` is exclusively used for single-node deployments.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+
+## v0.14.7 (October 17, 2023)
+
+* Submariner now explicitly enables forwarding on the interfaces that it creates to support forwarding even
+  when global forwarding on the node is turned off.
+* Submariner now ensures that the IPsec control socket is created before initiating connection requests, and also
+  automatically retries connections in response to errors reported by the 'whack' command.
+* The Submariner gateway now retries reading local node information on startup to reduce pod restarts if the Kubernetes API server is
+  temporarily unavailable.
+* Reduced data path downtime with Libreswan cable driver when gateway pod restarts.
+
 ## v0.16.0 (October 2, 2023)
 
 ### New features
