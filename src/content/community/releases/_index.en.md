@@ -22,6 +22,7 @@ weight = 40
   `subctl join` instead.
 * Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
   queries.
+* Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
 * The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruptions.
 
 ## v0.16.0 (October 2, 2023)
