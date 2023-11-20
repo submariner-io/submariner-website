@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.3
+
+* Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
+
 ## v0.16.1/v0.16.2 (November 7, 2023)
 
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
