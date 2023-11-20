@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.3
+
+* Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
+
 ## v0.16.2
 
 * Fixed known issue in v0.16.1 where Globalnet did not work properly if deployed using the Helm charts.
