@@ -16,13 +16,13 @@ projects.
 ### Backlog Board
 
 [The backlog board] hosts issues, bugs and features which are not a part of a particular release board. While each issue is opened in
-its corresponding repository, this board gives an aggregated view of all open issues across all repositories. The board has total of seven
+its corresponding repository, this board gives an aggregated view of all open issues across all repositories. The board has total of three
 columns. Any new issues or epics should typically be assigned to the `Backlog` column. Epics which are candidates to be included in
 the next release are moved to the `Next Version Candidate` column. During [planning](#planning), all epics from the `Next
 Version Candidate` column are reviewed and triaged. Epics which are selected to be in the next release are moved to
-the [current release board](#current-release-board). The next 3 columns sort issues by priority. All unassigned issues are sorted into these
-three columns based on the priority discussed in the team meeting. Issues from these columns are ready to be worked on. Any leftover work
-from the previous release goes to the `Work in Progress column`. The `Close?` column holds any issues/epics that can probably be closed for
+the [current release board](#current-release-board). All unassigned issues are labeled with priority based on the priority discussed in
+the team meeting.
+The `Close?` column holds any issues/epics that can probably be closed for
 various reasons.
 
 ### Current Release Board
@@ -143,7 +143,7 @@ Planning meetings will be held, focusing on the [Backlog board].
 In order for a task or an epic to be eligible for the next version, it needs to fulfill these requirements:
 
 * Be part of the [Backlog board].
-* Have a `next-version-candidate` label.
+* Located in the `next-version-candidate` column.
 * Have a description detailing **what** the issue is and optionally **how** it's going to be solved.
 * Have an appropriate sizing label, according to the amount of work expected for a single person to completely deliver the task:
   * *Small*: Work is contained in one sprint and is expected to take less than half the sprint.
@@ -164,12 +164,12 @@ During these meetings, the project team will:
 * Prioritize and assign epics for the next version.
   * Only epics adhering to the described requirements will be considered.
   * Transfer assigned epics to the [release board](#current-release-board) according to the capacity of the team to deliver them.
-  * Remove the `next-version-candidate` label from transferred epics.
 * Re-evaluate the priorities of any *Small* and *Medium* tasks in the backlog.
 * Optionally assign important bugs and tasks and move them to the release board.
 
 By the end of the planning week, the project team will have a backlog of epics and tasks and can commence working on the design phase.
-All epics for the next version will be on the release board, while all *Small* and *Medium* tasks will be left on the backlog board and
+All epics for the next version will be on the release board, along with *Small* and *Medium* tasks with an owner assigned.
+Unassigned tasks will be left on the backlog board and
 worked on based on their priority.
 
 #### Feature Design
@@ -345,7 +345,7 @@ https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-lab
 [Tracking Progress on your Project Board]:
 https://docs.github.com/en/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards
 [The backlog board]: https://github.com/orgs/submariner-io/projects/15
-[the latest board]: https://github.com/orgs/submariner-io/projects?type=classic
+[the latest board]: https://github.com/orgs/submariner-io/projects?query=is%3Aopen
 [enhancements repository]: https://github.com/submariner-io/enhancements
 [Enhancement Request issue]: https://github.com/submariner-io/enhancements/issues/new?assignees=&labels=enhancement&template=enhancement.md
 [The release process documentation]: https://submariner.io/development/release-process/
