@@ -76,7 +76,7 @@ Unsupported Kubernetes Cut-off | Oldest working version | One defaults-only E2E 
 
 ## Shipyard Base Image Software
 
-Some versions of software used by the Shipyard base image are maintained manually and should be periodically updated.
+In branches older than 0.16, some versions of software used by the Shipyard base image are maintained manually and should be periodically updated.
 
 ```shell
 ENV LINT_VERSION=<version> \
