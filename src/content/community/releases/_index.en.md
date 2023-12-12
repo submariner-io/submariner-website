@@ -18,6 +18,7 @@ weight = 40
 
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
   conditions.
+* Globalnet now handles port updates for exported services.
 * Removed the `dedicated-gateway` flag from `subctl cloud prepare` that was previously deprecated in v0.15.0. To deploy without dedicated
   gateways, use the Load Balancer mode instead.
 * Removed the `generic` option from `subctl cloud prepare` that was previously deprecated in v0.15.0. To label gateway nodes, use
