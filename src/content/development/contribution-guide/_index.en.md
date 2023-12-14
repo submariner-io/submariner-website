@@ -43,6 +43,7 @@ or as a general [Enhancement Request issue].
 
 Submariner's release is automated to a great extent. [The release process documentation] explains the details of a release. The release
 automation is maintained in the [releases repository]. It also hosts `subctl` binaries for all released versions.
+Code is frozen during releases: no PRs unrelated to the release can be merged to the branch being released.
 
 ## Bugs, Tasks and Epics
 
@@ -95,7 +96,7 @@ Each cycle will result in either a minor version bump or a major version bump in
 ### Sprints
 
 Sprints are 3 week periods which encapsulate work on the release.
-Most sprints focus on active development of the current version, while some focus on additional aspects such as design and stabilization.
+Most sprints focus on active development of the current version, while the last one focuses on stabilization.
 Specific sprints and their contents are detailed in the following sections.
 
 Most sprints will end with a milestone pre-release as detailed in the following sections.
@@ -175,7 +176,7 @@ worked on based on their priority.
 #### Feature Design
 
 Project members are expected to work on the design for any [epic](#epics) features assigned to them.
-During this sprint, project members will update their respective epics with any work identified during the design phase.
+Project members will update their respective epics with any work identified during the design phase.
 Project members are encouraged to perform proof of concept investigations in order to validate the design and clarify specific work items.
 
 In case additional work items are identified during the design, they should be opened as [tasks](#tasks) and tracked under the respective epic.
@@ -185,7 +186,7 @@ Specifically, tasks that are themselves epics due to their size should be identi
 Design proposals for epics should be submitted as [pull requests to the enhancements repository], detailing the proposed design, any
 alternatives, and any changes necessary to the Submariner projects and APIs.
 
-The [pull requests to the enhancements repository] will be reviewed during the sprint, discussing any necessary changes or reservations.
+The [pull requests to the enhancements repository] will be reviewed, discussing any necessary changes or reservations.
 Any pull request will need approval from at least 50% of the [code owners of the enhancements repository].
 The code owners list is an aggregate list of the code owners of all Sumbariner repositories.
 As soon as the pull request is reviewed and merged, work on the epic can begin.
@@ -193,13 +194,7 @@ As soon as the pull request is reviewed and merged, work on the epic can begin.
 Project members are expected to review proposals from other members in addition to drafting their own proposals.
 If a project member has finished work on their proposal, they're encouraged to help with the other ongoing proposals.
 
-Only epics which were planned for the release will be reviewed at this stage.
-Any epic that was unplanned but seeks inclusion in the release should follow the [exception process](#exception-process).
-The same process will have to be followed for any epic that was planned but has not been agreed upon by the end of this sprint.
-Any such epics will be moved back to the [Backlog board](#backlog-board) and reconsidered for the next release.
-
-In lieu of demos, the project will host a design review at the end of the sprint.
-All the approved epics and their designs will be presented.
+Project members are encouraged to host a design review for their enhancement proposal design.
 
 #### Development Milestones
 
@@ -210,7 +205,7 @@ Any [unplanned work](#unplanned-work) should follow the defined guidelines.
 Each sprint will end with a release to allow the community to test new features and fixed bugs.
 In total, three milestone sprints are planned:
 
-* Two milestones ending with releases of milestone `m1` and milestone `m2`.
+* Three sprints ending with the release of each milestone `m1`, `m2`, and `m3`.
 * The last sprint ending with the release of the [release candidate](#release-candidates) `rc0`.
 
 As detailed in the [sprints](#sprints) section, each milestone release will be followed by a test day and the sprint meetings.
@@ -282,24 +277,6 @@ This work is typically one of three types:
 The team [triages tasks and bugs as part of a weekly meeting].
 The bugs can be worked on immediately, while other types of issues are described below.
 
-#### Exception Process
-
-In some cases, a task or an epic will be reported in the middle of a release cycle.
-Small and medium sized tasks will be triaged and prioritized in the same manner as other issues.
-Once triaged and prioritized, small and medium tasks can be worked on according to their priority.
-
-Epics would need to undergo an exception process.
-The epic's proponent would need to bring it up to discussion in the weekly community meeting.
-It's up to the proponent to show why the new issue should take precedence over other pre-planned and triaged issues.
-A 50% approval from the [Project Members] in attendance at the meeting or having voted before the meeting is required for an epic to be
-accepted in the middle of the release.
-If the epic is approved during the exception process:
-
-* The team might de-scope other tasks or epics.
-* A label `unplanned` should be added to it.
-* It would require an enhancement proposal to be drafted and reviewed in the same manner as all other epics.
-* If the enhancement proposal is accepted and merged, work on the epic can begin.
-
 ### Test Days
 
 Test days are held in order to validate pre-released versions by the project members and the wider community.
@@ -336,7 +313,6 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [test day template]: https://docs.google.com/spreadsheets/d/14wNJAbR2CC3wWdHtxnvnNlft8kSWp-SIFMWJ-hRISao
 [Submariner project]: https://github.com/submariner-io
 [triages tasks and bugs as part of a weekly meeting]: https://docs.google.com/document/d/1ICvOBOUpIEI45Yqcjf26Z1e5mZNzYsEN-H7_3xx54jI
-[Project Members]: https://submariner.io/community/contributor-roles/#member
 [Release notes]: ../../community/releases/
 [the website repository]: https://github.com/submariner-io/submariner-website/
 [Searching the Submariner GitHub Org with `label:release-note-needed -label:release-note-handled`]:
