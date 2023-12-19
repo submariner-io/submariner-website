@@ -11,6 +11,8 @@ weight = 40
 
 * The new `--only basic-connectivity` option on `subctl verify` runs a smaller set of connectivity tests as a quick sanity check when
   time is a constraint.
+* The `deploy-broker`, `recover-broker-info`, and `join` sub-commands have a `--broker-url` option which can be used to override the
+  broker URL (which is usually derived from the context used to access the broker, or stored in the `broker-info.subm` file).
 
 ### Other changes
 
