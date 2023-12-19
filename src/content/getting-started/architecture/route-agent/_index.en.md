@@ -33,6 +33,50 @@ the new active Gateway Engine node.
 
 ## OVN Kubernetes
 
-For the OVN Kubernetes CNI plugin, host network routing is configured on all nodes and,
-on the active Gateway node, IP forwarding is configured between the `ovn-k8s-gw0`
-and cable interfaces.
+ With OVN Kubernetes we reuse the GENEVE tunnels created by OVNKubernetes CNI to reach the
+gateway nodes from non-gateway nodes and a separate VXLAN tunnel is not created.
+
+{{% notice info %}}
+For Submariner 0.15 and below refer  [network plugin syncer](../networkplugin-syncer/)
+{{% /notice %}}
+
+With OVN we can have two deployment models,
+
+{{% notice info %}}
+Submariner automatically discovers the OVN mode and uses the appropriate implementation and this is
+not a configuration option in Submariner
+{{% /notice %}}
+
+### Single Zone
+
+A single-zone deployment involves a single OVN database and a set of master nodes that
+program it.
+
+Here, Submariner configures the `ovn_cluster_router` to route traffic to other clusters through the
+`ovn-k8s-mp0` interface of the gateway node, effectively bridging it to the host networking
+stack of the gateway node. Since `ovn_cluster_router`  is distributed, this route also ensures
+that traffic from non-gateway node is directed to local gateway node.
+
+The traffic that comes through Submariner tunnel from remote cluster to gateway node will be
+directed to `ovn-k8s-mp0` interface through host routes and will be handled by `ovn_cluster_router`.
+
+![Single Zone](/images/ovn-kubernetes/ovn-without-ic.svg)
+
+### Multiple Zone
+
+In a multi-zone configuration, each zone operates with its dedicated OVN database and OVN master pod.
+These zones are interconnected via transit switches, and OVN-Kubernetes orchestrates the essential
+routing for enabling pod and service communication across nodes situated in different zones.
+
+Within this framework, the Submariner route agent plays a pivotal role. It ensures that the same
+routing configurations employed in a single zone are replicated in the OVN cluster router and the
+host stack of the gateway node. For nodes outside the zone where the gateway node is located,
+Submariner takes action by adding a route that directs traffic to remote clusters, channeling
+it through the transit switch IP of the gateway node.
+
+The host networking rules remain consistent across all nodes. They guide traffic towards the
+`ovn_cluster_router` specific to that zone, leveraging `ovn-k8s-mp0`. The `ovn_cluster_router`, in
+turn, guarantees that the traffic is directed through the Submariner tunnel via the gateway
+node.
+
+![Multiple Zone](/images/ovn-kubernetes/ovn-with-ic.svg)
