@@ -13,6 +13,8 @@ weight = 40
   time is a constraint.
 * The `deploy-broker`, `recover-broker-info`, and `join` sub-commands have a `--broker-url` option which can be used to override the
   broker URL (which is usually derived from the context used to access the broker, or stored in the `broker-info.subm` file).
+* Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
+  restart of the CoreDNS server pod.
 
 ### Other changes
 
