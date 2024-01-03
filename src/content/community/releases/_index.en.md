@@ -8,6 +8,8 @@ weight = 40
 ## v0.16.3
 
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
+* Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
+  restart of the CoreDNS server pod.
 
 ## v0.16.2
 
