@@ -10,6 +10,8 @@ weight = 40
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
 * Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
   restart of the CoreDNS server pod.
+* Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
+  stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 
 ## v0.16.2
 
