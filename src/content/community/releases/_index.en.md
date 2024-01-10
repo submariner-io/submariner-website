@@ -15,6 +15,8 @@ weight = 40
   broker URL (which is usually derived from the context used to access the broker, or stored in the `broker-info.subm` file).
 * Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
   restart of the CoreDNS server pod.
+* Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
+  stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 
 ### Other changes
 
