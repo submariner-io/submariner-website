@@ -12,6 +12,7 @@ weight = 40
   restart of the CoreDNS server pod.
 * Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
   stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
+* Fixed a crash in the Submariner Operator pod due to a concurrent map write.
 
 ## v0.16.1/v0.16.2 (November 7, 2023)
 
