@@ -31,6 +31,7 @@ weight = 40
   queries.
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
 * The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruptions.
+* Fixed a crash in the Submariner Operator pod due to a concurrent map write.
 
 ## v0.16.0 (October 2, 2023)
 
