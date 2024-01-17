@@ -17,6 +17,7 @@ weight = 40
   restart of the CoreDNS server pod.
 * Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
   stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
+* `subctl join` now ensures the local cluster ID is unique with respect to existing joined clusters to avoid issues with duplicate IDs.
 
 ### Other changes
 
