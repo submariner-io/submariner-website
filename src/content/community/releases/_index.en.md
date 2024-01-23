@@ -18,6 +18,8 @@ weight = 40
 * Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
   stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 * `subctl join` now ensures the local cluster ID is unique with respect to existing joined clusters to avoid issues with duplicate IDs.
+* `subctl verify` has a new flag, `--extracontext`, to specify the context for a third cluster that is required for some Service Discovery
+  tests.
 
 ### Other changes
 
