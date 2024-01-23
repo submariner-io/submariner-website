@@ -233,13 +233,16 @@ Shows the aggregated information from all the other show commands.
 
 ### `verify`
 
-`subctl verify --context <context1> --tocontext <context2> [flags]`
+`subctl verify --context <context1> --tocontext <context2> [--extracontext <context3>] [flags]`
 
 The `verify` command verifies a Submariner deployment between two clusters is functioning properly. `<context1>` will be
 `ClusterA` in the reports, while `<context2>` will be `ClusterB` in the reports. The `--verbose` flag is recommended to see what's
 happening during the tests.
 
-There are several suites of verifications that can be performed. By default all verifications are performed.  Some verifications are deemed
+Some Service Discovery tests require a third cluster, specified via the `--extracontext` arg, to verify additional functionality. If the
+third cluster is not specified, those tests are skipped.
+
+There are several suites of verifications that can be performed. By default, all verifications are performed. Some verifications are deemed
 disruptive in that they change some state of the clusters as a side effect.  If running the command interactively, you will be prompted for
 confirmation to perform disruptive verifications unless the `--disruptive-tests` flag is also specified. If running non-interactively (that
 is with no stdin), `--disruptive-tests` must be specified otherwise disruptive verifications are skipped.
