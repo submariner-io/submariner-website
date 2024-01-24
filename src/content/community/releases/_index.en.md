@@ -13,10 +13,6 @@ weight = 40
   time is a constraint.
 * The `deploy-broker`, `recover-broker-info`, and `join` sub-commands have a `--broker-url` option which can be used to override the
   broker URL (which is usually derived from the context used to access the broker, or stored in the `broker-info.subm` file).
-* Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
-  restart of the CoreDNS server pod.
-* Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
-  stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 * `subctl join` now ensures the local cluster ID is unique with respect to existing joined clusters to avoid issues with duplicate IDs.
 * `subctl verify` has a new flag, `--extracontext`, to specify the context for a third cluster that is required for some Service Discovery
   tests.
@@ -35,6 +31,10 @@ weight = 40
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
 * The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruptions.
 * Fixed a crash in the Submariner Operator pod due to a concurrent map write.
+* Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
+  restart of the CoreDNS server pod.
+* Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
+  stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 
 ## v0.16.0 (October 2, 2023)
 
