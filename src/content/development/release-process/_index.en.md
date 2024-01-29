@@ -76,6 +76,11 @@ If the initial PR has been merged, they can be rebased onto devel and submitted 
 Verify that all dependencies are up to date before branch cutting at the first release candidate.
 See the [CI Maintenance docs](../building-testing/ci-maintenance) for details about versions that must be manually maintained.
 
+### Checking for dependent PRs
+
+Before starting the release process, check the corresponding release issue for dependent PRs or issues;
+these are PRs which are supposed to be reviewed, and issues which are supposed to be addressed, before the release starts.
+
 ## Automated Release Creation Process
 
 Most of the release can be done in a series of mostly-automated steps. After each step, a Pull Request is sent with the correct YAML
