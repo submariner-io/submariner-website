@@ -69,9 +69,9 @@ The versions that should be used in CI are described below.
 CI | Kubernetes Version | Notes
 :--- | :---- | :----
 Most CI | Latest | CI should run against the latest Kubernetes version by default.
-Basic Kubernetes Support | All non-latest supported versions | One defaults-only E2E for each non-latest supported Kubernetes version.
-Full Kubernetes Support | All non-latest supported versions | Workflow to run all CI for all of the currently-supported, non-latest Kubernetes versions. Run periodically, on releases, or manually by adding the `e2e-all-k8s` label.
-Unsupported Kubernetes Cut-off | Oldest working version | One defaults-only E2E for the oldest Kubernetes version known to work with Submariner. This tests the cut-off version used by `subctl` to prevent installing Submariner in environments that are known to be unsupported.
+Full E2E | Top/bottom of supported range | Full E2E CI matrix should use the latest Kubernetes version and the oldest non-EOL Kubernetes version.
+Full Kubernetes Support | All other non-latest supported versions | Full E2E CI matrix with all non-EOL Kubernetes versions not tested in E2E-Full. Run periodically, on releases, or manually by adding the `e2e-all-k8s` label.
+Unsupported Kubernetes Cut-off | Oldest working version | E2E for the oldest Kubernetes version known to work with Submariner. This tests the cut-off version used by `subctl` to prevent installing Submariner in environments that are known to be unsupported.
 <!-- markdownlint-enable line-length -->
 
 ## Shipyard Base Image Software
