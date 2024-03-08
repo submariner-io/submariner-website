@@ -5,6 +5,37 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.0 (February 26, 2024)
+
+### New features
+
+* The new `--only basic-connectivity` option on `subctl verify` runs a smaller set of connectivity tests as a quick sanity check when
+  time is a constraint.
+* The `deploy-broker`, `recover-broker-info`, and `join` sub-commands have a `--broker-url` option which can be used to override the
+  broker URL (which is usually derived from the context used to access the broker, or stored in the `broker-info.subm` file).
+* `subctl join` now ensures the local cluster ID is unique with respect to existing joined clusters to avoid issues with duplicate IDs.
+* `subctl verify` has a new flag, `--extracontext`, to specify the context for a third cluster that is required for some Service Discovery
+  tests.
+
+### Other changes
+
+* The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
+  conditions.
+* Globalnet now handles port updates for exported services.
+* Removed the `dedicated-gateway` flag from `subctl cloud prepare` that was previously deprecated in v0.15.0. To deploy without dedicated
+  gateways, use the Load Balancer mode instead.
+* Removed the `generic` option from `subctl cloud prepare` that was previously deprecated in v0.15.0. To label gateway nodes, use
+  `subctl join` instead.
+* Fixed an issue in Service Discovery where stale endpoint IPs, corresponding to services that no longer exist, were returned from DNS
+  queries.
+* Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
+* The Gateway leader election was enhanced to not restart the pod when leadership is lost to avoid possible data path disruptions.
+* Fixed a crash in the Submariner Operator pod due to a concurrent map write.
+* Fixed an issue with Service Discovery where, after disaster recovery of the broker cluster, some DNS queries could fail requiring a
+  restart of the CoreDNS server pod.
+* Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
+  stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
+
 ## v0.16.3 (January 11, 2024)
 
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
