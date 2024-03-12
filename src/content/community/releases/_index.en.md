@@ -35,6 +35,7 @@ weight = 40
   restart of the CoreDNS server pod.
 * Fixed an issue with the OVN-Kubernetes CNI where, after a cluster recovery, the data path was broken requiring manual deletion of
   stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
+* The script to download the `subctl` binary now correctly handles the Linux aarch64 architecture.
 
 ## v0.16.3 (January 11, 2024)
 
