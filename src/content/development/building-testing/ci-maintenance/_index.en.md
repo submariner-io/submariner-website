@@ -74,21 +74,6 @@ Full Kubernetes Support | All other non-latest supported versions | Full E2E CI 
 Unsupported Kubernetes Cut-off | Oldest working version | E2E for the oldest Kubernetes version known to work with Submariner. This tests the cut-off version used by `subctl` to prevent installing Submariner in environments that are known to be unsupported.
 <!-- markdownlint-enable line-length -->
 
-## Shipyard Base Image Software
-
-In branches older than 0.16, some versions of software used by the Shipyard base image are maintained manually and should be periodically updated.
-
-```shell
-ENV LINT_VERSION=<version> \
-    HELM_VERSION=<version> \
-    KIND_VERSION=<version> \
-    BUILDX_VERSION=<version> \
-    GH_VERSION=<version> \
-    YQ_VERSION=<version>
-```
-
-[`submariner-io/shipyard/package/Dockerfile.shipyard-dapper-base`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-dapper-base)
-
 ## Shipyard Linting Image Software
 
 Some software used by Shipyard's linting image are pinned to avoid unplanned changes in linting requirements, which can cause disruption.
