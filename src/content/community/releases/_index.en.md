@@ -11,6 +11,9 @@ weight = 40
 
 ### Other changes
 
+* Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
+  result in a missing `ServiceImport` resource and cause name resolution failures.
+
 ## v0.17.0 (February 26, 2024)
 
 ### New features
