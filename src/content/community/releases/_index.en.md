@@ -11,6 +11,9 @@ weight = 40
 
 ### Other changes
 
+* Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
+  result in a missing `ServiceImport` resource and cause name resolution failures.
+
 ## v0.14.8 (June 28, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
