@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.18.0
+
+### New features
+
+### Other changes
+
 ## v0.14.8 (June 28, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
