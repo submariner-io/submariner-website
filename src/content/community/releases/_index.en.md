@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.4
+
+* Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
+  result in a missing `ServiceImport` resource and cause name resolution failures.
+
 ## v0.16.3
 
 * Fixed an issue in Service Discovery which caused an erroneous ServiceExport Conflict status condition to be reported.
