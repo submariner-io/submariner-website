@@ -9,6 +9,9 @@ weight = 40
 
 ### New features
 
+* `subctl join` and other commands now support HTTP proxy arguments corresponding to the HTTP proxy environment variables
+   that are propagated to the various pods.
+
 ### Other changes
 
 * Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
