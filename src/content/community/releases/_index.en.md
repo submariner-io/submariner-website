@@ -11,6 +11,7 @@ weight = 40
 
 * `subctl join` and other commands now support HTTP proxy arguments corresponding to the HTTP proxy environment variables
    that are propagated to the various pods.
+* `subctl verify` now outputs a short description of each test that is run.
 
 ### Other changes
 
