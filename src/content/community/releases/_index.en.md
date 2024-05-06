@@ -9,6 +9,8 @@ weight = 40
 
 * Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
   result in a missing `ServiceImport` resource and cause name resolution failures.
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
 
 ## v0.16.3
 
