@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.4
+
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
+
 ## v0.15.3
 
 * The `subctl diagnose` command has been enhanced to check for potential firewall issues that may be blocking ESP traffic
