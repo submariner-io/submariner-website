@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.4
+
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
+
 ## v0.17.2 (June 26, 2024)
 
 * Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
