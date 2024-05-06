@@ -9,6 +9,8 @@ weight = 40
 
 * Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
   services quickly.
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
 
 ## v0.17.1
 
