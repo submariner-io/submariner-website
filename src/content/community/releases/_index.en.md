@@ -19,6 +19,8 @@ weight = 40
   result in a missing `ServiceImport` resource and cause name resolution failures.
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
+* Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
+  services quickly.
 
 ## v0.17.0 (February 26, 2024)
 
