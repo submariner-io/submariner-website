@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.2
+
+* Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
+  services quickly.
+
 ## v0.16.7 (June 17, 2024)
 
 * Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
