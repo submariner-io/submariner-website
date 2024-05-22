@@ -21,6 +21,8 @@ weight = 40
   potential attack surface.
 * Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
   services quickly.
+* To reduce RBAC permissions, Submariner no longer annotates Node resources. After upgrade, any `submariner.io/*`
+  annotations will not be removed because Submariner no longer has Node update permission.
 
 ## v0.14.8 (June 28, 2024)
 
