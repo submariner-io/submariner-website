@@ -5,12 +5,13 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.16.4/v0.16.5 (May 23, 2024)
+## v0.16.4/v0.16.5/v0.16.6 (June 3, 2024)
 
 * Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
   result in a missing `ServiceImport` resource and cause name resolution failures.
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
+* Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
 
 ## v0.17.1 (April 17, 2024)
 
