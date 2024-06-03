@@ -23,6 +23,7 @@ weight = 40
   services quickly.
 * To reduce RBAC permissions, Submariner no longer annotates Node resources. After upgrade, any `submariner.io/*`
   annotations will not be removed because Submariner no longer has Node update permission.
+* Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
 
 ## v0.14.8 (June 28, 2024)
 
