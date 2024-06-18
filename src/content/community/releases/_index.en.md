@@ -760,7 +760,7 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 * **Support for overlapping CIDRs** between clusters (Globalnet).
 * Enhanced end-to-end scripts, which will be shared between repositories in the Shipyard project (ongoing work).
 * Improved end-to-end deployment by using a local registry.
-* Refactoring to **support pluggable drivers** (in preparation for [WireGuard](https://www.wireguard.com/) support).
+* Refactoring to **support pluggable drivers** (in preparation for WireGuard).
 
 ## v0.1.1 Submariner with more light
 
