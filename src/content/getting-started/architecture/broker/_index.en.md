@@ -9,7 +9,7 @@ basically a set of Custom Resource Definitions (CRDs) backed by the Kubernetes d
 The Broker also defines a ServiceAccount and RBAC components to enable other Submariner
 components to securely access the Broker's API.
 
-While there are no services associated with the Broker, if you use ```subctl``` to deploy the Broker, an
+While there are no services associated with the Broker, using ```subctl``` to deploy the Broker
 also deploys an operator Pod that installs the CRDs and the Globalnet configuration.
 
 Submariner defines two CRDs that are exchanged via the Broker: `Endpoint` and `Cluster`.
