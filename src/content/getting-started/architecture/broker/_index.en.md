@@ -10,7 +10,7 @@ The Broker also defines a ServiceAccount and RBAC components to enable other Sub
 components to securely access the Broker's API.
 
 While there are no services associated with the Broker, if you use ```subctl``` to deploy the Broker, an
-operator Pod is also deployed that installs the CRDs and the Globalnet configuration.
+also deploys an operator Pod that installs the CRDs and the Globalnet configuration.
 
 Submariner defines two CRDs that are exchanged via the Broker: `Endpoint` and `Cluster`.
 The `Endpoint` CRD contains the information about the active Gateway Engine in a cluster,
