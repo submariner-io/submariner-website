@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.16.4/v0.16.5/v0.16.6 (June 3, 2024)
+## v0.16.7 (June 17, 2024)
 
 * Fixed an issue in Service Discovery where un-exporting a Service on one cluster and then quickly exporting it on another cluster could
   result in a missing `ServiceImport` resource and cause name resolution failures.
@@ -808,7 +808,7 @@ When upgrading to 0.7.0 on a cluster already running Submariner, the current sta
 * **Support for overlapping CIDRs** between clusters (Globalnet).
 * Enhanced end-to-end scripts, which will be shared between repositories in the Shipyard project (ongoing work).
 * Improved end-to-end deployment by using a local registry.
-* Refactoring to **support pluggable drivers** (in preparation for [WireGuard](https://www.wireguard.com/) support).
+* Refactoring to **support pluggable drivers** (in preparation for WireGuard).
 
 ## v0.1.1 Submariner with more light
 
