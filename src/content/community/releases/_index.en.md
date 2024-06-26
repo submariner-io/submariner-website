@@ -24,7 +24,7 @@ weight = 40
 * To reduce RBAC permissions, Submariner no longer annotates Node resources. After upgrade, any `submariner.io/*`
   annotations will not be removed because Submariner no longer has Node update permission.
 * Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
-* AWS cloud prepare is modified to support resource naming convention followed in Openshift 4.16 and above.
+* AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.
 
 ## v0.14.8 (June 28, 2024)
 
