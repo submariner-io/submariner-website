@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.17.2
+## v0.17.2 (June 26, 2024)
 
 * Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
   services quickly.
