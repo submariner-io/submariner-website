@@ -5,19 +5,19 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.15.4
+## v0.15.4 (June 27, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
 
 ## v0.17.2 (June 26, 2024)
 
-* Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
+```* Improved the performance of Service Discovery exporting at scale which was hindered by excessive throttling delays when exporting many
   services quickly.
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
 * Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
-* AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.
+* AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.```
 
 ## v0.16.7 (June 17, 2024)
 
