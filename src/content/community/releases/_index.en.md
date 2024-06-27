@@ -11,6 +11,7 @@ weight = 40
   services quickly.
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
+* Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
 
 ## v0.16.7 (June 17, 2024)
 
