@@ -12,6 +12,7 @@ weight = 40
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
 * Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
+* AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.
 
 ## v0.17.1
 
