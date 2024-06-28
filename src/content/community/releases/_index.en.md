@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.8 (June 28, 2024)
+
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
+
 ## v0.15.4 (June 27, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
