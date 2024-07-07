@@ -9,3 +9,4 @@ pre = "<b>3. </b>"
 * [Getting Help](getting-help)
 * [Releases](releases)
 * [Roadmap](roadmap)
+* [Role in the Ecosystem](role-ecosystem)
