@@ -10,7 +10,7 @@ in order for their contributions to the project to be addressed in a timely mann
 
 ## Project Resources
 
-Submariner uses [GitHub Projects] to manage releases. Read [Tracking Progress on your Project Board] to learn more about how to work with
+Submariner uses [GitHub Projects] to manage releases. Read [Best practices for projects] to learn more about how to work with
 projects.
 
 ### Backlog Board
@@ -317,10 +317,10 @@ Should a bug be identified during a test day, it should be labeled with an appro
 [the website repository]: https://github.com/submariner-io/submariner-website/
 [Searching the Submariner GitHub Org with `label:release-note-needed -label:release-note-handled`]:
 https://github.com/pulls?q=user%3Asubmariner-io+label%3Arelease-note-needed+-label%3Arelease-note-handled
-[GitHub Projects]: https://docs.github.com/en/issues/organizing-your-work-with-project-boards
-[Tracking Progress on your Project Board]:
-https://docs.github.com/en/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards
-[The backlog board]: https://github.com/orgs/submariner-io/projects/15
+[GitHub Projects]: https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+[Best practices for projects]:
+https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects
+[The backlog board]: https://github.com/orgs/submariner-io/projects/29
 [the latest board]: https://github.com/orgs/submariner-io/projects?query=is%3Aopen
 [enhancements repository]: https://github.com/submariner-io/enhancements
 [Enhancement Request issue]: https://github.com/submariner-io/enhancements/issues/new?assignees=&labels=enhancement&template=enhancement.md
