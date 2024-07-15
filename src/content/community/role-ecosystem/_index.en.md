@@ -21,7 +21,7 @@ particularly in configuring firewall rules in the underlying infrastructure.
 
 **Service Discovery**: Submariner provides an implementation of the Multi-cluster Services API (MCS API), an initiative within the
 Kubernetes ecosystem aimed at standardizing the management of services across multiple Kubernetes clusters, and follows its core principal
-of “namespace seamness” whereby Kubernetes namespaces behave consistently and seamlessly across interconnected clusters.
+of “namespace sameness” whereby Kubernetes namespaces behave consistently and seamlessly across interconnected clusters.
 
 **Use Cases**: It is well-suited for scenarios where you need to create a unified permanent network across geographically distributed
 clusters, ensuring seamless pod-to-pod communication and service discovery.
