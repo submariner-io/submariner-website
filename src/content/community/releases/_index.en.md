@@ -5,6 +5,13 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.15.5 (July 23, 2024)
+
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
+
+**Note**: this version also fixes an issue with v0.15.4.
+
 ## v0.18.0 (July 4, 2024)
 
 ### New features
@@ -27,11 +34,6 @@ weight = 40
 * AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.
 
 ## v0.14.8 (June 28, 2024)
-
-* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
-  potential attack surface.
-
-## v0.15.4 (June 27, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
