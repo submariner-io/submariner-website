@@ -10,7 +10,7 @@ weight = 40
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
 
-**Note**: this version also fixes an issue with v0.15.4.
+**Note**: this version replaces v0.15.4.
 
 ## v0.18.0 (July 4, 2024)
 
@@ -54,6 +54,8 @@ weight = 40
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
   potential attack surface.
 * Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
+
+**Note**: this version replaces v0.16.4, v0.16.5, v0.16.6.
 
 ## v0.17.1 (April 17, 2024)
 
@@ -101,7 +103,7 @@ weight = 40
   stale GatewayRoute and NonGatewayRoute resources and a restart of the Route Agent pod.
 * Fixed a crash in the Submariner Operator pod due to a concurrent map write.
 
-## v0.16.1/v0.16.2 (November 7, 2023)
+## v0.16.2 (November 7, 2023)
 
 * The Globalnet controller now employs Kubernetes leader election to ensure proper continuity during fail-over and avoid potential race
   conditions.
@@ -110,7 +112,9 @@ weight = 40
   queries.
 * Sockets from the host are mounted through their parent directory, which ensures that the sockets themselves aren't replaced by directories
   (which prevents OVN components from starting). Additionally, stray directories are cleaned up at startup. This fixes the known issue with
-  upgrades involving OVN, as documented in the known issues section for v0.16.0.
+  upgrades involving OVN, as documented in the known issues section for v0.16.0
+
+**Note**: this version replaces v0.16.1.
 
 ## v0.15.3 (November 3, 2023)
 
