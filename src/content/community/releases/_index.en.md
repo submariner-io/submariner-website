@@ -5,6 +5,13 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.14.9 (July 26, 2024)
+
+* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
+  potential attack surface.
+
+**Note**: this version replaces v0.14.8.
+
 ## v0.15.5 (July 23, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
@@ -32,11 +39,6 @@ weight = 40
   annotations will not be removed because Submariner no longer has Node update permission.
 * Health check counters on the Gateway resource now report correct information after a gateway leader re-election occurs.
 * AWS cloud prepare now supports the resource naming convention implemented in Openshift 4.16 and above.
-
-## v0.14.8 (June 28, 2024)
-
-* Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
-  potential attack surface.
 
 ## v0.17.2 (June 26, 2024)
 
