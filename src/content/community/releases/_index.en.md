@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.19.0
+
+### New features
+
+### Other changes
+
 ## v0.17.3 (October 9, 2024)
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
