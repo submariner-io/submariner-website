@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+
 ## v0.14.9 (July 26, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
