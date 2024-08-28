@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.18.1
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+
 ## v0.18.0
 
 ### New features
