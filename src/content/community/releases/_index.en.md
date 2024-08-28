@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.16.8
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+
 ## v0.17.5 (January 9, 2025)
 
 * Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
