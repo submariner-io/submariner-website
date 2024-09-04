@@ -9,6 +9,8 @@ weight = 40
 
 ### New features
 
+* Service Discovery now propagates the session affinity information from the exported service to the aggregated `ServiceImport`.
+
 ### Other changes
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
