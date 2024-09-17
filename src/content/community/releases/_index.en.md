@@ -14,7 +14,9 @@ weight = 40
 ### Other changes
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
-* Fixed an issue which could cause the wrong pod CIDR to be discovered on join.  
+* Fixed an issue which could cause the wrong pod CIDR to be discovered on join.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
 
 ## v0.14.9 (July 26, 2024)
 
