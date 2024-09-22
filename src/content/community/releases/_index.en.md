@@ -8,6 +8,8 @@ weight = 40
 ## v0.17.3
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
+* Fixed an issue with detecting Calico CNI interface after node reboot.
 
 ## v0.18.1 (October 7, 2024)
 
