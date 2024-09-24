@@ -10,6 +10,8 @@ weight = 40
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
 * Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
 * Fixed an issue with detecting Calico CNI interface after node reboot.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
 
 ## v0.18.1 (October 7, 2024)
 
