@@ -11,6 +11,8 @@ weight = 40
 * Fixed an issue which could cause the wrong pod CIDR to be discovered on join.
 * Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
 * Fixed an issue with detecting Calico CNI interface after node reboot.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
 
 ## v0.18.0
 
