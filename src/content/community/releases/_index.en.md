@@ -10,6 +10,10 @@ weight = 40
 ### New features
 
 * Service Discovery now propagates the session affinity information from the exported service to the aggregated `ServiceImport`.
+* Service Discovery can now allocate a cluster set virtual IP for exported services. This is an opt-in feature that can be enabled
+  per service via the `lighthouse.submariner.io/use-clusterset-ip` annotation on the `ServiceExport` or automatically for all services via
+  the `enable-clusterset-ip` option on `subctl deploy-broker`. Note that while DNS queries will return the cluster set virtual IP,
+  Service Discovery does not route this virtual IP and relies on some external component to do so.
 
 ### Other changes
 
