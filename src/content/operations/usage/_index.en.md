@@ -684,6 +684,17 @@ are ignored.
 always returns the ClusterIP Service on **cluster2**. Similarly, `cluster3.nginx.nginx-test.svc.clusterset.local` always returns the
 ClusterIP Service on **cluster3**.
 
+##### Cluster Set Virtual IP
+
+Submariner can also allocate a cluster set virtual IP for an exported service that is stored in the `ServiceImport` resource. This is
+an opt-in feature that can be enabled per service via the `lighthouse.submariner.io/use-clusterset-ip` annotation on the `ServiceExport`
+or automatically for all services via the `enable-clusterset-ip` option on `subctl deploy-broker`. Submariner will allocate a virtual IP
+from a pool of IP addresses based on a configurable CIDR assigned to the cluster from a global CIDR range. The first cluster to export
+a service will allocate and assign the virtual IP.
+
+Lighthouse DNS will return the cluster set virtual IP from queries instead of a constituent cluster IP address. However, Submariner
+does not route this virtual IP and relies on some external component to do so.
+
 #### Test StatefulSet and Headless Service
 
 Submariner also supports Headless Services with StatefulSets, making it possible to access individual Pods via their stable DNS name.
