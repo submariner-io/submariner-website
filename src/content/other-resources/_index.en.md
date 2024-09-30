@@ -69,6 +69,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Academic Papers
 
+* [Evaluating the Impact of Inter-cluster Communications in Edge Computing (2024-09)](https://arxiv.org/pdf/2409.09278)
 * [Kubernetes and the Edge? (2020-10)](https://hal.inria.fr/hal-02972686/document)
 
 If you find additional material that isn't listed here, please feel free to add it to this page by editing it.
