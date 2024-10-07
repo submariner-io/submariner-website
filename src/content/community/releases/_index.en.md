@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.18.1
+## v0.18.1 (October 7, 2024)
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
 * Fixed an issue which could cause the wrong pod CIDR to be discovered on join.
