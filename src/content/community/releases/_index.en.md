@@ -25,6 +25,8 @@ weight = 40
   RFC1035 and RFC2181.
 * Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
 * Fixed an issue with detecting Calico CNI interface after node reboot.
+* Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
+  were updated.
 
 ## v0.14.9 (July 26, 2024)
 
