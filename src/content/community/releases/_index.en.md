@@ -16,6 +16,7 @@ weight = 40
   Service Discovery does not route this virtual IP and relies on some external component to do so.
 * Each Route Agent now monitors the connectivity to each remote cluster's gateway using ICMP and the health of each connection is
   reported by `subctl diagnose`.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
 
 ### Other changes
 
