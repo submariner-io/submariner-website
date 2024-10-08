@@ -14,6 +14,8 @@ weight = 40
   per service via the `lighthouse.submariner.io/use-clusterset-ip` annotation on the `ServiceExport` or automatically for all services via
   the `enable-clusterset-ip` option on `subctl deploy-broker`. Note that while DNS queries will return the cluster set virtual IP,
   Service Discovery does not route this virtual IP and relies on some external component to do so.
+* Each Route Agent now monitors the connectivity to each remote cluster's gateway using ICMP and the health of each connection is
+  reported by `subctl diagnose`.
 
 ### Other changes
 
