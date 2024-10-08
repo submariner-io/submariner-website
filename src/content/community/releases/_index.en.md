@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.18.2
+
+* Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
+  were updated.
+
 ## v0.18.1
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
