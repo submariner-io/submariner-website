@@ -73,16 +73,18 @@ contains the following details:
 #### `deploy-broker` flags
 
 <!-- markdownlint-disable line-length -->
-| Flag                                  | Description
-|:--------------------------------------|:---------------------------------------------------------------------------------------------------|
-| `--repository` `<string>`             | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
-| `--version` `<string>`                | Image version (defaults to the subctl version)
-| `--components <strings>`              | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
-| `--globalnet`                         | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
-| `--globalnet-cidr-range` `<string>`   | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
-| `--globalnet-cluster-size` `<value>`  | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
-| `--ipsec-psk-from` `<string>`         | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
-| `--broker-namespace` `<string>`       | Namespace on the Broker used for synchronizing resources between clusters (default `submariner-k8s-broker`)
+| Flag                                 | Description
+|:-------------------------------------|:---------------------------------------------------------------------------------------------------|
+| `--repository` `<string>`            | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
+| `--version` `<string>`               | Image version (defaults to the subctl version)
+| `--components <strings>`             | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
+| `--globalnet`                        | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
+| `--globalnet-cidr-range` `<string>`  | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
+| `--globalnet-cluster-size` `<value>` | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
+| `--ipsec-psk-from` `<string>`        | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
+| `--broker-namespace` `<string>`      | Namespace on the Broker used for synchronizing resources between clusters (default `submariner-k8s-broker`)
+| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled)
+| `--clusterset-ip-cidr-range` `<string>`      | Cluster set IP CIDR supernet range for allocating cluster set IP CIDRs to each cluster
 <!-- markdownlint-enable line-length -->
 
 ### `export`
@@ -97,6 +99,7 @@ discoverable from other clusters in the Submariner deployment.
 | Flag                     | Description
 |:-------------------------|:-------------------|
 | `--namespace` `<string>` | Namespace to use
+| `--use-clusterset-ip` `<string>`   | Use cluster set IP for this service (true or false)
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
@@ -142,6 +145,8 @@ deployment.
 | `--preferred-server`               | Enable this cluster as a preferred IPsec server for dataplane connections (only available with libreswan cable driver)
 | `--pod-debug`                      | Enable Submariner pod debugging (verbose logging in the deployed pods)
 | `--servicecidr`                    | Specifies the cluster's CIDR used to generate Service IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user
+| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled)
+| `--clusterset-ip-cidr` `<string>`      | Cluster set IP CIDR to be allocated to the cluster
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (Globalnet)
