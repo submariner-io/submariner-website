@@ -8,6 +8,7 @@ weight = 40
 ## v0.16.7
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
 
 ## v0.16.6
 
