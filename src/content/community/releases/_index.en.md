@@ -9,6 +9,7 @@ weight = 40
 
 * Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
   were updated.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
 
 ## v0.18.1
 
