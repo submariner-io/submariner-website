@@ -5,6 +5,50 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.19.0 (October 25, 2024)
+
+### New features
+
+* Service Discovery now propagates the session affinity information from the exported service to the aggregated `ServiceImport`.
+* Service Discovery can now allocate a cluster set virtual IP for exported services. This is an opt-in feature that can be enabled
+  per service via the `lighthouse.submariner.io/use-clusterset-ip` annotation on the `ServiceExport` or automatically for all services via
+  the `enable-clusterset-ip` option on `subctl deploy-broker`. Note that while DNS queries will return the cluster set virtual IP,
+  Service Discovery does not route this virtual IP and relies on some external component to do so.
+* Each Route Agent now monitors the connectivity to each remote cluster's gateway using ICMP and the health of each connection is
+  reported by `subctl diagnose`.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+
+### Other changes
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* Fixed an issue which could cause the wrong pod CIDR to be discovered on join.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
+* Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
+* Fixed an issue with detecting Calico CNI interface after node reboot.
+* Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
+  were updated.
+
+## v0.17.3 (October 9, 2024)
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
+* Fixed an issue with detecting Calico CNI interface after node reboot.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
+* Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
+  were updated.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+
+## v0.18.1 (October 7, 2024)
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* Fixed an issue which could cause the wrong pod CIDR to be discovered on join.
+* Fixed an issue with Calico wrongly overwriting static routes added by RouteAgent.
+* Fixed an issue with detecting Calico CNI interface after node reboot.
+* The Service Discovery CoreDNS ClusterIP service now also defines a TCP port to support TCP retries after truncation per
+  RFC1035 and RFC2181.
+
 ## v0.14.9 (July 26, 2024)
 
 * Reduced and restricted the RBAC permissions for the various Submariner components to only what is actually needed to reduce any
