@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.20.0
+
+### New features
+
+### Other changes
+
 ## v0.19.2 (January 13, 2025)
 
 * Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
