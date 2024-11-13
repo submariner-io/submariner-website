@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Enhanced the Flannel network discovery logic to improve performance and reliability.
+
 ## v0.19.2 (January 13, 2025)
 
 * Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
