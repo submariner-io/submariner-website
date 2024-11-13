@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Enhanced the Flannel network discovery logic to improve performance and reliability.
+
 ## v0.18.2 (October 30, 2024)
 
 * Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
