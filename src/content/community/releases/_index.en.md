@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.18.2 (October 30, 2024)
+
+* Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
+  were updated.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+
 ## v0.19.0 (October 25, 2024)
 
 ### New features
@@ -17,6 +23,7 @@ weight = 40
 * Each Route Agent now monitors the connectivity to each remote cluster's gateway using ICMP and the health of each connection is
   reported by `subctl diagnose`.
 * New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+* Submariner can now be deployed on Kubernetes KubeVirt clusters.
 
 ### Other changes
 
