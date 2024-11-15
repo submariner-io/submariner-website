@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.4 (November 13, 2024)
+
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
+
 ## v0.18.2 (October 30, 2024)
 
 * Fixed an issue with Service Discovery that caused a new `EndpointSlice` to be created when the labels on the exporting `Service`
