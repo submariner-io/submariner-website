@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.19.1
+
+* Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
+
 ## v0.17.4 (November 13, 2024)
 
 * Fixed an issue where AWS cloud prepare failed to find the VPC.
