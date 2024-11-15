@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.17.5
+
+* Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
+
 ## v0.18.4 (January 8, 2025)
 
 * Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
