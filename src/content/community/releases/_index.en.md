@@ -10,6 +10,7 @@ weight = 40
 * Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
 * An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
   forwarding traffic if there is no backing ready pod.
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
 
 ## v0.19.1 (November 28, 2024)
 
