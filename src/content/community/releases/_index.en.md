@@ -16,6 +16,7 @@ weight = 40
 * An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
   forwarding traffic if there is no backing ready pod.
 * Service Discovery now correctly detects and configures the CoreDNS ConfigMap for the RKE2 platform.
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
 
 ## v0.18.2 (October 30, 2024)
 
