@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
-## v0.18.3
+## v0.18.3 (December 3, 2024)
 
 * Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
 * An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
