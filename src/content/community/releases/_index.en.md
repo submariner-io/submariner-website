@@ -15,6 +15,7 @@ weight = 40
 * Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
 * An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
   forwarding traffic if there is no backing ready pod.
+* Service Discovery now correctly detects and configures the CoreDNS ConfigMap for the RKE2 platform.
 
 ## v0.19.2 (January 13, 2025)
 
