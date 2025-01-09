@@ -9,6 +9,7 @@ weight = 40
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
 * New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
 
 ## v0.17.5 (January 9, 2025)
 
