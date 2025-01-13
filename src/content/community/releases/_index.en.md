@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.19.2 (January 13, 2025)
+
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
+
 ## v0.16.8 (January 9, 2025)
 
 * Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
