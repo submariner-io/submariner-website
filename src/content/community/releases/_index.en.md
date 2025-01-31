@@ -17,6 +17,8 @@ weight = 40
   forwarding traffic if there is no backing ready pod.
 * Service Discovery now correctly detects and configures the CoreDNS ConfigMap for the RKE2 platform.
 * Fixed an issue where AWS cloud prepare failed to find the VPC.
+* Improved the startup performance of the Service Discovery `submariner-lighthouse-agent` component by prioritizing the processing
+  of newly created or updated resources over pre-existing resources.
 
 ## v0.19.2 (January 13, 2025)
 
