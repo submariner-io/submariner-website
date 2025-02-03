@@ -119,11 +119,11 @@ and the `Status Message` will provide more information about the possible failur
 It also provides the statistics for the connection.
 
 <!---
-#### IPSec tunnel not created between clusters
+#### IPsec tunnel not created between clusters
 
 TBD
 
-#### IPSEc tunnel is not up between clusters
+#### IPsec tunnel is not up between clusters
 
 TBD
 

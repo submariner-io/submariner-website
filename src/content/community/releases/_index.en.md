@@ -3,7 +3,7 @@ date = 2020-08-24T11:35:16+02:00
 title = "Releases"
 weight = 40
 +++
-<!-- markdownlint-disable no-duplicate-header -->
+<!-- markdownlint-disable no-duplicate-heading -->
 
 ## v0.19.2 (January 13, 2025)
 

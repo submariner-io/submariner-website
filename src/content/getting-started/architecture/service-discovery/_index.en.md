@@ -31,7 +31,9 @@ ServiceImport and EndpointSlice resources and exports them to the Broker to be c
 it creates a copy of it in the local cluster.
 
 ![Lighthouse Agent WorkFlow](/images/lighthouse/controllerWorkFlow.png)
+<!-- markdownlint-disable proper-names -->
 <!-- Image Source: /images/lighthouse/source/controllerWorkFlow.vsdx  -->
+<!-- markdownlint-enable -->
 
 ### Lighthouse DNS Server
 
@@ -55,4 +57,6 @@ The workflow is as follows:
 - If a record exists it will be returned, else an NXDomain error will be returned.
 
 ![Lighthouse CoreDNS WorkFlow](/images/lighthouse/coreDNSWorkFlow.png)
+<!-- markdownlint-disable proper-names -->
 <!-- Image Source: /images/lighthouse/source/coreDNSWorkFlow.vsdx -->
+<!-- markdownlint-enable -->
