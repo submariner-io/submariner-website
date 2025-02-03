@@ -73,18 +73,18 @@ contains the following details:
 #### `deploy-broker` flags
 
 <!-- markdownlint-disable line-length -->
-| Flag                                 | Description
+| Flag                                 | Description |
 |:-------------------------------------|:---------------------------------------------------------------------------------------------------|
-| `--repository` `<string>`            | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
-| `--version` `<string>`               | Image version (defaults to the subctl version)
-| `--components <strings>`             | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity`
-| `--globalnet`                        | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled)
-| `--globalnet-cidr-range` `<string>`  | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8")
-| `--globalnet-cluster-size` `<value>` | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536)
-| `--ipsec-psk-from` `<string>`        | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`)
-| `--broker-namespace` `<string>`      | Namespace on the Broker used for synchronizing resources between clusters (default `submariner-k8s-broker`)
-| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled)
-| `--clusterset-ip-cidr-range` `<string>`      | Cluster set IP CIDR supernet range for allocating cluster set IP CIDRs to each cluster
+| `--repository` `<string>`            | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`) |
+| `--version` `<string>`               | Image version (defaults to the subctl version) |
+| `--components <strings>`             | Comma-separated list of components to be installed - any of `service-discovery`,`connectivity`. The default is: `service-discovery`,`connectivity` |
+| `--globalnet`                        | Enable support for overlapping Cluster/Service CIDRs in connecting clusters (default disabled) |
+| `--globalnet-cidr-range` `<string>`  | Global CIDR supernet range for allocating GlobalCIDRs to each cluster (default "242.0.0.0/8") |
+| `--globalnet-cluster-size` `<value>` | Default cluster size for GlobalCIDR allocated to each cluster (amount of global IPs) (default 65536) |
+| `--ipsec-psk-from` `<string>`        | Import IPsec PSK from existing Submariner broker file, like broker-info.subm (default `broker-info.subm`) |
+| `--broker-namespace` `<string>`      | Namespace on the Broker used for synchronizing resources between clusters (default `submariner-k8s-broker`) |
+| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled) |
+| `--clusterset-ip-cidr-range` `<string>`      | Cluster set IP CIDR supernet range for allocating cluster set IP CIDRs to each cluster |
 <!-- markdownlint-enable line-length -->
 
 ### `export`
@@ -96,10 +96,10 @@ discoverable from other clusters in the Submariner deployment.
 
 #### `export service` flags
 
-| Flag                     | Description
+| Flag                     | Description |
 |:-------------------------|:-------------------|
-| `--namespace` `<string>` | Namespace to use
-| `--use-clusterset-ip` `<string>`   | Use cluster set IP for this service (true or false)
+| `--namespace` `<string>` | Namespace to use |
+| `--use-clusterset-ip` `<string>`   | Use cluster set IP for this service (true or false) |
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
@@ -112,9 +112,9 @@ same name from being exported to other clusters.
 
 #### `unexport service` flags
 
-| Flag                     | Description
+| Flag                     | Description |
 |:-------------------------|:-------------------|
-| `--namespace` `<string>` | Namespace to use
+| `--namespace` `<string>` | Namespace to use |
 
 If no `namespace` flag is specified, it uses the default namespace from the current context, if present, otherwise it uses `default`.
 
@@ -128,61 +128,61 @@ deployment.
 
 #### `join` flags (general)
 <!-- markdownlint-disable line-length -->
-| Flag                               | Description
+| Flag                               | Description |
 |:-----------------------------------|:----------------------------------------------------------------------------|
-| `--air-gapped`                     | Specifies that the cluster is in an air-gapped environment without access to external servers.
-| `--broker-url`                     | The URL of the broker API endpoint (overrides the URL stored in the broker information file).
-| `--cable-driver` `<string>`        | Cable driver implementation. Available options are `libreswan` (default), `wireguard` and `vxlan`
-| `--check-broker-certificate`       | Check the broker certificate (disable this to allow "insecure" connections) (default true).
-| `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user
-| `--clusterid` `<string>`           | Cluster ID used to identify the tunnels. Every cluster needs to have a unique cluster ID. If not provided, one will be generated by default based on the cluster name in the `kubeconfig` file; if the cluster name is not a [valid cluster ID](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names), the user will be prompted for one
-| `--coredns-custom-configmap`       | The name of the custom CoreDNS configmap used to configure forwarding to Lighthouse. It should be in `<namespace>/<name>` format where `<namespace>` is optional and defaults to kube-system.
-| `--custom-domains`                 | The list of domains to use for multicluster service discovery.
-| `--ignore-requirements`            | Ignore requirement failures (unsupported).
-| `--label-gateway`                  | Label getways (enabled by default). `--label-gateway=false` disables the prompt for a Worker node to use as gateway
-| `--load-balancer`                  | Enable a cloud loadbalancer in front of the gateways. This removes the need for dedicated nodes with a public IP address
-| `--operator-debug`                 | Enable verbose operator debugging.
-| `--preferred-server`               | Enable this cluster as a preferred IPsec server for dataplane connections (only available with libreswan cable driver)
-| `--pod-debug`                      | Enable Submariner pod debugging (verbose logging in the deployed pods)
-| `--servicecidr`                    | Specifies the cluster's CIDR used to generate Service IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user
-| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled)
-| `--clusterset-ip-cidr` `<string>`      | Cluster set IP CIDR to be allocated to the cluster
+| `--air-gapped`                     | Specifies that the cluster is in an air-gapped environment without access to external servers. |
+| `--broker-url`                     | The URL of the broker API endpoint (overrides the URL stored in the broker information file). |
+| `--cable-driver` `<string>`        | Cable driver implementation. Available options are `libreswan` (default), `wireguard` and `vxlan` |
+| `--check-broker-certificate`       | Check the broker certificate (disable this to allow "insecure" connections) (default true). |
+| `--clustercidr` `<string>`         | Specifies the cluster's CIDR used to generate Pod IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user |
+| `--clusterid` `<string>`           | Cluster ID used to identify the tunnels. Every cluster needs to have a unique cluster ID. If not provided, one will be generated by default based on the cluster name in the `kubeconfig` file; if the cluster name is not a [valid cluster ID](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names), the user will be prompted for one |
+| `--coredns-custom-configmap`       | The name of the custom CoreDNS configmap used to configure forwarding to Lighthouse. It should be in `<namespace>/<name>` format where `<namespace>` is optional and defaults to kube-system. |
+| `--custom-domains`                 | The list of domains to use for multicluster service discovery. |
+| `--ignore-requirements`            | Ignore requirement failures (unsupported). |
+| `--label-gateway`                  | Label getways (enabled by default). `--label-gateway=false` disables the prompt for a Worker node to use as gateway |
+| `--load-balancer`                  | Enable a cloud loadbalancer in front of the gateways. This removes the need for dedicated nodes with a public IP address |
+| `--operator-debug`                 | Enable verbose operator debugging. |
+| `--preferred-server`               | Enable this cluster as a preferred IPsec server for dataplane connections (only available with libreswan cable driver) |
+| `--pod-debug`                      | Enable Submariner pod debugging (verbose logging in the deployed pods) |
+| `--servicecidr`                    | Specifies the cluster's CIDR used to generate Service IP addresses. If not specified, `subctl` will try to discover it and if unable to do so, it will prompt the user |
+| `--enable-clusterset-ip`             | Set default support for use of cluster set IP for exported services in connecting clusters (default disabled) |
+| `--clusterset-ip-cidr` `<string>`      | Cluster set IP CIDR to be allocated to the cluster |
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (Globalnet)
 <!-- markdownlint-disable line-length -->
-| Flag                                 | Description
+| Flag                                 | Description |
 |:-------------------------------------|:----------------------------------------------------------------------------|
-| `--globalnet`                        | Enable/disable Globalnet for this cluster (default true). This has no effect if Globalnet is not enabled globally via the Broker
-| `--globalnet-cidr` `<string>`        | If Globalnet is enabled, the specific Globalnet CIDR to use for this cluster. This setting is exclusive with `--globalnet-cluster-size`
-| `--globalnet-cluster-size` `<value>` | If Globalnet is enabled, the cluster size for the GlobalCIDR allocated to this cluster (amount of global IPs)
+| `--globalnet`                        | Enable/disable Globalnet for this cluster (default true). This has no effect if Globalnet is not enabled globally via the Broker |
+| `--globalnet-cidr` `<string>`        | If Globalnet is enabled, the specific Globalnet CIDR to use for this cluster. This setting is exclusive with `--globalnet-cluster-size` |
+| `--globalnet-cluster-size` `<value>` | If Globalnet is enabled, the cluster size for the GlobalCIDR allocated to this cluster (amount of global IPs) |
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (IPsec)
 
-| Flag                   | Description
+| Flag                   | Description |
 |:-----------------------|:-----------------------------------------------|
-| `--natt`               | Enable NAT for IPsec (default enabled)
-| `--ipsec-debug`        | Enable IPsec debugging (verbose logging)
-| `--force-udp-encaps`   | Force UDP encapsulation
-| `--nattport` `<value>` | IPsec NAT-T port (default 4500)
+| `--natt`               | Enable NAT for IPsec (default enabled) |
+| `--ipsec-debug`        | Enable IPsec debugging (verbose logging) |
+| `--force-udp-encaps`   | Force UDP encapsulation |
+| `--nattport` `<value>` | IPsec NAT-T port (default 4500) |
 
 #### `join` flags (images and repositories)
 <!-- markdownlint-disable line-length -->
-| Flag                                    | Description
+| Flag                                    | Description |
 |:----------------------------------------|:----------------------------------------------------------------------------|
-| `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`)
-| `--version` `<string>`                  | Image version (defaults to the subctl version)
-| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
+| `--repository` `<string>`               | The repository from where the various Submariner images will be sourced (default `quay.io/submariner`) |
+| `--version` `<string>`                  | Image version (defaults to the subctl version) |
+| `--image-override` `<string>=<string>`  | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`) |
 <!-- markdownlint-enable line-length -->
 
 #### `join` flags (health check)
 <!-- markdownlint-disable line-length -->
-| Flag                                            | Description
+| Flag                                            | Description |
 |:------------------------------------------------|:----------------------------------------------------------------------------|
-| `--health-check`                                | Enable/disable Gateway health check (default true)
-| `--health-check-interval` `<uint>`              | The interval in seconds at which health check packets will be sent (default 1)
-| `--health-check-max-packet-loss-count` `<uint>` | The maximum number of packets lost at which the health checker will mark the connection as down (default 5)
+| `--health-check`                                | Enable/disable Gateway health check (default true) |
+| `--health-check-interval` `<uint>`              | The interval in seconds at which health check packets will be sent (default 1) |
+| `--health-check-max-packet-loss-count` `<uint>` | The maximum number of packets lost at which the health checker will mark the connection as down (default 5) |
 <!-- markdownlint-enable line-length -->
 
 ### `upgrade`
@@ -193,9 +193,9 @@ Upgrades `subctl` to the latest released version and upgrades Submariner compone
 
 #### `upgrade` flags
 <!-- markdownlint-disable line-length -->
-| Flag                       | Description
+| Flag                       | Description |
 |:---------------------------|:----------------------------------------------------------------------------|
-| `--to-version` `<string>`  | The version of subctl and Submariner to which to upgrade
+| `--to-version` `<string>`  | The version of subctl and Submariner to which to upgrade |
 <!-- markdownlint-enable line-length -->
 
 ### `show`
@@ -272,17 +272,18 @@ This suite requires a single gateway configured on `ClusterA` and other availabl
 that this verification is disruptive.
 
 #### `verify` flags
-
-| Flag                                   | Description
+<!-- markdownlint-disable line-length -->
+| Flag                                   | Description |
 |:---------------------------------------|:----------------------------------------------------------------------------|
-| `--connection-attempts` `<value>`      | The maximum number of connection attempts (default 2)
-| `--connection-timeout` `<value>`       | The timeout in seconds per connection attempt  (default 60)
-| `--operation-timeout` `<value>`        | Operation timeout for Kubernetes API calls (default 240)
-| `--junit-report` `<string>`            | XML report path and name (default "")
-| `--verbose`                            | Produce verbose logs during connectivity verification
-| `--only`                               | Comma separated list of specific verifications to perform
-| `--disruptive-tests`                   | Enable verifications which are potentially disruptive to your deployment
-| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
+| `--connection-attempts` `<value>`      | The maximum number of connection attempts (default 2) |
+| `--connection-timeout` `<value>`       | The timeout in seconds per connection attempt  (default 60) |
+| `--operation-timeout` `<value>`        | Operation timeout for Kubernetes API calls (default 240) |
+| `--junit-report` `<string>`            | XML report path and name (default "") |
+| `--verbose`                            | Produce verbose logs during connectivity verification |
+| `--only`                               | Comma separated list of specific verifications to perform |
+| `--disruptive-tests`                   | Enable verifications which are potentially disruptive to your deployment |
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`) |
+<!-- markdownlint-enable line-length -->
 
 ### `benchmark`
 
@@ -310,10 +311,10 @@ When running `benchmark latency`, two types of tests will be executed:
 
 #### `benchmark` flags
 <!-- markdownlint-disable line-length -->
-| Flag                                   | Description
+| Flag                                   | Description |
 |:---------------------------------------|:----------------------------------------------------------------------------|
-| `--verbose`                            | Produce verbose logs during benchmark tests
-| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
+| `--verbose`                            | Produce verbose logs during benchmark tests |
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`) |
 <!-- markdownlint-enable line-length -->
 
 ### `diagnose`
@@ -324,27 +325,27 @@ in the cluster that may prevent Submariner from working properly.
 Below is a list of available sub-commands:
 
 <!-- markdownlint-disable line-length -->
-| Diagnose command           | Description                                                                 | Flags
-|:---------------------------|:----------------------------------------------------------------------------|:----------
-| `deployment`               | checks that the Submariner components are properly deployed and running with no overlapping CIDRs
-| `connections`              | checks that the Gateway connections to other clusters are all established
-| `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version
-| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>`
-| `cni`                      | checks if the detected CNI network plugin is supported by Submariner
-| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
-| `firewall inter-cluster --context <localcontext> --remotecontext <remotecontext> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>`
-| `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  
+| Diagnose command           | Description                                                                 | Flags |
+|:---------------------------|:----------------------------------------------------------------------------|:---------- |
+| `deployment`               | checks that the Submariner components are properly deployed and running with no overlapping CIDRs | |
+| `connections`              | checks that the Gateway connections to other clusters are all established | |
+| `k8s-version`              | checks if Submariner can be deployed on the Kubernetes version | |
+| `kube-proxy-mode [flags]`  | checks if the kube-proxy mode is supported by Submariner  | `--namespace` `<string>` |
+| `cni`                      | checks if the detected CNI network plugin is supported by Submariner | |
+| `firewall intra-cluster [flags]`   | checks if the firewall configuration allows traffic via intra-cluster Submariner VXLAN interface | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>` |
+| `firewall inter-cluster --context <localcontext> --remotecontext <remotecontext> [flags]`  | checks if the firewall configuration allows tunnels to be configured on the Gateway nodes | `--validation-timeout` `<value>`, `--verbose`, `--namespace` `<string>` |
+| `all`                      | runs all diagnostic checks (except those requiring two kubecontexts) |  |
 <!-- markdownlint-enable line-length -->
 
 #### `diagnose` flags descriptions
 
 <!-- markdownlint-disable line-length -->
-| Flag                                   | Description
+| Flag                                   | Description |
 |:---------------------------------------|:----------------------------------------------------------------------------|
-| `--namespace` `<string>`               | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used
-| `--validation-timeout` `<value>`       | Timeout in seconds while validating the connection attempt
-| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`)
-| `--verbose`                            | Produce verbose logs during validation
+| `--namespace` `<string>`               | Namespace in which validation pods should be deployed. If not specified, the `default` namespace is used |
+| `--validation-timeout` `<value>`       | Timeout in seconds while validating the connection attempt |
+| `--image-override` `<string>=<string>` | Component image override. This flag can be used more than once (example: `--image-override=submariner-gateway=quay.io/myUser/submariner-gateway:latest`) |
+| `--verbose`                            | Produce verbose logs during validation |
 <!-- markdownlint-enable line-length -->
 
 #### `diagnose` global flags
@@ -367,11 +368,12 @@ The specific information collected is configurable. As part of gathering `connec
 to the CNI and Submariner cable driver in use from each node using file format `<cluster-name>_<node-name>_<command>.yaml`
 
 #### `gather` flags
-
-| Flag                       | Description
+<!-- markdownlint-disable line-length -->
+| Flag                       | Description |
 |:---------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is `operator,connectivity,service-discovery,broker`
-| `--type` `<string>`        | Comma-separated list of data types to gather. Default is `logs,resources`
+| `--module` `<string>`      | Comma-separated list of components for which to gather data. Default is `operator,connectivity,service-discovery,broker` |
+| `--type` `<string>`        | Comma-separated list of data types to gather. Default is `logs,resources` |
+<!-- markdownlint-enable line-length -->
 
 #### `gather` examples
 
@@ -407,11 +409,11 @@ This command prepares the underlying cloud infrastructure for Submariner install
 #### `prepare` global flags
 
 <!-- markdownlint-disable line-length -->
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--nat-discovery-port` `<uint16>`       | NAT discovery port (default 4490)
-| `--natt-port` `<uint16>`                | IPsec NAT traversal port (default 4500)
-| `--vxlan-port` `<uint16>`               | Internal VXLAN port (default 4800)
+| `--nat-discovery-port` `<uint16>`       | NAT discovery port (default 4490) |
+| `--natt-port` `<uint16>`                | IPsec NAT traversal port (default 4500) |
+| `--vxlan-port` `<uint16>`               | Internal VXLAN port (default 4800) |
 <!-- markdownlint-enable line-length -->
 
 #### `prepare aws`
@@ -421,15 +423,15 @@ This command prepares the underlying cloud infrastructure for Submariner install
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on AWS cloud for Submariner installation.
 
 <!-- markdownlint-disable line-length -->
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`)
-| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `c5d.large`)
-| `--gateways` `<int>`             | Number of dedicated gateways to deploy (Set to 0 when using --load-balancer mode) (default 1)
-| `--infra-id` `<string>`          | AWS infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from (takes precedence over the specific flags)
-| `--profile` `<string>`           | AWS profile to use for credentials  (default "default")
-| `--region` `<string>`            | AWS region
+| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`) |
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `c5d.large`) |
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (Set to 0 when using --load-balancer mode) (default 1) |
+| `--infra-id` `<string>`          | AWS infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from (takes precedence over the specific flags) |
+| `--profile` `<string>`           | AWS profile to use for credentials  (default "default") |
+| `--region` `<string>`            | AWS region |
 <!-- markdownlint-enable line-length -->
 
 #### `prepare gcp`
@@ -439,16 +441,16 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on GCP cloud for Submariner installation.
 
 <!-- markdownlint-disable line-length -->
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--credentials` `<string>`       | GCP credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
-| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true)
-| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `n1-standard-4`)
-| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1)
-| `--infra-id` `<string>`          | GCP infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from (takes precedence over the specific flags)
-| `--project-id` `<string>`        | GCP project ID
-| `--region` `<string>`            | GCP region
+| `--credentials` `<string>`       | GCP credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`) |
+| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true) |
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `n1-standard-4`) |
+| `--gateways` `<int>`             | Number of dedicated gateways to deploy (default 1) |
+| `--infra-id` `<string>`          | GCP infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from (takes precedence over the specific flags) |
+| `--project-id` `<string>`        | GCP project ID |
+| `--region` `<string>`            | GCP region |
 <!-- markdownlint-enable line-length -->
 
 #### `prepare rhos`
@@ -458,16 +460,16 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 This command prepares an OpenShift installer-provisioned infrastructure (IPI) on OpenStack cloud for Submariner installation.
 
 <!-- markdownlint-disable line-length -->
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--cloud-entry` `<string>`       | Specific cloud configuration to use from the clouds.yaml
-| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true)
-| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `PnTAE.CPU_4_Memory_8192_Disk_50`)
-| `--gateways` `<int>`             | Number of gateways to deploy (default 1)
-| `--infra-id` `<string>`          | OpenStack infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from (takes precedence over the specific flags)
-| `--project-id` `<string>`        | OpenStack project ID
-| `--region` `<string>`            | OpenStack region
+| `--cloud-entry` `<string>`       | Specific cloud configuration to use from the clouds.yaml |
+| `--dedicated-gateway`            | Whether a dedicated gateway node has to be deployed (default true) |
+| `--gateway-instance` `<string>`  | Type of gateway instance machine (default `PnTAE.CPU_4_Memory_8192_Disk_50`) |
+| `--gateways` `<int>`             | Number of gateways to deploy (default 1) |
+| `--infra-id` `<string>`          | OpenStack infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from (takes precedence over the specific flags) |
+| `--project-id` `<string>`        | OpenStack project ID |
+| `--region` `<string>`            | OpenStack region |
 <!-- markdownlint-enable line-length -->
 
 #### `prepare generic` flags
@@ -475,9 +477,9 @@ This command prepares an OpenShift installer-provisioned infrastructure (IPI) on
 This command prepares a generic cluster for Submariner installation. It assumes that the cloud already has the necessary
 firewall ports opened and will only label the required number of gateway nodes for Submariner installation.
 
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--gateways` `<int>`             | Number of gateways to deploy (default 1)
+| `--gateways` `<int>`             | Number of gateways to deploy (default 1) |
 
 #### `cloud cleanup`
 
@@ -489,13 +491,13 @@ This command cleans up the cloud after Submariner uninstallation.
 
 This command cleans up an OpenShift installer-provisioned infrastructure (IPI) on AWS-based cloud after Submariner uninstallation.
 
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`)
-| `--infra-id` `<string>`          | AWS infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from
-| `--profile` `<string>`           | AWS profile to use for credentials
-| `--region` `<string>`            | AWS region
+| `--credentials` `<string>`       | AWS credentials configuration file (default `$HOME/.aws/credentials`) |
+| `--infra-id` `<string>`          | AWS infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read AWS infra ID and region from |
+| `--profile` `<string>`           | AWS profile to use for credentials |
+| `--region` `<string>`            | AWS region |
 
 #### `cleanup gcp`
 
@@ -503,13 +505,13 @@ This command cleans up an OpenShift installer-provisioned infrastructure (IPI) o
 
 This command cleans up an installer-provisioned infrastructure (IPI) on GCP-based cloud after Submariner uninstallation.
 
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--credentials` `<string>`       | GCP Credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`)
-| `--infra-id` `<string>`          | GCP infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from
-| `--project-id` `<string>`        | GCP project ID
-| `--region` `<string>`            | GCP region
+| `--credentials` `<string>`       | GCP Credentials configuration file (default `$HOME/.gcp/osServiceAccount.json`) |
+| `--infra-id` `<string>`          | GCP infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read GCP infra ID and region from |
+| `--project-id` `<string>`        | GCP project ID |
+| `--region` `<string>`            | GCP region |
 
 #### `cleanup rhos`
 
@@ -517,13 +519,13 @@ This command cleans up an installer-provisioned infrastructure (IPI) on GCP-base
 
 This command cleans up an installer-provisioned infrastructure (IPI) on OpenStack-based cloud after Submariner uninstallation.
 
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--cloud-entry` `<string>`       | the cloud entry to use (default `openstack`)
-| `--infra-id` `<string>`          | OpenStack infra ID
-| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from
-| `--project-id` `<string>`        | OpenStack project ID
-| `--region` `<string>`            | OpenStack region
+| `--cloud-entry` `<string>`       | the cloud entry to use (default `openstack`) |
+| `--infra-id` `<string>`          | OpenStack infra ID |
+| `--ocp-metadata` `<string>`      | OCP metadata.json file (or directory containing it) to read OpenStack infra ID and region from |
+| `--project-id` `<string>`        | OpenStack project ID |
+| `--region` `<string>`            | OpenStack region |
 
 #### `cleanup generic`
 
@@ -555,10 +557,10 @@ The following steps are performed:
 
 #### `uninstall` flags
 
-| Flag                             | Description
+| Flag                             | Description |
 |:---------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`)
-| `--yes`                          | Automatically answer yes to confirmation prompt
+| `--namespace` `<string>`         | Namespace in which Submariner is installed (default `submariner-operator`) |
+| `--yes`                          | Automatically answer yes to confirmation prompt |
 
 ### `recover-broker-info`
 
