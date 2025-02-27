@@ -11,6 +11,7 @@ weight = 40
 * An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
   forwarding traffic if there is no backing ready pod.
 * Fixed an issue where AWS cloud prepare failed to find the VPC.
+* Fixed an issue with Kubevirt(HCP) clusters which rely on the host loadbalancer for gateway node connectivity.
 
 ## v0.19.0
 
