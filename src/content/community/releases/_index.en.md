@@ -21,6 +21,7 @@ weight = 40
 * Fixed an issue where AWS cloud prepare failed to find the VPC.
 * Improved the startup performance of the Service Discovery `submariner-lighthouse-agent` component by prioritizing the processing
   of newly created or updated resources over pre-existing resources.
+* Fixed an issue with Kubevirt(HCP) clusters which rely on the host loadbalancer for gateway node connectivity.
 
 ## v0.18.2 (October 30, 2024)
 
