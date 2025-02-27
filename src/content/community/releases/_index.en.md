@@ -9,6 +9,8 @@ weight = 40
 
 ### New features
 
+* Added support for GCP Custom VPC networks
+
 ### Other changes
 
 * Enhanced the Flannel network discovery logic to improve performance and reliability.
