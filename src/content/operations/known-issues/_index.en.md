@@ -16,6 +16,8 @@ weight = 40
 * Submariner Gateway metrics `submariner_gateway_rx_bytes` and `submariner_gateway_tx_bytes` will not be collected when using the
 VXLAN cable driver.
 * Submariner does not support IPv6-only setups. On dual-stack setups, it only allocates IPv4 addresses.
+* In OpenShift 4.18 with OVNK, the source IP is not retained when packet reaches the destination pod.
+This may affect applications relying on source IP, like NetworkPolicy.
 
 ## Globalnet
 
