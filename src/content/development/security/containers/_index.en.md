@@ -8,9 +8,9 @@ Production containers not described here don’t use extra capabilities.
 
 | Container | Capabilities | Privilege escalation | Privileged | Read-only root | Runs as non-root | Host network | Volume mounts |
 |-----------|--------------|----------------------|------------|----------------|------------------|--------------|---------------|
-| Gateway[^1]        | All                    | Yes | Yes      | No             | No               | Yes
-| Route agent[^1]    | All                    | Yes | Yes      | No             | No               | Yes
-| Globalnet[^1]      | All                    | Yes | Yes      | No             | No               | Yes
+| Gateway[^1]        | All                    | Yes | Yes      | No             | No               | Yes          |               |
+| Route agent[^1]    | All                    | Yes | Yes      | No             | No               | Yes          |               |
+| Globalnet[^1]      | All                    | Yes | Yes      | No             | No               | Yes          |               |
 | Lighthouse CoreDNS | `NET_BIND_SERVICE`[^2] | No  | No       | Yes            | Yes            | No | `/etc/coredns`, read-only |
 
 [^1]: This container needs to run `iptables`.

@@ -3,7 +3,44 @@ date = 2020-08-24T11:35:16+02:00
 title = "Releases"
 weight = 40
 +++
-<!-- markdownlint-disable no-duplicate-header -->
+<!-- markdownlint-disable no-duplicate-heading -->
+
+## v0.19.2 (January 13, 2025)
+
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
+
+## v0.16.8 (January 9, 2025)
+
+* Fixed an issue with Service Discovery that caused significant latencies when exporting a large number of service.
+* New options were added to `subctl cloud prepare` to support a custom vpc for AWS.
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
+
+## v0.17.5 (January 9, 2025)
+
+* Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
+
+## v0.18.4 (January 8, 2025)
+
+* Addressed security vulnerability [CVE-2024-45338](https://nvd.nist.gov/vuln/detail/CVE-2024-45338).
+
+## v0.18.3 (December 3, 2024)
+
+* Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
+* An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
+  forwarding traffic if there is no backing ready pod.
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
+
+## v0.19.1 (November 28, 2024)
+
+* Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
+* An exported non-headless Service's `publishNotReadyAddresses` flag is now propagated to the Globalnet ingress Service to allow
+  forwarding traffic if there is no backing ready pod.
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
+
+## v0.17.4 (November 13, 2024)
+
+* Fixed an issue where AWS cloud prepare failed to find the VPC.
 
 ## v0.18.2 (October 30, 2024)
 

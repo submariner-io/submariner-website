@@ -14,8 +14,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 * [*Connectivity Between Legacy Systems and Kubernetes: Identifying Senders By Using Source IPs*, Open Source Summit Japan (2021-12)](https://www.youtube.com/watch?v=bpJTof7UQpA) ([slides](https://static.sched.com/hosted_files/ossalsjp21/47/Connectivity%20Between%20Legacy.pdf))
 * [*Here Be Services: Beyond the Cluster Boundary with Multicluster Services*, KubeCon NA (2021-10)](https://youtu.be/_UJrSfmvlMA)
 * [*Multi-Cluster Service Deployments with Operators and KubeCarrier*, KubeCon EU (2021-05)](https://youtu.be/mWQetXFVrao)
-* [*ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU (2021-05)
-](https://youtu.be/BnbMpCbqyBk)
+* [*ODCN’s Journey to Connecting OpenShift Clusters Securely and Transparently with Submariner*, OpenShift Commons at KubeCon EU (2021-05)](https://youtu.be/BnbMpCbqyBk)
 * [*Connecting Kubernetes Clusters with Submariner*, DevConf.CZ (2021-03)](https://www.youtube.com/watch?v=-HE9iq34Zj8)
 * [*Multicluster Network Connectivity Submariner*, Computing on the Edge with Kubernetes (2020-10)](https://www.youtube.com/watch?v=x7PbyTVEXFg)
 * [*Hybrid Cloud and Multicluster Service Discovery*, KubeCon China (2019-07)](https://www.youtube.com/watch?v=uU4PSBLrpi8&list=PLj6h78yzYM2Njj5PvNc4Mtcril2YyR95d) ([slides](https://static.sched.com/hosted_files/kccncosschn19eng/6b/Hybrid%20Cloud%20and%20Multi-Cluster%20Service%20Connectivity.pdf))
@@ -31,6 +30,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Blogs
 
+* [Connecting K8S/Cilium cluster and K8S/Calico cluster using Submariner (2024-11)](https://medium.com/@yboaron/d56d7c39f0cb)
 * [Embracing the Open Hybrid Multi-Cloud connecting overlay networking from ARO and ROSA clusters (2023-05)](https://rcarrata.com/aro/aro-submariner/)
 * [Connecting overlay networks of ROSA clusters with Submariner (2023-04)](https://rcarrata.com/rosa/rosa-submariner/)
 * [How to enable cross-cluster networking in Kubernetes with the Submariner add-on (2023-03)](https://www.redhat.com/architect/submariner-acm-add-on)

@@ -11,14 +11,18 @@ Note that this guide focuses on Submariner deployment on clusters with non-overl
 For connecting clusters with overlapping CIDRs, please refer to the
 [Submariner with Globalnet guide](../globalnet/).
 
+<!-- markdownlint-disable proper-names -->
 {{< include "/resources/shared/openshift/setup_openshift_openstack.md" >}}
+<!-- markdownlint-enable -->
 
 {{% notice info %}}
 Please ensure that the tools you downloaded above are compatible with your OpenShift Container Platform version. For more information,
 please refer to the official [OpenShift documentation](https://docs.openshift.com/container-platform/).
 {{% /notice %}}
 
+<!-- markdownlint-disable proper-names -->
 {{< include "/resources/shared/openshift/create_clusters_aws_openstack.md" >}}
+<!-- markdownlint-enable -->
 
 ### Install `subctl`
 

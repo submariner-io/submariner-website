@@ -54,37 +54,37 @@ The following metrics are exposed currently:
 ### Submariner Gateway
 <!-- markdownlint-disable line-length -->
 <!-- markdownlint-disable no-trailing-spaces -->
-| Name                                          | Label                                                               | Description                       
+| Name                                          | Label                                                               | Description |
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
 | `submariner_gateways`                         |                                                                     | The number of gateways in the cluster                         |
 | `submariner_gateway_creation_timestamp`       | `local_cluster`, `local_hostname`                                   | Timestamp of gateway creation time                            |
 | `submariner_gateway_sync_iterations`          |                                                                     | Gateway synchronization iterations                            |
-| `submariner_gateway_rx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes received by cable driver and cable
-| `submariner_gateway_tx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes transmitted by cable driver and cable
+| `submariner_gateway_rx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes received by cable driver and cable |
+| `submariner_gateway_tx_bytes`                 | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`   | Count of bytes transmitted by cable driver and cable |
 
 ### Submariner Connections
 
-| Name                                          | Label                                                               | Description
+| Name                                          | Label                                                               | Description |
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
-| `submariner_requested_connections`            | `local_cluster`, `local_hostname`, `remote_cluster`, `remote_hostname`, `status`: “connecting”, “connected”, or “error” | The number of connections by endpoint and status
-| `submariner_connections`                      | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`, `status`: “connecting”, “connected”, or “error” | The number of connections and corresponding status by cable driver and cable
-| `submariner_connection_established_timestamp` | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Timestamp of last successful connection established by cable driver and cable
-| `submariner_connection_latency_seconds`       | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Connection latency in seconds; last RTT, by cable driver and cable
+| `submariner_requested_connections`            | `local_cluster`, `local_hostname`, `remote_cluster`, `remote_hostname`, `status`: “connecting”, “connected”, or “error” | The number of connections by endpoint and status |
+| `submariner_connections`                      | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip`, `status`: “connecting”, “connected”, or “error” | The number of connections and corresponding status by cable driver and cable |
+| `submariner_connection_established_timestamp` | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Timestamp of last successful connection established by cable driver and cable |
+| `submariner_connection_latency_seconds`       | `cable_driver`, `local_cluster`, `local_hostname`, `local_endpoint_ip`, `remote_cluster`, `remote_hostname`, `remote_endpoint_ip` | Connection latency in seconds; last RTT, by cable driver and cable |
 
 ### Globalnet
 
-| Name                                            | Label                                                               | Description
+| Name                                            | Label                                                               | Description |
 |:------------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
-| `submariner_global_IP_availability`             | `cidr`                                                              | Count of available global IPs per CIDR
-| `submariner_global_IP_allocated`                | `cidr`                                                              | Count of all global IPs allocated for Pods/Services per CIDR
-| `submariner_global_egress_IP_allocated`         | `cidr`                                                              | Count of global Egress IPs allocated for Pods/Services per CIDR
-| `submariner_cluster_global_egress_IP_allocated` | `cidr`                                                              | Count of global Egress IPs allocated for clusters per CIDR
-| `submariner_global_ingress_IP_allocated`        | `cidr`                                                              | Count of global Ingress IPs allocated for Pods/Services per CIDR
+| `submariner_global_IP_availability`             | `cidr`                                                              | Count of available global IPs per CIDR |
+| `submariner_global_IP_allocated`                | `cidr`                                                              | Count of all global IPs allocated for Pods/Services per CIDR |
+| `submariner_global_egress_IP_allocated`         | `cidr`                                                              | Count of global Egress IPs allocated for Pods/Services per CIDR |
+| `submariner_cluster_global_egress_IP_allocated` | `cidr`                                                              | Count of global Egress IPs allocated for clusters per CIDR |
+| `submariner_global_ingress_IP_allocated`        | `cidr`                                                              | Count of global Ingress IPs allocated for Pods/Services per CIDR |
 
 ### Service Discovery
 
-| Name                                          | Label                                                               | Description
+| Name                                          | Label                                                               | Description |
 |:----------------------------------------------|:--------------------------------------------------------------------|:--------------------------------------------------------------|
-| `submariner_service_import`                   | `direction`, `operation`, `syncer_name` | Count of imported Services
-| `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                                                                                        | Count of exported Services
-| `submariner_service_discovery_query`  | `source_cluster`, `destination_cluster`, `destination_service_name`, `destination_service_ip`, `destination_service_namespace` | Count DNS queries handled by Lighthouse plugin
+| `submariner_service_import`                   | `direction`, `operation`, `syncer_name` | Count of imported Services |
+| `submariner_service_export`                   | `direction`, `operation`, `syncer_name`                                                                                        | Count of exported Services |
+| `submariner_service_discovery_query`  | `source_cluster`, `destination_cluster`, `destination_service_name`, `destination_service_ip`, `destination_service_namespace` | Count DNS queries handled by Lighthouse plugin |
