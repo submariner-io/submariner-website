@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-header -->
 
+## v0.19.3
+
+* Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
+
 ## v0.19.1
 
 * Fixed an issue with Service Discovery that caused `ServiceImport` resources to be deleted on `submariner-lighthouse-agent` pod restart.
