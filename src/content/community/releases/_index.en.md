@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.20.1
+
+* Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
+
 ## v0.18.5 (May 7, 2025)
 
 * Addressed security vulnerabilities CVE-2024-35255, CVE-2024-40635, CVE-2024-53259, CVE-2025-22868, CVE-2025-22869, CVE-2025-22870,
