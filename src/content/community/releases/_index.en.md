@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
+
 ## v0.20.0 (March 3, 2025)
 
 ### New features
