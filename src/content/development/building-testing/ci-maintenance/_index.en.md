@@ -100,3 +100,13 @@ ENV MARKDOWNLINT_VERSION=0.33.0 \
 ```
 
 [`submariner-io/shipyard/package/Dockerfile.shipyard-linting`](https://github.com/submariner-io/shipyard/blob/devel/package/Dockerfile.shipyard-linting)
+
+## Security Disclosure Contact Information
+
+Submariner uses an IETF-standardized file to maintain up-to-date information for people who want to disclose security vulnerabilities to the
+project. The file is hosted at the [root of the
+website](https://github.com/submariner-io/submariner-website/blob/devel/src/content/security.txt) and rendered at
+<https://submariner.io/security.txt>.
+
+Per the standard, the `Expires` field should be no more than a year out to help ensure the information is fresh.
+The contact information and links should be checked yearly and the expiration date should be bumped to one year from the current date.
