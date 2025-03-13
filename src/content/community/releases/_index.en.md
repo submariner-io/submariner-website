@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.19.4
+
+* Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
+  reported from `subctl diagnose`.
+
 ## v0.19.3 (March 12, 2025)
 
 * Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
