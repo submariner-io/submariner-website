@@ -11,6 +11,8 @@ pre = "<b>2. </b>"
 * [Upgrading](upgrading)
 * [User Guide](usage)
 * [Monitoring](monitoring)
+* [NAT Travesal](nat-traversal)
+* [Network Policy](network-policy)
 * [Troubleshooting](troubleshooting)
 * [Known Issues](known-issues)
 * [Uninstalling Submariner](cleanup)
