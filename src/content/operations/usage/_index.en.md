@@ -981,3 +981,77 @@ Switched to context "cluster3".
 $ kubectl delete namespace nginx-test
 namespace "nginx-test" deleted
 ```
+
+### Migrating existing applications to use multi-cluster Services
+
+To use multi-cluster Services, applications need to use the `clusterset.local` suffix.
+
+There are two main ways to achieve this without needing to rewrite the applications.
+
+#### Use DnsConfig
+
+The first option is to use the [dnsConfig][dnsconfig doc] field in the `Deployment` or `Pod` spec of the applications
+to add `clusterset.local` to the search path in applications' `/etc/hosts/` file.
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: default
+  name: dns-example
+spec:
+  containers:
+    - name: test
+      image: nginx
+  dnsPolicy: "None"
+  dnsConfig:
+    nameservers:
+      - 192.0.2.1 # this is an example
+    searches:
+      - default.svc.cluserset.local
+      - ns1.svc.cluserset.local # example namespace
+      - svc.clusterset.local
+      - clusterset.local
+```
+
+##### Pros of DnsConfig
+
+* Useful when specific applications want to use multiple multi-cluster Services.
+* Preferred if some applications want to continue using the local version of the Service explicitly.
+
+##### Cons of DnsConfig
+
+* It is necessary to modify the `Deployment` or `Pod` spec of all applications that need to use multi-cluster Services.
+
+#### Use ExternalName Service
+
+The second option is to create a Service of type `ExternalName` that points to a multi-cluster Service.
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcs-sample
+  namespace: demo
+spec:
+  type: ExternalName
+  sessionAffinity: None
+  externalName: mcs-sample.demo.svc.clusterset.local
+```
+
+This will make DNS replace any queries to the local `mcs-sample.demo.cluster.local` service with the multi-cluster
+`mcs-sample.demo.svc.clusterset.local` service.
+
+This can be also used to redirect to a multi-cluster Service in a different namespace.
+
+##### Pros of ExternalName
+
+* Useful if all applications need to use a specific multi-cluster Service
+* No changes to `Deployment` or `Pod` spec
+
+##### Cons of ExternalName
+
+* Such services can’t be deployed locally since the `ExternalName` type Service will replace the existing local
+ClusterIP Service. This can be mitigated by using a different namespace for the multi-cluster Service.
+
+[dnsconfig doc]: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config
