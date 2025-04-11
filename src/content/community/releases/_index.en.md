@@ -10,6 +10,7 @@ weight = 40
 * Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
 * Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
   reported from `subctl diagnose`.
+* Fixed an issue with Service Discovery that caused duplicate `EndpointSlice` resources to be created.
 
 ## v0.20.0
 
