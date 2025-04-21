@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
-## v0.19.4
+## v0.19.4 (April 16, 2025)
 
 * Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
   reported from `subctl diagnose`.
