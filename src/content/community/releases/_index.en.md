@@ -9,6 +9,7 @@ weight = 40
 
 * Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
   reported from `subctl diagnose`.
+* Addressed security vulnerabilities in dependencies.
 
 ## v0.19.3 (March 12, 2025)
 
