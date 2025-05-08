@@ -5,6 +5,11 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.18.5 (May 7, 2025)
+
+* Addressed security vulnerabilities CVE-2024-35255, CVE-2024-40635, CVE-2024-53259, CVE-2025-22868, CVE-2025-22869, CVE-2025-22870,
+  CVE-2025-22872, and CVE-2025-30204 in dependencies.
+
 ## v0.19.4 (April 16, 2025)
 
 * Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
