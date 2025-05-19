@@ -23,6 +23,9 @@
     },
     {
       "pattern": "^https://web.archive.org/web/"
+    },
+    {
+      "pattern": "^https://doi.org/"
     }
   ]
 }
