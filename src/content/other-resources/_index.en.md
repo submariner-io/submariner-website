@@ -69,6 +69,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Academic Papers
 
+* [Bridging Clusters: A Comparative Look at Multi-Cluster Networking Performance in Kubernetes (2025-05)](https://doi.org/10.1145/3676151.3719352)
 * [Evaluating the Impact of Inter-cluster Communications in Edge Computing (2024-09)](https://arxiv.org/pdf/2409.09278)
 * [Kubernetes and the Edge? (2020-10)](https://hal.inria.fr/hal-02972686/document)
 
