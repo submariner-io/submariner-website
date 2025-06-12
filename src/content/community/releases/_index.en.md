@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.17.6 (June 11, 2025)
+
+* Addressed security vulnerabilities in dependencies.
+
 ## v0.20.1 (May 14, 2025)
 
 * Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
