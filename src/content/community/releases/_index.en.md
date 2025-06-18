@@ -15,6 +15,7 @@ weight = 40
 * Fixed an issue which resulted in stale remote endpoint entries in the `RouteAgent` resource causing erroneous failures
   reported from `subctl diagnose`.
 * Fixed an issue with Service Discovery that caused duplicate `EndpointSlice` resources to be created.
+* Fixed an issue introduced in OCP 4.18 where OVN-K SNAT would overwrite the source IP of packets on reaching the destination cluster.
 
 ## v0.20.0 (March 3, 2025)
 
