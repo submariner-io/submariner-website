@@ -20,6 +20,7 @@ weight = 40
   [Kubernetes Multicluster Services API](https://github.com/kubernetes-sigs/mcs-api/) project.
 * Service Discovery now returns an endpoint's address from DNS queries if no specific host name is present to match the
   Kubernetes CoreDNS behavior.
+* Changes to Service Discovery's CoreDNS ClusterIP service are now applied on Submariner upgrade.
 
 ## v0.20.0 (March 3, 2025)
 
