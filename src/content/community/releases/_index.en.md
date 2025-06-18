@@ -21,6 +21,7 @@ weight = 40
 * Service Discovery now returns an endpoint's address from DNS queries if no specific host name is present to match the
   Kubernetes CoreDNS behavior.
 * Changes to Service Discovery's CoreDNS ClusterIP service are now applied on Submariner upgrade.
+* Submariner no longer handles migration clean up of the network plugin syncer component that was removed in the 0.16.0 release.
 
 ## v0.17.6 (June 11, 2025)
 
