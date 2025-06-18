@@ -18,6 +18,8 @@ weight = 40
 * Fixed an issue introduced in OCP 4.18 where OVN-K SNAT would overwrite the source IP of packets on reaching the destination cluster.
 * The `ServiceExport` and `ServiceImport` CRDs have been updated to match recent changes in the upstream
   [Kubernetes Multicluster Services API](https://github.com/kubernetes-sigs/mcs-api/) project.
+* Service Discovery now returns an endpoint's address from DNS queries if no specific host name is present to match the
+  Kubernetes CoreDNS behavior.
 
 ## v0.20.0 (March 3, 2025)
 
