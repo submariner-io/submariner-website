@@ -9,6 +9,12 @@ weight = 40
 
 ### New features
 
+* Submariner now has partial support for IPv6 and dual-stack environments. The following aspects are currently not supported:
+  * Globalnet
+  * VXLAN cable driver
+  * Wireguard cable driver
+  * Gateway LoadBalancer
+
 ### Other changes
 
 * Fixed an issue with Globalnet that caused global ingress IPs for services to be re-allocated on restart of the Globalnet controller pod.
