@@ -16,6 +16,8 @@ weight = 40
   reported from `subctl diagnose`.
 * Fixed an issue with Service Discovery that caused duplicate `EndpointSlice` resources to be created.
 * Fixed an issue introduced in OCP 4.18 where OVN-K SNAT would overwrite the source IP of packets on reaching the destination cluster.
+* The `ServiceExport` and `ServiceImport` CRDs have been updated to match recent changes in the upstream
+  [Kubernetes Multicluster Services API](https://github.com/kubernetes-sigs/mcs-api/) project.
 
 ## v0.20.0 (March 3, 2025)
 
