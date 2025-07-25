@@ -30,6 +30,7 @@ This page catalogs content documenting Submariner elsewhere on the web.
 
 ## Blogs
 
+* [Solving the Puzzle of Cross-Cluster Communication (2025-07)](https://www.linkedin.com/pulse/solving-puzzle-cross-cluster-communication-michael-knyazev-phd-gfadc)
 * [Connecting K8S/Cilium cluster and K8S/Calico cluster using Submariner (2024-11)](https://medium.com/@yboaron/d56d7c39f0cb)
 * [Embracing the Open Hybrid Multi-Cloud connecting overlay networking from ARO and ROSA clusters (2023-05)](https://rcarrata.com/aro/aro-submariner/)
 * [Connecting overlay networks of ROSA clusters with Submariner (2023-04)](https://rcarrata.com/rosa/rosa-submariner/)
