@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.22.0
+
+### New features
+
+### Other changes
+
 ## v0.21.2 (November 10, 2025)
 
 * The Libreswan cable driver now uses the correct encapsulation option for `ipsec whack` versions < 5.0.
