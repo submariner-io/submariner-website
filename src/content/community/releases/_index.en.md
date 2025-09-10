@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
+
 ## v0.21.0 (August 13, 2025)
 
 ### New features
