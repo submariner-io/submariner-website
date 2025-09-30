@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.20.2 (Sept 29, 2025)
+
+* Maintenance release to address security vulnerabilities in dependencies.
+
 ## v0.21.0 (August 13, 2025)
 
 ### New features
