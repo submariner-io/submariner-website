@@ -18,6 +18,7 @@ weight = 40
 ### Other changes
 
 * The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
+* Fixed an issue which resulted in a stale `RouteAgent` resource when the associated pod was terminated or the node was powered off.
 
 ## v0.21.2 (November 10, 2025)
 
