@@ -12,6 +12,8 @@ weight = 40
 * Submariner now uses nftables as the default packet filter driver.
 * The VXLAN cable driver now supports IPv6 and dual-stack environments.
 * Submariner now supports environments where OVN-Kubernetes IPsec is enabled.
+* Submariner can now be deployed with only inter-cluster routing functionality. This is useful for deployments where an
+  external SDN or routing system manages intra-cluster routing.
 
 ### Other changes
 
