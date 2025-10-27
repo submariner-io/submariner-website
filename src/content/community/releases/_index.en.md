@@ -10,6 +10,7 @@ weight = 40
 ### New features
 
 * Submariner now uses nftables as the default packet filter driver.
+* The VXLAN cable driver now supports IPv6 and dual-stack environments.
 
 ### Other changes
 
