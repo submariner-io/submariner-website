@@ -9,6 +9,8 @@ weight = 40
 
 ### New features
 
+* Submariner now uses nftables as the default packet filter driver.
+
 ### Other changes
 
 * The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
