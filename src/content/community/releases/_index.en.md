@@ -9,6 +9,7 @@ weight = 40
 
 * The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
 * Calico’s default IPPool encapsulation is enforced as IPIP on IBM ROKS, even when controlled via Tigera Installation CR.
+* Fixed an issue which resulted in a stale `RouteAgent` resource when the associated pod was terminated or the node was powered off.
 
 ## v0.20.2 (Sept 29, 2025)
 
