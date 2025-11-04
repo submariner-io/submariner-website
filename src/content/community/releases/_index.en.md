@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
-## v0.21.1
+## v0.21.1 (November 4, 2025)
 
 * The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
 * Calico’s default IPPool encapsulation is enforced as IPIP on IBM ROKS, even when controlled via Tigera Installation CR.
