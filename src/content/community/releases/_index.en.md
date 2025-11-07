@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.21.2
+
+* The Libreswan cable driver now uses the correct encapsulation option for `ipsec whack` versions < 5.0.
+
 ## v0.21.1
 
 * The cluster service CIDRs are now correctly discovered on Kubernetes 1.33+ in managed Kubernetes environments like EKS and GKE.
