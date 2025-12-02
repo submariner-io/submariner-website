@@ -342,3 +342,19 @@ from connected clusters.
 For errors querying specific Pods of a StatefulSet, check that the `Hostname` is correct for the endpoint.
 
 If still not working, file an [issue](https://github.com/submariner-io/lighthouse/issues) with relevant log entries.
+
+#### Configuring TTL
+
+The default TTL for Lighthouse DNS requests is 5 seconds. This can be customized via a `dns.ttl` setting in a `ConfigMap` named
+`submariner-lighthouse-coredns` in the `submariner-operator` namespace. This `ConfigMap` does not exist by default and must be manually
+created:
+
+```text
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: submariner-lighthouse-coredns
+  namespace: submariner-operator
+data:
+  dns.ttl: "2" # Specify value in seconds
+```
