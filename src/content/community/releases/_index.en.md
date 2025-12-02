@@ -9,6 +9,7 @@ weight = 40
 
 ### New features
 
+* Submariner now allows custom annotations to be configured for the Gateway LoadBalancer service, useful for cloud-specific settings.
 * Submariner now uses nftables as the default packet filter driver.
 * The VXLAN cable driver now supports IPv6 and dual-stack environments.
 * Submariner now supports environments where OVN-Kubernetes IPsec is enabled.
