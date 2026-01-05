@@ -92,6 +92,20 @@ a second cluster) when Submariner is used.
 ![Figure 3 - Clusters inter-connected using VXLAN tunnels](/images/cable-drivers/vxlan_cable.png)
 <!-- Image Source (draw.io): src/static/images/cable-drivers/cable_driver_networking.drawio -->
 
+#### Customize TCP MSS Clamping
+
+In network topologies where MTU issues are observed, the encapsulation overhead added by Submariner can cause packet drops.
+To resolve this, you can force a specific MSS clamping value by adding an annotation to the Gateway nodes,
+which instructs Submariner to rewrite the TCP Maximum Segment Size.
+
+Use the following commands to apply the configuration and restart the route-agent pods to pick up the change:
+
+```bash
+kubectl annotate node <gw_node_name> submariner.io/tcp-clamp-mss=<value>
+
+kubectl delete pod -n submariner-operator -l app=submariner-routeagent
+```
+
 ### Gateway Failover
 
 If the active Gateway Engine fails, another Gateway Engine on one of the
