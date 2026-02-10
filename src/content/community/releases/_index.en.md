@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Submariner Helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
+
 ## v0.23.0
 
 ### New features
