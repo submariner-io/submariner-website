@@ -11,6 +11,7 @@ weight = 40
 
 ### Other changes
 
+* AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
 * Azure cloud prepare now validates zones against the region when selecting availability zones for Submariner gateways.
 * RHOS cloud prepare now supports custom subnet names via the `--subnet-names` flag for gateway deployment.
 * Submariner helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
