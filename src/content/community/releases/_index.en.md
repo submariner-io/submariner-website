@@ -5,6 +5,12 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.23.0
+
+### New features
+
+### Other changes
+
 ## v0.22.1 (February 10, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
