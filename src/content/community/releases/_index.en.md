@@ -11,6 +11,7 @@ weight = 40
 
 ### Other changes
 
+* Azure cloud prepare now validates zones against the region when selecting availability zones for Submariner gateways.
 * Submariner Helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
 
 ## v0.22.1 (February 10, 2026)
