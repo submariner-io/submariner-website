@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Submariner Helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
+
 ## v0.22.1 (February 10, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
