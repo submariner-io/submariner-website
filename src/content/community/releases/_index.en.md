@@ -11,6 +11,7 @@ weight = 40
 
 ### Other changes
 
+* Submariner helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
 * Submariner now uses the correct encapsulation flag for Libreswan versions prior to 5.0.
 
 ## v0.22.0
