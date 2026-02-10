@@ -5,6 +5,13 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.22.1 (February 10, 2026)
+
+* AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
+* Azure cloud prepare now validates zones against the region when selecting availability zones for Submariner gateways.
+* The Libreswan cable driver now uses the correct encapsulation option for `ipsec whack` versions < 5.0.
+* Addressed various security vulnerabilities in dependencies.
+
 ## v0.22.0 (December 8, 2025)
 
 ### New features
