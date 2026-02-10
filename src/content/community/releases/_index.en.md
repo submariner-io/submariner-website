@@ -11,6 +11,12 @@ weight = 40
 
 ### Other changes
 
+## v0.23.0
+
+### New features
+
+### Other changes
+
 ## v0.22.0 (December 8, 2025)
 
 ### New features
