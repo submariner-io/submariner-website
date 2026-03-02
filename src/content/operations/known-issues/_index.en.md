@@ -34,3 +34,20 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:submariner:submar
 ```
 
 This is handled automatically in `subctl` and the Submariner addon.
+
+## AWS EKS with AWS VPC CNI: Intermittent Connectivity on Secondary ENIs
+
+When using Submariner on AWS EKS with the default AWS VPC CNI configuration, pods assigned to secondary Elastic Network Interfaces (ENIs)
+may experience cross-cluster connectivity loss.
+
+The AWS VPC CNI for pods on secondary ENIs creates IP rules that force traffic into a custom routing table instead of the main table.
+Currently, the Submariner route-agent only populates the main routing table. Consequently, these custom tables lack the routes to the
+`vx-submariner` interface, and traffic is instead sent to the default VPC gateway (black-holed).
+
+You can manually replicate the Submariner routes from the main table into the custom tables created by the CNI. For example,
+if your pod is using table 2:
+
+```shell
+sudo ip route add <remote-cluster-cidr> via <submariner-gw-ip> dev vx-submariner table 2
+sudo ip route add <submariner-internal-cidr> dev vx-submariner table 2
+```
