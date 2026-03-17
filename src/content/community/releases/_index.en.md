@@ -12,6 +12,8 @@ weight = 40
 * RHOS cloud prepare now supports custom subnet names via the `--subnet-names` flag for gateway deployment.
 * Submariner Helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
 
+**Note**: this version replaces v0.23.0.
+
 ## v0.22.1 (February 10, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
