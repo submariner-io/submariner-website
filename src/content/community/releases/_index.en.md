@@ -5,11 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
-## v0.23.0
-
-### New features
-
-### Other changes
+## v0.23.1 (March 12, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
 * Azure cloud prepare now validates zones against the region when selecting availability zones for Submariner gateways.
