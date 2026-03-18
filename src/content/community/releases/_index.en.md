@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.23.2
+
+* Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
+
 ## v0.23.0
 
 ### New features
@@ -15,12 +19,6 @@ weight = 40
 * Azure cloud prepare now validates zones against the region when selecting availability zones for Submariner gateways.
 * RHOS cloud prepare now supports custom subnet names via the `--subnet-names` flag for gateway deployment.
 * Submariner Helm charts now allow broker credentials and the IPsec PSK to be specified as Kubernetes Secrets.
-
-## v0.23.0
-
-### New features
-
-### Other changes
 
 ## v0.22.0 (December 8, 2025)
 
