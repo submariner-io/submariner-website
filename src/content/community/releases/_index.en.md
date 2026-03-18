@@ -11,6 +11,8 @@ weight = 40
 
 ### Other changes
 
+* Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
+
 ## v0.23.1 (March 12, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
