@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.22.2
+
+* Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
+
 ## v0.22.0
 
 ### New features
