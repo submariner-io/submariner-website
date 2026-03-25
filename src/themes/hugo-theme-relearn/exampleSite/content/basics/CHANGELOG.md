@@ -1,5 +1,52 @@
 # Changelog
 
+## 2.3.0 (2021-09-13)
+
+### Bug Fixes
+
+- [**bug**] theme: fix usage of <section> [#88](https://github.com/McShelby/hugo-theme-relearn/issues/88)
+
+### Maintenance
+
+- [**task**] theme: ensure IE11 compatiblity [#89](https://github.com/McShelby/hugo-theme-relearn/issues/89)
+- [**task**] docs: Arrr! showcase multilang featurrre [#87](https://github.com/McShelby/hugo-theme-relearn/issues/87)
+
+---
+
+## 2.2.0 (2021-09-10)
+
+### Enhancements
+
+- [**feature**] sitemap: hide hidden pages from sitemap and SEO indexing [#85](https://github.com/McShelby/hugo-theme-relearn/issues/85)
+
+### Bug Fixes
+
+- [**bug**] theme: fix showVisitedLinks in case Hugo is configured to modify relative URLs [#86](https://github.com/McShelby/hugo-theme-relearn/issues/86)
+
+### Maintenance
+
+- [**task**] theme: switch from data-vocabulary to schema [#84](https://github.com/McShelby/hugo-theme-relearn/issues/84)
+
+---
+
+## 2.1.0 (2021-09-07)
+
+### Enhancements
+
+- [**feature**] search: open expand if it contains search term [#80](https://github.com/McShelby/hugo-theme-relearn/issues/80)
+- [**feature**] menu: scroll active item into view [#79](https://github.com/McShelby/hugo-theme-relearn/issues/79)
+- [**feature**] search: disable search in hidden pages [#76](https://github.com/McShelby/hugo-theme-relearn/issues/76)
+- [**feature**] search: improve readablility of index.json [#75](https://github.com/McShelby/hugo-theme-relearn/issues/75)
+- [**feature**] search: increase performance [#74](https://github.com/McShelby/hugo-theme-relearn/issues/74)
+- [**feature**] search: improve search context preview [#73](https://github.com/McShelby/hugo-theme-relearn/issues/73)
+
+### Bug Fixes
+
+- [**bug**] search: hide non-site content [#81](https://github.com/McShelby/hugo-theme-relearn/issues/81)
+- [**bug**] menu: always hide hidden sub pages [#77](https://github.com/McShelby/hugo-theme-relearn/issues/77)
+
+---
+
 ## 2.0.0 (2021-08-28)
 
 ### Enhancements
@@ -15,7 +62,6 @@
 - [**feature**] theme: make content a template [#50](https://github.com/McShelby/hugo-theme-relearn/issues/50)
 - [**feature**] menu: control menu expansion with alwaysopen parameter [#49](https://github.com/McShelby/hugo-theme-relearn/issues/49)
 - [**feature**] include: new shortcode to include other files [#43](https://github.com/McShelby/hugo-theme-relearn/issues/43)
-- [**feature**] theme: provide compatiblity settings [#41](https://github.com/McShelby/hugo-theme-relearn/issues/41)
 - [**feature**] theme: adjust print styles [#35](https://github.com/McShelby/hugo-theme-relearn/issues/35)
 - [**feature**] code highligher: switch to standard hugo highlighter [#32](https://github.com/McShelby/hugo-theme-relearn/issues/32)
 

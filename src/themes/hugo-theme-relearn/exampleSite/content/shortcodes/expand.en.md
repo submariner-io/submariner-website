@@ -8,7 +8,7 @@ The Expand shortcode displays an expandable/collapsible section of text on your 
 ## Usage
 
 ````go
-{{%/* expand "Does this relearn theme rock?" { "true" | "false" } */%}}
+{{%/* expand "Does this Relearn theme rock?" { "true" | "false" } */%}}
 Yes!
 {{%/* /expand */%}}
 ````
@@ -17,6 +17,10 @@ The first optional parameter defines the text that appears next to the expand/co
 
 The second optional parameter controls if the block is initially shown as expanded (`"true"`) or collapsed (`"false"`). The default ist `"false"`.
 ## Examples
+
+{{% expand "I'll tell you a secret..." %}}
+...maybe the next time you'll open this expander!
+{{% /expand %}}
 
 ### All defaults
 

@@ -6,7 +6,7 @@ A theme for [Hugo](https://gohugo.io/) designed for documentation.
 
 ## Motivation
 
-The theme initially was a fork of the great[hugo-theme-learn](https://github.com/matcornic/hugo-theme-learn) with the aim of fixing long outstanding bugs and adepting to latest Hugo features. As far as possible this theme tries to be a drop-in replacement for hugo-theme-learn.
+The theme initially was a fork of the great [Learn theme](https://github.com/matcornic/hugo-theme-learn) with the aim of fixing long outstanding bugs and adepting to latest Hugo features. As far as possible this theme tries to be a drop-in replacement for the Learn theme.
 
 ## Main features
 
@@ -37,6 +37,10 @@ Visit the [documentation](https://relearn.netlify.app/) to learn about all avail
 
 See the [changelog](https://relearn.netlify.app/basics/history) for a complete list of releases.
 
+## Contribution
+
+You are most welcome to contribute to the source code but please visit the [contribution guidelines](https://github.com/McShelby/hugo-theme-relearn/blob/main/.github/CONTRIBUTING.md) first.
+
 ## License
 
 This theme is licensed under the [MIT License](https://github.com/McShelby/hugo-theme-relearn/blob/main/LICENSE).
@@ -45,4 +49,4 @@ This theme is licensed under the [MIT License](https://github.com/McShelby/hugo-
 
 Special thanks to [everyone who has contributed](https://github.com/McShelby/hugo-theme-relearn/graphs/contributors) to this project.
 
-Many thanks to [@matcornic](https://github.com/matcornic) for his work on [hugo-theme-learn](https://github.com/matcornic/hugo-theme-learn).
+Many thanks to [@matcornic](https://github.com/matcornic) for his work on the [Learn theme](https://github.com/matcornic/hugo-theme-learn).
