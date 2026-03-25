@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build the website static files
-        run: make static-all
+        run: make static
 
       - name: Upload proposed static website for review
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
