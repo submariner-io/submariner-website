@@ -1,0 +1,62 @@
+baseURL = "https://example.com"
+languageCode = "en-US"
+defaultContentLanguage = "en"
+
+title = "Hugo Relearn Documentation"
+theme = "hugo-theme-relearn"
+themesdir = "../.."
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir = true
+relativeURLs = true
+
+[params]
+  editURL = "https://github.com/McShelby/hugo-theme-relearn/edit/main/exampleSite/content/"
+  description = "Documentation for Hugo Relearn Theme"
+  author = "Sören Weber"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  disableLandingPageButton = true
+  disableMermaid = false
+  titleSeparator = "::"
+  themeVariant = "relearn"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup.goldmark.renderer]
+  unsafe= true
+
+[module]
+  [module.hugoVersion]
+    min = "0.25"
+
+[Languages]
+  [Languages.en]
+    title = "Documentation for Hugo Relearn Theme"
+    weight = 1
+    languageName = "English"
+    landingPageURL = "/"
+    landingPageName = "<i class='fas fa-home'></i> Home"
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
+    identifier = "ds"
+    url = "https://github.com/McShelby/hugo-theme-relearn"
+    weight = 10
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fas fa-fw fa-camera'></i> Showcases"
+    url = "showcase"
+    weight = 11
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fas fa-fw fa-bookmark'></i> Hugo Documentation"
+    identifier = "hugodoc"
+    url = "https://gohugo.io/"
+    weight = 20
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"
+    url = "/credits"
+    weight = 30

@@ -7,6 +7,10 @@ div.notices.warning {
 }
 div.notices.note {
     background: #E7F2FA;
+    border-color: #61B0DE;
+}
+div.notices.note div.label {
+    background: #61B0DE;
 }
 div.notices.tip {
     background: #E6F9E6;

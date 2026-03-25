@@ -1,0 +1,12 @@
+name = "Relearn"
+license = "MIT"
+licenselink = "https://github.com/McShelby/hugo-theme-relearn/blob/main/LICENSE"
+description = "A theme for Hugo"
+homepage = "https://github.com/McShelby/hugo-theme-relearn"
+demosite = "https://relearn.netlify.app"
+tags = ["docs", "documentation", "grav", "learn", "multilingual", "relearn", "search"]
+features = ["documentation", "expand", "menu", "mermaid", "multilingual", "nested sections", "notice", "search", "tabs", "themeable"]
+
+[author]
+  name = "Sören Weber"
+  homepage = "https://github.com/McShelby"
