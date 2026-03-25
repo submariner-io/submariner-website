@@ -1,7 +1,7 @@
 PORT ?= 1313
 BIND ?= localhost
 OPEN_CMD := $(shell command -v open || command -v xdg-open || echo : 2>/dev/null)
-HUGO_VERSION := v0.71.0
+HUGO_VERSION := v0.81.0
 OUTPUT_DIR:=/
 
 hugo:

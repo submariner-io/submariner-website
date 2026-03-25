@@ -210,7 +210,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #sidebar ul.topics.searched ul {
     display: block;
 }
-#sidebar ul.topics ul, #sidebar ul.topics li.hidden {
+#sidebar ul.topics ul {
     display: none;
 }
 #sidebar ul.topics > li > ul > li:last-child {
@@ -219,8 +219,8 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #sidebar ul.topics ul ul {
     padding-bottom: 0;
 }
-#sidebar ul.topics li.parent > ul, #sidebar ul.topics li.parent.hidden,
-#sidebar ul.topics li.active > ul, #sidebar ul.topics li.active.hidden,
+#sidebar ul.topics li.parent > ul,
+#sidebar ul.topics li.active > ul,
 #sidebar ul.topics li.alwaysopen > ul {
     display: block;
 }
@@ -405,6 +405,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
     padding: 3rem 1rem;
     color: #b3b3b3;
     font-size: 13px;
+    text-align: center;
 }
 #footer p {
     margin: 0;
@@ -506,7 +507,7 @@ div.notices.tip > div.label:first-child:before {
 
 /* attachments shortcode */
 
-section.attachments {
+div.attachments {
     border-top-width: 2rem;
     border-top-style: solid;
     color: #505050;
@@ -518,14 +519,14 @@ section.attachments {
     padding-bottom: .1px;
 }
 
-section.attachments > div.label {
+div.attachments > div.label {
     color: #fff;
     font-weight: normal;
     margin-bottom: 1rem;
     margin-top: -1.75rem;
 }
 
-section.attachments > div.label:first-child:before {
+div.attachments > div.label:first-child:before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     margin-left: -.35rem;
@@ -533,7 +534,7 @@ section.attachments > div.label:first-child:before {
     content: "\f0c6";
 }
 
-section.attachments .attachments-files {
+div.attachments .attachments-files {
     padding: 1rem;
     display: block;
     font-size: 1rem;
@@ -541,36 +542,36 @@ section.attachments .attachments-files {
     margin-bottom: 0rem;
 }
 
-section.attachments.orange {
+div.attachments.orange {
     border-color: #BF8B44;
     background-color: #FFF2DB;
 }
 
-section.attachments.green {
+div.attachments.green {
     border-color: #5AA55A;
     background-color: #E6F9E6;
 }
 
-section.attachments.red {
+div.attachments.red {
     border-color: #D96A68;
     background-color: #FFEBEB;
 }
 
-section.attachments.blue {
+div.attachments.blue {
     border-color: #4897CC;
     background-color: #E9F5FD;
 }
 
-section.attachments.grey {
+div.attachments.grey {
     border-color: #505D65;
     background-color: #F4F4F4;
 }
 
-section.attachments.neutral {
+div.attachments.neutral {
     border-color: transparent;
     background-color: transparent;
 }
-section.attachments.neutral > div.label {
+div.attachments.neutral > div.label {
     color: #505050;
 }
 
@@ -1004,6 +1005,25 @@ td {
 #body #breadcrumbs span {
     padding: 0 0.1rem;
 }
+#body #breadcrumbs .links {
+    display: inline;
+    padding: 0 0.1rem;
+}
+#body #breadcrumbs .links * {
+    display: inline-block;
+    padding: 0;
+}
+#body #breadcrumbs .links meta {
+    display: none;
+}
+#body #breadcrumbs .links li:last-of-type {
+    cursor: text;
+}
+a[aria-disabled="true"] {
+    color: inherit;
+    pointer-events: none;
+    text-decoration: none;
+}
 @media only all and (max-width: 59.938em) {
     #sidebar {
         width: 230px;
@@ -1107,11 +1127,16 @@ pre .copy-to-clipboard:hover {
     display: inline;
 }
 
-#sidebar #shortcuts h3 {
-    font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+#sidebar .nav-title {
     color: white ;
-    margin-top:1rem;
+    font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 110% !important;
+    margin: 1rem 0 1rem 0;
     padding-left: 1rem;
+    text-rendering: optimizeLegibility;
 }
 
 #homelinks {
@@ -1134,9 +1159,37 @@ option {
     cursor: pointer;
 }
 
-.expand-label i{
-    font-size: x-small;
-    width: 8px;
+.expand-label > .fas {
+    font-size: .8rem;
+    width: .6rem;
+}
+
+/* expander collapsed, default */
+.expand > .expand-label > .fa-chevron-down {
+    display: none;
+}
+.expand > .expand-label > .fa-chevron-right {
+    display: inline-block;
+}
+
+/* expander expanded, controlled by expand.html */
+.expand.expand-expanded > .expand-label > .fa-chevron-down {
+    display: inline-block;
+}
+.expand.expand-expanded > .expand-label > .fa-chevron-right {
+    display: none;
+}
+
+/* expander expand collapsed marked, must override logic of expand.html, controlled by relearn.js */
+.expand:not(.expand-expanded).expand-marked > .expand-label > .fa-chevron-down {
+    display: inline-block;
+}
+.expand:not(.expand-expanded).expand-marked > .expand-label > .fa-chevron-right {
+    display: none;
+}
+.expand:not(.expand-expanded).expand-marked > .expand-content {
+    /* this will disable jquery's animation */
+    display: block !important;
 }
 
 @media print {

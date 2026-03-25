@@ -3,12 +3,13 @@ title = "Customization"
 weight = 25
 +++
 
-**Hugo-theme-relearn** has been built to be as configurable as possible by defining multiple [partials](https://gohugo.io/templates/partials/)
+The Relearn theme has been built to be as configurable as possible by defining multiple [partials](https://gohugo.io/templates/partials/)
 
 In `themes/hugo-theme-relearn/layouts/partials/`, you will find all the partials defined for this theme. If you need to overwrite something, don't change the code directly. Instead [follow this page](https://gohugo.io/themes/customizing/). You'd create a new partial in the `layouts/partials` folder of your local project. This partial will have the priority.
 
 This theme defines the following partials :
 
+- *content*: the content page itself. This can be overridden if you wan't to display page's meta data above or below the content.
 - *header*: the header of the content page (contains the breadcrumbs). _Not meant to be overwritten_
 - *custom-header*: custom headers in page. Meant to be overwritten when adding CSS imports. Don't forget to include `style` HTML tag directive in your file
 - *footer*: the footer of the content page (contains the arrows). _Not meant to be overwritten_
@@ -17,6 +18,8 @@ This theme defines the following partials :
 - *logo*: the logo, on top left hand corner.
 - *meta*: HTML meta tags, if you want to change default behavior
 - *menu*: left menu. _Not meant to be overwritten_
+- *menu-pre*: side-wide configuration to prepend to menu items. If you override this, it is your responsiblity to take the page's `pre` setting into account.
+- *menu-post*: side-wide configuration to append to menu items. If you override this, it is your responsiblity to take the page's `post` setting into account.
 - *menu-footer*: footer of the the left menu
 - *search*: search box
 - *toc*: table of contents
@@ -42,7 +45,7 @@ If you need to change this default behavior, create a new file in `layouts/parti
 
 ## Change default colors {#theme-variant}
 
-**Hugo Relearn theme** let you choose between some predefined color scheme variants, but feel free to add one yourself!
+The Relearn theme let you choose between some predefined color scheme variants, but feel free to add one yourself!
 
 ### Standard variant
 
@@ -52,7 +55,7 @@ If you need to change this default behavior, create a new file in `layouts/parti
   themeVariant = ""
 ```
 
-![Red variant](images/standard-variant.png?width=60pc)
+![Red variant](/basics/customization/images/standard-variant.png?width=60pc)
 
 ### Red variant
 
@@ -62,7 +65,7 @@ If you need to change this default behavior, create a new file in `layouts/parti
   themeVariant = "red"
 ```
 
-![Red variant](images/red-variant.png?width=60pc)
+![Red variant](/basics/customization/images/red-variant.png?width=60pc)
 
 ### Blue variant
 
@@ -72,7 +75,7 @@ If you need to change this default behavior, create a new file in `layouts/parti
   themeVariant = "blue"
 ```
 
-![Blue variant](images/blue-variant.png?width=60pc)
+![Blue variant](/basics/customization/images/blue-variant.png?width=60pc)
 
 ### Green variant
 
@@ -82,9 +85,9 @@ If you need to change this default behavior, create a new file in `layouts/parti
   themeVariant = "green"
 ```
 
-![Green variant](images/green-variant.png?width=60pc)
+![Green variant](/basics/customization/images/green-variant.png?width=60pc)
 
-### 'Yours‘ variant
+### 'Mine‘ variant
 
 First, create a new CSS file in your local `static/css` folder prefixed by `theme` (e.g. with _mine_ theme `static/css/theme-mine.css`). Copy the following content and modify colors in CSS variables.
 
