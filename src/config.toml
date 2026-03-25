@@ -3,7 +3,7 @@ languageCode = "en-US"
 defaultContentLanguage = "en"
 
 title = "cross cluster network connectivity for Kubernetes"
-theme = "hugo-theme-learn"
+theme = "hugo-theme-relearn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
