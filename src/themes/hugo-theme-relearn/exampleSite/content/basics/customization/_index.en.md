@@ -1,8 +1,7 @@
----
-date: 2016-04-09T16:50:16+02:00
-title: Style customization
-weight: 25
----
++++
+title = "Customization"
+weight = 25
++++
 
 **Hugo-theme-relearn** has been built to be as configurable as possible by defining multiple [partials](https://gohugo.io/templates/partials/)
 
@@ -25,7 +24,7 @@ This theme defines the following partials :
 ## Change the logo
 
 Create a new file in `layouts/partials/` named `logo.html`. Then write any HTML you want.
-You could use an `img` HTML tag and reference an image created under the *static* folder, or you could paste a SVG definition !
+You could use an `img` HTML tag and reference an image created under the *static* folder, or you could paste a SVG definition!
 
 {{% notice note %}}
 The size of the logo will adapt automatically
@@ -90,23 +89,24 @@ If you need to change this default behavior, create a new file in `layouts/parti
 First, create a new CSS file in your local `static/css` folder prefixed by `theme` (e.g. with _mine_ theme `static/css/theme-mine.css`). Copy the following content and modify colors in CSS variables.
 
 ```css
-
-:root{
-    
+:root {
     --MAIN-TEXT-color:#323232; /* Color of text by default */
     --MAIN-TITLES-TEXT-color: #5e5e5e; /* Color of titles h2-h3-h4-h5 */
     --MAIN-LINK-color:#1C90F3; /* Color of links */
     --MAIN-LINK-HOVER-color:#167ad0; /* Color of hovered links */
     --MAIN-ANCHOR-color: #1C90F3; /* color of anchors on titles */
 
+    --MENU-HOME-LINK-color: #323232; /* Color of the home button text */
+    --MENU-HOME-LINK-HOVER-color: #5e5e5e; /* Color of the hovered home button text */
+
     --MENU-HEADER-BG-color:#1C90F3; /* Background color of menu header */
-    --MENU-HEADER-BORDER-color:#33a1ff; /*Color of menu header border */ 
+    --MENU-HEADER-BORDER-color:#33a1ff; /*Color of menu header border */
 
     --MENU-SEARCH-BG-color:#167ad0; /* Search field background color (by default borders + icons) */
     --MENU-SEARCH-BOX-color: #33a1ff; /* Override search field border color */
     --MENU-SEARCH-BOX-ICONS-color: #a1d2fd; /* Override search field icons color */
 
-    --MENU-SECTIONS-ACTIVE-BG-color:#20272b; /* Background color of the active section and its childs */
+    --MENU-SECTIONS-ACTIVE-BG-color:#20272b; /* Background color of the active section and its children */
     --MENU-SECTIONS-BG-color:#252c31; /* Background color of other sections */
     --MENU-SECTIONS-LINK-color: #ccc; /* Color of links in menu */
     --MENU-SECTIONS-LINK-HOVER-color: #e6e6e6;  /* Color of links in menu, when hovered */
@@ -115,7 +115,6 @@ First, create a new CSS file in your local `static/css` folder prefixed by `them
 
     --MENU-VISITED-color: #33a1ff; /* Color of 'page visited' icons in menu */
     --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
-    
 }
 
 body {
@@ -144,7 +143,7 @@ a:hover {
 }
 
 #sidebar ul li.visited > a .read-icon {
-	color: var(--MENU-VISITED-color);
+    color: var(--MENU-VISITED-color);
 }
 
 #body a.highlight:after {
@@ -158,21 +157,26 @@ a:hover {
     transition: width 0.5s ease;
     background-color: var(--MAIN-LINK-HOVER-color);
 }
+
 #sidebar {
-	background-color: var(--MENU-SECTIONS-BG-color);
+    background-color: var(--MENU-SECTIONS-BG-color);
 }
+
 #sidebar #header-wrapper {
     background: var(--MENU-HEADER-BG-color);
     color: var(--MENU-SEARCH-BOX-color);
     border-color: var(--MENU-HEADER-BORDER-color);
 }
+
 #sidebar .searchbox {
-	border-color: var(--MENU-SEARCH-BOX-color);
+    border-color: var(--MENU-SEARCH-BOX-color);
     background: var(--MENU-SEARCH-BG-color);
 }
+
 #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
     background: var(--MENU-SECTIONS-ACTIVE-BG-color);
 }
+
 #sidebar .searchbox * {
     color: var(--MENU-SEARCH-BOX-ICONS-color);
 }
@@ -193,9 +197,31 @@ a:hover {
 #sidebar hr {
     border-color: var(--MENU-SECTION-HR-color);
 }
+
+#body .tags a.tag-link {
+    background-color: var(--MENU-HEADER-BG-color);
+}
+
+#body .tags a.tag-link:before {
+    border-right-color: var(--MENU-HEADER-BG-color);
+}
+
+#homelinks {
+    background: var(--MENU-HEADER-BG-color);
+    background-color: var(--MENU-HEADER-BORDER-color);
+    border-bottom-color: var(--MENU-HEADER-BORDER-color);
+}
+
+#homelinks a {
+    color: var(--MENU-HOME-LINK-color);
+}
+
+#homelinks a:hover {
+    color: var(--MENU-HOME-LINK-HOVER-color);
+}
 ```
 
-Then, set the `themeVariant` value with the name of your custom theme file. That's it !
+Then, set the `themeVariant` value with the name of your custom theme file. That's it!
 
 ```toml
 [params]

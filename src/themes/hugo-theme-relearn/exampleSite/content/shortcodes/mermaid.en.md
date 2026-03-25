@@ -1,8 +1,7 @@
-
----
-title : "Mermaid"
-description : "Generation of diagram and flowchart from text in a similar manner as markdown"
----
++++
+description = "Generation of diagram and flowchart from text in a similar manner as markdown"
+title = "Mermaid"
++++
 
 [Mermaid](https://mermaidjs.github.io/) is a library helping you to generate diagram and flowcharts from text, in a similar manner as Markdown.
 
@@ -10,7 +9,7 @@ description : "Generation of diagram and flowchart from text in a similar manner
 
 Just insert your mermaid code in the `mermaid` shortcode like this:
 
-````
+````go
 {{</* mermaid [ align=(left|right|center|justify) ] */>}}
 classDiagram
     Person *-- Dog
@@ -43,7 +42,7 @@ graph LR;
 {{< /mermaid >}}
 
 {{% expand "Show markup" "true" %}}
-````
+````go
 {{</* mermaid align="left" */>}}
 graph LR;
     A[Hard edge] -->|Link text| B(Round edge)
@@ -71,7 +70,7 @@ sequenceDiagram
 {{< /mermaid >}}
 
 {{% expand "Show markup" "true" %}}
-````
+````go
 {{</* mermaid */>}}
 sequenceDiagram
     participant Alice
@@ -109,7 +108,7 @@ gantt
 {{< /mermaid >}}
 
 {{% expand "Show markup" "true" %}}
-````
+````go
 {{</* mermaid */>}}
 gantt
         dateFormat  YYYY-MM-DD
@@ -150,7 +149,7 @@ classDiagram
 {{< /mermaid >}}
 
 {{% expand "Show markup" "true" %}}
-````
+````go
 {{</* mermaid */>}}
 classDiagram
     Class01 <|-- AveryLongClass : Cool
@@ -184,7 +183,7 @@ stateDiagram-v2
 {{< /mermaid >}}
 
 {{% expand "Show markup" "true" %}}
-````
+````go
 {{</* mermaid */>}}
 stateDiagram-v2
     open: Open Door

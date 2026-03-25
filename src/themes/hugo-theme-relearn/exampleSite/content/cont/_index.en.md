@@ -1,9 +1,8 @@
----
-title: Content
-weight: 10
-chapter: true
-pre: "<b>2. </b>"
----
++++
+chapter = true
+title = "Content"
+weight = 2
++++
 
 ### Chapter 2
 

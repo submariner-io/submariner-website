@@ -1,8 +1,7 @@
----
-date: 2016-04-09T16:50:16+02:00
-title: Markdown syntax
-weight: 15
----
++++
+title = "Markdown syntax"
+weight = 15
++++
 
 Let's face it: Writing content for the Web is tiresome. WYSIWYG editors help alleviate this task, but they generally result in horrible code, or worse yet, ugly web pages.
 
@@ -403,9 +402,11 @@ HTML:
 
 Use "fences"  ```` ``` ```` to block in multiple lines of code.
 
-```markdown
+````plaintext
+```
 Sample text here...
 ```
+````
 
 HTML:
 
@@ -423,28 +424,28 @@ See [Code Highlighting]({{% relref "syntaxhighlight.md" %}}) for additional docu
 
 For example, to apply syntax highlighting to JavaScript code:
 
-```plaintext
-    ```js
-    grunt.initConfig({
-      assemble: {
-        options: {
-          assets: 'docs/assets',
-          data: 'src/data/*.{json,yml}',
-          helpers: 'src/custom-helpers.js',
-          partials: ['src/partials/**/*.{hbs,md}']
-        },
-        pages: {
-          options: {
-            layout: 'default.hbs'
-          },
-          files: {
-            './': ['src/templates/pages/index.hbs']
-          }
-        }
+````plaintext
+```js
+grunt.initConfig({
+  assemble: {
+    options: {
+      assets: 'docs/assets',
+      data: 'src/data/*.{json,yml}',
+      helpers: 'src/custom-helpers.js',
+      partials: ['src/partials/**/*.{hbs,md}']
+    },
+    pages: {
+      options: {
+        layout: 'default.hbs'
+      },
+      files: {
+        './': ['src/templates/pages/index.hbs']
       }
-    };
-    ```
+    }
+  }
+};
 ```
+````
 
 Renders to:
 
@@ -528,6 +529,16 @@ Adding a colon on the right side of the dashes below any heading will right alig
 | ------:| -----------:|
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+### Two tables adjacent
+
+| Option | Description |
+| ------ | ----------- |
+| ext    | extension to be used for dest files. |
+
+| Option | Description |
+| ------ | ----------- |
 | ext    | extension to be used for dest files. |
 
 ## Links
@@ -635,6 +646,8 @@ Add HTTP parameters `width` and/or `height` to the link image to resize the imag
 ```
 
 ![Minion](https://octodex.github.com/images/minion.png?width=20pc)
+
+![stormtroopocat](https://octodex.github.com/images/stormtroopocat.png?width=20pc)
 
 ```markdown
 ![Minion](https://octodex.github.com/images/minion.png?height=50px)

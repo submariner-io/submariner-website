@@ -1,9 +1,12 @@
----
-date: 2016-04-09T16:50:16+02:00
-title: Shortcodes
-pre: "<b>3. </b>"
-weight: 15
----
++++
+chapter = true
+title = "Shortcodes"
+weight = 3
++++
+
+### Chapter 3
+
+# Shortcodes
 
 Hugo uses Markdown for its simple content format. However, there are a lot of things that Markdown doesn’t support well. You could use pure HTML to expand possibilities.
 
@@ -13,4 +16,4 @@ To avoid this limitations, Hugo created [shortcodes](https://gohugo.io/extras/sh
 
 **Hugo-theme-relearn** provides multiple shortcodes on top of existing ones.
 
-{{%children style="h2" description="true" %}}
+{{%children containerstyle="div" style="h2" description="true" %}}

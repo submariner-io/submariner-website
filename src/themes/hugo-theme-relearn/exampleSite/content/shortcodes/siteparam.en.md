@@ -1,9 +1,9 @@
----
-title: Site param
-description : "Get value of site params variables in your page."
----
++++
+description = "Get value of site params variables in your page."
+title = "Site param"
++++
 
-`siteparam` shortcode is used to help you print values of site params. 
+`siteparam` shortcode is used to help you print values of site params.
 
 For instance, in this current site, the `editURL` variable is used in `config.toml`
 
@@ -14,7 +14,7 @@ For instance, in this current site, the `editURL` variable is used in `config.to
 
 Use the `siteparam` shortcode to display its value.
 
-```
+```go
 `editURL` Value : {{%/* siteparam "editURL" */%}}
 ```
 

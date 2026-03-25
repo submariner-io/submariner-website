@@ -1,6 +1,10 @@
 +++
+description = "This is a non-hidden demo child page of a hidden parent page"
 title = "page 1-1-1-1"
-description = "This is a demo child page"
 +++
 
-This is a demo child page
+This is a **non-hidden** demo child page of a hidden parent page with a hidden child. You can still access the hidden child [directly]({{% relref "shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/children-1-1-1-1-1" %}}) or via the search.
+
+## Subpages of this page
+
+{{% children showhidden="true" %}}
