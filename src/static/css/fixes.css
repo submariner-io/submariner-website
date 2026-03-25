@@ -11,3 +11,7 @@ div.notices.note {
 div.notices.tip {
     background: #E6F9E6;
 }
+
+code {
+    background: #F2F2F2;
+}

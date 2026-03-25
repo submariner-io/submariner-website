@@ -179,7 +179,7 @@ jQuery(document).ready(function() {
         var code = $(this),
             text = code.text();
 
-        if (text.length > 30) { // We have a minimum limit to avoid the copy-to-clipboard on `small` `tags`
+        if (text.length > 5) {
             if (!clipInit) {
                 var text, clip = new ClipboardJS('.copy-to-clipboard', {
                     text: function(trigger) {

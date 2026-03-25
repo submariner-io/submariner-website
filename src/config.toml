@@ -16,8 +16,10 @@ defaultContentLanguageInSubdir= true
   author = "The Submariner community"
   showVisitedLinks = true
   disableBreadcrumb = false
+  disableInlineCopyToClipboard = true
   disableNextPrev = false
   themeVariant = "blue"
+  custom_css = ["css/fixes.css"]
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
