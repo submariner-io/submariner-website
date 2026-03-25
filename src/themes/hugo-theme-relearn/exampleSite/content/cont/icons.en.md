@@ -1,7 +1,7 @@
----
-title: Icons and logos
-weight: 27
----
++++
+title = "Icons and logos"
+weight = 27
++++
 
 The Relearn theme for Hugo loads the [**Font Awesome**](https://fontawesome.com) library, allowing you to easily display any icon or logo available in the Font Awesome free collection.
 
@@ -13,7 +13,7 @@ Once on the Font Awesome page for a specific icon, for example the page for the 
 
 The HTML to include the heart icon is:
 
-```
+```html
 <i class="fas fa-heart"></i>
 ```
 
@@ -21,7 +21,7 @@ The HTML to include the heart icon is:
 
 Paste the `<i>` HTML into markup and Font Awesome will load the relevant icon.
 
-```
+```html
 Built with <i class="fas fa-heart"></i> by Relearn and Hugo
 ```
 
