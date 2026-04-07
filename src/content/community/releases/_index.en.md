@@ -7,6 +7,7 @@ weight = 40
 
 ## v0.22.2
 
+* Azure cloud prepare now supports Marketplace-based images for gateway MachineSet creation on ARO-style clusters.
 * Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
 
 ## v0.22.0
