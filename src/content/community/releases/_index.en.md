@@ -13,6 +13,7 @@ weight = 40
 
 * Azure cloud prepare now supports Marketplace-based images for gateway MachineSet creation on ARO-style clusters.
 * Fixed an issue with OVN-Kubernetes where non-Submariner routes and policies were incorrectly deleted during reconciliation.
+* Service Discovery now implements the CoreDNS Readiness interface so that a readiness probe does not observe it as ready prematurely.
 * Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
 
 ## v0.23.1 (March 12, 2026)
