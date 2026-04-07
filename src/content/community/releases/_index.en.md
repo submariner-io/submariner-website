@@ -5,6 +5,10 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.21.3
+
+* Azure cloud prepare now supports Marketplace-based images for gateway MachineSet creation on ARO-style clusters.
+
 ## v0.24.0 (May 12, 2026)
 
 ### New features
