@@ -8,6 +8,7 @@ weight = 40
 ## v0.22.2
 
 * Azure cloud prepare now supports Marketplace-based images for gateway MachineSet creation on ARO-style clusters.
+* Fixed an issue with OVN-Kubernetes where non-Submariner routes and policies were incorrectly deleted during reconciliation.
 * Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
 
 ## v0.22.0
