@@ -15,3 +15,6 @@ weight = 20
   * [On GCP](openshift/gcp-lb)
   * [Hybrid vSphere and AWS](openshift/vsphere-aws)
 * [External Network (Experimental)](external)
+* Community-maintained guided install:
+  * [KubeStellar Console — Submariner Install Mission](https://console.kubestellar.io/missions/install-submariner) —
+    wraps the current `subctl` workflow (deploy-broker, join, verify, cross-cluster connectivity test) in a guided UI
