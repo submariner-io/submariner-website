@@ -15,6 +15,7 @@ weight = 40
 * Fixed an issue with OVN-Kubernetes where non-Submariner routes and policies were incorrectly deleted during reconciliation.
 * Service Discovery now implements the CoreDNS Readiness interface so that a readiness probe does not observe it as ready prematurely.
 * Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
+* Fixed `subctl upgrade` image pull failures caused by improper handling of version strings with "v" prefix.
 
 ## v0.23.1 (March 12, 2026)
 
