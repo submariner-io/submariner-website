@@ -17,6 +17,7 @@ weight = 40
 * Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
 * Fixed `subctl upgrade` image pull failures caused by improper handling of version strings with "v" prefix.
 * Fixed a race condition where the VXLAN tunnel interface could be incorrectly deleted when switching cable drivers.
+* Fixed IPv6 protocol conflicts in nftables rules for dual-stack and IPv6-only environments.
 
 ## v0.23.1 (March 12, 2026)
 
