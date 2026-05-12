@@ -5,7 +5,7 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
-## v0.24.0
+## v0.24.0 (May 12, 2026)
 
 ### New features
 
