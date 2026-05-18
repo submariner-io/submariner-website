@@ -62,9 +62,3 @@ name = "<i class='fab fa-fw fa-twitter'></i> Twitter"
 identifier = "twitter"
 url = "https://twitter.com/submarinerio"
 weight = 60
-
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-calendar'></i> Google Calendar"
-identifier = "gcal"
-url = "https://calendar.google.com/calendar?cid=NHFuZGVoOGY0bzZ1ajlvZnBsczh1NWNlZ2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
-weight = 70
