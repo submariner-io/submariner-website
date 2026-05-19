@@ -5,6 +5,20 @@ weight = 40
 +++
 <!-- markdownlint-disable no-duplicate-heading -->
 
+## v0.24.0 (May 12, 2026)
+
+### New features
+
+### Other changes
+
+* Azure cloud prepare now supports Marketplace-based images for gateway MachineSet creation on ARO-style clusters.
+* Fixed an issue with OVN-Kubernetes where non-Submariner routes and policies were incorrectly deleted during reconciliation.
+* Service Discovery now implements the CoreDNS Readiness interface so that a readiness probe does not observe it as ready prematurely.
+* Fixed potential scenarios where multiple gateway pods could have their active status label set incorrectly.
+* Fixed `subctl upgrade` image pull failures caused by improper handling of version strings with "v" prefix.
+* Fixed a race condition where the VXLAN tunnel interface could be incorrectly deleted when switching cable drivers.
+* Fixed IPv6 protocol conflicts in nftables rules for dual-stack and IPv6-only environments.
+
 ## v0.23.1 (March 12, 2026)
 
 * AWS cloud prepare now adds Kubernetes cluster tags to security groups to comply with LoadBalancer security group restrictions.
