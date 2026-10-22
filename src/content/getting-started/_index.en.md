@@ -59,6 +59,18 @@ An example of three clusters configured to use with Submariner (without Globalne
 | west         | vSphere  | 10.0.0.0/16  | 10.1.0.0/16  | 192.168.1.0/24     |
 | east         | On-Prem  | 10.98.0.0/16 | 10.99.0.0/16 | 192.168.1.0/24     |
 
+### systemd-networkd
+
+On nodes managed by `systemd-networkd` (e.g. Flatcar, Ubuntu Server), the routes and routing policy rules programmed by Submariner may be removed because `systemd-networkd` treats them as foreign. On every gateway node, create `/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` with the following content and restart `systemd-networkd`:
+
+```ini
+[Network]
+ManageForeignRoutes=no
+ManageForeignRoutingPolicyRules=no
+```
+
+If the nodes are not reachable over SSH, use a DaemonSet to write the file on each gateway node.
+
 ## Support Matrix
 
 Submariner is designed to be cloud provider agnostic, and should run in any standard Kubernetes cluster. Submariner has been tested with the
