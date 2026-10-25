@@ -61,7 +61,7 @@ An example of three clusters configured to use with Submariner (without Globalne
 
 ### systemd-networkd
 
-On nodes managed by `systemd-networkd` (e.g. Flatcar, Ubuntu Server), the routes and routing policy rules programmed by Submariner may be removed because `systemd-networkd` treats them as foreign. On every gateway node, create `/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` with the following content and restart `systemd-networkd`:
+On nodes managed by `systemd-networkd` (e.g. Flatcar, Ubuntu Server), the routes and routing policy rules programmed by Submariner may be removed because `systemd-networkd` treats them as foreign. This requires systemd 249 or later (`ManageForeignRoutes=` was added in 246 and `ManageForeignRoutingPolicyRules=` in 249); on systemd 246–248 the routing policy rules can still be removed. On every gateway node, create `/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` with the following content and restart `systemd-networkd`:
 
 ```ini
 [Network]
@@ -69,7 +69,83 @@ ManageForeignRoutes=no
 ManageForeignRoutingPolicyRules=no
 ```
 
-If the nodes are not reachable over SSH, use a DaemonSet to write the file on each gateway node.
+The prevents future removal; it does not restore entries that are already missing. To recover, restart the route agent on the affected gateway node so that it re-installs the rule and routes:
+
+```shell
+kubectl -n submariner-operator delete pod -l app=submariner-routeagent --field-selector spec.nodeName=<gateway node>
+```
+
+If the nodes are not reachable over SSH, use a privileged DaemonSet that does the work, for example:
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: submariner-gateway-node-config
+  namespace: submariner-operator
+  labels:
+    app: submariner-gateway-node-config
+spec:
+  selector:
+    matchLabels:
+      app: submariner-gateway-node-config
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: submariner-gateway-node-config
+    spec:
+      serviceAccountName: submariner-gateway-node-config
+      automountServiceAccountToken: false
+      nodeSelector:
+        submariner.io/gateway: 'true'
+      tolerations:
+        - operator: Exists
+      terminationGracePeriodSeconds: 5
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: networkd-dropin
+          image: docker.io/library/busybox:1.37.0
+          command:
+            - sh
+            - -c
+            - |
+              set -eu
+              f=/host/networkd.conf.d/10-submariner-foreign-routes.conf
+              want='[Network]
+              ManageForeignRoutes=no
+              ManageForeignRoutingPolicyRules=no'
+              if [ "$(cat "$f" 2>/dev/null)" = "$want" ]; then
+                echo "$f up to date"
+              else
+                printf '%s\n' "$want" > "$f"
+                chmod 0644 "$f"
+                echo "$f written; effective at the next systemd-networkd start"
+              fi
+              trap 'exit 0' TERM INT
+              while :; do sleep 3600 & wait $!; done
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+          resources:
+            requests:
+              cpu: 1m
+              memory: 8Mi
+            limits:
+              memory: 16Mi
+          volumeMounts:
+            - name: networkd-conf-d
+              mountPath: /host/networkd.conf.d
+```
+
+Note that this is a privileged container and this might not be compatible with your security policies, adapt as needed.
 
 ## Support Matrix
 
