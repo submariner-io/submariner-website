@@ -69,7 +69,7 @@ ManageForeignRoutes=no
 ManageForeignRoutingPolicyRules=no
 ```
 
-The prevents future removal; it does not restore entries that are already missing. To recover, restart the route agent on the affected gateway node so that it re-installs the rule and routes:
+The drop-in prevents future removal; it does not restore entries that are already missing. To recover, restart the route agent on the affected gateway node so that it re-installs the rule and routes:
 
 ```shell
 kubectl -n submariner-operator delete pod -l app=submariner-routeagent --field-selector spec.nodeName=<gateway node>
@@ -96,7 +96,6 @@ spec:
       labels:
         app: submariner-gateway-node-config
     spec:
-      serviceAccountName: submariner-gateway-node-config
       automountServiceAccountToken: false
       nodeSelector:
         submariner.io/gateway: 'true'
@@ -143,6 +142,11 @@ spec:
           volumeMounts:
             - name: networkd-conf-d
               mountPath: /host/networkd.conf.d
+      volumes:
+        - name: networkd-conf-d
+          hostPath:
+            path: /etc/systemd/networkd.conf.d
+            type: DirectoryOrCreate
 ```
 
 Note that this is a privileged container and this might not be compatible with your security policies, adapt as needed.
