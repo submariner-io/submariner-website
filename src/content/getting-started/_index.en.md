@@ -61,7 +61,10 @@ An example of three clusters configured to use with Submariner (without Globalne
 
 ### systemd-networkd
 
-On nodes managed by `systemd-networkd` (e.g. Flatcar, Ubuntu Server), the routes and routing policy rules programmed by Submariner may be removed because `systemd-networkd` treats them as foreign. This requires systemd 249 or later (`ManageForeignRoutes=` was added in 246 and `ManageForeignRoutingPolicyRules=` in 249); on systemd 246–248 the routing policy rules can still be removed. On every gateway node, create `/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` with the following content and restart `systemd-networkd`:
+On nodes managed by `systemd-networkd` (e.g. Flatcar, Ubuntu Server), the routes and routing policy rules programmed by Submariner may be
+removed because `systemd-networkd` treats them as foreign. This requires systemd 249 or later (`ManageForeignRoutes=` was added in 246 and
+`ManageForeignRoutingPolicyRules=` in 249); on systemd 246–248 the routing policy rules can still be removed. On every gateway node, create
+`/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` with the following content and restart `systemd-networkd`:
 
 ```ini
 [Network]
@@ -69,7 +72,8 @@ ManageForeignRoutes=no
 ManageForeignRoutingPolicyRules=no
 ```
 
-The drop-in prevents future removal; it does not restore entries that are already missing. To recover, restart the route agent on the affected gateway node so that it re-installs the rule and routes:
+The drop-in prevents future removal; it does not restore entries that are already missing. To recover, restart the route agent on the affected
+gateway node so that it re-installs the rule and routes:
 
 ```shell
 kubectl -n submariner-operator delete pod -l app=submariner-routeagent --field-selector spec.nodeName=<gateway node>
