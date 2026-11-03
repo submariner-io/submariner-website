@@ -126,6 +126,13 @@ spec:
               fi
               trap 'exit 0' TERM INT
               while :; do sleep 3600 & wait $!; done
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - rm -f /host/networkd.conf.d/10-submariner-foreign-routes.conf
           securityContext:
             runAsUser: 0
             runAsGroup: 0
@@ -150,6 +157,11 @@ spec:
 ```
 
 Note that this is a privileged container and this might not be compatible with your security policies, adapt as needed.
+
+When a node loses the `submariner.io/gateway` label, the DaemonSet pod stops running there and its `preStop` hook deletes the drop-in
+file. The change takes effect at the next `systemd-networkd` restart; restart it manually to apply the revert immediately. If the pod is
+terminated ungracefully, the hook does not run: delete `/etc/systemd/networkd.conf.d/10-submariner-foreign-routes.conf` on the former
+gateway node and restart `systemd-networkd`.
 
 ## Support Matrix
 
